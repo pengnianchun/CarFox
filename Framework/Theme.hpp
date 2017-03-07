@@ -21,7 +21,7 @@ public:
         LoadStarted,                // 开始加载
         InstantShowLayersLoaded,    // 立即显示的layer的加载完毕， 代表的同步加载
         ShowOnLoadedLayersLoaded,   // 需要显示时加载的layer的加载完毕，代表的异步加载
-        AllLayerLoaded              // 所有layer加载完毕
+        AllLayersLoaded              // 所有layer加载完毕
     };
 
     // themeId 代表 theme的名称
@@ -57,7 +57,7 @@ public:
 signals:
     void instantShowLayersLoaded();
     void showOnLoadedLayersLoaded();
-    void allLayerLoaded();
+    void allLayersLoaded();
     void isLoadedChanged();
 
 public slots:

@@ -129,7 +129,7 @@ void ThemeManager::hideLayer(const QString &layerId)
 void ThemeManager::unloadLayer(const QString &layerId)
 {
     if (mGlobalLayers.contains(layerId)) {
-        mGlobalLayers[layerId]->unLoad();
+        mGlobalLayers[layerId]->unload();
     }
     else {
         currentTheme()->unloadLayer(layerId);
@@ -148,12 +148,12 @@ void ThemeManager::loadThemesBackground()
         }
         if (!t->hasCreated()) {
             t->create();
-            t->setHasCreate(true);
+            t->setHasCreated(true);
         }
-        if (!t->loaded()) {
+        if (!t->isLoaded()) {
             mLoadingTheme = t.get();
             // 等待本主题后台加载完毕 , 然后
-            connect(t.get(), &Theme::allLayerLoaded(), this, &ThemeManager::onThemeLoaded);
+            connect(t.get(), &Theme::allLayersLoaded, this, &ThemeManager::onThemeLoaded);
             t->loadAsync();
             return;  // 这里加载一次
         }

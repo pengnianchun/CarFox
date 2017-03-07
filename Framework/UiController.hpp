@@ -49,9 +49,9 @@ public:
                                                  const QString &propertyName, QVariant value);
 
     Q_INVOKABLE void hideLayer(const QString &layerId);
-    Q_INVOKABLE void isLayerShown(const QString &layerId);
+    Q_INVOKABLE bool isLayerShown(const QString &layerId);
 
-    Q_INVOKABLE void isMenuShown();
+    Q_INVOKABLE bool isMenuShown();
     Q_INVOKABLE void hideRootMenu();
     Q_INVOKABLE void showRootMenu();
 
@@ -108,6 +108,8 @@ protected:
 
     void startWith(const QString &themeId);
     void switchThemeTo(const QString &themeId);
+private:
+    void updateRootMenuStatus(const QString &layerId, bool status);
 
 protected:
     bool mFirstInstance;
@@ -120,7 +122,7 @@ private:
     // 菜单
     bool mIsMenuShown = false;
     QString mRootMenuId = "";
-    void updateRootMenuStatus(const QString &layerId, bool status);
+
 
 };
 

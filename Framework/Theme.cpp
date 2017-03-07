@@ -40,7 +40,7 @@ void Theme::setHasCreated(bool created)
  */
 bool Theme::isLoaded()
 {
-    return mLoadProgressStatus == Theme::AllLayerLoaded && ThemeManager::instance()->isGlobalLayersLoaded();
+    return mLoadProgressStatus == Theme::AllLayersLoaded && ThemeManager::instance()->isGlobalLayersLoaded();
 }
 
 bool Theme::isLoading()
@@ -70,8 +70,8 @@ void Theme::loadSync()
             layer->loadSync();
         }
     }
-    mLoadProgressStatus = Theme::AllLayerLoaded;
-    emit allLayerLoaded();
+    mLoadProgressStatus = Theme::AllLayersLoaded;
+    emit allLayersLoaded();
     emit isLoadedChanged();
 }
 
@@ -167,7 +167,7 @@ std::shared_ptr<Layer> Theme::layer(const QString &layerId)
         return mLayers[layerId];
     }
     else {
-        qCritical() << "WARNING:" << layerId() << " not exists..";
+        qCritical() << "WARNING:" << layerId << " not exists..";
         return nullptr;
     }
 }
@@ -315,8 +315,8 @@ void Theme::loadManualShowLayers()
 void Theme::onAllLayersLoaded()
 {
     qDebug() << "Theme: " << objectName() << "Loaded ok.";
-    mLoadProgressStatus = Theme::AllLayerLoaded;
-    emit allLayerLoaded();
+    mLoadProgressStatus = Theme::AllLayersLoaded;
+    emit allLayersLoaded();
     emit isLoadedChanged();
 }
 
@@ -326,17 +326,17 @@ void Theme::onAllLayersLoaded()
 void Theme::setInstantShowLayersLoaded()
 {
     if (sender()) {
-        disconnect(static_cast<QmlLayer *>(sender()), &QmlLayer::loaded, this, &Theme::setInstantShowLayersLoaded);
+        disconnect(static_cast<Layer *>(sender()), &Layer::loaded, this, &Theme::setInstantShowLayersLoaded);
     }
     mLoadProgressStatus = Theme::InstantShowLayersLoaded;
-    emit instantLayersLoaded();
+    emit instantShowLayersLoaded();
 }
 
 void Theme::setShowOnLoadedLayersLoaded()
 {
     qDebug() << "setShowOnLoadedLayersLoaded";
     if (sender()) {
-        disconnect(static_cast<QmlLayer *>(sender()), &QmlLayer::loaded, this, &Theme::setShowOnLoadedLayersLoaded);
+        disconnect(static_cast<Layer *>(sender()), &Layer::loaded, this, &Theme::setShowOnLoadedLayersLoaded);
     }
     mLoadProgressStatus = Theme::ShowOnLoadedLayersLoaded;
     emit showOnLoadedLayersLoaded();
@@ -345,7 +345,7 @@ void Theme::setShowOnLoadedLayersLoaded()
 void Theme::setManualShowLayersLoaded()
 {
     if (sender()) {
-        disconnect(static_cast<QmlLayer *>(sender()), &QmlLayer::loaded, this, &Theme::setManualShowLayersLoaded);
+        disconnect(static_cast<Layer *>(sender()), &Layer::loaded, this, &Theme::setManualShowLayersLoaded);
     }
 
     mLoadProgressStatus = Theme::AllLayersLoaded;

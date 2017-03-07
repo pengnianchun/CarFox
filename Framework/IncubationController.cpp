@@ -20,7 +20,7 @@ qint32 IncubationController::getCpuInfo(CPU_USAGE &usg)
 
     if (cpuInfo.startsWith("cpu")) {
         QStringList list = cpuInfo.split(" ");
-        usg.name = "cpu";
+//        usg.name = "cpu";
         usg.user = list.at(2).toInt();
         usg.nice = list.at(3).toInt();
         usg.system = list.at(4).toInt();
@@ -36,7 +36,7 @@ int IncubationController::calcCpuUsage()
 {
     CPU_USAGE usg;
 
-    if (getCpuInfo(&usg) < 0) return 0;
+    if (getCpuInfo(usg) < 0) return 0;
     if (mPrevUsage.user == 0)
     {
         memcpy(&mPrevUsage, &usg, sizeof(CPU_USAGE));

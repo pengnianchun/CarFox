@@ -22,7 +22,7 @@ public:
     // QML 被加载的状态
     enum QmlLoadStatus {
         Loading = 0,
-        UnLoaded,
+        Unloaded,
         Loaded
     };
 
@@ -39,7 +39,7 @@ public:
 
     //同步加载
     void loadSync();
-    void unLoad();
+    void unload();
 
     void setContextProperties(ContextPropertyHash contextPropertyHash);
     void setContextProperty(const QString &contextName, QObject *object);
@@ -68,7 +68,7 @@ public:
     }
     inline bool isLoaded()
     {
-        return QmlLayer::Loaded == mQmlLoadStatus;
+        return Layer::Loaded == mQmlLoadStatus;
     }
 
 
@@ -86,7 +86,7 @@ private slots:
     void handleQmlLoadStatusChanged(QQmlIncubator::Status status);
 
 private:
-    void loadAsync();
+    void loadAsyncInternal();
 private:
     QString mQmlUrl;
     QQmlEngine *mEngine = Window::instance()->engine();
@@ -96,7 +96,7 @@ private:
     std::shared_ptr<QQuickItem> mLayerItem;
     std::shared_ptr<ContextProperty> mContextProperties;
 
-    QmlLoadStatus mQmlLoadStatus = Layer::UnLoaded;
+    QmlLoadStatus mQmlLoadStatus = Layer::Unloaded;
     ShowPolicy mShowPolicy = Layer::ManualShow;
 
     Theme *mParentTheme;

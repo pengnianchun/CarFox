@@ -2,6 +2,7 @@
 
 #include <QElapsedTimer>
 #include <QQmlIncubationController>
+#include <QFile>
 
 #include "Global.hpp"
 CARFOX_BEGIN_NAMESPACE
