@@ -183,6 +183,7 @@ std::shared_ptr<IncubationController> Theme::incubationController()
 void Theme::show()
 {
     for (auto &layer : mLayers.values()) {
+        qDebug() << "Theme::show, layer:" << layer->objectName() << ",showPolicy:" << layer->showPolicy();
         if (layer->showPolicy() == Layer::InstantShow) {
             layer->show();
         }

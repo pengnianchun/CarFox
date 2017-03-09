@@ -272,11 +272,13 @@ void ThemeManager::loadGlobal()
 }
 
 /*
- * 重要函数： 显示当前主题的主界面
+ * 重要函数： 显示当前主题的主界面,
+ * 有地方会调用：switchTheme ， setReady(true) handleSplashScreenFinished
  */
 void ThemeManager::showMainScreen()
 {
     // 如果没有准备好，那就等准备好了在调用
+    qDebug() << "ThemeManager::showMainScreen, mReady:" << mReady;
     if (!mReady) {
         connect(this, &ThemeManager::ready, this, &ThemeManager::showMainScreen,
                 static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::DirectConnection));
@@ -291,7 +293,7 @@ void ThemeManager::showMainScreen()
     }
 
     auto current = mThemes[mCurrentThemeId];
-    qWarning() << "Now, Let's show screen!";
+    qWarning() << "Now, Let's show screen!, igOn status:" << current->contextProperty()->trueCarUpdates()->property("igOn").toBool();
 
     //当前状态为IGNON的时候，直接显示主界面中所有的InstantShow类型的layer，否则显示休眠界面
     if (current->contextProperty()->trueCarUpdates()->property("igOn").toBool()) {

@@ -95,10 +95,11 @@ bool UiController::isMenuShown()
  */
 void UiController::start()
 {
+    qDebug() << "UiController::start, mFirstInstance:" << mFirstInstance;
     loadFonts();
     registerQmlTypes();
     createThemes(createContextProperty(createCarUpdates(), createFakeCarUpdates(), createMultiLanguage(), createFakeMultiLanguage()));
-    if (!mFirstInstance) {
+    if (!mFirstInstance) { //如果不是第一次
         ThemeManager::instance()->handleSplashScreenFinished();
     }
 }
@@ -399,7 +400,7 @@ void UiController::startWith(const QString &themeId)
 {
     setRemainContent("loadType", "startup");
     mThemeManager->setCurrentTheme(themeId);
-    mThemeManager->currentTheme()->create();
+    mThemeManager->currentTheme()->create(); //调用当前主题的create函数。里面会去加载qml文件
     mThemeManager->currentTheme()->setHasCreated(true);
 
     // 开机后加载默认主题

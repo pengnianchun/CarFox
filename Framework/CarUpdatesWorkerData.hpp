@@ -19,7 +19,7 @@ struct CarUpdatesWorkerStateData {
     CarUpdatesData<bool> rrDoor = CarUpdatesData<bool>(false);    // byte10: 3
     CarUpdatesData<bool> hoodDoor = CarUpdatesData<bool>(false);  // byte10: 4
     CarUpdatesData<bool> trunkDoor = CarUpdatesData<bool>(false); // byte10: 5
-    CarUpdatesData<bool> igOn = CarUpdatesData<bool>(true);                         // byte10: 7
+    CarUpdatesData<bool> igOn = CarUpdatesData<bool>(true);                         // byte10: 7 默认是true
     CarUpdatesData<quint8> gear = CarUpdatesData<quint8>(0, 0, 0x0F);               // byte11: 0 ~ 3
     CarUpdatesData<quint8> gearMode = CarUpdatesData<quint8>(0, 0, 1);              // byte11: 4 ~ 5
 

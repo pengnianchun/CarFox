@@ -67,6 +67,7 @@ public:
 
     QString kernelVersion();
 
+    void printReleaseVersion(const QString ui);
     virtual void sendUiVersion(const QString ui);
 
 signals:
@@ -130,7 +131,7 @@ private slots:
     void updateBatteryVoltage(int batteryVoltage);
 
     void updateStrUiVersion(QString ui);
-    void printReleaseVersion(const QString ui);
+
     bool readFile(std::string &content, const std::string &fileName);
 
 private:

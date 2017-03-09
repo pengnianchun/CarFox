@@ -100,7 +100,7 @@ CarUpdatesWorker::DataParseStatus CarUpdatesWorker::parseData(MagicFrame *magicF
             if (generalFrame->crc == crc16Check((quint8*)(&(generalFrame->magic)), MAGIC_LEN + GENERAL_INFO_LEN)) {
                 updateCarUpdates(generalFrame->generalInfo);
             }
-            return CarUpdatesWorker::Successded;
+            return CarUpdatesWorker::Successed;
         }
         else {
             if (byteArray.length() < GENERAL_FRAME_LEN) {
@@ -149,7 +149,7 @@ void CarUpdatesWorker::checkCarUpdatesSignals()
 }
 
 /*
- * 重要函数： 收到MCU的第一帧通用帧/专用帧
+ * 重要函数： 收到MCU的第一帧通用帧/专用帧,这个时候才显示
  */
 void CarUpdatesWorker::initializeFirstFrame(CarUpdatesWorker::InitializeType type)
 {
@@ -460,6 +460,13 @@ void CarUpdatesWorker::setDefaultSettingsFrame(SettingsInfo &settingsInfo)
 
 /*
  *  涉及到 长按 短按两次
+ *   按键事件处理，转换为几个signals
+ *   1. keyPressed -- 只要按下，就持续触发
+ *   2. keyReleased -- 松开时触发一次
+ *   3. keyShortPressed -- keyPressed/keyReleased按顺序发生时触发一次
+ *   4. keyDoublePressed -- 双击，500毫秒内
+ *   5. doubleKeysPressed -- 同时按下2个键
+ *   6. keyLongPressed -- 长按，2000ms
  */
 void CarUpdatesWorker::detectKeyEvent(bool value, int key)
 {
@@ -481,7 +488,7 @@ void CarUpdatesWorker::detectKeyEvent(bool value, int key)
         mSignalData.mPreviousKeyPressedTime = 0;
         if (mLongPressDetectionTimer->isActive()) {
             mLongPressDetectionTimer->stop();
-            emit this->keyShortPressed(key);
+            emit this->keyShortPressed(key); //这个会发射到qml层面
         }
     }
 }

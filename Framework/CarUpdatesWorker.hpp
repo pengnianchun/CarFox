@@ -27,7 +27,7 @@ public:
 
     // 数据解析状态标志位
     enum DataParseStatus {
-        Successded = 0,
+        Successed = 0,
         LengthFailed,
         TailFlagFailed,
         MagicFailed

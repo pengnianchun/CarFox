@@ -7,6 +7,7 @@
 #include "Global.hpp"
 
 class QGuiApplication;
+class QSystemSemaphore;
 
 CARFOX_BEGIN_NAMESPACE
 

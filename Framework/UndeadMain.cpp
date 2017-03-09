@@ -21,7 +21,7 @@ extern "C" {
 #include <sys/ioctl.h>
 
 // 打开这个宏会不显示Splash Screen，直接显示主界面
-//#define CARFOX_PROFILE
+#define CARFOX_PROFILE
 
 
 #ifdef Q_PROCESSOR_ARM
@@ -93,9 +93,10 @@ int UndeadMain::startWithSplash(std::function<int (int, char **)> splashMain, st
 
     do {
         qDebug() << "2.main start fork server";
-        if (exitedStatus == Initialize) {
+        if (exitedStatus == Initialize && splashMain) {
             // 启动Splash进程，返回0的是子进程
             if (0 == (sSplashPid = fork())) {
+                qDebug() << "in splash exe.";
                 INIT_QT_ENV(0); // Splash takes fb0
                 return splashMain(argc, argv);
             }
@@ -119,30 +120,31 @@ int UndeadMain::startWithSplash(std::function<int (int, char **)> splashMain, st
             }
         }
 
-        if (0 > sAppPid)
-                   break;
+        if (0 > sAppPid) {
+            break;
+        }
 
-               int status;
-               pid_t wpid = wait(&status);
-               if (wpid == sAppPid) {
-                   exitedStatus = AppExited;
-                   qWarning() << "App exit with status: " << status;
-                   releaseStartShow();// app crash release sem
-               }
-               else if (wpid == sSplashPid) {
-                   qWarning() << "Splash exit with status: " << status;
-                   exitedStatus = OpenNormalExited;
-                   firstInstance = false;
-                   releaseStartShow();
-               }
-       #ifdef Q_PROCESSOR_ARM
-           } while(true);
-//           return startup_end(EXIT_SUCCESS);
-           return EXIT_SUCCESS;
-       #else
-           } while(false);
-           return EXIT_SUCCESS;
-       #endif
+        int status;
+        pid_t wpid = wait(&status);
+        if (wpid == sAppPid) {
+            exitedStatus = AppExited;
+            qWarning() << "App exit with status: " << status;
+            releaseStartShow();// app crash release sem
+        }
+        else if (wpid == sSplashPid) {
+            qWarning() << "Splash exit with status: " << status;
+            exitedStatus = OpenNormalExited;
+            firstInstance = false;
+            releaseStartShow();
+        }
+#ifdef Q_PROCESSOR_ARM
+    } while(true);
+    //           return startup_end(EXIT_SUCCESS);
+    return EXIT_SUCCESS;
+#else
+    } while(false);
+    return EXIT_SUCCESS;
+#endif
 
 #endif
 }
@@ -152,6 +154,7 @@ int UndeadMain::startWithSplash(std::function<int (int, char **)> splashMain, st
  */
 int UndeadMain::startWithoutSplash(std::function<int (int, char **, bool)> appMain, int argc, char *argv[])
 {
+    qDebug() << "UndeadMain startWithoutSplash";
     return startWithSplash(NULL, appMain, argc, argv);
 }
 
