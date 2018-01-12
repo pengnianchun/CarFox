@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package fyBatteryGroupTemperatureInfo; //电池组温度信息
+
+message BatterySingleTemperature
+{
+        required uint32 addr_number = 1;       //温度探头号
+        required int32 temperature = 2;        //当前探头对应温度值
+}
+
+message BatteryGroupTemperatureMenu
+{ 
+        required uint32 box_number = 1[default = 0];;       //电池箱号
+        repeated BatterySingleTemperature temp_info = 2;    //单体温度信息
+}
+

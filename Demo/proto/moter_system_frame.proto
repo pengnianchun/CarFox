@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package fyMoterSystemInfo; //发动机系统信息
+
+message MoterSystemMenu
+{
+    required float engine_fuel_consumption = 1;   	//发动机油耗, 0.00 L/H
+    required float engine_load = 2;			//发动机负荷, 0 %
+    required float engine_target_throttle = 3;		//发动机目标油门, 0.0 %
+    required float engine_actual_throttle = 4;		//发动机实际油门, 0.0 %
+    required int32 engine_inlet_temperature = 6;	//发动机进气温度, 0 ℃
+}

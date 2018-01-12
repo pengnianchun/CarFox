@@ -1,0 +1,69 @@
+syntax = "proto2";
+
+package fyModuleMiddleInfo; //中模块信息
+
+message ModuleMiddleFrame
+{
+	required float output_current_01 = 1;    //广告灯箱
+	required float output_current_02 = 2;    //右转向灯
+	required float output_current_03 = 3;    //车内指示灯电源
+	required float output_current_04 = 4;    //制动灯
+	required float output_current_05 = 5;    //前门开门电磁阀
+	
+	required float output_current_06 = 6;    //前路牌
+	required float output_current_07 = 7;    //前门关门电磁阀
+	required float output_current_08 = 8;    //侧路牌
+	required float output_current_09 = 9;    //中门开门电磁阀
+	required float output_current_10 = 10;   //后路牌
+
+	required float output_current_11 = 11;   //中门关门电磁阀
+	required float output_current_12 = 12;   //电子滚动屏
+	required float output_current_13 = 13;   //小灯电源
+	required float output_current_14 = 14;   //后广告屏
+	required float output_current_15 = 15;   //左转向灯
+
+	required bool  switch_01 = 16;           //广告灯箱
+	required bool  switch_02 = 17;           //右转向灯
+	required bool  switch_03 = 18;           //车内指示灯电源
+	required bool  switch_04 = 19;           //制动灯
+	required bool  switch_05 = 20;           //前门开门电磁阀
+	required bool  switch_06 = 21;           //前路牌
+	required bool  switch_07 = 22; 		 //前门关门电磁阀
+	required bool  switch_08 = 23;           //侧路牌
+	required bool  switch_09 = 24;           //中门开门电磁阀
+	required bool  switch_10 = 25;           //后路牌
+	required bool  switch_11 = 26;           //中门关门电磁阀
+	required bool  switch_12 = 27;           //电子滚动屏
+	required bool  switch_13 = 28;           //小灯电源
+	required bool  switch_14 = 29;           //后广告屏
+	required bool  switch_15 = 30;           //左转向灯
+	required bool  switch_16 = 31;           //备用
+	
+	required bool  switch_17 = 32;           //门铃开关
+	required bool  switch_18 = 33;           //备用
+	required bool  switch_19 = 34;           //应急阀开启报警
+	required bool  switch_20 = 35;           //备用
+	required bool  switch_21 = 36;           //备用
+	required bool  switch_22 = 37;           //备用
+	required bool  switch_23 = 38;           //备用
+	required bool  switch_24 = 39;           //备用
+	required bool  switch_25 = 40;           //备用
+	required bool  switch_26 = 41;           //备用
+	required bool  switch_27 = 42;           //备用
+	required bool  switch_28 = 43;           //地址选择1
+	required bool  switch_29 = 44;           //地址选择2
+	required bool  switch_30 = 45;           //前门踏步灯开关
+	required bool  switch_31 = 46;           //中门踏步灯开关
+	required bool  switch_32 = 47;           //备用
+
+	required bool  switch_33 = 48;           //备用
+	required bool  switch_34 = 49;           //备用
+	required bool  switch_35 = 50;           //备用
+	required bool  switch_36 = 51;           //备用
+	required bool  switch_37 = 52;           //备用
+	required bool  switch_38 = 53;           //备用
+	required bool  switch_39 = 54;           //备用
+	required bool  switch_40 = 55;           //备用
+	required bool  switch_41 = 56;           //备用
+	required bool  switch_42 = 57;           //备用
+}

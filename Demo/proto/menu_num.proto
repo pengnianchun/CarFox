@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+package fyMenuIdRequestInfo; //请求菜单信息
+
+message MenuIdRequest
+{
+	required MenuType menu_number = 1;
+	enum MenuType //枚举消息类型
+    	{
+	    MENU_UNKNOWN = 0;		
+	    MENU_CONTROLSYSTEM = 1;	   //01，控制系统信息界面
+	    MENU_MOTORSYSTEM = 2;          //02，发动机系统信息界面
+	    MENU_AUXILIARYSYSTEM =3;       //03，辅助系统信息界面
+	    MENU_TCUSYSTEM = 4;	           //04，TCU系统信息界面
+	    MENU_BATTERYMANAGESYSTEM = 5;  //05，电池管理信息界面
+	    MENU_BATTERYSTATE = 6;         //06，电池状态信息界面
+	    MENU_AIRCONTROLSYSTEM = 7;	   //07，空调系统信息界面
+	    MENU_TESTMODULESYSTEM = 8;     //08，仪表系统信息界面
+	    MENU_TIMESET = 9;		   //09，时间系统信息界面
+	    MENU_NO_MAX = 10;	           //10，
+    	}   
+	optional int32 page_number = 2 [default = 0];
+}
