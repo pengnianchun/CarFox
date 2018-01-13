@@ -7,6 +7,7 @@
 #include "CustomTheme3.hpp"
 #include "CustomTheme4.hpp"
 #include "CustomUiController.hpp"
+#include "CustomUiController.hpp"
 
 
 // 打开这个宏会直接显示主界面,而不是需要等待mcu发送第一帧信号
@@ -203,6 +204,16 @@ std::shared_ptr<carfox::CarUpdates> CustomUiController::createCarUpdates()
 std::shared_ptr<carfox::CarUpdates> CustomUiController::createFakeCarUpdates()
 {
     return std::make_shared<CustomCarUpdates>(Q_NULLPTR);
+}
+
+std::shared_ptr<carfox::CarMsg> CustomUiController::createCarMsg()
+{
+    return mCarMsg;
+}
+
+std::shared_ptr<carfox::CarMsg> CustomUiController::createFakeCarMsg()
+{
+    return std::make_shared<CustomCarMsg>(nullptr);
 }
 
 std::shared_ptr<carfox::MultiLanguage> CustomUiController::createMultiLanguage()

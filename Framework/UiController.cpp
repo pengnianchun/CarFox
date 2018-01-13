@@ -98,7 +98,10 @@ void UiController::start()
     qDebug() << "UiController::start, mFirstInstance:" << mFirstInstance;
     loadFonts();
     registerQmlTypes();
-    createThemes(createContextProperty(createCarUpdates(), createFakeCarUpdates(), createMultiLanguage(), createFakeMultiLanguage()));
+    //调用子类的实现。
+    createThemes(createContextProperty(createCarUpdates(), createFakeCarUpdates(),
+                                       createCarMsg(), createFakeCarMsg(),
+                                       createMultiLanguage(), createFakeMultiLanguage()));
     if (!mFirstInstance) { //如果不是第一次
         ThemeManager::instance()->handleSplashScreenFinished();
     }
@@ -289,14 +292,20 @@ void UiController::setWindowBackgroundColor(const QColor &color)
  */
 std::shared_ptr<ContextProperty> UiController::createContextProperty(std::shared_ptr<CarUpdates> carUpdates,
                                                                      std::shared_ptr<CarUpdates> fakeCarUpdates,
+                                                                     std::shared_ptr<CarMsg> carMsg,
+                                                                     std::shared_ptr<CarMsg> fakeCarMsg,
                                                                      std::shared_ptr<MultiLanguage> multiLanguage,
                                                                      std::shared_ptr<MultiLanguage> fakeMultiLanguage)
 {
     carUpdates->startCarUpdatesSendReceiveThread();
-    auto contextProperties = std::make_shared<ContextProperty>("CarUpdates", "ML");
+    auto contextProperties = std::make_shared<ContextProperty>("CarUpdates", "CarMsg", "ML");
     contextProperties->setFakeCarUpdates(fakeCarUpdates);
     contextProperties->setTrueCarUpdates(carUpdates);
     contextProperties->addContextProperty("CarUpdates", fakeCarUpdates.get());
+
+    contextProperties->setFakeCarMsg(fakeCarMsg);
+    contextProperties->setTrueCarMsg(carMsg);
+    contextProperties->addContextProperty("CarMsg", fakeCarMsg.get());
 
     contextProperties->setFakeMultiLanguage(fakeMultiLanguage);
     contextProperties->setTrueMultiLanguage(multiLanguage);
@@ -308,29 +317,41 @@ std::shared_ptr<ContextProperty> UiController::createContextProperty(std::shared
     return contextProperties;
 }
 
+
 /*
  *
  */
-std::shared_ptr<CarUpdates> UiController::createCarUpdates()
-{
-    auto carUpdates = std::make_shared<CarUpdates>(new CarUpdatesWorker);
-    return carUpdates;
-}
+//std::shared_ptr<CarUpdates> UiController::createCarUpdates()
+//{
+//    auto carUpdates = std::make_shared<CarUpdates>(new CarUpdatesWorker);
+//    return carUpdates;
+//}
 
-std::shared_ptr<CarUpdates> UiController::createFakeCarUpdates()
-{
-    return std::make_shared<CarUpdates>(nullptr);
-}
+//std::shared_ptr<CarUpdates> UiController::createFakeCarUpdates()
+//{
+//    return std::make_shared<CarUpdates>(nullptr);
+//}
 
-std::shared_ptr<MultiLanguage> UiController::createMultiLanguage()
-{
-    return std::make_shared<MultiLanguage>();
-}
+//std::shared_ptr<CarMsg> UiController::createCarMsg()
+//{
+//    auto carMsg = std::make_shared<CarMsg> (new CarMsgWorker);
+//    return carMsg;
+//}
 
-std::shared_ptr<MultiLanguage> UiController::createFakeMultiLanguage()
-{
-    return std::make_shared<MultiLanguage>(true);
-}
+//std::shared_ptr<CarMsg> UiController::createFakeCarMsg()
+//{
+//    return std::make_shared<CarMsg>(nullptr);
+//}
+
+//std::shared_ptr<MultiLanguage> UiController::createMultiLanguage()
+//{
+//    return std::make_shared<MultiLanguage>();
+//}
+
+//std::shared_ptr<MultiLanguage> UiController::createFakeMultiLanguage()
+//{
+//    return std::make_shared<MultiLanguage>(true);
+//}
 
 void UiController::registerQmlTypes()
 {

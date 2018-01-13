@@ -2,11 +2,13 @@
 
 CARFOX_BEGIN_NAMESPACE
 
-ContextProperty::ContextProperty(const QString &carUpdatesName, const QString &multiLanguageName)
+ContextProperty::ContextProperty(const QString &carUpdatesName, const QString &carMsgName, const QString &multiLanguageName)
     : mCarUpdatesName(carUpdatesName)
+    , mCarMsgName(carMsgName)
     , mMultilanguageName(multiLanguageName)
 {
     Q_ASSERT(!mCarUpdatesName.isEmpty());
+    Q_ASSERT(!mCarMsgName.isEmpty());
 }
 
 void ContextProperty::addContextProperty(const QString &contextName, QObject *obj)
@@ -70,6 +72,31 @@ std::shared_ptr<MultiLanguage> ContextProperty::trueMultiLanguage()
 void ContextProperty::setTrueMultiLanguage(std::shared_ptr<MultiLanguage> trueMultiLanguageObj)
 {
     mTrueMultilanguages = trueMultiLanguageObj;
+}
+
+const QString &ContextProperty::carMsgName() const
+{
+    return mCarMsgName;
+}
+
+std::shared_ptr<CarMsg> ContextProperty::fakeCarMsg()
+{
+    return mFakeCarMsg;
+}
+
+void ContextProperty::setFakeCarMsg(std::shared_ptr<CarMsg> fakeCarMsgObj)
+{
+    mFakeCarMsg = fakeCarMsgObj;
+}
+
+std::shared_ptr<CarMsg> ContextProperty::trueCarMsg()
+{
+    return mTrueCarMsg;
+}
+
+void ContextProperty::setTrueCarMsg(std::shared_ptr<CarMsg> trueCarMsgObj)
+{
+    mTrueCarMsg = trueCarMsgObj;
 }
 
 
