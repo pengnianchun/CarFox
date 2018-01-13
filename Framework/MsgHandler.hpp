@@ -1,5 +1,4 @@
-#ifndef DISPATCHER_H
-#define DISPATCHER_H
+#pragma once
 
 #include <QObject>
 
@@ -16,6 +15,10 @@
 
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
+
+#include "Global.hpp"
+
+CARFOX_BEGIN_NAMESPACE
 
 using namespace std;
 using namespace placeholders;
@@ -90,4 +93,4 @@ private:
 
 };
 
-#endif // DISPATCHER_H
+CARFOX_END_NAMESPACE

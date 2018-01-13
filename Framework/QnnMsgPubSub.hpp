@@ -1,10 +1,12 @@
-#ifndef QNNMSGPUBSUB_H
-#define QNNMSGPUBSUB_H
+#pragma once
 
 #include <QObject>
 #include <QDebug>
 
-#include "qnnmsgsocket.h"
+#include "QnnMsgSocket.hpp"
+#include "Global.hpp"
+
+CARFOX_BEGIN_NAMESPACE
 
 class PubSocket: public QObject
 {
@@ -123,4 +125,4 @@ private:
 };
 
 
-#endif
+CARFOX_END_NAMESPACE

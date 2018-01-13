@@ -1,18 +1,24 @@
 # 网口据处理相关接口
 HEADERS += \
-    ./CarUpdates.hpp \
-    ./CarUpdatesData.hpp \
-    ./CarUpdatesWorker.hpp \
-    ./CarUpdatesWorkerData.hpp \
-    ./MsgHandler.hpp \
     ./QnnMsgPubSub.hpp \
-    ./QnnMsgSocket.hpp
+    ./QnnMsgSocket.hpp \
+    ./CarMsgData.hpp \
+    ./CarMsg.hpp \
+    ./CarMsgWorkerData.hpp \
+    ./CarMsgWorker.hpp \
+    ./MsgHandler.hpp \
+    ./CarUpdates.hpp \
+    ./CarUpdatesWorker.hpp \
+    ./CarUpdatesData.hpp \
+    ./CarUpdatesWorkerData.hpp
 
 SOURCES += \
     ./CarUpdates.cpp \
     ./CarUpdatesWorker.cpp \
     ./MsgHandler.cpp \
-    ./QnnMsgSocket.cpp
+    ./QnnMsgSocket.cpp \
+    ./CarMsg.cpp \
+    ./CarMsgWorker.cpp
 
 
 # 多主题 多语言 QML加载相关类

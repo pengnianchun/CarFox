@@ -1,5 +1,4 @@
-#ifndef QNNMSGSOCKET_H
-#define QNNMSGSOCKET_H
+#pragma once
 
 #include <QObject>
 #include <QMap>
@@ -11,6 +10,10 @@
 #include <nanomsg/pipeline.h>
 #include <nanomsg/survey.h>
 #include <nanomsg/bus.h>
+
+#include "Global.hpp"
+
+CARFOX_BEGIN_NAMESPACE
 
 class Socket : public QObject
 {
@@ -55,4 +58,4 @@ public slots:
     void nnsocket_activated();
 };
 
-#endif
+CARFOX_END_NAMESPACE

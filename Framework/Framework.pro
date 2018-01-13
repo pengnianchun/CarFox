@@ -23,11 +23,11 @@ headers.path =  $$[QT_INSTALL_HEADERS]/CarFox
 INSTALLS += headers
 
 unix:!macx{
+    LIBS += -lnanomsg -lprotobuf
     cross_compile { # Arm
         TARGET = CarFoxArm
     }
     else { # Linux
-        LIBS += -L./third/nanomsg -lnanomsg -lprotobuf
         TARGET = CarFoxLinux
     }
 }
@@ -45,4 +45,3 @@ INSTALLS += target
  MOC_DIR = build
  RCC_DIR = build
  OBJECTS_DIR = build
-

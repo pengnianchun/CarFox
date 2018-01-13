@@ -31,7 +31,9 @@
 #include <QThread>
 #include <QDebug>
 
-#include "qnnmsgsocket.h"
+#include "QnnMsgSocket.hpp"
+
+CARFOX_BEGIN_NAMESPACE
 
 static int get_fd(int sock)
 {
@@ -191,3 +193,5 @@ void Socket::nnsocket_activated()
 {
     emit readyRead();
 }
+
+CARFOX_END_NAMESPACE

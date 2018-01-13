@@ -1,4 +1,7 @@
-#include "msghandler.h"
+
+#include "MsgHandler.hpp"
+
+CARFOX_BEGIN_NAMESPACE
 
 MsgHandler::MsgHandler(QObject *parent) : QObject(parent)
 {
@@ -103,3 +106,5 @@ google::protobuf::Message *MsgHandler::createMessage(QString &typeName)
 
     return message;
 }
+
+CARFOX_END_NAMESPACE
