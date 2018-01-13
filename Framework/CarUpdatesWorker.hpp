@@ -10,6 +10,7 @@
 #include <functional>
 
 #include "Global.hpp"
+#include "Protocol.hpp"
 #include "CarUpdatesWorkerData.hpp"
 
 CARFOX_BEGIN_NAMESPACE

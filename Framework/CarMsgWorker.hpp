@@ -46,7 +46,7 @@ protected:
 private:
     std::shared_ptr<PubSocket> mPubSock = std::make_shared<PubSocket>();
     std::shared_ptr<SubSocket> mSubSock = std::make_shared<SubSocket>();
-}
+};
 
 
 CARFOX_END_NAMESPACE

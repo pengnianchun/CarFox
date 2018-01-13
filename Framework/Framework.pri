@@ -10,7 +10,8 @@ HEADERS += \
     ./CarUpdates.hpp \
     ./CarUpdatesWorker.hpp \
     ./CarUpdatesData.hpp \
-    ./CarUpdatesWorkerData.hpp
+    ./CarUpdatesWorkerData.hpp \
+    ./Protocol.hpp
 
 SOURCES += \
     ./CarUpdates.cpp \
@@ -18,7 +19,8 @@ SOURCES += \
     ./MsgHandler.cpp \
     ./QnnMsgSocket.cpp \
     ./CarMsg.cpp \
-    ./CarMsgWorker.cpp
+    ./CarMsgWorker.cpp \
+    ./Protocol.cpp
 
 
 # 多主题 多语言 QML加载相关类
@@ -46,7 +48,9 @@ SOURCES += \
 # 框架管理相关类
 HEADERS += \
     ./Global.hpp \
-    ./UiController.hpp
+    ./UiController.hpp \
+    ./UndeadMain.hpp
 
 SOURCES += \
-    ./UiController.cpp
+    ./UiController.cpp \
+    ./UndeadMain.cpp
