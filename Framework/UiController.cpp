@@ -408,7 +408,8 @@ void UiController::startWith(const QString &themeId)
     //mThemeManager->loadTheme(themeId);  // 半同步加载
 
     // 等待Splash进程的指令：显示界面
-    UndeadMain::waitStartShow();
+    //TODO: 这个要根据datacenter进程发射的信号往下走
+    //UndeadMain::waitStartShow();
 
     // 显示本主题
     ThemeManager::instance()->handleSplashScreenFinished();

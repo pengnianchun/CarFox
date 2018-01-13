@@ -48,9 +48,7 @@ SOURCES += \
 # 框架管理相关类
 HEADERS += \
     ./Global.hpp \
-    ./UiController.hpp \
-    ./UndeadMain.hpp
+    ./UiController.hpp
 
 SOURCES += \
-    ./UiController.cpp \
-    ./UndeadMain.cpp
+    ./UiController.cpp
