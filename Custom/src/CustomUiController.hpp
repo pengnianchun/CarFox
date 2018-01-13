@@ -8,6 +8,9 @@
 #include "CustomMultiLanguage.hpp"
 #include "CustomCarUpdatesWorker.hpp"
 
+#include "CustomCarMsg.hpp"
+#include "CustomCarMsgWorker.hpp"
+
 class CustomCarUpdates;
 
 class CustomUiController : public carfox::UiController
@@ -43,4 +46,5 @@ private:
     QString m_releaseVersion;
     std::shared_ptr<CustomMultiLanguage> mMultiLanguage = std::make_shared<CustomMultiLanguage>();
     std::shared_ptr<CustomCarUpdates> mCarUpdates = std::make_shared<CustomCarUpdates>(new CustomCarUpdatesWorker);
+    std::shared_ptr<CustomCarMsg> mCarMsg = std::make_shared<CustomCarMsg>(new CustomCarMsgWorker);
 };

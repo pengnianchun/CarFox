@@ -8,6 +8,11 @@ CarMsgWorker::CarMsgWorker()
 
 }
 
+void CarMsgWorker::onStarted()
+{
+    initSocket();
+}
+
 void CarMsgWorker::initSocket()
 {
     // init publish socket

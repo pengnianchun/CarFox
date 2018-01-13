@@ -5,3 +5,9 @@ CustomCarMsgWorker::CustomCarMsgWorker()
 {
 
 }
+
+void CustomCarMsgWorker::registerCallback()
+{
+
+}
+

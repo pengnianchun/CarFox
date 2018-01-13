@@ -20,6 +20,8 @@ public:
 
 public slots:
 
+    virtual void onStarted(); // 线程启动的时候调用
+
     // 下行，数据更新槽函数 , 通过socket发送
 
 
@@ -43,9 +45,9 @@ protected:
     // 成员变量： 打包等类
     MsgHandler handler;
 
-//private:
-//    std::shared_ptr<PubSocket> mPubSock = std::make_shared<PubSocket>();
-//    std::shared_ptr<SubSocket> mSubSock = std::make_shared<SubSocket>();
+private:
+    std::shared_ptr<PubSocket> mPubSock = std::make_shared<PubSocket>();
+    std::shared_ptr<SubSocket> mSubSock = std::make_shared<SubSocket>();
 };
 
 

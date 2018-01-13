@@ -9,4 +9,7 @@ class CustomCarMsgWorker : public carfox::CarMsgWorker
 public:
     CustomCarMsgWorker();
 
+protected:
+     virtual void registerCallback();
+
 };

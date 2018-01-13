@@ -4,7 +4,6 @@ TARGET = test
 TEMPLATE = app
 
 unix:!macx{
-    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lprotobuf
     cross_compile { # ARM平台
         LIBS += -L../CarFox/bin/static -lCarFoxArm
     }
