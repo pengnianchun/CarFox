@@ -3,7 +3,7 @@ QT += qml quick serialport
 TEMPLATE = lib
 
 CONFIG += c++11
-CONFIG += staticlib
+CONFIG += lib
 CONFIG += qtquickcompiler
 
 QMAKE_DISTCLEAN += .qtquickcompiler/*
