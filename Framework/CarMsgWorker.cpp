@@ -13,20 +13,21 @@ void CarMsgWorker::onStarted()
     initSocket();
 }
 
+void CarMsgWorker::onReadyRead()
+{
+    QByteArray recvData = mSubSock->read();
+    qDebug() << " --- Recv: " << recvData.toHex();
+    mHandler.parseMessage(recvData);
+}
+
 void CarMsgWorker::initSocket()
 {
-    // init publish socket
-//    pubsock = new PubSocket();
-//    pubsock->bind("tcp://*:5556");
-
-//    // init subscribe socket
-//    subsock = new SubSocket();
-
-//    // subscribe message
-//    subsock->subscribeFilter("");
-
-//    subsock->connectToAddress("tcp://127.0.0.1:5555");
-//    connect(subsock, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+    mPubSock = std::make_shared<PubSocket>();
+    mSubSock = std::make_shared<SubSocket>();
+    mPubSock->bind("tcp://*:5556");
+    mSubSock->subscribeFilter("");
+    mSubSock->connectToAddress("tcp://127.0.0.1:5555");
+    connect(mSubSock.get(), &SubSocket::readyRead, this, &CarMsgWorker::onReadyRead);
 }
 
 
