@@ -117,6 +117,9 @@ protected:
         }
     }
 
+    /*
+     * 更新信号， 发射合适的数据。
+     */
     template <typename T>
     void updateStatus(T &oldValue, const T &newValue, const T &min, const T &max, std::function<void (T)> signal = [](T){}) {
          if (qAbs(oldValue - qBound(min, newValue, max)) > 0.001) {

@@ -1,13 +1,11 @@
-# 串口数据处理相关类
+# 网口据处理相关接口
 HEADERS += \
-    ./Protocol.hpp \
     ./CarUpdates.hpp \
     ./CarUpdatesData.hpp \
     ./CarUpdatesWorker.hpp \
     ./CarUpdatesWorkerData.hpp
 
 SOURCES += \
-    ./Protocol.cpp \
     ./CarUpdates.cpp \
     ./CarUpdatesWorker.cpp
 
@@ -37,9 +35,7 @@ SOURCES += \
 # 框架管理相关类
 HEADERS += \
     ./Global.hpp \
-    ./UiController.hpp \
-    ./UndeadMain.hpp
+    ./UiController.hpp
 
 SOURCES += \
-    ./UiController.cpp \
-    ./UndeadMain.cpp
+    ./UiController.cpp
