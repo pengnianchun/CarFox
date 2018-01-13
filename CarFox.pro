@@ -8,4 +8,4 @@ CONFIG += c++11
 
 SUBDIRS += \
     Framework \
-    Tayor
+    Custom 
