@@ -14,6 +14,8 @@ QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
 #    DEFINES += QT_NO_DEBUG_OUTPUT
 #}
 
+
+
 include(Framework.pri)
 headers.files += \
     ./*.hpp
@@ -25,6 +27,7 @@ unix:!macx{
         TARGET = CarFoxArm
     }
     else { # Linux
+        LIBS += -L./third/nanomsg -lnanomsg -lprotobuf
         TARGET = CarFoxLinux
     }
 }

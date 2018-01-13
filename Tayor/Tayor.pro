@@ -1,8 +1,3 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2017-11-16T12:00:00
-#
-#-------------------------------------------------
 
 QT += qml quick
 
@@ -12,13 +7,14 @@ CONFIG -= app_bundle
 CONFIG += c++11
 TEMPLATE = app
 
-INCLUDEPATH += ./lib
 INCLUDEPATH += ./protocode
 INCLUDEPATH += ./src
 
 #DEFINES += QT_PRINT_CMD
 #DEFINES += DEBUG_ENABLE
 DEFINES += QT_NO_DEBUG_OUTPUT
+
+system(rm ./protocode -rf && mkdir -p ./protocode && protoc -I=./proto --cpp_out=./protocode ./proto/*.proto)
 
 QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 

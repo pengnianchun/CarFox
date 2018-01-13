@@ -3,11 +3,16 @@ HEADERS += \
     ./CarUpdates.hpp \
     ./CarUpdatesData.hpp \
     ./CarUpdatesWorker.hpp \
-    ./CarUpdatesWorkerData.hpp
+    ./CarUpdatesWorkerData.hpp \
+    ./MsgHandler.hpp \
+    ./QnnMsgPubSub.hpp \
+    ./QnnMsgSocket.hpp
 
 SOURCES += \
     ./CarUpdates.cpp \
-    ./CarUpdatesWorker.cpp
+    ./CarUpdatesWorker.cpp \
+    ./MsgHandler.cpp \
+    ./QnnMsgSocket.cpp
 
 
 # 多主题 多语言 QML加载相关类
