@@ -43,9 +43,9 @@ protected:
     // 成员变量： 打包等类
     MsgHandler handler;
 
-private:
-    std::shared_ptr<PubSocket> mPubSock = std::make_shared<PubSocket>();
-    std::shared_ptr<SubSocket> mSubSock = std::make_shared<SubSocket>();
+//private:
+//    std::shared_ptr<PubSocket> mPubSock = std::make_shared<PubSocket>();
+//    std::shared_ptr<SubSocket> mSubSock = std::make_shared<SubSocket>();
 };
 
 

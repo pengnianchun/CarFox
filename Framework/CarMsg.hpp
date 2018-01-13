@@ -26,9 +26,13 @@ class CarMsg : public QObject
 public:
 
     CarMsg(CarMsgWorker *worker);
+
 signals:
 
 public slots:
+
+private:
+    //CarMsgWorker *mWorker = nullptr;
 };
 
 CARFOX_END_NAMESPACE
