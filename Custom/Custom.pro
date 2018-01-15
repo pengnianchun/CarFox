@@ -8,6 +8,7 @@ unix:!macx{
         LIBS += -L../CarFox/bin/static -lCarFoxArm
     }
     else {
+        QMAKE_LFLAGS += -Wl,--rpath=../Framework/bin/
         LIBS += -L../Framework/bin/ -lCarFoxLinux
     }
 }
