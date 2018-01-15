@@ -24,18 +24,13 @@ CustomUiController::CustomUiController(int screenWidth, int screenHeight, bool f
 void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> cp)
 {
     qDebug() << "Creating themes";
-    auto worker = qobject_cast<CustomCarUpdatesWorker *>(mCarUpdates->worker());
-    connect(worker, &carfox::CarUpdatesWorker::initialized, this, &CustomUiController::handleInitialized,
+    //1. carMsg 初始化完成后，处理初始化的东西。因为有些东西需要首先得到属性
+    auto worker = qobject_cast<CustomCarMsgWorker *>(mCarMsg->getCarMsgWorker());
+    connect(worker, &carfox::CarMsgWorker::initialized, this, &CustomUiController::handleInitialized,
             static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::QueuedConnection));
-    emit mCarUpdates->activate();  //调用到CustomCarsWorker 的activate , 打开串口
+    //2. 添加主题
     auto customTheme1 = std::make_shared<CustomTheme1>(cp, "CustomTheme1");
     addTheme(customTheme1, 16, 3);
-    auto customTheme2 = std::make_shared<CustomTheme1>(cp, "CustomTheme2");
-    addTheme(customTheme2, 16, 3);
-    auto customTheme3 = std::make_shared<CustomTheme1>(cp, "CustomTheme3");
-    addTheme(customTheme3, 16, 3);
-    auto customTheme4 = std::make_shared<CustomTheme1>(cp, "CustomTheme4");
-    addTheme(customTheme4, 16, 3);
 
     // only for Common
 #ifdef CARFOX_DEBUG_FPS
@@ -52,10 +47,10 @@ void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> c
 // 主题切换
 void CustomUiController::handleThemeModeChanged()
 {
-    auto themeMode = mCarUpdates->property("themeMode").toInt();
+    auto themeMode = mCarMsg->property("themeMode").toInt();
     qDebug() << "handle theme mode changed: " << themeMode;
 
-    if (mCarUpdates->property("igOn").toBool()) {
+    if (mCarMsg->property("igOn").toBool()) {
         switch (themeMode) {
         case CustomEnum::Theme1Mode:
             switchThemeTo("CustomTheme1");
@@ -95,24 +90,24 @@ void CustomUiController::handleThemeModeChanged()
 // 语言切换
 void CustomUiController::switchLanguage()
 {
-    if (mCarUpdates->property("languageMode").toBool()) {
+    if (mCarMsg->property("languageMode").toBool()) {
         mMultiLanguage->switchLanguageTo(CustomMultiLanguage::EN);
     } else {
         mMultiLanguage->switchLanguageTo(CustomMultiLanguage::CN);
     }
 }
 
-// 初始化
+// 初始化, 当接收到CarMsgWorker的重要信息时候会执行。
 void CustomUiController::handleInitialized()
 {
-    mCarUpdates.get()->printReleaseVersion(m_releaseVersion);
+    //mCarMsg.get()->printReleaseVersion(m_releaseVersion);
 
     qDebug() << "Start initialize";
 
 #ifndef CUSTOM_PROFILE
-    auto worker = qobject_cast<CustomCarUpdatesWorker *>(sender());
+    auto worker = qobject_cast<CustomCarMsgWorker *>(sender());
 
-    disconnect(worker, &CustomCarUpdatesWorker::initialized, this, &CustomUiController::handleInitialized);
+    disconnect(worker, &CustomCarMsgWorker::initialized, this, &CustomUiController::handleInitialized);
 #endif
 
     handleSystemWakeup();
@@ -122,7 +117,7 @@ void CustomUiController::handleInitialized()
 
     switchLanguage();
 
-    auto themeMode = mCarUpdates->property("themeMode").toInt();
+    auto themeMode = mCarMsg->property("themeMode").toInt();
     qDebug() << "themeMode : " << themeMode;
     switch (themeMode) {
     case CustomEnum::Theme1Mode:
@@ -142,7 +137,7 @@ void CustomUiController::handleInitialized()
     }
     qDebug() << "End initialize";
     themeManager()->setReady(true);
-    connect(mCarUpdates.get(), &CustomCarUpdates::themeModeChanged, this, &CustomUiController::handleThemeModeChanged);
+    connect(mCarMsg.get(), &CustomCarMsg::themeModeChanged, this, &CustomUiController::handleThemeModeChanged);
 }
 
 /*
@@ -151,8 +146,7 @@ void CustomUiController::handleInitialized()
 void CustomUiController::handleSystemShutdown()
 {
     qWarning() << "begin system shutdown";
-    auto worker = qobject_cast<CustomCarUpdatesWorker *>(mCarUpdates->worker());
-    disconnect(worker, &CustomCarUpdatesWorker::tirePressureWarningChanged, this, &CustomUiController::handleTirePressureChanged);
+
     qWarning() << "end system shutdown";
 }
 
@@ -160,9 +154,7 @@ void CustomUiController::handleSystemShutdown()
 void CustomUiController::handleSystemWakeup()
 {
     qWarning() << "begin system wakeup";
-    auto worker = qobject_cast<CustomCarUpdatesWorker *>(mCarUpdates->worker());
 
-    connect(worker, &CustomCarUpdatesWorker::tirePressureWarningChanged, this, &CustomUiController::handleTirePressureChanged);
     qWarning() << "end system wakeup";
 }
 
@@ -194,16 +186,6 @@ void CustomUiController::loadFonts()
     loadFont(QDir::currentPath() + "/fonts/ConceptFont.ttf");
     loadFont(QDir::currentPath() + "/fonts/WenQuanYiMicroHei.ttf");
 #endif
-}
-
-std::shared_ptr<carfox::CarUpdates> CustomUiController::createCarUpdates()
-{
-    return mCarUpdates;
-}
-
-std::shared_ptr<carfox::CarUpdates> CustomUiController::createFakeCarUpdates()
-{
-    return std::make_shared<CustomCarUpdates>(Q_NULLPTR);
 }
 
 std::shared_ptr<carfox::CarMsg> CustomUiController::createCarMsg()
@@ -242,26 +224,6 @@ void CustomUiController::handleHasWarningInfoChanged(bool hasWarningInfo)
         }
     } else {
         popFromStackView(2);
-    }
-}
-
-
-// 胎压
-void CustomUiController::handleTirePressureChanged(bool tirePressure)
-{
-    if (tirePressure) {
-        auto currentThemeId = themeManager()->currentTheme()->objectName();
-        if (currentThemeId == "CustomTheme4") {
-            pushToStackView("TPMSWarningLayer", 8);
-        } else if (currentThemeId == "CustomTheme3") {
-            pushToStackView("TPMSWarningLayer", 8);
-        } else if (currentThemeId == "CustomTheme2") {
-            pushToStackView("TPMSWarningLayer", 8);
-        } else if (currentThemeId == "CustomTheme1") {
-            pushToStackView("TPMSWarningLayer", 8);
-        }
-    } else {
-        popFromStackView(8);
     }
 }
 

@@ -88,13 +88,9 @@ protected:
     virtual void createThemes(std::shared_ptr<ContextProperty> cp) = 0;
 
     // 创建上下文，这样在QML中就可以使用, 子类不应该重新实现
-     std::shared_ptr<ContextProperty> createContextProperty(
-            std::shared_ptr<CarUpdates> carUpdates, std::shared_ptr<CarUpdates> fakeCarUpdates,
-            std::shared_ptr<CarMsg> carMsg, std::shared_ptr<CarMsg> fakeCarMsg,
+     std::shared_ptr<ContextProperty> createContextProperty(std::shared_ptr<CarMsg> carMsg, std::shared_ptr<CarMsg> fakeCarMsg,
             std::shared_ptr<MultiLanguage> multiLanguage, std::shared_ptr<MultiLanguage> fakeMultiLanguage);
 
-     virtual std::shared_ptr<CarUpdates> createCarUpdates() = 0;
-     virtual std::shared_ptr<CarUpdates> createFakeCarUpdates() = 0;
 
      virtual std::shared_ptr<CarMsg> createCarMsg() = 0;
      virtual std::shared_ptr<CarMsg> createFakeCarMsg() = 0;

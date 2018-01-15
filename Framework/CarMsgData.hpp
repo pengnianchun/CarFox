@@ -7,17 +7,17 @@ CARFOX_BEGIN_NAMESPACE
 template <class T>
         struct CarMsgData
 {
-    CarUpdatesData(T dataValue)
+    CarMsgData(T dataValue)
         :data(dataValue)
     {
     }
 
-    CarUpdatesData(T dataValue, T minValue, T maxValue)
+    CarMsgData(T dataValue, T minValue, T maxValue)
         : min(minValue), max(maxValue), data(dataValue)
     {
     }
 
-    CarUpdatesData(T dataValue, T minValue, T maxValue, T invalidValue)
+    CarMsgData(T dataValue, T minValue, T maxValue, T invalidValue)
         : min(minValue), max(maxValue), invalid(invalidValue), data(dataValue)
     {
     }

@@ -7,7 +7,7 @@
         <file>Qml/Theme1/MainPanel.qml</file>
         <file>Qml/Theme1/TriggerPanel.qml</file>
     </qresource>
-    <qresource prefix="/Theme2">
+   <!-- <qresource prefix="/Theme2">
         <file>Qml/Theme2/MainPanel.qml</file>
         <file>Qml/Theme2/TriggerPanel.qml</file>
     </qresource>
@@ -18,5 +18,5 @@
     <qresource prefix="/Theme4">
         <file>Qml/Theme4/MainPanel.qml</file>
         <file>Qml/Theme4/TriggerPanel.qml</file>
-    </qresource>
+    </qresource>-->
 </RCC>

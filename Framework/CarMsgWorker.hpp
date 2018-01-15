@@ -20,16 +20,22 @@ public:
 
 public slots:
 
-    virtual void onStarted(); // 线程启动的时候调用
+
 
     // 下行，数据更新槽函数 , 通过socket发送
+    void onStarted(); // 线程启动的时候调用
 
 private slots:
+
     void onReadyRead(); // 网路有数据的时候回调
 
 signals:
     // 上行变更信号， 发射给CarMsg
 
+
+    // 发射给UiController
+
+    void initialized();
 
 protected:
 

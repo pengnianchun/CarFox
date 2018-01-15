@@ -7,3 +7,8 @@ CustomCarMsg::CustomCarMsg(CustomCarMsgWorker *worker)
 {
 
 }
+
+void CustomCarMsg::updateThemeMode(int data)
+{
+
+}

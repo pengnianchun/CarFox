@@ -4,7 +4,6 @@
 #include <QHash>
 
 #include "Global.hpp"
-#include "CarUpdates.hpp"
 #include "MultiLanguage.hpp"
 
 #include "CarMsg.hpp"
@@ -20,17 +19,12 @@ typedef QHash<QString, QObject *> ContextPropertyHash;
 class ContextProperty
 {
 public:
-    ContextProperty(const QString &carUpdatesName,  const QString &carMsgName,  const QString &multiLanguageName);
+    ContextProperty(const QString &carMsgName,  const QString &multiLanguageName);
 
     void addContextProperty(const QString &contextName, QObject *obj);
 
     const ContextPropertyHash &contextProperties();
 
-    const QString &carUpdatesName() const;
-    std::shared_ptr<CarUpdates> fakeCarUpdates();
-    void setFakeCarUpdates(std::shared_ptr<CarUpdates> fakeCarUpdatesObj);
-    std::shared_ptr<CarUpdates> trueCarUpdates();
-    void setTrueCarUpdates(std::shared_ptr<CarUpdates> trueCarUpdatesObj);
 
     const QString &multiLanguageName() const;
     std::shared_ptr<MultiLanguage> fakeMultiLanguage();
@@ -47,9 +41,6 @@ public:
 private:
     ContextPropertyHash mContextProperties;
 
-    QString mCarUpdatesName;
-    std::shared_ptr<CarUpdates> mFakeCarUpdates;
-    std::shared_ptr<CarUpdates> mTrueCarUpdates;
 
     QString mMultilanguageName;
     std::shared_ptr<MultiLanguage> mFakeMultiLanguages;

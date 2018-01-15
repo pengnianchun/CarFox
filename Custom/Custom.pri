@@ -1,13 +1,9 @@
 HEADERS += \ 
-    ./src/CustomCarUpdates.hpp \ 
-    ./src/CustomCarUpdatesWorker.hpp \ 
-    ./src/CustomCarUpdatesWorkerData.hpp \ 
     ./src/CustomCarMsg.hpp \
     ./src/CustomCarMsgWorker.hpp \
     ./src/CustomCarMsgWorkerData.hpp \ 
     ./src/CustomEnum.hpp \ 
     ./src/CustomMultiLanguage.hpp \ 
-    ./src/CustomProtocol.hpp \ 
     ./src/CustomUiController.hpp \ 
     ./src/CustomTheme1.hpp \ 
     ./src/CustomTheme2.hpp \ 
@@ -16,8 +12,6 @@ HEADERS += \
     ./src/CustomEnum.hpp
 
 SOURCES += \ 
-    ./src/CustomCarUpdates.cpp \ 
-    ./src/CustomCarUpdatesWorker.cpp \ 
     ./src/CustomCarMsg.cpp \ 
     ./src/CustomCarMsgWorker.cpp \ 
     ./src/CustomUiController.cpp \ 

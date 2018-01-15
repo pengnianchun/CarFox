@@ -6,21 +6,13 @@ HEADERS += \
     ./CarMsg.hpp \
     ./CarMsgWorkerData.hpp \
     ./CarMsgWorker.hpp \
-    ./MsgHandler.hpp \
-    ./CarUpdates.hpp \
-    ./CarUpdatesWorker.hpp \
-    ./CarUpdatesData.hpp \
-    ./CarUpdatesWorkerData.hpp \
-    ./Protocol.hpp
+    ./MsgHandler.hpp
 
 SOURCES += \
-    ./CarUpdates.cpp \
-    ./CarUpdatesWorker.cpp \
     ./MsgHandler.cpp \
     ./QnnMsgSocket.cpp \
     ./CarMsg.cpp \
-    ./CarMsgWorker.cpp \
-    ./Protocol.cpp
+    ./CarMsgWorker.cpp
 
 
 # 多主题 多语言 QML加载相关类

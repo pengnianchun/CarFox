@@ -96,8 +96,8 @@ void Layer::show()
         loadSync();
     }
 
-    // 可见的Layer接收carStatus信号
-    mContext->setContextProperty(mContextProperties->carUpdatesName(), mContextProperties->trueCarUpdates().get());
+    // 可见的Layer接收carMsg信号
+    mContext->setContextProperty(mContextProperties->carMsgName(), mContextProperties->trueCarMsg().get());
     mContext->setContextProperty(mContextProperties->multiLanguageName(), mContextProperties->trueMultiLanguage().get());
 
     mLayerItem->setParentItem(Window::instance()->contentItem()); //设置父级
@@ -120,7 +120,7 @@ void Layer::hide()
     mLayerItem->setVisible(false);
     mLayerItem->setParentItem(nullptr);
     // 被隐藏的Layer不接收carStatus信号
-    mContext->setContextProperty(mContextProperties->carUpdatesName(), mContextProperties->fakeCarUpdates().get());
+    mContext->setContextProperty(mContextProperties->carMsgName(), mContextProperties->fakeCarMsg().get());
     mContext->setContextProperty(mContextProperties->multiLanguageName(), mContextProperties->fakeMultiLanguage().get());
 }
 
