@@ -59,6 +59,7 @@ private:
 
     void handleProtoKey(const carfox::MessagePtr& msg);
     void handleProtoAutoFlash(const carfox::MessagePtr& msg);
+    void handleGeneralInfoFrame(const carfox::MessagePtr& msg);
 
 private:
     CarMsgWorkerStateData mStateData;

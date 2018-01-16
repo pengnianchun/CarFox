@@ -60,6 +60,7 @@ void CustomCarMsgWorker::registerCallback()
 {
     mHandler.registerMsgCallback(fyKeyEvent::KeyFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoKey, this, _1));
     mHandler.registerMsgCallback(fySystemSettingsInfo::AnimationFlash::descriptor(), bind(&CustomCarMsgWorker::handleProtoAutoFlash, this, _1));
+    mHandler.registerMsgCallback(fyGeneralInfo::GeneralFrame::descriptor(), bind(&CustomCarMsgWorker::handleGeneralInfoFrame, this, _1));
 }
 
 void CustomCarMsgWorker::handleProtoKey(const carfox::MessagePtr &msg)
@@ -78,4 +79,15 @@ void CustomCarMsgWorker::handleProtoAutoFlash(const carfox::MessagePtr &msg)
     updateStates<bool>(mStateData.autoFlash.data, p->auto_flash(), [this](bool value) {
         emit this->autoFlashChanged(value);
     });
+}
+
+void CustomCarMsgWorker::handleGeneralInfoFrame(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fyGeneralInfo::GeneralFrame> p = carfox::down_pointer_cast<fyGeneralInfo::GeneralFrame>(msg);
+    qDebug() << "===gear value:" << p->gear();
+    //FIXME: 这个仅仅是测试
+    updateStates<bool>(mStateData.igOn.data, p->gear(), [this](bool value) {
+        emit this->igOnChanged(value);
+    });
+
 }
