@@ -26,10 +26,9 @@ public slots:
 
 
 private slots:
-    // 上行帧 更新数据槽函数
-    void updateThemeMode (int data);
+    // 上行帧 更新数据槽函数, worker to msg
+    void updateThemeMode (qint8 data);
 
-        void onkeyShortPressed(int keyType);
 signals:
     // 上行帧 worker to msg
     void keyPressed(int key);
@@ -42,7 +41,8 @@ signals:
 
 
     // 下行帧 数据变更信号
-    void enableKeys(bool enable);
+    void sendEnableKeys(bool enable);
+    void sendThemeSetChanged(qint8 themeNo);
 
 private:
     bool mEnableKeys = false;

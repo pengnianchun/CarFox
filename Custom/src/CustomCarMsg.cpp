@@ -23,22 +23,18 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::keyLongPressed, this, &CustomCarMsg::keyLongPressed);
     connect(worker, &CustomCarMsgWorker::keyShortPressed, this, &CustomCarMsg::keyShortPressed);
 
-    connect(worker, &CustomCarMsgWorker::keyShortPressed, this, &CustomCarMsg::onkeyShortPressed);
+    connect(worker, &CustomCarMsgWorker::themeModeChanged, this, &CustomCarMsg::updateThemeMode);
 
 }
 
 void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
 {
-    connect(this, &CustomCarMsg::enableKeys, worker, &CustomCarMsgWorker::enableKeys);
+    connect(this, &CustomCarMsg::sendEnableKeys, worker, &CustomCarMsgWorker::enableKeys);
+    connect(this,  &CustomCarMsg::sendThemeSetChanged, worker, &CustomCarMsgWorker::themeSet);
 }
 
-
-void CustomCarMsg::updateThemeMode(int data)
+void CustomCarMsg::updateThemeMode(qint8 data)
 {
-
+    qDebug() << "CustomCarMsg::updateThemeMode: data:" << data;
 }
 
-void CustomCarMsg::onkeyShortPressed(int keyType)
-{
-    qDebug() << "CustomCarMsg::onkeyShortPressed" ;
-}

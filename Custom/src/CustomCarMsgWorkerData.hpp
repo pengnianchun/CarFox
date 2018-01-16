@@ -1,7 +1,11 @@
 #pragma once
 
+#include "CarMsgData.hpp"
+
 struct CarMsgWorkerStateData {
-    CarMsgData<quint8> tmpVersion = CarMsgData<quint8>(0);          // byte0: 0 ~ 7
+    carfox::CarMsgData<quint8> tmpVersion = carfox::CarMsgData<quint8>(0);
+    carfox::CarMsgData<qint8> themeMode = carfox::CarMsgData<qint8>(0);
+
 
 };
 

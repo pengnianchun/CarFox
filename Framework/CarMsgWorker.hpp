@@ -42,7 +42,36 @@ protected:
     // 注册回调函数, 子类必须实现
     virtual void registerCallback() = 0;
 
-    void sendProtoMeg(const google::protobuf::Message& msg);
+    void sendProtoMsg(const google::protobuf::Message& msg);
+
+    template <typename T>
+    void updateStates(T &oldValue, const T &newValue, std::function<void (T)> signal = [](T){}) {
+        if (newValue != oldValue) {
+            oldValue = newValue;
+            signal(oldValue);
+        }
+    }
+
+    /*
+     * 更新信号， 发射合适的数据。
+     */
+    template <typename T>
+    void updateStates(T &oldValue, const T &newValue, const T &min, const T &max, std::function<void (T)> signal = [](T){}) {
+         if (qAbs(oldValue - qBound(min, newValue, max)) > 0.001) {
+           oldValue = qBound(min, newValue, max);
+           signal(oldValue);
+       }
+   }
+
+   template <typename T>
+   void updateStates(T &oldValue, const T &newValue, const T &min, const T &max, const T &err, std::function<void (T)> signal = [](T){}) {
+       if (err == newValue) {
+           this->updateStates(oldValue, newValue, signal);
+       }
+       else {
+           this->updateStates(oldValue, newValue, min, max, signal);
+       }
+   }
 
 private:
     void initSocket(); // 初始化socket函数

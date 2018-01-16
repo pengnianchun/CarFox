@@ -2,6 +2,8 @@
 
 #include <CarMsgWorker.hpp>
 #include "KeyManager.hpp"
+#include "ThemeConfig.hpp"
+#include "CustomCarMsgWorkerData.hpp"
 
 #include "airctrl_system_frame.pb.h"
 #include "auxiliary_system_frame.pb.h"
@@ -34,6 +36,9 @@ public slots:
 
     // 下行帧，Msg to Worker
     void enableKeys(bool enable);
+    void themeSet(qint8 setNo);
+
+    void handleThemeModeChanged(qint8 themeNo);
 
 signals:
     // 上行帧
@@ -43,6 +48,7 @@ signals:
     void doubleKeysPressed(int key1, int key2);
     void keyLongPressed(int key);
     void keyShortPressed(int key);
+    void themeModeChanged(qint8 themeNo);
 
 protected:
      virtual void registerCallback();
@@ -53,5 +59,7 @@ private:
 
 
 private:
+    CarMsgWorkerStateData mStateData;
     std::shared_ptr<KeyManager> mKeyManager;
+    std::shared_ptr<ThemeConfig> mThemeConfig;
 };

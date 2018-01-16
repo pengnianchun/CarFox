@@ -12,7 +12,7 @@ Item {
 
     onVisibleChanged: {
         if (visible) {
-            CarUpdates.activate();
+            CarMsg.activate();
             dormancyPanel.state = "show";
         }
     }
@@ -29,9 +29,9 @@ Item {
         ignoreUnknownSignals: true
 
         onIgOnChanged: {
-            if (CarUpdates.igOn && visible) {
+            if (CarMsg.igOn && visible) {
                 console.log("Dormancy panel ign off");
-                CarUpdates.deactivate();
+                CarMsg.deactivate();
                 dormancyPanel.state = "";
             }
         }
@@ -53,7 +53,7 @@ Item {
             SequentialAnimation {
                 ScriptAction {
                     script: {
-                        CarUpdates.enableKeys(false);
+                        CarMsg.enableKeys(false);
                         UiController.requestSystemShutdown();
                     }
                 }

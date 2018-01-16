@@ -28,12 +28,12 @@ Item {
     }
 
     Connections {
-        target: visible ? CarStatus : null
+        target: visible ? CarMsg : null
         ignoreUnknownSignals: true
         // IGN OFF
         onIgOnChanged:
         {
-            if (!CarStatus.igOn)
+            if (!CarMsg.igOn)
                 onShutdown();
         }
 

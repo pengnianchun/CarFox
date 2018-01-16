@@ -25,12 +25,6 @@ public:
 public:
     KeyManager();
 
-//public:
-//    static KeyManager *instance() {
-//        static KeyManager *sKeyManager= new KeyManager;
-//        return sKeyManager;
-//    }
-
 public:
 
     /*

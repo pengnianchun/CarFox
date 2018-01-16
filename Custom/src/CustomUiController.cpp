@@ -234,8 +234,3 @@ void CustomUiController::setReleaseVersion(const QString &releaseVersion)
         m_releaseVersion = releaseVersion;
     }
 }
-
-void CustomUiController::enableKeys(bool enable)
-{
-//    mCarMs
-}

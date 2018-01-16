@@ -11,14 +11,16 @@ void CustomCarMsgWorker::onStarted()
 {
     //1. 首先得到一些重要的对象
     mKeyManager = std::make_shared<KeyManager>(); // 创建按键管理类
+    mThemeConfig = std::make_shared<ThemeConfig>(); // 创建主题配置类
+    connect(mThemeConfig.get(), &ThemeConfig::themeNoChanged, this, &CustomCarMsgWorker::handleThemeModeChanged);
 
     CarMsgWorker::onStarted();
     qDebug() << "CustomCarMsgWorker::onStarted";
 
-    enableKeys(true);
+//    enableKeys(true);
 }
 
-// Note: 该函数在子线程中执行
+// Note: 该函数在子线程中执行, 下行
 void CustomCarMsgWorker::enableKeys(bool enable)
 {
     disconnect(mKeyManager.get(), &KeyManager::keyPressed, this, &CustomCarMsgWorker::keyPressed);
@@ -36,6 +38,18 @@ void CustomCarMsgWorker::enableKeys(bool enable)
         connect(mKeyManager.get(), &KeyManager::keyLongPressed, this, &CustomCarMsgWorker::keyLongPressed);
         connect(mKeyManager.get(), &KeyManager::keyShortPressed, this, &CustomCarMsgWorker::keyShortPressed);
     }
+}
+
+void CustomCarMsgWorker::themeSet(qint8 setNo)
+{
+    mThemeConfig->setThemeNo(setNo);
+}
+
+void CustomCarMsgWorker::handleThemeModeChanged(qint8 themeNo)
+{
+    updateStates<qint8>(mStateData.themeMode.data, themeNo, [=](qint8 value) {
+        emit this->themeModeChanged(value);
+    });
 }
 
 
