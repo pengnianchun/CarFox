@@ -21,6 +21,7 @@ public:
     void setReleaseVersion(const QString &releaseVersion);
 
 
+    Q_INVOKABLE void enableKeys(bool enable);
 
 protected:
     virtual void createThemes(std::shared_ptr<carfox::ContextProperty> cp);

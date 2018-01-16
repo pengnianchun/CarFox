@@ -1,0 +1,33 @@
+syntax = "proto2";
+
+package fySystemSettingsInfo; //系统设置信息
+
+message DateTime
+{
+	required uint32 date_time = 1;        // 系统时间
+}
+
+message AnimationFlash
+{
+	required int32 auto_flash = 1;        // 开机动画通知
+}
+
+message MilesClearSettings
+{
+	required bool trip_miles_clear = 1;   // 清零小计里程
+}
+
+message UpgradeSettings
+{
+	required MsgType msg_id = 1;          // 消息类型
+	optional string msg_content = 2;      // 消息内容
+	enum MsgType{                         // 类型枚举
+	    NORMAL_STATE = 0;
+	    NEWEST_VERSION = 1;     // send to mcu, new version found, msg: ui, mcu, ui:mcu
+	    UPDATE_NOTIFY = 2;      // recv from mcu, should begin update, msg: NULL
+	    UPDATING_STATE = 3;     // send to mcu, update process, msg: ui:90, mcu:40
+	    UPDATED_SUCCESS = 4;    // send to mcu, update successfully, msg: NULL
+	    UPDATED_FAILED = 5;     // send to mcu, update fail, msg: fail reason, success as "udisk remove".
+	} 
+}
+

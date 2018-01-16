@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package fyBatteryManageSystemInfo; //电池管理系统信息
+
+message BatteryManageSystemMenu
+{
+    required float  bat_max_charge_current = 1;		//最大允许充电电流,, 0.0 A
+    required float  bat_max_discharge_current = 2;	//最大允许放电电流,, 0.0 A
+    required float  bat_average_voltage = 3;		//单体平均电压, 0.00 V
+    required uint32 bat_status1 = 4;			//电池状态1, 00000000（2进制显示）
+    required uint32 bat_status2 = 5;			//电池状态2, 00000000（2进制显示）
+    required uint32 bat_status3 = 6;			//电池状态3, 00000000（2进制显示）
+    required float  irm_ohm_positive = 7;		//总正绝缘阻值, 0 KΩ
+    required float  irm_ohm_negative = 8;		//总负绝缘阻值, 0 KΩ
+    required float  bat_max_voltage = 9;		//单体最高电压, 0.00 V
+    required float  bat_min_voltage = 10;		//单体最低电压, 0.00 V
+    required float  battery_highest_temp = 11;		//单体最高温度, 0.0 ℃
+}

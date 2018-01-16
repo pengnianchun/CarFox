@@ -23,7 +23,7 @@ public slots:
 
 
     // 下行，数据更新槽函数 , 通过socket发送
-    void onStarted(); // 线程启动的时候调用
+    virtual void onStarted(); // 线程启动的时候调用
 
 private slots:
 

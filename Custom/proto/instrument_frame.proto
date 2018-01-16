@@ -1,0 +1,137 @@
+syntax = "proto2";
+
+package fyInstrumentInfo; //仪表信息
+
+message InstrumentFrame               //仪表开关量信息 
+{
+	required bool  input_ctrl_01 = 1;         //左转向开关
+	required bool  input_ctrl_02 = 2;         //备用
+	required bool  input_ctrl_03 = 3;         //备用
+	required bool  input_ctrl_04 = 4;         //钥匙ST开关
+	required bool  input_ctrl_05 = 5;         //右转向开关
+	
+	required bool  input_ctrl_06 = 6;         //小灯开关
+	required bool  input_ctrl_07 = 7;         //远光灯开关
+	required bool  input_ctrl_08 = 8;         //近光灯开关
+	required bool  input_ctrl_09 = 9;         //前雾灯开关
+	required bool  input_ctrl_10 = 10;        //后雾灯开关
+
+	required bool  input_ctrl_11 = 11;        //备用
+	required bool  input_ctrl_12 = 12;        //广告灯箱开关
+	required bool  input_ctrl_13 = 13;        //备用
+	required bool  input_ctrl_14 = 14;        //雨刮低档开关
+	required bool  input_ctrl_15 = 15;        //雨刮间歇档开关
+
+	required bool  input_ctrl_16 = 16;        //雨刮高档开关
+	required bool  input_ctrl_17 = 17;        //备用
+	required bool  input_ctrl_18 = 18;        //备用
+	required bool  input_ctrl_19 = 19;        //路牌开关
+	required bool  input_ctrl_20 = 20;        //前门开开关
+   
+	required bool  input_ctrl_21 = 21;        //雨刮喷水档开关
+	required bool  input_ctrl_22 = 22;        //备用
+	required bool  input_ctrl_23 = 23;        //备用
+	required bool  input_ctrl_24 = 24;        //备用
+	required bool  input_ctrl_25 = 25;        //备用
+
+	required bool  input_ctrl_26 = 26;        //中门关开关
+	required bool  input_ctrl_27 = 27;        //中门开开关
+	required bool  input_ctrl_28 = 28;        //前门关开关
+	required bool  input_ctrl_29 = 29;        //燃油量过低报警
+	required bool  input_ctrl_30 = 30;        //备用
+
+	required bool  input_ctrl_31 = 31;        //备用
+	required bool  input_ctrl_32 = 32;        //备用
+	required bool  input_ctrl_33 = 33;        //危险报警
+	required bool  input_ctrl_34 = 34;        //电源唤醒
+	required bool  input_ctrl_35 = 35;        //钥匙ON
+}
+
+message MiscLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_key_on = 1;                      //钥匙ON开关(总电源指示)
+        optional bool  lamp_air_filter = 2;                 //空滤指示
+        optional bool  lamp_asr = 3;                        //ASR指示
+        optional bool  lamp_high_voltage_maintenance = 4;   //高压检修
+        optional bool  lamp_defroster = 5;                  //除霜器
+        optional bool  lamp_dryere = 6;                     //干燥器
+        optional bool  lamp_abs = 7;                        //ABS指示
+        optional bool  lamp_ac = 8;                         //AC空调指示
+        optional string power_supply = 9;                   //Power模式符号片(纯电动模式 or 混动模式 or 插电模式)
+        optional int32 climbing_mode = 10;                  //爬坡模式符号片
+        optional int32 diagnostic_mode = 11;                //诊断模式符号片
+}
+
+message CorneringLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_turn_left = 1;         	     //左转向
+        optional bool  lamp_turn_right = 2;       	     //右转向
+}
+
+message LightLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_double_flash = 1;      	     //双闪开启
+        optional bool  lamp_front_fog = 2;         	     //前雾灯
+        optional bool  lamp_rear_fog = 3;         	     //后雾灯
+        optional bool  lamp_high_beam = 4;        	     //远光灯
+        optional bool  lamp_head_light = 5;       	     //近光灯
+        optional bool  lamp_reverse_gear = 6;                //倒车灯
+        optional bool  lamp_position_light = 7;             //位置灯
+}
+
+message GateLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_gate1 = 1;            	     //前门开
+        optional bool  lamp_gate2 = 2;                      //中门开
+        optional bool  lamp_rear_door_open = 3;             //后舱门开指示
+}
+
+message BrakeLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_brake = 1;                      //刹车制动
+        optional bool  lamp_parking_brake = 2;              //驻车制动
+}
+
+message AirPressureLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_left_low_air_pressure = 1;      //左气压低报警
+        optional bool  lamp_right_low_air_pressure = 2;     //右气压低报警
+}
+
+message ShoeLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_left_shoe_wear = 1;             //左前摩擦片(刹车蹄片)报警
+        optional bool  lamp_right_shoe_wear = 2;            //右前摩擦片(刹车蹄片)报警
+}
+
+message ChargingLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_charge_confirm = 1;              //充电确认
+        optional bool  lamp_battery_main_contact = 2;       //电池主接触器KT
+}
+
+message WaterLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_water_temp_high = 1;            //水温高报警
+        optional bool  lamp_water_level_low = 2;            //水位低指示
+}
+
+message StopLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_low_service_wl = 34;             //轻微故障报警STOP
+        optional bool  lamp_heavy_stop_wl = 35;              //重大故障报警STOP
+        optional bool  lamp_serious_stop_wl = 36;            //严重故障报警STOP
+}
+
+message MoterLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_oil_level_low = 24;              //油量低报警
+        optional bool  lamp_oil_pressure_low = 39;           //机油压力低
+        optional bool  lamp_engine_fault = 25;               //发动机故障
+}
+
+message DynamotorLampFrame              //符号片显示  (true/ON  false/OFF)
+{
+        optional bool  lamp_motor_out_of_service = 26;       //24V发电机未工作
+        optional bool  lamp_moter_fire_igon = 27;            //发电机点火指示
+}

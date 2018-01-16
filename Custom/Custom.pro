@@ -4,6 +4,7 @@ TARGET = test
 TEMPLATE = app
 
 unix:!macx{
+    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
     cross_compile { # ARM平台
         LIBS += -L../CarFox/bin/static -lCarFoxArm
     }
@@ -15,6 +16,9 @@ unix:!macx{
 win32 {
     LIBS += -lCarFoxWindows
 }
+
+system(rm ./protocode -rf && mkdir -p ./protocode && protoc -I=./proto --cpp_out=./protocode ./proto/*.proto)
+QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
@@ -30,6 +34,7 @@ CONFIG(release, debug|release) {
 
 INCLUDEPATH += ./
 INCLUDEPATH += ../Framework
+INCLUDEPATH += ./protocode
 
 fonts.path = /usr/lib
 INSTALLS += fonts

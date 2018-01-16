@@ -1,7 +1,7 @@
 #pragma once
 
 #include <CarMsg.hpp>
-
+#include "KeyManager.hpp"
 class CustomCarMsgWorker;
 
 class CustomCarMsg : public carfox::CarMsg
@@ -17,17 +17,33 @@ class CustomCarMsg : public carfox::CarMsg
 public:
     explicit CustomCarMsg(CustomCarMsgWorker *worker);
 
+
+private:
+    void connectWorkerToMsg(CustomCarMsgWorker *worker);
+    void connectMsgToWorker(CustomCarMsgWorker *worker);
+
 public slots:
+
 
 private slots:
     // 上行帧 更新数据槽函数
     void updateThemeMode (int data);
 
-
+        void onkeyShortPressed(int keyType);
 signals:
-    // 下行帧 数据变更信号
+    // 上行帧 worker to msg
+    void keyPressed(int key);
+    void keyReleased(int key);
+    void keyDoublePressed(int key);
+    void doubleKeysPressed(int key1, int key2);
+    void keyLongPressed(int key);
+    void keyShortPressed(int key);
+    void downButtonChanged();
 
+
+    // 下行帧 数据变更信号
+    void enableKeys(bool enable);
 
 private:
-
+    bool mEnableKeys = false;
 };

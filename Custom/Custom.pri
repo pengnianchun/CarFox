@@ -1,6 +1,15 @@
+
+#for proto
+SOURCES += \
+    ./protocode/*.pb.cc
+
+HEADERS += \
+    ./protocode/*.pb.h
+
 HEADERS += \ 
     ./src/CustomCarMsg.hpp \
     ./src/CustomCarMsgWorker.hpp \
+    ./src/KeyManager.hpp \
     ./src/CustomCarMsgWorkerData.hpp \ 
     ./src/CustomEnum.hpp \ 
     ./src/CustomMultiLanguage.hpp \ 
@@ -13,7 +22,8 @@ HEADERS += \
 
 SOURCES += \ 
     ./src/CustomCarMsg.cpp \ 
-    ./src/CustomCarMsgWorker.cpp \ 
+    ./src/CustomCarMsgWorker.cpp \
+    ./src/KeyManager.cpp \
     ./src/CustomUiController.cpp \ 
     ./src/CustomMultiLanguage.cpp \ 
     ./src/CustomTheme1.cpp \ 

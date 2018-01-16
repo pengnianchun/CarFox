@@ -17,14 +17,14 @@ public:
     Q_ENUMS(ThemeMode)
 
     // 按键键值枚举
-    enum KeyValue
-    {
-        KEY_ENTER = 1,
-        KEY_BACK = 2,
-        KEY_UP = 3,
-        KEY_DOWN = 4,
+    enum KeyType {
+        EnterKey = 0,
+        BackKey,
+        PrevKey,
+        NextKey,
+        NoneKey
     };
-    Q_ENUMS(KeyValue)
+    Q_ENUMS(KeyType)
 
     // 语言类型枚举
     enum TypeLangSet

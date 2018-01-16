@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package fyControlSystemInfo; //控制系统信息
+
+message ControlSystemMenu
+{
+	required float  motor_in_voltage = 1;		//电机输入电压, 0 V
+	required float  motor_in_current = 2;		//电机输入电流, 0 A
+	required int32  motor_temp = 3;			//电机温度, 0 ℃
+	required int32  motor_controller_temp = 4;	//电机控制器温度, 0 ℃
+	required int32  car_mode = 5;			//整车模式, 0
+	required float  version = 6;			//程序版本, 0.00
+	required int32  car_life = 7;			//整车控制器Life, 0
+	required float  accel_pedal_percent = 8; 	//加速踏板百分比,0.0 %
+	required float  brake_pedal_percent = 9;	//制动踏板百分比,0.0 %
+	required uint32 din1 = 10;			//数字量输入1, 00000000（2进制显示）
+	required uint32 din2 = 11;			//数字量输入2, 00000000（2进制显示）
+	required uint32 din3 = 12;			//数字量输入3, 00000000（2进制显示）
+	required uint32 dout1 = 13;			//数字量输出1, 00000000（2进制显示）
+	required uint32 dout2 = 14;			//数字量输出2, 00000000（2进制显示）
+	required uint32 dout3 = 15;			//数字量输出3, 00000000（2进制显示）
+}

@@ -18,10 +18,12 @@
 
 #include "Global.hpp"
 
-CARFOX_BEGIN_NAMESPACE
-
 using namespace std;
 using namespace placeholders;
+
+CARFOX_BEGIN_NAMESPACE
+
+
 
 template<typename To, typename From>
 inline To implicit_cast(From const &f)

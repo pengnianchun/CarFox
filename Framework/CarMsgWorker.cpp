@@ -10,6 +10,7 @@ CarMsgWorker::CarMsgWorker()
 
 void CarMsgWorker::onStarted()
 {
+    qDebug() << "CarMsgWorker::onStarted";
     initSocket();
 }
 

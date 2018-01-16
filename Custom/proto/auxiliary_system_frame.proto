@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package fyAuxiliarySystemInfo; //辅助系统信息
+
+message AuxiliarySystemMenu
+{
+	required float oil_pump_dcac_w_output_current = 1;      //油泵DC/AC W相输出电流, 0 A
+	required float oil_pump_dcac_v_output_current = 2;      //油泵DC/AC V相输出电流, 0 A
+	required float oil_pump_dcac_u_output_current = 3;      //油泵DC/AC U相输出电流, 0 A
+	required int32 radiator_temperature = 4;                //散热器温度, 0 ℃
+}

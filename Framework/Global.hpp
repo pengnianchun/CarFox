@@ -5,6 +5,13 @@
 #include <memory>
 #include <cstdlib>
 #include <functional>
+#include <QFile>
+#include <QDateTime>
+#include <iostream>
+#include <stdio.h>
+
+#define HOST_IP_ADDRESS   "192.168.3.5"
+#define LOACTION_ADDRESS  "127.0.0.1"
 
 #define CARFOX_NAME_SPACE carfox
 #define CARFOX_BEGIN_NAMESPACE namespace CARFOX_NAME_SPACE {
@@ -28,3 +35,4 @@ protected: \
 private:
 
 #define MEMBER_PROPERTY_VALUE_CHANGED(name, v) do { if (m_##name != (v)) { m_##name = (v); emit name##Changed(v); }} while (0)
+

@@ -1,0 +1,47 @@
+syntax = "proto2";
+
+package fyWarningInfo; //警告信息
+
+message WarningFrame
+{
+        optional string warning_01 = 1;       //水位低报警
+        optional string warning_02 = 2;       //左气压低报警
+        optional string warning_03 = 3;       //右气压低报警
+        optional string warning_04 = 4;       //水温传感器报警
+        optional string warning_05 = 5;       //油量传感器报警
+        optional string warning_06 = 6;       //机油压力传感器报警
+        optional string warning_07 = 7;       //电池电压传感器报警
+        optional string warning_08 = 8;       //气压一传感器报警
+        optional string warning_09 = 9;       //气压二传感器报警
+        optional string warning_10 = 10;      //J1939通信故障
+        optional string warning_11 = 11;      //机油压力低，油量低报警
+        optional string warning_12 = 12;      //左刹车蹄片报警
+        optional string warning_13 = 13;      //右刹车蹄片报警
+        optional string warning_14 = 14;      //空滤报警
+        optional string warning_15 = 15;      //后处理故障
+        optional string warning_16 = 16;      //水温信息丢失
+        optional string warning_17 = 17;      //机油压力数据丢失
+        optional string warning_18 = 18;      //总线通信故障
+        optional string warning_19 = 19;      //单体模块电压过高
+        optional string warning_20 = 20;      //单体模块电压过低
+        optional string warning_21 = 21;      //SOC过高
+        optional string warning_22 = 22;      //SOC过低
+        optional string warning_23 = 23;      //内部通讯失败
+        optional string warning_24 = 24;      //总电压欠压
+        optional string warning_25 = 25;      //总电压过压
+        optional string warning_26 = 26;      //电池不均衡故障
+        optional string warning_27 = 27;      //电池热失控
+        optional string warning_28 = 28;      //DCDC故障报警（1故障，0正常）
+        optional string warning_29 = 29;      //绝缘报警
+        optional string warning_30 = 30;      //放电电流过大
+        optional string warning_31 = 31;      //充电电流过大
+        optional string warning_32 = 32;      //温度过高
+        optional string warning_33 = 33;      //温度报警
+        optional string warning_34 = 34;      //温度差过大
+        optional string warning_35 = 35;      //内部接触器信号
+        optional string warning_36 = 36;      //有内阻偏大电池
+        optional string warning_37 = 37;      //有容量偏小电池
+        optional string warning_38 = 38;      //水温高报警
+        optional string warning_39 = 39;      //油量低报警
+	optional string warning_40 = 40;      //保留
+}

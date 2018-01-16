@@ -1,0 +1,69 @@
+syntax = "proto2";
+
+package fyModuleFrontInfo; //前模块信息
+
+message ModuleFrontFrame
+{
+	required float output_current_01 = 1;  //雨刮快档电机
+	required float output_current_02 = 2;  //雨刮慢档电机
+	required float output_current_03 = 3;  //喷水电机
+	required float output_current_04 = 4;  //左前雾灯
+	required float output_current_05 = 5;  //倒车灯
+	
+	required float output_current_06 = 6;  //右转向灯
+	required float output_current_07 = 7;  //左转相灯
+	required float output_current_08 = 8;  //液位显示电源
+	required float output_current_09 = 9;  //左远光灯
+	required float output_current_10 = 10; //右前雾灯
+
+	required float output_current_11 = 11; //右远光灯
+	required float output_current_12 = 12; //行车记录仪电源
+	required float output_current_13 = 13; //左近光灯
+	required float output_current_14 = 14; //位置灯
+	required float output_current_15 = 15; //右近光灯
+
+	required bool  switch_01 = 16;         //雨刮快档电机
+	required bool  switch_02 = 17;         //雨刮慢档电机
+	required bool  switch_03 = 18;         //喷水电机
+	required bool  switch_04 = 19;         //左前雾灯
+	required bool  switch_05 = 20;         //倒车灯
+	required bool  switch_06 = 21;         //右转向灯
+	required bool  switch_07 = 22;         //左转相灯
+	required bool  switch_08 = 23;         //液位显示电源
+	required bool  switch_09 = 24;         //左远光灯
+	required bool  switch_10 = 25;         //右前雾灯
+	required bool  switch_11 = 26;         //右远光灯
+	required bool  switch_12 = 27;         //行车记录仪电源
+	required bool  switch_13 = 28;         //左近光灯
+	required bool  switch_14 = 29;         //位置灯
+	required bool  switch_15 = 30;         //右近光灯
+	required bool  switch_16 = 31;         //备用
+	
+	required bool  switch_17 = 32;         //备用
+	required bool  switch_18 = 33;         //备用
+	required bool  switch_19 = 34;         //左前摩擦片报警开关
+	required bool  switch_20 = 35;         //右前摩擦片报警开关
+	required bool  switch_21 = 36;         //制动灯开关
+	required bool  switch_22 = 37;         //备用
+	required bool  switch_23 = 38;         //备用
+	required bool  switch_24 = 39;         //备用
+	required bool  switch_25 = 40;         //备用
+	required bool  switch_26 = 41;         //备用
+	required bool  switch_27 = 42;         //备用
+	required bool  switch_28 = 43;         //地址选择1
+	required bool  switch_29 = 44;         //地址选择2
+	required bool  switch_30 = 45;         //备用
+	required bool  switch_31 = 46;         //倒车灯开关
+	required bool  switch_32 = 47;         //备用
+
+	required bool  switch_33 = 48;         //备用
+	required bool  switch_34 = 49;         //备用
+	required bool  switch_35 = 50;         //备用
+	required bool  switch_36 = 51;         //备用
+	required bool  switch_37 = 52;         //备用
+	required bool  switch_38 = 53;         //备用
+	required bool  switch_39 = 54;         //备用
+	required bool  switch_40 = 55;         //备用
+	required bool  switch_41 = 56;         //备用
+	required bool  switch_42 = 57;         //备用
+}

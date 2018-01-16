@@ -95,13 +95,14 @@ void Layer::show()
     if (!isLoaded()) {
         loadSync();
     }
-
+    qDebug() << "show layer" << objectName();
     // 可见的Layer接收carMsg信号
     mContext->setContextProperty(mContextProperties->carMsgName(), mContextProperties->trueCarMsg().get());
     mContext->setContextProperty(mContextProperties->multiLanguageName(), mContextProperties->trueMultiLanguage().get());
 
     mLayerItem->setParentItem(Window::instance()->contentItem()); //设置父级
     mLayerItem->setVisible(true);
+    qDebug() << "Layer::show : " << mContextProperties->carMsgName();
 }
 
 /*
@@ -109,7 +110,7 @@ void Layer::show()
  */
 void Layer::hide()
 {
-    //qDebug() << "Hide layer" << objectName();
+    qDebug() << "Hide layer" << objectName();
     if (showPolicy() == Layer::ManualShow) {
         disconnect(this, &Layer::loaded, this, &Layer::show);
     }
