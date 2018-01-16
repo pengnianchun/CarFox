@@ -14,7 +14,7 @@ Item {
     }
 
     Connections {
-        target: CarUpdates
+        target: CarMsg
 
         onKeyShortPressed: {
             if (key === 2) {

@@ -18,8 +18,8 @@ Rectangle {
     }
 
     Connections {
-        // 链接CarUpdates信号
-        target: CarUpdates
+        // 链接CarMsg信号
+        target: CarMsg
 
         onKeyShortPressed: {
             if (key === 1) {
@@ -31,14 +31,14 @@ Rectangle {
         onKeyLongPressed: {
             if (key === 3) {
                 // 切换主题
-                CarUpdates.themeSetChanged(CustomEnum.Theme3Mode);
+                CarMsg.themeSetChanged(CustomEnum.Theme3Mode);
             } else if (key === 4){
-                CarUpdates.themeSetChanged(CustomEnum.Theme4Mode);
+                CarMsg.themeSetChanged(CustomEnum.Theme4Mode);
             }
         }
 
         onIgOnChanged: {
-            if(!CarUpdates.igOn) state = "shutdown";
+            if(!CarMsg.igOn) state = "shutdown";
         }
     }
 
@@ -49,17 +49,17 @@ Rectangle {
         font.pixelSize: 80
     }
 
-    Timer {
-           id: timer
-           interval: 2000
-           running: true
-           repeat: false
-           onTriggered: {
-               console.warn("hominlinx.....");
-               UiController.showLayer("Theme1TriggerPanel");
-               UiController.showLayer("DormancyPanel");
-           }
-       }
+//    Timer {
+//           id: timer
+//           interval: 2000
+//           running: true
+//           repeat: false
+//           onTriggered: {
+//               console.warn("hominlinx.....");
+//               UiController.showLayer("Theme1TriggerPanel");
+//               UiController.showLayer("DormancyPanel");
+//           }
+//       }
 
     states: [
         State {
@@ -82,10 +82,9 @@ Rectangle {
                 NumberAnimation { target: mainPanel; property: "opacity"; from: 0.0; to: 1.0; duration: 3000 }
                 ScriptAction {
                     script: {
-                        // 信号触发
-                        CarUpdates.activate();
+
                         // 按键触发
-                        CarUpdates.enableKeys(true);
+                        CarMsg.sendEnableKeys(true);
                     }
                 }
             }
@@ -103,10 +102,8 @@ Rectangle {
             SequentialAnimation {
                 ScriptAction {
                     script: {
-                        // 信号触发
-                        CarUpdates.deactivate();
                         // 按键触发
-                        CarUpdates.enableKeys(false);
+                        CarMsg.enableKeys(false);
                     }
                 }
                 NumberAnimation { target: mainPanel; property: "opacity"; from: 1.0; to: 0.0; duration: 3000 }

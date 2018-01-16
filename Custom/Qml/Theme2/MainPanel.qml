@@ -73,7 +73,7 @@ Rectangle {
                         // 信号触发
                         CarUpdates.activate();
                         // 按键触发
-                        CarUpdates.enableKeys(true);
+                        CarUpdates.sendEnableKeys(true);
                     }
                 }
             }
@@ -94,7 +94,7 @@ Rectangle {
                         // 信号触发
                         CarUpdates.deactivate();
                         // 按键触发
-                        CarUpdates.enableKeys(false);
+                        CarUpdates.sendEnableKeys(false);
                     }
                 }
                 NumberAnimation { target: mainPanel; property: "opacity"; from: 1.0; to: 0.0; duration: 3000 }

@@ -10,6 +10,7 @@ UiController::UiController(int screenWidth, int screenHeight, bool firstInstance
     : mFirstInstance(firstInstance)
 {
     Window::instance()->resize(screenWidth, screenHeight);
+    Window::instance()->setVisible(false);
 }
 
 void UiController::connectQuitToApp(QGuiApplication *app)
@@ -22,6 +23,10 @@ void UiController::connectQuitToApp(QGuiApplication *app)
  */
 void UiController::showLayer(const QString &layerId)
 {
+    qDebug() << "===============UiController::showLayer : visible:" << mVisible;
+    if(!mVisible) {
+        return;
+    }
     mThemeManager->showLayer(layerId); // 这个是一个单例
     updateRootMenuStatus(layerId, true);
 }
@@ -376,7 +381,7 @@ ThemeManager *UiController::themeManager()
 /*
  * 开机，同步加载指定的主题
  */
-void UiController::startWith(const QString &themeId)
+void UiController::loadWith(const QString &themeId)
 {
     setRemainContent("loadType", "startup");
     mThemeManager->setCurrentTheme(themeId);
@@ -392,7 +397,7 @@ void UiController::startWith(const QString &themeId)
     //UndeadMain::waitStartShow();
 
     // 显示本主题
-    ThemeManager::instance()->handleSplashScreenFinished();
+//    ThemeManager::instance()->handleSplashScreenFinished();
 }
 
 void UiController::switchThemeTo(const QString &themeId)

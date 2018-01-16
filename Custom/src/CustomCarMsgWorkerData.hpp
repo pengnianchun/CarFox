@@ -2,10 +2,12 @@
 
 #include "CarMsgData.hpp"
 
+//Car 信息 状态数据
 struct CarMsgWorkerStateData {
     carfox::CarMsgData<quint8> tmpVersion = carfox::CarMsgData<quint8>(0);
-    carfox::CarMsgData<qint8> themeMode = carfox::CarMsgData<qint8>(0);
-
+    carfox::CarMsgData<qint8> themeMode = carfox::CarMsgData<qint8>(-1);
+    carfox::CarMsgData<bool> igOn = carfox::CarMsgData<bool>(false);
+    carfox::CarMsgData<bool> autoFlash = carfox::CarMsgData<bool>(false); // 动画完成flag
 
 };
 

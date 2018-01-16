@@ -11,7 +11,7 @@
 
 
 // 打开这个宏会直接显示主界面,而不是需要等待mcu发送第一帧信号
-#define CUSTOM_PROFILE
+//#define CUSTOM_PROFILE
 
 CustomUiController::CustomUiController(int screenWidth, int screenHeight, bool firstInstance)
     : carfox::UiController(screenWidth, screenHeight, firstInstance)
@@ -28,7 +28,10 @@ void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> c
     auto worker = qobject_cast<CustomCarMsgWorker *>(mCarMsg->getCarMsgWorker());
     connect(worker, &carfox::CarMsgWorker::initialized, this, &CustomUiController::handleInitialized,
             static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::QueuedConnection));
+    connect(worker, &CustomCarMsgWorker::autoFlashChanged, this, &CustomUiController::handleStartShow,
+            static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::QueuedConnection));
     //2. 添加主题
+    // Note: 需要添加
     auto customTheme1 = std::make_shared<CustomTheme1>(cp, "CustomTheme1");
     addTheme(customTheme1, 16, 3);
 
@@ -121,23 +124,30 @@ void CustomUiController::handleInitialized()
     qDebug() << "themeMode : " << themeMode;
     switch (themeMode) {
     case CustomEnum::Theme1Mode:
-        startWith("CustomTheme1");
+        loadWith("CustomTheme1");
         break;
     case CustomEnum::Theme2Mode:
-        startWith("CustomTheme2");
+        loadWith("CustomTheme2");
         break;
     case CustomEnum::Theme3Mode:
-        startWith("CustomTheme3");
+        loadWith("CustomTheme3");
         break;
     case CustomEnum::Theme4Mode:
-        startWith("CustomTheme4");
+        loadWith("CustomTheme4");
         break;
     default:
         break;
     }
     qDebug() << "End initialize";
-    themeManager()->setReady(true);
+//    themeManager()->setReady(true);
     connect(mCarMsg.get(), &CustomCarMsg::themeModeChanged, this, &CustomUiController::handleThemeModeChanged);
+}
+
+void CustomUiController::handleStartShow()
+{
+    mVisible = true;
+    carfox::ThemeManager::instance()->handleSplashScreenFinished();
+    themeManager()->setReady(true);
 }
 
 /*

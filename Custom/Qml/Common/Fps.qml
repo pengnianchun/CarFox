@@ -2,7 +2,7 @@ import QtQuick 2.6
 
 Item {
     id: root
-    width: 100
+    width: 300
     height: 48
     property int fps: 60
     property int frameCounter: 0

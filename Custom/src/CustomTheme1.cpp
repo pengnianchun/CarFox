@@ -12,5 +12,5 @@ void CustomTheme1::create()
     // 主界面 for instant show
        addLayer("qrc:/Theme1/Qml/Theme1/MainPanel.qml", "Themem1MainPanel", carfox::Layer::InstantShow);
        // 触发界面 for manual show
-       addLayer("qrc:/Theme1/Qml/Theme1/TriggerPanel.qml", "Theme1TriggerPanel", carfox::Layer::ManualShow);
+//       addLayer("qrc:/Theme1/Qml/Theme1/TriggerPanel.qml", "Theme1TriggerPanel", carfox::Layer::ManualShow);
 }

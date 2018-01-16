@@ -49,6 +49,8 @@ signals:
     void keyLongPressed(int key);
     void keyShortPressed(int key);
     void themeModeChanged(qint8 themeNo);
+    void igOnChanged(bool igOn);
+    void autoFlashChanged(bool flash);
 
 protected:
      virtual void registerCallback();
@@ -56,7 +58,7 @@ protected:
 private:
 
     void handleProtoKey(const carfox::MessagePtr& msg);
-
+    void handleProtoAutoFlash(const carfox::MessagePtr& msg);
 
 private:
     CarMsgWorkerStateData mStateData;

@@ -17,6 +17,7 @@ void ThemeConfig::setThemeNo(qint8 themeNo)
     QSettings * settings = new QSettings("~/.theme.ini", QSettings::IniFormat);
 
     if (settings == NULL) {
+        qWarning()<<" --- Error: theme.ini set value failed";
         return;
     }
     settings->setValue("theme/id", themeNo);
@@ -32,6 +33,8 @@ void ThemeConfig::setThemeNo(qint8 themeNo)
 
 qint8 ThemeConfig::getThemeNo()
 {
+    qDebug() << "---------ThemeConfig::getThemeNo";
+
     QSettings* settings;
     settings = new QSettings("~/.theme.ini", QSettings::IniFormat);
     if(settings == NULL) {
@@ -41,5 +44,7 @@ qint8 ThemeConfig::getThemeNo()
     }
     mThemeNo = settings->value("theme/id", 0).toInt();
     delete settings;
+    qDebug() << "---------ThemeConfig::getThemeNo : " << mThemeNo;
+
     return mThemeNo;
 }

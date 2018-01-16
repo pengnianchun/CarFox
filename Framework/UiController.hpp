@@ -109,14 +109,14 @@ protected:
     std::shared_ptr<Layer> addGlobalLayer(std::shared_ptr<ContextProperty> contextProperties, const QString &layerPath, const QString &layerId);
     ThemeManager *themeManager(); // app层的UiController继承者可以拿到这个对象
 
-    void startWith(const QString &themeId);
+    void loadWith(const QString &themeId);
     void switchThemeTo(const QString &themeId);
 private:
     void updateRootMenuStatus(const QString &layerId, bool status);
 
 protected:
     bool mFirstInstance;
-
+    bool mVisible = false;
 private:
     ThemeManager *mThemeManager = ThemeManager::instance();
     std::shared_ptr<StackView> mStackView = std::make_shared<StackView>();

@@ -12,12 +12,15 @@ void CustomCarMsgWorker::onStarted()
     //1. 首先得到一些重要的对象
     mKeyManager = std::make_shared<KeyManager>(); // 创建按键管理类
     mThemeConfig = std::make_shared<ThemeConfig>(); // 创建主题配置类
+
     connect(mThemeConfig.get(), &ThemeConfig::themeNoChanged, this, &CustomCarMsgWorker::handleThemeModeChanged);
+    handleThemeModeChanged(mThemeConfig->getThemeNo());
 
     CarMsgWorker::onStarted();
     qDebug() << "CustomCarMsgWorker::onStarted";
 
 //    enableKeys(true);
+    emit initialized();
 }
 
 // Note: 该函数在子线程中执行, 下行
@@ -56,6 +59,7 @@ void CustomCarMsgWorker::handleThemeModeChanged(qint8 themeNo)
 void CustomCarMsgWorker::registerCallback()
 {
     mHandler.registerMsgCallback(fyKeyEvent::KeyFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoKey, this, _1));
+    mHandler.registerMsgCallback(fySystemSettingsInfo::AnimationFlash::descriptor(), bind(&CustomCarMsgWorker::handleProtoAutoFlash, this, _1));
 }
 
 void CustomCarMsgWorker::handleProtoKey(const carfox::MessagePtr &msg)
@@ -66,4 +70,12 @@ void CustomCarMsgWorker::handleProtoKey(const carfox::MessagePtr &msg)
     mKeyManager->detectKeyEvent(p->key2(), CustomEnum::BackKey);
     mKeyManager->detectKeyEvent(p->key3(), CustomEnum::PrevKey);
     mKeyManager->detectKeyEvent(p->key4(), CustomEnum::NextKey);
+}
+
+void CustomCarMsgWorker::handleProtoAutoFlash(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fySystemSettingsInfo::AnimationFlash> p = carfox::down_pointer_cast<fySystemSettingsInfo::AnimationFlash>(msg);
+    updateStates<bool>(mStateData.autoFlash.data, p->auto_flash(), [this](bool value) {
+        emit this->autoFlashChanged(value);
+    });
 }
