@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package fyAirCtrlSystemInfo; //空调系统信息
+
+message AirCtrlSystemMenu
+{
+	required uint32 ac_fault_code = 1;      //空调故障代码, 00000000（2进制显示）
+	required uint32 ac_fan_status = 2;	//空调风机状态, 00000000（2进制显示）
+	required uint32 ac_work_status = 3;	//空调工作状态, 00000000（2进制显示）
+	required uint32 ac_life = 4;		//空调Life, 0
+	required int32  ac_out_temp = 5;	//车外实际温度, 0 ℃
+	required int32  ac_in_temp = 6;		//车内实际温度, 0 ℃
+	required int32  ac_set_temp = 7;	//设定温度, 0 ℃
+	required uint32 ac_refrigere_req = 8;	//空调制冷请求, 00000000（2进制显示）
+}

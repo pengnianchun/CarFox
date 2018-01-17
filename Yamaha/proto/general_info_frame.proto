@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package fyGeneralInfo;   //通用信息
+
+message GeneralFrame //基本信息
+{
+	required float  total_voltage = 1;                  //总电压
+	required float  total_current = 2;                  //总电流
+	required float  rpm = 3;                            //转速
+	required float  speed = 4;                          //车速
+	required int32  gear = 5;                           //档位
+	required uint32 odo = 6;                            //总里程
+	required float  trip = 7;                           //小计里程
+	required float  soc = 8;                            //剩余电量
+	required float  air_press1 = 9;                     //气压1
+	required float  air_press2 = 10;                    //气压2
+	required int32  moter_control_temperature = 11;     //电机控制器温度
+	required int32  moter_temperature = 12;             //电机温度
+	required int32  battery = 13;                       //蓄电池电压
+	required int32  spn = 14;                           //SPN值
+	required int32  engine_water_temp = 15;             //发动机水温
+	required int32  urea_level = 16;                    //尿素液位
+	required uint32 fault_level = 17;                   //故障等级
+	required int32  fault_code = 18;                    //故障代码
+}

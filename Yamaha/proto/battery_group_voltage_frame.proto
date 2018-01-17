@@ -1,0 +1,15 @@
+syntax = "proto2";
+
+package fyBatteryGroupVoltageInfo; //电池组电压信息
+
+message BatterySingleVoltage
+{
+        required uint32 addr_number = 1;       //地址编号
+        required float voltage = 2;            //当前地址对应电压值
+}
+
+message BatteryGroupVoltageMenu
+{
+        required uint32 box_number = 1;                    //电池箱号
+        repeated BatterySingleVoltage voltage_info = 2;    //单体电压信息
+}

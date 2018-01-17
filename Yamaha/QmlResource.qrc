@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/Common">
+        <file>Qml/Common/DormancyPanel.qml</file>
+        <file>Qml/Common/Fps.qml</file>
+        <file>Qml/Common/CommonItem.qml</file>
+    </qresource>
+    <qresource prefix="/Theme1">
+        <file>Qml/Theme1/MainPanel.qml</file>
+        <file>Qml/Theme1/TriggerPanel.qml</file>
+    </qresource>
+    <qresource prefix="/Theme2">
+        <file>Qml/Theme2/MainPanel.qml</file>
+        <file>Qml/Theme2/TriggerPanel.qml</file>
+    </qresource>
+    <qresource prefix="/Theme3">
+        <file>Qml/Theme3/MainPanel.qml</file>
+        <file>Qml/Theme3/TriggerPanel.qml</file>
+    </qresource>
+    <qresource prefix="/Theme4">
+        <file>Qml/Theme4/MainPanel.qml</file>
+        <file>Qml/Theme4/TriggerPanel.qml</file>
+    </qresource>
+</RCC>

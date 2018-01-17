@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package fyKeyEvent; //按键信息
+
+message KeyFrame
+{
+	required bool key1 = 1;      // Enter
+	required bool key2 = 2;      // Return
+	required bool key3 = 3;      // Previous
+	required bool key4 = 4;      // Next
+}
