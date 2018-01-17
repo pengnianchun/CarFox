@@ -7,14 +7,16 @@ TEMPLATE = app
 unix:!macx{
 
     cross_compile { # ARM平台
-        LIBS += -L../CarFox/bin/static -lCarFoxArm
+        LIBS += -L$$PWD/../CarFox/bin/static -lCarFoxArm
     }
     else {
-        INCLUDEPATH += ../externals/nanomsg/linux/include
-        LIBS += -L../externals/protobuf/linux -lprotobuf
-        QMAKE_LFLAGS += -Wl,--rpath=../Framework/bin/
-        LIBS += -L../Framework/bin/ -lCarFoxLinux
-        system(bash ../externals/script/proto.sh v1.0)
+        INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
+        LIBS += -L$$PWD/../externals/nanomsg/linux -lnanomsg
+        QMAKE_LFLAGS += -Wl,--rpath=../Framework/lib/
+        INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
+        LIBS += -L$$PWD/../externals/protobuf/linux -lprotobuf
+        LIBS += -L$$PWD/../Framework/lib/ -lCarFoxLinux
+        system(bash $$PWD/../externals/script/proto.sh v1.0)
     }
 }
 win32 {
@@ -39,7 +41,7 @@ CONFIG(release, debug|release) {
 
 INCLUDEPATH += ./
 INCLUDEPATH += ../Framework
-INCLUDEPATH += ./protocode
+INCLUDEPATH += ./protofile/protocode
 
 fonts.path = /usr/lib
 INSTALLS += fonts
@@ -51,7 +53,6 @@ MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
 QMAKE_POST_LINK += $(STRIP) $(TARGET)
-
 include($$PWD/Yamaha.pri)
 
 
