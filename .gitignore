@@ -9,4 +9,4 @@ build-*
 .qtquickcompiler/
 *_qtquickcompiler.qrc
 .qmake.stash
-*/protocode/
+*/protofile/

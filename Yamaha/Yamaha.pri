@@ -1,10 +1,10 @@
 
 #for proto
 SOURCES += \
-    ./protocode/*.pb.cc
+    ./protofile/protocode/*.pb.cc
 
 HEADERS += \
-    ./protocode/*.pb.h
+    ./protofile/protocode/*.pb.h
 
 HEADERS += \ 
     ./src/CustomCarMsg.hpp \

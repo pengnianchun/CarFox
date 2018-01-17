@@ -24,12 +24,13 @@ INSTALLS += headers
 
 #LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
 unix:!macx{
-    INCLUDEPATH += ../externals/nanomsg/linux/include
-    LIBS += -L../externals/nanomsg -lnanomsg
+
     cross_compile { # Arm
         TARGET = CarFoxArm
     }
     else { # Linux
+        INCLUDEPATH += ../externals/nanomsg/linux/include
+        LIBS += -L../externals/nanomsg/linux -lnanomsg
         TARGET = CarFoxLinux
     }
 }

@@ -5,22 +5,25 @@ TEMPLATE = app
 
 #LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
 unix:!macx{
-    INCLUDEPATH += ../externals/nanomsg/linux/include
-    LIBS += -L../externals/protobuf/linux -lprotobuf
+
     cross_compile { # ARM平台
         LIBS += -L../CarFox/bin/static -lCarFoxArm
     }
     else {
+        INCLUDEPATH += ../externals/nanomsg/linux/include
+        LIBS += -L../externals/protobuf/linux -lprotobuf
         QMAKE_LFLAGS += -Wl,--rpath=../Framework/bin/
         LIBS += -L../Framework/bin/ -lCarFoxLinux
+        system(bash ../externals/script/proto.sh v1.0)
     }
 }
 win32 {
     LIBS += -lCarFoxWindows
 }
 
-system(rm ./protocode -rf && mkdir -p ./protocode && protoc -I=./proto --cpp_out=./protocode ./proto/*.proto)
-QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
+
+QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
+QMAKE_CXXFLAGS +=  -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
