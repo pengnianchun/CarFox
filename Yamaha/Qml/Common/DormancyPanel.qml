@@ -1,3 +1,9 @@
+/*******************************************
+ *
+ *  IGN OFF屏幕变黑后，如果有信号，某些灯需要亮着
+ *
+ *****************************************/
+
 import QtQuick 2.6
 import CustomEnum 1.0
 import "qrc:/Common/Qml/Common"
@@ -17,12 +23,7 @@ Item {
         }
     }
 
-    Text {
-        anchors.centerIn: parent
-        text: "Dormancy"
-        color: "white"
-        font.pixelSize: 100
-    }
+
 
     Connections {
         target: visible ? CarMsg : null
@@ -35,6 +36,14 @@ Item {
                 dormancyPanel.state = "";
             }
         }
+    }
+
+    // Note: 测试使用
+    Text {
+        anchors.centerIn: parent
+        text: "Dormancy"
+        color: "white"
+        font.pixelSize: 100
     }
 
     states: [
@@ -51,12 +60,14 @@ Item {
             from: ""
             to: "show"
             SequentialAnimation {
+                ScriptAction { script: { UiController.requestSystemShutdown(); } }
+                PauseAnimation { duration: 100 }
                 ScriptAction {
                     script: {
                         CarMsg.sendEnableKeys(false);
-                        UiController.requestSystemShutdown();
                     }
                 }
+                PauseAnimation { duration: 150 }
                 NumberAnimation { target: dormancyPanel; property: "opacity"; from: 0.0; to: 1.0; duration: 200 }
             }
         },
