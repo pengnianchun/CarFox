@@ -29,9 +29,12 @@ unix:!macx{
         TARGET = CarFoxArm
     }
     else { # Linux
-        INCLUDEPATH += ../externals/nanomsg/linux/include
-        LIBS += -L../externals/nanomsg/linux -lnanomsg
+        INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
+        LIBS += -L$$PWD/../externals/nanomsg/linux -lnanomsg
+        INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
+        LIBS += -L$$PWD/../externals/protobuf/linux -lprotobuf
         TARGET = CarFoxLinux
+        QMAKE_POST_LINK += mkdir $$PWD/../Framework/lib/ -p; cp -a lib/lib*.so* $$PWD/../Framework/lib/
     }
 }
 
@@ -43,7 +46,7 @@ target.path = $$[QT_INSTALL_LIBS]
 INSTALLS += target
 
  # Binary and obj files path
- DESTDIR = bin
+ DESTDIR = lib
  UI_DIR = build
  MOC_DIR = build
  RCC_DIR = build

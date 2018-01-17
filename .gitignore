@@ -10,3 +10,4 @@ build-*
 *_qtquickcompiler.qrc
 .qmake.stash
 */protofile/
+Framework/lib/
