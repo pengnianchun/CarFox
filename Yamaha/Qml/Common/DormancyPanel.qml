@@ -1,4 +1,5 @@
 import QtQuick 2.6
+import CustomEnum 1.0
 import "qrc:/Common/Qml/Common"
 
 Item {
@@ -27,8 +28,9 @@ Item {
         target: visible ? CarMsg : null
         ignoreUnknownSignals: true
 
-        onIgOnChanged: {
-            if (CarMsg.igOn && visible) {
+        onCarModeChanged: {
+            console.log("---------: mode:", CarMsg.carMode);
+            if (CarMsg.carMode === CustomEnum.IgOnMode && visible) {
                 console.log("Dormancy panel ign off");
                 dormancyPanel.state = "";
             }
