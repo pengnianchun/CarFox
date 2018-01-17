@@ -20,7 +20,9 @@ unix:!macx{
     }
 }
 win32 {
-    LIBS += -lCarFoxWindows
+    INCLUDEPATH += ../externals/protobuf/windows/include
+    LIBS += -L$$PWD/../externals/protobuf/windows -lprotobuf
+    LIBS += -L../Framework/bin/ -lCarFoxWindows
 }
 
 
