@@ -22,8 +22,10 @@ headers.files += \
 headers.path =  $$[QT_INSTALL_HEADERS]/CarFox
 INSTALLS += headers
 
+#LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
 unix:!macx{
-    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
+    INCLUDEPATH += ../externals/nanomsg/linux/include
+    LIBS += -L../externals/nanomsg -lnanomsg
     cross_compile { # Arm
         TARGET = CarFoxArm
     }

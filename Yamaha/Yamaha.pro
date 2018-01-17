@@ -3,8 +3,10 @@ QT += qml quick serialport
 TARGET = Yamaha
 TEMPLATE = app
 
+#LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
 unix:!macx{
-    LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
+    INCLUDEPATH += ../externals/nanomsg/linux/include
+    LIBS += -L../externals/protobuf/linux -lprotobuf
     cross_compile { # ARM平台
         LIBS += -L../CarFox/bin/static -lCarFoxArm
     }

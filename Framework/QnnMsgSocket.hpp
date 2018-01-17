@@ -3,13 +3,13 @@
 #include <QObject>
 #include <QMap>
 
-#include <nanomsg/nn.h>
-#include <nanomsg/pair.h>
-#include <nanomsg/pubsub.h>
-#include <nanomsg/reqrep.h>
-#include <nanomsg/pipeline.h>
-#include <nanomsg/survey.h>
-#include <nanomsg/bus.h>
+#include "nn.h"
+#include "pair.h"
+#include "pubsub.h"
+#include "reqrep.h"
+#include "pipeline.h"
+#include "survey.h"
+#include "bus.h"
 
 #include "Global.hpp"
 
