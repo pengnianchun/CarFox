@@ -28,7 +28,7 @@ void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> c
     auto worker = qobject_cast<CustomCarMsgWorker *>(mCarMsg->getCarMsgWorker());
     connect(worker, &carfox::CarMsgWorker::initialized, this, &CustomUiController::handleInitialized,
             static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::QueuedConnection));
-    connect(worker, &CustomCarMsgWorker::autoFlashChanged, this, &CustomUiController::handleStartShow,
+    connect(worker, &CustomCarMsgWorker::carModeChanged, this, &CustomUiController::handleStartShow,
             static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::QueuedConnection));
     //2. 添加主题
     // Note: 需要添加
@@ -59,7 +59,7 @@ void CustomUiController::handleThemeModeChanged()
     auto themeMode = mCarMsg->property("themeMode").toInt();
     qDebug() << "handle theme mode changed: " << themeMode;
 
-    if (mCarMsg->property("igOn").toBool()) {
+    if (mCarMsg->property("carMode").toInt() == 1) {
         switch (themeMode) {
         case CustomEnum::Theme1Mode:
             switchThemeTo("CustomTheme1");
@@ -76,7 +76,7 @@ void CustomUiController::handleThemeModeChanged()
         default:
             break;
         }
-    } else {
+    } else if (mCarMsg->property("carMode").toInt() == 3)  {
         switch (themeMode) {
         case CustomEnum::Theme1Mode:
             themeManager()->setCurrentTheme("CustomTheme1");
@@ -149,11 +149,18 @@ void CustomUiController::handleInitialized()
     connect(mCarMsg.get(), &CustomCarMsg::themeModeChanged, this, &CustomUiController::handleThemeModeChanged);
 }
 
-void CustomUiController::handleStartShow()
+void CustomUiController::handleStartShow(int data)
 {
-    mVisible = true;
-    carfox::ThemeManager::instance()->handleSplashScreenFinished();
-    themeManager()->setReady(true);
+    qDebug() << "========= CustomUiController::handleStartShow data: " << data;
+    // FIXME: 这里的3 代表 igOff， 但这样不好, 临时使用了3, 后面要用Enum
+    if (data != 3) {
+        auto worker = qobject_cast<CustomCarMsgWorker *>(sender());
+        disconnect(worker, &CustomCarMsgWorker::carModeChanged, this, &CustomUiController::handleStartShow);
+        mVisible = true;
+        carfox::ThemeManager::instance()->handleSplashScreenFinished();
+        themeManager()->setReady(true);
+    }
+
 }
 
 /*

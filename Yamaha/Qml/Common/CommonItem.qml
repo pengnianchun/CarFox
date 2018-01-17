@@ -31,10 +31,8 @@ Item {
         target: visible ? CarMsg : null
         ignoreUnknownSignals: true
         // IGN OFF
-        onIgOnChanged:
-        {
-            if (!CarMsg.igOn)
-                onShutdown();
+        onCarModeChanged: {
+            if (CarMsg.carMode === CustomEnum.IgOffMode) onShutdown();
         }
 
         // 按键

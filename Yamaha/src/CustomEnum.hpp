@@ -34,4 +34,13 @@ public:
     };
     Q_ENUMS(TypeLangSet)
 
+    // 枚举主题模式
+    enum CarMode
+    {
+        IgOnMode = 1,    // igOn
+        WarnMode = 2,      // warn
+        IgOffMode = 3,         // igOff
+    };
+    Q_ENUMS(CarMode)
+
 };

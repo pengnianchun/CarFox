@@ -24,7 +24,7 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::keyShortPressed, this, &CustomCarMsg::keyShortPressed);
 
     connect(worker, &CustomCarMsgWorker::themeModeChanged, this, &CustomCarMsg::updateThemeMode);
-    connect(worker, &CustomCarMsgWorker::igOnChanged, this, &CustomCarMsg::updateIgOn);
+    connect(worker, &CustomCarMsgWorker::carModeChanged, this, &CustomCarMsg::updateCarMode);
 
 }
 
@@ -40,9 +40,8 @@ void CustomCarMsg::updateThemeMode(qint8 data)
     MEMBER_PROPERTY_VALUE_CHANGED(themeMode, data);
 }
 
-void CustomCarMsg::updateIgOn(bool data)
+void CustomCarMsg::updateCarMode(qint8 data)
 {
-    qDebug() << "CustomCarMsg::updateIgOn: " << data;
-    MEMBER_PROPERTY_VALUE_CHANGED(igOn, data);
+    MEMBER_PROPERTY_VALUE_CHANGED(carMode, data);
 }
 

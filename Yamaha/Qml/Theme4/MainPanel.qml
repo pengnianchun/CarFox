@@ -37,8 +37,9 @@ Rectangle {
             }
         }
 
-        onIgOnChanged: {
-            if(!CarMsg.igOn) state = "shutdown";
+        onCarModeChanged: {
+            console.log("---------: mode:", CarMsg.carMode);
+            if (CarMsg.carMode === CustomEnum.IgOffMode) state = "shutdown";
         }
     }
 

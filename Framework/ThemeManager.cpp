@@ -293,13 +293,14 @@ void ThemeManager::showMainScreen()
     }
 
     auto current = mThemes[mCurrentThemeId];
-    qWarning() << "Now, Let's show screen!, igOn status:" << current->contextProperty()->trueCarMsg()->property("igOn").toBool();
+    qWarning() << "Now, Let's show screen!, igOn status:" << current->contextProperty()->trueCarMsg()->property("carMode").toInt();
 
     //当前状态为IGNON的时候，直接显示主界面中所有的InstantShow类型的layer，否则显示休眠界面
-    if (current->contextProperty()->trueCarMsg()->property("igOn").toBool()) {
+    int carmode = current->contextProperty()->trueCarMsg()->property("carMode").toInt();
+    if (carmode == 1) {
         current->show();
     }
-    else {
+    else if (carmode == 2) {
         emit showDormancy(); //  发射休眠界面的信号
     }
 

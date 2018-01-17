@@ -6,8 +6,7 @@
 struct CarMsgWorkerStateData {
     carfox::CarMsgData<quint8> tmpVersion = carfox::CarMsgData<quint8>(0);
     carfox::CarMsgData<qint8> themeMode = carfox::CarMsgData<qint8>(-1);
-    carfox::CarMsgData<bool> igOn = carfox::CarMsgData<bool>(false);
-    carfox::CarMsgData<bool> autoFlash = carfox::CarMsgData<bool>(false); // 动画完成flag
+    carfox::CarMsgData<qint8> carMode = carfox::CarMsgData<qint8>(-1); // 汽车模式： 1. igOn 2. alarmOn 3. igOff
 
 };
 

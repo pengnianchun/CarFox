@@ -8,5 +8,4 @@ CONFIG += c++11
 
 SUBDIRS += \
     Framework \
-    Custom \
     Yamaha

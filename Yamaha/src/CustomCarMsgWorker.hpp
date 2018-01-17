@@ -41,7 +41,7 @@ public slots:
     void handleThemeModeChanged(qint8 themeNo);
 
 signals:
-    // 上行帧
+    // 上行帧 Worker to Msg
     void keyPressed(int key);
     void keyReleased(int key);
     void keyDoublePressed(int key);
@@ -49,8 +49,8 @@ signals:
     void keyLongPressed(int key);
     void keyShortPressed(int key);
     void themeModeChanged(qint8 themeNo);
-    void igOnChanged(bool igOn);
-    void autoFlashChanged(bool flash);
+    void carModeChanged(qint8 modeNo);
+
 
 protected:
      virtual void registerCallback();

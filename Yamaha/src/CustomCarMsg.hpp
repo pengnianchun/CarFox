@@ -10,7 +10,7 @@ class CustomCarMsg : public carfox::CarMsg
 
     // 上行帧,利用宏定义变量、信号、用Q_PROPERTY注册到QML, 还有定义
     MEMBER_PROPERTY_WITH_NOTIFY(int, themeMode, 0) // 主题设置
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, igOn, false)  // igOn 信号
+    MEMBER_PROPERTY_WITH_NOTIFY(int, carMode, 0)  // 汽车状态信号
 
 public:
     explicit CustomCarMsg(CustomCarMsgWorker *worker);
@@ -26,8 +26,7 @@ public slots:
 private slots:
     // 上行帧 更新数据槽函数, worker to msg
     void updateThemeMode (qint8 data); // test
-    void updateIgOn(bool data);
-
+    void updateCarMode(qint8 data);
 
 signals:
     // 上行帧 worker to msg
