@@ -41,7 +41,7 @@ unix:!macx{
 
 win32 {
     INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
-    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll.a
+    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll
     INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
     LIBS += $$PWD/../externals/protobuf/windows/libprotobuf.a
     LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a

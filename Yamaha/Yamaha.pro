@@ -22,13 +22,13 @@ unix:!macx{
 win32 {
 
     INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
-    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll.a
+    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll
     INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
     LIBS += $$PWD/../externals/protobuf/windows/libprotobuf.a
     LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a
     LIBS += $$PWD/../externals/protobuf/windows/libprotoc.a
+    LIBS += $$PWD/../Framework/lib/CarFoxWindows.dll
 
-    LIBS += -L$$PWD/../Framework/lib/ -lCarFoxWindows
     message("=========================")
     system($$PWD/../externals/script/proto.bat v1.0)
 }
@@ -62,7 +62,7 @@ UI_DIR = build
 MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
-QMAKE_POST_LINK += $(STRIP) $(TARGET)
+#QMAKE_POST_LINK += $(STRIP) $(TARGET)
 include($$PWD/Yamaha.pri)
 
 

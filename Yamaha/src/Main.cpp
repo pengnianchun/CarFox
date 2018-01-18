@@ -1,12 +1,14 @@
-#include <unistd.h>
-#include <QGuiApplication>
+//#include <unistd.h>
+//#include <QGuiApplication>
 
-#include <Global.hpp>
-//#include <CarFox/Splash.hpp>
-#include <UndeadMain.hpp>
-#include <ThemeManager.hpp>
+//#include <Global.hpp>
+////#include <CarFox/Splash.hpp>
+//#include <UndeadMain.hpp>
+//#include <ThemeManager.hpp>
 
-#include "CustomUiController.hpp"
+//#include "CustomUiController.hpp"
+
+#include <QDebug>
 
 int main(int argc, char *argv[]) {
     qDebug() << "main";
