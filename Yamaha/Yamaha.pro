@@ -53,7 +53,7 @@ win32 {
     LIBS += $$PWD/../Framework/lib/libCarFoxWindows.a
 
     DEST = $$replace(PWD, /, \\)
-    QMAKE_POST_LINK += copy  $$DEST\\..\\externals\\nanomsg\\windows\\libnanomsg.dll   $$DESTDIR
+    QMAKE_POST_LINK += xcopy $$DEST\\..\\externals\\nanomsg\\windows\\libnanomsg.dll $$DESTDIR /y /e
     system($$PWD/../externals/script/proto.bat v1.0)
     QMAKE_CXXFLAGS += -DGIT_VERSION="windowsVersion"
 }
