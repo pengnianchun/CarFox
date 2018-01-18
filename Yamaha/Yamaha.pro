@@ -20,14 +20,22 @@ unix:!macx{
     }
 }
 win32 {
-    INCLUDEPATH += ../externals/protobuf/windows/include
-    LIBS += -L$$PWD/../externals/protobuf/windows -lprotobuf
-    LIBS += -L../Framework/bin/ -lCarFoxWindows
+
+    INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
+    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll.a
+    INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
+    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf.a
+    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a
+    LIBS += $$PWD/../externals/protobuf/windows/libprotoc.a
+
+    LIBS += -L$$PWD/../Framework/lib/ -lCarFoxWindows
+    message("=========================")
+    system($$PWD/../externals/script/proto.bat v1.0)
 }
 
 
-QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
-QMAKE_CXXFLAGS +=  -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
+#QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
+#QMAKE_CXXFLAGS +=  -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
 CONFIG += c++11
 CONFIG += qtquickcompiler

@@ -7,5 +7,5 @@ CONFIG += ordered
 CONFIG += c++11
 
 SUBDIRS += \
-    Framework
-#    Yamaha
+    Framework \
+    Yamaha
