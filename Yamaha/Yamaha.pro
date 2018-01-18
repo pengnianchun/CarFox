@@ -3,31 +3,42 @@ QT += qml quick serialport
 TARGET = Yamaha
 TEMPLATE = app
 
-#LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
 unix:!macx{
+    INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
+    INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
+
+    LIBS += -lnanomsg -lprotobuf
+    LIBS += -L$$PWD/../Framework/lib/
+
+    QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
+    QMAKE_CXXFLAGS += -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
+
+    system(bash $$PWD/../externals/script/proto.sh v1.0)
 
     cross_compile { # ARM平台
-        LIBS += -L$$PWD/../CarFox/bin/static -lCarFoxArm
+        LIBS += -lCarFoxArm
+
+        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/arm
+        LIBS += -L$$PWD/../externals/protobuf/linux/lib/arm
     }
     else {
-        INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
-        LIBS += -L$$PWD/../externals/nanomsg/linux -lnanomsg
-        QMAKE_LFLAGS += -Wl,--rpath=../Framework/lib/
-        INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
-        LIBS += -L$$PWD/../externals/protobuf/linux -lprotobuf
-        LIBS += -L$$PWD/../Framework/lib/ -lCarFoxLinux
-        system(bash $$PWD/../externals/script/proto.sh v1.0)
+        LIBS += -lCarFoxLinux
+
+        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/x86
+        LIBS += -L$$PWD/../externals/protobuf/linux/lib/x86
+
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../Framework/lib/
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/nanomsg/linux/lib/x86
+
     }
 }
 win32 {
     INCLUDEPATH += ../externals/protobuf/windows/include
     LIBS += -L$$PWD/../externals/protobuf/windows -lprotobuf
     LIBS += -L../Framework/bin/ -lCarFoxWindows
+
+    QMAKE_CXXFLAGS += -DGIT_VERSION="windowsVersion"
 }
-
-
-QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
-QMAKE_CXXFLAGS +=  -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
