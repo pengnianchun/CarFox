@@ -22,38 +22,35 @@ headers.files += \
 headers.path =  $$[QT_INSTALL_HEADERS]/CarFox
 INSTALLS += headers
 
-#LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
 unix:!macx{
+    INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
+    INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
+    LIBS += -lprotobuf -lnanomsg
+    DESTDIR = $$PWD/../Framework/lib/
 
     cross_compile { # Arm
         TARGET = CarFoxArm
+        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/arm
+        LIBS += -L$$PWD/../externals/protobuf/linux/lib/arm
     }
     else { # Linux
-        INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
-        LIBS += -L$$PWD/../externals/nanomsg/linux -lnanomsg
-        INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
-        LIBS += -L$$PWD/../externals/protobuf/linux -lprotobuf
         TARGET = CarFoxLinux
-        DESTDIR = $$PWD/../Framework/lib/
-#        QMAKE_POST_LINK += mkdir $$PWD/../Framework/lib/ -p; cp -a lib/lib*.so* $$PWD/../Framework/lib/
+        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/x86
+        LIBS += -L$$PWD/../externals/protobuf/linux/lib/x86
     }
 }
 
 win32 {
     INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
-    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll.a
     INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
+    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll.a
     LIBS += $$PWD/../externals/protobuf/windows/libprotobuf.a
-    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a
-    LIBS += $$PWD/../externals/protobuf/windows/libprotoc.a
     TARGET = CarFoxWindows
 
-    lib_dir = lib\lib*.so*
-    dst_dir = $$PWD\..\Framework\lib\\
+    dst_dir = $$PWD\..\Framework\lib\
 
     dst_dir ~= s,/,\\,g
     DESTDIR = $$dst_dir
-    #QMAKE_POST_LINK += xcopy $$lib_dir $$dst_dir /y /e
 }
 
 target.path = $$[QT_INSTALL_LIBS]
