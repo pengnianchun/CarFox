@@ -3,39 +3,61 @@ QT += qml quick serialport
 TARGET = Yamaha
 TEMPLATE = app
 
-#LIBS += -L/usr/lib/x86_64-linux-gnu/ -lnanomsg -lprotobuf
+# Binary and obj files path
+DESTDIR = bin
+UI_DIR = build
+MOC_DIR = build
+RCC_DIR = build
+OBJECTS_DIR = build
+
+
 unix:!macx{
+    INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
+    INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
+
+    LIBS += -lnanomsg -lprotobuf
+    LIBS += -L$$PWD/../Framework/lib/
+
+    QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
+    QMAKE_CXXFLAGS += -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
+
+    system(bash $$PWD/../externals/script/proto.sh v1.0)
 
     cross_compile { # ARM平台
-        LIBS += -L$$PWD/../CarFox/bin/static -lCarFoxArm
+        LIBS += -lCarFoxArm
+
+        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/arm
+        LIBS += -L$$PWD/../externals/protobuf/linux/lib/arm
     }
     else {
-        INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
-        LIBS += -L$$PWD/../externals/nanomsg/linux -lnanomsg
-        QMAKE_LFLAGS += -Wl,--rpath=../Framework/lib/
-        INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
-        LIBS += -L$$PWD/../externals/protobuf/linux -lprotobuf
-        LIBS += -L$$PWD/../Framework/lib/ -lCarFoxLinux
-        system(bash $$PWD/../externals/script/proto.sh v1.0)
+        LIBS += -lCarFoxLinux
+
+        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/x86
+        LIBS += -L$$PWD/../externals/protobuf/linux/lib/x86
+
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../Framework/lib/
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/nanomsg/linux/lib/x86
+
     }
+    QMAKE_POST_LINK += $(STRIP) $(TARGET)
 }
 win32 {
+
 
     INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
     LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll
     INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
     LIBS += $$PWD/../externals/protobuf/windows/libprotobuf.a
-    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a
-    LIBS += $$PWD/../externals/protobuf/windows/libprotoc.a
-    LIBS += $$PWD/../Framework/lib/CarFoxWindows.dll
+#    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a
+#    LIBS += $$PWD/../externals/protobuf/windows/libprotoc.a
+    LIBS += $$PWD/../Framework/lib/libCarFoxWindows.a
 
-    message("=========================")
+    DEST = $$replace(PWD, /, \\)
+    QMAKE_POST_LINK += copy  $$DEST\\..\\externals\\nanomsg\\windows\\libnanomsg.dll   $$DESTDIR
     system($$PWD/../externals/script/proto.bat v1.0)
+    QMAKE_CXXFLAGS += -DGIT_VERSION="windowsVersion"
 }
 
-
-#QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
-#QMAKE_CXXFLAGS +=  -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
@@ -56,13 +78,6 @@ INCLUDEPATH += ./protofile/protocode
 fonts.path = /usr/lib
 INSTALLS += fonts
 
-# Binary and obj files path
-DESTDIR = bin
-UI_DIR = build
-MOC_DIR = build
-RCC_DIR = build
-OBJECTS_DIR = build
-#QMAKE_POST_LINK += $(STRIP) $(TARGET)
 include($$PWD/Yamaha.pri)
 
 

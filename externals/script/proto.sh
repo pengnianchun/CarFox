@@ -14,4 +14,4 @@ else
 fi
 
 rm ./protocode -rf && mkdir -p ./protocode
-LD_LIBRARY_PATH=../../externals/protobuf/linux:$LD_LIBRARY_PATH ../../externals/protobuf/linux/protoc -I=$PROTOFILE/protofile/proto --cpp_out=./protocode $PROTOFILE/protofile/proto/*.proto
+LD_LIBRARY_PATH=../../externals/protobuf/linux/lib/x86:$LD_LIBRARY_PATH ../../externals/protobuf/linux/protoc -I=$PROTOFILE/protofile/proto --cpp_out=./protocode $PROTOFILE/protofile/proto/*.proto

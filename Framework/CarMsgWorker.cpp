@@ -28,7 +28,7 @@ void CarMsgWorker::initSocket()
     mSubSock = std::make_shared<SubSocket>();
     mPubSock->bind("tcp://*:5556");
     mSubSock->subscribeFilter("");
-    mSubSock->connectToAddress("tcp://127.0.0.1:5555");
+    mSubSock->connectToAddress("tcp://192.168.3.34:5555");
     connect(mSubSock.get(), &SubSocket::readyRead, this, &CarMsgWorker::onReadyRead);
     registerCallback();
 }
