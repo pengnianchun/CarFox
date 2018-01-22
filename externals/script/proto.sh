@@ -2,13 +2,16 @@
 
 PROTOFILE=$PWD
 PROTOTAG=$1
+PROTOORIGIN="ssh://git@192.168.3.200:10022/qt/protofile.git"
 
 if [ -d $PROTOFILE/protofile ]; then
     cd $PROTOFILE/protofile
-    git pull ssh://git@192.168.3.200:10022/qt/protofile.git master
-    git checkout $PROTOTAG
+    git fetch
+    git checkout master
+    git branch -d $PROTOTAG
+    git checkout $PROTOTAG -B $PROTOTAG
 else
-    git clone ssh://git@192.168.3.200:10022/qt/protofile.git -b master
+    git clone $PROTOORIGIN -b master
     cd $PROTOFILE/protofile
     git checkout $PROTOTAG -b $PROTOTAG
 fi
