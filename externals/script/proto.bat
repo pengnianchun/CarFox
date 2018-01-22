@@ -13,10 +13,7 @@ if NOT EXIST protofile (
   git clone ssh://git@192.168.3.200:10022/qt/protofile.git -b master
   cd protofile
   git checkout %PROTOTAG% -b %PROTOTAG%
-)
-
-
-if EXIST protofile (
+) else (
   echo found extracted sources
   cd protofile
   echo %~dp0
