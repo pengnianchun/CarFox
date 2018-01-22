@@ -9,7 +9,7 @@ UI_DIR = build
 MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
-
+PROTOTAG=v1.1
 
 unix:!macx{
     INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
@@ -21,7 +21,7 @@ unix:!macx{
     QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
     QMAKE_CXXFLAGS += -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
-    system(bash $$PWD/../externals/script/proto.sh v1.0)
+    system(bash $$PWD/../externals/script/proto.sh $$PROTOTAG)
 
     cross_compile { # ARM平台
         LIBS += -lCarFoxArm
@@ -54,7 +54,7 @@ win32 {
 
     DEST = $$replace(PWD, /, \\)
     QMAKE_POST_LINK += xcopy $$DEST\\..\\externals\\nanomsg\\windows\\libnanomsg.dll $$DESTDIR /y /e
-    system($$PWD/../externals/script/proto.bat v1.0)
+    system($$PWD/../externals/script/proto.bat $$PROTOTAG)
     QMAKE_CXXFLAGS += -DGIT_VERSION="windowsVersion"
 }
 

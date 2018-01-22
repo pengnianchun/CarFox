@@ -2,6 +2,7 @@
 set STARTTIME=%TIME%
 
 set PROTOTAG=%1
+set PROTOORIGIN="ssh://git@192.168.3.200:10022/qt/protofile.git"
 ::git checkout %PROTOTAG%
 
 ::git pull ssh://git@192.168.3.200:10022/qt/protofile.git master
@@ -10,15 +11,17 @@ echo %~dp0
 
 if NOT EXIST protofile (
   echo "not found protofile, now download..."
-  git clone ssh://git@192.168.3.200:10022/qt/protofile.git -b master
+  git clone %PROTOORIGIN% -b master
   cd protofile
-  git checkout %PROTOTAG% -b %PROTOTAG%
+  git checkout %PROTOTAG% -B %PROTOTAG%
 ) else (
   echo found extracted sources
   cd protofile
   echo %~dp0
-  git pull ssh://git@192.168.3.200:10022/qt/protofile.git master
-  git checkout %PROTOTAG%
+  git fetch
+  git checkout master
+  git branch -d %PROTOTAG%
+  git checkout %PROTOTAG% -B %PROTOTAG%
 )
 
 
