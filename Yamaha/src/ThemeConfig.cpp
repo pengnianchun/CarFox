@@ -14,7 +14,11 @@ void ThemeConfig::setThemeNo(qint8 themeNo)
         return;
     }
 
-    QSettings * settings = new QSettings("~/.theme.ini", QSettings::IniFormat);
+#ifdef Q_PROCESSOR_ARM
+    QSettings * settings = new QSettings("/opt/.theme.ini", QSettings::IniFormat);
+#else
+    QSettings * settings = new QSettings(".theme.ini", QSettings::IniFormat);
+#endif
 
     if (settings == NULL) {
         qWarning()<<" --- Error: theme.ini set value failed";
@@ -22,7 +26,11 @@ void ThemeConfig::setThemeNo(qint8 themeNo)
     }
     settings->setValue("theme/id", themeNo);
     delete settings;
-//    sync();
+#ifdef Q_PROCESSOR_ARM
+        sync();
+#else
+   //    sync();
+#endif
 
     if (mThemeNo != themeNo) {
         mThemeNo = themeNo;
@@ -33,16 +41,21 @@ void ThemeConfig::setThemeNo(qint8 themeNo)
 
 qint8 ThemeConfig::getThemeNo()
 {
-    qDebug() << "---------ThemeConfig::getThemeNo";
 
-    QSettings* settings;
-    settings = new QSettings("~/.theme.ini", QSettings::IniFormat);
+#ifdef Q_PROCESSOR_ARM
+    QSettings * settings = new QSettings("/opt/.theme.ini", QSettings::IniFormat);
+#else
+    QSettings * settings = new QSettings(".theme.ini", QSettings::IniFormat);
+#endif
+
+    qDebug() << "---------ThemeConfig::getThemeNo, setting:" << settings->fileName();
     if(settings == NULL) {
         qWarning()<<" --- Error: theme.ini get value failed";
         mThemeNo = -1;
         return mThemeNo;
     }
     mThemeNo = settings->value("theme/id", 0).toInt();
+
     delete settings;
     qDebug() << "---------ThemeConfig::getThemeNo : " << mThemeNo;
 
