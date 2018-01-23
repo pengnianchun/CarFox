@@ -46,6 +46,40 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::fault_codeChanged, this, &CustomCarMsg::updateFault_code);
     connect(worker, &CustomCarMsgWorker::oil_levelChanged, this, &CustomCarMsg::updateOil_level);
     connect(worker, &CustomCarMsgWorker::engine_oil_pressureChanged, this, &CustomCarMsg::updateEngine_oil_pressure);
+
+    connect(worker, &CustomCarMsgWorker::motor_in_voltageChanged, this, &CustomCarMsg::updateMotor_in_voltage);
+    connect(worker, &CustomCarMsgWorker::motor_in_currentChanged, this, &CustomCarMsg::updateMotor_in_current);
+    connect(worker, &CustomCarMsgWorker::motor_tempChanged, this, &CustomCarMsg::updateMotor_temp);
+    connect(worker, &CustomCarMsgWorker::motor_controller_tempChanged, this, &CustomCarMsg::updateMotor_controller_temp);
+    connect(worker, &CustomCarMsgWorker::car_modeChanged, this, &CustomCarMsg::updateCar_mode);
+    connect(worker, &CustomCarMsgWorker::versionChanged, this, &CustomCarMsg::updateVersion);
+    connect(worker, &CustomCarMsgWorker::car_lifeChanged, this, &CustomCarMsg::updateCar_life);
+    connect(worker, &CustomCarMsgWorker::accel_pedal_percentChanged, this, &CustomCarMsg::updateAccel_pedal_percent);
+    connect(worker, &CustomCarMsgWorker::brake_pedal_percentChanged, this, &CustomCarMsg::updateBrake_pedal_percent);
+    connect(worker, &CustomCarMsgWorker::din1Changed, this, &CustomCarMsg::updateDin1);
+    connect(worker, &CustomCarMsgWorker::din2Changed, this, &CustomCarMsg::updateDin2);
+    connect(worker, &CustomCarMsgWorker::din3Changed, this, &CustomCarMsg::updateDin3);
+    connect(worker, &CustomCarMsgWorker::dout1Changed, this, &CustomCarMsg::updateDout1);
+    connect(worker, &CustomCarMsgWorker::dout2Changed, this, &CustomCarMsg::updateDout2);
+    connect(worker, &CustomCarMsgWorker::dout3Changed, this, &CustomCarMsg::updateDout3);
+
+    connect(worker, &CustomCarMsgWorker::engine_fuel_consumptionChanged, this, &CustomCarMsg::updateEngine_fuel_consumption);
+    connect(worker, &CustomCarMsgWorker::engine_loadChanged, this, &CustomCarMsg::updateEngine_load);
+    connect(worker, &CustomCarMsgWorker::engine_target_throttleChanged, this, &CustomCarMsg::updateEngine_target_throttle);
+    connect(worker, &CustomCarMsgWorker::engine_actual_throttleChanged, this, &CustomCarMsg::updateEngine_actual_throttle);
+    connect(worker, &CustomCarMsgWorker::engine_inlet_temperatureChanged, this, &CustomCarMsg::updateEngine_inlet_temperature);
+
+    connect(worker, &CustomCarMsgWorker::oil_pump_dcac_w_output_currentChanged, this, &CustomCarMsg::updateOil_pump_dcac_w_output_current);
+    connect(worker, &CustomCarMsgWorker::oil_pump_dcac_v_output_currentChanged, this, &CustomCarMsg::updateOil_pump_dcac_v_output_current);
+    connect(worker, &CustomCarMsgWorker::oil_pump_dcac_u_output_currentChanged, this, &CustomCarMsg::updateOil_pump_dcac_u_output_current);
+    connect(worker, &CustomCarMsgWorker::radiator_temperatureChanged, this, &CustomCarMsg::updateRadiator_temperature);
+
+    connect(worker, &CustomCarMsgWorker::actual_clutch_positionChanged, this, &CustomCarMsg::updateActual_clutch_position);
+    connect(worker, &CustomCarMsgWorker::tcu_fault_codeChanged, this, &CustomCarMsg::updateTcu_fault_code);
+    connect(worker, &CustomCarMsgWorker::axis_rpmChanged, this, &CustomCarMsg::updateAxis_rpm);
+    connect(worker, &CustomCarMsgWorker::fmiChanged, this, &CustomCarMsg::updateFmi);
+    connect(worker, &CustomCarMsgWorker::cmChanged, this, &CustomCarMsg::updateCm);
+    connect(worker, &CustomCarMsgWorker::ocChanged, this, &CustomCarMsg::updateOc);
 }
 
 void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
@@ -143,3 +177,124 @@ void CustomCarMsg::updateOil_level(uint value) {
 void CustomCarMsg::updateEngine_oil_pressure(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(engine_oil_pressure, value);
 }
+
+void CustomCarMsg::updateMotor_in_voltage(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(motor_in_voltage, value);
+}
+
+void CustomCarMsg::updateMotor_in_current(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(motor_in_current, value);
+}
+
+void CustomCarMsg::updateMotor_temp(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(motor_temp, value);
+}
+
+void CustomCarMsg::updateMotor_controller_temp(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(motor_controller_temp, value);
+}
+
+void CustomCarMsg::updateCar_mode(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(car_mode, value);
+}
+
+void CustomCarMsg::updateVersion(double value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(version, value);
+}
+
+void CustomCarMsg::updateCar_life(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(car_life, value);
+}
+
+void CustomCarMsg::updateAccel_pedal_percent(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(accel_pedal_percent, value);
+}
+
+void CustomCarMsg::updateBrake_pedal_percent(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(brake_pedal_percent, value);
+}
+
+void CustomCarMsg::updateDin1(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(din1, value);
+}
+
+void CustomCarMsg::updateDin2(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(din2, value);
+}
+
+void CustomCarMsg::updateDin3(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(din3, value);
+}
+
+void CustomCarMsg::updateDout1(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(dout1, value);
+}
+
+void CustomCarMsg::updateDout2(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(dout2, value);
+}
+
+void CustomCarMsg::updateDout3(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(dout3, value);
+}
+
+void CustomCarMsg::updateEngine_fuel_consumption(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(engine_fuel_consumption, value);
+}
+
+void CustomCarMsg::updateEngine_load(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(engine_load, value);
+}
+
+void CustomCarMsg::updateEngine_target_throttle(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(engine_target_throttle, value);
+}
+
+void CustomCarMsg::updateEngine_actual_throttle(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(engine_actual_throttle, value);
+}
+
+void CustomCarMsg::updateEngine_inlet_temperature(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(engine_inlet_temperature, value);
+}
+
+void CustomCarMsg::updateOil_pump_dcac_w_output_current(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(oil_pump_dcac_w_output_current, value);
+}
+
+void CustomCarMsg::updateOil_pump_dcac_v_output_current(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(oil_pump_dcac_v_output_current, value);
+}
+
+void CustomCarMsg::updateOil_pump_dcac_u_output_current(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(oil_pump_dcac_u_output_current, value);
+}
+
+void CustomCarMsg::updateRadiator_temperature(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(radiator_temperature, value);
+}
+
+void CustomCarMsg::updateActual_clutch_position(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(actual_clutch_position, value);
+}
+
+void CustomCarMsg::updateTcu_fault_code(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(tcu_fault_code, value);
+}
+
+void CustomCarMsg::updateAxis_rpm(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(axis_rpm, value);
+}
+
+void CustomCarMsg::updateFmi(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(fmi, value);
+}
+
+void CustomCarMsg::updateCm(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(cm, value);
+}
+
+void CustomCarMsg::updateOc(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(oc, value);
+}
+
