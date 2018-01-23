@@ -15,7 +15,6 @@ unix:!macx{
     INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
     INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
 
-    LIBS += -lnanomsg -lprotobuf
     LIBS += -L$$PWD/../Framework/lib/
 
     QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
@@ -37,8 +36,9 @@ unix:!macx{
 
         QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../Framework/lib/
         QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/nanomsg/linux/lib/x86
-
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/protobuf/linux/lib/x86
     }
+    LIBS += -lnanomsg -lprotobuf
     QMAKE_POST_LINK += $(STRIP) $(TARGET)
 }
 win32 {

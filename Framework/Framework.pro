@@ -26,7 +26,6 @@ unix:!macx{
 
     INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
     INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
-    LIBS += -lprotobuf -lnanomsg
     DESTDIR = $$PWD/../Framework/lib/
 
     CONFIG += lib
@@ -40,7 +39,11 @@ unix:!macx{
         TARGET = CarFoxLinux
         LIBS += -L$$PWD/../externals/nanomsg/linux/lib/x86
         LIBS += -L$$PWD/../externals/protobuf/linux/lib/x86
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../Framework/lib/
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/nanomsg/linux/lib/x86
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/protobuf/linux/lib/x86
     }
+    LIBS += -lprotobuf -lnanomsg
 }
 
 win32 {
