@@ -91,5 +91,64 @@ void CustomCarMsgWorker::handleGeneralInfoFrame(const carfox::MessagePtr &msg)
 {
     shared_ptr<fyGeneralInfo::GeneralFrame> p = carfox::down_pointer_cast<fyGeneralInfo::GeneralFrame>(msg);
     qDebug() << "===gear value:" << p->gear();
-
+    updateStates<qint16>(mStateData.carSpeed.data, p->speed(), [this](qint32 value) {
+        emit this->carSpeedChanged(value);
+    });
+    updateStates<qint16>(mStateData.rpm.data, p->rpm(), [this](qint32 value) {
+        emit this->rpmChanged(value);
+    });
+    updateStates<qint16>(mStateData.totalVoltage.data, p->total_voltage(), [this](qint32 value) {
+        emit this->totalVoltageChanged(value);
+    });
+    updateStates<qint16>(mStateData.totalCurrent.data, p->total_current(), [this](qint32 value) {
+        emit this->totalCurrentChanged(value);
+    });
+    updateStates<qint16>(mStateData.gear.data, p->gear(), [this](qint32 value) {
+        emit this->gearChanged(value);
+    });
+    updateStates<quint16>(mStateData.odo.data, p->odo(), [this](quint32 value) {
+        emit this->odoChanged(value);
+    });
+    updateStates<float>(mStateData.trip.data, p->trip(), [this](float value) {
+        emit this->tripChanged(value);
+    });
+    updateStates<quint16>(mStateData.soc.data, p->soc(), [this](quint32 value) {
+        emit this->socChanged(value);
+    });
+    updateStates<float>(mStateData.apVol1.data, p->air_press1(), [this](float value) {
+        emit this->apVol1Changed(value);
+    });
+    updateStates<float>(mStateData.apVol2.data, p->air_press2(), [this](float value) {
+        emit this->apVol2Changed(value);
+    });
+    updateStates<qint16>(mStateData.moter_control_temp.data, p->moter_control_temperature(), [this](qint32 value) {
+        emit this->moter_control_tempChanged(value);
+    });
+    updateStates<qint16>(mStateData.moter_temp.data, p->moter_temperature(), [this](qint32 value) {
+        emit this->moter_tempChanged(value);
+    });
+    updateStates<qint16>(mStateData.battery.data, p->battery(), [this](qint32 value) {
+        emit this->batteryChanged(value);
+    });
+    updateStates<qint16>(mStateData.spn.data, p->spn(), [this](qint32 value) {
+        emit this->spnChanged(value);
+    });
+    updateStates<qint16>(mStateData.engine_water_temp.data, p->engine_water_temp(), [this](qint32 value) {
+        emit this->engine_water_tempChanged(value);
+    });
+    updateStates<qint16>(mStateData.urea_level.data, p->urea_level(), [this](qint32 value) {
+        emit this->urea_levelChanged(value);
+    });
+    updateStates<quint16>(mStateData.fault_level.data, p->fault_level(), [this](quint32 value) {
+        emit this->fault_levelChanged(value);
+    });
+    updateStates<qint16>(mStateData.fault_code.data, p->fault_code(), [this](qint32 value) {
+        emit this->fault_codeChanged(value);
+    });
+    updateStates<quint16>(mStateData.oil_level.data, p->oil_level(), [this](quint32 value) {
+        emit this->oil_levelChanged(value);
+    });
+    updateStates<float>(mStateData.engine_oil_pressure.data, p->engine_oil_pressure(), [this](float value) {
+        emit this->engine_oil_pressureChanged(value);
+    });
 }
