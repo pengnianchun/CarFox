@@ -51,6 +51,26 @@ signals:
     void themeModeChanged(qint8 themeNo);
     void carModeChanged(qint8 modeNo);
 
+    void carSpeedChanged(int value);
+    void rpmChanged(int value);
+    void totalVoltageChanged(int value);
+    void totalCurrentChanged(int value);
+    void gearChanged(int value);
+    void odoChanged(uint value);
+    void tripChanged(float value);
+    void socChanged(uint value);
+    void apVol1Changed(float value);
+    void apVol2Changed(float value);
+    void moter_control_tempChanged(int value);
+    void moter_tempChanged(int value);
+    void batteryChanged(int value);
+    void spnChanged(int value);
+    void engine_water_tempChanged(int value);
+    void urea_levelChanged(int value);
+    void fault_levelChanged(uint value);
+    void fault_codeChanged(int value);
+    void oil_levelChanged(uint value);
+    void engine_oil_pressureChanged(float value);
 
 protected:
      virtual void registerCallback();
