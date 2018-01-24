@@ -72,6 +72,40 @@ signals:
     void oil_levelChanged(uint value);
     void engine_oil_pressureChanged(float value);
 
+    void motor_in_voltageChanged(float value);
+    void motor_in_currentChanged(float value);
+    void motor_tempChanged(int value);
+    void motor_controller_tempChanged(int value);
+    void car_modeChanged(int value);
+    void versionChanged(double value);
+    void car_lifeChanged(int value);
+    void accel_pedal_percentChanged(float value);
+    void brake_pedal_percentChanged(float value);
+    void din1Changed(uint value);
+    void din2Changed(uint value);
+    void din3Changed(uint value);
+    void dout1Changed(uint value);
+    void dout2Changed(uint value);
+    void dout3Changed(uint value);
+
+    void engine_fuel_consumptionChanged(float value);
+    void engine_loadChanged(float value);
+    void engine_target_throttleChanged(float value);
+    void engine_actual_throttleChanged(float value);
+    void engine_inlet_temperatureChanged(int value);
+
+    void oil_pump_dcac_w_output_currentChanged(float value);
+    void oil_pump_dcac_v_output_currentChanged(float value);
+    void oil_pump_dcac_u_output_currentChanged(float value);
+    void radiator_temperatureChanged(int value);
+
+    void actual_clutch_positionChanged(int value);
+    void tcu_fault_codeChanged(uint value);
+    void axis_rpmChanged(int value);
+    void fmiChanged(int value);
+    void cmChanged(int value);
+    void ocChanged(uint value);
+
 protected:
      virtual void registerCallback();
 
@@ -80,6 +114,36 @@ private:
     void handleProtoKey(const carfox::MessagePtr& msg);
     void handleProtoAutoFlash(const carfox::MessagePtr& msg);
     void handleGeneralInfoFrame(const carfox::MessagePtr& msg);
+
+    void handleProtoDatetime(const carfox::MessagePtr &msg);
+    void handleProtoUpgradeNotify(const carfox::MessagePtr &msg);
+    void handleProtoInstrumentFrameInfo(const carfox::MessagePtr &msg);
+    void handleProtoFontMoudleFrameInfo(const carfox::MessagePtr &msg);
+    void handleProtoMiddleMoudleFrameInfo(const carfox::MessagePtr &msg);
+    void handleProtoBackMoudleFrameInfo(const carfox::MessagePtr &msg);
+    void handleProtoWarningFrameInfo(const carfox::MessagePtr &msg);
+
+    void handleProtoControlSystemMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoMoterSystemMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoAuxiliarySystemMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoTcuSystemMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoBatteryManageSystemMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg);
+    void handleProtoAirCtrlSystemMenuInfo(const carfox::MessagePtr &msg);
+
+    void handleProtoSymbolLampMiscLampInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampCorneringInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampLightInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampGateInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampBrakeInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampAirPressureInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampShoeWearInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampChargingInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampWaterInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampStopInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampMoterInfo(const carfox::MessagePtr &msg);
+    void handleProtoSymbolLampDynamotorInfo(const carfox::MessagePtr &msg);
 
 private:
     CarMsgWorkerStateData mStateData;
