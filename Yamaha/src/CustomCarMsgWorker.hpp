@@ -106,6 +106,116 @@ signals:
     void cmChanged(int value);
     void ocChanged(uint value);
 
+    void bat_max_charge_currentChanged(float value);
+    void bat_max_discharge_currentChanged(float value);
+    void bat_average_voltageChanged(float value);
+    void bat_status1Changed(uint value);
+    void bat_status2Changed(uint value);
+    void bat_status3Changed(uint value);
+    void irm_ohm_positiveChanged(float value);
+    void irm_ohm_negativeChanged(float value);
+    void bat_max_voltageChanged(float value);
+    void bat_min_voltageChanged(float value);
+    void battery_highest_tempChanged(float value);
+
+    void ac_fault_codeChanged(uint value);
+    void ac_fan_statusChanged(uint value);
+    void ac_work_statusChanged(uint value);
+    void ac_lifeChanged(uint value);
+    void ac_out_tempChanged(int value);
+    void ac_in_tempChanged(int value);
+    void ac_set_tempChanged(int value);
+    void ac_refrigere_reqChanged(uint value);
+
+    void input_ctrl_01Changed(int value);
+    void input_ctrl_02Changed(int value);
+    void input_ctrl_03Changed(int value);
+    void input_ctrl_04Changed(int value);
+    void input_ctrl_05Changed(int value);
+    void input_ctrl_06Changed(int value);
+    void input_ctrl_07Changed(int value);
+    void input_ctrl_08Changed(int value);
+    void input_ctrl_09Changed(int value);
+    void input_ctrl_10Changed(int value);
+    void input_ctrl_11Changed(int value);
+    void input_ctrl_12Changed(int value);
+    void input_ctrl_13Changed(int value);
+    void input_ctrl_14Changed(int value);
+    void input_ctrl_15Changed(int value);
+    void input_ctrl_16Changed(int value);
+    void input_ctrl_17Changed(int value);
+    void input_ctrl_18Changed(int value);
+    void input_ctrl_19Changed(int value);
+    void input_ctrl_20Changed(int value);
+    void input_ctrl_21Changed(int value);
+    void input_ctrl_22Changed(int value);
+    void input_ctrl_23Changed(int value);
+    void input_ctrl_24Changed(int value);
+    void input_ctrl_25Changed(int value);
+    void input_ctrl_26Changed(int value);
+    void input_ctrl_27Changed(int value);
+    void input_ctrl_28Changed(int value);
+    void input_ctrl_29Changed(int value);
+    void input_ctrl_30Changed(int value);
+    void input_ctrl_31Changed(int value);
+    void input_ctrl_32Changed(int value);
+    void input_ctrl_33Changed(int value);
+    void input_ctrl_34Changed(int value);
+    void input_ctrl_35Changed(int value);
+
+    void lamp_key_onChanged(int value);
+    void lamp_air_filterChanged(int value);
+    void lamp_asrChanged(int value);
+    void lamp_high_voltage_maintenanceChanged(int value);
+    void lamp_defrosterChanged(int value);
+    void lamp_dryereChanged(int value);
+    void lamp_absChanged(int value);
+    void lamp_acChanged(int value);
+    void power_supplyChanged(string value);
+    void climbing_modeChanged(int value);
+    void diagnostic_modeChanged(int value);
+
+    void lamp_turn_leftChanged(int value);
+    void lamp_turn_rightChanged(int value);
+
+    void lamp_double_flashChanged(int value);
+    void lamp_front_fogChanged(int value);
+    void lamp_rear_fogChanged(int value);
+    void lamp_high_beamChanged(int value);
+    void lamp_head_lightChanged(int value);
+    void lamp_reverse_gearChanged(int value);
+    void lamp_position_lightChanged(int value);
+
+    void lamp_gate1Changed(int value);
+    void lamp_gate2Changed(int value);
+    void lamp_rear_door_openChanged(int value);
+
+    void lamp_brakeChanged(int value);
+    void lamp_parking_brakeChanged(int value);
+
+    void lamp_left_low_air_pressureChanged(int value);
+    void lamp_right_low_air_pressureChanged(int value);
+
+    void lamp_left_shoe_wearChanged(int value);
+    void lamp_right_shoe_wearChanged(int value);
+
+    void lamp_charge_confirmChanged(int value);
+    void lamp_battery_main_contactChanged(int value);
+
+    void lamp_water_temp_highChanged(int value);
+    void lamp_water_level_lowChanged(int value);
+
+    void lamp_low_service_wlChanged(int value);
+    void lamp_heavy_stop_wlChanged(int value);
+    void lamp_serious_stop_wlChanged(int value);
+
+    void lamp_oil_level_lowChanged(int value);
+    void lamp_oil_pressure_lowChanged(int value);
+    void lamp_engine_faultChanged(int value);
+
+    void lamp_motor_out_of_serviceChanged(int value);
+    void lamp_moter_fire_igonChanged(int value);
+
 protected:
      virtual void registerCallback();
 
