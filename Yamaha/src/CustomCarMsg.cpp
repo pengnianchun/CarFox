@@ -190,6 +190,236 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
 
     connect(worker, &CustomCarMsgWorker::lamp_motor_out_of_serviceChanged, this, &CustomCarMsg::updateLamp_motor_out_of_service);
     connect(worker, &CustomCarMsgWorker::lamp_moter_fire_igonChanged, this, &CustomCarMsg::updateLamp_moter_fire_igon);
+
+    connect(worker, &CustomCarMsgWorker::front_output_current_01Changed, this, &CustomCarMsg::updateFront_output_current_01);
+    connect(worker, &CustomCarMsgWorker::front_output_current_02Changed, this, &CustomCarMsg::updateFront_output_current_02);
+    connect(worker, &CustomCarMsgWorker::front_output_current_03Changed, this, &CustomCarMsg::updateFront_output_current_03);
+    connect(worker, &CustomCarMsgWorker::front_output_current_04Changed, this, &CustomCarMsg::updateFront_output_current_04);
+    connect(worker, &CustomCarMsgWorker::front_output_current_05Changed, this, &CustomCarMsg::updateFront_output_current_05);
+
+    connect(worker, &CustomCarMsgWorker::front_output_current_06Changed, this, &CustomCarMsg::updateFront_output_current_06);
+    connect(worker, &CustomCarMsgWorker::front_output_current_07Changed, this, &CustomCarMsg::updateFront_output_current_07);
+    connect(worker, &CustomCarMsgWorker::front_output_current_08Changed, this, &CustomCarMsg::updateFront_output_current_08);
+    connect(worker, &CustomCarMsgWorker::front_output_current_09Changed, this, &CustomCarMsg::updateFront_output_current_09);
+    connect(worker, &CustomCarMsgWorker::front_output_current_10Changed, this, &CustomCarMsg::updateFront_output_current_10);
+
+    connect(worker, &CustomCarMsgWorker::front_output_current_11Changed, this, &CustomCarMsg::updateFront_output_current_11);
+    connect(worker, &CustomCarMsgWorker::front_output_current_12Changed, this, &CustomCarMsg::updateFront_output_current_12);
+    connect(worker, &CustomCarMsgWorker::front_output_current_13Changed, this, &CustomCarMsg::updateFront_output_current_13);
+    connect(worker, &CustomCarMsgWorker::front_output_current_14Changed, this, &CustomCarMsg::updateFront_output_current_14);
+    connect(worker, &CustomCarMsgWorker::front_output_current_15Changed, this, &CustomCarMsg::updateFront_output_current_15);
+
+    connect(worker, &CustomCarMsgWorker::front_switch_01Changed, this, &CustomCarMsg::updateFront_switch_01);
+    connect(worker, &CustomCarMsgWorker::front_switch_02Changed, this, &CustomCarMsg::updateFront_switch_02);
+    connect(worker, &CustomCarMsgWorker::front_switch_03Changed, this, &CustomCarMsg::updateFront_switch_03);
+    connect(worker, &CustomCarMsgWorker::front_switch_04Changed, this, &CustomCarMsg::updateFront_switch_04);
+    connect(worker, &CustomCarMsgWorker::front_switch_05Changed, this, &CustomCarMsg::updateFront_switch_05);
+    connect(worker, &CustomCarMsgWorker::front_switch_06Changed, this, &CustomCarMsg::updateFront_switch_06);
+    connect(worker, &CustomCarMsgWorker::front_switch_07Changed, this, &CustomCarMsg::updateFront_switch_07);
+    connect(worker, &CustomCarMsgWorker::front_switch_08Changed, this, &CustomCarMsg::updateFront_switch_08);
+    connect(worker, &CustomCarMsgWorker::front_switch_09Changed, this, &CustomCarMsg::updateFront_switch_09);
+    connect(worker, &CustomCarMsgWorker::front_switch_10Changed, this, &CustomCarMsg::updateFront_switch_10);
+    connect(worker, &CustomCarMsgWorker::front_switch_11Changed, this, &CustomCarMsg::updateFront_switch_11);
+    connect(worker, &CustomCarMsgWorker::front_switch_12Changed, this, &CustomCarMsg::updateFront_switch_12);
+    connect(worker, &CustomCarMsgWorker::front_switch_13Changed, this, &CustomCarMsg::updateFront_switch_13);
+    connect(worker, &CustomCarMsgWorker::front_switch_14Changed, this, &CustomCarMsg::updateFront_switch_14);
+    connect(worker, &CustomCarMsgWorker::front_switch_15Changed, this, &CustomCarMsg::updateFront_switch_15);
+    connect(worker, &CustomCarMsgWorker::front_switch_16Changed, this, &CustomCarMsg::updateFront_switch_16);
+
+    connect(worker, &CustomCarMsgWorker::front_switch_17Changed, this, &CustomCarMsg::updateFront_switch_17);
+    connect(worker, &CustomCarMsgWorker::front_switch_18Changed, this, &CustomCarMsg::updateFront_switch_18);
+    connect(worker, &CustomCarMsgWorker::front_switch_19Changed, this, &CustomCarMsg::updateFront_switch_19);
+    connect(worker, &CustomCarMsgWorker::front_switch_20Changed, this, &CustomCarMsg::updateFront_switch_20);
+    connect(worker, &CustomCarMsgWorker::front_switch_21Changed, this, &CustomCarMsg::updateFront_switch_21);
+    connect(worker, &CustomCarMsgWorker::front_switch_22Changed, this, &CustomCarMsg::updateFront_switch_22);
+    connect(worker, &CustomCarMsgWorker::front_switch_23Changed, this, &CustomCarMsg::updateFront_switch_23);
+    connect(worker, &CustomCarMsgWorker::front_switch_24Changed, this, &CustomCarMsg::updateFront_switch_24);
+    connect(worker, &CustomCarMsgWorker::front_switch_25Changed, this, &CustomCarMsg::updateFront_switch_25);
+    connect(worker, &CustomCarMsgWorker::front_switch_26Changed, this, &CustomCarMsg::updateFront_switch_26);
+    connect(worker, &CustomCarMsgWorker::front_switch_27Changed, this, &CustomCarMsg::updateFront_switch_27);
+    connect(worker, &CustomCarMsgWorker::front_switch_28Changed, this, &CustomCarMsg::updateFront_switch_28);
+    connect(worker, &CustomCarMsgWorker::front_switch_29Changed, this, &CustomCarMsg::updateFront_switch_29);
+    connect(worker, &CustomCarMsgWorker::front_switch_30Changed, this, &CustomCarMsg::updateFront_switch_30);
+    connect(worker, &CustomCarMsgWorker::front_switch_31Changed, this, &CustomCarMsg::updateFront_switch_31);
+    connect(worker, &CustomCarMsgWorker::front_switch_32Changed, this, &CustomCarMsg::updateFront_switch_32);
+
+    connect(worker, &CustomCarMsgWorker::front_switch_33Changed, this, &CustomCarMsg::updateFront_switch_33);
+    connect(worker, &CustomCarMsgWorker::front_switch_34Changed, this, &CustomCarMsg::updateFront_switch_34);
+    connect(worker, &CustomCarMsgWorker::front_switch_35Changed, this, &CustomCarMsg::updateFront_switch_35);
+    connect(worker, &CustomCarMsgWorker::front_switch_36Changed, this, &CustomCarMsg::updateFront_switch_36);
+    connect(worker, &CustomCarMsgWorker::front_switch_37Changed, this, &CustomCarMsg::updateFront_switch_37);
+    connect(worker, &CustomCarMsgWorker::front_switch_38Changed, this, &CustomCarMsg::updateFront_switch_38);
+    connect(worker, &CustomCarMsgWorker::front_switch_39Changed, this, &CustomCarMsg::updateFront_switch_39);
+    connect(worker, &CustomCarMsgWorker::front_switch_40Changed, this, &CustomCarMsg::updateFront_switch_40);
+    connect(worker, &CustomCarMsgWorker::front_switch_41Changed, this, &CustomCarMsg::updateFront_switch_41);
+    connect(worker, &CustomCarMsgWorker::front_switch_42Changed, this, &CustomCarMsg::updateFront_switch_42);
+
+    connect(worker, &CustomCarMsgWorker::middle_output_current_01Changed, this, &CustomCarMsg::updateMiddle_output_current_01);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_02Changed, this, &CustomCarMsg::updateMiddle_output_current_02);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_03Changed, this, &CustomCarMsg::updateMiddle_output_current_03);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_04Changed, this, &CustomCarMsg::updateMiddle_output_current_04);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_05Changed, this, &CustomCarMsg::updateMiddle_output_current_05);
+
+    connect(worker, &CustomCarMsgWorker::middle_output_current_06Changed, this, &CustomCarMsg::updateMiddle_output_current_06);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_07Changed, this, &CustomCarMsg::updateMiddle_output_current_07);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_08Changed, this, &CustomCarMsg::updateMiddle_output_current_08);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_09Changed, this, &CustomCarMsg::updateMiddle_output_current_09);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_10Changed, this, &CustomCarMsg::updateMiddle_output_current_10);
+
+    connect(worker, &CustomCarMsgWorker::middle_output_current_11Changed, this, &CustomCarMsg::updateMiddle_output_current_11);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_12Changed, this, &CustomCarMsg::updateMiddle_output_current_12);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_13Changed, this, &CustomCarMsg::updateMiddle_output_current_13);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_14Changed, this, &CustomCarMsg::updateMiddle_output_current_14);
+    connect(worker, &CustomCarMsgWorker::middle_output_current_15Changed, this, &CustomCarMsg::updateMiddle_output_current_15);
+
+    connect(worker, &CustomCarMsgWorker::middle_switch_01Changed, this, &CustomCarMsg::updateMiddle_switch_01);
+    connect(worker, &CustomCarMsgWorker::middle_switch_02Changed, this, &CustomCarMsg::updateMiddle_switch_02);
+    connect(worker, &CustomCarMsgWorker::middle_switch_03Changed, this, &CustomCarMsg::updateMiddle_switch_03);
+    connect(worker, &CustomCarMsgWorker::middle_switch_04Changed, this, &CustomCarMsg::updateMiddle_switch_04);
+    connect(worker, &CustomCarMsgWorker::middle_switch_05Changed, this, &CustomCarMsg::updateMiddle_switch_05);
+    connect(worker, &CustomCarMsgWorker::middle_switch_06Changed, this, &CustomCarMsg::updateMiddle_switch_06);
+    connect(worker, &CustomCarMsgWorker::middle_switch_07Changed, this, &CustomCarMsg::updateMiddle_switch_07);
+    connect(worker, &CustomCarMsgWorker::middle_switch_08Changed, this, &CustomCarMsg::updateMiddle_switch_08);
+    connect(worker, &CustomCarMsgWorker::middle_switch_09Changed, this, &CustomCarMsg::updateMiddle_switch_09);
+    connect(worker, &CustomCarMsgWorker::middle_switch_10Changed, this, &CustomCarMsg::updateMiddle_switch_10);
+    connect(worker, &CustomCarMsgWorker::middle_switch_11Changed, this, &CustomCarMsg::updateMiddle_switch_11);
+    connect(worker, &CustomCarMsgWorker::middle_switch_12Changed, this, &CustomCarMsg::updateMiddle_switch_12);
+    connect(worker, &CustomCarMsgWorker::middle_switch_13Changed, this, &CustomCarMsg::updateMiddle_switch_13);
+    connect(worker, &CustomCarMsgWorker::middle_switch_14Changed, this, &CustomCarMsg::updateMiddle_switch_14);
+    connect(worker, &CustomCarMsgWorker::middle_switch_15Changed, this, &CustomCarMsg::updateMiddle_switch_15);
+    connect(worker, &CustomCarMsgWorker::middle_switch_16Changed, this, &CustomCarMsg::updateMiddle_switch_16);
+
+    connect(worker, &CustomCarMsgWorker::middle_switch_17Changed, this, &CustomCarMsg::updateMiddle_switch_17);
+    connect(worker, &CustomCarMsgWorker::middle_switch_18Changed, this, &CustomCarMsg::updateMiddle_switch_18);
+    connect(worker, &CustomCarMsgWorker::middle_switch_19Changed, this, &CustomCarMsg::updateMiddle_switch_19);
+    connect(worker, &CustomCarMsgWorker::middle_switch_20Changed, this, &CustomCarMsg::updateMiddle_switch_20);
+    connect(worker, &CustomCarMsgWorker::middle_switch_21Changed, this, &CustomCarMsg::updateMiddle_switch_21);
+    connect(worker, &CustomCarMsgWorker::middle_switch_22Changed, this, &CustomCarMsg::updateMiddle_switch_22);
+    connect(worker, &CustomCarMsgWorker::middle_switch_23Changed, this, &CustomCarMsg::updateMiddle_switch_23);
+    connect(worker, &CustomCarMsgWorker::middle_switch_24Changed, this, &CustomCarMsg::updateMiddle_switch_24);
+    connect(worker, &CustomCarMsgWorker::middle_switch_25Changed, this, &CustomCarMsg::updateMiddle_switch_25);
+    connect(worker, &CustomCarMsgWorker::middle_switch_26Changed, this, &CustomCarMsg::updateMiddle_switch_26);
+    connect(worker, &CustomCarMsgWorker::middle_switch_27Changed, this, &CustomCarMsg::updateMiddle_switch_27);
+    connect(worker, &CustomCarMsgWorker::middle_switch_28Changed, this, &CustomCarMsg::updateMiddle_switch_28);
+    connect(worker, &CustomCarMsgWorker::middle_switch_29Changed, this, &CustomCarMsg::updateMiddle_switch_29);
+    connect(worker, &CustomCarMsgWorker::middle_switch_30Changed, this, &CustomCarMsg::updateMiddle_switch_30);
+    connect(worker, &CustomCarMsgWorker::middle_switch_31Changed, this, &CustomCarMsg::updateMiddle_switch_31);
+    connect(worker, &CustomCarMsgWorker::middle_switch_32Changed, this, &CustomCarMsg::updateMiddle_switch_32);
+
+    connect(worker, &CustomCarMsgWorker::middle_switch_33Changed, this, &CustomCarMsg::updateMiddle_switch_33);
+    connect(worker, &CustomCarMsgWorker::middle_switch_34Changed, this, &CustomCarMsg::updateMiddle_switch_34);
+    connect(worker, &CustomCarMsgWorker::middle_switch_35Changed, this, &CustomCarMsg::updateMiddle_switch_35);
+    connect(worker, &CustomCarMsgWorker::middle_switch_36Changed, this, &CustomCarMsg::updateMiddle_switch_36);
+    connect(worker, &CustomCarMsgWorker::middle_switch_37Changed, this, &CustomCarMsg::updateMiddle_switch_37);
+    connect(worker, &CustomCarMsgWorker::middle_switch_38Changed, this, &CustomCarMsg::updateMiddle_switch_38);
+    connect(worker, &CustomCarMsgWorker::middle_switch_39Changed, this, &CustomCarMsg::updateMiddle_switch_39);
+    connect(worker, &CustomCarMsgWorker::middle_switch_40Changed, this, &CustomCarMsg::updateMiddle_switch_40);
+    connect(worker, &CustomCarMsgWorker::middle_switch_41Changed, this, &CustomCarMsg::updateMiddle_switch_41);
+    connect(worker, &CustomCarMsgWorker::middle_switch_42Changed, this, &CustomCarMsg::updateMiddle_switch_42);
+
+    connect(worker, &CustomCarMsgWorker::back_output_current_01Changed, this, &CustomCarMsg::updateBack_output_current_01);
+    connect(worker, &CustomCarMsgWorker::back_output_current_02Changed, this, &CustomCarMsg::updateBack_output_current_02);
+    connect(worker, &CustomCarMsgWorker::back_output_current_03Changed, this, &CustomCarMsg::updateBack_output_current_03);
+    connect(worker, &CustomCarMsgWorker::back_output_current_04Changed, this, &CustomCarMsg::updateBack_output_current_04);
+    connect(worker, &CustomCarMsgWorker::back_output_current_05Changed, this, &CustomCarMsg::updateBack_output_current_05);
+
+    connect(worker, &CustomCarMsgWorker::back_output_current_06Changed, this, &CustomCarMsg::updateBack_output_current_06);
+    connect(worker, &CustomCarMsgWorker::back_output_current_07Changed, this, &CustomCarMsg::updateBack_output_current_07);
+    connect(worker, &CustomCarMsgWorker::back_output_current_08Changed, this, &CustomCarMsg::updateBack_output_current_08);
+    connect(worker, &CustomCarMsgWorker::back_output_current_09Changed, this, &CustomCarMsg::updateBack_output_current_09);
+    connect(worker, &CustomCarMsgWorker::back_output_current_10Changed, this, &CustomCarMsg::updateBack_output_current_10);
+
+    connect(worker, &CustomCarMsgWorker::back_output_current_11Changed, this, &CustomCarMsg::updateBack_output_current_11);
+    connect(worker, &CustomCarMsgWorker::back_output_current_12Changed, this, &CustomCarMsg::updateBack_output_current_12);
+    connect(worker, &CustomCarMsgWorker::back_output_current_13Changed, this, &CustomCarMsg::updateBack_output_current_13);
+    connect(worker, &CustomCarMsgWorker::back_output_current_14Changed, this, &CustomCarMsg::updateBack_output_current_14);
+    connect(worker, &CustomCarMsgWorker::back_output_current_15Changed, this, &CustomCarMsg::updateBack_output_current_15);
+
+    connect(worker, &CustomCarMsgWorker::back_switch_01Changed, this, &CustomCarMsg::updateBack_switch_01);
+    connect(worker, &CustomCarMsgWorker::back_switch_02Changed, this, &CustomCarMsg::updateBack_switch_02);
+    connect(worker, &CustomCarMsgWorker::back_switch_03Changed, this, &CustomCarMsg::updateBack_switch_03);
+    connect(worker, &CustomCarMsgWorker::back_switch_04Changed, this, &CustomCarMsg::updateBack_switch_04);
+    connect(worker, &CustomCarMsgWorker::back_switch_05Changed, this, &CustomCarMsg::updateBack_switch_05);
+    connect(worker, &CustomCarMsgWorker::back_switch_06Changed, this, &CustomCarMsg::updateBack_switch_06);
+    connect(worker, &CustomCarMsgWorker::back_switch_07Changed, this, &CustomCarMsg::updateBack_switch_07);
+    connect(worker, &CustomCarMsgWorker::back_switch_08Changed, this, &CustomCarMsg::updateBack_switch_08);
+    connect(worker, &CustomCarMsgWorker::back_switch_09Changed, this, &CustomCarMsg::updateBack_switch_09);
+    connect(worker, &CustomCarMsgWorker::back_switch_10Changed, this, &CustomCarMsg::updateBack_switch_10);
+    connect(worker, &CustomCarMsgWorker::back_switch_11Changed, this, &CustomCarMsg::updateBack_switch_11);
+    connect(worker, &CustomCarMsgWorker::back_switch_12Changed, this, &CustomCarMsg::updateBack_switch_12);
+    connect(worker, &CustomCarMsgWorker::back_switch_13Changed, this, &CustomCarMsg::updateBack_switch_13);
+    connect(worker, &CustomCarMsgWorker::back_switch_14Changed, this, &CustomCarMsg::updateBack_switch_14);
+    connect(worker, &CustomCarMsgWorker::back_switch_15Changed, this, &CustomCarMsg::updateBack_switch_15);
+    connect(worker, &CustomCarMsgWorker::back_switch_16Changed, this, &CustomCarMsg::updateBack_switch_16);
+
+    connect(worker, &CustomCarMsgWorker::back_switch_17Changed, this, &CustomCarMsg::updateBack_switch_17);
+    connect(worker, &CustomCarMsgWorker::back_switch_18Changed, this, &CustomCarMsg::updateBack_switch_18);
+    connect(worker, &CustomCarMsgWorker::back_switch_19Changed, this, &CustomCarMsg::updateBack_switch_19);
+    connect(worker, &CustomCarMsgWorker::back_switch_20Changed, this, &CustomCarMsg::updateBack_switch_20);
+    connect(worker, &CustomCarMsgWorker::back_switch_21Changed, this, &CustomCarMsg::updateBack_switch_21);
+    connect(worker, &CustomCarMsgWorker::back_switch_22Changed, this, &CustomCarMsg::updateBack_switch_22);
+    connect(worker, &CustomCarMsgWorker::back_switch_23Changed, this, &CustomCarMsg::updateBack_switch_23);
+    connect(worker, &CustomCarMsgWorker::back_switch_24Changed, this, &CustomCarMsg::updateBack_switch_24);
+    connect(worker, &CustomCarMsgWorker::back_switch_25Changed, this, &CustomCarMsg::updateBack_switch_25);
+    connect(worker, &CustomCarMsgWorker::back_switch_26Changed, this, &CustomCarMsg::updateBack_switch_26);
+    connect(worker, &CustomCarMsgWorker::back_switch_27Changed, this, &CustomCarMsg::updateBack_switch_27);
+    connect(worker, &CustomCarMsgWorker::back_switch_28Changed, this, &CustomCarMsg::updateBack_switch_28);
+    connect(worker, &CustomCarMsgWorker::back_switch_29Changed, this, &CustomCarMsg::updateBack_switch_29);
+    connect(worker, &CustomCarMsgWorker::back_switch_30Changed, this, &CustomCarMsg::updateBack_switch_30);
+    connect(worker, &CustomCarMsgWorker::back_switch_31Changed, this, &CustomCarMsg::updateBack_switch_31);
+    connect(worker, &CustomCarMsgWorker::back_switch_32Changed, this, &CustomCarMsg::updateBack_switch_32);
+
+    connect(worker, &CustomCarMsgWorker::back_switch_33Changed, this, &CustomCarMsg::updateBack_switch_33);
+    connect(worker, &CustomCarMsgWorker::back_switch_34Changed, this, &CustomCarMsg::updateBack_switch_34);
+    connect(worker, &CustomCarMsgWorker::back_switch_35Changed, this, &CustomCarMsg::updateBack_switch_35);
+    connect(worker, &CustomCarMsgWorker::back_switch_36Changed, this, &CustomCarMsg::updateBack_switch_36);
+    connect(worker, &CustomCarMsgWorker::back_switch_37Changed, this, &CustomCarMsg::updateBack_switch_37);
+    connect(worker, &CustomCarMsgWorker::back_switch_38Changed, this, &CustomCarMsg::updateBack_switch_38);
+    connect(worker, &CustomCarMsgWorker::back_switch_39Changed, this, &CustomCarMsg::updateBack_switch_39);
+    connect(worker, &CustomCarMsgWorker::back_switch_40Changed, this, &CustomCarMsg::updateBack_switch_40);
+    connect(worker, &CustomCarMsgWorker::back_switch_41Changed, this, &CustomCarMsg::updateBack_switch_41);
+    connect(worker, &CustomCarMsgWorker::back_switch_42Changed, this, &CustomCarMsg::updateBack_switch_42);
+
+    connect(worker, &CustomCarMsgWorker::warning_01Changed, this, &CustomCarMsg::updateWarning_01);
+    connect(worker, &CustomCarMsgWorker::warning_02Changed, this, &CustomCarMsg::updateWarning_02);
+    connect(worker, &CustomCarMsgWorker::warning_03Changed, this, &CustomCarMsg::updateWarning_03);
+    connect(worker, &CustomCarMsgWorker::warning_04Changed, this, &CustomCarMsg::updateWarning_04);
+    connect(worker, &CustomCarMsgWorker::warning_05Changed, this, &CustomCarMsg::updateWarning_05);
+    connect(worker, &CustomCarMsgWorker::warning_06Changed, this, &CustomCarMsg::updateWarning_06);
+    connect(worker, &CustomCarMsgWorker::warning_07Changed, this, &CustomCarMsg::updateWarning_07);
+    connect(worker, &CustomCarMsgWorker::warning_08Changed, this, &CustomCarMsg::updateWarning_08);
+    connect(worker, &CustomCarMsgWorker::warning_09Changed, this, &CustomCarMsg::updateWarning_09);
+    connect(worker, &CustomCarMsgWorker::warning_10Changed, this, &CustomCarMsg::updateWarning_10);
+    connect(worker, &CustomCarMsgWorker::warning_11Changed, this, &CustomCarMsg::updateWarning_11);
+    connect(worker, &CustomCarMsgWorker::warning_12Changed, this, &CustomCarMsg::updateWarning_12);
+    connect(worker, &CustomCarMsgWorker::warning_13Changed, this, &CustomCarMsg::updateWarning_13);
+    connect(worker, &CustomCarMsgWorker::warning_14Changed, this, &CustomCarMsg::updateWarning_14);
+    connect(worker, &CustomCarMsgWorker::warning_15Changed, this, &CustomCarMsg::updateWarning_15);
+    connect(worker, &CustomCarMsgWorker::warning_16Changed, this, &CustomCarMsg::updateWarning_16);
+    connect(worker, &CustomCarMsgWorker::warning_17Changed, this, &CustomCarMsg::updateWarning_17);
+    connect(worker, &CustomCarMsgWorker::warning_18Changed, this, &CustomCarMsg::updateWarning_18);
+    connect(worker, &CustomCarMsgWorker::warning_19Changed, this, &CustomCarMsg::updateWarning_19);
+    connect(worker, &CustomCarMsgWorker::warning_20Changed, this, &CustomCarMsg::updateWarning_20);
+    connect(worker, &CustomCarMsgWorker::warning_21Changed, this, &CustomCarMsg::updateWarning_21);
+    connect(worker, &CustomCarMsgWorker::warning_22Changed, this, &CustomCarMsg::updateWarning_22);
+    connect(worker, &CustomCarMsgWorker::warning_23Changed, this, &CustomCarMsg::updateWarning_23);
+    connect(worker, &CustomCarMsgWorker::warning_24Changed, this, &CustomCarMsg::updateWarning_24);
+    connect(worker, &CustomCarMsgWorker::warning_25Changed, this, &CustomCarMsg::updateWarning_25);
+    connect(worker, &CustomCarMsgWorker::warning_26Changed, this, &CustomCarMsg::updateWarning_26);
+    connect(worker, &CustomCarMsgWorker::warning_27Changed, this, &CustomCarMsg::updateWarning_27);
+    connect(worker, &CustomCarMsgWorker::warning_28Changed, this, &CustomCarMsg::updateWarning_28);
+    connect(worker, &CustomCarMsgWorker::warning_29Changed, this, &CustomCarMsg::updateWarning_29);
+    connect(worker, &CustomCarMsgWorker::warning_30Changed, this, &CustomCarMsg::updateWarning_30);
+    connect(worker, &CustomCarMsgWorker::warning_31Changed, this, &CustomCarMsg::updateWarning_31);
+    connect(worker, &CustomCarMsgWorker::warning_32Changed, this, &CustomCarMsg::updateWarning_32);
+    connect(worker, &CustomCarMsgWorker::warning_33Changed, this, &CustomCarMsg::updateWarning_33);
+    connect(worker, &CustomCarMsgWorker::warning_34Changed, this, &CustomCarMsg::updateWarning_34);
+    connect(worker, &CustomCarMsgWorker::warning_35Changed, this, &CustomCarMsg::updateWarning_35);
+    connect(worker, &CustomCarMsgWorker::warning_36Changed, this, &CustomCarMsg::updateWarning_36);
+    connect(worker, &CustomCarMsgWorker::warning_37Changed, this, &CustomCarMsg::updateWarning_37);
+    connect(worker, &CustomCarMsgWorker::warning_38Changed, this, &CustomCarMsg::updateWarning_38);
+    connect(worker, &CustomCarMsgWorker::warning_39Changed, this, &CustomCarMsg::updateWarning_39);
+    connect(worker, &CustomCarMsgWorker::warning_40Changed, this, &CustomCarMsg::updateWarning_40);
 }
 
 void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
@@ -656,7 +886,7 @@ void CustomCarMsg::updateLamp_ac(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(lamp_ac, value);
 }
 
-void CustomCarMsg::updatePower_supply(string value) {
+void CustomCarMsg::updatePower_supply(QString value) {
     MEMBER_PROPERTY_VALUE_CHANGED(power_supply, value);
 }
 
@@ -799,3 +1029,864 @@ void CustomCarMsg::updateLamp_moter_fire_igon(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(lamp_moter_fire_igon, value);
 }
 
+void CustomCarMsg::updateFront_output_current_01(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_01, value);
+}
+
+void CustomCarMsg::updateFront_output_current_02(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_02, value);
+}
+
+void CustomCarMsg::updateFront_output_current_03(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_03, value);
+}
+
+void CustomCarMsg::updateFront_output_current_04(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_04, value);
+}
+
+void CustomCarMsg::updateFront_output_current_05(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_05, value);
+}
+
+
+void CustomCarMsg::updateFront_output_current_06(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_06, value);
+}
+
+void CustomCarMsg::updateFront_output_current_07(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_07, value);
+}
+
+void CustomCarMsg::updateFront_output_current_08(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_08, value);
+}
+
+void CustomCarMsg::updateFront_output_current_09(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_09, value);
+}
+
+void CustomCarMsg::updateFront_output_current_10(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_10, value);
+}
+
+
+void CustomCarMsg::updateFront_output_current_11(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_11, value);
+}
+
+void CustomCarMsg::updateFront_output_current_12(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_12, value);
+}
+
+void CustomCarMsg::updateFront_output_current_13(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_13, value);
+}
+
+void CustomCarMsg::updateFront_output_current_14(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_14, value);
+}
+
+void CustomCarMsg::updateFront_output_current_15(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_output_current_15, value);
+}
+
+
+void CustomCarMsg::updateFront_switch_01(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_01, value);
+}
+
+void CustomCarMsg::updateFront_switch_02(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_02, value);
+}
+
+void CustomCarMsg::updateFront_switch_03(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_03, value);
+}
+
+void CustomCarMsg::updateFront_switch_04(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_04, value);
+}
+
+void CustomCarMsg::updateFront_switch_05(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_05, value);
+}
+
+void CustomCarMsg::updateFront_switch_06(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_06, value);
+}
+
+void CustomCarMsg::updateFront_switch_07(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_07, value);
+}
+
+void CustomCarMsg::updateFront_switch_08(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_08, value);
+}
+
+void CustomCarMsg::updateFront_switch_09(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_09, value);
+}
+
+void CustomCarMsg::updateFront_switch_10(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_10, value);
+}
+
+void CustomCarMsg::updateFront_switch_11(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_11, value);
+}
+
+void CustomCarMsg::updateFront_switch_12(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_12, value);
+}
+
+void CustomCarMsg::updateFront_switch_13(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_13, value);
+}
+
+void CustomCarMsg::updateFront_switch_14(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_14, value);
+}
+
+void CustomCarMsg::updateFront_switch_15(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_15, value);
+}
+
+void CustomCarMsg::updateFront_switch_16(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_16, value);
+}
+
+
+void CustomCarMsg::updateFront_switch_17(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_17, value);
+}
+
+void CustomCarMsg::updateFront_switch_18(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_18, value);
+}
+
+void CustomCarMsg::updateFront_switch_19(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_19, value);
+}
+
+void CustomCarMsg::updateFront_switch_20(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_20, value);
+}
+
+void CustomCarMsg::updateFront_switch_21(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_21, value);
+}
+
+void CustomCarMsg::updateFront_switch_22(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_22, value);
+}
+
+void CustomCarMsg::updateFront_switch_23(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_23, value);
+}
+
+void CustomCarMsg::updateFront_switch_24(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_24, value);
+}
+
+void CustomCarMsg::updateFront_switch_25(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_25, value);
+}
+
+void CustomCarMsg::updateFront_switch_26(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_26, value);
+}
+
+void CustomCarMsg::updateFront_switch_27(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_27, value);
+}
+
+void CustomCarMsg::updateFront_switch_28(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_28, value);
+}
+
+void CustomCarMsg::updateFront_switch_29(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_29, value);
+}
+
+void CustomCarMsg::updateFront_switch_30(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_30, value);
+}
+
+void CustomCarMsg::updateFront_switch_31(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_31, value);
+}
+
+void CustomCarMsg::updateFront_switch_32(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_32, value);
+}
+
+
+void CustomCarMsg::updateFront_switch_33(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_33, value);
+}
+
+void CustomCarMsg::updateFront_switch_34(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_34, value);
+}
+
+void CustomCarMsg::updateFront_switch_35(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_35, value);
+}
+
+void CustomCarMsg::updateFront_switch_36(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_36, value);
+}
+
+void CustomCarMsg::updateFront_switch_37(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_37, value);
+}
+
+void CustomCarMsg::updateFront_switch_38(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_38, value);
+}
+
+void CustomCarMsg::updateFront_switch_39(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_39, value);
+}
+
+void CustomCarMsg::updateFront_switch_40(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_40, value);
+}
+
+void CustomCarMsg::updateFront_switch_41(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_41, value);
+}
+
+void CustomCarMsg::updateFront_switch_42(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(front_switch_42, value);
+}
+
+
+
+void CustomCarMsg::updateMiddle_output_current_01(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_01, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_02(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_02, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_03(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_03, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_04(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_04, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_05(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_05, value);
+}
+
+
+void CustomCarMsg::updateMiddle_output_current_06(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_06, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_07(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_07, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_08(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_08, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_09(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_09, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_10(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_10, value);
+}
+
+
+void CustomCarMsg::updateMiddle_output_current_11(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_11, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_12(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_12, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_13(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_13, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_14(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_14, value);
+}
+
+void CustomCarMsg::updateMiddle_output_current_15(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_output_current_15, value);
+}
+
+
+void CustomCarMsg::updateMiddle_switch_01(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_01, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_02(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_02, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_03(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_03, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_04(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_04, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_05(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_05, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_06(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_06, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_07(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_07, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_08(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_08, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_09(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_09, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_10(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_10, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_11(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_11, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_12(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_12, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_13(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_13, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_14(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_14, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_15(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_15, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_16(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_16, value);
+}
+
+
+void CustomCarMsg::updateMiddle_switch_17(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_17, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_18(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_18, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_19(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_19, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_20(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_20, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_21(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_21, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_22(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_22, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_23(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_23, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_24(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_24, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_25(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_25, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_26(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_26, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_27(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_27, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_28(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_28, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_29(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_29, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_30(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_30, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_31(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_31, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_32(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_32, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_33(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_33, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_34(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_34, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_35(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_35, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_36(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_36, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_37(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_37, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_38(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_38, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_39(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_39, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_40(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_40, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_41(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_41, value);
+}
+
+void CustomCarMsg::updateMiddle_switch_42(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(middle_switch_42, value);
+}
+
+void CustomCarMsg::updateBack_output_current_01(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_01, value);
+}
+
+void CustomCarMsg::updateBack_output_current_02(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_02, value);
+}
+
+void CustomCarMsg::updateBack_output_current_03(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_03, value);
+}
+
+void CustomCarMsg::updateBack_output_current_04(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_04, value);
+}
+
+void CustomCarMsg::updateBack_output_current_05(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_05, value);
+}
+
+
+void CustomCarMsg::updateBack_output_current_06(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_06, value);
+}
+
+void CustomCarMsg::updateBack_output_current_07(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_07, value);
+}
+
+void CustomCarMsg::updateBack_output_current_08(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_08, value);
+}
+
+void CustomCarMsg::updateBack_output_current_09(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_09, value);
+}
+
+void CustomCarMsg::updateBack_output_current_10(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_10, value);
+}
+
+
+void CustomCarMsg::updateBack_output_current_11(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_11, value);
+}
+
+void CustomCarMsg::updateBack_output_current_12(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_12, value);
+}
+
+void CustomCarMsg::updateBack_output_current_13(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_13, value);
+}
+
+void CustomCarMsg::updateBack_output_current_14(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_14, value);
+}
+
+void CustomCarMsg::updateBack_output_current_15(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_output_current_15, value);
+}
+
+
+void CustomCarMsg::updateBack_switch_01(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_01, value);
+}
+
+void CustomCarMsg::updateBack_switch_02(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_02, value);
+}
+
+void CustomCarMsg::updateBack_switch_03(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_03, value);
+}
+
+void CustomCarMsg::updateBack_switch_04(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_04, value);
+}
+
+void CustomCarMsg::updateBack_switch_05(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_05, value);
+}
+
+void CustomCarMsg::updateBack_switch_06(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_06, value);
+}
+
+void CustomCarMsg::updateBack_switch_07(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_07, value);
+}
+
+void CustomCarMsg::updateBack_switch_08(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_08, value);
+}
+
+void CustomCarMsg::updateBack_switch_09(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_09, value);
+}
+
+void CustomCarMsg::updateBack_switch_10(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_10, value);
+}
+
+void CustomCarMsg::updateBack_switch_11(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_11, value);
+}
+
+void CustomCarMsg::updateBack_switch_12(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_12, value);
+}
+
+void CustomCarMsg::updateBack_switch_13(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_13, value);
+}
+
+void CustomCarMsg::updateBack_switch_14(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_14, value);
+}
+
+void CustomCarMsg::updateBack_switch_15(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_15, value);
+}
+
+void CustomCarMsg::updateBack_switch_16(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_16, value);
+}
+
+
+void CustomCarMsg::updateBack_switch_17(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_17, value);
+}
+
+void CustomCarMsg::updateBack_switch_18(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_18, value);
+}
+
+void CustomCarMsg::updateBack_switch_19(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_19, value);
+}
+
+void CustomCarMsg::updateBack_switch_20(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_20, value);
+}
+
+void CustomCarMsg::updateBack_switch_21(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_21, value);
+}
+
+void CustomCarMsg::updateBack_switch_22(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_22, value);
+}
+
+void CustomCarMsg::updateBack_switch_23(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_23, value);
+}
+
+void CustomCarMsg::updateBack_switch_24(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_24, value);
+}
+
+void CustomCarMsg::updateBack_switch_25(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_25, value);
+}
+
+void CustomCarMsg::updateBack_switch_26(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_26, value);
+}
+
+void CustomCarMsg::updateBack_switch_27(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_27, value);
+}
+
+void CustomCarMsg::updateBack_switch_28(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_28, value);
+}
+
+void CustomCarMsg::updateBack_switch_29(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_29, value);
+}
+
+void CustomCarMsg::updateBack_switch_30(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_30, value);
+}
+
+void CustomCarMsg::updateBack_switch_31(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_31, value);
+}
+
+void CustomCarMsg::updateBack_switch_32(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_32, value);
+}
+
+
+void CustomCarMsg::updateBack_switch_33(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_33, value);
+}
+
+void CustomCarMsg::updateBack_switch_34(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_34, value);
+}
+
+void CustomCarMsg::updateBack_switch_35(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_35, value);
+}
+
+void CustomCarMsg::updateBack_switch_36(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_36, value);
+}
+
+void CustomCarMsg::updateBack_switch_37(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_37, value);
+}
+
+void CustomCarMsg::updateBack_switch_38(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_38, value);
+}
+
+void CustomCarMsg::updateBack_switch_39(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_39, value);
+}
+
+void CustomCarMsg::updateBack_switch_40(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_40, value);
+}
+
+void CustomCarMsg::updateBack_switch_41(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_41, value);
+}
+
+void CustomCarMsg::updateBack_switch_42(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(back_switch_42, value);
+}
+
+
+
+void CustomCarMsg::updateWarning_01(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_01, value);
+}
+
+void CustomCarMsg::updateWarning_02(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_02, value);
+}
+
+void CustomCarMsg::updateWarning_03(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_03, value);
+}
+
+void CustomCarMsg::updateWarning_04(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_04, value);
+}
+
+void CustomCarMsg::updateWarning_05(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_05, value);
+}
+
+void CustomCarMsg::updateWarning_06(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_06, value);
+}
+
+void CustomCarMsg::updateWarning_07(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_07, value);
+}
+
+void CustomCarMsg::updateWarning_08(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_08, value);
+}
+
+void CustomCarMsg::updateWarning_09(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_09, value);
+}
+
+void CustomCarMsg::updateWarning_10(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_10, value);
+}
+
+void CustomCarMsg::updateWarning_11(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_11, value);
+}
+
+void CustomCarMsg::updateWarning_12(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_12, value);
+}
+
+void CustomCarMsg::updateWarning_13(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_13, value);
+}
+
+void CustomCarMsg::updateWarning_14(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_14, value);
+}
+
+void CustomCarMsg::updateWarning_15(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_15, value);
+}
+
+void CustomCarMsg::updateWarning_16(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_16, value);
+}
+
+void CustomCarMsg::updateWarning_17(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_17, value);
+}
+
+void CustomCarMsg::updateWarning_18(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_18, value);
+}
+
+void CustomCarMsg::updateWarning_19(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_19, value);
+}
+
+void CustomCarMsg::updateWarning_20(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_20, value);
+}
+
+void CustomCarMsg::updateWarning_21(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_21, value);
+}
+
+void CustomCarMsg::updateWarning_22(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_22, value);
+}
+
+void CustomCarMsg::updateWarning_23(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_23, value);
+}
+
+void CustomCarMsg::updateWarning_24(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_24, value);
+}
+
+void CustomCarMsg::updateWarning_25(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_25, value);
+}
+
+void CustomCarMsg::updateWarning_26(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_26, value);
+}
+
+void CustomCarMsg::updateWarning_27(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_27, value);
+}
+
+void CustomCarMsg::updateWarning_28(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_28, value);
+}
+
+void CustomCarMsg::updateWarning_29(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_29, value);
+}
+
+void CustomCarMsg::updateWarning_30(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_30, value);
+}
+
+void CustomCarMsg::updateWarning_31(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_31, value);
+}
+
+void CustomCarMsg::updateWarning_32(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_32, value);
+}
+
+void CustomCarMsg::updateWarning_33(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_33, value);
+}
+
+void CustomCarMsg::updateWarning_34(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_34, value);
+}
+
+void CustomCarMsg::updateWarning_35(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_35, value);
+}
+
+void CustomCarMsg::updateWarning_36(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_36, value);
+}
+
+void CustomCarMsg::updateWarning_37(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_37, value);
+}
+
+void CustomCarMsg::updateWarning_38(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_38, value);
+}
+
+void CustomCarMsg::updateWarning_39(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_39, value);
+}
+
+void CustomCarMsg::updateWarning_40(QString value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(warning_40, value);
+}

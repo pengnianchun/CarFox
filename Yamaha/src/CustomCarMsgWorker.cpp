@@ -303,18 +303,651 @@ void CustomCarMsgWorker::handleProtoInstrumentFrameInfo(const carfox::MessagePtr
 
 void CustomCarMsgWorker::handleProtoFontMoudleFrameInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyModuleFrontInfo::ModuleFrontFrame> p = carfox::down_pointer_cast<fyModuleFrontInfo::ModuleFrontFrame>(msg);
+    updateStates<float>(mStateData.front_output_current_01.data, p->output_current_01(), [this](float value) {
+       emit this->front_output_current_01Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_02.data, p->output_current_02(), [this](float value) {
+       emit this->front_output_current_02Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_03.data, p->output_current_03(), [this](float value) {
+       emit this->front_output_current_03Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_04.data, p->output_current_04(), [this](float value) {
+       emit this->front_output_current_04Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_05.data, p->output_current_05(), [this](float value) {
+       emit this->front_output_current_05Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_06.data, p->output_current_06(), [this](float value) {
+       emit this->front_output_current_06Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_07.data, p->output_current_07(), [this](float value) {
+       emit this->front_output_current_07Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_08.data, p->output_current_08(), [this](float value) {
+       emit this->front_output_current_08Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_09.data, p->output_current_09(), [this](float value) {
+       emit this->front_output_current_09Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_10.data, p->output_current_10(), [this](float value) {
+       emit this->front_output_current_10Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_11.data, p->output_current_11(), [this](float value) {
+       emit this->front_output_current_11Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_12.data, p->output_current_12(), [this](float value) {
+       emit this->front_output_current_12Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_13.data, p->output_current_13(), [this](float value) {
+       emit this->front_output_current_13Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_14.data, p->output_current_14(), [this](float value) {
+       emit this->front_output_current_14Changed(value);
+    });
+    updateStates<float>(mStateData.front_output_current_15.data, p->output_current_15(), [this](float value) {
+       emit this->front_output_current_15Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_01.data, p->switch_01(), [this](qint8 value) {
+       emit this->front_switch_01Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_02.data, p->switch_02(), [this](qint8 value) {
+       emit this->front_switch_02Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_03.data, p->switch_03(), [this](qint8 value) {
+       emit this->front_switch_03Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_04.data, p->switch_04(), [this](qint8 value) {
+       emit this->front_switch_04Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_05.data, p->switch_05(), [this](qint8 value) {
+       emit this->front_switch_05Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_06.data, p->switch_06(), [this](qint8 value) {
+       emit this->front_switch_06Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_07.data, p->switch_07(), [this](qint8 value) {
+       emit this->front_switch_07Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_08.data, p->switch_08(), [this](qint8 value) {
+       emit this->front_switch_08Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_09.data, p->switch_09(), [this](qint8 value) {
+       emit this->front_switch_09Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_10.data, p->switch_10(), [this](qint8 value) {
+       emit this->front_switch_10Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_11.data, p->switch_11(), [this](qint8 value) {
+       emit this->front_switch_11Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_12.data, p->switch_12(), [this](qint8 value) {
+       emit this->front_switch_12Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_13.data, p->switch_13(), [this](qint8 value) {
+       emit this->front_switch_13Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_14.data, p->switch_14(), [this](qint8 value) {
+       emit this->front_switch_14Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_15.data, p->switch_15(), [this](qint8 value) {
+       emit this->front_switch_15Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_16.data, p->switch_16(), [this](qint8 value) {
+       emit this->front_switch_16Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_17.data, p->switch_17(), [this](qint8 value) {
+       emit this->front_switch_17Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_18.data, p->switch_18(), [this](qint8 value) {
+       emit this->front_switch_18Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_19.data, p->switch_19(), [this](qint8 value) {
+       emit this->front_switch_19Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_20.data, p->switch_20(), [this](qint8 value) {
+       emit this->front_switch_20Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_21.data, p->switch_21(), [this](qint8 value) {
+       emit this->front_switch_21Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_22.data, p->switch_22(), [this](qint8 value) {
+       emit this->front_switch_22Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_23.data, p->switch_23(), [this](qint8 value) {
+       emit this->front_switch_23Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_24.data, p->switch_24(), [this](qint8 value) {
+       emit this->front_switch_24Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_25.data, p->switch_25(), [this](qint8 value) {
+       emit this->front_switch_25Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_26.data, p->switch_26(), [this](qint8 value) {
+       emit this->front_switch_26Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_27.data, p->switch_27(), [this](qint8 value) {
+       emit this->front_switch_27Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_28.data, p->switch_28(), [this](qint8 value) {
+       emit this->front_switch_28Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_29.data, p->switch_29(), [this](qint8 value) {
+       emit this->front_switch_29Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_30.data, p->switch_30(), [this](qint8 value) {
+       emit this->front_switch_30Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_31.data, p->switch_31(), [this](qint8 value) {
+       emit this->front_switch_31Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_32.data, p->switch_32(), [this](qint8 value) {
+       emit this->front_switch_32Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_33.data, p->switch_33(), [this](qint8 value) {
+       emit this->front_switch_33Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_34.data, p->switch_34(), [this](qint8 value) {
+       emit this->front_switch_34Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_35.data, p->switch_35(), [this](qint8 value) {
+       emit this->front_switch_35Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_36.data, p->switch_36(), [this](qint8 value) {
+       emit this->front_switch_36Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_37.data, p->switch_37(), [this](qint8 value) {
+       emit this->front_switch_37Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_38.data, p->switch_38(), [this](qint8 value) {
+       emit this->front_switch_38Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_39.data, p->switch_39(), [this](qint8 value) {
+       emit this->front_switch_39Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_40.data, p->switch_40(), [this](qint8 value) {
+       emit this->front_switch_40Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_41.data, p->switch_41(), [this](qint8 value) {
+       emit this->front_switch_41Changed(value);
+    });
+    updateStates<qint8>(mStateData.front_switch_42.data, p->switch_42(), [this](qint8 value) {
+       emit this->front_switch_42Changed(value);
+    });
 }
 
 void CustomCarMsgWorker::handleProtoMiddleMoudleFrameInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyModuleMiddleInfo::ModuleMiddleFrame> p = carfox::down_pointer_cast<fyModuleMiddleInfo::ModuleMiddleFrame>(msg);
+    updateStates<float>(mStateData.middle_output_current_01.data, p->output_current_01(), [this](float value) {
+        emit this->middle_output_current_01Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_02.data, p->output_current_02(), [this](float value) {
+        emit this->middle_output_current_02Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_03.data, p->output_current_03(), [this](float value) {
+        emit this->middle_output_current_03Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_04.data, p->output_current_04(), [this](float value) {
+        emit this->middle_output_current_04Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_05.data, p->output_current_05(), [this](float value) {
+        emit this->middle_output_current_05Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_06.data, p->output_current_06(), [this](float value) {
+        emit this->middle_output_current_06Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_07.data, p->output_current_07(), [this](float value) {
+        emit this->middle_output_current_07Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_08.data, p->output_current_08(), [this](float value) {
+        emit this->middle_output_current_08Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_09.data, p->output_current_09(), [this](float value) {
+        emit this->middle_output_current_09Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_10.data, p->output_current_10(), [this](float value) {
+        emit this->middle_output_current_10Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_11.data, p->output_current_11(), [this](float value) {
+        emit this->middle_output_current_11Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_12.data, p->output_current_12(), [this](float value) {
+        emit this->middle_output_current_12Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_13.data, p->output_current_13(), [this](float value) {
+        emit this->middle_output_current_13Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_14.data, p->output_current_14(), [this](float value) {
+        emit this->middle_output_current_14Changed(value);
+    });
+    updateStates<float>(mStateData.middle_output_current_15.data, p->output_current_15(), [this](float value) {
+        emit this->middle_output_current_15Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_01.data, p->switch_01(), [this](qint8 value) {
+        emit this->middle_switch_01Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_02.data, p->switch_02(), [this](qint8 value) {
+        emit this->middle_switch_02Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_03.data, p->switch_03(), [this](qint8 value) {
+        emit this->middle_switch_03Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_04.data, p->switch_04(), [this](qint8 value) {
+        emit this->middle_switch_04Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_05.data, p->switch_05(), [this](qint8 value) {
+        emit this->middle_switch_05Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_06.data, p->switch_06(), [this](qint8 value) {
+        emit this->middle_switch_06Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_07.data, p->switch_07(), [this](qint8 value) {
+        emit this->middle_switch_07Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_08.data, p->switch_08(), [this](qint8 value) {
+        emit this->middle_switch_08Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_09.data, p->switch_09(), [this](qint8 value) {
+        emit this->middle_switch_09Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_10.data, p->switch_10(), [this](qint8 value) {
+        emit this->middle_switch_10Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_11.data, p->switch_11(), [this](qint8 value) {
+        emit this->middle_switch_11Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_12.data, p->switch_12(), [this](qint8 value) {
+        emit this->middle_switch_12Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_13.data, p->switch_13(), [this](qint8 value) {
+        emit this->middle_switch_13Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_14.data, p->switch_14(), [this](qint8 value) {
+        emit this->middle_switch_14Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_15.data, p->switch_15(), [this](qint8 value) {
+        emit this->middle_switch_15Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_16.data, p->switch_16(), [this](qint8 value) {
+        emit this->middle_switch_16Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_17.data, p->switch_17(), [this](qint8 value) {
+        emit this->middle_switch_17Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_18.data, p->switch_18(), [this](qint8 value) {
+        emit this->middle_switch_18Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_19.data, p->switch_19(), [this](qint8 value) {
+        emit this->middle_switch_19Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_20.data, p->switch_20(), [this](qint8 value) {
+        emit this->middle_switch_20Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_21.data, p->switch_21(), [this](qint8 value) {
+        emit this->middle_switch_21Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_22.data, p->switch_22(), [this](qint8 value) {
+        emit this->middle_switch_22Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_23.data, p->switch_23(), [this](qint8 value) {
+        emit this->middle_switch_23Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_24.data, p->switch_24(), [this](qint8 value) {
+        emit this->middle_switch_24Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_25.data, p->switch_25(), [this](qint8 value) {
+        emit this->middle_switch_25Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_26.data, p->switch_26(), [this](qint8 value) {
+        emit this->middle_switch_26Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_27.data, p->switch_27(), [this](qint8 value) {
+        emit this->middle_switch_27Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_28.data, p->switch_28(), [this](qint8 value) {
+        emit this->middle_switch_28Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_29.data, p->switch_29(), [this](qint8 value) {
+        emit this->middle_switch_29Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_30.data, p->switch_30(), [this](qint8 value) {
+        emit this->middle_switch_30Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_31.data, p->switch_31(), [this](qint8 value) {
+        emit this->middle_switch_31Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_32.data, p->switch_32(), [this](qint8 value) {
+        emit this->middle_switch_32Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_33.data, p->switch_33(), [this](qint8 value) {
+        emit this->middle_switch_33Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_34.data, p->switch_34(), [this](qint8 value) {
+        emit this->middle_switch_34Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_35.data, p->switch_35(), [this](qint8 value) {
+        emit this->middle_switch_35Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_36.data, p->switch_36(), [this](qint8 value) {
+        emit this->middle_switch_36Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_37.data, p->switch_37(), [this](qint8 value) {
+        emit this->middle_switch_37Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_38.data, p->switch_38(), [this](qint8 value) {
+        emit this->middle_switch_38Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_39.data, p->switch_39(), [this](qint8 value) {
+        emit this->middle_switch_39Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_40.data, p->switch_40(), [this](qint8 value) {
+        emit this->middle_switch_40Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_41.data, p->switch_41(), [this](qint8 value) {
+        emit this->middle_switch_41Changed(value);
+    });
+    updateStates<qint8>(mStateData.middle_switch_42.data, p->switch_42(), [this](qint8 value) {
+        emit this->middle_switch_42Changed(value);
+    });
 }
 
 void CustomCarMsgWorker::handleProtoBackMoudleFrameInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyModuleBackInfo::ModuleBackFrame> p = carfox::down_pointer_cast<fyModuleBackInfo::ModuleBackFrame>(msg);
+    updateStates<float>(mStateData.back_output_current_01.data, p->output_current_01(), [this](float value) {
+        emit this->back_output_current_01Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_02.data, p->output_current_02(), [this](float value) {
+        emit this->back_output_current_02Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_03.data, p->output_current_03(), [this](float value) {
+        emit this->back_output_current_03Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_04.data, p->output_current_04(), [this](float value) {
+        emit this->back_output_current_04Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_05.data, p->output_current_05(), [this](float value) {
+        emit this->back_output_current_05Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_06.data, p->output_current_06(), [this](float value) {
+        emit this->back_output_current_06Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_07.data, p->output_current_07(), [this](float value) {
+        emit this->back_output_current_07Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_08.data, p->output_current_08(), [this](float value) {
+        emit this->back_output_current_08Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_09.data, p->output_current_09(), [this](float value) {
+        emit this->back_output_current_09Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_10.data, p->output_current_10(), [this](float value) {
+        emit this->back_output_current_10Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_11.data, p->output_current_11(), [this](float value) {
+        emit this->back_output_current_11Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_12.data, p->output_current_12(), [this](float value) {
+        emit this->back_output_current_12Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_13.data, p->output_current_13(), [this](float value) {
+        emit this->back_output_current_13Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_14.data, p->output_current_14(), [this](float value) {
+        emit this->back_output_current_14Changed(value);
+     });
+     updateStates<float>(mStateData.back_output_current_15.data, p->output_current_15(), [this](float value) {
+        emit this->back_output_current_15Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_01.data, p->switch_01(), [this](qint8 value) {
+        emit this->back_switch_01Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_02.data, p->switch_02(), [this](qint8 value) {
+        emit this->back_switch_02Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_03.data, p->switch_03(), [this](qint8 value) {
+        emit this->back_switch_03Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_04.data, p->switch_04(), [this](qint8 value) {
+        emit this->back_switch_04Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_05.data, p->switch_05(), [this](qint8 value) {
+        emit this->back_switch_05Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_06.data, p->switch_06(), [this](qint8 value) {
+        emit this->back_switch_06Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_07.data, p->switch_07(), [this](qint8 value) {
+        emit this->back_switch_07Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_08.data, p->switch_08(), [this](qint8 value) {
+        emit this->back_switch_08Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_09.data, p->switch_09(), [this](qint8 value) {
+        emit this->back_switch_09Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_10.data, p->switch_10(), [this](qint8 value) {
+        emit this->back_switch_10Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_11.data, p->switch_11(), [this](qint8 value) {
+        emit this->back_switch_11Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_12.data, p->switch_12(), [this](qint8 value) {
+        emit this->back_switch_12Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_13.data, p->switch_13(), [this](qint8 value) {
+        emit this->back_switch_13Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_14.data, p->switch_14(), [this](qint8 value) {
+        emit this->back_switch_14Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_15.data, p->switch_15(), [this](qint8 value) {
+        emit this->back_switch_15Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_16.data, p->switch_16(), [this](qint8 value) {
+        emit this->back_switch_16Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_17.data, p->switch_17(), [this](qint8 value) {
+        emit this->back_switch_17Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_18.data, p->switch_18(), [this](qint8 value) {
+        emit this->back_switch_18Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_19.data, p->switch_19(), [this](qint8 value) {
+        emit this->back_switch_19Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_20.data, p->switch_20(), [this](qint8 value) {
+        emit this->back_switch_20Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_21.data, p->switch_21(), [this](qint8 value) {
+        emit this->back_switch_21Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_22.data, p->switch_22(), [this](qint8 value) {
+        emit this->back_switch_22Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_23.data, p->switch_23(), [this](qint8 value) {
+        emit this->back_switch_23Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_24.data, p->switch_24(), [this](qint8 value) {
+        emit this->back_switch_24Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_25.data, p->switch_25(), [this](qint8 value) {
+        emit this->back_switch_25Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_26.data, p->switch_26(), [this](qint8 value) {
+        emit this->back_switch_26Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_27.data, p->switch_27(), [this](qint8 value) {
+        emit this->back_switch_27Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_28.data, p->switch_28(), [this](qint8 value) {
+        emit this->back_switch_28Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_29.data, p->switch_29(), [this](qint8 value) {
+        emit this->back_switch_29Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_30.data, p->switch_30(), [this](qint8 value) {
+        emit this->back_switch_30Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_31.data, p->switch_31(), [this](qint8 value) {
+        emit this->back_switch_31Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_32.data, p->switch_32(), [this](qint8 value) {
+        emit this->back_switch_32Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_33.data, p->switch_33(), [this](qint8 value) {
+        emit this->back_switch_33Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_34.data, p->switch_34(), [this](qint8 value) {
+        emit this->back_switch_34Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_35.data, p->switch_35(), [this](qint8 value) {
+        emit this->back_switch_35Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_36.data, p->switch_36(), [this](qint8 value) {
+        emit this->back_switch_36Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_37.data, p->switch_37(), [this](qint8 value) {
+        emit this->back_switch_37Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_38.data, p->switch_38(), [this](qint8 value) {
+        emit this->back_switch_38Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_39.data, p->switch_39(), [this](qint8 value) {
+        emit this->back_switch_39Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_40.data, p->switch_40(), [this](qint8 value) {
+        emit this->back_switch_40Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_41.data, p->switch_41(), [this](qint8 value) {
+        emit this->back_switch_41Changed(value);
+     });
+     updateStates<qint8>(mStateData.back_switch_42.data, p->switch_42(), [this](qint8 value) {
+        emit this->back_switch_42Changed(value);
+     });
 }
 
 void CustomCarMsgWorker::handleProtoWarningFrameInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyWarningInfo::WarningFrame> p = carfox::down_pointer_cast<fyWarningInfo::WarningFrame>(msg);
+    updateStates<QString>(mStateData.warning_01.data, QString::fromStdString(p->warning_01()), [this](QString value) {
+       emit this->warning_01Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_02.data, QString::fromStdString(p->warning_02()), [this](QString value) {
+       emit this->warning_02Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_03.data, QString::fromStdString(p->warning_03()), [this](QString value) {
+       emit this->warning_03Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_04.data, QString::fromStdString(p->warning_04()), [this](QString value) {
+       emit this->warning_04Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_05.data, QString::fromStdString(p->warning_05()), [this](QString value) {
+       emit this->warning_05Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_06.data, QString::fromStdString(p->warning_06()), [this](QString value) {
+       emit this->warning_06Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_07.data, QString::fromStdString(p->warning_07()), [this](QString value) {
+       emit this->warning_07Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_08.data, QString::fromStdString(p->warning_08()), [this](QString value) {
+       emit this->warning_08Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_09.data, QString::fromStdString(p->warning_09()), [this](QString value) {
+       emit this->warning_09Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_10.data, QString::fromStdString(p->warning_10()), [this](QString value) {
+       emit this->warning_10Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_11.data, QString::fromStdString(p->warning_11()), [this](QString value) {
+       emit this->warning_11Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_12.data, QString::fromStdString(p->warning_12()), [this](QString value) {
+       emit this->warning_12Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_13.data, QString::fromStdString(p->warning_13()), [this](QString value) {
+       emit this->warning_13Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_14.data, QString::fromStdString(p->warning_14()), [this](QString value) {
+       emit this->warning_14Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_15.data, QString::fromStdString(p->warning_15()), [this](QString value) {
+       emit this->warning_15Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_16.data, QString::fromStdString(p->warning_16()), [this](QString value) {
+       emit this->warning_16Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_17.data, QString::fromStdString(p->warning_17()), [this](QString value) {
+       emit this->warning_17Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_18.data, QString::fromStdString(p->warning_18()), [this](QString value) {
+       emit this->warning_18Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_19.data, QString::fromStdString(p->warning_19()), [this](QString value) {
+       emit this->warning_19Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_20.data, QString::fromStdString(p->warning_20()), [this](QString value) {
+       emit this->warning_20Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_21.data, QString::fromStdString(p->warning_21()), [this](QString value) {
+       emit this->warning_21Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_22.data, QString::fromStdString(p->warning_22()), [this](QString value) {
+       emit this->warning_22Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_23.data, QString::fromStdString(p->warning_23()), [this](QString value) {
+       emit this->warning_23Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_24.data, QString::fromStdString(p->warning_24()), [this](QString value) {
+       emit this->warning_24Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_25.data, QString::fromStdString(p->warning_25()), [this](QString value) {
+       emit this->warning_25Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_26.data, QString::fromStdString(p->warning_26()), [this](QString value) {
+       emit this->warning_26Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_27.data, QString::fromStdString(p->warning_27()), [this](QString value) {
+       emit this->warning_27Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_28.data, QString::fromStdString(p->warning_28()), [this](QString value) {
+       emit this->warning_28Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_29.data, QString::fromStdString(p->warning_29()), [this](QString value) {
+       emit this->warning_29Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_30.data, QString::fromStdString(p->warning_30()), [this](QString value) {
+       emit this->warning_30Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_31.data, QString::fromStdString(p->warning_31()), [this](QString value) {
+       emit this->warning_31Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_32.data, QString::fromStdString(p->warning_32()), [this](QString value) {
+       emit this->warning_32Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_33.data, QString::fromStdString(p->warning_33()), [this](QString value) {
+       emit this->warning_33Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_34.data, QString::fromStdString(p->warning_34()), [this](QString value) {
+       emit this->warning_34Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_35.data, QString::fromStdString(p->warning_35()), [this](QString value) {
+       emit this->warning_35Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_36.data, QString::fromStdString(p->warning_36()), [this](QString value) {
+       emit this->warning_36Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_37.data, QString::fromStdString(p->warning_37()), [this](QString value) {
+       emit this->warning_37Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_38.data, QString::fromStdString(p->warning_38()), [this](QString value) {
+       emit this->warning_38Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_39.data, QString::fromStdString(p->warning_39()), [this](QString value) {
+       emit this->warning_39Changed(value);
+    });
+    updateStates<QString>(mStateData.warning_40.data, QString::fromStdString(p->warning_40()), [this](QString value) {
+       emit this->warning_40Changed(value);
+    });
 }
 
 void CustomCarMsgWorker::handleProtoControlSystemMenuInfo(const carfox::MessagePtr &msg) {
@@ -523,7 +1156,7 @@ void CustomCarMsgWorker::handleProtoSymbolLampMiscLampInfo(const carfox::Message
         emit this->lamp_acChanged(value);
     });
     updateStates<QString>(mStateData.power_supply.data, QString::fromStdString(p->power_supply()), [this](QString value) {
-        emit this->power_supplyChanged(value.toStdString());
+        emit this->power_supplyChanged(value);
     });
     updateStates<qint8>(mStateData.climbing_mode.data, p->climbing_mode(), [this](qint8 value) {
         emit this->climbing_modeChanged(value);
