@@ -80,6 +80,116 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::fmiChanged, this, &CustomCarMsg::updateFmi);
     connect(worker, &CustomCarMsgWorker::cmChanged, this, &CustomCarMsg::updateCm);
     connect(worker, &CustomCarMsgWorker::ocChanged, this, &CustomCarMsg::updateOc);
+
+    connect(worker, &CustomCarMsgWorker::bat_max_charge_currentChanged, this, &CustomCarMsg::updateBat_max_charge_current);
+    connect(worker, &CustomCarMsgWorker::bat_max_discharge_currentChanged, this, &CustomCarMsg::updateBat_max_discharge_current);
+    connect(worker, &CustomCarMsgWorker::bat_average_voltageChanged, this, &CustomCarMsg::updateBat_average_voltage);
+    connect(worker, &CustomCarMsgWorker::bat_status1Changed, this, &CustomCarMsg::updateBat_status1);
+    connect(worker, &CustomCarMsgWorker::bat_status2Changed, this, &CustomCarMsg::updateBat_status2);
+    connect(worker, &CustomCarMsgWorker::bat_status3Changed, this, &CustomCarMsg::updateBat_status3);
+    connect(worker, &CustomCarMsgWorker::irm_ohm_positiveChanged, this, &CustomCarMsg::updateIrm_ohm_positive);
+    connect(worker, &CustomCarMsgWorker::irm_ohm_negativeChanged, this, &CustomCarMsg::updateIrm_ohm_negative);
+    connect(worker, &CustomCarMsgWorker::bat_max_voltageChanged, this, &CustomCarMsg::updateBat_max_voltage);
+    connect(worker, &CustomCarMsgWorker::bat_min_voltageChanged, this, &CustomCarMsg::updateBat_min_voltage);
+    connect(worker, &CustomCarMsgWorker::battery_highest_tempChanged, this, &CustomCarMsg::updateBattery_highest_temp);
+
+    connect(worker, &CustomCarMsgWorker::ac_fault_codeChanged, this, &CustomCarMsg::updateAc_fault_code);
+    connect(worker, &CustomCarMsgWorker::ac_fan_statusChanged, this, &CustomCarMsg::updateAc_fan_status);
+    connect(worker, &CustomCarMsgWorker::ac_work_statusChanged, this, &CustomCarMsg::updateAc_work_status);
+    connect(worker, &CustomCarMsgWorker::ac_lifeChanged, this, &CustomCarMsg::updateAc_life);
+    connect(worker, &CustomCarMsgWorker::ac_out_tempChanged, this, &CustomCarMsg::updateAc_out_temp);
+    connect(worker, &CustomCarMsgWorker::ac_in_tempChanged, this, &CustomCarMsg::updateAc_in_temp);
+    connect(worker, &CustomCarMsgWorker::ac_set_tempChanged, this, &CustomCarMsg::updateAc_set_temp);
+    connect(worker, &CustomCarMsgWorker::ac_refrigere_reqChanged, this, &CustomCarMsg::updateAc_refrigere_req);
+
+    connect(worker, &CustomCarMsgWorker::input_ctrl_01Changed, this, &CustomCarMsg::updateInput_ctrl_01);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_02Changed, this, &CustomCarMsg::updateInput_ctrl_02);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_03Changed, this, &CustomCarMsg::updateInput_ctrl_03);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_04Changed, this, &CustomCarMsg::updateInput_ctrl_04);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_05Changed, this, &CustomCarMsg::updateInput_ctrl_05);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_06Changed, this, &CustomCarMsg::updateInput_ctrl_06);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_07Changed, this, &CustomCarMsg::updateInput_ctrl_07);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_08Changed, this, &CustomCarMsg::updateInput_ctrl_08);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_09Changed, this, &CustomCarMsg::updateInput_ctrl_09);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_10Changed, this, &CustomCarMsg::updateInput_ctrl_10);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_11Changed, this, &CustomCarMsg::updateInput_ctrl_11);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_12Changed, this, &CustomCarMsg::updateInput_ctrl_12);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_13Changed, this, &CustomCarMsg::updateInput_ctrl_13);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_14Changed, this, &CustomCarMsg::updateInput_ctrl_14);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_15Changed, this, &CustomCarMsg::updateInput_ctrl_15);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_16Changed, this, &CustomCarMsg::updateInput_ctrl_16);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_17Changed, this, &CustomCarMsg::updateInput_ctrl_17);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_18Changed, this, &CustomCarMsg::updateInput_ctrl_18);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_19Changed, this, &CustomCarMsg::updateInput_ctrl_19);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_20Changed, this, &CustomCarMsg::updateInput_ctrl_20);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_21Changed, this, &CustomCarMsg::updateInput_ctrl_21);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_22Changed, this, &CustomCarMsg::updateInput_ctrl_22);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_23Changed, this, &CustomCarMsg::updateInput_ctrl_23);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_24Changed, this, &CustomCarMsg::updateInput_ctrl_24);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_25Changed, this, &CustomCarMsg::updateInput_ctrl_25);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_26Changed, this, &CustomCarMsg::updateInput_ctrl_26);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_27Changed, this, &CustomCarMsg::updateInput_ctrl_27);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_28Changed, this, &CustomCarMsg::updateInput_ctrl_28);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_29Changed, this, &CustomCarMsg::updateInput_ctrl_29);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_30Changed, this, &CustomCarMsg::updateInput_ctrl_30);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_31Changed, this, &CustomCarMsg::updateInput_ctrl_31);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_32Changed, this, &CustomCarMsg::updateInput_ctrl_32);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_33Changed, this, &CustomCarMsg::updateInput_ctrl_33);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_34Changed, this, &CustomCarMsg::updateInput_ctrl_34);
+    connect(worker, &CustomCarMsgWorker::input_ctrl_35Changed, this, &CustomCarMsg::updateInput_ctrl_35);
+
+    connect(worker, &CustomCarMsgWorker::lamp_key_onChanged, this, &CustomCarMsg::updateLamp_key_on);
+    connect(worker, &CustomCarMsgWorker::lamp_air_filterChanged, this, &CustomCarMsg::updateLamp_air_filter);
+    connect(worker, &CustomCarMsgWorker::lamp_asrChanged, this, &CustomCarMsg::updateLamp_asr);
+    connect(worker, &CustomCarMsgWorker::lamp_high_voltage_maintenanceChanged, this, &CustomCarMsg::updateLamp_high_voltage_maintenance);
+    connect(worker, &CustomCarMsgWorker::lamp_defrosterChanged, this, &CustomCarMsg::updateLamp_defroster);
+    connect(worker, &CustomCarMsgWorker::lamp_dryereChanged, this, &CustomCarMsg::updateLamp_dryere);
+    connect(worker, &CustomCarMsgWorker::lamp_absChanged, this, &CustomCarMsg::updateLamp_abs);
+    connect(worker, &CustomCarMsgWorker::lamp_acChanged, this, &CustomCarMsg::updateLamp_ac);
+    connect(worker, &CustomCarMsgWorker::power_supplyChanged, this, &CustomCarMsg::updatePower_supply);
+    connect(worker, &CustomCarMsgWorker::climbing_modeChanged, this, &CustomCarMsg::updateClimbing_mode);
+    connect(worker, &CustomCarMsgWorker::diagnostic_modeChanged, this, &CustomCarMsg::updateDiagnostic_mode);
+
+    connect(worker, &CustomCarMsgWorker::lamp_turn_leftChanged, this, &CustomCarMsg::updateLamp_turn_left);
+    connect(worker, &CustomCarMsgWorker::lamp_turn_rightChanged, this, &CustomCarMsg::updateLamp_turn_right);
+
+    connect(worker, &CustomCarMsgWorker::lamp_double_flashChanged, this, &CustomCarMsg::updateLamp_double_flash);
+    connect(worker, &CustomCarMsgWorker::lamp_front_fogChanged, this, &CustomCarMsg::updateLamp_front_fog);
+    connect(worker, &CustomCarMsgWorker::lamp_rear_fogChanged, this, &CustomCarMsg::updateLamp_rear_fog);
+    connect(worker, &CustomCarMsgWorker::lamp_high_beamChanged, this, &CustomCarMsg::updateLamp_high_beam);
+    connect(worker, &CustomCarMsgWorker::lamp_head_lightChanged, this, &CustomCarMsg::updateLamp_head_light);
+    connect(worker, &CustomCarMsgWorker::lamp_reverse_gearChanged, this, &CustomCarMsg::updateLamp_reverse_gear);
+    connect(worker, &CustomCarMsgWorker::lamp_position_lightChanged, this, &CustomCarMsg::updateLamp_position_light);
+
+    connect(worker, &CustomCarMsgWorker::lamp_gate1Changed, this, &CustomCarMsg::updateLamp_gate1);
+    connect(worker, &CustomCarMsgWorker::lamp_gate2Changed, this, &CustomCarMsg::updateLamp_gate2);
+    connect(worker, &CustomCarMsgWorker::lamp_rear_door_openChanged, this, &CustomCarMsg::updateLamp_rear_door_open);
+
+    connect(worker, &CustomCarMsgWorker::lamp_brakeChanged, this, &CustomCarMsg::updateLamp_brake);
+    connect(worker, &CustomCarMsgWorker::lamp_parking_brakeChanged, this, &CustomCarMsg::updateLamp_parking_brake);
+
+    connect(worker, &CustomCarMsgWorker::lamp_left_low_air_pressureChanged, this, &CustomCarMsg::updateLamp_left_low_air_pressure);
+    connect(worker, &CustomCarMsgWorker::lamp_right_low_air_pressureChanged, this, &CustomCarMsg::updateLamp_right_low_air_pressure);
+
+    connect(worker, &CustomCarMsgWorker::lamp_left_shoe_wearChanged, this, &CustomCarMsg::updateLamp_left_shoe_wear);
+    connect(worker, &CustomCarMsgWorker::lamp_right_shoe_wearChanged, this, &CustomCarMsg::updateLamp_right_shoe_wear);
+
+    connect(worker, &CustomCarMsgWorker::lamp_charge_confirmChanged, this, &CustomCarMsg::updateLamp_charge_confirm);
+    connect(worker, &CustomCarMsgWorker::lamp_battery_main_contactChanged, this, &CustomCarMsg::updateLamp_battery_main_contact);
+
+    connect(worker, &CustomCarMsgWorker::lamp_water_temp_highChanged, this, &CustomCarMsg::updateLamp_water_temp_high);
+    connect(worker, &CustomCarMsgWorker::lamp_water_level_lowChanged, this, &CustomCarMsg::updateLamp_water_level_low);
+
+    connect(worker, &CustomCarMsgWorker::lamp_low_service_wlChanged, this, &CustomCarMsg::updateLamp_low_service_wl);
+    connect(worker, &CustomCarMsgWorker::lamp_heavy_stop_wlChanged, this, &CustomCarMsg::updateLamp_heavy_stop_wl);
+    connect(worker, &CustomCarMsgWorker::lamp_serious_stop_wlChanged, this, &CustomCarMsg::updateLamp_serious_stop_wl);
+
+    connect(worker, &CustomCarMsgWorker::lamp_oil_level_lowChanged, this, &CustomCarMsg::updateLamp_oil_level_low);
+    connect(worker, &CustomCarMsgWorker::lamp_oil_pressure_lowChanged, this, &CustomCarMsg::updateLamp_oil_pressure_low);
+    connect(worker, &CustomCarMsgWorker::lamp_engine_faultChanged, this, &CustomCarMsg::updateLamp_engine_fault);
+
+    connect(worker, &CustomCarMsgWorker::lamp_motor_out_of_serviceChanged, this, &CustomCarMsg::updateLamp_motor_out_of_service);
+    connect(worker, &CustomCarMsgWorker::lamp_moter_fire_igonChanged, this, &CustomCarMsg::updateLamp_moter_fire_igon);
 }
 
 void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
@@ -296,5 +406,396 @@ void CustomCarMsg::updateCm(int value) {
 
 void CustomCarMsg::updateOc(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(oc, value);
+}
+
+void CustomCarMsg::updateBat_max_charge_current(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_max_charge_current, value);
+}
+
+void CustomCarMsg::updateBat_max_discharge_current(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_max_discharge_current, value);
+}
+
+void CustomCarMsg::updateBat_average_voltage(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_average_voltage, value);
+}
+
+void CustomCarMsg::updateBat_status1(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_status1, value);
+}
+
+void CustomCarMsg::updateBat_status2(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_status2, value);
+}
+
+void CustomCarMsg::updateBat_status3(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_status3, value);
+}
+
+void CustomCarMsg::updateIrm_ohm_positive(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(irm_ohm_positive, value);
+}
+
+void CustomCarMsg::updateIrm_ohm_negative(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(irm_ohm_negative, value);
+}
+
+void CustomCarMsg::updateBat_max_voltage(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_max_voltage, value);
+}
+
+void CustomCarMsg::updateBat_min_voltage(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(bat_min_voltage, value);
+}
+
+void CustomCarMsg::updateBattery_highest_temp(float value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(battery_highest_temp, value);
+}
+
+void CustomCarMsg::updateAc_fault_code(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_fault_code, value);
+}
+
+void CustomCarMsg::updateAc_fan_status(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_fan_status, value);
+}
+
+void CustomCarMsg::updateAc_work_status(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_work_status, value);
+}
+
+void CustomCarMsg::updateAc_life(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_life, value);
+}
+
+void CustomCarMsg::updateAc_out_temp(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_out_temp, value);
+}
+
+void CustomCarMsg::updateAc_in_temp(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_in_temp, value);
+}
+
+void CustomCarMsg::updateAc_set_temp(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_set_temp, value);
+}
+
+void CustomCarMsg::updateAc_refrigere_req(uint value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(ac_refrigere_req, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_01(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_01, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_02(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_02, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_03(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_03, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_04(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_04, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_05(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_05, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_06(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_06, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_07(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_07, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_08(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_08, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_09(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_09, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_10(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_10, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_11(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_11, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_12(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_12, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_13(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_13, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_14(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_14, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_15(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_15, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_16(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_16, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_17(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_17, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_18(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_18, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_19(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_19, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_20(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_20, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_21(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_21, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_22(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_22, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_23(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_23, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_24(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_24, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_25(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_25, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_26(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_26, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_27(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_27, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_28(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_28, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_29(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_29, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_30(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_30, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_31(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_31, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_32(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_32, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_33(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_33, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_34(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_34, value);
+}
+
+void CustomCarMsg::updateInput_ctrl_35(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(input_ctrl_35, value);
+}
+
+void CustomCarMsg::updateLamp_key_on(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_key_on, value);
+}
+
+void CustomCarMsg::updateLamp_air_filter(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_air_filter, value);
+}
+
+void CustomCarMsg::updateLamp_asr(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_asr, value);
+}
+
+void CustomCarMsg::updateLamp_high_voltage_maintenance(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_high_voltage_maintenance, value);
+}
+
+void CustomCarMsg::updateLamp_defroster(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_defroster, value);
+}
+
+void CustomCarMsg::updateLamp_dryere(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_dryere, value);
+}
+
+void CustomCarMsg::updateLamp_abs(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_abs, value);
+}
+
+void CustomCarMsg::updateLamp_ac(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_ac, value);
+}
+
+void CustomCarMsg::updatePower_supply(string value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(power_supply, value);
+}
+
+void CustomCarMsg::updateClimbing_mode(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(climbing_mode, value);
+}
+
+void CustomCarMsg::updateDiagnostic_mode(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(diagnostic_mode, value);
+}
+
+
+void CustomCarMsg::updateLamp_turn_left(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_turn_left, value);
+}
+
+void CustomCarMsg::updateLamp_turn_right(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_turn_right, value);
+}
+
+
+void CustomCarMsg::updateLamp_double_flash(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_double_flash, value);
+}
+
+void CustomCarMsg::updateLamp_front_fog(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_front_fog, value);
+}
+
+void CustomCarMsg::updateLamp_rear_fog(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_rear_fog, value);
+}
+
+void CustomCarMsg::updateLamp_high_beam(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_high_beam, value);
+}
+
+void CustomCarMsg::updateLamp_head_light(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_head_light, value);
+}
+
+void CustomCarMsg::updateLamp_reverse_gear(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_reverse_gear, value);
+}
+
+void CustomCarMsg::updateLamp_position_light(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_position_light, value);
+}
+
+
+void CustomCarMsg::updateLamp_gate1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_gate1, value);
+}
+
+void CustomCarMsg::updateLamp_gate2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_gate2, value);
+}
+
+void CustomCarMsg::updateLamp_rear_door_open(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_rear_door_open, value);
+}
+
+
+void CustomCarMsg::updateLamp_brake(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_brake, value);
+}
+
+void CustomCarMsg::updateLamp_parking_brake(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_parking_brake, value);
+}
+
+
+void CustomCarMsg::updateLamp_left_low_air_pressure(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_left_low_air_pressure, value);
+}
+
+void CustomCarMsg::updateLamp_right_low_air_pressure(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_right_low_air_pressure, value);
+}
+
+
+void CustomCarMsg::updateLamp_left_shoe_wear(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_left_shoe_wear, value);
+}
+
+void CustomCarMsg::updateLamp_right_shoe_wear(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_right_shoe_wear, value);
+}
+
+
+void CustomCarMsg::updateLamp_charge_confirm(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_charge_confirm, value);
+}
+
+void CustomCarMsg::updateLamp_battery_main_contact(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_battery_main_contact, value);
+}
+
+
+void CustomCarMsg::updateLamp_water_temp_high(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_water_temp_high, value);
+}
+
+void CustomCarMsg::updateLamp_water_level_low(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_water_level_low, value);
+}
+
+
+void CustomCarMsg::updateLamp_low_service_wl(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_low_service_wl, value);
+}
+
+void CustomCarMsg::updateLamp_heavy_stop_wl(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_heavy_stop_wl, value);
+}
+
+void CustomCarMsg::updateLamp_serious_stop_wl(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_serious_stop_wl, value);
+}
+
+
+void CustomCarMsg::updateLamp_oil_level_low(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_oil_level_low, value);
+}
+
+void CustomCarMsg::updateLamp_oil_pressure_low(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_oil_pressure_low, value);
+}
+
+void CustomCarMsg::updateLamp_engine_fault(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_engine_fault, value);
+}
+
+
+void CustomCarMsg::updateLamp_motor_out_of_service(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_motor_out_of_service, value);
+}
+
+void CustomCarMsg::updateLamp_moter_fire_igon(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lamp_moter_fire_igon, value);
 }
 
