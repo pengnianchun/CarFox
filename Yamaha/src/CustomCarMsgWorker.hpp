@@ -171,7 +171,7 @@ signals:
     void lamp_dryereChanged(int value);
     void lamp_absChanged(int value);
     void lamp_acChanged(int value);
-    void power_supplyChanged(string value);
+    void power_supplyChanged(QString value);
     void climbing_modeChanged(int value);
     void diagnostic_modeChanged(int value);
 
@@ -215,6 +215,236 @@ signals:
 
     void lamp_motor_out_of_serviceChanged(int value);
     void lamp_moter_fire_igonChanged(int value);
+
+    void front_output_current_01Changed(float value);
+    void front_output_current_02Changed(float value);
+    void front_output_current_03Changed(float value);
+    void front_output_current_04Changed(float value);
+    void front_output_current_05Changed(float value);
+
+    void front_output_current_06Changed(float value);
+    void front_output_current_07Changed(float value);
+    void front_output_current_08Changed(float value);
+    void front_output_current_09Changed(float value);
+    void front_output_current_10Changed(float value);
+
+    void front_output_current_11Changed(float value);
+    void front_output_current_12Changed(float value);
+    void front_output_current_13Changed(float value);
+    void front_output_current_14Changed(float value);
+    void front_output_current_15Changed(float value);
+
+    void front_switch_01Changed(int value);
+    void front_switch_02Changed(int value);
+    void front_switch_03Changed(int value);
+    void front_switch_04Changed(int value);
+    void front_switch_05Changed(int value);
+    void front_switch_06Changed(int value);
+    void front_switch_07Changed(int value);
+    void front_switch_08Changed(int value);
+    void front_switch_09Changed(int value);
+    void front_switch_10Changed(int value);
+    void front_switch_11Changed(int value);
+    void front_switch_12Changed(int value);
+    void front_switch_13Changed(int value);
+    void front_switch_14Changed(int value);
+    void front_switch_15Changed(int value);
+    void front_switch_16Changed(int value);
+
+    void front_switch_17Changed(int value);
+    void front_switch_18Changed(int value);
+    void front_switch_19Changed(int value);
+    void front_switch_20Changed(int value);
+    void front_switch_21Changed(int value);
+    void front_switch_22Changed(int value);
+    void front_switch_23Changed(int value);
+    void front_switch_24Changed(int value);
+    void front_switch_25Changed(int value);
+    void front_switch_26Changed(int value);
+    void front_switch_27Changed(int value);
+    void front_switch_28Changed(int value);
+    void front_switch_29Changed(int value);
+    void front_switch_30Changed(int value);
+    void front_switch_31Changed(int value);
+    void front_switch_32Changed(int value);
+
+    void front_switch_33Changed(int value);
+    void front_switch_34Changed(int value);
+    void front_switch_35Changed(int value);
+    void front_switch_36Changed(int value);
+    void front_switch_37Changed(int value);
+    void front_switch_38Changed(int value);
+    void front_switch_39Changed(int value);
+    void front_switch_40Changed(int value);
+    void front_switch_41Changed(int value);
+    void front_switch_42Changed(int value);
+
+    void middle_output_current_01Changed(float value);
+    void middle_output_current_02Changed(float value);
+    void middle_output_current_03Changed(float value);
+    void middle_output_current_04Changed(float value);
+    void middle_output_current_05Changed(float value);
+
+    void middle_output_current_06Changed(float value);
+    void middle_output_current_07Changed(float value);
+    void middle_output_current_08Changed(float value);
+    void middle_output_current_09Changed(float value);
+    void middle_output_current_10Changed(float value);
+
+    void middle_output_current_11Changed(float value);
+    void middle_output_current_12Changed(float value);
+    void middle_output_current_13Changed(float value);
+    void middle_output_current_14Changed(float value);
+    void middle_output_current_15Changed(float value);
+
+    void middle_switch_01Changed(int value);
+    void middle_switch_02Changed(int value);
+    void middle_switch_03Changed(int value);
+    void middle_switch_04Changed(int value);
+    void middle_switch_05Changed(int value);
+    void middle_switch_06Changed(int value);
+    void middle_switch_07Changed(int value);
+    void middle_switch_08Changed(int value);
+    void middle_switch_09Changed(int value);
+    void middle_switch_10Changed(int value);
+    void middle_switch_11Changed(int value);
+    void middle_switch_12Changed(int value);
+    void middle_switch_13Changed(int value);
+    void middle_switch_14Changed(int value);
+    void middle_switch_15Changed(int value);
+    void middle_switch_16Changed(int value);
+
+    void middle_switch_17Changed(int value);
+    void middle_switch_18Changed(int value);
+    void middle_switch_19Changed(int value);
+    void middle_switch_20Changed(int value);
+    void middle_switch_21Changed(int value);
+    void middle_switch_22Changed(int value);
+    void middle_switch_23Changed(int value);
+    void middle_switch_24Changed(int value);
+    void middle_switch_25Changed(int value);
+    void middle_switch_26Changed(int value);
+    void middle_switch_27Changed(int value);
+    void middle_switch_28Changed(int value);
+    void middle_switch_29Changed(int value);
+    void middle_switch_30Changed(int value);
+    void middle_switch_31Changed(int value);
+    void middle_switch_32Changed(int value);
+
+    void middle_switch_33Changed(int value);
+    void middle_switch_34Changed(int value);
+    void middle_switch_35Changed(int value);
+    void middle_switch_36Changed(int value);
+    void middle_switch_37Changed(int value);
+    void middle_switch_38Changed(int value);
+    void middle_switch_39Changed(int value);
+    void middle_switch_40Changed(int value);
+    void middle_switch_41Changed(int value);
+    void middle_switch_42Changed(int value);
+
+    void back_output_current_01Changed(float value);
+    void back_output_current_02Changed(float value);
+    void back_output_current_03Changed(float value);
+    void back_output_current_04Changed(float value);
+    void back_output_current_05Changed(float value);
+
+    void back_output_current_06Changed(float value);
+    void back_output_current_07Changed(float value);
+    void back_output_current_08Changed(float value);
+    void back_output_current_09Changed(float value);
+    void back_output_current_10Changed(float value);
+
+    void back_output_current_11Changed(float value);
+    void back_output_current_12Changed(float value);
+    void back_output_current_13Changed(float value);
+    void back_output_current_14Changed(float value);
+    void back_output_current_15Changed(float value);
+
+    void back_switch_01Changed(int value);
+    void back_switch_02Changed(int value);
+    void back_switch_03Changed(int value);
+    void back_switch_04Changed(int value);
+    void back_switch_05Changed(int value);
+    void back_switch_06Changed(int value);
+    void back_switch_07Changed(int value);
+    void back_switch_08Changed(int value);
+    void back_switch_09Changed(int value);
+    void back_switch_10Changed(int value);
+    void back_switch_11Changed(int value);
+    void back_switch_12Changed(int value);
+    void back_switch_13Changed(int value);
+    void back_switch_14Changed(int value);
+    void back_switch_15Changed(int value);
+    void back_switch_16Changed(int value);
+
+    void back_switch_17Changed(int value);
+    void back_switch_18Changed(int value);
+    void back_switch_19Changed(int value);
+    void back_switch_20Changed(int value);
+    void back_switch_21Changed(int value);
+    void back_switch_22Changed(int value);
+    void back_switch_23Changed(int value);
+    void back_switch_24Changed(int value);
+    void back_switch_25Changed(int value);
+    void back_switch_26Changed(int value);
+    void back_switch_27Changed(int value);
+    void back_switch_28Changed(int value);
+    void back_switch_29Changed(int value);
+    void back_switch_30Changed(int value);
+    void back_switch_31Changed(int value);
+    void back_switch_32Changed(int value);
+
+    void back_switch_33Changed(int value);
+    void back_switch_34Changed(int value);
+    void back_switch_35Changed(int value);
+    void back_switch_36Changed(int value);
+    void back_switch_37Changed(int value);
+    void back_switch_38Changed(int value);
+    void back_switch_39Changed(int value);
+    void back_switch_40Changed(int value);
+    void back_switch_41Changed(int value);
+    void back_switch_42Changed(int value);
+
+    void warning_01Changed(QString value);
+    void warning_02Changed(QString value);
+    void warning_03Changed(QString value);
+    void warning_04Changed(QString value);
+    void warning_05Changed(QString value);
+    void warning_06Changed(QString value);
+    void warning_07Changed(QString value);
+    void warning_08Changed(QString value);
+    void warning_09Changed(QString value);
+    void warning_10Changed(QString value);
+    void warning_11Changed(QString value);
+    void warning_12Changed(QString value);
+    void warning_13Changed(QString value);
+    void warning_14Changed(QString value);
+    void warning_15Changed(QString value);
+    void warning_16Changed(QString value);
+    void warning_17Changed(QString value);
+    void warning_18Changed(QString value);
+    void warning_19Changed(QString value);
+    void warning_20Changed(QString value);
+    void warning_21Changed(QString value);
+    void warning_22Changed(QString value);
+    void warning_23Changed(QString value);
+    void warning_24Changed(QString value);
+    void warning_25Changed(QString value);
+    void warning_26Changed(QString value);
+    void warning_27Changed(QString value);
+    void warning_28Changed(QString value);
+    void warning_29Changed(QString value);
+    void warning_30Changed(QString value);
+    void warning_31Changed(QString value);
+    void warning_32Changed(QString value);
+    void warning_33Changed(QString value);
+    void warning_34Changed(QString value);
+    void warning_35Changed(QString value);
+    void warning_36Changed(QString value);
+    void warning_37Changed(QString value);
+    void warning_38Changed(QString value);
+    void warning_39Changed(QString value);
+    void warning_40Changed(QString value);
 
 protected:
      virtual void registerCallback();

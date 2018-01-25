@@ -181,6 +181,241 @@ struct CarMsgWorkerStateData {
 
     carfox::CarMsgData<qint8> lamp_motor_out_of_service = carfox::CarMsgData<qint8>(-1);       //24V发电机未工作
     carfox::CarMsgData<qint8> lamp_moter_fire_igon = carfox::CarMsgData<qint8>(-1);            //发电机点火指示
+
+    //前模块
+    carfox::CarMsgData<float> front_output_current_01 = carfox::CarMsgData<float>(-1); //雨刮快档电机
+    carfox::CarMsgData<float> front_output_current_02 = carfox::CarMsgData<float>(-1); //雨刮慢档电机
+    carfox::CarMsgData<float> front_output_current_03 = carfox::CarMsgData<float>(-1); //喷水电机
+    carfox::CarMsgData<float> front_output_current_04 = carfox::CarMsgData<float>(-1); //左前雾灯
+    carfox::CarMsgData<float> front_output_current_05 = carfox::CarMsgData<float>(-1); //倒车灯
+
+    carfox::CarMsgData<float> front_output_current_06 = carfox::CarMsgData<float>(-1); //右转向灯
+    carfox::CarMsgData<float> front_output_current_07 = carfox::CarMsgData<float>(-1); //左转相灯
+    carfox::CarMsgData<float> front_output_current_08 = carfox::CarMsgData<float>(-1); //液位显示电源
+    carfox::CarMsgData<float> front_output_current_09 = carfox::CarMsgData<float>(-1); //左远光灯
+    carfox::CarMsgData<float> front_output_current_10 = carfox::CarMsgData<float>(-1); //右前雾灯
+
+    carfox::CarMsgData<float> front_output_current_11 = carfox::CarMsgData<float>(-1); //右远光灯
+    carfox::CarMsgData<float> front_output_current_12 = carfox::CarMsgData<float>(-1); //行车记录仪电源
+    carfox::CarMsgData<float> front_output_current_13 = carfox::CarMsgData<float>(-1); //左近光灯
+    carfox::CarMsgData<float> front_output_current_14 = carfox::CarMsgData<float>(-1); //位置灯
+    carfox::CarMsgData<float> front_output_current_15 = carfox::CarMsgData<float>(-1); //右近光灯
+
+    carfox::CarMsgData<qint8> front_switch_01 = carfox::CarMsgData<qint8>(-1);         //雨刮快档电机
+    carfox::CarMsgData<qint8> front_switch_02 = carfox::CarMsgData<qint8>(-1);         //雨刮慢档电机
+    carfox::CarMsgData<qint8> front_switch_03 = carfox::CarMsgData<qint8>(-1);         //喷水电机
+    carfox::CarMsgData<qint8> front_switch_04 = carfox::CarMsgData<qint8>(-1);         //左前雾灯
+    carfox::CarMsgData<qint8> front_switch_05 = carfox::CarMsgData<qint8>(-1);         //倒车灯
+    carfox::CarMsgData<qint8> front_switch_06 = carfox::CarMsgData<qint8>(-1);         //右转向灯
+    carfox::CarMsgData<qint8> front_switch_07 = carfox::CarMsgData<qint8>(-1);         //左转相灯
+    carfox::CarMsgData<qint8> front_switch_08 = carfox::CarMsgData<qint8>(-1);         //液位显示电源
+    carfox::CarMsgData<qint8> front_switch_09 = carfox::CarMsgData<qint8>(-1);         //左远光灯
+    carfox::CarMsgData<qint8> front_switch_10 = carfox::CarMsgData<qint8>(-1);         //右前雾灯
+    carfox::CarMsgData<qint8> front_switch_11 = carfox::CarMsgData<qint8>(-1);         //右远光灯
+    carfox::CarMsgData<qint8> front_switch_12 = carfox::CarMsgData<qint8>(-1);         //行车记录仪电源
+    carfox::CarMsgData<qint8> front_switch_13 = carfox::CarMsgData<qint8>(-1);         //左近光灯
+    carfox::CarMsgData<qint8> front_switch_14 = carfox::CarMsgData<qint8>(-1);         //位置灯
+    carfox::CarMsgData<qint8> front_switch_15 = carfox::CarMsgData<qint8>(-1);         //右近光灯
+    carfox::CarMsgData<qint8> front_switch_16 = carfox::CarMsgData<qint8>(-1);         //备用
+
+    carfox::CarMsgData<qint8> front_switch_17 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_18 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_19 = carfox::CarMsgData<qint8>(-1);         //左前摩擦片报警开关
+    carfox::CarMsgData<qint8> front_switch_20 = carfox::CarMsgData<qint8>(-1);         //右前摩擦片报警开关
+    carfox::CarMsgData<qint8> front_switch_21 = carfox::CarMsgData<qint8>(-1);         //制动灯开关
+    carfox::CarMsgData<qint8> front_switch_22 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_23 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_24 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_25 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_26 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_27 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_28 = carfox::CarMsgData<qint8>(-1);         //地址选择1
+    carfox::CarMsgData<qint8> front_switch_29 = carfox::CarMsgData<qint8>(-1);         //地址选择2
+    carfox::CarMsgData<qint8> front_switch_30 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_31 = carfox::CarMsgData<qint8>(-1);         //倒车灯开关
+    carfox::CarMsgData<qint8> front_switch_32 = carfox::CarMsgData<qint8>(-1);         //备用
+
+    carfox::CarMsgData<qint8> front_switch_33 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_34 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_35 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_36 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_37 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_38 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_39 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_40 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_41 = carfox::CarMsgData<qint8>(-1);         //备用
+    carfox::CarMsgData<qint8> front_switch_42 = carfox::CarMsgData<qint8>(-1);         //备用
+
+    //中模块
+    carfox::CarMsgData<float> middle_output_current_01 = carfox::CarMsgData<float>(-1);   //广告灯箱
+    carfox::CarMsgData<float> middle_output_current_02 = carfox::CarMsgData<float>(-1);   //右转向灯
+    carfox::CarMsgData<float> middle_output_current_03 = carfox::CarMsgData<float>(-1);   //车内指示灯电源
+    carfox::CarMsgData<float> middle_output_current_04 = carfox::CarMsgData<float>(-1);   //制动灯
+    carfox::CarMsgData<float> middle_output_current_05 = carfox::CarMsgData<float>(-1);   //前门开门电磁阀
+
+    carfox::CarMsgData<float> middle_output_current_06 = carfox::CarMsgData<float>(-1);   //前路牌
+    carfox::CarMsgData<float> middle_output_current_07 = carfox::CarMsgData<float>(-1);   //前门关门电磁阀
+    carfox::CarMsgData<float> middle_output_current_08 = carfox::CarMsgData<float>(-1);   //侧路牌
+    carfox::CarMsgData<float> middle_output_current_09 = carfox::CarMsgData<float>(-1);   //中门开门电磁阀
+    carfox::CarMsgData<float> middle_output_current_10 = carfox::CarMsgData<float>(-1);   //后路牌
+
+    carfox::CarMsgData<float> middle_output_current_11 = carfox::CarMsgData<float>(-1);   //中门关门电磁阀
+    carfox::CarMsgData<float> middle_output_current_12 = carfox::CarMsgData<float>(-1);   //电子滚动屏
+    carfox::CarMsgData<float> middle_output_current_13 = carfox::CarMsgData<float>(-1);   //小灯电源
+    carfox::CarMsgData<float> middle_output_current_14 = carfox::CarMsgData<float>(-1);   //后广告屏
+    carfox::CarMsgData<float> middle_output_current_15 = carfox::CarMsgData<float>(-1);   //左转向灯
+
+    carfox::CarMsgData<qint8> middle_switch_01 = carfox::CarMsgData<qint8>(-1);          //广告灯箱
+    carfox::CarMsgData<qint8> middle_switch_02 = carfox::CarMsgData<qint8>(-1);          //右转向灯
+    carfox::CarMsgData<qint8> middle_switch_03 = carfox::CarMsgData<qint8>(-1);          //车内指示灯电源
+    carfox::CarMsgData<qint8> middle_switch_04 = carfox::CarMsgData<qint8>(-1);          //制动灯
+    carfox::CarMsgData<qint8> middle_switch_05 = carfox::CarMsgData<qint8>(-1);          //前门开门电磁阀
+    carfox::CarMsgData<qint8> middle_switch_06 = carfox::CarMsgData<qint8>(-1);          //前路牌
+    carfox::CarMsgData<qint8> middle_switch_07 = carfox::CarMsgData<qint8>(-1);          //前门关门电磁阀
+    carfox::CarMsgData<qint8> middle_switch_08 = carfox::CarMsgData<qint8>(-1);          //侧路牌
+    carfox::CarMsgData<qint8> middle_switch_09 = carfox::CarMsgData<qint8>(-1);          //中门开门电磁阀
+    carfox::CarMsgData<qint8> middle_switch_10 = carfox::CarMsgData<qint8>(-1);          //后路牌
+    carfox::CarMsgData<qint8> middle_switch_11 = carfox::CarMsgData<qint8>(-1);          //中门关门电磁阀
+    carfox::CarMsgData<qint8> middle_switch_12 = carfox::CarMsgData<qint8>(-1);          //电子滚动屏
+    carfox::CarMsgData<qint8> middle_switch_13 = carfox::CarMsgData<qint8>(-1);          //小灯电源
+    carfox::CarMsgData<qint8> middle_switch_14 = carfox::CarMsgData<qint8>(-1);          //后广告屏
+    carfox::CarMsgData<qint8> middle_switch_15 = carfox::CarMsgData<qint8>(-1);          //左转向灯
+    carfox::CarMsgData<qint8> middle_switch_16 = carfox::CarMsgData<qint8>(-1);          //备用
+
+    carfox::CarMsgData<qint8> middle_switch_17 = carfox::CarMsgData<qint8>(-1);          //门铃开关
+    carfox::CarMsgData<qint8> middle_switch_18 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_19 = carfox::CarMsgData<qint8>(-1);          //应急阀开启报警
+    carfox::CarMsgData<qint8> middle_switch_20 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_21 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_22 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_23 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_24 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_25 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_26 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_27 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_28 = carfox::CarMsgData<qint8>(-1);          //地址选择1
+    carfox::CarMsgData<qint8> middle_switch_29 = carfox::CarMsgData<qint8>(-1);          //地址选择2
+    carfox::CarMsgData<qint8> middle_switch_30 = carfox::CarMsgData<qint8>(-1);          //前门踏步灯开关
+    carfox::CarMsgData<qint8> middle_switch_31 = carfox::CarMsgData<qint8>(-1);          //中门踏步灯开关
+    carfox::CarMsgData<qint8> middle_switch_32 = carfox::CarMsgData<qint8>(-1);          //备用
+
+    carfox::CarMsgData<qint8> middle_switch_33 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_34 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_35 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_36 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_37 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_38 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_39 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_40 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_41 = carfox::CarMsgData<qint8>(-1);          //备用
+    carfox::CarMsgData<qint8> middle_switch_42 = carfox::CarMsgData<qint8>(-1);          //备用
+
+
+    //后模块
+    carfox::CarMsgData<float> back_output_current_01 = carfox::CarMsgData<float>(-1);    //制动灯
+    carfox::CarMsgData<float> back_output_current_02 = carfox::CarMsgData<float>(-1);    //备用
+    carfox::CarMsgData<float> back_output_current_03 = carfox::CarMsgData<float>(-1);    //后雾灯
+    carfox::CarMsgData<float> back_output_current_04 = carfox::CarMsgData<float>(-1);    //备用
+    carfox::CarMsgData<float> back_output_current_05 = carfox::CarMsgData<float>(-1);    //左转向灯
+
+    carfox::CarMsgData<float> back_output_current_06 = carfox::CarMsgData<float>(-1);    //备用
+    carfox::CarMsgData<float> back_output_current_07 = carfox::CarMsgData<float>(-1);    //右转向灯
+    carfox::CarMsgData<float> back_output_current_08 = carfox::CarMsgData<float>(-1);    //干燥器电源
+    carfox::CarMsgData<float> back_output_current_09 = carfox::CarMsgData<float>(-1);    //倒车灯
+    carfox::CarMsgData<float> back_output_current_10 = carfox::CarMsgData<float>(-1);    //备用
+
+    carfox::CarMsgData<float> back_output_current_11 = carfox::CarMsgData<float>(-1);    //前门踏步灯
+    carfox::CarMsgData<float> back_output_current_12 = carfox::CarMsgData<float>(-1);    //位置灯
+    carfox::CarMsgData<float> back_output_current_13 = carfox::CarMsgData<float>(-1);    //中门踏步灯
+    carfox::CarMsgData<float> back_output_current_14 = carfox::CarMsgData<float>(-1);    //备用
+    carfox::CarMsgData<float> back_output_current_15 = carfox::CarMsgData<float>(-1);    //备用
+
+    carfox::CarMsgData<qint8> back_switch_01 = carfox::CarMsgData<qint8>(-1);           //制动灯
+    carfox::CarMsgData<qint8> back_switch_02 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_03 = carfox::CarMsgData<qint8>(-1);           //后雾灯
+    carfox::CarMsgData<qint8> back_switch_04 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_05 = carfox::CarMsgData<qint8>(-1);           //左转向灯
+    carfox::CarMsgData<qint8> back_switch_06 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_07 = carfox::CarMsgData<qint8>(-1);           //右转向灯
+    carfox::CarMsgData<qint8> back_switch_08 = carfox::CarMsgData<qint8>(-1);           //干燥器电源
+    carfox::CarMsgData<qint8> back_switch_09 = carfox::CarMsgData<qint8>(-1);           //倒车灯
+    carfox::CarMsgData<qint8> back_switch_10 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_11 = carfox::CarMsgData<qint8>(-1);           //前门踏步灯
+    carfox::CarMsgData<qint8> back_switch_12 = carfox::CarMsgData<qint8>(-1);           //位置灯
+    carfox::CarMsgData<qint8> back_switch_13 = carfox::CarMsgData<qint8>(-1);           //中门踏步灯
+    carfox::CarMsgData<qint8> back_switch_14 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_15 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_16 = carfox::CarMsgData<qint8>(-1);           //水位传感器开关
+
+    carfox::CarMsgData<qint8> back_switch_17 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_18 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_19 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_20 = carfox::CarMsgData<qint8>(-1);           //空滤阻塞报警开关
+    carfox::CarMsgData<qint8> back_switch_21 = carfox::CarMsgData<qint8>(-1);           //制动灯开关
+    carfox::CarMsgData<qint8> back_switch_22 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_23 = carfox::CarMsgData<qint8>(-1);           //驻车制动开关
+    carfox::CarMsgData<qint8> back_switch_24 = carfox::CarMsgData<qint8>(-1);           //水温报警开关
+    carfox::CarMsgData<qint8> back_switch_25 = carfox::CarMsgData<qint8>(-1);           //低气压1报警开关
+    carfox::CarMsgData<qint8> back_switch_26 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_27 = carfox::CarMsgData<qint8>(-1);           //低气压2报警开关
+    carfox::CarMsgData<qint8> back_switch_28 = carfox::CarMsgData<qint8>(-1);           //地址开关1
+    carfox::CarMsgData<qint8> back_switch_29 = carfox::CarMsgData<qint8>(-1);           //地址开关2
+    carfox::CarMsgData<qint8> back_switch_30 = carfox::CarMsgData<qint8>(-1);           //后舱门开关
+    carfox::CarMsgData<qint8> back_switch_31 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_32 = carfox::CarMsgData<qint8>(-1);           //备用
+
+    carfox::CarMsgData<qint8> back_switch_33 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_34 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_35 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_36 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_37 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_38 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_39 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_40 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_41 = carfox::CarMsgData<qint8>(-1);           //备用
+    carfox::CarMsgData<qint8> back_switch_42 = carfox::CarMsgData<qint8>(-1);           //备用
+
+    //警告提示
+    carfox::CarMsgData<QString> warning_01 = carfox::CarMsgData<QString>("");     //水位低报警
+    carfox::CarMsgData<QString> warning_02 = carfox::CarMsgData<QString>("");     //左气压低报警
+    carfox::CarMsgData<QString> warning_03 = carfox::CarMsgData<QString>("");     //右气压低报警
+    carfox::CarMsgData<QString> warning_04 = carfox::CarMsgData<QString>("");     //水温传感器报警
+    carfox::CarMsgData<QString> warning_05 = carfox::CarMsgData<QString>("");     //油量传感器报警
+    carfox::CarMsgData<QString> warning_06 = carfox::CarMsgData<QString>("");     //机油压力传感器报警
+    carfox::CarMsgData<QString> warning_07 = carfox::CarMsgData<QString>("");     //电池电压传感器报警
+    carfox::CarMsgData<QString> warning_08 = carfox::CarMsgData<QString>("");     //气压一传感器报警
+    carfox::CarMsgData<QString> warning_09 = carfox::CarMsgData<QString>("");     //气压二传感器报警
+    carfox::CarMsgData<QString> warning_10 = carfox::CarMsgData<QString>("");     //J1939通信故障
+    carfox::CarMsgData<QString> warning_11 = carfox::CarMsgData<QString>("");     //机油压力低，油量低报警
+    carfox::CarMsgData<QString> warning_12 = carfox::CarMsgData<QString>("");     //左刹车蹄片报警
+    carfox::CarMsgData<QString> warning_13 = carfox::CarMsgData<QString>("");     //右刹车蹄片报警
+    carfox::CarMsgData<QString> warning_14 = carfox::CarMsgData<QString>("");     //空滤报警
+    carfox::CarMsgData<QString> warning_15 = carfox::CarMsgData<QString>("");     //后处理故障
+    carfox::CarMsgData<QString> warning_16 = carfox::CarMsgData<QString>("");     //水温信息丢失
+    carfox::CarMsgData<QString> warning_17 = carfox::CarMsgData<QString>("");     //机油压力数据丢失
+    carfox::CarMsgData<QString> warning_18 = carfox::CarMsgData<QString>("");     //总线通信故障
+    carfox::CarMsgData<QString> warning_19 = carfox::CarMsgData<QString>("");     //单体模块电压过高
+    carfox::CarMsgData<QString> warning_20 = carfox::CarMsgData<QString>("");     //单体模块电压过低
+    carfox::CarMsgData<QString> warning_21 = carfox::CarMsgData<QString>("");     //SOC过高
+    carfox::CarMsgData<QString> warning_22 = carfox::CarMsgData<QString>("");     //SOC过低
+    carfox::CarMsgData<QString> warning_23 = carfox::CarMsgData<QString>("");     //内部通讯失败
+    carfox::CarMsgData<QString> warning_24 = carfox::CarMsgData<QString>("");     //总电压欠压
+    carfox::CarMsgData<QString> warning_25 = carfox::CarMsgData<QString>("");     //总电压过压
+    carfox::CarMsgData<QString> warning_26 = carfox::CarMsgData<QString>("");     //电池不均衡故障
+    carfox::CarMsgData<QString> warning_27 = carfox::CarMsgData<QString>("");     //电池热失控
+    carfox::CarMsgData<QString> warning_28 = carfox::CarMsgData<QString>("");     //DCDC故障报警（1故障，0正常）
+    carfox::CarMsgData<QString> warning_29 = carfox::CarMsgData<QString>("");     //绝缘报警
+    carfox::CarMsgData<QString> warning_30 = carfox::CarMsgData<QString>("");     //放电电流过大
+    carfox::CarMsgData<QString> warning_31 = carfox::CarMsgData<QString>("");     //充电电流过大
+    carfox::CarMsgData<QString> warning_32 = carfox::CarMsgData<QString>("");     //温度过高
+    carfox::CarMsgData<QString> warning_33 = carfox::CarMsgData<QString>("");     //温度报警
+    carfox::CarMsgData<QString> warning_34 = carfox::CarMsgData<QString>("");     //温度差过大
+    carfox::CarMsgData<QString> warning_35 = carfox::CarMsgData<QString>("");     //内部接触器信号
+    carfox::CarMsgData<QString> warning_36 = carfox::CarMsgData<QString>("");     //有内阻偏大电池
+    carfox::CarMsgData<QString> warning_37 = carfox::CarMsgData<QString>("");     //有容量偏小电池
+    carfox::CarMsgData<QString> warning_38 = carfox::CarMsgData<QString>("");     //水温高报警
+    carfox::CarMsgData<QString> warning_39 = carfox::CarMsgData<QString>("");     //油量低报警
+    carfox::CarMsgData<QString> warning_40 = carfox::CarMsgData<QString>("");     //保留
 };
 
 struct CarMSgWorkerSignalData {

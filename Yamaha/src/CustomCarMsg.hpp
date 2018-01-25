@@ -141,7 +141,7 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(int, lamp_dryere, 0)                     //干燥器
     MEMBER_PROPERTY_WITH_NOTIFY(int, lamp_abs, 0)                        //ABS指示
     MEMBER_PROPERTY_WITH_NOTIFY(int, lamp_ac, 0)                         //AC空调指示
-    MEMBER_PROPERTY_WITH_NOTIFY(string, power_supply, "")                //Power模式符号片(纯电动模式 or 混动模式 or 插电模式)
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, power_supply, "")               //Power模式符号片(纯电动模式 or 混动模式 or 插电模式)
     MEMBER_PROPERTY_WITH_NOTIFY(int, climbing_mode, 0)                   //爬坡模式符号片
     MEMBER_PROPERTY_WITH_NOTIFY(int, diagnostic_mode, 0)                 //诊断模式符号片
 
@@ -186,6 +186,240 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(int, lamp_motor_out_of_service, 0)       //24V发电机未工作
     MEMBER_PROPERTY_WITH_NOTIFY(int, lamp_moter_fire_igon, 0)            //发电机点火指示
 
+    //前模块
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_01, 0)   //雨刮快档电机
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_02, 0)   //雨刮慢档电机
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_03, 0)   //喷水电机
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_04, 0)   //左前雾灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_05, 0)   //倒车灯
+
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_06, 0)   //右转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_07, 0)   //左转相灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_08, 0)   //液位显示电源
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_09, 0)   //左远光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_10, 0)   //右前雾灯
+
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_11, 0)   //右远光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_12, 0)   //行车记录仪电源
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_13, 0)   //左近光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_14, 0)   //位置灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, front_output_current_15, 0)   //右近光灯
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_01, 0)        //雨刮快档电机
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_02, 0)        //雨刮慢档电机
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_03, 0)        //喷水电机
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_04, 0)        //左前雾灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_05, 0)        //倒车灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_06, 0)        //右转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_07, 0)        //左转相灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_08, 0)        //液位显示电源
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_09, 0)        //左远光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_10, 0)        //右前雾灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_11, 0)        //右远光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_12, 0)        //行车记录仪电源
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_13, 0)        //左近光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_14, 0)        //位置灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_15, 0)        //右近光灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_16, 0)        //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_17, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_18, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_19, 0)        //左前摩擦片报警开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_20, 0)        //右前摩擦片报警开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_21, 0)        //制动灯开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_22, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_23, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_24, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_25, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_26, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_27, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_28, 0)        //地址选择1
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_29, 0)        //地址选择2
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_30, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_31, 0)        //倒车灯开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_32, 0)        //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_33, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_34, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_35, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_36, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_37, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_38, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_39, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_40, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_41, 0)        //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, front_switch_42, 0)        //备用
+
+    //中模块
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_01, 0)   //广告灯箱
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_02, 0)   //右转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_03, 0)   //车内指示灯电源
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_04, 0)   //制动灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_05, 0)   //前门开门电磁阀
+
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_06, 0)   //前路牌
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_07, 0)   //前门关门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_08, 0)   //侧路牌
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_09, 0)   //中门开门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_10, 0)   //后路牌
+
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_11, 0)   //中门关门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_12, 0)   //电子滚动屏
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_13, 0)   //小灯电源
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_14, 0)   //后广告屏
+    MEMBER_PROPERTY_WITH_NOTIFY(float, middle_output_current_15, 0)   //左转向灯
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_01, 0)           //广告灯箱
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_02, 0)           //右转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_03, 0)           //车内指示灯电源
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_04, 0)           //制动灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_05, 0)           //前门开门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_06, 0)           //前路牌
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_07, 0)           //前门关门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_08, 0)           //侧路牌
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_09, 0)           //中门开门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_10, 0)           //后路牌
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_11, 0)           //中门关门电磁阀
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_12, 0)           //电子滚动屏
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_13, 0)           //小灯电源
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_14, 0)           //后广告屏
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_15, 0)           //左转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_16, 0)           //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_17, 0)           //门铃开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_18, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_19, 0)           //应急阀开启报警
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_20, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_21, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_22, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_23, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_24, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_25, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_26, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_27, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_28, 0)           //地址选择1
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_29, 0)           //地址选择2
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_30, 0)           //前门踏步灯开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_31, 0)           //中门踏步灯开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_32, 0)           //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_33, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_34, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_35, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_36, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_37, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_38, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_39, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_40, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_41, 0)           //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middle_switch_42, 0)           //备用
+
+
+    //后模块
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_01, 0)    //制动灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_02, 0)    //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_03, 0)    //后雾灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_04, 0)    //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_05, 0)    //左转向灯
+
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_06, 0)    //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_07, 0)    //右转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_08, 0)    //干燥器电源
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_09, 0)    //倒车灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_10, 0)    //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_11, 0)    //前门踏步灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_12, 0)    //位置灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_13, 0)    //中门踏步灯
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_14, 0)    //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(float, back_output_current_15, 0)    //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_01, 0)            //制动灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_02, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_03, 0)            //后雾灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_04, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_05, 0)            //左转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_06, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_07, 0)            //右转向灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_08, 0)            //干燥器电源
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_09, 0)            //倒车灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_10, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_11, 0)            //前门踏步灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_12, 0)            //位置灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_13, 0)            //中门踏步灯
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_14, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_15, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_16, 0)            //水位传感器开关
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_17, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_18, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_19, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_20, 0)            //空滤阻塞报警开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_21, 0)            //制动灯开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_22, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_23, 0)            //驻车制动开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_24, 0)            //水温报警开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_25, 0)            //低气压1报警开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_26, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_27, 0)            //低气压2报警开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_28, 0)            //地址开关1
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_29, 0)            //地址开关2
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_30, 0)            //后舱门开关
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_31, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_32, 0)            //备用
+
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_33, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_34, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_35, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_36, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_37, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_38, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_39, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_40, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_41, 0)            //备用
+    MEMBER_PROPERTY_WITH_NOTIFY(int, back_switch_42, 0)            //备用
+
+    //警告提示
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_01, "")      //水位低报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_02, "")      //左气压低报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_03, "")      //右气压低报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_04, "")      //水温传感器报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_05, "")      //油量传感器报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_06, "")      //机油压力传感器报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_07, "")      //电池电压传感器报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_08, "")      //气压一传感器报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_09, "")      //气压二传感器报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_10, "")      //J1939通信故障
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_11, "")      //机油压力低，油量低报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_12, "")      //左刹车蹄片报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_13, "")      //右刹车蹄片报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_14, "")      //空滤报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_15, "")      //后处理故障
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_16, "")      //水温信息丢失
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_17, "")      //机油压力数据丢失
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_18, "")      //总线通信故障
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_19, "")      //单体模块电压过高
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_20, "")      //单体模块电压过低
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_21, "")      //SOC过高
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_22, "")      //SOC过低
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_23, "")      //内部通讯失败
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_24, "")      //总电压欠压
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_25, "")      //总电压过压
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_26, "")      //电池不均衡故障
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_27, "")      //电池热失控
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_28, "")      //DCDC故障报警（1故障，0正常）
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_29, "")      //绝缘报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_30, "")      //放电电流过大
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_31, "")      //充电电流过大
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_32, "")      //温度过高
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_33, "")      //温度报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_34, "")      //温度差过大
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_35, "")      //内部接触器信号
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_36, "")      //有内阻偏大电池
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_37, "")      //有容量偏小电池
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_38, "")      //水温高报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_39, "")      //油量低报警
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, warning_40, "")      //保留
 
 public:
     explicit CustomCarMsg(CustomCarMsgWorker *worker);
@@ -323,7 +557,7 @@ private slots:
     void updateLamp_dryere(int value);
     void updateLamp_abs(int value);
     void updateLamp_ac(int value);
-    void updatePower_supply(string value);
+    void updatePower_supply(QString value);
     void updateClimbing_mode(int value);
     void updateDiagnostic_mode(int value);
 
@@ -367,6 +601,236 @@ private slots:
 
     void updateLamp_motor_out_of_service(int value);
     void updateLamp_moter_fire_igon(int value);
+
+    void updateFront_output_current_01(float value);
+    void updateFront_output_current_02(float value);
+    void updateFront_output_current_03(float value);
+    void updateFront_output_current_04(float value);
+    void updateFront_output_current_05(float value);
+
+    void updateFront_output_current_06(float value);
+    void updateFront_output_current_07(float value);
+    void updateFront_output_current_08(float value);
+    void updateFront_output_current_09(float value);
+    void updateFront_output_current_10(float value);
+
+    void updateFront_output_current_11(float value);
+    void updateFront_output_current_12(float value);
+    void updateFront_output_current_13(float value);
+    void updateFront_output_current_14(float value);
+    void updateFront_output_current_15(float value);
+
+    void updateFront_switch_01(int value);
+    void updateFront_switch_02(int value);
+    void updateFront_switch_03(int value);
+    void updateFront_switch_04(int value);
+    void updateFront_switch_05(int value);
+    void updateFront_switch_06(int value);
+    void updateFront_switch_07(int value);
+    void updateFront_switch_08(int value);
+    void updateFront_switch_09(int value);
+    void updateFront_switch_10(int value);
+    void updateFront_switch_11(int value);
+    void updateFront_switch_12(int value);
+    void updateFront_switch_13(int value);
+    void updateFront_switch_14(int value);
+    void updateFront_switch_15(int value);
+    void updateFront_switch_16(int value);
+
+    void updateFront_switch_17(int value);
+    void updateFront_switch_18(int value);
+    void updateFront_switch_19(int value);
+    void updateFront_switch_20(int value);
+    void updateFront_switch_21(int value);
+    void updateFront_switch_22(int value);
+    void updateFront_switch_23(int value);
+    void updateFront_switch_24(int value);
+    void updateFront_switch_25(int value);
+    void updateFront_switch_26(int value);
+    void updateFront_switch_27(int value);
+    void updateFront_switch_28(int value);
+    void updateFront_switch_29(int value);
+    void updateFront_switch_30(int value);
+    void updateFront_switch_31(int value);
+    void updateFront_switch_32(int value);
+
+    void updateFront_switch_33(int value);
+    void updateFront_switch_34(int value);
+    void updateFront_switch_35(int value);
+    void updateFront_switch_36(int value);
+    void updateFront_switch_37(int value);
+    void updateFront_switch_38(int value);
+    void updateFront_switch_39(int value);
+    void updateFront_switch_40(int value);
+    void updateFront_switch_41(int value);
+    void updateFront_switch_42(int value);
+
+    void updateMiddle_output_current_01(float value);
+    void updateMiddle_output_current_02(float value);
+    void updateMiddle_output_current_03(float value);
+    void updateMiddle_output_current_04(float value);
+    void updateMiddle_output_current_05(float value);
+
+    void updateMiddle_output_current_06(float value);
+    void updateMiddle_output_current_07(float value);
+    void updateMiddle_output_current_08(float value);
+    void updateMiddle_output_current_09(float value);
+    void updateMiddle_output_current_10(float value);
+
+    void updateMiddle_output_current_11(float value);
+    void updateMiddle_output_current_12(float value);
+    void updateMiddle_output_current_13(float value);
+    void updateMiddle_output_current_14(float value);
+    void updateMiddle_output_current_15(float value);
+
+    void updateMiddle_switch_01(int value);
+    void updateMiddle_switch_02(int value);
+    void updateMiddle_switch_03(int value);
+    void updateMiddle_switch_04(int value);
+    void updateMiddle_switch_05(int value);
+    void updateMiddle_switch_06(int value);
+    void updateMiddle_switch_07(int value);
+    void updateMiddle_switch_08(int value);
+    void updateMiddle_switch_09(int value);
+    void updateMiddle_switch_10(int value);
+    void updateMiddle_switch_11(int value);
+    void updateMiddle_switch_12(int value);
+    void updateMiddle_switch_13(int value);
+    void updateMiddle_switch_14(int value);
+    void updateMiddle_switch_15(int value);
+    void updateMiddle_switch_16(int value);
+
+    void updateMiddle_switch_17(int value);
+    void updateMiddle_switch_18(int value);
+    void updateMiddle_switch_19(int value);
+    void updateMiddle_switch_20(int value);
+    void updateMiddle_switch_21(int value);
+    void updateMiddle_switch_22(int value);
+    void updateMiddle_switch_23(int value);
+    void updateMiddle_switch_24(int value);
+    void updateMiddle_switch_25(int value);
+    void updateMiddle_switch_26(int value);
+    void updateMiddle_switch_27(int value);
+    void updateMiddle_switch_28(int value);
+    void updateMiddle_switch_29(int value);
+    void updateMiddle_switch_30(int value);
+    void updateMiddle_switch_31(int value);
+    void updateMiddle_switch_32(int value);
+
+    void updateMiddle_switch_33(int value);
+    void updateMiddle_switch_34(int value);
+    void updateMiddle_switch_35(int value);
+    void updateMiddle_switch_36(int value);
+    void updateMiddle_switch_37(int value);
+    void updateMiddle_switch_38(int value);
+    void updateMiddle_switch_39(int value);
+    void updateMiddle_switch_40(int value);
+    void updateMiddle_switch_41(int value);
+    void updateMiddle_switch_42(int value);
+
+    void updateBack_output_current_01(float value);
+    void updateBack_output_current_02(float value);
+    void updateBack_output_current_03(float value);
+    void updateBack_output_current_04(float value);
+    void updateBack_output_current_05(float value);
+
+    void updateBack_output_current_06(float value);
+    void updateBack_output_current_07(float value);
+    void updateBack_output_current_08(float value);
+    void updateBack_output_current_09(float value);
+    void updateBack_output_current_10(float value);
+
+    void updateBack_output_current_11(float value);
+    void updateBack_output_current_12(float value);
+    void updateBack_output_current_13(float value);
+    void updateBack_output_current_14(float value);
+    void updateBack_output_current_15(float value);
+
+    void updateBack_switch_01(int value);
+    void updateBack_switch_02(int value);
+    void updateBack_switch_03(int value);
+    void updateBack_switch_04(int value);
+    void updateBack_switch_05(int value);
+    void updateBack_switch_06(int value);
+    void updateBack_switch_07(int value);
+    void updateBack_switch_08(int value);
+    void updateBack_switch_09(int value);
+    void updateBack_switch_10(int value);
+    void updateBack_switch_11(int value);
+    void updateBack_switch_12(int value);
+    void updateBack_switch_13(int value);
+    void updateBack_switch_14(int value);
+    void updateBack_switch_15(int value);
+    void updateBack_switch_16(int value);
+
+    void updateBack_switch_17(int value);
+    void updateBack_switch_18(int value);
+    void updateBack_switch_19(int value);
+    void updateBack_switch_20(int value);
+    void updateBack_switch_21(int value);
+    void updateBack_switch_22(int value);
+    void updateBack_switch_23(int value);
+    void updateBack_switch_24(int value);
+    void updateBack_switch_25(int value);
+    void updateBack_switch_26(int value);
+    void updateBack_switch_27(int value);
+    void updateBack_switch_28(int value);
+    void updateBack_switch_29(int value);
+    void updateBack_switch_30(int value);
+    void updateBack_switch_31(int value);
+    void updateBack_switch_32(int value);
+
+    void updateBack_switch_33(int value);
+    void updateBack_switch_34(int value);
+    void updateBack_switch_35(int value);
+    void updateBack_switch_36(int value);
+    void updateBack_switch_37(int value);
+    void updateBack_switch_38(int value);
+    void updateBack_switch_39(int value);
+    void updateBack_switch_40(int value);
+    void updateBack_switch_41(int value);
+    void updateBack_switch_42(int value);
+
+    void updateWarning_01(QString value);
+    void updateWarning_02(QString value);
+    void updateWarning_03(QString value);
+    void updateWarning_04(QString value);
+    void updateWarning_05(QString value);
+    void updateWarning_06(QString value);
+    void updateWarning_07(QString value);
+    void updateWarning_08(QString value);
+    void updateWarning_09(QString value);
+    void updateWarning_10(QString value);
+    void updateWarning_11(QString value);
+    void updateWarning_12(QString value);
+    void updateWarning_13(QString value);
+    void updateWarning_14(QString value);
+    void updateWarning_15(QString value);
+    void updateWarning_16(QString value);
+    void updateWarning_17(QString value);
+    void updateWarning_18(QString value);
+    void updateWarning_19(QString value);
+    void updateWarning_20(QString value);
+    void updateWarning_21(QString value);
+    void updateWarning_22(QString value);
+    void updateWarning_23(QString value);
+    void updateWarning_24(QString value);
+    void updateWarning_25(QString value);
+    void updateWarning_26(QString value);
+    void updateWarning_27(QString value);
+    void updateWarning_28(QString value);
+    void updateWarning_29(QString value);
+    void updateWarning_30(QString value);
+    void updateWarning_31(QString value);
+    void updateWarning_32(QString value);
+    void updateWarning_33(QString value);
+    void updateWarning_34(QString value);
+    void updateWarning_35(QString value);
+    void updateWarning_36(QString value);
+    void updateWarning_37(QString value);
+    void updateWarning_38(QString value);
+    void updateWarning_39(QString value);
+    void updateWarning_40(QString value);
 
 signals:
     // 上行帧 worker to msg
