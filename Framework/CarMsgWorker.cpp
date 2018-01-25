@@ -1,5 +1,6 @@
 
 #include "CarMsgWorker.hpp"
+#include <QCommandLineParser>
 
 CARFOX_BEGIN_NAMESPACE
 
@@ -17,7 +18,7 @@ void CarMsgWorker::onStarted()
 void CarMsgWorker::onReadyRead()
 {
     QByteArray recvData = mSubSock->read();
-    qDebug() << " --- Recv: " << recvData.toHex();
+//    qDebug() << " --- Recv: " << recvData.toHex();
     mHandler.parseMessage(recvData);
 }
 
@@ -28,7 +29,18 @@ void CarMsgWorker::initSocket()
     mSubSock = std::make_shared<SubSocket>();
     mPubSock->bind("tcp://*:5556");
     mSubSock->subscribeFilter("");
-    mSubSock->connectToAddress("tcp://192.168.3.34:5555");
+
+    QString address = "tcp://127.0.0.1:5555";
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    QCommandLineOption ipOption(QStringList() << "i" << "ip", "specify ip address", "127.0.0.1");
+    parser.addOption(ipOption);
+    parser.process(*qApp);
+
+    if (parser.isSet(ipOption))
+        address = "tcp://" + parser.value(ipOption) + ":5555";
+
+    mSubSock->connectToAddress(address);
     connect(mSubSock.get(), &SubSocket::readyRead, this, &CarMsgWorker::onReadyRead);
     registerCallback();
 }

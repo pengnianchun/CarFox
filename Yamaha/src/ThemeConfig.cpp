@@ -27,7 +27,7 @@ void ThemeConfig::setThemeNo(qint8 themeNo)
     settings->setValue("theme/id", themeNo);
     delete settings;
 #ifdef Q_PROCESSOR_ARM
-        sync();
+        system("sync");
 #else
    //    sync();
 #endif

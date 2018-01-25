@@ -72,7 +72,7 @@ Rectangle {
                 ScriptAction {
                     script: {
                         // 信号触发
-                        CarMsg.activate();
+//                        CarMsg.activate();
                         // 按键触发
                         CarMsg.sendEnableKeys(true);
                     }
