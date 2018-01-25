@@ -55,6 +55,31 @@ void CustomCarMsgWorker::handleThemeModeChanged(qint8 themeNo)
     });
 }
 
+void CustomCarMsgWorker::menuInfoRequest(qint64 MenuNo, qint64 pageNo) {
+    fyMenuIdRequestInfo::MenuIdRequest menuInfo;
+    fyMenuIdRequestInfo::MenuIdRequest_MenuType type = (fyMenuIdRequestInfo::MenuIdRequest_MenuType)MenuNo;
+    menuInfo.set_menu_number(type);
+    menuInfo.set_page_number(pageNo);
+    sendProtoMsg(menuInfo);
+}
+
+void CustomCarMsgWorker::datetimeInfoRequest(qint64 msec) {
+    fySystemSettingsInfo::DateTime timeInfo;
+    timeInfo.set_date_time(msec);
+    sendProtoMsg(timeInfo);
+}
+
+void CustomCarMsgWorker::upgradeStartRequest() {
+    fySystemSettingsInfo::UpgradeSettings upgrade;
+    upgrade.set_msg_id(fySystemSettingsInfo::UpgradeSettings::UPDATE_NOTIFY);
+    sendProtoMsg(upgrade);
+}
+
+void CustomCarMsgWorker::tripMilesClearRequest() {
+    fySystemSettingsInfo::MilesClearSettings tripClear;
+    tripClear.set_trip_miles_clear(true);
+    sendProtoMsg(tripClear);
+}
 
 void CustomCarMsgWorker::registerCallback()
 {
@@ -185,11 +210,20 @@ void CustomCarMsgWorker::handleGeneralInfoFrame(const carfox::MessagePtr &msg)
 }
 
 void CustomCarMsgWorker::handleProtoDatetime(const carfox::MessagePtr &msg) {
-    shared_ptr<fyGeneralInfo::GeneralFrame> p = carfox::down_pointer_cast<fyGeneralInfo::GeneralFrame>(msg);
+    shared_ptr<fySystemSettingsInfo::DateTime> p = carfox::down_pointer_cast<fySystemSettingsInfo::DateTime>(msg);
+    updateStates<qint32>(mStateData.dateTime.data, p->date_time(), [this](qint32 value) {
+        emit this->dateTimeChanged(value);
+    });
 }
 
 void CustomCarMsgWorker::handleProtoUpgradeNotify(const carfox::MessagePtr &msg) {
     shared_ptr<fySystemSettingsInfo::UpgradeSettings> p = carfox::down_pointer_cast<fySystemSettingsInfo::UpgradeSettings>(msg);
+    updateStates<qint8>(mStateData.upgradeMsgId.data, p->msg_id(), [this](qint8 value) {
+        emit this->upgradeMsgIdChanged(value);
+    });
+    updateStates<QString>(mStateData.upgradeMsgCtx.data, QString::fromStdString(p->msg_content()), [this](QString value) {
+        emit this->upgradeMsgCtxChanged(value);
+    });
 }
 
 void CustomCarMsgWorker::handleProtoInstrumentFrameInfo(const carfox::MessagePtr &msg) {

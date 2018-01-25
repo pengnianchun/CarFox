@@ -39,6 +39,10 @@ public slots:
     void themeSet(qint8 setNo);
 
     void handleThemeModeChanged(qint8 themeNo);
+    void menuInfoRequest(qint64 MenuNo, qint64 pageNo = 0);
+    void datetimeInfoRequest(qint64 msec = 0);
+    void upgradeStartRequest();
+    void tripMilesClearRequest();
 
 signals:
     // 上行帧 Worker to Msg
@@ -49,6 +53,9 @@ signals:
     void keyLongPressed(int key);
     void keyShortPressed(int key);
     void themeModeChanged(qint8 themeNo);
+    void dateTimeChanged(qint32 dateTime);
+    void upgradeMsgIdChanged(qint8 upgradeMsgId);
+    void upgradeMsgCtxChanged(QString upgradeMsgCtx);
     void carModeChanged(qint8 modeNo);
 
     void carSpeedChanged(int value);

@@ -6,6 +6,9 @@
 struct CarMsgWorkerStateData {
     carfox::CarMsgData<quint8> tmpVersion = carfox::CarMsgData<quint8>(0);
     carfox::CarMsgData<qint8> themeMode = carfox::CarMsgData<qint8>(-1);
+    carfox::CarMsgData<qint32> dateTime = carfox::CarMsgData<qint32>(-1);          // 系统时间
+    carfox::CarMsgData<qint8> upgradeMsgId = carfox::CarMsgData<qint8>(-1);        // 升级消息ID
+    carfox::CarMsgData<QString> upgradeMsgCtx = carfox::CarMsgData<QString>("");   // 升级消息内容
     carfox::CarMsgData<qint8> carMode = carfox::CarMsgData<qint8>(-1);             // 汽车模式： 1. igOn 2. alarmOn 3. igOff
 
     //通用帧数据
