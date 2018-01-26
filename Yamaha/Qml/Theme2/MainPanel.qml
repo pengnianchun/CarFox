@@ -20,7 +20,6 @@ Rectangle {
     Connections {
         // 链接CarMsg信号
         target: CarMsg
-
         onKeyShortPressed: {
             if (key === 1) {
                 // 显示可触发Qml
@@ -109,6 +108,5 @@ Rectangle {
                 }
             }
         }
-
     ]
 }
