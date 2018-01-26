@@ -23,8 +23,6 @@ Item {
         }
     }
 
-
-
     Connections {
         target: visible ? CarMsg : null
         ignoreUnknownSignals: true
@@ -86,6 +84,5 @@ Item {
                 }
             }
         }
-
     ]
 }
