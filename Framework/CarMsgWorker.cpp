@@ -22,6 +22,13 @@ void CarMsgWorker::onReadyRead()
     mHandler.parseMessage(recvData);
 }
 
+void CarMsgWorker::sendProtoMsg(const google::protobuf::Message &msg)
+{
+    QByteArray packedData;
+    packedData = mHandler.packMessage(msg);
+    mPubSock->write(packedData);
+}
+
 void CarMsgWorker::initSocket()
 {
     qDebug() << "CarMsgWorker::initSocket";
