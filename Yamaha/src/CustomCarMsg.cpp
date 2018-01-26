@@ -24,6 +24,9 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::keyShortPressed, this, &CustomCarMsg::keyShortPressed);
 
     connect(worker, &CustomCarMsgWorker::themeModeChanged, this, &CustomCarMsg::updateThemeMode);
+    connect(worker, &CustomCarMsgWorker::dateTimeChanged, this, &CustomCarMsg::updateDateTime);
+    connect(worker, &CustomCarMsgWorker::upgradeMsgIdChanged, this, &CustomCarMsg::updateUpgradeMsgId);
+    connect(worker, &CustomCarMsgWorker::upgradeMsgCtxChanged, this, &CustomCarMsg::updateUpgradeMsgCtx);
     connect(worker, &CustomCarMsgWorker::carModeChanged, this, &CustomCarMsg::updateCarMode);
 
     connect(worker, &CustomCarMsgWorker::carSpeedChanged, this, &CustomCarMsg::updateCarSpeed);
@@ -425,12 +428,31 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
 void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
 {
     connect(this, &CustomCarMsg::sendEnableKeys, worker, &CustomCarMsgWorker::enableKeys);
-    connect(this,  &CustomCarMsg::sendThemeSetChanged, worker, &CustomCarMsgWorker::themeSet);
+    connect(this, &CustomCarMsg::sendThemeSetChanged, worker, &CustomCarMsgWorker::themeSet);
+    connect(this, &CustomCarMsg::sendDateTime, worker, &CustomCarMsgWorker::datetimeInfoRequest);
+    connect(this, &CustomCarMsg::sendMenuInfo, worker, &CustomCarMsgWorker::menuInfoRequest);
+    connect(this, &CustomCarMsg::sendUpgradeStart, worker, &CustomCarMsgWorker::upgradeStartRequest);
+    connect(this, &CustomCarMsg::sendTripMilesClear, worker, &CustomCarMsgWorker::tripMilesClearRequest);
 }
 
 void CustomCarMsg::updateThemeMode(qint8 data)
 {
     MEMBER_PROPERTY_VALUE_CHANGED(themeMode, data);
+}
+
+void CustomCarMsg::updateDateTime(qint32 data)
+{
+    MEMBER_PROPERTY_VALUE_CHANGED(dateTime, data);
+}
+
+void CustomCarMsg::updateUpgradeMsgId(qint8 data)
+{
+    MEMBER_PROPERTY_VALUE_CHANGED(upgradeMsgId, data);
+}
+
+void CustomCarMsg::updateUpgradeMsgCtx(QString data)
+{
+    MEMBER_PROPERTY_VALUE_CHANGED(upgradeMsgCtx, data);
 }
 
 void CustomCarMsg::updateCarMode(qint8 data)

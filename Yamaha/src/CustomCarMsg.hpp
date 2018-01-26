@@ -10,6 +10,9 @@ class CustomCarMsg : public carfox::CarMsg
 
     // 上行帧,利用宏定义变量、信号、用Q_PROPERTY注册到QML, 还有定义
     MEMBER_PROPERTY_WITH_NOTIFY(int, themeMode, 0)             //主题设置
+    MEMBER_PROPERTY_WITH_NOTIFY(int, dateTime, 0)              //系统时间
+    MEMBER_PROPERTY_WITH_NOTIFY(int, upgradeMsgId, 0)          //升级消息ID
+    MEMBER_PROPERTY_WITH_NOTIFY(QString, upgradeMsgCtx, 0)     //升级消息内容
     MEMBER_PROPERTY_WITH_NOTIFY(int, carMode, 0)               //汽车状态信号
 
     //通用帧
@@ -434,7 +437,10 @@ public slots:
 
 private slots:
     // 上行帧 更新数据槽函数, worker to msg
-    void updateThemeMode (qint8 data); // test
+    void updateThemeMode(qint8 data); // test
+    void updateDateTime(qint32 data);
+    void updateUpgradeMsgId(qint8 data);
+    void updateUpgradeMsgCtx(QString data);
     void updateCarMode(qint8 data);
 
     void updateCarSpeed(int value);
@@ -842,12 +848,13 @@ signals:
     void keyShortPressed(int key);
     void downButtonChanged();
 
-
-
-
     // 下行帧 数据变更信号
     void sendEnableKeys(bool enable);
     void sendThemeSetChanged(qint8 themeNo);
+    void sendDateTime(qint32 msec);
+    void sendMenuInfo(qint64 MenuNo, qint64 pageNo);
+    void sendUpgradeStart();
+    void sendTripMilesClear();
 
 private:
     bool mEnableKeys = false;
