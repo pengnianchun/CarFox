@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.6
 import QtQuick.Layouts 1.0
 //import "../../Common/"
 import "qrc:/Common/Qml/Common"

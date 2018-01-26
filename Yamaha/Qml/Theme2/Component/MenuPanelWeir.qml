@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import "../JS/MenuMainController.js" as MenuMainController
 
