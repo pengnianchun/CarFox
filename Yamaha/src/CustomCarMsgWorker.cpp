@@ -1129,10 +1129,22 @@ void CustomCarMsgWorker::handleProtoBatteryManageSystemMenuInfo(const carfox::Me
 
 void CustomCarMsgWorker::handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupVoltageInfo::BatteryGroupVoltageMenu> p = carfox::down_pointer_cast<fyBatteryGroupVoltageInfo::BatteryGroupVoltageMenu>(msg);
+    mBatVoltageData.clear();
+    for(int i=0; i<p->voltage_info_size(); i++) {
+        const fyBatteryGroupVoltageInfo::BatterySingleVoltage* voltage = p->mutable_voltage_info(i);
+        mBatVoltageData.insert(QString::number(i+1), voltage->voltage());
+    }
+    emit this->batVoltageChanged(mBatVoltageData);
 }
 
 void CustomCarMsgWorker::handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupTemperatureInfo::BatteryGroupTemperatureMenu> p = carfox::down_pointer_cast<fyBatteryGroupTemperatureInfo::BatteryGroupTemperatureMenu>(msg);
+    mBatTempData.clear();
+    for(int i=0; i<p->temp_info_size(); i++) {
+        const fyBatteryGroupTemperatureInfo::BatterySingleTemperature* temperature = p->mutable_temp_info(i);
+        mBatTempData.insert(QString::number(i+1), temperature->temperature());
+    }
+    emit this->batTempChanged(mBatTempData);
 }
 
 void CustomCarMsgWorker::handleProtoAirCtrlSystemMenuInfo(const carfox::MessagePtr &msg) {
