@@ -424,6 +424,9 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(QString, warning39, "")      //油量低报警
     MEMBER_PROPERTY_WITH_NOTIFY(QString, warning40, "")      //保留
 
+    MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, batVoltage, QVariantMap())  //电池组电压
+    MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, batTemp, QVariantMap())     //电池组温度
+
 public:
     explicit CustomCarMsg(CustomCarMsgWorker *worker);
 
@@ -509,6 +512,9 @@ private slots:
     void updateBatMaxVoltage(float value);
     void updateBatMinVoltage(float value);
     void updateBatteryHighestTemp(float value);
+
+    void updateBatVoltage(QVariantMap value);
+    void updateBatTemp(QVariantMap value);
 
     void updateAcFaultCode(uint value);
     void updateAcFanStatus(uint value);

@@ -96,6 +96,9 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::batMinVoltageChanged, this, &CustomCarMsg::updateBatMinVoltage);
     connect(worker, &CustomCarMsgWorker::batteryHighestTempChanged, this, &CustomCarMsg::updateBatteryHighestTemp);
 
+    connect(worker, &CustomCarMsgWorker::batVoltageChanged, this, &CustomCarMsg::updateBatVoltage);
+    connect(worker, &CustomCarMsgWorker::batTempChanged, this, &CustomCarMsg::updateBatTemp);
+
     connect(worker, &CustomCarMsgWorker::acFaultCodeChanged, this, &CustomCarMsg::updateAcFaultCode);
     connect(worker, &CustomCarMsgWorker::acFanStatusChanged, this, &CustomCarMsg::updateAcFanStatus);
     connect(worker, &CustomCarMsgWorker::acWorkStatusChanged, this, &CustomCarMsg::updateAcWorkStatus);
@@ -702,6 +705,14 @@ void CustomCarMsg::updateBatMinVoltage(float value) {
 
 void CustomCarMsg::updateBatteryHighestTemp(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batteryHighestTemp, value);
+}
+
+void CustomCarMsg::updateBatVoltage(QVariantMap value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(batVoltage, value);
+}
+
+void CustomCarMsg::updateBatTemp(QVariantMap value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(batTemp, value);
 }
 
 void CustomCarMsg::updateAcFaultCode(uint value) {

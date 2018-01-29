@@ -125,6 +125,9 @@ signals:
     void batMinVoltageChanged(float value);
     void batteryHighestTempChanged(float value);
 
+    void batVoltageChanged(QVariantMap value);
+    void batTempChanged(QVariantMap value);
+
     void acFaultCodeChanged(uint value);
     void acFanStatusChanged(uint value);
     void acWorkStatusChanged(uint value);
@@ -496,4 +499,6 @@ private:
     CarMsgWorkerStateData mStateData;
     std::shared_ptr<KeyManager> mKeyManager;
     std::shared_ptr<ThemeConfig> mThemeConfig;
+    QVariantMap mBatVoltageData;
+    QVariantMap mBatTempData;
 };
