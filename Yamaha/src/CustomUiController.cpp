@@ -43,9 +43,9 @@ void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> c
 
     // only for Common
 #ifdef CARFOX_DEBUG_FPS
-    addGlobalLayer(cp, "qrc:/Common/Qml/Common/Fps.qml", "FpsLayer")->setShowPolicy(carfox::Layer::ShowOnLoaded); //加载的时候显示
+    addGlobalLayer(cp, "qrc:/Common/Component/Fps.qml", "FpsLayer")->setShowPolicy(carfox::Layer::ShowOnLoaded); //加载的时候显示
 #endif
-    addGlobalLayer(cp, "qrc:/Common/Qml/Common/DormancyPanel.qml", "DormancyPanel")->setShowPolicy(carfox::Layer::ManualShow);
+    addGlobalLayer(cp, "qrc:/Common/Component/DormancyPanel.qml", "DormancyPanel")->setShowPolicy(carfox::Layer::ManualShow);
     qDebug() << "Create themes done";
 
 #ifdef CUSTOM_PROFILE

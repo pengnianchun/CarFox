@@ -27,10 +27,10 @@
         <file>Component/TurnPageWeir.qml</file>
         <file>Component/WarningItem.qml</file>
         <file>WarningInfo/readme.md</file>
-        <file>Fonts/ConceptFont.ttf</file>
-        <file>Fonts/FangYan.ttf</file>
-        <file>Fonts/NotoSansHans-DemiLight.ttf</file>
-        <file>Fonts/WenQuanYiMicroHei.ttf</file>
+        <file>fonts/ConceptFont.ttf</file>
+        <file>fonts/FangYan.ttf</file>
+        <file>fonts/NotoSansHans-DemiLight.ttf</file>
+        <file>fonts/WenQuanYiMicroHei.ttf</file>
         <file>CommonImage/Indicator/airBagErr.png</file>
         <file>CommonImage/Indicator/backCang.png</file>
         <file>CommonImage/Indicator/backFogLight.png</file>
