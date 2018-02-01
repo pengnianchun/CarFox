@@ -71,7 +71,6 @@ public:
         return Layer::Loaded == mQmlLoadStatus;
     }
 
-
 public slots:
     void show();
     void hide();
@@ -87,14 +86,15 @@ private slots:
 
 private:
     void loadAsyncInternal();
+
 private:
+    std::shared_ptr<ContextProperty> mContextProperties;
     QString mQmlUrl;
     QQmlEngine *mEngine = Window::instance()->engine();
     std::shared_ptr<Incubator> mIncubator = std::make_shared<Incubator>();
     std::shared_ptr<QQmlComponent> mComponent = std::make_shared<QQmlComponent>(mEngine, QUrl(mQmlUrl));
     std::shared_ptr<QQmlContext> mContext = std::make_shared<QQmlContext>(Window::instance()->rootContext());
     std::shared_ptr<QQuickItem> mLayerItem;
-    std::shared_ptr<ContextProperty> mContextProperties;
 
     QmlLoadStatus mQmlLoadStatus = Layer::Unloaded;
     ShowPolicy mShowPolicy = Layer::ManualShow;
