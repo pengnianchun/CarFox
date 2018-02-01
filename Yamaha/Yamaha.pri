@@ -27,7 +27,7 @@ HEADERS += \
     ./protofile/protocode/general_info_frame.pb.h \
     ./protofile/protocode/airctrl_system_frame.pb.h \
     ./protofile/protocode/auxiliary_system_frame.pb.h \
-    ./protofile/protocode/baairctrl_system_framettery_group_temperature_frame.pb.h \
+    ./protofile/protocode/battery_group_temperature_frame.pb.h \
     ./protofile/protocode/battery_manage_system_frame.pb.h\
     ./protofile/protocode/control_system_frame.pb.h\
     ./protofile/protocode/instrument_frame.pb.h\
@@ -49,7 +49,6 @@ HEADERS += \
     ./src/KeyManager.hpp \
     ./src/ThemeConfig.hpp \
     ./src/CustomCarMsgWorkerData.hpp \ 
-    ./src/CustomEnum.hpp \ 
     ./src/CustomMultiLanguage.hpp \ 
     ./src/CustomUiController.hpp \ 
     ./src/CustomTheme1.hpp \ 

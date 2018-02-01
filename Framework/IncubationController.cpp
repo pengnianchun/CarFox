@@ -27,6 +27,7 @@ qint32 IncubationController::getCpuInfo(CPU_USAGE &usg)
         usg.idle = list.at(5).toInt();
     }
     cpuFile.close(); //关闭stat文件
+    return 0;
 }
 
 /*

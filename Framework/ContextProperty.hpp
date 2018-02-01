@@ -41,14 +41,14 @@ public:
 private:
     ContextPropertyHash mContextProperties;
 
+    QString mCarMsgName;
+    std::shared_ptr<CarMsg> mFakeCarMsg;
+    std::shared_ptr<CarMsg> mTrueCarMsg;
 
     QString mMultilanguageName;
     std::shared_ptr<MultiLanguage> mFakeMultiLanguages;
     std::shared_ptr<MultiLanguage> mTrueMultilanguages;
 
-    QString mCarMsgName;
-    std::shared_ptr<CarMsg> mFakeCarMsg;
-    std::shared_ptr<CarMsg> mTrueCarMsg;
 };
 
 CARFOX_END_NAMESPACE
