@@ -79,4 +79,8 @@ RESOURCES += \
     ./QmlResource.qrc \ 
     ./ImageResource.qrc
 
+DISTFILES += \
+    $$PWD/JS/MenuMainDetailController.js \
+    $$PWD/Theme2/Qml/Splash/Splash.qml
+
 
