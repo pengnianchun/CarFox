@@ -75,11 +75,9 @@ fonts.files += \
 
 
 RESOURCES += \ 
-    ./QmlResource.qrc \ 
-    ./ImageResource.qrc
+    ./QmlResource.qrc
 
 DISTFILES += \
-    $$PWD/JS/MenuMainDetailController.js \
-    $$PWD/Theme2/Qml/Splash/Splash.qml
+    $$PWD/JS/MenuMainDetailController.js
 
 

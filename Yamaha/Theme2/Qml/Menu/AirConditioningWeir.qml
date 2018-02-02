@@ -2,10 +2,10 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import "qrc:/Common/Component"
 import CustomEnum 1.0
-import "../JS/MenuMainDetailController.js" as MenuMainDetailController
+import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
-    menuLayerId: "EngineSystem"
+    menuLayerId: "AirCondition"
     parentMenuId: "MenuMainDetail"
     width: 750
     height: 350
@@ -21,17 +21,17 @@ MenuItem {
 
     ListModel {
         id: listmodelone
-        ListElement { name: "发动机油耗";value: "0";unit: "L/H" }
-        ListElement { name: "发动机水温";value: "0";unit: "℃" }
-        ListElement { name: "发动机负荷";value: "0";unit: "%" }
-        ListElement { name: "尿素液位";value: "0";unit: "%" }
+        ListElement { name: "空调故障代码";value: "00000000";unit: "" }
+        ListElement { name: "空调风电状态";value: "00000000";unit: "" }
+        ListElement { name: "空调工作状态";value: "00000000";unit: "" }
+        ListElement { name: "空调 Life";value: "0";unit: "" }
     }
     ListModel {
         id: listmodeltwo
-        ListElement { name: "发动机目标油门";value: "0.0";unit: "%" }
-        ListElement { name: "发动机实际油门";value: "0.0";unit: "%" }
-        ListElement { name: "发动机机轴压力";value: "00000000";unit: "KPM" }
-        ListElement { name: "发动机进气温度";value: "00000000";unit: "℃" }
+        ListElement { name: "车外实际温度";value: "0";unit: "℃" }
+        ListElement { name: "车内实际温度";value: "0";unit: "℃" }
+        ListElement { name: "设定温度";value: "0";unit: "℃" }
+        ListElement { name: "空调制冷请求";value: "00000000";unit: "" }
     }
     RowLayout {
         anchors.fill: parent
@@ -41,14 +41,13 @@ MenuItem {
             width: parent.width/2-50
             height: parent.height
             fontSizeList: 15
-            unitWidthList: 60
         }
         ListViewWeir {
             listModel: listmodeltwo
             width: parent.width/2-50
             height: parent.height
             fontSizeList: 15
-            unitWidthList: 60
+            unitWidthList: 40
         }
     }
 }

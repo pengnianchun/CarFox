@@ -5,8 +5,8 @@ function returnMenuPanel(menuLayerId,parentMenuId){
     UiController.hideLayer(menuLayerId);
     UiController.hideLayer(parentMenuId);
     UiController.showLayer("MenuPanel");
-    UiController.setLayerProperty("MenuPanel","currentLayer",menuLayerId)
-    UiController.setLayerProperty("MenuPanel","animationAction",true);
+    UiController.setLayerProperty("MenuPanel","currentLayer",menuLayerId);
+    UiController.setLayerProperty("MenuPanel","animationAction",2);
 }
 /*
  * 设置页面Enter键功能实现

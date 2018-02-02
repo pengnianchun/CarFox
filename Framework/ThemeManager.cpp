@@ -297,6 +297,11 @@ void ThemeManager::showMainScreen()
 
     //当前状态为IGNON的时候，直接显示主界面中所有的InstantShow类型的layer，否则显示休眠界面
     int carmode = current->contextProperty()->trueCarMsg()->property("carMode").toInt();
+
+    //-----------------------------测试-----------------------------------//
+    //carmode = 1;
+    //-----------------------------使用-----------------------------------//
+
     if (carmode == 1) {
         current->show();
     }

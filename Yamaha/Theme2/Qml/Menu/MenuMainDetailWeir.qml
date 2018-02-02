@@ -42,7 +42,6 @@ MenuItem {
             MenuMainController.showModule(moduleCurrentIndex);
         }else{}
     }
-
     Image {
         id: menu_main_detail_background
         anchors.centerIn: parent

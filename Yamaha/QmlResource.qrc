@@ -4,18 +4,15 @@
         <file>Component/CarouselText.qml</file>
         <file>Component/CommonItem.qml</file>
         <file>Component/Complex.qml</file>
-        <file>Component/DataReset.js</file>
         <file>Component/DigitValue.qml</file>
         <file>Component/DormancyPanel.qml</file>
         <file>Component/Fps.qml</file>
-        <file>Component/Language.js</file>
         <file>Component/ListViewRadioWeir.qml</file>
         <file>Component/ListViewSelectWeir.qml</file>
         <file>Component/ListViewWeir.qml</file>
         <file>Component/MenuItem.qml</file>
         <file>Component/MpaListView.qml</file>
         <file>Component/RootMenu.qml</file>
-        <file>Component/SwitchTheme.js</file>
         <file>Component/TextFieldWeir.qml</file>
         <file>Component/TextIconWeir.qml</file>
         <file>Component/TextItem.qml</file>
@@ -118,6 +115,10 @@
         <file>CommonImage/Other/title-b.png</file>
         <file>CommonImage/Other/title-g.png</file>
         <file>CommonImage/Other/title-r.png</file>
+        <file>JS/AlarmCode.js</file>
+        <file>JS/DataReset.js</file>
+        <file>JS/Language.js</file>
+        <file>JS/SwitchTheme.js</file>
     </qresource>
     <qresource prefix="/Theme">
         <file>Theme1/Qml/MainPanel.qml</file>
@@ -217,22 +218,24 @@
         <file>Theme2/Image/SubMenu/swingsLeft.png</file>
         <file>Theme2/Image/SubMenu/swingsRight.png</file>
         <file>Theme2/Image/SubMenu/topBar.png</file>
-        <file>Theme2/Qml/AfterModuleWeir.qml</file>
-        <file>Theme2/Qml/AirConditioningWeir.qml</file>
-        <file>Theme2/Qml/AuxiliarySystemWeir.qml</file>
-        <file>Theme2/Qml/BatteryStatusWeir.qml</file>
-        <file>Theme2/Qml/BatterySystemWeir.qml</file>
-        <file>Theme2/Qml/BeforeModuleWeir.qml</file>
-        <file>Theme2/Qml/CenterModuleWeir.qml</file>
-        <file>Theme2/Qml/ControlSystemWeir.qml</file>
-        <file>Theme2/Qml/EngineSystemWeir.qml</file>
         <file>Theme2/Qml/HomePanel.qml</file>
-        <file>Theme2/Qml/InstrumentSystemWeir.qml</file>
-        <file>Theme2/Qml/SettingSystemWeir.qml</file>
-        <file>Theme2/Qml/TcuSystemWeir.qml</file>
         <file>Theme2/Qml/Menu/MenuMainDetailWeir.qml</file>
         <file>Theme2/Qml/Menu/MenuPanelWeir.qml</file>
         <file>Theme2/Qml/Splash/Splash.qml</file>
         <file>Theme2/Image/Gif/wingsMotion.gif</file>
+        <file>Theme2/Qml/Menu/AfterModuleWeir.qml</file>
+        <file>Theme2/Qml/Menu/AirConditioningWeir.qml</file>
+        <file>Theme2/Qml/Menu/AuxiliarySystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/BatteryStatusWeir.qml</file>
+        <file>Theme2/Qml/Menu/BatterySystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/BeforeModuleWeir.qml</file>
+        <file>Theme2/Qml/Menu/CenterModuleWeir.qml</file>
+        <file>Theme2/Qml/Menu/ControlSystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/EngineSystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/InstrumentSystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/SettingSystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/TcuSystemWeir.qml</file>
+        <file>Theme2/Qml/Menu/MenuMainWeir.qml</file>
+        <file>Theme2/Qml/MenuBack.qml</file>
     </qresource>
 </RCC>

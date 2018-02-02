@@ -4,11 +4,10 @@ import CustomEnum 1.0
 import "../../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
 
-MenuItem {
+CommonItem {
     width: 1440
     height: 544
     visible: false
-    //menuLayerId: "MenuPanel"
 
     property var statusAnimation: ["1","2","3"]
     property real startXLeft: 283;
@@ -31,63 +30,36 @@ MenuItem {
     property string rightMenuImage: sourceImageUrl + "DialPanel/rightWing.png";
     property string arrowUpImage: sourceImageUrl + "SubMenu/arrowUp.png";
     property string arrowDownImage: sourceImageUrl + "SubMenu/arrowDown.png";
-    property var menuInfoIconArray: ["icon1.png","icon2.png","icon3.png","icon4.png","icon5.png","icon6.png","icon7.png","icon8.png","icon9.png"]
-    property var menuInfoTitleArray: ["控制","发动机","辅助","TCU","电池管理","电池状态","空调","仪表","设置"]
     property int menuCurrentIndex: 0
 
     property var containerId: container
 
     property bool keyBoardStatus: true;
     property bool mainRingStatus: true;
-    property bool animationAction: false;
+    property int animationAction: 0;
     property string currentLayer;
 
-    //Layer三层状态
-    property var layerStatusArray: [true,false,false]
-    //Menu子菜单
-    property int currentMenuDetail: 0
-    //遮罩信号
-    //signal currentLayerStatus(var layerStatus);
-    //emit: currentLayerStatus("show");
-
+    //动画触发信号监听
     onAnimationActionChanged: {
-        if(animationAction){
-            container.state = statusAnimation[2];
-            container.state = statusAnimation[1];
-            animationAction = false;
-        }else{}
-    }
-    enterMenu: function(){
-        //UiController.showRootMenu();
-        if((keyBoardStatus)&&(mainRingStatus)){
-            mainRingStatus = false;
-            menuCurrentIndex = 0;
-        }else if((!mainRingStatus)&&(keyBoardStatus)){
+        if(animationAction === 1){
             container.state = statusAnimation[2];
             container.state = statusAnimation[0];
+            animationAction = 0;
+        }else if(animationAction === 2){
+            container.state = statusAnimation[2];
+            container.state = statusAnimation[1];
+            animationAction = 0;
         }else{}
     }
-    hideMenu: function(){
+    onKeyEnter: function(){
         if(keyBoardStatus){
-            mainRingStatus = true;
-            keyBoardStatus = true;
-        }else{}
-    }
-    previousMenu: function(){
-        if((menuCurrentIndex >= 0)&&(menuCurrentIndex < 8)){
-            menuCurrentIndex += 1;
-        }else{
-            menuCurrentIndex = 0;
+            UiController.showRootMenu();
+            UiController.setLayerProperty("MenuMain","menuCurrentIndex",0);
+            UiController.setLayerProperty("MenuMain","keyBoardStatus",true);
+            mainRingStatus = false;
+            keyBoardStatus = false;
         }
     }
-    nextMenu: function(){
-        if((menuCurrentIndex > 0)&&(menuCurrentIndex <= 8)){
-            menuCurrentIndex -= 1;
-        }else{
-            menuCurrentIndex = 8;
-        }
-    }
-
     Rectangle {
         id: container
         anchors.top: parent.top
@@ -96,14 +68,14 @@ MenuItem {
         Image {
             id: left_panel
             x: startXLeft
-            z: 2
+            z: 3
             opacity: 0
             source: leftImage
         }
         Image {
             id: right_panel
             x: startXRight
-            z: 2
+            z: 3
             opacity: 0
             source: rightImage
         }
@@ -118,64 +90,21 @@ MenuItem {
             id: main_ring
             x: 435
             y: 25
-            z: 3
+            z: 2
+            visible: mainRingStatus
             opacity: 1.0
             source: mainRingImage
         }
         Image {
             id: center_light
+            visible: mainRingStatus
             opacity: 1.0
             anchors.top: main_ring.top
-            anchors.topMargin: 20
+            anchors.topMargin: 18
             anchors.left: main_ring.left
             anchors.leftMargin: 30
             z: 4
             source: centerLightImage
-        }
-        Item {
-            id: menu_item
-            x: 435
-            y: 25
-            z: mainRingStatus ? 1 : 3
-            visible: !mainRingStatus
-            opacity: 1.0
-            width: 560
-            height: 540
-            Image {
-                id: center_background
-                anchors.centerIn: parent
-                source: centerBackGroundImage
-            }
-            Image {
-                id: arrow_up
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: 100
-                source: arrowUpImage
-            }
-            Image {
-                id: arrow_down
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 110
-                source: arrowDownImage
-            }
-            Image {
-                id: menu_info
-                anchors.centerIn: parent
-                source: sourceImageUrl + "SubMenu/" + menuInfoIconArray[menuCurrentIndex]
-            }
-            TextFieldWeir {
-                id: menu_info_title
-                width: 200
-                height: 20
-                textWidth: 200
-                textHeight: 20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 180
-                textValue: qsTr(menuInfoTitleArray[menuCurrentIndex]) + "系统信息"
-            }
         }
         Image {
             id: left_menu_panel
@@ -204,7 +133,6 @@ MenuItem {
                 name: statusAnimation[2]
             }
         ]
-
         transitions: [
             Transition {
                 from: statusAnimation[2]
@@ -239,24 +167,6 @@ MenuItem {
                     PauseAnimation { duration: durationTime/10 }
                     ParallelAnimation {
                         PropertyAnimation {
-                            target: main_ring
-                            property: "opacity"
-                            to: 0
-                            duration: durationTime/50
-                        }
-                        PropertyAnimation {
-                            target: center_light
-                            property: "opacity"
-                            to: 0
-                            duration: durationTime/50
-                        }
-                        PropertyAnimation {
-                            target: menu_item
-                            property: "opacity"
-                            to: 0
-                            duration: durationTime/50
-                        }
-                        PropertyAnimation {
                             target: left_panel
                             property: "opacity"
                             to: 1.0
@@ -268,7 +178,27 @@ MenuItem {
                             to: 1.0
                             duration: durationTime/50
                         }
+                        PropertyAnimation {
+                            target: center_light
+                            property: "opacity"
+                            to: 0
+                            duration: durationTime/50
+                        }
+                        PropertyAnimation {
+                            target: main_ring
+                            property: "opacity"
+                            to: 0
+                            duration: durationTime/50
+                        }
+                        ScriptAction {
+                            script: {
+                                console.log("hide MenuMain is completed !")
+                                UiController.hideLayer("MenuMain");
+                                UiController.setLayerProperty("HomePanel","maskBackGroundStatus","show");
+                            }
+                        }
                     }
+                    PauseAnimation { duration: durationTime/10 }
                     ParallelAnimation {
                         PropertyAnimation {
                             target: left_panel
@@ -322,6 +252,7 @@ MenuItem {
                             duration: durationTime
                         }
                     }
+                    PauseAnimation { duration: durationTime/10 }
                     ParallelAnimation {
                         PropertyAnimation {
                             target: left_panel
@@ -336,22 +267,23 @@ MenuItem {
                             duration: durationTime/50
                         }
                         PropertyAnimation {
-                            target: main_ring
-                            property: "opacity"
-                            to: 1.0
-                            duration: durationTime/50
-                        }
-                        PropertyAnimation {
                             target: center_light
                             property: "opacity"
                             to: 1.0
                             duration: durationTime/50
                         }
                         PropertyAnimation {
-                            target: menu_item
+                            target: main_ring
                             property: "opacity"
                             to: 1.0
                             duration: durationTime/50
+                        }
+                        ScriptAction {
+                            script: {
+                                console.log("show MenuMain is completed !")
+                                UiController.showLayer("MenuMain");
+                                UiController.setLayerProperty("HomePanel","maskBackGroundStatus","hide");
+                            }
                         }
                     }
                     PauseAnimation { duration: durationTime/10 }
@@ -384,8 +316,7 @@ MenuItem {
                     ScriptAction {
                         script: {
                             console.log("animation2 is completed !")
-                            mainRingStatus = false;
-                            keyBoardStatus = true;
+                            UiController.setLayerProperty("MenuMain","keyBoardStatus",true);
                         }
                     }
                 }
