@@ -2,10 +2,10 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import "qrc:/Common/Component"
 import CustomEnum 1.0
-import "../JS/MenuMainDetailController.js" as MenuMainDetailController
+import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
-    menuLayerId: "AirCondition"
+    menuLayerId: "TcuSystem"
     parentMenuId: "MenuMainDetail"
     width: 750
     height: 350
@@ -21,17 +21,17 @@ MenuItem {
 
     ListModel {
         id: listmodelone
-        ListElement { name: "空调故障代码";value: "00000000";unit: "" }
-        ListElement { name: "空调风电状态";value: "00000000";unit: "" }
-        ListElement { name: "空调工作状态";value: "00000000";unit: "" }
-        ListElement { name: "空调 Life";value: "0";unit: "" }
+        ListElement { name: "离合实际位置";value: "0";unit: "" }
+        ListElement { name: "档位";value: "0";unit: "" }
+        ListElement { name: "TCU故障信息";value: "00000000";unit: "" }
+        ListElement { name: "变速箱输出轴转速";value: "0";unit: "" }
     }
     ListModel {
         id: listmodeltwo
-        ListElement { name: "车外实际温度";value: "0";unit: "℃" }
-        ListElement { name: "车内实际温度";value: "0";unit: "℃" }
-        ListElement { name: "设定温度";value: "0";unit: "℃" }
-        ListElement { name: "空调制冷请求";value: "00000000";unit: "" }
+        ListElement { name: "FMI";value: "0";unit: "" }
+        ListElement { name: "SPW";value: "0";unit: "" }
+        ListElement { name: "CM";value: "0";unit: "" }
+        ListElement { name: "OC";value: "0";unit: "" }
     }
     RowLayout {
         anchors.fill: parent
@@ -47,7 +47,6 @@ MenuItem {
             width: parent.width/2-50
             height: parent.height
             fontSizeList: 15
-            unitWidthList: 40
         }
     }
 }

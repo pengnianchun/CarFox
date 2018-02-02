@@ -2,10 +2,10 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import "qrc:/Common/Component"
 import CustomEnum 1.0
-import "../JS/MenuMainDetailController.js" as MenuMainDetailController
+import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
-    menuLayerId: "BeforeModule"
+    menuLayerId: "AfterModule"
     parentMenuId: "MenuMainDetail"
     width: 900
     height: 350
@@ -21,46 +21,46 @@ MenuItem {
 
     ListModel {
         id: listmodelone
-        ListElement { name: "雨刮快档电机";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "雨刮慢档点击";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "喷水电机";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "左前雾灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "倒车灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "右转向灯";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "制动灯";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "后雾灯";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:true }
         ListElement { name: "左转向灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "液位显示电源";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "右转向灯";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "干燥器电源";value: "0.0";unit: "A";checkstatus:true }
     }
     ListModel {
         id: listmodeltwo
-        ListElement { name: "左远光灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "右前雾灯";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "右远光灯";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "行车记录仪电源";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "左近光灯";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "倒车灯";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "前门踏步灯";value: "0.0";unit: "A";checkstatus:false }
         ListElement { name: "位置灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "右近光灯";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:false }
+        ListElement { name: "中门踏步灯";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "水位传感器开关";value: "";unit: "";checkstatus:false }
     }
     ListModel {
         id: listmodelthree
         ListElement { name: "备用";value: "";unit: "";checkstatus:true }
         ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "左前摩擦片报警开关";value: "";unit: "";checkstatus:true }
-        ListElement { name: "右前摩擦片报警开关";value: "";unit: "";checkstatus:true }
+        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
+        ListElement { name: "空滤阻塞报警开关";value: "";unit: "";checkstatus:true }
         ListElement { name: "制动灯开关";value: "";unit: "";checkstatus:true }
         ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
+        ListElement { name: "驻车制动开关";value: "";unit: "";checkstatus:true }
+        ListElement { name: "水温报警开关";value: "";unit: "";checkstatus:true }
     }
     ListModel {
         id: listmodelfour
-        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
         ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "地址选择 1";value: "";unit: "";checkstatus:true }
-        ListElement { name: "地址选择 2";value: "";unit: "";checkstatus:true }
+        ListElement { name: "地址开关 1";value: "";unit: "";checkstatus:true }
+        ListElement { name: "地址开关 2";value: "";unit: "";checkstatus:true }
+        ListElement { name: "低气压 1 报警开关";value: "";unit: "";checkstatus:true }
+        ListElement { name: "低气压 2 报警开关";value: "";unit: "";checkstatus:false }
+        ListElement { name: "后舱门开关";value: "";unit: "";checkstatus:true }
         ListElement { name: "备用";value: "";unit: "";checkstatus:true }
-        ListElement { name: "倒车灯开关";value: "";unit: "";checkstatus:true }
     }
     RowLayout {
         anchors.fill: parent

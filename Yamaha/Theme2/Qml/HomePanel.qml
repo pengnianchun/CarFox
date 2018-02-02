@@ -24,6 +24,19 @@ CommonItem {
     property string mpaRightImage: sourceImageUrl + "HomePanel/mpaRight.png"
     property bool bDisplay: true
 
+    //HomePanel遮罩效果信号监测
+    property string maskBackGroundStatus: "";
+
+    onMaskBackGroundStatusChanged: {
+        console.log("maskBackGroundStatus:::::::::::::::::::::::::::" + maskBackGroundStatus)
+        if(maskBackGroundStatus === "show"){
+            mask_background.opacity = 0.5;
+        }else if(maskBackGroundStatus === "hide"){
+            mask_background.opacity = 0;
+        }else{}
+        maskBackGroundStatus = "";
+    }
+
     onVisibleChanged: {
         if(visible){
             // 按键触发
@@ -32,7 +45,7 @@ CommonItem {
                 mpaLeftModel.append({"mpa":true});
                 mpaRightModel.append({"mpa":true});
             }
-            UiController.showLayer("MenuPanel");
+
         }
     }
     Component.onCompleted: {
@@ -54,7 +67,7 @@ CommonItem {
     Item {
         id: home
         anchors.fill: parent
-
+        Rectangle { id: mask_background; z: 2; anchors.fill: parent; color: "lightgray"; opacity: 0 }
         Image {
             id: background
             anchors.fill: parent
@@ -275,27 +288,6 @@ CommonItem {
             opacity: 1.0
             source: bottomBarImage
         }
-        /*
-        MenuPanelWeir {
-            id: menuPanel
-            z: 5
-            x: 0
-            y: -23
-        }
-        */
-        /*
-        Connections {
-            target: menuPanel
-            onCurrentLayerStatus: {
-                if(layerStatus === "show"){
-                    home.opacity = 0.7;
-                }else{
-                    home.opacity = 1;
-                }
-                menuPanel.opacity = 1;
-            }
-        }
-        */
     /*
         Text {
             id: slopeDisplay

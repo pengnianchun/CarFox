@@ -23,5 +23,4 @@ CommonItem {
             name: "shutdown"
         }
     ]
-
 }
