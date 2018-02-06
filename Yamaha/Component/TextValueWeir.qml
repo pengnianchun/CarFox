@@ -10,7 +10,7 @@ Item {
     property string unitValue: "单位"
     property string fontFamily: "Arial" //localFont.fontCurrentFzLt  //
     property real fontSize: 18;
-    property string titleColor: "#00deff"//"#00deff"
+    property string titleColor: "#ffffff"//"#00deff"
     property string fontColor: "#ffffff"
     property string unitColor: "#ffffff"//"#00deff"
     property real unitWidth: 30

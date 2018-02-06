@@ -28,11 +28,13 @@ CommonItem {
     property string maskBackGroundStatus: "";
 
     onMaskBackGroundStatusChanged: {
-        console.log("maskBackGroundStatus:::::::::::::::::::::::::::" + maskBackGroundStatus)
+        console.log("maskBackGroundStatus:::::::::::::::::::::::::::" + maskBackGroundStatus);
         if(maskBackGroundStatus === "show"){
-            mask_background.opacity = 0.5;
+            mask_background.state = "";
+            mask_background.state = "show";
         }else if(maskBackGroundStatus === "hide"){
-            mask_background.opacity = 0;
+            mask_background.state = "";
+            mask_background.state = "hide";
         }else{}
         maskBackGroundStatus = "";
     }
@@ -45,7 +47,7 @@ CommonItem {
                 mpaLeftModel.append({"mpa":true});
                 mpaRightModel.append({"mpa":true});
             }
-
+            //UiController.showLayer("MenuPanel");
         }
     }
     Component.onCompleted: {
@@ -67,7 +69,46 @@ CommonItem {
     Item {
         id: home
         anchors.fill: parent
-        Rectangle { id: mask_background; z: 2; anchors.fill: parent; color: "lightgray"; opacity: 0 }
+        Rectangle {
+            id: mask_background;
+            z: 2;
+            state: ""
+            anchors.fill: parent;
+            color: "lightgray";
+            opacity: 0
+            states: [
+                State {
+                    name: "show"
+                    PropertyChanges { target: mask_background; opacity: 0.5 }
+                },
+                State {
+                    name: "hide"
+                    PropertyChanges { target: mask_background; opacity: 0 }
+                }
+            ]
+            transitions: [
+                Transition {
+                    from: ""
+                    to: "show"
+                    SequentialAnimation {
+                        PropertyAnimation {
+                            target: mask_background
+                            duration: 280
+                        }
+                    }
+                },
+                Transition {
+                    from: ""
+                    to: "hide"
+                    SequentialAnimation {
+                        PropertyAnimation {
+                            target: mask_background
+                            duration: 500
+                        }
+                    }
+                }
+            ]
+        }
         Image {
             id: background
             anchors.fill: parent
