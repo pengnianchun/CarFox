@@ -35,6 +35,7 @@ MenuItem {
             UiController.setLayerProperty("MenuPanel","keyBoardStatus",true);
             UiController.setLayerProperty("MenuPanel","mainRingStatus",true);
             UiController.hideRootMenu();
+            menuCurrentIndex = 0;
             keyBoardStatus = false;
         }else{}
     }

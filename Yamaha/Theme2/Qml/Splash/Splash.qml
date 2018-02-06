@@ -6,42 +6,61 @@ Item {
     height: 544
     visible: false
     property string animationUrl: "qrc:/Theme/Theme2/Image/Gif/wingsMotion.gif";
+    property string sourceImageUrl: "qrc:/Theme/Theme2/Image/";
+    property string centerLightImage: sourceImageUrl + "DialPanel/centerLight.png";
+    property bool animationStatus: true;
+    property real durationTime: 1000
 
     onVisibleChanged: {
         if(visible){
-            animated.playing = true;
+            boot_animation.running = true;
         }else{
-            animated.playing = false;
+            boot_animation.running = false;
         }
     }
-    AnimatedImage {
-        id: animated
-        source: animationUrl
-        anchors.centerIn: parent
-        playing: false
-        onCurrentFrameChanged: {
-            info.text = "%1/%2".arg(animated.currentFrame).arg(animated.frameCount).toString();
-            if(animated.currentFrame === 99){
-                animated.playing = false;
-                UiController.hideLayer("Splash");
-                UiController.showLayer("HomePanel");
-                UiController.showLayer("MenuPanel");
-            }else{}
-        }
-    }
-    Rectangle {
-        width: 120;
-        height: 30;
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        Text {
-            id: info
-            anchors.centerIn: parent
-            text: (animated.paused === true) ? "Play" : "Pause";
-        }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: animated.paused = !animated.paused;
+    Image {
+        id: center_light
+        x: 435
+        y: 25
+        scale: 0.1
+        opacity: 0
+        source: centerLightImage
+        SequentialAnimation {
+            id: boot_animation
+            PauseAnimation { duration: durationTime/2 }
+            /*
+            ParallelAnimation {
+                NumberAnimation {
+                    target: center_light
+                    property: "scale";
+                    to: 1.15;
+                    duration: 200
+                }
+                NumberAnimation {
+                    target: center_light
+                    property: "opacity";
+                    to: 1;
+                    duration: 200
+                }
+            }
+            PauseAnimation {
+                duration: durationTime/20
+            }
+            NumberAnimation {
+                target: center_light
+                property: "scale";
+                to: 1;
+                duration: 200
+            }
+            */
+            ScriptAction {
+                script: {
+                    UiController.hideLayer("Splash");
+                    UiController.showLayer("HomePanel");
+                    UiController.showLayer("MenuPanel");
+                    UiController.setLayerProperty("MenuPanel","animationAction",3);
+                }
+            }
         }
     }
 }

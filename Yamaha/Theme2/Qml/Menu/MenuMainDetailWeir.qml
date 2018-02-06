@@ -44,7 +44,9 @@ MenuItem {
     }
     Image {
         id: menu_main_detail_background
-        anchors.centerIn: parent
+        anchors.top: parent.top
+        anchors.topMargin: 2
+        anchors.horizontalCenter: parent.horizontalCenter
         source: menuMainBackGroundImage
     }
     TextFieldWeir {
