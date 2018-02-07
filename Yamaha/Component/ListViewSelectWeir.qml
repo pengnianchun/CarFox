@@ -8,9 +8,9 @@ Item {
     property real listViewWidth: 420
     property real listViewHeight: 200
     property var listModel;
-    property string fontFamily: "Arial" //localFont.fontCurrentFzLt  //
+    property string fontFamily: localFont.name
     property var listViewSelectId: listview_select
-    //FontLoader { id: localFont; source: "../fonts/FzLt.TTF" }
+    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
     ListView {
         id: listview_select
         width: listViewWidth;

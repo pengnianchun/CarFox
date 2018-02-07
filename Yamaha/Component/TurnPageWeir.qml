@@ -6,14 +6,14 @@ Item {
     property real textHeight: 30;
     property real textOpacity: 1.0;
     property bool fontItalic: false;
-    property string fontFamily: "Arial" //localFont.fontCurrentFzLt  //
+    property string fontFamily: localFont.name
     property real fontSize: 18;
     property string currentPageIndex: "1";
     property string totalPageCount: "4";
     property string currentPageColor: "#00deff";
     property string totalPageColor: "#ffffff";
     property bool fontBold: false
-    //FontLoader { id: localFont; source: "../fonts/FzLt.TTF" }
+    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
     RowLayout {
         spacing: 5
         Text {

@@ -12,8 +12,8 @@ CommonItem {
     property var statusAnimation: ["1","2","3"]
     property real startXLeft: 285;
     property real startXRight: 560;
-    property real endXLeft: -89;
-    property real endXRight: 939;
+    property real endXLeft: -95;
+    property real endXRight: 933;
     property real startMenuXLeft: 110;
     property real startMenuXRight: 620;
     property real endMenuXLeft: 460;
@@ -67,6 +67,8 @@ CommonItem {
         id: container
         anchors.top: parent.top
         anchors.topMargin: -25
+        anchors.fill: parent
+        color: "transparent"
         state: "";
         Image {
             id: left_panel
@@ -94,7 +96,8 @@ CommonItem {
         }
         Rectangle {
             id: menu_main_detail_background
-            x: 720
+            //x: 720
+            anchors.horizontalCenter: parent.horizontalCenter
             y: 52
             width: 0
             height: 500
@@ -152,13 +155,15 @@ CommonItem {
                 PropertyChanges { target: main_ring; opacity: 0 }
                 PropertyChanges { target: left_panel; x: endXLeft; opacity: 1.0 }
                 PropertyChanges { target: right_panel; x: endXRight; opacity: 1.0 }
-                PropertyChanges { target: menu_main_detail_background; x: 348; width: 755 }
+                //PropertyChanges { target: menu_main_detail_background; x: 348; width: 755 }
+                PropertyChanges { target: menu_main_detail_background; width: 755 }
             },
             State {
                 name: statusAnimation[1]
                 PropertyChanges { target: left_panel; x: startXLeft; opacity: 0 }
                 PropertyChanges { target: right_panel; x: startXRight; opacity: 0 }
-                PropertyChanges { target: menu_main_detail_background; x: 720; width: 0 }
+                //PropertyChanges { target: menu_main_detail_background; x: 720; width: 0 }
+                PropertyChanges { target: menu_main_detail_background; width: 0 }
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
                 PropertyChanges { target: left_menu_panel; x: startMenuXLeft; opacity: 1.0 }
@@ -259,11 +264,13 @@ CommonItem {
                             easing.type: Easing.Linear
                             duration: 400
                         }
+                        /*
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "x"
                             duration: 360
                         }
+                        */
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "width"
@@ -298,11 +305,13 @@ CommonItem {
                             easing.type: Easing.Linear
                             duration: 400
                         }
+                        /*
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "x"
                             duration: 440
                         }
+                        */
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "width"
