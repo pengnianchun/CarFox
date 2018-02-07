@@ -24,20 +24,20 @@ MenuItem {
     hideMenu: function(){}
     previousMenu: function(){
         if(menuCurrentIndex === 7){
-            if((moduleCurrentIndex >= 0)&&(moduleCurrentIndex < 3)){
-                moduleCurrentIndex++;
+            if((moduleCurrentIndex > 0)&&(moduleCurrentIndex <= 3)){
+                moduleCurrentIndex--;
             }else{
-                moduleCurrentIndex = 0;
+                moduleCurrentIndex = 3;
             }
             MenuMainController.showModule(moduleCurrentIndex);
         }else{}
     }
     nextMenu: function(){
         if(menuCurrentIndex === 7){
-            if((moduleCurrentIndex > 0)&&(moduleCurrentIndex <= 3)){
-                moduleCurrentIndex--;
+            if((moduleCurrentIndex >= 0)&&(moduleCurrentIndex < 3)){
+                moduleCurrentIndex++;
             }else{
-                moduleCurrentIndex = 3;
+                moduleCurrentIndex = 0;
             }
             MenuMainController.showModule(moduleCurrentIndex);
         }else{}

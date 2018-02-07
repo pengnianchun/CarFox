@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
-import "../JS/AlarmCode.js" as AlarmCode
+import "qrc:/Common/JS/AlarmCode.js" as AlarmCode
 import "qrc:/Common/Component"
 
 CommonItem {

@@ -12,8 +12,8 @@ CommonItem {
     property var statusAnimation: ["1","2","3"]
     property real startXLeft: 285;
     property real startXRight: 560;
-    property real endXLeft: -88;
-    property real endXRight: 937;
+    property real endXLeft: -89;
+    property real endXRight: 939;
     property real startMenuXLeft: 110;
     property real startMenuXRight: 620;
     property real endMenuXLeft: 460;
@@ -71,7 +71,7 @@ CommonItem {
         Image {
             id: left_panel
             x: startXLeft
-            y: -2
+            y: -1.2
             z: 3
             opacity: 0
             source: leftImage
@@ -79,7 +79,7 @@ CommonItem {
         Image {
             id: right_panel
             x: startXRight
-            y: -2
+            y: -1.2
             z: 3
             opacity: 0
             source: rightImage
@@ -94,7 +94,7 @@ CommonItem {
         }
         Rectangle {
             id: menu_main_detail_background
-            x: 351+375
+            x: 720
             y: 52
             width: 0
             height: 500
@@ -107,8 +107,8 @@ CommonItem {
         }
         Image {
             id: main_ring
-            x: 435
-            y: 25
+            x: 436
+            y: 26
             z: 2
             scale: 0.2
             visible: mainRingStatus
@@ -152,13 +152,13 @@ CommonItem {
                 PropertyChanges { target: main_ring; opacity: 0 }
                 PropertyChanges { target: left_panel; x: endXLeft; opacity: 1.0 }
                 PropertyChanges { target: right_panel; x: endXRight; opacity: 1.0 }
-                PropertyChanges { target: menu_main_detail_background; x: 351; width: 750 }
+                PropertyChanges { target: menu_main_detail_background; x: 348; width: 755 }
             },
             State {
                 name: statusAnimation[1]
                 PropertyChanges { target: left_panel; x: startXLeft; opacity: 0 }
                 PropertyChanges { target: right_panel; x: startXRight; opacity: 0 }
-                PropertyChanges { target: menu_main_detail_background; x: 726; width: 0 }
+                PropertyChanges { target: menu_main_detail_background; x: 720; width: 0 }
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
                 PropertyChanges { target: left_menu_panel; x: startMenuXLeft; opacity: 1.0 }
@@ -181,22 +181,22 @@ CommonItem {
                         PropertyAnimation {
                             target: left_menu_panel
                             property: "x"
-                            duration: 280
+                            duration: 360
                         }
                         PropertyAnimation {
                             target: right_menu_panel
                             property: "x"
-                            duration: 280
+                            duration: 360
                         }
                         PropertyAnimation {
                             target: left_menu_panel
                             property: "opacity"
-                            duration: 240
+                            duration: 200
                         }
                         PropertyAnimation {
                             target: right_menu_panel
                             property: "opacity"
-                            duration: 240
+                            duration: 200
                         }
                         ScriptAction {
                             script: {
@@ -209,17 +209,17 @@ CommonItem {
                             target: center_background
                             property: "opacity"
                             to: 1
-                            duration: 40
+                            duration: 120
                         }
                         PropertyAnimation {
                             target: center_light
                             property: "opacity"
-                            duration: 80
+                            duration: 200
                         }
                         PropertyAnimation {
                             target: main_ring
                             property: "opacity"
-                            duration: 80
+                            duration: 200
                         }
                         PropertyAnimation {
                             target: left_panel
@@ -245,29 +245,29 @@ CommonItem {
                             target: center_background
                             property: "opacity"
                             to: 0
-                            duration: 40
+                            duration: 120
                         }
                         PropertyAnimation {
                             target: left_panel
                             property: "x"
                             easing.type: Easing.Linear
-                            duration: durationTime/2
+                            duration: 400
                         }
                         PropertyAnimation {
                             target: right_panel
                             property: "x"
                             easing.type: Easing.Linear
-                            duration: durationTime/2
+                            duration: 400
                         }
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "x"
-                            duration: durationTime/2-50
+                            duration: 360
                         }
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "width"
-                            duration: durationTime/2-50
+                            duration: 360
                         }
                     }
                     PauseAnimation { duration: durationTime/4 }
@@ -290,30 +290,30 @@ CommonItem {
                             target: left_panel
                             property: "x"
                             easing.type: Easing.Linear
-                            duration: durationTime/2
+                            duration: 400
                         }
                         PropertyAnimation {
                             target: right_panel
                             property: "x"
                             easing.type: Easing.Linear
-                            duration: durationTime/2
+                            duration: 400
                         }
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "x"
-                            duration: durationTime/2+10
+                            duration: 440
                         }
                         PropertyAnimation {
                             target: menu_main_detail_background
                             property: "width"
-                            duration: durationTime/2+10
+                            duration: 440
                         }
                     }
                     PropertyAnimation {
                         target: center_background
                         property: "opacity"
                         to: 1
-                        duration: 40
+                        duration: 120
                     }
                     PauseAnimation { duration: durationTime/4 }
                     ParallelAnimation {
@@ -321,17 +321,17 @@ CommonItem {
                             target: center_background
                             property: "opacity"
                             to: 0
-                            duration: 40
+                            duration: 120
                         }
                         PropertyAnimation {
                             target: left_panel
                             property: "opacity"
-                            duration: 80
+                            duration: 200
                         }
                         PropertyAnimation {
                             target: right_panel
                             property: "opacity"
-                            duration: 80
+                            duration: 200
                         }
                         PropertyAnimation {
                             target: center_light
@@ -350,7 +350,7 @@ CommonItem {
                             }
                         }
                     }
-                    PauseAnimation { duration: durationTime/4 }
+                    //PauseAnimation { duration: durationTime/4 }
                     ParallelAnimation {
                         PropertyAnimation {
                             target: left_menu_panel
@@ -365,12 +365,12 @@ CommonItem {
                         PropertyAnimation {
                             target: left_menu_panel
                             property: "opacity"
-                            duration: 400
+                            duration: durationTime
                         }
                         PropertyAnimation {
                             target: right_menu_panel
                             property: "opacity"
-                            duration: 400
+                            duration: durationTime
                         }
                         ScriptAction {
                             script: {
@@ -442,12 +442,12 @@ CommonItem {
                         PropertyAnimation {
                             target: left_menu_panel
                             property: "opacity"
-                            duration: 400
+                            duration: durationTime
                         }
                         PropertyAnimation {
                             target: right_menu_panel
                             property: "opacity"
-                            duration: 400
+                            duration: durationTime
                         }
                     }
                 }

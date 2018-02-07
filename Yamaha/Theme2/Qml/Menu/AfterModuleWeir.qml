@@ -1,8 +1,10 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
-import "qrc:/Common/Component"
 import CustomEnum 1.0
+import "qrc:/Common/Component"
+import "qrc:/Common/JS/InstrumentInfo.js" as InstrumentInfo
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
+import "../../JS/InstrumentController.js" as InstrumentController
 
 MenuItem {
     menuLayerId: "AfterModule"
@@ -11,6 +13,12 @@ MenuItem {
     height: 350
     x: 280
     y: 130
+    property var listModelIdArray: [listmodel_one,listmodel_two,listmodel_three,listmodel_four]
+
+    Component.onCompleted: {
+        var instrumentInfoResource = InstrumentInfo.getInsteumentInfo();
+        InstrumentController.initializeAfterModule(listModelIdArray,instrumentInfoResource);
+    }
 
     enterMenu: function(){}
     hideMenu: function(){
@@ -20,53 +28,62 @@ MenuItem {
     nextMenu: function(){}
 
     ListModel {
-        id: listmodelone
-        ListElement { name: "制动灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "后雾灯";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "左转向灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "右转向灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "干燥器电源";value: "0.0";unit: "A";checkstatus:true }
+        id: listmodel_one
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
     }
     ListModel {
-        id: listmodeltwo
-        ListElement { name: "倒车灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "前门踏步灯";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "位置灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "中门踏步灯";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:true }
-        ListElement { name: "备用";value: "0.0";unit: "A";checkstatus:false }
-        ListElement { name: "水位传感器开关";value: "";unit: "";checkstatus:false }
+        id: listmodel_two
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:true }
+        ListElement { name: "";value: "0.0";unit: "A";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
     }
     ListModel {
-        id: listmodelthree
-        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
-        ListElement { name: "空滤阻塞报警开关";value: "";unit: "";checkstatus:true }
-        ListElement { name: "制动灯开关";value: "";unit: "";checkstatus:true }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "驻车制动开关";value: "";unit: "";checkstatus:true }
-        ListElement { name: "水温报警开关";value: "";unit: "";checkstatus:true }
+        id: listmodel_three
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
     }
     ListModel {
-        id: listmodelfour
-        ListElement { name: "备用";value: "";unit: "";checkstatus:false }
-        ListElement { name: "地址开关 1";value: "";unit: "";checkstatus:true }
-        ListElement { name: "地址开关 2";value: "";unit: "";checkstatus:true }
-        ListElement { name: "低气压 1 报警开关";value: "";unit: "";checkstatus:true }
-        ListElement { name: "低气压 2 报警开关";value: "";unit: "";checkstatus:false }
-        ListElement { name: "后舱门开关";value: "";unit: "";checkstatus:true }
-        ListElement { name: "备用";value: "";unit: "";checkstatus:true }
+        id: listmodel_four
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:true }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
+        ListElement { name: "";value: "";unit: "";checkstatus:false }
     }
     RowLayout {
         anchors.fill: parent
         spacing: 120
         ListViewRadioWeir {
-            listModel: listmodelone
+            listModel: listmodel_one
             width: parent.width/4-70
             height: parent.height
             widthListView: parent.width/4-100
@@ -74,7 +91,7 @@ MenuItem {
             listRadioType: 2
         }
         ListViewRadioWeir {
-            listModel: listmodeltwo
+            listModel: listmodel_two
             width: parent.width/4-70
             height: parent.height
             widthListView: parent.width/4-100
@@ -83,7 +100,7 @@ MenuItem {
             listRadioType: 2
         }
         ListViewRadioWeir {
-            listModel: listmodelthree
+            listModel: listmodel_three
             width: parent.width/4-130
             height: parent.height
             widthListView: parent.width/4-150
@@ -92,7 +109,7 @@ MenuItem {
             listRadioType: 1
         }
         ListViewRadioWeir {
-            listModel: listmodelfour
+            listModel: listmodel_four
             width: parent.width/4-70
             height: parent.height
             widthListView: parent.width/4-100

@@ -119,6 +119,7 @@
         <file>JS/DataReset.js</file>
         <file>JS/Language.js</file>
         <file>JS/SwitchTheme.js</file>
+        <file>JS/InstrumentInfo.js</file>
     </qresource>
     <qresource prefix="/Theme">
         <file>Theme1/Qml/MainPanel.qml</file>
@@ -127,7 +128,6 @@
         <file>Theme3/Qml/TriggerPanel.qml</file>
         <file>Theme4/Qml/MainPanel.qml</file>
         <file>Theme4/Qml/TriggerPanel.qml</file>
-        <file>Theme2/JS/AlarmCode.js</file>
         <file>Theme2/JS/MenuMainController.js</file>
         <file>Theme2/JS/MenuMainDetailController.js</file>
         <file>Theme2/Image/DialPanel/battery2.png</file>
@@ -237,5 +237,6 @@
         <file>Theme2/Qml/Menu/TcuSystemWeir.qml</file>
         <file>Theme2/Qml/Menu/MenuMainWeir.qml</file>
         <file>Theme2/Qml/MenuBack.qml</file>
+        <file>Theme2/JS/InstrumentController.js</file>
     </qresource>
 </RCC>
