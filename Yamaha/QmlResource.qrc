@@ -124,12 +124,8 @@
     <qresource prefix="/Theme">
         <file>Theme1/Qml/MainPanel.qml</file>
         <file>Theme1/Qml/TriggerPanel.qml</file>
-        <file>Theme3/Qml/MainPanel.qml</file>
-        <file>Theme3/Qml/TriggerPanel.qml</file>
-        <file>Theme4/Qml/MainPanel.qml</file>
-        <file>Theme4/Qml/TriggerPanel.qml</file>
-        <file>Theme2/JS/MenuMainController.js</file>
-        <file>Theme2/JS/MenuMainDetailController.js</file>
+
+        <!--        主题2 Image-->
         <file>Theme2/Image/DialPanel/battery2.png</file>
         <file>Theme2/Image/DialPanel/centerLight.png</file>
         <file>Theme2/Image/DialPanel/leftWing.png</file>
@@ -218,11 +214,12 @@
         <file>Theme2/Image/SubMenu/swingsLeft.png</file>
         <file>Theme2/Image/SubMenu/swingsRight.png</file>
         <file>Theme2/Image/SubMenu/topBar.png</file>
+        <file>Theme2/Image/Gif/wingsMotion.gif</file>
+        <!--        主题2 QML-->
         <file>Theme2/Qml/HomePanel.qml</file>
         <file>Theme2/Qml/Menu/MenuMainDetailWeir.qml</file>
         <file>Theme2/Qml/Menu/MenuPanelWeir.qml</file>
         <file>Theme2/Qml/Splash/Splash.qml</file>
-        <file>Theme2/Image/Gif/wingsMotion.gif</file>
         <file>Theme2/Qml/Menu/AfterModuleWeir.qml</file>
         <file>Theme2/Qml/Menu/AirConditioningWeir.qml</file>
         <file>Theme2/Qml/Menu/AuxiliarySystemWeir.qml</file>
@@ -237,6 +234,14 @@
         <file>Theme2/Qml/Menu/TcuSystemWeir.qml</file>
         <file>Theme2/Qml/Menu/MenuMainWeir.qml</file>
         <file>Theme2/Qml/MenuBack.qml</file>
+         <!--        主题2 JS-->
         <file>Theme2/JS/InstrumentController.js</file>
+        <file>Theme2/JS/MenuMainController.js</file>
+        <file>Theme2/JS/MenuMainDetailController.js</file>
+
+        <file>Theme3/Qml/MainPanel.qml</file>
+        <file>Theme3/Qml/TriggerPanel.qml</file>
+        <file>Theme4/Qml/MainPanel.qml</file>
+        <file>Theme4/Qml/TriggerPanel.qml</file>
     </qresource>
 </RCC>
