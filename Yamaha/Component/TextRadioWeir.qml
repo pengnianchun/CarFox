@@ -9,7 +9,7 @@ Item {
     property string textTitle: "名称"
     property string textValue: "未命名"
     property string unitValue: "单位"
-    property string fontFamily: "Arial" //localFont.fontCurrentFzLt  //
+    property string fontFamily: localFont.name
     property real fontSize: 18;
     property string titleColor: "#ffffff"
     property string fontColor: "#ffffff"
@@ -20,7 +20,7 @@ Item {
     property bool checkRadioStatus: false
     property int radioType: 1;//2
     property real unitWidth: 30
-    //FontLoader { id: localFont; source: "../fonts/FzLt.TTF" }
+    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
     Rectangle{anchors.fill: parent;color: "#000000"}
     Image {
         id: radio

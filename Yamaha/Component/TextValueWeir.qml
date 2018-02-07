@@ -8,13 +8,13 @@ Item {
     property string textTitle: "名称"
     property string textValue: "未命名"
     property string unitValue: "单位"
-    property string fontFamily: "Arial" //localFont.fontCurrentFzLt  //
+    property string fontFamily: localFont.name
     property real fontSize: 18;
     property string titleColor: "#ffffff"//"#00deff"
     property string fontColor: "#ffffff"
     property string unitColor: "#ffffff"//"#00deff"
     property real unitWidth: 30
-    //FontLoader { id: localFont; source: "../fonts/FzLt.TTF" }
+    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
     Rectangle{anchors.fill: parent;color: "#000000"}
     Text {
         id: text_title

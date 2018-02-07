@@ -7,11 +7,11 @@ Item {
     property real textOpacity: 1.0;
     property string textValue: "未命名";
     property bool fontItalic: false;
-    property string fontFamily: "Arial" //localFont.fontCurrentFzLt  //
+    property string fontFamily: localFont.name
     property real fontSize: 18;
     property string fontColor: "#ffffff";
     property bool fontBold: false
-    //FontLoader { id: localFont; source: "../fonts/FzLt.TTF" }
+    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
     Text {
         id: textfield
         opacity: textOpacity
