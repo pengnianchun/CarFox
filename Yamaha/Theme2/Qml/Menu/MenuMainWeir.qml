@@ -60,8 +60,8 @@ MenuItem {
 
     Image {
         id: main_ring
-        x: 435
-        y: 0
+        x: 436
+        y: 1
         z: mainRingStatus ? 2 : 1
         source: mainRingImage
     }
@@ -76,8 +76,8 @@ MenuItem {
         source: centerLightImage
     }
     Item {
-        x: 435
-        y: 0
+        x: 436
+        y: 1
         z: mainRingStatus ? 1 : 3
         width: 560
         height: 540
