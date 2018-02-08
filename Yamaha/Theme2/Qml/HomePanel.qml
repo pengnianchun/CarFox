@@ -1,11 +1,13 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
-import "qrc:/Common/JS/AlarmCode.js" as AlarmCode
+import "qrc:/Common/JS/AlarmCode.js" as AlarmInfoCode
 import "qrc:/Common/Component"
+import "../JS/HomePanelController.js" as HomePanel
 
 CommonItem {
     visible: false
+    opacity: 0
     width: 1440
     height: 544
     property real screenWidth: 1440;
@@ -23,6 +25,11 @@ CommonItem {
     property string mpaLeftImage: sourceImageUrl + "HomePanel/mpaLeft.png"
     property string mpaRightImage: sourceImageUrl + "HomePanel/mpaRight.png"
     property bool bDisplay: true
+    //报警计数
+    property int alarmCode: 0
+    //Mpa计数
+    property int mpaCount: 0
+    property bool mpaStatus: true
 
     //HomePanel遮罩效果信号监测
     property string maskBackGroundStatus: "";
@@ -35,35 +42,64 @@ CommonItem {
         }else if(maskBackGroundStatus === "hide"){
             mask_background.state = "";
             mask_background.state = "hide";
+        }else if(maskBackGroundStatus === "splash"){
+            mask_background.state = "";
+            mask_background.state = "splash";
         }else{}
         maskBackGroundStatus = "";
     }
-
     onVisibleChanged: {
         if(visible){
             // 按键触发
             CarMsg.sendEnableKeys(true);
-            for(var i=0;i<10;i++){
-                mpaLeftModel.append({"mpa":true});
-                mpaRightModel.append({"mpa":true});
-            }
-            //UiController.showLayer("MenuPanel");
+            timer.running = true;
+        }else{
+            timer.running = false;
         }
     }
     Component.onCompleted: {
-        console.log("=================================" + AlarmCode.getInfo());
+        console.log("/--------------------------------------------/");
+        console.log("/-------------"+ AlarmInfoCode.getInfo() +"---------------/");
+        console.log("/--------------------------------------------/");
+        HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
     }
-    Timer {//test image url is changed
+    //自定义定时器测试使用
+    Timer {
+        id: timer
         repeat: true
         interval: 1000
-        running: true
+        running: false
         onTriggered: {
             if(bDisplay){
                 oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
             }else{
                 oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressureValue.png";
             }
-
+            if(mpaStatus){
+                if(mpaCount === 10){
+                    mpaStatus = false;
+                }else{}
+                HomePanel.upMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
+                mpaCount = HomePanel.upMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
+            }else{
+                if(mpaCount === 0){
+                    mpaStatus = true;
+                }else{}
+                HomePanel.downMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
+                mpaCount = HomePanel.downMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
+            }
+            for(var i=0;i<38;i++){
+                if(alarmCode === i){
+                    var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[i];
+                    alarm_info.textValue = alarmCodeInfo;
+                    break;
+                }else{}
+            }
+            if(alarmCode === 37){
+                alarmCode = 0;
+            }else{
+                alarmCode++;
+            }
         }
     }
     Item {
@@ -74,16 +110,20 @@ CommonItem {
             z: 2;
             state: ""
             anchors.fill: parent;
-            color: "lightgray";
+            color: "#000000";
             opacity: 0
             states: [
                 State {
                     name: "show"
-                    PropertyChanges { target: mask_background; opacity: 0.5 }
+                    PropertyChanges { target: mask_background; opacity: 0.7; }
                 },
                 State {
                     name: "hide"
-                    PropertyChanges { target: mask_background; opacity: 0 }
+                    PropertyChanges { target: mask_background; opacity: 0; }
+                },
+                State {
+                    name: "splash"
+                    PropertyChanges { target: mask_background; opacity: 1; }
                 }
             ]
             transitions: [
@@ -93,7 +133,8 @@ CommonItem {
                     SequentialAnimation {
                         PropertyAnimation {
                             target: mask_background
-                            duration: 280
+                            property: "opacity"
+                            duration: 500
                         }
                     }
                 },
@@ -103,6 +144,18 @@ CommonItem {
                     SequentialAnimation {
                         PropertyAnimation {
                             target: mask_background
+                            property: "opacity"
+                            duration: 1000
+                        }
+                    }
+                },
+                Transition {
+                    from: ""
+                    to: "splash"
+                    SequentialAnimation {
+                        PropertyAnimation {
+                            target: mask_background
+                            property: "opacity"
                             duration: 500
                         }
                     }
@@ -221,9 +274,7 @@ CommonItem {
                 opacity: 1.0
                 source: mpaLeftImage
             }
-            ListModel {
-                id: mpaLeftModel
-            }
+            ListModel { id: mpaLeftModel }
             MpaListView {
                 id: leftMpaListView
                 width: 50
@@ -242,9 +293,7 @@ CommonItem {
                 opacity: 1.0
                 source: mpaRightImage
             }
-            ListModel {
-                id: mpaRightModel
-            }
+            ListModel { id: mpaRightModel }
             MpaListView {
                 id: rightMpaListView
                 width: 50
@@ -254,6 +303,18 @@ CommonItem {
                 anchors.rightMargin: 49
                 anchors.bottom: mpaLeftPanel.bottom
                 anchors.bottomMargin: 23
+            }
+            TextFieldWeir {
+                id: alarm_info
+                textOpacity: 1
+                textWidth: 300
+                anchors.left: parent.left
+                anchors.leftMargin: 150
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 50
+                fontColor: "#ff9000"
+                fontBold: true
+                textValue: qsTr("正常")
             }
         }
         Row {
@@ -329,50 +390,5 @@ CommonItem {
             opacity: 1.0
             source: bottomBarImage
         }
-    /*
-        Text {
-            id: slopeDisplay
-            opacity: CarStatus.climbing_mode
-            x: 910
-            y: 380
-            width: 120
-            height: 320
-            text: qsTr("爬坡模式")
-            horizontalAlignment: Text.AlignHCenter
-            font.family:FontName.fontCurrentFzLt
-            font.italic: true
-            font.pointSize: 15
-            color: "red"
-        }
-
-        Text {
-            id: diagDisplay
-            opacity: CarStatus.diagnostic_mode
-            x: 880
-            y: 420
-            width: 120
-            height: 320
-            text: qsTr("诊断模式")
-            horizontalAlignment: Text.AlignHCenter
-            font.family:FontName.fontCurrentFzLt
-            font.italic: true
-            font.pointSize: 15
-            color: "red"
-        }
-
-        Text {
-            id: modeDisplay
-            opacity: 1.0
-            x: 1070
-            y: 400
-            width: 120
-            height: 320
-            text: CarStatus.power_supply
-            horizontalAlignment: Text.AlignHCenter
-            font.family:FontName.fontCurrentFzLt
-            font.pointSize: 25
-            color: "#00FF00"
-        }
-        */
     }
 }
