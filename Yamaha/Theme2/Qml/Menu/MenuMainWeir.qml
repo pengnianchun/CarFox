@@ -4,6 +4,7 @@ import CustomEnum 1.0
 import "qrc:/Common/Component"
 
 MenuItem {
+    id: menu_main
     width: 1440
     height: 544
     visible: false
@@ -11,7 +12,7 @@ MenuItem {
     parentMenuId: "MenuPanel"
 
     property string sourceImageUrl: "qrc:/Theme/Theme2/Image/"
-    property string mainRingImage: sourceImageUrl + "DialPanel/mainRing.png";
+    property string mainRingImageBg: sourceImageUrl + "DialPanel/mainRingBg.png";
     property string centerLightImage: sourceImageUrl + "DialPanel/centerLight.png";
     property string centerBackGroundImage: sourceImageUrl + "SubMenu/centerBg.png";
     property string arrowUpImage: sourceImageUrl + "SubMenu/arrowUp.png";
@@ -20,14 +21,46 @@ MenuItem {
     property var menuInfoTitleArray: ["控制","发动机","辅助","TCU","电池管理","电池状态","空调","仪表","设置"]
     property int menuCurrentIndex: 0
     property bool mainRingStatus: false
-
     property bool keyBoardStatus: true
+    property bool menuPanelInfoStatus: false
 
+    NumberAnimation {
+        id: center_light_animation
+        running: false
+        target: center_light
+        property: "opacity"
+        to: 1
+        duration: 400
+    }
+    NumberAnimation {
+        id: menu_detail_animation
+        running: false
+        target: menu_detail
+        property: "opacity"
+        to: 1
+        duration: 400
+    }
+    onVisibleChanged: {
+        if(visible){
+            if(menuPanelInfoStatus){
+                center_light_animation.running = true;
+                menu_detail_animation.running = true;
+                menuPanelInfoStatus = false;
+            }else{
+                center_light.opacity = 1;
+                menu_detail.opacity = 1;
+            }
+        }else{
+            center_light.opacity = 0;
+            menu_detail.opacity = 0;
+        }
+    }
     enterMenu: function(){
         if(keyBoardStatus){
             UiController.setLayerProperty("MenuPanel","animationAction",1);
             UiController.setLayerProperty("MenuPanel","menuCurrentIndex",menuCurrentIndex);
             keyBoardStatus = false;
+            menuPanelInfoStatus = true;
         }else{}
     }
     hideMenu: function(){
@@ -61,13 +94,13 @@ MenuItem {
     Image {
         id: main_ring
         x: 436
-        y: 1
+        y: 2
         z: mainRingStatus ? 2 : 1
-        source: mainRingImage
+        source: mainRingImageBg
     }
     Image {
         id: center_light
-        opacity: 1.0
+        opacity: 0//1.0
         anchors.top: main_ring.top
         anchors.topMargin: 18
         anchors.left: main_ring.left
@@ -76,6 +109,7 @@ MenuItem {
         source: centerLightImage
     }
     Item {
+        id: menu_detail
         x: 436
         y: 1
         z: mainRingStatus ? 1 : 3

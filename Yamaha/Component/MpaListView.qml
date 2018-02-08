@@ -7,7 +7,7 @@ Item {
     property string mpaValueImage: sourceImageUrl + "HomePanel/mpaValue.png"
     property real widthMpaListView: 50
     property real heightMpaListView: 280
-    property var mpaListModel;
+    property var mpaListModel
 
     ListView {
         width: widthMpaListView;

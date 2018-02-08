@@ -3,8 +3,8 @@ import QtQuick.Layouts 1.0
 
 Item {
     id: root
-    width: 300
-    height: 48
+    width: 800
+    height: 50
     property int fps: 60
     property int frameCounter: 0
     z: 100
@@ -21,6 +21,8 @@ Item {
     }
 
     Text {
+        anchors.left: parent.left
+        anchors.leftMargin: 350
         objectName: "fpsText"
         text: root.fps + " fps"
         color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1);
@@ -42,7 +44,7 @@ Item {
     RowLayout {
         z: 50
         spacing: 20
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
         anchors.left: parent.left
         Rectangle {
             id: button1
@@ -50,9 +52,11 @@ Item {
             height: 30
             opacity: 0.8
             color: "red"
+            radius: 10
             Text {
                 anchors.centerIn: parent
                 text: qsTr("Enter")
+                font.bold: true
             }
             MouseArea {
                 anchors.fill: parent;
@@ -69,10 +73,11 @@ Item {
             height: 30
             opacity: 0.8
             color: "red"
+            radius: 10
             Text {
                 anchors.centerIn: parent
                 text: qsTr("Back")
-
+                font.bold: true
             }
             MouseArea {
                 anchors.fill: parent;
@@ -89,9 +94,11 @@ Item {
             height: 30
             opacity: 0.8
             color: "red"
+            radius: 10
             Text {
                 anchors.centerIn: parent
                 text: qsTr("Prev")
+                font.bold: true
             }
             MouseArea {
                 anchors.fill: parent;
@@ -108,9 +115,11 @@ Item {
             height: 30
             opacity: 0.8
             color: "red"
+            radius: 10
             Text {
                 anchors.centerIn: parent
                 text: qsTr("Next")
+                font.bold: true
             }
             MouseArea {
                 anchors.fill: parent;
@@ -127,9 +136,11 @@ Item {
             height: 30
             opacity: 0.8
             color: "red"
+            radius: 10
             Text {
                 anchors.centerIn: parent
                 text: qsTr("igOn")
+                font.bold: true
             }
             MouseArea {
                 anchors.fill: parent;

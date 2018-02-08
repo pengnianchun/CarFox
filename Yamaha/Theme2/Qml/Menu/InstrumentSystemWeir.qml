@@ -73,11 +73,13 @@ MenuItem {
         ListElement { name: "";value: "";unit: "";checkstatus:false }
         ListElement { name: "";value: "";unit: "";checkstatus:true }
         ListElement { name: "";value: "";unit: "";checkstatus:true }
+        /*
         ListElement { name: "";value: "";unit: "";checkstatus:true }
         ListElement { name: "";value: "";unit: "";checkstatus:true }
         ListElement { name: "";value: "";unit: "";checkstatus:true }
         ListElement { name: "";value: "";unit: "";checkstatus:true }
         ListElement { name: "";value: "";unit: "";checkstatus:true }
+        */
     }
     RowLayout {
         anchors.fill: parent
