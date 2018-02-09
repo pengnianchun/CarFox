@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
-import "../../JS/MenuMainController.js" as MenuMainController
+import "../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
 
 CommonItem {
@@ -161,6 +161,7 @@ CommonItem {
             }
         ]
         transitions: [
+            //Menu展开部分动画
             Transition {
                 from: statusAnimation[2]
                 to: statusAnimation[0]
@@ -204,6 +205,7 @@ CommonItem {
                     }
                 }
             },
+            //Menu关闭部分动画
             Transition {
                 from: statusAnimation[0]
                 to: statusAnimation[1]
@@ -246,6 +248,7 @@ CommonItem {
                     }
                 }
             },
+            //开机动画部分
             Transition {
                 to: statusAnimation[2]
                 SequentialAnimation {

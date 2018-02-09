@@ -22,15 +22,19 @@ MenuItem {
     property var dateYMDHMStatus: [true,false,false,false,false,false]
 
     enterMenu: function(){
+        //调用设置模块Enter函数
         MenuMainDetailController.enterSettingSystemAction(setting_system,settingSystemId,dateYMDHMId);
     }
     hideMenu: function(){
+        //调用设置模块Return函数
         MenuMainDetailController.returnSettingSystemAction(setting_system,dateYMDHMId,menuLayerId,parentMenuId);
     }
     previousMenu: function(){
+        //时间数值递增函数调用
         MenuMainDetailController.turnPageStatus(setting_system,settingSystemId,dateYMDHMId,"add");
     }
     nextMenu: function(){
+        //时间数值递减函数调用
         MenuMainDetailController.turnPageStatus(setting_system,settingSystemId,dateYMDHMId,"reduce");
     }
 

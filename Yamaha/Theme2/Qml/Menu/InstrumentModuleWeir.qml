@@ -18,6 +18,7 @@ MenuItem {
     property int instrumentCurrentIndex: 0
 
     onInstrumentCurrentIndexChanged: {
+        //仪表信息显示前中后模块判断
         var instrumentInfoResource = InstrumentInfo.getInsteumentInfo();
         if(instrumentCurrentIndex === 1){
             InstrumentController.initializeBeforeModule(listModelIdArray,instrumentInfoResource);
@@ -30,6 +31,7 @@ MenuItem {
     }
     enterMenu: function(){}
     hideMenu: function(){
+        //调用关闭三层菜单通用函数
         MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
     }
     previousMenu: function(){}
