@@ -33,7 +33,7 @@ CommonItem {
 
     //HomePanel遮罩效果信号监测
     property string maskBackGroundStatus: "";
-
+    //监测遮罩信号变化
     onMaskBackGroundStatusChanged: {
         console.log("maskBackGroundStatus:::::::::::::::::::::::::::" + maskBackGroundStatus);
         if(maskBackGroundStatus === "show"){
@@ -113,52 +113,25 @@ CommonItem {
             color: "#000000";
             opacity: 0
             states: [
-                State {
-                    name: "show"
-                    PropertyChanges { target: mask_background; opacity: 0.7; }
-                },
-                State {
-                    name: "hide"
-                    PropertyChanges { target: mask_background; opacity: 0; }
-                },
-                State {
-                    name: "splash"
-                    PropertyChanges { target: mask_background; opacity: 1; }
-                }
+                State { name: "show"; PropertyChanges { target: mask_background; opacity: 0.7; }},
+                State { name: "hide"; PropertyChanges { target: mask_background; opacity: 0; }},
+                State { name: "splash"; PropertyChanges { target: mask_background; opacity: 1; }}
             ]
             transitions: [
                 Transition {
                     from: ""
                     to: "show"
-                    SequentialAnimation {
-                        PropertyAnimation {
-                            target: mask_background
-                            property: "opacity"
-                            duration: 500
-                        }
-                    }
+                    SequentialAnimation { PropertyAnimation { target: mask_background; property: "opacity"; duration: 500 }}
                 },
                 Transition {
                     from: ""
                     to: "hide"
-                    SequentialAnimation {
-                        PropertyAnimation {
-                            target: mask_background
-                            property: "opacity"
-                            duration: 1000
-                        }
-                    }
+                    SequentialAnimation { PropertyAnimation { target: mask_background; property: "opacity"; duration: 1000 }}
                 },
                 Transition {
                     from: ""
                     to: "splash"
-                    SequentialAnimation {
-                        PropertyAnimation {
-                            target: mask_background
-                            property: "opacity"
-                            duration: 500
-                        }
-                    }
+                    SequentialAnimation { PropertyAnimation { target: mask_background; property: "opacity"; duration: 500 }}
                 }
             ]
         }
@@ -376,19 +349,7 @@ CommonItem {
                 }
             }
         }
-        Image {
-            id: topBar
-            z: 1
-            anchors.bottom: centerPanel.top
-            opacity: 1.0
-            source: topBarImage
-        }
-        Image {
-            id: bottomBar
-            z: 1
-            anchors.top: centerPanel.bottom
-            opacity: 1.0
-            source: bottomBarImage
-        }
+        Image { id: topBar; z: 1; anchors.bottom: centerPanel.top; opacity: 1.0; source: topBarImage }
+        Image { id: bottomBar; z: 1; anchors.top: centerPanel.bottom; opacity: 1.0; source: bottomBarImage }
     }
 }

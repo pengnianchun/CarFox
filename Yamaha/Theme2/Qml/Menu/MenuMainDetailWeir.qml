@@ -23,6 +23,7 @@ MenuItem {
     enterMenu: function(){}
     hideMenu: function(){}
     previousMenu: function(){
+        //仪表信息模块上一页处理
         if(menuCurrentIndex === 7){
             if((moduleCurrentIndex > 0)&&(moduleCurrentIndex <= 3)){
                 moduleCurrentIndex--;
@@ -33,6 +34,7 @@ MenuItem {
         }else{}
     }
     nextMenu: function(){
+        //仪表信息模块下一页处理
         if(menuCurrentIndex === 7){
             if((moduleCurrentIndex >= 0)&&(moduleCurrentIndex < 3)){
                 moduleCurrentIndex++;

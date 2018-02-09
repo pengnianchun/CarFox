@@ -215,8 +215,6 @@
         <file>Theme2/Image/Gif/wingsMotion.gif</file>
         <file>Theme2/Qml/HomePanel.qml</file>
         <file>Theme2/Qml/Menu/MenuMainDetailWeir.qml</file>
-        <file>Theme2/Qml/Menu/MenuPanelWeir.qml</file>
-        <file>Theme2/Qml/Splash/Splash.qml</file>
         <file>Theme2/Qml/Menu/AirConditioningWeir.qml</file>
         <file>Theme2/Qml/Menu/AuxiliarySystemWeir.qml</file>
         <file>Theme2/Qml/Menu/BatteryStatusWeir.qml</file>
@@ -238,5 +236,7 @@
         <file>Theme2/Image/DialPanel/mainRingBg.png</file>
         <file>Theme2/JS/HomePanelController.js</file>
         <file>Theme2/Qml/Menu/InstrumentModuleWeir.qml</file>
+        <file>Theme2/Qml/MenuPanelWeir.qml</file>
+        <file>Theme2/Qml/Splash/Theme2Splash.qml</file>
     </qresource>
 </RCC>

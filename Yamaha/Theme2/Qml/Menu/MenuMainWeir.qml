@@ -43,6 +43,7 @@ MenuItem {
     }
     nextMenu: function() {
         if(keyBoardStatus){
+            //菜单切换下一步处理
             if((menuCurrentIndex >= 0)&&(menuCurrentIndex < 8)){
                 menuCurrentIndex += 1;
             }else{
@@ -52,6 +53,7 @@ MenuItem {
     }
     previousMenu: function() {
         if(keyBoardStatus){
+            //菜单切换上一步处理
             if((menuCurrentIndex > 0)&&(menuCurrentIndex <= 8)){
                 menuCurrentIndex -= 1;
             }else{

@@ -16,12 +16,14 @@ MenuItem {
     property var listModelIdArray: [listmodel_one,listmodel_two,listmodel_three,listmodel_four]
 
     Component.onCompleted: {
+        //初始化仪表模块配置信息
         var instrumentInfoResource = InstrumentInfo.getInsteumentInfo();
         InstrumentController.initializeInstrumentModel(listModelIdArray,instrumentInfoResource);
     }
 
     enterMenu: function(){}
     hideMenu: function(){
+        //调用关闭三层菜单通用函数
         MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
     }
     previousMenu: function(){}

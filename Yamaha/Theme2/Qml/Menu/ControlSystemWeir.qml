@@ -14,6 +14,7 @@ MenuItem {
 
     enterMenu: function(){}
     hideMenu: function(){
+        //调用关闭三层菜单通用函数
         MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
     }
     previousMenu: function(){}
