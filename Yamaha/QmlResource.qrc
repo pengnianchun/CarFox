@@ -217,13 +217,10 @@
         <file>Theme2/Qml/Menu/MenuMainDetailWeir.qml</file>
         <file>Theme2/Qml/Menu/MenuPanelWeir.qml</file>
         <file>Theme2/Qml/Splash/Splash.qml</file>
-        <file>Theme2/Qml/Menu/AfterModuleWeir.qml</file>
         <file>Theme2/Qml/Menu/AirConditioningWeir.qml</file>
         <file>Theme2/Qml/Menu/AuxiliarySystemWeir.qml</file>
         <file>Theme2/Qml/Menu/BatteryStatusWeir.qml</file>
         <file>Theme2/Qml/Menu/BatterySystemWeir.qml</file>
-        <file>Theme2/Qml/Menu/BeforeModuleWeir.qml</file>
-        <file>Theme2/Qml/Menu/CenterModuleWeir.qml</file>
         <file>Theme2/Qml/Menu/ControlSystemWeir.qml</file>
         <file>Theme2/Qml/Menu/EngineSystemWeir.qml</file>
         <file>Theme2/Qml/Menu/InstrumentSystemWeir.qml</file>
@@ -240,5 +237,6 @@
         <file>Theme4/Qml/TriggerPanel.qml</file>
         <file>Theme2/Image/DialPanel/mainRingBg.png</file>
         <file>Theme2/JS/HomePanelController.js</file>
+        <file>Theme2/Qml/Menu/InstrumentModuleWeir.qml</file>
     </qresource>
 </RCC>

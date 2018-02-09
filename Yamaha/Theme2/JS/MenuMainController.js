@@ -35,23 +35,11 @@ function showMenuDetail(menuCurrentIndex){
  */
 function showModule(moduleCurrentIndex){
     UiController.hideLayer("InstrumentSystem");
-    UiController.hideLayer("BeforeModule");
-    UiController.hideLayer("CenterModule");
-    UiController.hideLayer("AfterModule");
-    switch (moduleCurrentIndex){
-    case 0:
+    UiController.hideLayer("InstrumentModule");
+    if(moduleCurrentIndex === 0){
         UiController.showLayer("InstrumentSystem");
-        break;
-    case 1:
-        UiController.showLayer("BeforeModule");
-        break;
-    case 2:
-        UiController.showLayer("CenterModule");
-        break
-    case 3:
-        UiController.showLayer("AfterModule");
-        break;
-    default:
-        break;
+    }else{
+        UiController.showLayer("InstrumentModule");
+        UiController.setLayerProperty("InstrumentModule","instrumentCurrentIndex",moduleCurrentIndex);
     }
 }

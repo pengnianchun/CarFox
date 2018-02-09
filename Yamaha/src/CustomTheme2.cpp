@@ -16,13 +16,10 @@ void CustomTheme2::create()
     addLayer("qrc:/Theme/Theme2/Qml/Splash/Splash.qml", "Splash", carfox::Layer::InstantShow);
     addLayer("qrc:/Theme/Theme2/Qml/HomePanel.qml", "HomePanel", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/MenuBack.qml", "MenuBack", carfox::Layer::ManualShow);
-    addLayer("qrc:/Theme/Theme2/Qml/Menu/AfterModuleWeir.qml", "AfterModule", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/AirConditioningWeir.qml", "AirCondition", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/AuxiliarySystemWeir.qml", "AuxiliarySystem", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/BatteryStatusWeir.qml", "BatteryStatus", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/BatterySystemWeir.qml", "BatterySystem", carfox::Layer::ManualShow);
-    addLayer("qrc:/Theme/Theme2/Qml/Menu/BeforeModuleWeir.qml", "BeforeModule", carfox::Layer::ManualShow);
-    addLayer("qrc:/Theme/Theme2/Qml/Menu/CenterModuleWeir.qml", "CenterModule", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/ControlSystemWeir.qml", "ControlSystem", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/EngineSystemWeir.qml", "EngineSystem", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/InstrumentSystemWeir.qml", "InstrumentSystem", carfox::Layer::ManualShow);
@@ -31,4 +28,5 @@ void CustomTheme2::create()
     addLayer("qrc:/Theme/Theme2/Qml/Menu/SettingSystemWeir.qml", "SettingSystem", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/TcuSystemWeir.qml", "TcuSystem", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/MenuMainWeir.qml", "MenuMain", carfox::Layer::ManualShow);
+    addLayer("qrc:/Theme/Theme2/Qml/Menu/InstrumentModuleWeir.qml", "InstrumentModule", carfox::Layer::ManualShow);
 }

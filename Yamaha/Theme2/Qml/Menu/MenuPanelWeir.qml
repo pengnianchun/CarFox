@@ -9,7 +9,7 @@ CommonItem {
     height: 544
     visible: false
 
-    property var statusAnimation: ["1","2","3"]
+    property var statusAnimation: ["menuOpen","menuClose","free"]
     property real startXLeft: 283;
     property real startXRight: 561;
     property real endXLeft: -95;
@@ -25,6 +25,9 @@ CommonItem {
     property string menuMainBackGroundImage: sourceImageUrl + "SubMenu/centerBlockBg.png";
     property string mainRingImage: sourceImageUrl + "DialPanel/mainRing.png";
     property string centerLightImage: sourceImageUrl + "DialPanel/centerLight.png";
+    property string borderLightImage: sourceImageUrl + "DialPanel/speedRing.png";
+    property string blueLightImage: sourceImageUrl + "DialPanel/lightBlue.png";
+    property string redLightImage: sourceImageUrl + "DialPanel/lightRed.png";
     property string centerBackGroundImage: sourceImageUrl + "SubMenu/centerBg.png";
     property string leftMenuImage: sourceImageUrl + "DialPanel/leftWing.png";
     property string rightMenuImage: sourceImageUrl + "DialPanel/rightWing.png";
@@ -55,17 +58,6 @@ CommonItem {
             animationAction = 0;
         }else{}
     }
-    onMainRingStatusChanged: {
-        if(mainRingStatus){
-            main_ring.visible = mainRingStatus;
-            center_light.visible = mainRingStatus;
-            main_ring.opacity = 1.0;
-            center_light.opacity = 1.0;
-        }else{
-            main_ring.visible = mainRingStatus;
-            center_light.visible = mainRingStatus;
-        }
-    }
     onKeyEnter: function(){
         if(keyBoardStatus){
             UiController.showRootMenu();
@@ -81,30 +73,9 @@ CommonItem {
         anchors.fill: parent
         color: "transparent"
         state: "";
-        Image {
-            id: left_panel
-            x: startXLeft
-            y: -1.2
-            z: 3
-            opacity: 0
-            source: leftImage
-        }
-        Image {
-            id: right_panel
-            x: startXRight
-            y: -1.2
-            z: 3
-            opacity: 0
-            source: rightImage
-        }
-        Image {
-            id: center_background
-            x: 467
-            y: 44
-            z: 3
-            opacity: 0
-            source: centerBackGroundImage
-        }
+        Image { id: left_panel; x: startXLeft; y: -1.2; z: 3; opacity: 0; source: leftImage }
+        Image { id: right_panel; x: startXRight; y: -1.2; z: 3; opacity: 0; source: rightImage }
+        Image { id: center_background; x: 467; y: 44; z: 3; visible: !mainRingStatus; source: centerBackGroundImage }
         Rectangle {
             id: menu_main_detail_background
             anchors.horizontalCenter: parent.horizontalCenter
@@ -113,26 +84,12 @@ CommonItem {
             height: 500
             color: "transparent"
             clip: true
-            Image {
-                source: menuMainBackGroundImage
-                anchors.horizontalCenter: parent.horizontalCenter
-            }
+            Image { source: menuMainBackGroundImage; anchors.horizontalCenter: parent.horizontalCenter }
         }
-        Image {
-            id: main_ring
-            x: 436
-            y: 27
-            z: 2
-            scale: 0.2
-            visible: mainRingStatus
-            opacity: 0//1.0
-            source: mainRingImage
-        }
+        Image { id: main_ring; x: 436; y: 27; z: 2; scale: 0.2; opacity: 0; source: mainRingImage }
         Image {
             id: center_light
-            visible: mainRingStatus
-            opacity: 0//1.0
-            scale: 0.1
+            opacity: 0; scale: 0.1
             anchors.top: main_ring.top
             anchors.topMargin: 18
             anchors.left: main_ring.left
@@ -141,21 +98,33 @@ CommonItem {
             source: centerLightImage
         }
         Image {
-            id: left_menu_panel
-            x: endMenuXLeft//startMenuXLeft
-            y: 95
-            z: 1
-            opacity: 0//1.0
-            source: leftMenuImage
+            id: border_light
+            opacity: 0; scale: 1
+            anchors.top: main_ring.top
+            anchors.topMargin: 66
+            anchors.left: main_ring.left
+            anchors.leftMargin: 79.5
+            z: 4
+            source: borderLightImage
         }
-        Image {
-            id: right_menu_panel
-            x: endMenuXRight//startMenuXRight
-            y: 95
-            z: 1
-            opacity: 0//1.0
-            source: rightMenuImage
+        //速度灯显示部分
+        Item {
+            id: speed_light
+            x: 500
+            y: 60
+            z: 4
+            opacity: 0
+            Image { id: speed_led1; x: 37; y: 328; source: blueLightImage }
+            Image { id: speed_led2; x: 6; y: 213; source: blueLightImage }
+            Image { id: speed_led3; x: 46; y: 101; source: blueLightImage }
+            Image { id: speed_led4; x: 145; y: 31; source: blueLightImage }
+            Image { id: speed_led5; x: 262; y: 31; source: blueLightImage }
+            Image { id: speed_led6; x: 360; y: 100; source: redLightImage }
+            Image { id: speed_led7; x: 402; y: 213; source: redLightImage }
+            Image { id: speed_led8; x: 372; y: 331; source: redLightImage }
         }
+        Image { id: left_menu_panel; x: endMenuXLeft; y: 95; z: 1; opacity: 0; source: leftMenuImage }
+        Image { id: right_menu_panel; x: endMenuXRight; y: 95; z: 1; opacity: 0; source: rightMenuImage }
         states: [
             State {
                 name: statusAnimation[0]
@@ -164,6 +133,10 @@ CommonItem {
                 PropertyChanges { target: left_panel; x: endXLeft; opacity: 1.0 }
                 PropertyChanges { target: right_panel; x: endXRight; opacity: 1.0 }
                 PropertyChanges { target: menu_main_detail_background; width: 755 }
+                PropertyChanges { target: center_light; opacity: 0 }
+                PropertyChanges { target: main_ring; opacity: 0 }
+                PropertyChanges { target: border_light; opacity: 0 }
+                PropertyChanges { target: speed_light; opacity: 0 }
             },
             State {
                 name: statusAnimation[1]
@@ -172,11 +145,17 @@ CommonItem {
                 PropertyChanges { target: menu_main_detail_background; width: 0 }
                 PropertyChanges { target: left_menu_panel; x: startMenuXLeft; opacity: 1.0 }
                 PropertyChanges { target: right_menu_panel; x: startMenuXRight; opacity: 1.0 }
+                PropertyChanges { target: center_light; opacity: 1.0 }
+                PropertyChanges { target: main_ring; opacity: 1.0 }
+                PropertyChanges { target: border_light; opacity: 1.0 }
+                PropertyChanges { target: speed_light; opacity: 1.0 }
             },
             State {
                 name: statusAnimation[2]
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
+                PropertyChanges { target: border_light; opacity: 1.0 }
+                PropertyChanges { target: speed_light; opacity: 1.0 }
                 PropertyChanges { target: left_menu_panel; x: startMenuXLeft; opacity: 1.0 }
                 PropertyChanges { target: right_menu_panel; x: startMenuXRight; opacity: 1.0 }
             }
@@ -187,79 +166,35 @@ CommonItem {
                 to: statusAnimation[0]
                 SequentialAnimation {
                     ParallelAnimation {
-                        PropertyAnimation {
-                            target: left_menu_panel
-                            property: "x"
-                            duration: 200
+                        PropertyAnimation { target: left_menu_panel; property: "x"; duration: 200 }
+                        PropertyAnimation { target: right_menu_panel; property: "x"; duration: 200 }
+                        PropertyAnimation { target: left_menu_panel; property: "opacity"; duration: 120 }
+                        PropertyAnimation { target: right_menu_panel; property: "opacity"; duration: 120 }
+                        ScriptAction {
+                            script: { UiController.setLayerProperty("HomePanel","maskBackGroundStatus","show"); }
                         }
-                        PropertyAnimation {
-                            target: right_menu_panel
-                            property: "x"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: left_menu_panel
-                            property: "opacity"
-                            duration: 120
-                        }
-                        PropertyAnimation {
-                            target: right_menu_panel
-                            property: "opacity"
-                            duration: 120
-                        }
+                        PropertyAnimation { target: center_background; property: "opacity"; to: 1; duration: 200 }
+                        PropertyAnimation { target: left_panel; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: right_panel; property: "opacity"; duration: 200 }
+                    }
+                    ParallelAnimation {
+                        PropertyAnimation { target: center_light; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: main_ring; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: border_light; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: speed_light; property: "opacity"; duration: 200 }
                         ScriptAction {
                             script: {
-                                UiController.setLayerProperty("HomePanel","maskBackGroundStatus","show");
+                                console.log("hide MenuMain is completed !")
+                                UiController.hideLayer("MenuMain");
                             }
-                        }
-                        PropertyAnimation {
-                            target: center_background
-                            property: "opacity"
-                            to: 1
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: left_panel
-                            property: "opacity"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: right_panel
-                            property: "opacity"
-                            duration: 200
-                        }
-                    }
-                    ScriptAction {
-                        script: {
-                            console.log("hide MenuMain is completed !")
-                            UiController.hideLayer("MenuMain");
                         }
                     }
                     PauseAnimation { duration: 400 }
                     ParallelAnimation {
-                        PropertyAnimation {
-                            target: center_background
-                            property: "opacity"
-                            to: 0
-                            duration: 40
-                        }
-                        PropertyAnimation {
-                            target: left_panel
-                            property: "x"
-                            easing.type: Easing.Linear
-                            duration: 400
-                        }
-                        PropertyAnimation {
-                            target: right_panel
-                            property: "x"
-                            easing.type: Easing.Linear
-                            duration: 400
-                        }
-                        PropertyAnimation {
-                            target: menu_main_detail_background
-                            property: "width"
-                            duration: 350
-                        }
+                        PropertyAnimation { target: center_background; property: "opacity"; to: 0; duration: 40 }
+                        PropertyAnimation { target: left_panel; property: "x"; easing.type: Easing.Linear; duration: 400 }
+                        PropertyAnimation { target: right_panel; property: "x"; easing.type: Easing.Linear; duration: 400 }
+                        PropertyAnimation { target: menu_main_detail_background; property: "width"; duration: 350 }
                     }
                     ScriptAction {
                         script: {
@@ -274,78 +209,33 @@ CommonItem {
                 to: statusAnimation[1]
                 SequentialAnimation {
                     ParallelAnimation {
-                        PropertyAnimation {
-                            target: left_panel
-                            property: "x"
-                            easing.type: Easing.Linear
-                            duration: 400
-                        }
-                        PropertyAnimation {
-                            target: right_panel
-                            property: "x"
-                            easing.type: Easing.Linear
-                            duration: 400
-                        }
-                        PropertyAnimation {
-                            target: menu_main_detail_background
-                            property: "width"
-                            duration: 440
-                        }
+                        PropertyAnimation { target: left_panel; property: "x"; easing.type: Easing.Linear; duration: 400 }
+                        PropertyAnimation { target: right_panel; property: "x"; easing.type: Easing.Linear; duration: 400 }
+                        PropertyAnimation { target: menu_main_detail_background; property: "width"; duration: 440 }
                     }
-                    PropertyAnimation {
-                        target: center_background
-                        property: "opacity"
-                        to: 1
-                        duration: 120
-                    }
+                    PropertyAnimation { target: center_background; property: "opacity"; to: 1; duration: 120 }
                     PauseAnimation { duration: 200 }
-                    ScriptAction {
-                        script: {
-                            console.log("show MenuMain is completed !")
-                            UiController.showLayer("MenuMain");
+                    ParallelAnimation {
+                        PropertyAnimation { target: center_light; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: main_ring; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: border_light; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: speed_light; property: "opacity"; duration: 200 }
+                        ScriptAction {
+                            script: {
+                                console.log("show MenuMain is completed !")
+                                UiController.showLayer("MenuMain");
+                            }
                         }
                     }
                     ParallelAnimation {
-                        PropertyAnimation {
-                            target: center_background
-                            property: "opacity"
-                            to: 0
-                            duration: 120
-                        }
-                        PropertyAnimation {
-                            target: left_panel
-                            property: "opacity"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: right_panel
-                            property: "opacity"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: left_menu_panel
-                            property: "x"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: right_menu_panel
-                            property: "x"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: left_menu_panel
-                            property: "opacity"
-                            duration: durationTime
-                        }
-                        PropertyAnimation {
-                            target: right_menu_panel
-                            property: "opacity"
-                            duration: durationTime
-                        }
+                        PropertyAnimation { target: left_panel; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: right_panel; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: left_menu_panel; property: "x"; duration: 200 }
+                        PropertyAnimation { target: right_menu_panel; property: "x"; duration: 200 }
+                        PropertyAnimation { target: left_menu_panel; property: "opacity"; duration: durationTime }
+                        PropertyAnimation { target: right_menu_panel; property: "opacity"; duration: durationTime }
                         ScriptAction {
-                            script: {
-                                UiController.setLayerProperty("HomePanel","maskBackGroundStatus","hide");
-                            }
+                            script: { UiController.setLayerProperty("HomePanel","maskBackGroundStatus","hide"); }
                         }
                     }
                     ScriptAction {
@@ -360,66 +250,24 @@ CommonItem {
                 to: statusAnimation[2]
                 SequentialAnimation {
                     ParallelAnimation {
-                        NumberAnimation {
-                            target: center_light
-                            property: "scale";
-                            to: 1.15;
-                            duration: 440
-                        }
-                        NumberAnimation {
-                            target: center_light
-                            property: "opacity";
-                            duration: 440
-                        }
+                        NumberAnimation { target: center_light; property: "scale"; to: 1.15; duration: 440 }
+                        NumberAnimation { target: center_light; property: "opacity"; duration: 440 }
                     }
-                    NumberAnimation {
-                        target: center_light
-                        property: "scale";
-                        to: 1;
-                        duration: 120
-                    }
+                    NumberAnimation { target: center_light; property: "scale"; to: 1; duration: 120 }
                     PauseAnimation { duration: durationTime/4 }
                     ScriptAction { script: UiController.setLayerProperty("HomePanel","opacity",1) }
                     ParallelAnimation {
-                        PropertyAnimation {
-                            target: main_ring
-                            property: "opacity"
-                            duration: 80
-                        }
-                        PropertyAnimation {
-                            target: main_ring
-                            property: "scale"
-                            to: 1.1
-                            duration: 280
-                        }
+                        PropertyAnimation { target: main_ring; property: "opacity"; duration: 80 }
+                        PropertyAnimation { target: main_ring; property: "scale"; to: 1.1; duration: 280 }
                     }
-                    PropertyAnimation {
-                        target: main_ring
-                        property: "scale"
-                        to: 1
-                        duration: 120
-                    }
+                    PropertyAnimation { target: main_ring; property: "scale"; to: 1; duration: 120 }
                     ParallelAnimation {
-                        PropertyAnimation {
-                            target: left_menu_panel
-                            property: "x"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: right_menu_panel
-                            property: "x"
-                            duration: 200
-                        }
-                        PropertyAnimation {
-                            target: left_menu_panel
-                            property: "opacity"
-                            duration: durationTime
-                        }
-                        PropertyAnimation {
-                            target: right_menu_panel
-                            property: "opacity"
-                            duration: durationTime
-                        }
+                        PropertyAnimation { target: border_light; property: "opacity"; to: 1; duration: 200 }
+                        PropertyAnimation { target: speed_light; property: "opacity"; to: 1; duration: 200 }
+                        PropertyAnimation { target: left_menu_panel; property: "x"; duration: 200 }
+                        PropertyAnimation { target: right_menu_panel; property: "x"; duration: 200 }
+                        PropertyAnimation { target: left_menu_panel; property: "opacity"; duration: durationTime }
+                        PropertyAnimation { target: right_menu_panel; property: "opacity"; duration: durationTime }
                     }
                 }
             }
