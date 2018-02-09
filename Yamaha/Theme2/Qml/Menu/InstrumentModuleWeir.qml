@@ -7,19 +7,27 @@ import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 import "../../JS/InstrumentController.js" as InstrumentController
 
 MenuItem {
-    menuLayerId: "BeforeModule"
+    menuLayerId: "InstrumentModule"
     parentMenuId: "MenuMainDetail"
     width: 900
     height: 350
     x: 265
     y: 120
     property var listModelIdArray: [listmodel_one,listmodel_two,listmodel_three,listmodel_four]
+    //0：仪表信息 1：前模块 2：中模块 3：后模块
+    property int instrumentCurrentIndex: 0
 
-    Component.onCompleted: {
+    onInstrumentCurrentIndexChanged: {
         var instrumentInfoResource = InstrumentInfo.getInsteumentInfo();
-        InstrumentController.initializeBeforeModule(listModelIdArray,instrumentInfoResource);
+        if(instrumentCurrentIndex === 1){
+            InstrumentController.initializeBeforeModule(listModelIdArray,instrumentInfoResource);
+        }else if(instrumentCurrentIndex === 2){
+            InstrumentController.initializeCenterModule(listModelIdArray,instrumentInfoResource);
+        }else if(instrumentCurrentIndex === 3){
+            InstrumentController.initializeAfterModule(listModelIdArray,instrumentInfoResource);
+        }else{}
+        instrumentCurrentIndex = 0;
     }
-
     enterMenu: function(){}
     hideMenu: function(){
         MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
