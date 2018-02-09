@@ -122,8 +122,65 @@
         <file>Fonts/WenQuanYiMicroHei.ttf</file>
     </qresource>
     <qresource prefix="/Theme">
-        <file>Theme1/Qml/MainPanel.qml</file>
-        <file>Theme1/Qml/TriggerPanel.qml</file>
+        <file>Theme1/Qml/Splash/Splash.qml</file>
+        <file>Theme1/Qml/HomePanel.qml</file>
+	<file>Theme1/Qml/MenuPanel.qml</file>
+	<file>Theme1/Qml/IndicatorPanel.qml</file>
+        <file>Theme1/Qml/Menu/TirePressureMenu.qml</file>
+        <file>Theme1/Qml/Menu/DcdcSystemMenu.qml</file>
+        <file>Theme1/Qml/Menu/VideoConvertMenu.qml</file>
+        <file>Theme1/Qml/Menu/VcuSystemMenu.qml</file>
+        <file>Theme1/Qml/Menu/TimeSettingsMenu.qml</file>
+        <file>Theme1/Qml/Menu/OtherInformationMenu.qml</file>
+        <file>Theme1/Qml/Menu/MoterBatteryMenu.qml</file>
+        <file>Theme1/Qml/Menu/LightAdjustMenu.qml</file>
+        <file>Theme1/Qml/Menu/InstrumentSysMenu.qml</file>
+        <file>Theme1/JS/MenuMainController.js</file>
+        <file>Theme1/Image/HomePanel/whiteLineBg.png</file>
+        <file>Theme1/Image/HomePanel/speedBg.png</file>
+        <file>Theme1/Image/HomePanel/rpmBg.png</file>
+        <file>Theme1/Image/HomePanel/rightUpFull.png</file>
+        <file>Theme1/Image/HomePanel/rightUp.png</file>
+        <file>Theme1/Image/HomePanel/rightRing.png</file>
+        <file>Theme1/Image/HomePanel/rightBg.png</file>
+        <file>Theme1/Image/HomePanel/leftUpFull.png</file>
+        <file>Theme1/Image/HomePanel/leftUp.png</file>
+        <file>Theme1/Image/HomePanel/leftRing.png</file>
+        <file>Theme1/Image/HomePanel/leftBg.png</file>
+        <file>Theme1/Image/HomePanel/baseBar.png</file>
+        <file>Theme1/Image/HomePanel/batteryValue.png</file>
+        <file>Theme1/Image/HomePanel/ready.png</file>
+        <file>Theme1/Image/HomePanel/socValue.png</file>
+        <file>Theme1/Image/HomePanel/socBg.png</file>
+        <file>Theme1/Image/HomePanel/batteryBg.png</file>
+        <file>Theme1/Image/MenuPanel/vedio.png</file>
+        <file>Theme1/Image/MenuPanel/vcu.png</file>
+        <file>Theme1/Image/MenuPanel/tireMonitor.png</file>
+        <file>Theme1/Image/MenuPanel/timeSet.png</file>
+        <file>Theme1/Image/MenuPanel/other.png</file>
+        <file>Theme1/Image/MenuPanel/motorBattery.png</file>
+        <file>Theme1/Image/MenuPanel/lightAdjust.png</file>
+        <file>Theme1/Image/MenuPanel/instruction.png</file>
+        <file>Theme1/Image/MenuPanel/dcdc.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_brake.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_frontFog.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_headlight.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_highBeam.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_rearFog.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_turnLeft.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_turnRight.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_waterLevel.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_rightFriction.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_littleLight.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_leftFriction.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_door2.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_door1.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_danger.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_chargePlugin.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_chargeIndicator.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_airPress2.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_airPress1.png</file>
+        <file>Theme1/Image/IndicatorPanel/Lamp_backCabin.png</file>
         <file>Theme2/Image/DialPanel/battery2.png</file>
         <file>Theme2/Image/DialPanel/centerLight.png</file>
         <file>Theme2/Image/DialPanel/leftWing.png</file>
