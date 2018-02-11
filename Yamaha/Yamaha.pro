@@ -81,3 +81,5 @@ INSTALLS += fonts
 include($$PWD/Yamaha.pri)
 
 
+
+

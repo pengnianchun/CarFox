@@ -9,7 +9,7 @@
 #include "CustomTheme4.hpp"
 #include "CustomUiController.hpp"
 #include "CustomUiController.hpp"
-
+#include "qmlgifimage.h"
 
 // 打开这个宏会直接显示主界面,而不是需要等待mcu发送第一帧信号
 //#define CUSTOM_PROFILE
@@ -207,6 +207,7 @@ void CustomUiController::registerQmlTypes()
     UiController::registerQmlTypes();
     qmlRegisterType<CustomEnum>("CustomEnum", 1, 0, "CustomEnum");
     qmlRegisterType<CustomRing>("CustomRing", 1, 0, "CustomRing");
+    qmlRegisterType<QmlGifImage>("CustomEnum", 1, 0, "QmlGifImage");
 }
 
 void CustomUiController::loadFonts()
