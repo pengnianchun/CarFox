@@ -5,24 +5,7 @@
 #include "ThemeConfig.hpp"
 #include "CustomCarMsgWorkerData.hpp"
 
-#include "airctrl_system_frame.pb.h"
-#include "auxiliary_system_frame.pb.h"
-#include "battery_group_temperature_frame.pb.h"
-#include "battery_group_voltage_frame.pb.h"
-#include "battery_manage_system_frame.pb.h"
-#include "control_system_frame.pb.h"
-#include "settings.pb.h"
-#include "general_info_frame.pb.h"
-#include "instrument_frame.pb.h"
-#include "key.pb.h"
-#include "menu_num.pb.h"
-#include "module_back_frame.pb.h"
-#include "module_front_frame.pb.h"
-#include "module_middle_frame.pb.h"
-#include "moter_system_frame.pb.h"
-#include "tcu_system_frame.pb.h"
-#include "warning_frame.pb.h"
-
+#include "protoheader.h"
 
 class CustomCarMsgWorker : public carfox::CarMsgWorker
 {

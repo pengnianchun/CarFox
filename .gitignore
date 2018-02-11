@@ -12,3 +12,5 @@ build-*
 .qmake.stash
 */protofile/
 Framework/lib/
+*.Debug
+*.Release
