@@ -48,6 +48,7 @@ HEADERS += \
     ./src/CustomCarMsgWorker.hpp \
     ./src/KeyManager.hpp \
     ./src/ThemeConfig.hpp \
+    ./src/CustomRing.hpp \
     ./src/CustomCarMsgWorkerData.hpp \ 
     ./src/CustomMultiLanguage.hpp \ 
     ./src/CustomUiController.hpp \ 
@@ -62,6 +63,7 @@ SOURCES += \
     ./src/CustomCarMsgWorker.cpp \
     ./src/KeyManager.cpp \
     ./src/ThemeConfig.cpp \
+    ./src/CustomRing.cpp \
     ./src/CustomUiController.cpp \ 
     ./src/CustomMultiLanguage.cpp \ 
     ./src/CustomTheme1.cpp \ 

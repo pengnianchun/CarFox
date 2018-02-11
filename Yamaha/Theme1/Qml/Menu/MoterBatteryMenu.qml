@@ -1,4 +1,6 @@
 import QtQuick 2.0
+import CustomEnum 1.0
+import "../../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
 
 MenuItem {
@@ -13,12 +15,7 @@ MenuItem {
 
     hideMenu: function(){
         if(bKeyEnable){
-            UiController.setLayerProperty("MoterBatteryMenu", "visible", false);
-            UiController.setLayerProperty("MoterBatteryMenu", "bKeyEnable", false);
-            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
-            UiController.setLayerProperty("MenuPanel", "visible", true);
-            UiController.setLayerProperty("MenuPanel", "state", "show");
-            UiController.hideRootMenu();
+            MenuMainController.backMenuPanel(menuLayerId, parentMenuId)
             bKeyEnable = false;
         }
     }
