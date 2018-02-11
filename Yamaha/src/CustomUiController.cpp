@@ -1,6 +1,7 @@
 #include <QDir>
 
 #include "CustomEnum.hpp"
+#include "CustomRing.hpp"
 
 #include "CustomTheme1.hpp"
 #include "CustomTheme2.hpp"
@@ -205,6 +206,7 @@ void CustomUiController::registerQmlTypes()
 {
     UiController::registerQmlTypes();
     qmlRegisterType<CustomEnum>("CustomEnum", 1, 0, "CustomEnum");
+    qmlRegisterType<CustomRing>("CustomRing", 1, 0, "CustomRing");
 }
 
 void CustomUiController::loadFonts()
