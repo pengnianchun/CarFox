@@ -2,6 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
 import "../JS/MenuMainController.js" as MenuMainController
+import "../JS/MenuPanelController.js" as MenuPanelController
 import "qrc:/Common/Component"
 
 CommonItem {
@@ -34,14 +35,45 @@ CommonItem {
     property string arrowUpImage: sourceImageUrl + "SubMenu/arrowUp.png";
     property string arrowDownImage: sourceImageUrl + "SubMenu/arrowDown.png";
     property int menuCurrentIndex: 0
-
     property var containerId: container
-
     property bool keyBoardStatus: true;
     property bool mainRingStatus: true;
     property int animationAction: 0;
     property string currentLayer;
 
+    //车速初始值
+    property real speedValue: 120;
+    //档位初始值
+    property real gearValue: 0;
+
+    //监测速度档位信号变化信号（实际应监测CarMsg中值的变化）
+    onVisibleChanged: {
+        if(visible){
+            timer.running = true;
+        }else{
+            timer.running = false;
+        }
+    }
+    //自定义定时器测试使用
+    Timer {
+        id: timer
+        repeat: true
+        interval: 1000
+        running: false
+        onTriggered: {
+            console.log("=================menu panel timer=========================");
+            if(speedValue > 120){
+                speedValue = 90;
+            }else{}
+            if(gearValue > 4){
+                gearValue = 0;
+            }else{}
+            MenuPanelController.setSpeedValueAction(speed_hundred,speed_ten,speed_bits,speedValue);
+            MenuPanelController.setGearValueAction(gear,gearValue);
+            speedValue++;
+            gearValue++;
+        }
+    }
     //动画触发信号监听
     onAnimationActionChanged: {
         console.log("animationAction::::::::::::::::" + animationAction);
@@ -76,6 +108,7 @@ CommonItem {
         Image { id: left_panel; x: startXLeft; y: -1.2; z: 3; opacity: 0; source: leftImage }
         Image { id: right_panel; x: startXRight; y: -1.2; z: 3; opacity: 0; source: rightImage }
         Image { id: center_background; x: 467; y: 44; z: 3; visible: !mainRingStatus; source: centerBackGroundImage }
+        //菜单展开背景
         Rectangle {
             id: menu_main_detail_background
             anchors.horizontalCenter: parent.horizontalCenter
@@ -86,6 +119,7 @@ CommonItem {
             clip: true
             Image { source: menuMainBackGroundImage; anchors.horizontalCenter: parent.horizontalCenter }
         }
+        //菜单面板模块
         Image { id: main_ring; x: 436; y: 27; z: 2; scale: 0.2; opacity: 0; source: mainRingImage }
         Image {
             id: center_light
@@ -97,6 +131,24 @@ CommonItem {
             z: 4
             source: centerLightImage
         }
+        //速度值 / 挡位
+        ColumnLayout {
+            id: speed_gear_panel
+            opacity: 0
+            z: 2
+            spacing: 30
+            anchors.top: parent.top
+            anchors.topMargin: 230
+            anchors.horizontalCenter: parent.horizontalCenter
+            RowLayout {
+                spacing: -40
+                Image { id: speed_hundred }
+                Image { id: speed_ten }
+                Image { id: speed_bits }
+            }
+            Image { id: gear;anchors.horizontalCenter: parent.horizontalCenter }
+        }
+        //速度灯背景
         Image {
             id: border_light
             opacity: 0; scale: 1
@@ -135,6 +187,7 @@ CommonItem {
                 PropertyChanges { target: menu_main_detail_background; width: 755 }
                 PropertyChanges { target: center_light; opacity: 0 }
                 PropertyChanges { target: main_ring; opacity: 0 }
+                PropertyChanges { target: speed_gear_panel; opacity: 0 }
                 PropertyChanges { target: border_light; opacity: 0 }
                 PropertyChanges { target: speed_light; opacity: 0 }
             },
@@ -147,6 +200,7 @@ CommonItem {
                 PropertyChanges { target: right_menu_panel; x: startMenuXRight; opacity: 1.0 }
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
+                PropertyChanges { target: speed_gear_panel; opacity: 1.0 }
                 PropertyChanges { target: border_light; opacity: 1.0 }
                 PropertyChanges { target: speed_light; opacity: 1.0 }
             },
@@ -154,6 +208,7 @@ CommonItem {
                 name: statusAnimation[2]
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
+                PropertyChanges { target: speed_gear_panel; opacity: 1.0 }
                 PropertyChanges { target: border_light; opacity: 1.0 }
                 PropertyChanges { target: speed_light; opacity: 1.0 }
                 PropertyChanges { target: left_menu_panel; x: startMenuXLeft; opacity: 1.0 }
@@ -181,6 +236,7 @@ CommonItem {
                     ParallelAnimation {
                         PropertyAnimation { target: center_light; property: "opacity"; duration: 200 }
                         PropertyAnimation { target: main_ring; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: speed_gear_panel; property: "opacity"; duration: 200 }
                         PropertyAnimation { target: border_light; property: "opacity"; duration: 200 }
                         PropertyAnimation { target: speed_light; property: "opacity"; duration: 200 }
                         ScriptAction {
@@ -220,6 +276,7 @@ CommonItem {
                     ParallelAnimation {
                         PropertyAnimation { target: center_light; property: "opacity"; duration: 200 }
                         PropertyAnimation { target: main_ring; property: "opacity"; duration: 200 }
+                        PropertyAnimation { target: speed_gear_panel; property: "opacity"; duration: 200 }
                         PropertyAnimation { target: border_light; property: "opacity"; duration: 200 }
                         PropertyAnimation { target: speed_light; property: "opacity"; duration: 200 }
                         ScriptAction {
@@ -271,6 +328,7 @@ CommonItem {
                         PropertyAnimation { target: right_menu_panel; property: "x"; duration: 200 }
                         PropertyAnimation { target: left_menu_panel; property: "opacity"; duration: durationTime }
                         PropertyAnimation { target: right_menu_panel; property: "opacity"; duration: durationTime }
+                        PropertyAnimation { target: speed_gear_panel; property: "opacity"; duration: durationTime }
                     }
                 }
             }

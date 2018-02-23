@@ -120,12 +120,13 @@
         <file>Fonts/FangYan.ttf</file>
         <file>Fonts/NotoSansHans-DemiLight.ttf</file>
         <file>Fonts/WenQuanYiMicroHei.ttf</file>
+        <file>CommonImage/Indicator/Lamp_batteryWarning.png</file>
     </qresource>
     <qresource prefix="/Theme">
         <file>Theme1/Qml/Splash/Splash.qml</file>
         <file>Theme1/Qml/HomePanel.qml</file>
-	<file>Theme1/Qml/MenuPanel.qml</file>
-	<file>Theme1/Qml/IndicatorPanel.qml</file>
+        <file>Theme1/Qml/MenuPanel.qml</file>
+        <file>Theme1/Qml/IndicatorPanel.qml</file>
         <file>Theme1/Qml/Menu/TirePressureMenu.qml</file>
         <file>Theme1/Qml/Menu/DcdcSystemMenu.qml</file>
         <file>Theme1/Qml/Menu/VideoConvertMenu.qml</file>
@@ -312,6 +313,7 @@
         <file>Theme2/JS/HomePanelController.js</file>
         <file>Theme2/Qml/Menu/InstrumentModuleWeir.qml</file>
         <file>Theme2/Qml/MenuPanelWeir.qml</file>
-        <file>Theme2/Qml/Splash/Theme2Splash.qml</file>
+        <file>Theme2/Qml/Splash/Splash.qml</file>
+        <file>Theme2/JS/MenuPanelController.js</file>
     </qresource>
 </RCC>
