@@ -24,6 +24,24 @@ CommonItem {
     property string oilImage: sourceImageUrl + "DialPanel/oil.png"
     property string mpaLeftImage: sourceImageUrl + "HomePanel/mpaLeft.png"
     property string mpaRightImage: sourceImageUrl + "HomePanel/mpaRight.png"
+    property string leftCorneringLampImage: sourceCommonImageUrl + "Indicator/Lamp_leftTurn.png"
+    property string rightCorneringLampImage: sourceCommonImageUrl + "Indicator/Lamp_rightTurn.png"
+    property string lampHighBeamImage: sourceCommonImageUrl + "Indicator/Lamp_highBeam.png"
+    property string lampHeadLightImage: sourceCommonImageUrl + "Indicator/Lamp_headlight.png"
+    property string lampPositionLightImage: sourceCommonImageUrl + "Indicator/Lamp_positionLight.png"
+    property string chargingImage: sourceCommonImageUrl + "Indicator/Charging.png"
+    property string lampFrontFogImage: sourceCommonImageUrl + "Indicator/Lamp_frontFog.png"
+    property string lampRearFogImage: sourceCommonImageUrl + "Indicator/Lamp_rearFog.png"
+    property string chargeLightImage: sourceCommonImageUrl + "Indicator/chargeLight.png"
+    property string lampMainERRredImage: sourceCommonImageUrl + "Indicator/Lamp_mainERRred.png"
+    property string backCangImage: sourceCommonImageUrl + "Indicator/backCang.png"
+    property string lampLeftShoeWearImage: sourceCommonImageUrl + "Indicator/Lamp_leftShoeWear.png"
+    property string lampRightShoeWearImage: sourceCommonImageUrl + "Indicator/Lamp_rightShoeWear.png"
+    property string lampWaterLowImage: sourceCommonImageUrl + "Indicator/Lamp_waterLow.png"
+    property string lampMotorImage: sourceCommonImageUrl + "Indicator/Lamp_motor.png"
+    property string motorImage: sourceCommonImageUrl + "Indicator/motor.png"
+    property string lampBatteryImage: sourceCommonImageUrl + "Indicator/Lamp_battery.png"
+    property string lampBatteryWarningImage: sourceCommonImageUrl + "Indicator/Lamp_batteryWarning.png"
     property bool bDisplay: true
     //报警计数
     property int alarmCode: 0
@@ -57,12 +75,6 @@ CommonItem {
             timer.running = false;
         }
     }
-    Component.onCompleted: {
-        console.log("/--------------------------------------------/");
-        console.log("/-------------"+ AlarmInfoCode.getInfo() +"---------------/");
-        console.log("/--------------------------------------------/");
-        HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
-    }
     //自定义定时器测试使用
     Timer {
         id: timer
@@ -70,10 +82,47 @@ CommonItem {
         interval: 1000
         running: false
         onTriggered: {
+            console.log("=================home panel timer=========================");
             if(bDisplay){
-                oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
-            }else{
                 oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressureValue.png";
+                left_cornering_lamp.opacity = 0;
+                right_cornering_lamp.opacity = 0;
+                lamp_headlight.opacity = 0;
+                lamp_highBeam.opacity = 0;
+                lamp_positionLight.opacity = 0;
+                charging.opacity = 0;
+                lamp_frontFog.opacity = 0;
+                lamp_rearFog.opacity = 0;
+                charge_light.opacity = 0;
+                lamp_mainERRred.opacity = 0;
+                backCang.opacity = 0;
+                lamp_leftShoeWear.opacity = 0;
+                lamp_rightShoeWear.opacity = 0;
+                lamp_waterLow.opacity = 0;
+                lamp_motor.opacity = 0;
+                motorFault.opacity = 0;
+                lamp_battery.opacity = 0;
+                lamp_battery_warning.opacity = 0;
+            }else{
+                oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
+                left_cornering_lamp.opacity = 1.0;
+                right_cornering_lamp.opacity = 1.0;
+                lamp_headlight.opacity = 1.0;
+                lamp_highBeam.opacity = 1.0;
+                lamp_positionLight.opacity = 1.0;
+                charging.opacity = 1.0;
+                lamp_frontFog.opacity = 1.0;
+                lamp_rearFog.opacity = 1.0;
+                charge_light.opacity = 1.0;
+                lamp_mainERRred.opacity = 1.0;
+                backCang.opacity = 1.0;
+                lamp_leftShoeWear.opacity = 1.0;
+                lamp_rightShoeWear.opacity = 1.0;
+                lamp_waterLow.opacity = 1.0;
+                lamp_motor.opacity = 1.0;
+                motorFault.opacity = 1.0;
+                lamp_battery.opacity = 1.0;
+                lamp_battery_warning.opacity = 1.0;
             }
             if(mpaStatus){
                 if(mpaCount === 10){
@@ -101,6 +150,12 @@ CommonItem {
                 alarmCode++;
             }
         }
+    }
+    Component.onCompleted: {
+        console.log("/--------------------------------------------/");
+        console.log("/-------------"+ AlarmInfoCode.getInfo() +"---------------/");
+        console.log("/--------------------------------------------/");
+        HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
     }
     Item {
         id: home
@@ -143,6 +198,16 @@ CommonItem {
             opacity: 1.0
             source: backgroundImage
         }
+        //转向灯显示模块
+        RowLayout {
+            anchors.top: parent.top
+            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 200
+            Image { id: left_cornering_lamp; source: leftCorneringLampImage; opacity: 0 }
+            Image { id: right_cornering_lamp; source: rightCorneringLampImage; opacity: 0 }
+        }
+        //nav层模块
         Row {
             id: navPanel
             z: 1
@@ -233,6 +298,7 @@ CommonItem {
                 }
             }
         }
+        //center层模块
         Item {
             id: centerPanel
             z: 1
@@ -289,7 +355,80 @@ CommonItem {
                 fontBold: true
                 textValue: qsTr("正常")
             }
+            //远光灯 / 头灯 / 位置灯 / 充电
+            RowLayout {
+                anchors.top: parent.top
+                anchors.topMargin: 20
+                anchors.left: parent.left
+                anchors.leftMargin: 70
+                spacing: 1070
+                RowLayout {
+                    spacing: 10
+                    Image { id: lamp_highBeam; source: lampHighBeamImage; opacity: 0 }
+                    Image { id: lamp_headlight; source: lampHeadLightImage; opacity: 0 }
+                }
+                RowLayout {
+                    spacing: 10
+                    Image { id: lamp_positionLight; source: lampPositionLightImage; opacity: 0 }
+                    Image { id: charging; source: chargingImage; opacity: 0 }
+                }
+            }
+            //前雾灯 / 后雾灯 / 充电提示 / 错误提示
+            RowLayout {
+                anchors.top: parent.top
+                anchors.topMargin: 110
+                anchors.left: parent.left
+                anchors.leftMargin: 125
+                spacing: 960
+                RowLayout {
+                    spacing: 10
+                    Image { id: lamp_frontFog; source: lampFrontFogImage; opacity: 0 }
+                    Image { id: lamp_rearFog; source: lampRearFogImage; opacity: 0 }
+                }
+                RowLayout {
+                    spacing: 10
+                    Image { id: charge_light; source: chargeLightImage; opacity: 0 }
+                    Image { id: lamp_mainERRred; source: lampMainERRredImage; opacity: 0 }
+                }
+            }
+            //backCang / leftShoeWear / rightShoeWear / waterLow
+            RowLayout {
+                anchors.top: parent.top
+                anchors.topMargin: 200
+                anchors.left: parent.left
+                anchors.leftMargin: 165
+                spacing: 870
+                RowLayout {
+                    spacing: 10
+                    Image { id: backCang; source: backCangImage; opacity: 0 }
+                    Image { id: lamp_leftShoeWear; source: lampLeftShoeWearImage; opacity: 0 }
+                }
+                RowLayout {
+                    spacing: 10
+                    Image { id: lamp_rightShoeWear; source: lampRightShoeWearImage; opacity: 0 }
+                    Image { id: lamp_waterLow; source: lampWaterLowImage; opacity: 0 }
+                }
+            }
+            //发动机 / 发动机警告 / 电池 / 电池警告
+            RowLayout {
+                anchors.top: parent.top
+                anchors.topMargin: 270
+                anchors.left: parent.left
+                anchors.leftMargin: 225
+                spacing: 770
+                RowLayout {
+                    spacing: 10
+                    Image { id: lamp_motor; source: lampMotorImage; opacity: 0 }
+                    Image { id: motorFault; source: motorImage; opacity: 0 }
+                }
+                RowLayout {
+                    spacing: 10
+                    Image { id: lamp_battery; source: lampBatteryImage; opacity: 0 }
+                    Image { id: lamp_battery_warning; source: lampBatteryWarningImage; opacity: 0 }
+                }
+            }
         }
+        //botter层模块
         Row {
             id: booterPanel
             z: 1
@@ -327,7 +466,7 @@ CommonItem {
                     anchors.left: parent.left
                     anchors.leftMargin: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("尿素液位 %1% ").arg(0)//(CarStatus.urea_level.toFixed(1))
+                    textValue: qsTr("尿素液位 %1 % ").arg(0)//(CarStatus.urea_level.toFixed(1))
                 }
                 TextIconWeir {
                     id: oilfuelValue
@@ -336,7 +475,7 @@ CommonItem {
                     anchors.verticalCenter: parent.verticalCenter
                     imageTopMargin: 0
                     spaceWidth: -30
-                    textIconValue: qsTr("%1%").arg(0)//(CarStatus.oil_level.toFixed(0))
+                    textIconValue: qsTr("%1 %").arg(0)//(CarStatus.oil_level.toFixed(0))
                     iconSource: oilImage
                 }
                 TextFieldWeir {

@@ -13,7 +13,7 @@ void CustomTheme2::create()
     //addLayer("qrc:/Theme2/Qml/Theme2/MainPanel.qml", "Themem2MainPanel", carfox::Layer::InstantShow);
     // 触发界面 for manual show
     //addLayer("qrc:/Theme2/Qml/Theme2/TriggerPanel.qml", "Theme2TriggerPanel", carfox::Layer::ManualShow);
-    addLayer("qrc:/Theme/Theme2/Qml/Splash/Theme2Splash.qml", "Splash", carfox::Layer::InstantShow);
+    addLayer("qrc:/Theme/Theme2/Qml/Splash/Splash.qml", "Splash", carfox::Layer::InstantShow);
     addLayer("qrc:/Theme/Theme2/Qml/HomePanel.qml", "HomePanel", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/MenuBack.qml", "MenuBack", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/MenuPanelWeir.qml", "MenuPanel", carfox::Layer::ManualShow);
