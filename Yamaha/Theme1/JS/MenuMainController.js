@@ -34,6 +34,19 @@ function showMenuDetail(menuCurrentIndex){
         UiController.setLayerProperty("VideoConvertMenu", "bKeyEnable", true);
     }
 }
+
+/*
+ * 各菜单信息模块返回切换函数
+ */
+function backMenuPanel(menuLayerId,parentMenuId){
+    UiController.setLayerProperty(menuLayerId, "visible", false);
+    UiController.setLayerProperty(menuLayerId, "bKeyEnable", false);
+    UiController.setLayerProperty(parentMenuId, "bKeyEnable", true);
+    UiController.setLayerProperty(parentMenuId, "visible", true);
+    UiController.setLayerProperty(parentMenuId, "state", "show");
+    UiController.hideRootMenu();
+}
+
 /*
  * 仪表信息模块切换公共函数
  */

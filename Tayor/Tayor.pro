@@ -44,48 +44,19 @@ HEADERS += \
     ./src/carmenucontrol.h \
     ./src/fbhelper.h
 
-#for proto
-SOURCES += \
-    ./protocode/airctrl_system_frame.pb.cc \
-    ./protocode/auxiliary_system_frame.pb.cc \
-    ./protocode/battery_group_temperature_frame.pb.cc \
-    ./protocode/battery_group_voltage_frame.pb.cc \
-    ./protocode/battery_manage_system_frame.pb.cc \
-    ./protocode/control_system_frame.pb.cc \
-    ./protocode/settings.pb.cc \
-    ./protocode/general_info_frame.pb.cc \
-    ./protocode/instrument_frame.pb.cc \
-    ./protocode/key.pb.cc \
-    ./protocode/menu_num.pb.cc \
-    ./protocode/module_back_frame.pb.cc \
-    ./protocode/module_front_frame.pb.cc \
-    ./protocode/module_middle_frame.pb.cc \
-    ./protocode/moter_system_frame.pb.cc \
-    ./protocode/tcu_system_frame.pb.cc \
-    ./protocode/warning_frame.pb.cc
+SOURCES += $$files($$PWD/protofile/protocode/*.pb.cc)
+HEADERS += $$files($$PWD/protofile/protocode/*.pb.h)
+HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
 
+unix {
+    QMAKE_DISTCLEAN += -r $$PWD/protofile
+}
 
-HEADERS += \
-    ./protocode/test.pb.h \
-    ./protocode/person.pb.h \
-    ./protocode/airctrl_system_frame.pb.h \
-    ./protocode/auxiliary_system_frame.pb.h \
-    ./protocode/battery_group_temperature_frame.pb.h \
-    ./protocode/battery_group_voltage_frame.pb.h \
-    ./protocode/battery_manage_system_frame.pb.h \
-    ./protocode/control_system_frame.pb.h \
-    ./protocode/settings.pb.h \
-    ./protocode/general_info_frame.pb.h \
-    ./protocode/instrument_frame.pb.h \
-    ./protocode/key.pb.h \
-    ./protocode/menu_num.pb.h \
-    ./protocode/module_back_frame.pb.h \
-    ./protocode/module_front_frame.pb.h \
-    ./protocode/module_middle_frame.pb.h \
-    ./protocode/moter_system_frame.pb.h \
-    ./protocode/tcu_system_frame.pb.h \
-    ./protocode/warning_frame.pb.h
-
+win32 {
+    QMAKE_DEL_FILE          = del /f /s /q
+    DEST = $$replace(PWD, /, \\)
+    QMAKE_DISTCLEAN += $$DEST\protofile
+}
 
 RESOURCES += \
     resource.qrc

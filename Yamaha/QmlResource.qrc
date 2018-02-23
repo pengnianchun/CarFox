@@ -182,6 +182,24 @@
         <file>Theme1/Image/IndicatorPanel/Lamp_airPress2.png</file>
         <file>Theme1/Image/IndicatorPanel/Lamp_airPress1.png</file>
         <file>Theme1/Image/IndicatorPanel/Lamp_backCabin.png</file>
+	<file>Theme1/Image/AutoSplash/bg.png</file>
+        <file>Theme1/Image/AutoSplash/bluelinebg.png</file>
+        <file>Theme1/Image/AutoSplash/leftBlueLine.png</file>
+        <file>Theme1/Image/AutoSplash/leftbluesharp1.png</file>
+        <file>Theme1/Image/AutoSplash/leftbluesharp2.png</file>
+        <file>Theme1/Image/AutoSplash/leftline.png</file>
+        <file>Theme1/Image/AutoSplash/leftsharp1.png</file>
+        <file>Theme1/Image/AutoSplash/leftsharp2.png</file>
+        <file>Theme1/Image/AutoSplash/leftwhite_d.png</file>
+        <file>Theme1/Image/AutoSplash/leftwhite.png</file>
+        <file>Theme1/Image/AutoSplash/linebg.png</file>
+        <file>Theme1/Image/AutoSplash/rightblueline.png</file>
+        <file>Theme1/Image/AutoSplash/rightbluesharp1.png</file>
+        <file>Theme1/Image/AutoSplash/rightbluesharp2.png</file>
+        <file>Theme1/Image/AutoSplash/rightline.png</file>
+        <file>Theme1/Image/AutoSplash/rightsharp1.png</file>
+        <file>Theme1/Image/AutoSplash/rightsharp2.png</file>
+        <file>Theme1/Image/AutoSplash/rightwhite.png</file>
         <file>Theme2/Image/DialPanel/battery2.png</file>
         <file>Theme2/Image/DialPanel/centerLight.png</file>
         <file>Theme2/Image/DialPanel/leftWing.png</file>
