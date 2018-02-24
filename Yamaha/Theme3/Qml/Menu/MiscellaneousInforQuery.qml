@@ -13,7 +13,7 @@ Item{
         y:56
         width: 163
         height:44
-        source:"qrc:/Theme/Theme3/Image/1st/Text/MiscellaneousInforQuery.png"
+        source:"qrc:/Theme/Theme3/Image/MenuPanel/miscellaneousInforQuery.png"
     }
     Text{
         id:speedrate_name

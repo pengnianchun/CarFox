@@ -13,7 +13,7 @@ Item{
         y:3
         width:163
         height:44
-        source: "qrc:/Theme/Theme3/Image/1st/Text/TPMS.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/TPMS.png"
     }
     Image{
         id:tpms_luntai  //大图标
@@ -21,7 +21,7 @@ Item{
         y:58
         width:302
         height:285
-        source: "qrc:/Theme/Theme3/Image/1st/menu/luntai.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/luntai.png"
     }
 
     TPMSRow{

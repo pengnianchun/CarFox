@@ -24,10 +24,10 @@ Item {
         id: dashBoardBackground
         x:910
         y:26
-        source: "qrc:/Theme/Theme3/Image/1st/dashboard/right/r_dashboard.png"
+        source: "qrc:/Theme/Theme3/Image/DashBoard/right_dashboard.png"
         Image {
             id: mpa_right
-            source: "qrc:/Theme/Theme3/Image/1st/mpa/right/mpa_line_bg.png"
+            source: "qrc:/Theme/Theme3/Image/DashBoard/right_mpa_line.png"
             x:163
             y:113
             width:188
@@ -78,7 +78,7 @@ Item {
             }
             Image{
                 id:dashboard_right_dot
-                source: "qrc:/Theme/Theme3/Image/1st/dashboard/right/r_biaoge.png"
+                source: "qrc:/Theme/Theme3/Image/DashBoard/right_dot.png"
                 x:383
                 y:196
                 width:82
@@ -125,7 +125,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line1
-                    source: "qrc:/Theme/Theme3/Image/1st/dashboard/right/2.png"
+                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
                     x:110
                     y:233
                     width:204
@@ -134,7 +134,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line2
-                    source: "qrc:/Theme/Theme3/Image/1st/dashboard/right/2.png"
+                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
                     x:110
                     y:233
                     width:204
@@ -145,7 +145,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line3
-                    source: "qrc:/Theme/Theme3/Image/1st/dashboard/right/2.png"
+                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
                     x:110
                     y:233
                     width:204

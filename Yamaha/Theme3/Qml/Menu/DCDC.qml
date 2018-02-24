@@ -13,7 +13,7 @@ Item {
         y:1
         width:359
         height:44
-        source: "qrc:/Theme/Theme3/Image/1st/Text/DC_title.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/dc_title.png"
     }
     Text {
         id: dc_dydy

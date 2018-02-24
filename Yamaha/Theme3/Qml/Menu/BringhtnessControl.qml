@@ -11,7 +11,7 @@ Item{
         y:83
         width:114
         height:44
-        source: "qrc:/Theme/Theme3/Image/1st/Text/BringhtnessControl.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/bringhtnessControl.png"
     }
 
     Rectangle{

@@ -69,7 +69,7 @@ Rectangle {
         Image {     //主界面背景
             id: bg
             anchors.fill: parent
-            source: "qrc:/Theme/Theme3/Image/1st/bg/bg.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/bg.png"
 
             StaticControls{
                 id: staticControls
@@ -115,7 +115,7 @@ Rectangle {
                 to: "MenuList"
                 ScriptAction {
                     script: {
-                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/bg.png"
+                        bg.source = "qrc:/Theme/Theme3/Image/MenuPanel/bg.png"   //星空图
                         dashboardLeft.state = "Menu_1_style"
                         dashboardRight.state = "Menu_1_style"
                     }
@@ -126,7 +126,7 @@ Rectangle {
                 to: "MainView"
                 ScriptAction {
                     script: {
-                        bg.source = "qrc:/Theme/Theme3/Image/1st/bg/bg.png"
+                        bg.source = "qrc:/Theme/Theme3/Image/HomePane/bg.png"     //蓝图
                         dashboardLeft.state = "Main_style"
                         dashboardRight.state = "Main_style"
                     }
@@ -137,7 +137,7 @@ Rectangle {
                 to: "MenuParameter"
                 ScriptAction {
                     script: {
-                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/2ed.png"
+//                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/2ed.png"
                         dashboardLeft.state = "Menu_2_style"
                         dashboardRight.state = "Menu_2_style"
                     }
@@ -148,7 +148,7 @@ Rectangle {
                 to: "MenuList"
                 ScriptAction {
                     script: {
-                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/bg.png"
+//                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/bg.png"
                         dashboardLeft.state = "Menu_1_style"
                         dashboardRight.state = "Menu_1_style"
                     }
@@ -170,6 +170,7 @@ Rectangle {
             {
                 return;
             }
+
             if(key === 0) //enter键
             {
                 if(mainView.state == "MainView")
@@ -180,47 +181,49 @@ Rectangle {
 
                 else if(mainView.state == "MenuList") //list
                 {
+                    var index =  middleMenu.menuListExteral.currentIndex;
+                    console.log(index);
                     mainView.state = "MenuParameter"
 //                    middleMenu.menuListVisible = false;
                     if(middleMenu.menuListExteral.currentIndex == 0)
                     {
-                         middleMenu.gotoPage(2);   //1~10
+                         middleMenu.gotoPage(5);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 1)
                     {
-                         middleMenu.gotoPage(3);   //1~10
+                         middleMenu.gotoPage(6);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 2)
                     {
-                         middleMenu.gotoPage(4);   //1~10
+                         middleMenu.gotoPage(7);   //1~10
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 3)
                     {
-                         middleMenu.gotoPage(5);   //1~10
+                         middleMenu.gotoPage(8);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 4)
                     {
-                         middleMenu.gotoPage(6);   //1~10
+                         middleMenu.gotoPage(9);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 5)
                     {
-                         middleMenu.gotoPage(7);   //1~10
+                         middleMenu.gotoPage(10);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 6)
                     {
-                         middleMenu.gotoPage(8);   //1~10
+                         middleMenu.gotoPage(11);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 7)
                     {
-                         middleMenu.gotoPage(9);   //1~10
+                         middleMenu.gotoPage(2);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 8)
                     {
-                         middleMenu.gotoPage(10);   //1~10
+                         middleMenu.gotoPage(3);
                     }
                     else if(middleMenu.menuListExteral.currentIndex == 9)
                     {
-                         middleMenu.gotoPage(11);   //1~10
+                         middleMenu.gotoPage(4);
                     }
                 }
             }

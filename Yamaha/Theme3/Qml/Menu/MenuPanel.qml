@@ -14,9 +14,9 @@ Item {
         id: menuIcon
         x:57
         y:43
-        width: 300
-        height: 300
-        source: "qrc:/Theme/Theme3/Image/2ed/icon/batterySystem.png"
+        width: 100
+        height: 100
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/icon_powerBattery.png"
     }
     Image {
         id: menuListBg
@@ -24,7 +24,7 @@ Item {
         y:180
         width: 332
         height: 43
-        source: "qrc:/Theme/Theme3/Image/2ed/icon/rect.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/rect.png"
     }
     PathView {
         id: menuList

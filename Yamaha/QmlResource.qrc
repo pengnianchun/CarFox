@@ -124,8 +124,8 @@
     <qresource prefix="/Theme">
         <file>Theme1/Qml/Splash/Splash.qml</file>
         <file>Theme1/Qml/HomePanel.qml</file>
-	<file>Theme1/Qml/MenuPanel.qml</file>
-	<file>Theme1/Qml/IndicatorPanel.qml</file>
+        <file>Theme1/Qml/MenuPanel.qml</file>
+        <file>Theme1/Qml/IndicatorPanel.qml</file>
         <file>Theme1/Qml/Menu/TirePressureMenu.qml</file>
         <file>Theme1/Qml/Menu/DcdcSystemMenu.qml</file>
         <file>Theme1/Qml/Menu/VideoConvertMenu.qml</file>
@@ -181,7 +181,7 @@
         <file>Theme1/Image/IndicatorPanel/Lamp_airPress2.png</file>
         <file>Theme1/Image/IndicatorPanel/Lamp_airPress1.png</file>
         <file>Theme1/Image/IndicatorPanel/Lamp_backCabin.png</file>
-	<file>Theme1/Image/AutoSplash/bg.png</file>
+        <file>Theme1/Image/AutoSplash/bg.png</file>
         <file>Theme1/Image/AutoSplash/bluelinebg.png</file>
         <file>Theme1/Image/AutoSplash/leftBlueLine.png</file>
         <file>Theme1/Image/AutoSplash/leftbluesharp1.png</file>
@@ -302,85 +302,14 @@
         <file>Theme2/Qml/Menu/MenuMainWeir.qml</file>
         <file>Theme2/Qml/MenuBack.qml</file>
         <file>Theme2/JS/InstrumentController.js</file>
-				<file>Theme3/Qml/MainPanel.qml</file>
-				<file>Theme3/Qml/LeftDashBoard.qml</file>
+        <file>Theme3/Qml/MainPanel.qml</file>
+        <file>Theme3/Qml/LeftDashBoard.qml</file>
         <file>Theme3/Qml/MainPanel.qml</file>
         <file>Theme3/Qml/MiddleMenu.qml</file>
         <file>Theme3/Qml/RightDashBoard.qml</file>
         <file>Theme3/Qml/StaticControls.qml</file>
         <file>Theme3/Qml/TriggerPanel.qml</file>
         <file>Theme3/Image/Gif/splash.gif</file>
-        <file>Theme3/Image/1st/bg/bg.png</file>
-        <file>Theme3/Image/1st/bg/bg_sta.png</file>
-        <file>Theme3/Image/1st/bg/bottom_line.png</file>
-        <file>Theme3/Image/1st/bg/l_road.png</file>
-        <file>Theme3/Image/1st/bg/l_top_line.png</file>
-        <file>Theme3/Image/1st/bg/r_road.png</file>
-        <file>Theme3/Image/1st/bg/r_top_line.png</file>
-        <file>Theme3/Image/1st/bus/bus.png</file>
-        <file>Theme3/Image/1st/dashboard/left/1.png</file>
-        <file>Theme3/Image/1st/dashboard/left/biaoge_light.png</file>
-        <file>Theme3/Image/1st/dashboard/left/l_dashboard.png</file>
-        <file>Theme3/Image/1st/dashboard/right/2.png</file>
-        <file>Theme3/Image/1st/dashboard/right/r_biaoge.png</file>
-        <file>Theme3/Image/1st/dashboard/right/r_dashboard.png</file>
-        <file>Theme3/Image/1st/date/fri.png</file>
-        <file>Theme3/Image/1st/date/monday.png</file>
-        <file>Theme3/Image/1st/date/sat.png</file>
-        <file>Theme3/Image/1st/date/sunday.png</file>
-        <file>Theme3/Image/1st/date/thur.png</file>
-        <file>Theme3/Image/1st/date/tue.png</file>
-        <file>Theme3/Image/1st/date/wed.png</file>
-        <file>Theme3/Image/1st/GEAR/D.png</file>
-        <file>Theme3/Image/1st/GEAR/N.png</file>
-        <file>Theme3/Image/1st/GEAR/p.png</file>
-        <file>Theme3/Image/1st/GEAR/R.png</file>
-        <file>Theme3/Image/2ed/icon/batterySystem.png</file>
-        <file>Theme3/Image/2ed/icon/rect.png</file>
-        <file>Theme3/Image/1st/licheng/1.png</file>
-        <file>Theme3/Image/1st/licheng/2.png</file>
-        <file>Theme3/Image/1st/mpa/left/mpa_line_bg.png</file>
-        <file>Theme3/Image/1st/mpa/left/mpa_line_blue.png</file>
-        <file>Theme3/Image/1st/mpa/left/mpa_line_red.png</file>
-        <file>Theme3/Image/1st/mpa/left/mpa_arrow_l.png</file>
-        <file>Theme3/Image/1st/mpa/right/mpa_arrow_l.png</file>
-        <file>Theme3/Image/1st/mpa/right/mpa_line_bg.png</file>
-        <file>Theme3/Image/1st/mpa/right/mpa_line_blue.png</file>
-        <file>Theme3/Image/1st/mpa/right/mpa_line_red.png</file>
-        <file>Theme3/Image/1st/ready/light.png</file>
-        <file>Theme3/Image/1st/ready/light1.png</file>
-        <file>Theme3/Image/1st/ready/READY.png</file>
-        <file>Theme3/Image/1st/ready/ready_arrow_l.png</file>
-        <file>Theme3/Image/1st/ready/ready_arrow_r.png</file>
-        <file>Theme3/Image/1st/ready/wait.png</file>
-        <file>Theme3/Image/1st/soc/line_soc_bg.png</file>
-        <file>Theme3/Image/1st/soc/line_soc_blue.png</file>
-        <file>Theme3/Image/1st/soc/line_soc_green.png</file>
-        <file>Theme3/Image/1st/soc/line_soc_green-head.png</file>
-        <file>Theme3/Image/1st/soc/line_soc_orange-.png</file>
-        <file>Theme3/Image/1st/soc/line_soc_red.png</file>
-        <file>Theme3/Image/1st/soc/soc.png</file>
-        <file>Theme3/Image/1st/soc/soc_arrow.png</file>
-        <file>Theme3/Image/1st/soc/soc_sta.png</file>
-        <file>Theme3/Image/1st/Text/battery_temp_title.png</file>
-        <file>Theme3/Image/1st/Text/bettary_manage_title.png</file>
-        <file>Theme3/Image/1st/Text/DC_title.png</file>
-        <file>Theme3/Image/1st/th-tl-vh-vl/th.png</file>
-        <file>Theme3/Image/1st/th-tl-vh-vl/tl.png</file>
-        <file>Theme3/Image/1st/th-tl-vh-vl/vh.png</file>
-        <file>Theme3/Image/1st/th-tl-vh-vl/vl.png</file>
-        <file>Theme3/Image/1st/total_v/total.png</file>
-        <file>Theme3/Image/1st/v/v_arrow.png</file>
-        <file>Theme3/Image/1st/v/v_icon.png</file>
-        <file>Theme3/Image/1st/v/v_line_lightblue.png</file>
-        <file>Theme3/Image/1st/v/v_line_lightred.png</file>
-        <file>Theme3/Image/1st/v/v_line-bg.png</file>
-        <file>Theme3/Image/1st/v/v_line-blue.png</file>
-        <file>Theme3/Image/1st/v/v_line-red.png</file>
-        <file>Theme3/Image/2ed/bg/2ed.png</file>
-        <file>Theme3/Image/2ed/bg/bg.png</file>
-        <file>Theme3/Image/1st/lamps/l_arrow.png</file>
-        <file>Theme3/Image/1st/lamps/r_arrow.png</file>
         <file>Theme3/Qml/Menu/BatteryManageSysInfo.qml</file>
         <file>Theme3/Qml/Menu/BringhtnessControl.qml</file>
         <file>Theme3/Qml/Menu/DCDC.qml</file>
@@ -395,27 +324,144 @@
         <file>Theme3/Qml/Menu/TPMS.qml</file>
         <file>Theme3/Qml/Menu/VCU.qml</file>
         <file>Theme3/Qml/Menu/VehicleCtrlSysDiagInterface.qml</file>
-        <file>Theme3/Image/1st/Text/BatteryManageSysInfo.png</file>
-        <file>Theme3/Image/1st/Text/BringhtnessControl.png</file>
-        <file>Theme3/Image/1st/Text/MiscellaneousInforQuery.png</file>
-        <file>Theme3/Image/1st/Text/PowerBattery1.png</file>
-        <file>Theme3/Image/1st/Text/PowerBattery2.png</file>
-        <file>Theme3/Image/1st/Text/TimeSetting.png</file>
-        <file>Theme3/Image/1st/Text/TPMS.png</file>
-        <file>Theme3/Image/1st/Text/VCU.png</file>
-        <file>Theme3/Image/1st/Text/VehicleCtrlSysDiagInterface.png</file>
         <file>Theme3/Qml/Menu/PowerBattery1Column.qml</file>
         <file>Theme3/Qml/Menu/PowerBattery2Column.qml</file>
-        <file>Theme3/Image/1st/menu/luntai.png</file>
         <file>Theme3/Qml/Menu/TPMSRow.qml</file>
         <file>Theme3/Qml/Menu/VCUColumn.qml</file>
         <file>Theme3/Qml/Menu/VehicleCtrlSysDiagInterfaceColumn.qml</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/clock/clock.png</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/clock/long.png</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/clock/short.png</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/month.png</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/month_light.png</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/year.png</file>
-        <file>Theme3/Image/3ed/3ed_bg/timesetting/year_light.png</file>
+        <file>Theme3/Image/DashBoard/1.png</file>
+        <file>Theme3/Image/DashBoard/2.png</file>
+        <file>Theme3/Image/DashBoard/l_dashboard.png</file>
+        <file>Theme3/Image/DashBoard/l_dashboard_sta.png</file>
+        <file>Theme3/Image/DashBoard/left_dot.png</file>
+        <file>Theme3/Image/DashBoard/left_dot_sta.png</file>
+        <file>Theme3/Image/DashBoard/left_inerLine.png</file>
+        <file>Theme3/Image/DashBoard/left_inerLine_sta.png</file>
+        <file>Theme3/Image/DashBoard/left_mpa_arrow.png</file>
+        <file>Theme3/Image/DashBoard/left_mpa_line.png</file>
+        <file>Theme3/Image/DashBoard/left_mpa_line_blue.png</file>
+        <file>Theme3/Image/DashBoard/left_mpa_line_red.png</file>
+        <file>Theme3/Image/DashBoard/left_mpa_sta.png</file>
+        <file>Theme3/Image/DashBoard/mpa.png</file>
+        <file>Theme3/Image/DashBoard/right_dashboard.png</file>
+        <file>Theme3/Image/DashBoard/right_dashboard_sta.png</file>
+        <file>Theme3/Image/DashBoard/right_dot.png</file>
+        <file>Theme3/Image/DashBoard/right_dot_sta.png</file>
+        <file>Theme3/Image/DashBoard/right_inerLine.png</file>
+        <file>Theme3/Image/DashBoard/right_inerLine_sta.png</file>
+        <file>Theme3/Image/DashBoard/right_mpa_arrow.png</file>
+        <file>Theme3/Image/DashBoard/right_mpa_line.png</file>
+        <file>Theme3/Image/DashBoard/right_mpa_line_blue.png</file>
+        <file>Theme3/Image/DashBoard/right_mpa_line_red.png</file>
+        <file>Theme3/Image/DashBoard/right_mpa_sta.png</file>
+        <file>Theme3/Image/DashBoard/right_mpa_sta_blue.png</file>
+        <file>Theme3/Image/HomePane/bg.png</file>
+        <file>Theme3/Image/HomePane/bottom_line.png</file>
+        <file>Theme3/Image/HomePane/gear_D.png</file>
+        <file>Theme3/Image/HomePane/gear_N.png</file>
+        <file>Theme3/Image/HomePane/gear_P.png</file>
+        <file>Theme3/Image/HomePane/gear_R.png</file>
+        <file>Theme3/Image/HomePane/icon_fri.png</file>
+        <file>Theme3/Image/HomePane/icon_monday.png</file>
+        <file>Theme3/Image/HomePane/icon_sat.png</file>
+        <file>Theme3/Image/HomePane/icon_sunday.png</file>
+        <file>Theme3/Image/HomePane/icon_thur.png</file>
+        <file>Theme3/Image/HomePane/icon_tue.png</file>
+        <file>Theme3/Image/HomePane/icon_wed.png</file>
+        <file>Theme3/Image/HomePane/licheng.png</file>
+        <file>Theme3/Image/HomePane/lichengTotal.png</file>
+        <file>Theme3/Image/HomePane/road_left.png</file>
+        <file>Theme3/Image/HomePane/road_right.png</file>
+        <file>Theme3/Image/HomePane/soc.png</file>
+        <file>Theme3/Image/HomePane/soc_left_arrow.png</file>
+        <file>Theme3/Image/HomePane/soc_left_bg.png</file>
+        <file>Theme3/Image/HomePane/soc_left_blue.png</file>
+        <file>Theme3/Image/HomePane/soc_left_green.png</file>
+        <file>Theme3/Image/HomePane/soc_left_green-head.png</file>
+        <file>Theme3/Image/HomePane/soc_left_orange-.png</file>
+        <file>Theme3/Image/HomePane/soc_left_red.png</file>
+        <file>Theme3/Image/HomePane/soc_right_arrow.png</file>
+        <file>Theme3/Image/HomePane/soc_right_bg.png</file>
+        <file>Theme3/Image/HomePane/soc_right_blue.png</file>
+        <file>Theme3/Image/HomePane/soc_right_icon.png</file>
+        <file>Theme3/Image/HomePane/soc_right_lightblue.png</file>
+        <file>Theme3/Image/HomePane/soc_right_lightred.png</file>
+        <file>Theme3/Image/HomePane/soc_right-red.png</file>
+        <file>Theme3/Image/HomePane/soc_sta.png</file>
+        <file>Theme3/Image/HomePane/th.png</file>
+        <file>Theme3/Image/HomePane/tl.png</file>
+        <file>Theme3/Image/HomePane/top_left_line.png</file>
+        <file>Theme3/Image/HomePane/top_right_line.png</file>
+        <file>Theme3/Image/HomePane/total.png</file>
+        <file>Theme3/Image/HomePane/vh.png</file>
+        <file>Theme3/Image/HomePane/vl.png</file>
+        <file>Theme3/Image/HomePane/r_arrow.png</file>
+        <file>Theme3/Image/HomePane/l_arrow.png</file>
+        <file>Theme3/Image/IndicatorPanel/airBagErr.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_ASR.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_can.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_defroster.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_dryere.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_frontFog.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_headlight.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_highBeam.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_leftShoeWear.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_lowAirPressure.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_mainERRyellow.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_motor.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_parkingBrake.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_positionLight.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_rearFog.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_retarder.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_slope.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_waterLow.png</file>
+        <file>Theme3/Image/IndicatorPanel/oilPressLow.png</file>
+        <file>Theme3/Image/IndicatorPanel/safetyBelt.png</file>
+        <file>Theme3/Image/IndicatorPanel/waterTempWarn.png</file>
+        <file>Theme3/Image/MenuPanel/battery_temp_title.png</file>
+        <file>Theme3/Image/MenuPanel/batteryManageSysInfo.png</file>
+        <file>Theme3/Image/MenuPanel/bettary_manage_title.png</file>
+        <file>Theme3/Image/MenuPanel/bg.png</file>
+        <file>Theme3/Image/MenuPanel/bringhtnessControl.png</file>
+        <file>Theme3/Image/MenuPanel/clock.png</file>
+        <file>Theme3/Image/MenuPanel/clock_long.png</file>
+        <file>Theme3/Image/MenuPanel/clock_short.png</file>
+        <file>Theme3/Image/MenuPanel/dc_title.png</file>
+        <file>Theme3/Image/MenuPanel/luntai.png</file>
+        <file>Theme3/Image/MenuPanel/miscellaneousInforQuery.png</file>
+        <file>Theme3/Image/MenuPanel/month.png</file>
+        <file>Theme3/Image/MenuPanel/month_light.png</file>
+        <file>Theme3/Image/MenuPanel/powerBattery1.png</file>
+        <file>Theme3/Image/MenuPanel/powerBattery2.png</file>
+        <file>Theme3/Image/MenuPanel/rect.png</file>
+        <file>Theme3/Image/MenuPanel/timeSetting.png</file>
+        <file>Theme3/Image/MenuPanel/TPMS.png</file>
+        <file>Theme3/Image/MenuPanel/VCU.png</file>
+        <file>Theme3/Image/MenuPanel/vehicleCtrlSysDiagInterface.png</file>
+        <file>Theme3/Image/MenuPanel/year.png</file>
+        <file>Theme3/Image/MenuPanel/year_light.png</file>
+        <file>Theme3/Image/MenuPanel/icon_bringhtnessControl.png</file>
+        <file>Theme3/Image/MenuPanel/icon_dc.png</file>
+        <file>Theme3/Image/MenuPanel/icon_miscellaneousInforQuery.png</file>
+        <file>Theme3/Image/MenuPanel/icon_module.png</file>
+        <file>Theme3/Image/MenuPanel/icon_powerBattery.png</file>
+        <file>Theme3/Image/MenuPanel/icon_timeSetting.png</file>
+        <file>Theme3/Image/MenuPanel/icon_TPMS.png</file>
+        <file>Theme3/Image/MenuPanel/icon_vehicle.png</file>
+        <file>Theme3/Image/MenuPanel/icon_videoSwitch.png</file>
+        <file>Theme3/Image/MiddlePanel/back_redline.png</file>
+        <file>Theme3/Image/MiddlePanel/backdoor.png</file>
+        <file>Theme3/Image/MiddlePanel/backdoor_open.png</file>
+        <file>Theme3/Image/MiddlePanel/bus.png</file>
+        <file>Theme3/Image/MiddlePanel/bus_light.png</file>
+        <file>Theme3/Image/MiddlePanel/bus_light1.png</file>
+        <file>Theme3/Image/MiddlePanel/front_redline.png</file>
+        <file>Theme3/Image/MiddlePanel/frontdorr.png</file>
+        <file>Theme3/Image/MiddlePanel/open_frontdoor.png</file>
+        <file>Theme3/Image/MiddlePanel/ready.png</file>
+        <file>Theme3/Image/MiddlePanel/ready_arrow_left.png</file>
+        <file>Theme3/Image/MiddlePanel/ready_arrow_right.png</file>
+        <file>Theme3/Image/MiddlePanel/wait.png</file>
+        <file>Theme3/Qml/Menu/IconPanel.qml</file>
     </qresource>
 </RCC>

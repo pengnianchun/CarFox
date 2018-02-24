@@ -27,7 +27,7 @@ Item {
         y:17
         width: 50
         height:50
-        source: "qrc:/Theme/Theme3/Image/1st/lamps/l_arrow.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/l_arrow.png"
     }
     Image{    //lamp_right的图标
         id:lamp_right
@@ -35,7 +35,7 @@ Item {
         y:17
         width: 50
         height:50
-        source: "qrc:/Theme/Theme3/Image/1st/lamps/r_arrow.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/r_arrow.png"
     }
 
 
@@ -45,7 +45,7 @@ Item {
         y:12
         width: 37
         height:19
-        source: "qrc:/Theme/Theme3/Image/1st/th-tl-vh-vl/th.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/th.png"
     }
     Text{     //th的图标文本
         id: th_Icon_text
@@ -66,7 +66,7 @@ Item {
         y:42
         width: 37
         height:19
-        source: "qrc:/Theme/Theme3/Image/1st/th-tl-vh-vl/tl.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/tl.png"
     }
     Text{     //tl的图标文本
         id: tl_Icon_text
@@ -88,7 +88,7 @@ Item {
         y:13
         width: 31
         height:17
-        source: "qrc:/Theme/Theme3/Image/1st/th-tl-vh-vl/vh.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/vh.png"
     }
     Text{     //vh的图标文本
         id: vh_Icon_text
@@ -109,7 +109,7 @@ Item {
         y:41
         width: 31
         height:17
-        source: "qrc:/Theme/Theme3/Image/1st/th-tl-vh-vl/vl.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/vl.png"
     }
     Text{     //vl的图标文本
         id: vl_Icon_text
@@ -155,7 +155,7 @@ Item {
             y:509
             width:80
             height:30
-            source: "qrc:/Theme/Theme3/Image/1st/licheng/1.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/licheng.png"
             visible: true;
         }
         Text{
@@ -180,7 +180,7 @@ Item {
             y:509
             width:80
             height:30
-            source: "qrc:/Theme/Theme3/Image/1st/licheng/2.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/lichengTotal.png"
             visible: true;
         }
         Text{
@@ -228,7 +228,7 @@ Item {
             y:-103
             width:300
             height:300
-            source: "qrc:/Theme/Theme3/Image/1st/bg/l_top_line.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/top_left_line.png"
             visible: true;
         }
         Image{
@@ -237,7 +237,7 @@ Item {
             y:-105
             width:300
             height:300
-            source: "qrc:/Theme/Theme3/Image/1st/bg/r_top_line.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/top_right_line.png"
             visible: true;
         }
         Image{
@@ -246,7 +246,7 @@ Item {
             y:326
             width:248
             height:206
-            source: "qrc:/Theme/Theme3/Image/1st/bg/l_road.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/road_left.png"
             visible: true;
         }
         Image{
@@ -255,7 +255,7 @@ Item {
             y:323
             width:248
             height:206
-            source: "qrc:/Theme/Theme3/Image/1st/bg/r_road.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/road_right.png"
             visible: true;
         }
         Image{
@@ -264,7 +264,7 @@ Item {
             y:501
             width:943
             height:37
-            source: "qrc:/Theme/Theme3/Image/1st/bg/bottom_line.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/bottom_line.png"
             visible: true;
         }
     }
@@ -276,7 +276,7 @@ Item {
         y:515
         width: 35
         height: 17
-        source: "qrc:/Theme/Theme3/Image/1st/soc/soc_sta.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/soc.png"
         visible: true
         }
 
@@ -286,7 +286,7 @@ Item {
         y:502
         width: 36
         height: 28
-        source: "qrc:/Theme/Theme3/Image/1st/v/v_icon.png"
+        source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_icon.png"
         visible: true
         }
         Image{   //soc底图
@@ -295,7 +295,7 @@ Item {
             y:523
             width: 264
             height: 7
-            source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_bg.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_bg.png"
             visible: true
 
             Timer{     //soc_n的定时器
@@ -371,7 +371,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_orange-.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_orange-.png"
                     visible: true
                 }
                 Image{
@@ -380,7 +380,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_orange-.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_orange-.png"
                     visible: true
                 }
             }
@@ -398,7 +398,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_green.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
                     visible: true
                 }
                 Image{
@@ -407,7 +407,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_green.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
                     visible: true
                 }
                 Image{
@@ -416,7 +416,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_green.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
                     visible: true
                 }
                 Image{
@@ -425,7 +425,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/soc/line_soc_green.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
                     visible: true
                 }
             }
@@ -437,7 +437,7 @@ Item {
             y:523
             width: 264
             height: 6
-            source: "qrc:/Theme/Theme3/Image/1st/v/v_line-bg.png"
+            source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_bg.png"
             visible: true
             Timer{
                 id:battery_timer
@@ -522,7 +522,7 @@ Item {
                     y:0
                     width:61
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/v/v_line_lightred.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightred.png"
                     visible:true
                 }
                 Image{
@@ -531,7 +531,7 @@ Item {
                     y:0
                     width:61
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/v/v_line_lightred.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightred.png"
                     visible:true
                 }
             }
@@ -550,7 +550,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/v/v_line_lightblue.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
                     visible: true
                 }
                 Image{
@@ -559,7 +559,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/v/v_line_lightblue.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
                     visible: true
                 }
                 Image{
@@ -568,7 +568,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/v/v_line_lightblue.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
                     visible: true
                 }
                 Image{
@@ -577,7 +577,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/1st/v/v_line_lightblue.png"
+                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
                     visible: true
                 }
             }

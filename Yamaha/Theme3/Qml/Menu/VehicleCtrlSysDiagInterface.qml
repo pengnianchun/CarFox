@@ -14,7 +14,7 @@ Item{
         y:0
         width: 256
         height: 43
-        source: "qrc:/Theme/Theme3/Image/1st/Text/VehicleCtrlSysDiagInterface.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/vehicleCtrlSysDiagInterface.png"
     }
     Row{
         x:32

@@ -14,7 +14,7 @@ Item {
         y:23
         width:210
         height:44
-        source: "qrc:/Theme/Theme3/Image/1st/Text/battery_temp_title.png"
+        source: "qrc:/Theme/Theme3/Image/MenuPanel/battery_temp_title.png"
     }
 
     Row {

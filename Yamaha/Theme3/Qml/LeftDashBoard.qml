@@ -32,11 +32,11 @@ Item {
         id: dashBoardBackground
         x:68     //68
         y:26  //26
-        source: "qrc:/Theme/Theme3/Image/1st/dashboard/left/l_dashboard.png"
+        source: "qrc:/Theme/Theme3/Image/DashBoard/l_dashboard.png"
 
         Image {     //左边仪表盘上的mpa
             id: mpa_left
-            source: "qrc:/Theme/Theme3/Image/1st/mpa/left/mpa_line_bg.png"
+            source: "qrc:/Theme/Theme3/Image/DashBoard/left_mpa_line.png"
             x:103
             y:111
             width:185
@@ -86,7 +86,7 @@ Item {
             }
             Image {     //左边仪表盘指示点
                 id: dashboard_left_dot
-                source: "qrc:/Theme/Theme3/Image/1st/dashboard/left/biaoge_light.png"
+                source: "qrc:/Theme/Theme3/Image/DashBoard/left_dot.png"
                 x:-7
                 y:208
                 width:73
@@ -133,7 +133,7 @@ Item {
                 }
                 Image {
                     id: dashboard_left_line_1
-                    source: "qrc:/Theme/Theme3/Image/1st/dashboard/left/1.png"
+                    source: "qrc:/Theme/Theme3/Image/DashBoard/1.png"
                     x:35
                     y:234
                     width:199
@@ -142,7 +142,7 @@ Item {
                 }
                 Image {
                     id: dashboard_left_line_2
-                    source: "qrc:/Theme/Theme3/Image/1st/dashboard/left/1.png"
+                    source: "qrc:/Theme/Theme3/Image/DashBoard/1.png"
                     x:35
                     y:234
                     width:199
@@ -153,7 +153,7 @@ Item {
                 }
                 Image {
                     id: dashboard_left_line_3
-                    source: "qrc:/Theme/Theme3/Image/1st/dashboard/left/1.png"
+                    source: "qrc:/Theme/Theme3/Image/DashBoard/1.png"
                     x:35
                     y:234
                     width:199

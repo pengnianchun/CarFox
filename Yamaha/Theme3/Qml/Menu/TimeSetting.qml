@@ -13,7 +13,7 @@ Item{
         y:0
         width:114
         height:44
-        source:"qrc:/Theme/Theme3/Image/1st/Text/TimeSetting.png"
+        source:"qrc:/Theme/Theme3/Image/MenuPanel/timeSetting.png"
     }
     Image{
         id:clock_icon
@@ -21,7 +21,7 @@ Item{
         y:60
         width:72
         height:72
-        source:"qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/clock/clock.png"
+        source:"qrc:/Theme/Theme3/Image/MenuPanel/clock.png"
 
 //        Image{
 //            id:clock_long
@@ -29,7 +29,7 @@ Item{
 //            y:60
 //            width:25
 //            height:10
-//            source:"qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/clock/long.png"
+//            source:"qrc:/Theme/Theme3/Image/MenuPanel/clock_long.png"
 //        }
 //        Image{
 //            id:clock_short
@@ -37,7 +37,7 @@ Item{
 //            y:60
 //            width:3
 //            height:18
-//            source:"qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/clock/short.png"
+//            source:"qrc:/Theme/Theme3/Image/MenuPanel/clock_short.png"
 //        }
     }
     Item{
@@ -48,7 +48,7 @@ Item{
             y:180
             width: 207
             height:136
-            source: "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/year.png"
+            source: "qrc:/Theme/Theme3/Image/MenuPanel/year.png"
             Text{
                 id:year_text
                 anchors.fill: parent.Center
@@ -56,7 +56,7 @@ Item{
                 font.pixelSize: 25; font.weight: Font.Black
                 color:"white"
                 onTextChanged: {
-                    year.source = "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/year_light.png"
+                    year.source = "qrc:/Theme/Theme3/Image/MenuPanel/year_light.png"
                     year_text.color = "#3d5378"
                 }
             }
@@ -67,7 +67,7 @@ Item{
             y:180
             width: 143
             height:136
-            source: "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month.png"
+            source: "qrc:/Theme/Theme3/Image/MenuPanel/month.png"
             Text{
                 id:month_text
                 anchors.fill: parent.Center
@@ -75,7 +75,7 @@ Item{
                 font.pixelSize: 25; font.weight: Font.Black
                 color:"white"
                 onTextChanged: {
-                    year.source = "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month_light.png"
+                    year.source = "qrc:/Theme/Theme3/Image/MenuPanel/month_light.png"
                     year_text.color = "#3d5378"
                 }
             }
@@ -86,7 +86,7 @@ Item{
             y:180
             width: 143
             height:136
-            source: "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month.png"
+            source: "qrc:/Theme/Theme3/Image/MenuPanel/month.png"
             Text{
                 id:day_text
                 anchors.fill: parent.Center
@@ -94,7 +94,7 @@ Item{
                 font.pixelSize: 25; font.weight: Font.Black
                 color:"white"
                 onTextChanged: {
-                    year.source = "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month_light.png"
+                    year.source = "qrc:/Theme/Theme3/Image/MenuPanel/month_light.png"
                     year_text.color = "#3d5378"
                 }
             }
@@ -105,7 +105,7 @@ Item{
             y:180
             width: 143
             height:136
-            source: "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month.png"
+            source: "qrc:/Theme/Theme3/Image/MenuPanel/month.png"
             Text{
                 id:hour_text
                 anchors.fill: parent.Center
@@ -113,7 +113,7 @@ Item{
                 font.pixelSize: 25; font.weight: Font.Black
                 color:"white"
                 onTextChanged: {
-                    year.source = "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month_light.png"
+                    year.source = "qrc:/Theme/Theme3/Image/MenuPanel/month_light.png"
                     year_text.color = "#3d5378"
                 }
             }
@@ -124,7 +124,7 @@ Item{
             y:180
             width: 143
             height:136
-            source: "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month.png"
+            source: "qrc:/Theme/Theme3/Image/MenuPanel/month.png"
             Text{
                 id:minute_text
                 anchors.fill: parent.Center
@@ -132,7 +132,7 @@ Item{
                 font.pixelSize: 25; font.weight: Font.Black
                 color:"white"
                 onTextChanged: {
-                    year.source = "qrc:/Theme/Theme3/Image/3ed/3ed_bg/timesetting/month_light.png"
+                    year.source = "qrc:/Theme/Theme3/Image/MenuPanel/month_light.png"
                     year_text.color = "#3d5378"
                 }
             }

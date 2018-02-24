@@ -326,14 +326,14 @@ Item {
 
         Image {     //汽车
             id: bus
-            source: "qrc:/Theme/Theme3/Image/1st/bus/bus.png"
+            source: "qrc:/Theme/Theme3/Image/MiddlePanel/bus.png"
             x:190
             y:110
             width:336
             height:214
             Image {   //车灯
                 id: bus_light
-                source: "qrc:/Theme/Theme3/Image/1st/ready/light.png"
+                source: "qrc:/Theme/Theme3/Image/MiddlePanel/bus_light.png"
                 x:180
                 y:140
                 width:181
@@ -383,7 +383,7 @@ Item {
             }
             Image {     //ready动画
                 id: bus_ready
-                source: "qrc:/Theme/Theme3/Image/1st/ready/READY.png"
+                source: "qrc:/Theme/Theme3/Image/MiddlePanel/ready.png"
                 x:27
                 y:0
                 width:121
@@ -409,7 +409,7 @@ Item {
             }
             Image {     //wait
                 id: bus_wait
-                source: "qrc:/Theme/Theme3/Image/1st/ready/wait.png"
+                source: "qrc:/Theme/Theme3/Image/MiddlePanel/wait.png"
                 x:27
                 y:0
                 width:95
@@ -418,7 +418,7 @@ Item {
             }
             Image {     //ready左箭头
                 id: arrow_ready_left
-                source: "qrc:/Theme/Theme3/Image/1st/ready/ready_arrow_l.png"
+                source: "qrc:/Theme/Theme3/Image/MiddlePanel/ready_arrow_left.png"
                 x:0
                 y:16
                 width:13
@@ -453,7 +453,7 @@ Item {
             }
             Image {      //ready右边箭头初始化
                 id: arrow_ready_right
-                source: "qrc:/Theme/Theme3/Image/1st/ready/ready_arrow_r.png"
+                source: "qrc:/Theme/Theme3/Image/MiddlePanel/ready_arrow_right.png"
                 x:158
                 y:16
                 width:13
@@ -493,36 +493,36 @@ Item {
     MenuPanel {
         id: menu_1   //list
     }
-    VCU{
+    VCU{            //7
         id: menu_2
     }
-    VehicleCtrlSysDiagInterface{
+    VehicleCtrlSysDiagInterface{   //8
         id: menu_3
     }
-    PowerBattery1{
+    PowerBattery1{     //9
         id: menu_4
     }
-    PowerBattery2{
+    PowerBattery2{     //0
         id: menu_5
     }
-    SBatteryTempInfo{
+    SBatteryTempInfo{   //1
         id: menu_6
     }
-    DCDC {
+    DCDC {         //2
         id: menu_7
     }
-    TPMS{
+    TPMS{         //3
         id: menu_8
     }
 
-    TimeSetting{
+    TimeSetting{    //4
         id: menu_9
     }
-    BringhtnessControl{
+    BringhtnessControl{   //5
         id: menu_10
     }
 
-    MiscellaneousInforQuery{
+    MiscellaneousInforQuery{   //6
         id: menu_11
     }
 
