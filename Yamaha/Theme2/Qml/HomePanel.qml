@@ -24,24 +24,25 @@ CommonItem {
     property string oilImage: sourceImageUrl + "DialPanel/oil.png"
     property string mpaLeftImage: sourceImageUrl + "HomePanel/mpaLeft.png"
     property string mpaRightImage: sourceImageUrl + "HomePanel/mpaRight.png"
-    property string leftCorneringLampImage: sourceCommonImageUrl + "Indicator/Lamp_leftTurn.png"
-    property string rightCorneringLampImage: sourceCommonImageUrl + "Indicator/Lamp_rightTurn.png"
-    property string lampHighBeamImage: sourceCommonImageUrl + "Indicator/Lamp_highBeam.png"
-    property string lampHeadLightImage: sourceCommonImageUrl + "Indicator/Lamp_headlight.png"
-    property string lampPositionLightImage: sourceCommonImageUrl + "Indicator/Lamp_positionLight.png"
-    property string chargingImage: sourceCommonImageUrl + "Indicator/Charging.png"
-    property string lampFrontFogImage: sourceCommonImageUrl + "Indicator/Lamp_frontFog.png"
-    property string lampRearFogImage: sourceCommonImageUrl + "Indicator/Lamp_rearFog.png"
-    property string chargeLightImage: sourceCommonImageUrl + "Indicator/chargeLight.png"
-    property string lampMainERRredImage: sourceCommonImageUrl + "Indicator/Lamp_mainERRred.png"
-    property string backCangImage: sourceCommonImageUrl + "Indicator/backCang.png"
-    property string lampLeftShoeWearImage: sourceCommonImageUrl + "Indicator/Lamp_leftShoeWear.png"
-    property string lampRightShoeWearImage: sourceCommonImageUrl + "Indicator/Lamp_rightShoeWear.png"
-    property string lampWaterLowImage: sourceCommonImageUrl + "Indicator/Lamp_waterLow.png"
-    property string lampMotorImage: sourceCommonImageUrl + "Indicator/Lamp_motor.png"
-    property string motorImage: sourceCommonImageUrl + "Indicator/motor.png"
-    property string lampBatteryImage: sourceCommonImageUrl + "Indicator/Lamp_battery.png"
-    property string lampBatteryWarningImage: sourceCommonImageUrl + "Indicator/Lamp_batteryWarning.png"
+    property string leftCorneringLampImage: sourceImageUrl + "StarLamp/turnLeftLamp.png"
+    property string rightCorneringLampImage: sourceImageUrl + "StarLamp/turnRightLamp.png"
+    property string lampHighBeamImage: sourceImageUrl + "StarLamp/highBeamLamp.png"
+    property string lampHeadLightImage: sourceImageUrl + "StarLamp/headLamp.png"
+    property string lampPositionLightImage: sourceImageUrl + "StarLamp/placeLamp.png"
+    property string chargingImage: sourceImageUrl + "StarLamp/chargingCable.png"
+    property string lampFrontFogImage: sourceImageUrl + "StarLamp/frontFlogLamp.png"
+    property string lampRearFogImage: sourceImageUrl + "StarLamp/backFlogLamp.png"
+    property string chargeLightImage: sourceImageUrl + "StarLamp/batteryCharging.png"
+    property string lampMainERRredImage: sourceImageUrl + "StarLamp/dangerAlarmPrompt.png"
+    property string backCangImage: sourceImageUrl + "StarLamp/backHatchDoorAlarm.png"
+    property string lampLeftShoeWearImage: sourceImageUrl + "StarLamp/leftFrontShoe.png"
+    property string lampRightShoeWearImage: sourceImageUrl + "StarLamp/rightFrontShoe.png"
+    property string lampWaterLowImage: sourceImageUrl + "StarLamp/lowWaterAlarm.png"
+    property string lampMotorImage: sourceImageUrl + "StarLamp/motorHeat.png"
+    property string motorImage: sourceImageUrl + "StarLamp/motorLimitation.png"
+    property string lampBatteryImage: sourceImageUrl + "StarLamp/batteryCharg.png"
+    property string lampBatteryWarningImage: sourceImageUrl + "StarLamp/batteryCut.png"
+    property string lampBatteryFaultImage: sourceImageUrl + "StarLamp/batteryFault.png"
     property bool bDisplay: true
     //报警计数
     property int alarmCode: 0
@@ -82,7 +83,7 @@ CommonItem {
         interval: 1000
         running: false
         onTriggered: {
-            console.log("=================home panel timer=========================");
+            //console.log("=================home panel timer=========================");
             if(bDisplay){
                 oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressureValue.png";
                 left_cornering_lamp.opacity = 0;
@@ -103,6 +104,7 @@ CommonItem {
                 motorFault.opacity = 0;
                 lamp_battery.opacity = 0;
                 lamp_battery_warning.opacity = 0;
+                lamp_battery_fault.opacity = 0;
             }else{
                 oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
                 left_cornering_lamp.opacity = 1.0;
@@ -123,6 +125,7 @@ CommonItem {
                 motorFault.opacity = 1.0;
                 lamp_battery.opacity = 1.0;
                 lamp_battery_warning.opacity = 1.0;
+                lamp_battery_fault.opacity = 1.0;
             }
             if(mpaStatus){
                 if(mpaCount === 10){
@@ -350,7 +353,7 @@ CommonItem {
                 anchors.left: parent.left
                 anchors.leftMargin: 150
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: 50
+                anchors.bottomMargin: 40
                 fontColor: "#ff9000"
                 fontBold: true
                 textValue: qsTr("正常")
@@ -358,7 +361,7 @@ CommonItem {
             //远光灯 / 头灯 / 位置灯 / 充电
             RowLayout {
                 anchors.top: parent.top
-                anchors.topMargin: 20
+                anchors.topMargin: 10
                 anchors.left: parent.left
                 anchors.leftMargin: 70
                 spacing: 1070
@@ -379,7 +382,7 @@ CommonItem {
                 anchors.topMargin: 110
                 anchors.left: parent.left
                 anchors.leftMargin: 125
-                spacing: 960
+                spacing: 930
                 RowLayout {
                     spacing: 10
                     Image { id: lamp_frontFog; source: lampFrontFogImage; opacity: 0 }
@@ -397,7 +400,7 @@ CommonItem {
                 anchors.topMargin: 200
                 anchors.left: parent.left
                 anchors.leftMargin: 165
-                spacing: 870
+                spacing: 840
                 RowLayout {
                     spacing: 10
                     Image { id: backCang; source: backCangImage; opacity: 0 }
@@ -415,7 +418,7 @@ CommonItem {
                 anchors.topMargin: 270
                 anchors.left: parent.left
                 anchors.leftMargin: 225
-                spacing: 770
+                spacing: 740
                 RowLayout {
                     spacing: 10
                     Image { id: lamp_motor; source: lampMotorImage; opacity: 0 }
@@ -425,6 +428,7 @@ CommonItem {
                     spacing: 10
                     Image { id: lamp_battery; source: lampBatteryImage; opacity: 0 }
                     Image { id: lamp_battery_warning; source: lampBatteryWarningImage; opacity: 0 }
+                    Image { id: lamp_battery_fault; source: lampBatteryFaultImage; opacity: 0 }
                 }
             }
         }

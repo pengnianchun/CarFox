@@ -6,6 +6,7 @@ import "../JS/MenuPanelController.js" as MenuPanelController
 import "qrc:/Common/Component"
 
 CommonItem {
+    id: menu_panel_weir
     width: 1440
     height: 544
     visible: false
@@ -34,7 +35,9 @@ CommonItem {
     property string rightMenuImage: sourceImageUrl + "DialPanel/rightWing.png";
     property string arrowUpImage: sourceImageUrl + "SubMenu/arrowUp.png";
     property string arrowDownImage: sourceImageUrl + "SubMenu/arrowDown.png";
-    property int menuCurrentIndex: 0
+    property string progressBar1Image: sourceImageUrl + "HomePanel/progressBar1.png";
+    property string progressBar2Image: sourceImageUrl + "HomePanel/progressBar2.png";
+    property int menuCurrentIndex: 0;
     property var containerId: container
     property bool keyBoardStatus: true;
     property bool mainRingStatus: true;
@@ -42,9 +45,22 @@ CommonItem {
     property string currentLayer;
 
     //车速初始值
-    property real speedValue: 120;
+    property real speedValue: 0;
+    property real speedValueStart: 0;
     //档位初始值
     property real gearValue: 0;
+    //发动机转速
+    property real engineSpeedValue: 6666;
+    //蓄电池总电压
+    property real batteryTotalVolt: 150;
+    //蓄电池电压
+    property real batteryCurrentVolt: 150;
+    //动力电池电压
+    property real batteryPowerVolt: 500;
+    //动力电池电流
+    property real batteryPowerAmpere: 100;
+    property real numberImageWidth: 32;
+    property real numberImageHeight: 32;
 
     //监测速度档位信号变化信号（实际应监测CarMsg中值的变化）
     onVisibleChanged: {
@@ -54,23 +70,50 @@ CommonItem {
             timer.running = false;
         }
     }
+    //（车速值/进度条）变化过度动画
+    ParallelAnimation {
+        id: speedAnimation
+        NumberAnimation { id:speed_animation1; target:menu_panel_weir; property: "speedValue"; duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id:speed_animation2; target:carSpeed; property: "width" ;duration: 200; easing.type: Easing.Linear }
+    }
+    onSpeedValueChanged: {
+        speed_animation1.from = speedValueStart;
+        speed_animation1.to = speedValue;
+        speed_animation2.from = speedValueStart/200*204;
+        speed_animation2.to = speedValue/200*204;
+        speedAnimation.running = true;
+        //车速
+        MenuPanelController.setSpeedValueAction(speed_hundred,speed_ten,speed_bits,speedValue);
+        MenuPanelController.setGeneralValueAction(speedValue_hundred,speedValue_ten,speedValue_bits,speedValue);
+    }
     //自定义定时器测试使用
     Timer {
         id: timer
         repeat: true
-        interval: 1000
+        interval: 400
         running: false
         onTriggered: {
-            console.log("=================menu panel timer=========================");
-            if(speedValue > 120){
-                speedValue = 90;
+            //console.log("=================menu panel timer=========================");
+            if(speedValue > 190){
+                speedValue = 0;
             }else{}
+            speedValueStart = speedValue;
+            speedValue += 10;
             if(gearValue > 4){
                 gearValue = 0;
             }else{}
-            MenuPanelController.setSpeedValueAction(speed_hundred,speed_ten,speed_bits,speedValue);
+            //档位
             MenuPanelController.setGearValueAction(gear,gearValue);
-            speedValue++;
+            //发动机转速
+            MenuPanelController.setEngineValueAction(engine_thousand,engine_hundred,engine_ten,engine_bits,engineSpeedValue);
+            //蓄电池百分比
+            MenuPanelController.setGeneralValueAction(batteryPercentage_hundred,batteryPercentage_ten,batteryPercentage_bits,parseInt(batteryCurrentVolt/batteryTotalVolt*100));
+            //蓄电池电量
+            MenuPanelController.setGeneralValueAction(batteryVolt_hundred,batteryVolt_ten,batteryVolt_bits,batteryCurrentVolt);
+            //动力电池电压
+            MenuPanelController.setGeneralValueAction(batteryPVolt_hundred,batteryPVolt_ten,batteryPVolt_bits,batteryPowerVolt);
+            //动力电池电流
+            MenuPanelController.setGeneralValueAction(batteryPAmpere_hundred,batteryPAmpere_ten,batteryPAmpere_bits,batteryPowerAmpere);
             gearValue++;
         }
     }
@@ -177,6 +220,115 @@ CommonItem {
         }
         Image { id: left_menu_panel; x: endMenuXLeft; y: 95; z: 1; opacity: 0; source: leftMenuImage }
         Image { id: right_menu_panel; x: endMenuXRight; y: 95; z: 1; opacity: 0; source: rightMenuImage }
+        //发动机转速 / 车速 / 蓄电池百分比 / 蓄电池电压 / 动力电池输出电压 / 动力电池输出电流
+        Item {
+            id: engine_battery_panel
+            opacity: 0
+            z: 2
+            width: 870
+            height: 250
+            anchors.top: parent.top
+            anchors.topMargin: 170
+            anchors.horizontalCenter: parent.horizontalCenter
+            RowLayout {
+                anchors.left: parent.left
+                anchors.leftMargin: 60
+                spacing: 520
+                Item {
+                    width: 120
+                    height: 30
+                    RowLayout {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: -20
+                        Image { id: engine_thousand }
+                        Image { id: engine_hundred }
+                        Image { id: engine_ten }
+                        Image { id: engine_bits }
+                    }
+                }
+                Item {
+                    width: 120
+                    height: 30
+                    RowLayout {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: -20
+                        Image { id: speedValue_hundred }
+                        Image { id: speedValue_ten }
+                        Image { id: speedValue_bits }
+                    }
+                }
+            }
+            //发动机转速进度 / 车速进度
+            RowLayout {
+                x: -8
+                y: 47
+                spacing: 462
+                Image { id: engineSpeed; source: progressBar1Image }
+                Image { id: carSpeed; source: progressBar1Image }
+            }
+            RowLayout {
+                anchors.left: parent.left
+                anchors.leftMargin: 70
+                anchors.top: parent.top
+                anchors.topMargin: 95
+                spacing: 540
+                Item {
+                    width: 120
+                    height: 30
+                    RowLayout {
+                        spacing: -20
+                        Image { id: batteryPercentage_hundred }
+                        Image { id: batteryPercentage_ten }
+                        Image { id: batteryPercentage_bits }
+                    }
+                }
+                Item {
+                    width: 120
+                    height: 30
+                    RowLayout {
+                        spacing: -20
+                        Image { id: batteryVolt_hundred }
+                        Image { id: batteryVolt_ten }
+                        Image { id: batteryVolt_bits }
+                    }
+                }
+            }
+            //蓄电池电量百分比进度 / 蓄电池电压进度
+            RowLayout {
+                x: 51
+                y: 141
+                spacing: 505
+                Image { id: batteryPercentage; source: progressBar2Image }
+                Image { id: batteryVolt; source: progressBar2Image }
+            }
+            RowLayout {
+                anchors.left: parent.left
+                anchors.leftMargin: 100
+                anchors.top: parent.top
+                anchors.topMargin: 200
+                spacing: 460
+                Item {
+                    width: 120
+                    height: 30
+                    RowLayout {
+                        spacing: -15
+                        Image { id: batteryPVolt_hundred; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
+                        Image { id: batteryPVolt_ten; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
+                        Image { id: batteryPVolt_bits; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
+                    }
+                }
+                Item {
+                    width: 120
+                    height: 30
+                    RowLayout {
+                        spacing: -15
+                        Image { id: batteryPAmpere_hundred; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
+                        Image { id: batteryPAmpere_ten; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
+                        Image { id: batteryPAmpere_bits; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
+                    }
+                }
+            }
+        }
         states: [
             State {
                 name: statusAnimation[0]
@@ -188,6 +340,7 @@ CommonItem {
                 PropertyChanges { target: center_light; opacity: 0 }
                 PropertyChanges { target: main_ring; opacity: 0 }
                 PropertyChanges { target: speed_gear_panel; opacity: 0 }
+                PropertyChanges { target: engine_battery_panel; opacity: 0 }
                 PropertyChanges { target: border_light; opacity: 0 }
                 PropertyChanges { target: speed_light; opacity: 0 }
             },
@@ -201,6 +354,7 @@ CommonItem {
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
                 PropertyChanges { target: speed_gear_panel; opacity: 1.0 }
+                PropertyChanges { target: engine_battery_panel; opacity: 1.0 }
                 PropertyChanges { target: border_light; opacity: 1.0 }
                 PropertyChanges { target: speed_light; opacity: 1.0 }
             },
@@ -209,6 +363,7 @@ CommonItem {
                 PropertyChanges { target: center_light; opacity: 1.0 }
                 PropertyChanges { target: main_ring; opacity: 1.0 }
                 PropertyChanges { target: speed_gear_panel; opacity: 1.0 }
+                PropertyChanges { target: engine_battery_panel; opacity: 1.0 }
                 PropertyChanges { target: border_light; opacity: 1.0 }
                 PropertyChanges { target: speed_light; opacity: 1.0 }
                 PropertyChanges { target: left_menu_panel; x: startMenuXLeft; opacity: 1.0 }
@@ -221,6 +376,7 @@ CommonItem {
                 from: statusAnimation[2]
                 to: statusAnimation[0]
                 SequentialAnimation {
+                    PropertyAnimation { target: engine_battery_panel; property: "opacity"; duration: 200 }
                     ParallelAnimation {
                         PropertyAnimation { target: left_menu_panel; property: "x"; duration: 200 }
                         PropertyAnimation { target: right_menu_panel; property: "x"; duration: 200 }
@@ -297,6 +453,7 @@ CommonItem {
                             script: { UiController.setLayerProperty("HomePanel","maskBackGroundStatus","hide"); }
                         }
                     }
+                    PropertyAnimation { target: engine_battery_panel; property: "opacity"; duration: 200 }
                     ScriptAction {
                         script: {
                             console.log("animation2 is completed !")
@@ -330,6 +487,7 @@ CommonItem {
                         PropertyAnimation { target: right_menu_panel; property: "opacity"; duration: durationTime }
                         PropertyAnimation { target: speed_gear_panel; property: "opacity"; duration: durationTime }
                     }
+                    PropertyAnimation { target: engine_battery_panel; property: "opacity"; duration: 200 }
                 }
             }
         ]

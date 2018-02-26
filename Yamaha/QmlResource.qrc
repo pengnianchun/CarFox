@@ -121,6 +121,7 @@
         <file>Fonts/NotoSansHans-DemiLight.ttf</file>
         <file>Fonts/WenQuanYiMicroHei.ttf</file>
         <file>CommonImage/Indicator/Lamp_batteryWarning.png</file>
+        <file>Component/ProgressViewWeir.qml</file>
     </qresource>
     <qresource prefix="/Theme">
         <file>Theme1/Qml/Splash/Splash.qml</file>
@@ -182,7 +183,7 @@
         <file>Theme1/Image/IndicatorPanel/Lamp_airPress2.png</file>
         <file>Theme1/Image/IndicatorPanel/Lamp_airPress1.png</file>
         <file>Theme1/Image/IndicatorPanel/Lamp_backCabin.png</file>
-	<file>Theme1/Image/AutoSplash/bg.png</file>
+        <file>Theme1/Image/AutoSplash/bg.png</file>
         <file>Theme1/Image/AutoSplash/bluelinebg.png</file>
         <file>Theme1/Image/AutoSplash/leftBlueLine.png</file>
         <file>Theme1/Image/AutoSplash/leftbluesharp1.png</file>
@@ -315,5 +316,65 @@
         <file>Theme2/Qml/MenuPanelWeir.qml</file>
         <file>Theme2/Qml/Splash/Splash.qml</file>
         <file>Theme2/JS/MenuPanelController.js</file>
+        <file>Theme2/Image/StarLamp/absIndicator.png</file>
+        <file>Theme2/Image/StarLamp/airPressure1.png</file>
+        <file>Theme2/Image/StarLamp/airPressure2.png</file>
+        <file>Theme2/Image/StarLamp/airPressure3.png</file>
+        <file>Theme2/Image/StarLamp/airPressure4.png</file>
+        <file>Theme2/Image/StarLamp/airPressure5.png</file>
+        <file>Theme2/Image/StarLamp/asternGear.png</file>
+        <file>Theme2/Image/StarLamp/backFlogLamp.png</file>
+        <file>Theme2/Image/StarLamp/backHatchDoorAlarm.png</file>
+        <file>Theme2/Image/StarLamp/barrierFreeAlarm.png</file>
+        <file>Theme2/Image/StarLamp/batteryCharg.png</file>
+        <file>Theme2/Image/StarLamp/batteryCharging.png</file>
+        <file>Theme2/Image/StarLamp/batteryCut.png</file>
+        <file>Theme2/Image/StarLamp/batteryFault.png</file>
+        <file>Theme2/Image/StarLamp/bmsAlarm.png</file>
+        <file>Theme2/Image/StarLamp/chargingCable.png</file>
+        <file>Theme2/Image/StarLamp/cruiseControl.png</file>
+        <file>Theme2/Image/StarLamp/dangerAlarmPrompt.png</file>
+        <file>Theme2/Image/StarLamp/doorBell.png</file>
+        <file>Theme2/Image/StarLamp/driverSeatAlarm.png</file>
+        <file>Theme2/Image/StarLamp/driverSystemFault.png</file>
+        <file>Theme2/Image/StarLamp/ecasHeight.png</file>
+        <file>Theme2/Image/StarLamp/ecasIndicator.png</file>
+        <file>Theme2/Image/StarLamp/ecasSide.png</file>
+        <file>Theme2/Image/StarLamp/ecasSystemFault.png</file>
+        <file>Theme2/Image/StarLamp/footBrake.png</file>
+        <file>Theme2/Image/StarLamp/forbidRunning.png</file>
+        <file>Theme2/Image/StarLamp/forwardGear.png</file>
+        <file>Theme2/Image/StarLamp/frontControlAlarm.png</file>
+        <file>Theme2/Image/StarLamp/frontDoorSignal.png</file>
+        <file>Theme2/Image/StarLamp/frontFlogLamp.png</file>
+        <file>Theme2/Image/StarLamp/gapGear.png</file>
+        <file>Theme2/Image/StarLamp/handBrake.png</file>
+        <file>Theme2/Image/StarLamp/headLamp.png</file>
+        <file>Theme2/Image/StarLamp/highBeamLamp.png</file>
+        <file>Theme2/Image/StarLamp/leftBackShoe.png</file>
+        <file>Theme2/Image/StarLamp/leftFrontShoe.png</file>
+        <file>Theme2/Image/StarLamp/leftHatchDoorAlarm.png</file>
+        <file>Theme2/Image/StarLamp/lowWaterAlarm.png</file>
+        <file>Theme2/Image/StarLamp/middleControlAlarm.png</file>
+        <file>Theme2/Image/StarLamp/middleDoorSignal.png</file>
+        <file>Theme2/Image/StarLamp/motorHeat.png</file>
+        <file>Theme2/Image/StarLamp/motorLimitation.png</file>
+        <file>Theme2/Image/StarLamp/placeLamp.png</file>
+        <file>Theme2/Image/StarLamp/powerDoorAlarm.png</file>
+        <file>Theme2/Image/StarLamp/readyRunning.png</file>
+        <file>Theme2/Image/StarLamp/rightBackShoe.png</file>
+        <file>Theme2/Image/StarLamp/rightFrontShoe.png</file>
+        <file>Theme2/Image/StarLamp/rightHatchDoorAlarm.png</file>
+        <file>Theme2/Image/StarLamp/safetyDoorAlarm.png</file>
+        <file>Theme2/Image/StarLamp/seatBeltAlarm.png</file>
+        <file>Theme2/Image/StarLamp/seriousInsulationFault.png</file>
+        <file>Theme2/Image/StarLamp/slightInsulationFault.png</file>
+        <file>Theme2/Image/StarLamp/socLowAlarm.png</file>
+        <file>Theme2/Image/StarLamp/turnRightLamp.png</file>
+        <file>Theme2/Image/StarLamp/waitRunning.png</file>
+        <file>Theme2/Image/StarLamp/waterHeat.png</file>
+        <file>Theme2/Image/StarLamp/turnLeftLamp.png</file>
+        <file>Theme2/Image/HomePanel/progressBar1.png</file>
+        <file>Theme2/Image/HomePanel/progressBar2.png</file>
     </qresource>
 </RCC>
