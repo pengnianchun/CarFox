@@ -2,11 +2,37 @@ import QtQuick 2.6
 import CustomEnum 1.0
 
 import "./"
-
+import "qrc:/Common/Component"
 Item{
     id:root
-    anchors.fill: parent
+    x:380
+    y:57
     visible: false
+
+    Connections {
+        // 链接CarMsg信号
+        target: CarMsg
+        onKeyShortPressed: {
+            if(key === 1) //back键
+            {
+                if(root.visible === false)
+                {
+                    return;
+                }
+                UiController.hideLayer("VehicleCtrlSysDiagInterface");
+                UiController.showLayer("MenuPanel");
+            }
+            if(key === 2) //prev键
+            {
+                if(root.visible === false)
+                {
+                    return;
+                }
+                UiController.hideLayer("VehicleCtrlSysDiagInterface");
+                UiController.showLayer("VCU");
+            }
+        }
+    }
 
     Image {
         id: powerBattery1_title

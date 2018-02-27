@@ -2,11 +2,27 @@ import QtQuick 2.6
 import CustomEnum 1.0
 import "./"
 import QtQuick.Layouts 1.1
-
+import "qrc:/Common/Component"
 Item {
     id: root
     anchors.fill: parent
     visible: false;
+
+    Connections {
+        // 链接CarMsg信号
+        target: CarMsg
+        onKeyShortPressed: {
+            if(key === 1) //back键
+            {
+                if(root.visible == false)
+                {
+                    return;
+                }
+                UiController.hideLayer("SBatteryTempInfo");
+                UiController.showLayer("MenuPanel");
+            }
+        }
+    }
 
     Image {
         id: bettary_Temp_Title

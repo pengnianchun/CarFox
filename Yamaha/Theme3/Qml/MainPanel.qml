@@ -1,13 +1,13 @@
 import QtQuick 2.6
 import CustomEnum 1.0
 import "./"
+import "qrc:/Common/Component"
 
-Rectangle {
+CommonItem {
     id: mainPanel
     width: 1440
     height: 540
     opacity: 0.0
-    color: "red"
     visible: false
     z: 0
 
@@ -62,7 +62,7 @@ Rectangle {
                 state = "MainView";
             }
 
-            middleMenu.ready_timer_running = true;
+            busPanel.bus_ready_running = true;
             dashboardLeft.dot_timer_running = true;
             dashboardRight.dot_timer_runing = true;
         }
@@ -89,8 +89,8 @@ Rectangle {
                 y:0
             }
 
-            MiddleMenu {
-                id: middleMenu
+            BusPanel {
+                id: busPanel
                 x:369
                 y:74
             }
@@ -166,100 +166,53 @@ Rectangle {
         }
 
         onKeyShortPressed: {
-            if(middleMenu.isRunning())
-            {
-                return;
-            }
-
             if(key === 0) //enter键
             {
                 if(mainView.state == "MainView")
                 {
                     mainView.state = "MenuList";
-                    middleMenu.gotoPage(1);
+                    UiController.showLayer("MenuPanel");
+                    busPanel.visible = false;
                 }
 
                 else if(mainView.state == "MenuList") //list
                 {
-                    var index =  middleMenu.menuListExteral.currentIndex;
-                    console.log(index);
                     mainView.state = "MenuParameter"
-//                    middleMenu.menuListVisible = false;
-                    if(middleMenu.menuListExteral.currentIndex == 0)
-                    {
-                         middleMenu.gotoPage(5);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 1)
-                    {
-                         middleMenu.gotoPage(6);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 2)
-                    {
-                         middleMenu.gotoPage(7);   //1~10
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 3)
-                    {
-                         middleMenu.gotoPage(8);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 4)
-                    {
-                         middleMenu.gotoPage(9);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 5)
-                    {
-                         middleMenu.gotoPage(10);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 6)
-                    {
-                         middleMenu.gotoPage(11);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 7)
-                    {
-                         middleMenu.gotoPage(2);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 8)
-                    {
-                         middleMenu.gotoPage(3);
-                    }
-                    else if(middleMenu.menuListExteral.currentIndex == 9)
-                    {
-                         middleMenu.gotoPage(4);
-                    }
+//                    UiController.hideLayer("MenuPanel");
                 }
             }
             else if(key === 1) //back返回
             {
                 if(mainView.state == "MainView")
                 {
-
+//                    UiController.hideLayer("MenuPanel");
+//                    busPanel.visible = true;
                 }
 
                 else if(mainView.state == "MenuList") //list
                 {
                     mainView.state = "MainView";
-                    middleMenu.backPage();
-//                    middleMenu.menuListVisible = false;
-//                    middleMenu.busVisible = true;
+                    UiController.hideLayer("MenuPanel");
+                    busPanel.visible = true;
                 }
                 else if(mainView.state == "MenuParameter")
                 {
                     mainView.state = "MenuList";
-//                    middleMenu.menuListVisible = true;
-                    middleMenu.backPage();
+                    UiController.showLayer("MenuPanel");
                 }
             }
             else if(key === 2) //pre
             {
                 if(mainView.state == "MenuList")
                 {
-                    middleMenu.menuListExteral.decrementCurrentIndex();
+//                    middleMenu.menuListExteral.decrementCurrentIndex();
                 }
             }
             else if(key === 3)  //next
             {
                 if(mainView.state == "MenuList")
                 {
-                    middleMenu.menuListExteral.incrementCurrentIndex();
+//                    middleMenu.menuListExteral.incrementCurrentIndex();
                 }
             }
         }

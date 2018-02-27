@@ -2,18 +2,45 @@ import QtQuick 2.6
 import CustomEnum 1.0
 
 import "./"
-
+import "qrc:/Common/Component"
 Item{
     id:root
-    anchors.fill: parent
+    x:366
+    y:64
     visible: false
+
+    Connections {
+        // 链接CarMsg信号
+        target: CarMsg
+        onKeyShortPressed: {
+            if(key === 1) //back键
+            {
+                if(root.visible === false)
+                {
+                    return;
+                }
+                UiController.hideLayer("VCU");
+                UiController.showLayer("MenuPanel");
+            }
+            if(key === 3) //back键
+            {
+                if(root.visible === false)
+                {
+                    return;
+                }
+                UiController.hideLayer("VCU");
+                UiController.showLayer("VehicleCtrlSysDiagInterface");
+            }
+        }
+    }
+
     Image{
         id:vcu_title
         x:307
         y:0
         width:164
         height:44
-        source:"qrc:/Theme/Theme3/Image/1st/Text/VCU.png"
+        source:"qrc:/Theme/Theme3/Image/MenuPanel/VCU.png"
     }
 
     Row{

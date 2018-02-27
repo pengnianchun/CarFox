@@ -304,12 +304,11 @@
         <file>Theme2/JS/InstrumentController.js</file>
         <file>Theme3/Qml/MainPanel.qml</file>
         <file>Theme3/Qml/LeftDashBoard.qml</file>
-        <file>Theme3/Qml/MainPanel.qml</file>
-        <file>Theme3/Qml/MiddleMenu.qml</file>
         <file>Theme3/Qml/RightDashBoard.qml</file>
+        <file>Theme3/Qml/BusPanel.qml</file>
         <file>Theme3/Qml/StaticControls.qml</file>
-        <file>Theme3/Qml/TriggerPanel.qml</file>
         <file>Theme3/Image/Gif/splash.gif</file>
+        <file>Theme3/Qml/Menu/IconPanel.qml</file>
         <file>Theme3/Qml/Menu/BatteryManageSysInfo.qml</file>
         <file>Theme3/Qml/Menu/BringhtnessControl.qml</file>
         <file>Theme3/Qml/Menu/DCDC.qml</file>
@@ -413,11 +412,17 @@
         <file>Theme3/Image/IndicatorPanel/lamp_positionLight.png</file>
         <file>Theme3/Image/IndicatorPanel/lamp_rearFog.png</file>
         <file>Theme3/Image/IndicatorPanel/lamp_retarder.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_slope.png</file>
         <file>Theme3/Image/IndicatorPanel/lamp_waterLow.png</file>
         <file>Theme3/Image/IndicatorPanel/oilPressLow.png</file>
         <file>Theme3/Image/IndicatorPanel/safetyBelt.png</file>
         <file>Theme3/Image/IndicatorPanel/waterTempWarn.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_chargePlugin.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_danger.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_door1.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_door2.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_leftFriction.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_rightFriction.png</file>
+        <file>Theme3/Image/IndicatorPanel/lamp_waterLevel.png</file>
         <file>Theme3/Image/MenuPanel/battery_temp_title.png</file>
         <file>Theme3/Image/MenuPanel/batteryManageSysInfo.png</file>
         <file>Theme3/Image/MenuPanel/bettary_manage_title.png</file>
@@ -462,6 +467,5 @@
         <file>Theme3/Image/MiddlePanel/ready_arrow_left.png</file>
         <file>Theme3/Image/MiddlePanel/ready_arrow_right.png</file>
         <file>Theme3/Image/MiddlePanel/wait.png</file>
-        <file>Theme3/Qml/Menu/IconPanel.qml</file>
     </qresource>
 </RCC>

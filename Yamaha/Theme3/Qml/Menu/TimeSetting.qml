@@ -2,11 +2,29 @@ import QtQuick 2.6
 import CustomEnum 1.0
 
 import "./"
-
+import "qrc:/Common/Component"
 Item{
     id:root
-    anchors.fill: parent
+    x:368
+    y:100
     visible: false
+
+    Connections {
+        // 链接CarMsg信号
+        target: CarMsg
+        onKeyShortPressed: {
+            if(key === 1) //back键
+            {
+                if(root.visible == false)
+                {
+                    return;
+                }
+                UiController.hideLayer("TimeSetting");
+                UiController.showLayer("MenuPanel");
+            }
+        }
+    }
+
     Image{
         id:clock_title
         x:304
