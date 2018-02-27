@@ -304,6 +304,8 @@
         <file>Theme2/Qml/Menu/MenuMainWeir.qml</file>
         <file>Theme2/Qml/MenuBack.qml</file>
         <file>Theme2/JS/InstrumentController.js</file>
+        <file>Theme2/JS/MenuMainController.js</file>
+        <file>Theme2/JS/MenuMainDetailController.js</file>
         <file>Theme2/Image/DialPanel/mainRingBg.png</file>
         <file>Theme2/JS/HomePanelController.js</file>
         <file>Theme2/Qml/Menu/InstrumentModuleWeir.qml</file>
