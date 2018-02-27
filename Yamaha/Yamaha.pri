@@ -11,7 +11,8 @@ HEADERS += \
     ./src/CustomTheme2.hpp \ 
     ./src/CustomTheme3.hpp \ 
     ./src/CustomTheme4.hpp \ 
-    ./src/CustomEnum.hpp
+    ./src/CustomEnum.hpp \
+    $$PWD/src/QmlGifImage.h
 
 SOURCES += \ 
     ./src/CustomCarMsg.cpp \ 
@@ -25,7 +26,8 @@ SOURCES += \
     ./src/CustomTheme2.cpp \ 
     ./src/CustomTheme3.cpp \ 
     ./src/CustomTheme4.cpp \ 
-    ./src/Main.cpp
+    ./src/Main.cpp \
+    $$PWD/src/QmlGifImage.cpp
 
 SOURCES += $$files($$PWD/protofile/protocode/*.pb.cc)
 HEADERS += $$files($$PWD/protofile/protocode/*.pb.h)
