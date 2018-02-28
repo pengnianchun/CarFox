@@ -29,4 +29,5 @@ void CustomTheme2::create()
     addLayer("qrc:/Theme/Theme2/Qml/Menu/TcuSystemWeir.qml", "TcuSystem", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/MenuMainWeir.qml", "MenuMain", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme2/Qml/Menu/InstrumentModuleWeir.qml", "InstrumentModule", carfox::Layer::ManualShow);
+    addLayer("qrc:/Theme/Theme2/Qml/AutomaticRoutine.qml", "AutomaticRoutine", carfox::Layer::ManualShow);
 }

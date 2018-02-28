@@ -6,6 +6,7 @@ import "qrc:/Common/Component"
 import "../JS/HomePanelController.js" as HomePanel
 
 CommonItem {
+    id: home_panel
     visible: false
     opacity: 0
     width: 1440
@@ -47,7 +48,10 @@ CommonItem {
     //报警计数
     property int alarmCode: 0
     //Mpa计数
-    property int mpaCount: 0
+    property int mpa1ValueStart: 0
+    property int mpa1ValueEnd: 0
+    property int mpa2ValueStart: 0
+    property int mpa2ValueEnd: 0
     property bool mpaStatus: true
 
     //HomePanel遮罩效果信号监测
@@ -71,10 +75,43 @@ CommonItem {
         if(visible){
             // 按键触发
             CarMsg.sendEnableKeys(true);
+            HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
             timer.running = true;
         }else{
             timer.running = false;
         }
+    }
+    //Mpa过度动画
+    NumberAnimation { id: mpa_animation1; target: home_panel; property: "mpa1ValueEnd"; duration: 200; easing.type: Easing.Linear }
+    NumberAnimation { id: mpa_animation2; target: home_panel; property: "mpa2ValueEnd"; duration: 200; easing.type: Easing.Linear }
+    //报警码显示动画
+    SequentialAnimation {
+        loops: Animation.Infinite
+        running: true
+        PauseAnimation { duration: 2000 }
+        PropertyAnimation{ target: alarm_info; property: "anchors.bottomMargin"; to: 45 ;duration: 100; easing.type: Easing.Linear; }
+        PropertyAnimation{ target: alarm_info; property: "anchors.bottomMargin"; to: 35 ;duration: 100; easing.type: Easing.Linear; }
+        PropertyAnimation{ target: alarm_info; property: "anchors.bottomMargin"; to: 40 ;duration: 50; easing.type: Easing.Linear; }
+    }
+    onMpa1ValueEndChanged: {
+        mpa_animation1.from = mpa1ValueStart;
+        mpa_animation1.to = mpa1ValueEnd;
+        mpa_animation1.running = true;
+        if(mpa1ValueEnd > mpa1ValueStart){
+            HomePanel.upMpaLeftModel(mpaLeftModel,mpa1ValueEnd);
+        }else if(mpa1ValueEnd < mpa1ValueStart){
+            HomePanel.downMpaLeftModel(mpaLeftModel,mpa1ValueEnd);
+        }else{}
+    }
+    onMpa2ValueEndChanged: {
+        mpa_animation2.from = mpa2ValueStart;
+        mpa_animation2.to = mpa2ValueEnd;
+        mpa_animation2.running = true;
+        if(mpa2ValueEnd > mpa2ValueStart){
+            HomePanel.upMpaRightModel(mpaRightModel,mpa2ValueEnd);
+        }else if(mpa2ValueEnd < mpa2ValueStart){
+            HomePanel.downMpaRightModel(mpaRightModel,mpa2ValueEnd);
+        }else{}
     }
     //自定义定时器测试使用
     Timer {
@@ -127,18 +164,18 @@ CommonItem {
                 lamp_battery_warning.opacity = 1.0;
                 lamp_battery_fault.opacity = 1.0;
             }
-            if(mpaStatus){
-                if(mpaCount === 10){
-                    mpaStatus = false;
-                }else{}
-                HomePanel.upMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
-                mpaCount = HomePanel.upMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
+            //Mpa测试
+            mpa1ValueStart = mpa1ValueEnd;
+            if(mpa1ValueEnd === 10){
+                mpa1ValueEnd = 0;
             }else{
-                if(mpaCount === 0){
-                    mpaStatus = true;
-                }else{}
-                HomePanel.downMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
-                mpaCount = HomePanel.downMpaModel(mpaLeftModel,mpaRightModel,mpaCount);
+                mpa1ValueEnd = 10;
+            }
+            mpa2ValueStart = mpa2ValueEnd;
+            if(mpa2ValueEnd === 10){
+                mpa2ValueEnd = 0;
+            }else{
+                mpa2ValueEnd += 1;
             }
             for(var i=0;i<38;i++){
                 if(alarmCode === i){
@@ -158,7 +195,7 @@ CommonItem {
         console.log("/--------------------------------------------/");
         console.log("/-------------"+ AlarmInfoCode.getInfo() +"---------------/");
         console.log("/--------------------------------------------/");
-        HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
+        //HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
     }
     Item {
         id: home

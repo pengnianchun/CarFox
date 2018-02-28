@@ -24,38 +24,24 @@ function initializeMpaModelR(mpaListModel) {
     }
 }
 /*
- * Mpa实时值显示（Left）
- */
-function showMpaValueL(mpaListModelL,mpaCount) {}
-/*
- * Mpa实时值显示（Right）
- */
-function showMpaValueR(mpaListModelR,mpaCount) {}
-/*
  * Mpa测试函数（上升）
  */
-function upMpaModel(mpaListModelL,mpaListModelR,mpaCount) {
-    for(var j=0;j<10;j++){
-        if(mpaCount === j){
-            mpaListModelL.setProperty(j,"mpa",true);
-            mpaListModelR.setProperty(j,"mpa",true);
-            break;
-        }else{}
-    }
-    mpaCount++;
-    return mpaCount;
+function upMpaLeftModel(mpaListModelL,mpaIndex) {
+    var index = mpaIndex;
+    if(index > 0){ index-- }
+    mpaListModelL.setProperty(index,"mpa",true);
+}
+function upMpaRightModel(mpaListModelR,mpaIndex) {
+    var index = mpaIndex;
+    if(index > 0){ index-- }
+    mpaListModelR.setProperty(index,"mpa",true);
 }
 /*
  * Mpa测试函数（下降）
  */
-function downMpaModel(mpaListModelL,mpaListModelR,mpaCount) {
-    for(var j=9;j>=0;j--){
-        if(mpaCount === j){
-            mpaListModelL.setProperty(j,"mpa",false);
-            mpaListModelR.setProperty(j,"mpa",false);
-            break;
-        }else{}
-    }
-    if(mpaCount !== 0){ mpaCount-- }
-    return mpaCount;
+function downMpaLeftModel(mpaListModelL,mpaIndex) {
+    mpaListModelL.setProperty(mpaIndex,"mpa",false);
+}
+function downMpaRightModel(mpaListModelR,mpaIndex) {
+    mpaListModelR.setProperty(mpaIndex,"mpa",false);
 }

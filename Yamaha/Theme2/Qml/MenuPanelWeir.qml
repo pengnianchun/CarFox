@@ -45,20 +45,28 @@ CommonItem {
     property string currentLayer;
 
     //车速初始值
+    property int speedTotal: 190;
     property real speedValue: 0;
     property real speedValueStart: 0;
     //档位初始值
     property real gearValue: 0;
     //发动机转速
-    property real engineSpeedValue: 6666;
-    //蓄电池总电压
-    property real batteryTotalVolt: 150;
+    property int engineTotalSpeed: 9999;
+    property int engineSpeedValue: 0;
+    property int engineSpeedValueStart: 0;
     //蓄电池电压
-    property real batteryCurrentVolt: 150;
+    property int batteryTotalVolt: 150;
+    property int batteryCurrentVoltStart: 0;
+    property int batteryCurrentVolt: 0;
     //动力电池电压
-    property real batteryPowerVolt: 500;
+    property int batteryPowerTotalVolt: 220
+    property int batteryPowerVoltStart: 0
+    property int batteryPowerVolt: 0;
     //动力电池电流
-    property real batteryPowerAmpere: 100;
+    property int batteryPowerTotalAmpere: 100
+    property int batteryPowerAmpereStart: 0;
+    property int batteryPowerAmpere: 0;
+    //图片尺寸
     property real numberImageWidth: 32;
     property real numberImageHeight: 32;
 
@@ -73,8 +81,8 @@ CommonItem {
     //（车速值/进度条）变化过度动画
     ParallelAnimation {
         id: speedAnimation
-        NumberAnimation { id:speed_animation1; target:menu_panel_weir; property: "speedValue"; duration: 200; easing.type: Easing.Linear }
-        NumberAnimation { id:speed_animation2; target:carSpeed; property: "width" ;duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id:speed_animation1; target: menu_panel_weir; property: "speedValue"; duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id:speed_animation2; target: carSpeed; property: "width" ;duration: 200; easing.type: Easing.Linear }
     }
     onSpeedValueChanged: {
         speed_animation1.from = speedValueStart;
@@ -86,6 +94,62 @@ CommonItem {
         MenuPanelController.setSpeedValueAction(speed_hundred,speed_ten,speed_bits,speedValue);
         MenuPanelController.setGeneralValueAction(speedValue_hundred,speedValue_ten,speedValue_bits,speedValue);
     }
+    //（发动机转速值/进度条）变化过度动画
+    ParallelAnimation {
+        id: engineAnimation
+        NumberAnimation { id: engine_animation1; target: menu_panel_weir; property: "engineSpeedValue"; duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id: engine_animation2; target: engineSpeed; property: "width" ;duration: 200; easing.type: Easing.Linear }
+    }
+    onEngineSpeedValueChanged: {
+        engine_animation1.from = engineSpeedValueStart;
+        engine_animation1.to = engineSpeedValue;
+        engine_animation2.from = engineSpeedValueStart/9999*204;
+        engine_animation2.to = engineSpeedValue/9999*204;
+        engineAnimation.running = true;
+        //发动机转速
+        MenuPanelController.setEngineValueAction(engine_thousand,engine_hundred,engine_ten,engine_bits,engineSpeedValue);
+    }
+    //（蓄电池百分比/进度条）（蓄电池电压/进度条）变化过度动画
+    ParallelAnimation {
+        id: batteryAnimation
+        NumberAnimation { id: battery_animation1; target: menu_panel_weir; property: "batteryCurrentVolt"; duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id: battery_animation2; target: batteryPercentage; property: "width" ;duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id: battery_animation3; target: menu_panel_weir; property: "batteryCurrentVolt"; duration: 200; easing.type: Easing.Linear }
+        NumberAnimation { id: battery_animation4; target: batteryVolt; property: "width" ;duration: 200; easing.type: Easing.Linear }
+    }
+    onBatteryCurrentVoltChanged: {
+        battery_animation1.from = parseInt(batteryCurrentVoltStart/batteryTotalVolt)*100;
+        battery_animation1.to = parseInt(batteryCurrentVolt/batteryTotalVolt)*100;
+        battery_animation2.from = batteryCurrentVoltStart/batteryTotalVolt*127;
+        battery_animation2.to = batteryCurrentVolt/batteryTotalVolt*127;
+        battery_animation3.from = batteryCurrentVoltStart;
+        battery_animation3.to = batteryCurrentVolt;
+        battery_animation4.from = batteryCurrentVolt/batteryTotalVolt*127;
+        battery_animation4.to = batteryCurrentVolt/batteryTotalVolt*127;
+        batteryAnimation.running = true;
+        //蓄电池百分比
+        MenuPanelController.setGeneralValueAction(batteryPercentage_hundred,batteryPercentage_ten,batteryPercentage_bits,parseInt(batteryCurrentVolt/batteryTotalVolt*100));
+        //蓄电池电量
+        MenuPanelController.setGeneralValueAction(batteryVolt_hundred,batteryVolt_ten,batteryVolt_bits,batteryCurrentVolt);
+    }
+    //动力电池电压变化过度动画
+    NumberAnimation { id: batteryPVoltAnimation; property: "batteryPowerVolt"; duration: 200; easing.type: Easing.Linear }
+    onBatteryPowerVoltChanged: {
+        batteryPVoltAnimation.from = batteryPowerVoltStart;
+        batteryPVoltAnimation.to = batteryPowerVolt;
+        batteryPVoltAnimation.running = true;
+        //动力电池电压
+        MenuPanelController.setGeneralValueAction(batteryPVolt_hundred,batteryPVolt_ten,batteryPVolt_bits,batteryPowerVolt);
+    }
+    //动力电池电流变化过度动画
+    NumberAnimation { id: batteryPAmpereAnimation; property: "batteryPowerAmpere"; duration: 200; easing.type: Easing.Linear }
+    onBatteryPowerAmpereChanged: {
+        batteryPAmpereAnimation.from = batteryPowerAmpereStart;
+        batteryPAmpereAnimation.to = batteryPowerAmpere;
+        batteryPAmpereAnimation.running = true;
+        //动力电池电流
+        MenuPanelController.setGeneralValueAction(batteryPAmpere_hundred,batteryPAmpere_ten,batteryPAmpere_bits,batteryPowerAmpere);
+    }
     //自定义定时器测试使用
     Timer {
         id: timer
@@ -94,26 +158,41 @@ CommonItem {
         running: false
         onTriggered: {
             //console.log("=================menu panel timer=========================");
-            if(speedValue > 190){
+            //车速测试
+            if(speedValue > speedTotal){
                 speedValue = 0;
             }else{}
             speedValueStart = speedValue;
             speedValue += 10;
+            //发动机测试
+            if(engineSpeedValue > engineTotalSpeed){
+                engineSpeedValue = 0;
+            }else{}
+            engineSpeedValueStart = engineSpeedValue;
+            engineSpeedValue += 100;
+            //蓄电池测试
+            if(batteryCurrentVolt > batteryTotalVolt){
+                batteryCurrentVolt = 0;
+            }else{}
+            batteryCurrentVoltStart = batteryCurrentVolt;
+            batteryCurrentVolt += 1;
+            //动力电池电压测试
+            if(batteryPowerVolt > batteryPowerTotalVolt){
+                batteryPowerVolt = 0;
+            }else{}
+            batteryPowerVoltStart = batteryPowerVolt;
+            batteryPowerVolt += 10;
+            //动力电池电流测试
+            if(batteryPowerAmpere > batteryPowerTotalAmpere){
+                batteryPowerAmpere = 0;
+            }else{}
+            batteryPowerAmpereStart = batteryPowerAmpere;
+            batteryPowerAmpere += 10;
+            //档位测试
             if(gearValue > 4){
                 gearValue = 0;
             }else{}
-            //档位
             MenuPanelController.setGearValueAction(gear,gearValue);
-            //发动机转速
-            MenuPanelController.setEngineValueAction(engine_thousand,engine_hundred,engine_ten,engine_bits,engineSpeedValue);
-            //蓄电池百分比
-            MenuPanelController.setGeneralValueAction(batteryPercentage_hundred,batteryPercentage_ten,batteryPercentage_bits,parseInt(batteryCurrentVolt/batteryTotalVolt*100));
-            //蓄电池电量
-            MenuPanelController.setGeneralValueAction(batteryVolt_hundred,batteryVolt_ten,batteryVolt_bits,batteryCurrentVolt);
-            //动力电池电压
-            MenuPanelController.setGeneralValueAction(batteryPVolt_hundred,batteryPVolt_ten,batteryPVolt_bits,batteryPowerVolt);
-            //动力电池电流
-            MenuPanelController.setGeneralValueAction(batteryPAmpere_hundred,batteryPAmpere_ten,batteryPAmpere_bits,batteryPowerAmpere);
             gearValue++;
         }
     }
@@ -189,7 +268,7 @@ CommonItem {
                 Image { id: speed_ten }
                 Image { id: speed_bits }
             }
-            Image { id: gear;anchors.horizontalCenter: parent.horizontalCenter }
+            Image { id: gear; anchors.horizontalCenter: parent.horizontalCenter }
         }
         //速度灯背景
         Image {
@@ -268,7 +347,7 @@ CommonItem {
             }
             RowLayout {
                 anchors.left: parent.left
-                anchors.leftMargin: 70
+                anchors.leftMargin: 60
                 anchors.top: parent.top
                 anchors.topMargin: 95
                 spacing: 540
@@ -277,6 +356,7 @@ CommonItem {
                     height: 30
                     RowLayout {
                         spacing: -20
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Image { id: batteryPercentage_hundred }
                         Image { id: batteryPercentage_ten }
                         Image { id: batteryPercentage_bits }
@@ -287,6 +367,7 @@ CommonItem {
                     height: 30
                     RowLayout {
                         spacing: -20
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Image { id: batteryVolt_hundred }
                         Image { id: batteryVolt_ten }
                         Image { id: batteryVolt_bits }
@@ -303,7 +384,7 @@ CommonItem {
             }
             RowLayout {
                 anchors.left: parent.left
-                anchors.leftMargin: 100
+                anchors.leftMargin: 75
                 anchors.top: parent.top
                 anchors.topMargin: 200
                 spacing: 460
@@ -312,6 +393,7 @@ CommonItem {
                     height: 30
                     RowLayout {
                         spacing: -15
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Image { id: batteryPVolt_hundred; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
                         Image { id: batteryPVolt_ten; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
                         Image { id: batteryPVolt_bits; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
@@ -322,6 +404,7 @@ CommonItem {
                     height: 30
                     RowLayout {
                         spacing: -15
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Image { id: batteryPAmpere_hundred; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
                         Image { id: batteryPAmpere_ten; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
                         Image { id: batteryPAmpere_bits; sourceSize.width: numberImageWidth; sourceSize.height: numberImageHeight }
