@@ -79,7 +79,7 @@ fonts.path = /usr/lib
 INSTALLS += fonts
 
 include($$PWD/Yamaha.pri)
-
+CONFIG+=resources_big
 
 
 

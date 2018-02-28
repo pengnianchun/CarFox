@@ -9,7 +9,7 @@ function setSpeedValueAction(speedHundredId,speedTenId,speedBitsId,value){
         speedHundredId.visible = true;
         speedTenId.visible = true;
         speedBitsId.visible = true;
-        hundred = parseInt(speedValue/100);
+        hundred = parseInt(value/100);
         ten = parseInt((value/10)%10);
         bits = parseInt(value%10);
         speedHundredId.source = speedValueImage + hundred + ".png";
@@ -60,7 +60,7 @@ function setEngineValueAction(thousandId,hundredId,tenId,bitsId,value){
     var thousand,hundred,ten,bits;
     var digits = value.toFixed(0).length;
     if(digits === 4){
-        thousandId.opacity = true;
+        thousandId.visible = true;
         hundredId.visible = true;
         tenId.visible = true;
         bitsId.visible = true;
