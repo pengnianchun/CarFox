@@ -60,6 +60,8 @@ Item {
                     UiController.showLayer("MenuPanel");
                     UiController.setLayerProperty("MenuPanel","animationAction",3);
                     UiController.showLayer("AutomaticRoutine");
+                    // 按键触发
+                    CarMsg.sendEnableKeys(true);
                 }
             }
         }

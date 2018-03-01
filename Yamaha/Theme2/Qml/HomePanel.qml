@@ -45,6 +45,10 @@ CommonItem {
     property string lampBatteryWarningImage: sourceImageUrl + "StarLamp/batteryCut.png"
     property string lampBatteryFaultImage: sourceImageUrl + "StarLamp/batteryFault.png"
     property bool bDisplay: true
+
+    //初始化执行动画阶段
+    property bool animationPhase1: true
+    property bool animationPhase2: true
     //报警计数
     property int alarmCode: 0
     //Mpa计数
@@ -52,7 +56,8 @@ CommonItem {
     property int mpa1ValueEnd: 0
     property int mpa2ValueStart: 0
     property int mpa2ValueEnd: 0
-    property bool mpaStatus: true
+    //动画过度时间
+    property int excessiveDurationTime: 1000;
 
     //HomePanel遮罩效果信号监测
     property string maskBackGroundStatus: "";
@@ -74,16 +79,15 @@ CommonItem {
     onVisibleChanged: {
         if(visible){
             // 按键触发
-            CarMsg.sendEnableKeys(true);
-            HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
+            //CarMsg.sendEnableKeys(true);
             timer.running = true;
         }else{
             timer.running = false;
         }
     }
     //Mpa过度动画
-    NumberAnimation { id: mpa_animation1; target: home_panel; property: "mpa1ValueEnd"; duration: 200; easing.type: Easing.Linear }
-    NumberAnimation { id: mpa_animation2; target: home_panel; property: "mpa2ValueEnd"; duration: 200; easing.type: Easing.Linear }
+    NumberAnimation { id: mpa_animation1; target: home_panel; property: "mpa1ValueEnd"; duration: excessiveDurationTime; easing.type: Easing.Linear }
+    NumberAnimation { id: mpa_animation2; target: home_panel; property: "mpa2ValueEnd"; duration: excessiveDurationTime; easing.type: Easing.Linear }
     //报警码显示动画
     SequentialAnimation {
         loops: Animation.Infinite
@@ -102,6 +106,7 @@ CommonItem {
         }else if(mpa1ValueEnd < mpa1ValueStart){
             HomePanel.downMpaLeftModel(mpaLeftModel,mpa1ValueEnd);
         }else{}
+        mpa1ValueStart = mpa1ValueEnd;
     }
     onMpa2ValueEndChanged: {
         mpa_animation2.from = mpa2ValueStart;
@@ -112,71 +117,47 @@ CommonItem {
         }else if(mpa2ValueEnd < mpa2ValueStart){
             HomePanel.downMpaRightModel(mpaRightModel,mpa2ValueEnd);
         }else{}
+        mpa2ValueStart = mpa2ValueEnd;
     }
     //自定义定时器测试使用
     Timer {
         id: timer
         repeat: true
-        interval: 1000
+        interval: 2000
         running: false
         onTriggered: {
             //console.log("=================home panel timer=========================");
-            if(bDisplay){
-                oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressureValue.png";
-                left_cornering_lamp.opacity = 0;
-                right_cornering_lamp.opacity = 0;
-                lamp_headlight.opacity = 0;
-                lamp_highBeam.opacity = 0;
-                lamp_positionLight.opacity = 0;
-                charging.opacity = 0;
-                lamp_frontFog.opacity = 0;
-                lamp_rearFog.opacity = 0;
-                charge_light.opacity = 0;
-                lamp_mainERRred.opacity = 0;
-                backCang.opacity = 0;
-                lamp_leftShoeWear.opacity = 0;
-                lamp_rightShoeWear.opacity = 0;
-                lamp_waterLow.opacity = 0;
-                lamp_motor.opacity = 0;
-                motorFault.opacity = 0;
-                lamp_battery.opacity = 0;
-                lamp_battery_warning.opacity = 0;
-                lamp_battery_fault.opacity = 0;
-            }else{
-                oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
-                left_cornering_lamp.opacity = 1.0;
-                right_cornering_lamp.opacity = 1.0;
-                lamp_headlight.opacity = 1.0;
-                lamp_highBeam.opacity = 1.0;
-                lamp_positionLight.opacity = 1.0;
-                charging.opacity = 1.0;
-                lamp_frontFog.opacity = 1.0;
-                lamp_rearFog.opacity = 1.0;
-                charge_light.opacity = 1.0;
-                lamp_mainERRred.opacity = 1.0;
-                backCang.opacity = 1.0;
-                lamp_leftShoeWear.opacity = 1.0;
-                lamp_rightShoeWear.opacity = 1.0;
-                lamp_waterLow.opacity = 1.0;
-                lamp_motor.opacity = 1.0;
-                motorFault.opacity = 1.0;
-                lamp_battery.opacity = 1.0;
-                lamp_battery_warning.opacity = 1.0;
-                lamp_battery_fault.opacity = 1.0;
-            }
-            //Mpa测试
-            mpa1ValueStart = mpa1ValueEnd;
-            if(mpa1ValueEnd === 10){
-                mpa1ValueEnd = 0;
-            }else{
-                mpa1ValueEnd = 10;
-            }
-            mpa2ValueStart = mpa2ValueEnd;
-            if(mpa2ValueEnd === 10){
-                mpa2ValueEnd = 0;
-            }else{
-                mpa2ValueEnd += 1;
-            }
+            if(animationPhase1){
+                if(!animationPhase2){
+                    //oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressureValue.png";
+                    left_cornering_lamp.opacity = 0;right_cornering_lamp.opacity = 0;
+                    lamp_headlight.opacity = 0;lamp_highBeam.opacity = 0;
+                    lamp_positionLight.opacity = 0;charging.opacity = 0;
+                    lamp_frontFog.opacity = 0;lamp_rearFog.opacity = 0;
+                    charge_light.opacity = 0;lamp_mainERRred.opacity = 0;
+                    backCang.opacity = 0;lamp_leftShoeWear.opacity = 0;
+                    lamp_rightShoeWear.opacity = 0;lamp_waterLow.opacity = 0;
+                    lamp_motor.opacity = 0;motorFault.opacity = 0;
+                    lamp_battery.opacity = 0;lamp_battery_warning.opacity = 0;
+                    lamp_battery_fault.opacity = 0;
+                    mpa1ValueEnd = 0;mpa2ValueEnd = 0;
+                    animationPhase1 = false;
+                }else{
+                    //oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
+                    left_cornering_lamp.opacity = 1.0;right_cornering_lamp.opacity = 1.0;
+                    lamp_headlight.opacity = 1.0;lamp_highBeam.opacity = 1.0;
+                    lamp_positionLight.opacity = 1.0;charging.opacity = 1.0;
+                    lamp_frontFog.opacity = 1.0;lamp_rearFog.opacity = 1.0;
+                    charge_light.opacity = 1.0;lamp_mainERRred.opacity = 1.0;
+                    backCang.opacity = 1.0;lamp_leftShoeWear.opacity = 1.0;
+                    lamp_rightShoeWear.opacity = 1.0;lamp_waterLow.opacity = 1.0;
+                    lamp_motor.opacity = 1.0;motorFault.opacity = 1.0;
+                    lamp_battery.opacity = 1.0;lamp_battery_warning.opacity = 1.0;
+                    lamp_battery_fault.opacity = 1.0;
+                    mpa1ValueEnd = 10;mpa2ValueEnd = 10;
+                    animationPhase2 = false;
+                }
+            }else{}
             for(var i=0;i<38;i++){
                 if(alarmCode === i){
                     var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[i];
@@ -195,7 +176,7 @@ CommonItem {
         console.log("/--------------------------------------------/");
         console.log("/-------------"+ AlarmInfoCode.getInfo() +"---------------/");
         console.log("/--------------------------------------------/");
-        //HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
+        HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
     }
     Item {
         id: home
