@@ -10,6 +10,9 @@ Item {
     y:80
     visible: false;
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string dcStateTitleImage:sourceImageUrl+"Image/MenuPanel/dc_title.png";
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg

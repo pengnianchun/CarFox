@@ -5,8 +5,12 @@ import QtQuick.Layouts 1.1
 import "qrc:/Common/Component"
 Item {
     id: root
-    anchors.fill: parent
+    x:382
+    y:77
     visible: false;
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string bettaryTempTitleImage:sourceImageUrl+"Image/MenuPanel/battery_temp_title.png";
 
     Connections {
         // 链接CarMsg信号
@@ -24,13 +28,14 @@ Item {
         }
     }
 
+
     Image {
         id: bettary_Temp_Title
         x:271
         y:23
         width:210
         height:44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/battery_temp_title.png"
+        source: bettaryTempTitleImage
     }
 
     Row {

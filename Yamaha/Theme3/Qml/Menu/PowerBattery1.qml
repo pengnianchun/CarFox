@@ -9,6 +9,9 @@ Item{
     y:44
     visible: false
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string powerBattery1TitleImage:sourceImageUrl+"Image/MenuPanel/powerBattery1.png";
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg
@@ -40,7 +43,7 @@ Item{
         y:23
         width: 363
         height: 44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/powerBattery1.png"
+        source: powerBattery1TitleImage
     }
 
     Row{

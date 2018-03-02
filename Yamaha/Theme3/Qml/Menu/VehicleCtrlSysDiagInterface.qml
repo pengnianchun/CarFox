@@ -9,6 +9,9 @@ Item{
     y:57
     visible: false
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string powerBattery1TitleImage:sourceImageUrl+"Image/MenuPanel/vehicleCtrlSysDiagInterface.png";
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg
@@ -40,7 +43,7 @@ Item{
         y:0
         width: 256
         height: 43
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/vehicleCtrlSysDiagInterface.png"
+        source: powerBattery1TitleImage
     }
     Row{
         x:32

@@ -11,6 +11,19 @@ Item {
     width:693
     height:457
 //    property alias menuListExteral: menuList
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string iconDcImage:sourceImageUrl+"Image/MenuPanel/icon_dc.png";
+    property string iconTPMSImage:sourceImageUrl+"Image/MenuPanel/icon_TPMS.png";
+    property string iconModuleImage:sourceImageUrl+"Image/MenuPanel/icon_module.png";
+    property string iconTimeSettingImage:sourceImageUrl+"Image/MenuPanel/icon_timeSetting.png";
+    property string iconBringhtnessControlImage:sourceImageUrl+"Image/MenuPanel/icon_bringhtnessControl.png";
+    property string iconMiscellaneousInforQueryImage:sourceImageUrl+"Image/MenuPanel/icon_miscellaneousInforQuery.png";
+    property string iconVehicleImage:sourceImageUrl+"Image/MenuPanel/icon_vehicle.png";
+    property string iconPowerBatteryImage:sourceImageUrl+"Image/MenuPanel/icon_powerBattery.png";
+    property string iconVideoSwitchImage:sourceImageUrl+"Image/MenuPanel/icon_videoSwitch.png";
+    property string menuListBgImage:sourceImageUrl+"Image/MenuPanel/rect.png";
+
     visible: false;
 
     function updateIcon()
@@ -22,39 +35,39 @@ Item {
         }
         else if(menuList.currentIndex == 1)  //dc-dc
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_dc.png";
+            menuIcon.source = iconDcImage;
         }
         else if(menuList.currentIndex == 2)  //胎压监测系统
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_TPMS.png";
+            menuIcon.source = iconTPMSImage;
         }
         else if(menuList.currentIndex == 3)  //模块信息查询
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_module.png";
+            menuIcon.source = iconModuleImage;
         }
         else if(menuList.currentIndex == 4)  //时间设置
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_timeSetting.png";
+            menuIcon.source = iconTimeSettingImage;
         }
         else if(menuList.currentIndex == 5)  //亮度调节
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_bringhtnessControl.png";
+            menuIcon.source = iconBringhtnessControlImage;
         }
         else if(menuList.currentIndex == 6)  //杂项信息查询
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_miscellaneousInforQuery.png";
+            menuIcon.source = iconMiscellaneousInforQueryImage;
         }
         else if(menuList.currentIndex == 7)  //整车系统状态
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_vehicle.png";
+            menuIcon.source = iconVehicleImage;
         }
         else if(menuList.currentIndex == 8)  //动力电池信息
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_powerBattery.png";
+            menuIcon.source = iconPowerBatteryImage;
         }
         else if(menuList.currentIndex == 9)  //视频信息切换
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_videoSwitch.png";
+            menuIcon.source = iconVideoSwitchImage;
         }
     }
 
@@ -145,7 +158,7 @@ Item {
         y:176
         width: 100
         height: 100
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/icon_powerBattery.png"
+        source: iconPowerBatteryImage
     }
     Image {
         id: menuListBg
@@ -153,7 +166,7 @@ Item {
         y:215
         width: 332
         height: 43
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/rect.png"
+        source: menuListBgImage
     }
     PathView {
         id: menuList

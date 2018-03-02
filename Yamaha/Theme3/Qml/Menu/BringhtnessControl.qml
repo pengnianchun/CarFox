@@ -4,11 +4,16 @@ import CustomEnum 1.0
 import "./"
 import "qrc:/Common/Component"
 
-Item{
+MenuItem{
     id:root
     x:552
     y:144
     visible:false
+    property int briValue: 100
+    property real eachValue: 331/10.0
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string brightTitleImage:sourceImageUrl+"Image/MenuPanel/bringhtnessControl.png";
 
     Connections {
         // 链接CarMsg信号
@@ -23,6 +28,37 @@ Item{
                 UiController.hideLayer("BringhtnessControl");
                 UiController.showLayer("MenuPanel");
             }
+            if(key === 2) //pre键
+            {
+                if(root.visible === false)
+                {
+                    return;
+                }
+
+                if(briValue <= 0)
+                {
+                    briValue = 0;
+                    return;
+                }
+                brightinsideRect.width -= eachValue;
+                briValue = briValue - 10;
+                brightValue.text = briValue;
+            }
+            if(key === 3) //next键
+            {
+                if(root.visible === false)
+                {
+                    return;
+                }
+                if(briValue >= 100)
+                {
+                    briValue = 100;
+                    return;
+                }
+                brightinsideRect.width += eachValue;
+                briValue = briValue + 10;
+                brightValue.text = briValue;
+            }
         }
     }
 
@@ -32,7 +68,7 @@ Item{
         y:0
         width:114
         height:44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/bringhtnessControl.png"
+        source: brightTitleImage
     }
 
     Rectangle{
@@ -53,19 +89,20 @@ Item{
             height:86
             color:"#00ccff"
             radius: 10
-            Text{
-                id:brightValue
-                anchors.fill: parent
-                width:105
-                height:26
-                text:"100 %"
-                font.family: "PingFang SC Regular"
-                font.bold: true
-                font.pixelSize: 30;font.weight: Font.Black
-                color:"white"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-            }
+        }
+        Text{
+            id:brightValue
+            z:1
+            anchors.fill: parent
+            width:105
+            height:26
+            text:"100 %"
+            font.family: "PingFang SC Regular"
+            font.bold: true
+            font.pixelSize: 30;font.weight: Font.Black
+            color:"white"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
     }
 }

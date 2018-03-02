@@ -9,6 +9,9 @@ Item{
     y:44
     visible:false
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string powerBattery2TitleImage:sourceImageUrl+"Image/MenuPanel/powerBattery2.png";
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg
@@ -22,7 +25,7 @@ Item{
                 UiController.hideLayer("PowerBattery2");
                 UiController.showLayer("MenuPanel");
             }
-            if(key === 3) //next键
+            if(key === 2) //next键
             {
                 if(root.visible == false)
                 {
@@ -40,7 +43,7 @@ Item{
         y:23
         width: 365
         height: 44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/powerBattery2.png"
+        source: powerBattery2TitleImage
     }
 
     Row{

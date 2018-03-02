@@ -9,6 +9,9 @@ Item{
     y:64
     visible: false
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string vcuTitleImage:sourceImageUrl+"Image/MenuPanel/VCU.png";
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg
@@ -40,7 +43,7 @@ Item{
         y:0
         width:164
         height:44
-        source:"qrc:/Theme/Theme3/Image/MenuPanel/VCU.png"
+        source:vcuTitleImage
     }
 
     Row{

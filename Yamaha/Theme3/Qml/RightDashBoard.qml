@@ -1,10 +1,17 @@
 import QtQuick 2.0
+import "qrc:/Common/Component"
 
-Item {
+CommonItem {
     id: mainView
 
     property alias dot_timer_runing: dash_right_dot_timer.running;
     property alias text_content: dashboardRightText.text;
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string dashBoardBackgroundImage:sourceImageUrl+"Image/DashBoard/right_dashboard.png";
+    property string mpaRightImage:sourceImageUrl+"Image/DashBoard/right_mpa_line.png";
+    property string dashboardRightDotImage:sourceImageUrl+"Image/DashBoard/right_dot.png";
+    property string dashboardRightLineImage:sourceImageUrl+"Image/DashBoard/right_line.png";
 
     state: "Main_style"
 
@@ -24,10 +31,10 @@ Item {
         id: dashBoardBackground
         x:910
         y:26
-        source: "qrc:/Theme/Theme3/Image/DashBoard/right_dashboard.png"
+        source: dashBoardBackgroundImage
         Image {
             id: mpa_right
-            source: "qrc:/Theme/Theme3/Image/DashBoard/right_mpa_line.png"
+            source: mpaRightImage
             x:163
             y:113
             width:188
@@ -78,7 +85,7 @@ Item {
             }
             Image{
                 id:dashboard_right_dot
-                source: "qrc:/Theme/Theme3/Image/DashBoard/right_dot.png"
+                source: dashboardRightDotImage
                 x:383
                 y:196
                 width:82
@@ -125,7 +132,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line1
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
+                    source: dashboardRightLineImage
                     x:110
                     y:233
                     width:204
@@ -134,7 +141,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line2
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
+                    source: dashboardRightLineImage
                     x:110
                     y:233
                     width:204
@@ -145,7 +152,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line3
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
+                    source: dashboardRightLineImage
                     x:110
                     y:233
                     width:204

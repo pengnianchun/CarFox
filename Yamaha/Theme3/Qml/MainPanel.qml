@@ -3,6 +3,7 @@ import CustomEnum 1.0
 import "./"
 import "qrc:/Common/Component"
 
+
 CommonItem {
     id: mainPanel
     width: 1440
@@ -10,6 +11,11 @@ CommonItem {
     opacity: 0.0
     visible: false
     z: 0
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string gifImage:sourceImageUrl+"Image/Gif/splash.gif";
+    property string bgImage:sourceImageUrl+"Image/HomePane/bg.png";
+    property string staBgImage:sourceImageUrl+"Image/MenuPanel/bg.png";
 
     onVisibleChanged: {
         if(visible) {
@@ -23,7 +29,7 @@ CommonItem {
 
     QmlGifImage {
         id: gmlGifImage
-        gifSource: "qrc:/Theme/Theme3/Image/Gif/splash.gif"
+        gifSource: gifImage
         playing: false
         anchors.fill: parent
         onFinished: {
@@ -69,7 +75,7 @@ CommonItem {
         Image {     //主界面背景
             id: bg
             anchors.fill: parent
-            source: "qrc:/Theme/Theme3/Image/HomePane/bg.png"
+            source: bgImage
 
             StaticControls{
                 id: staticControls
@@ -94,6 +100,12 @@ CommonItem {
                 x:369
                 y:74
             }
+
+            IconPanel{
+                id:iconpanel
+                x:0
+                y:0
+            }
         }
 
         states: [
@@ -115,7 +127,7 @@ CommonItem {
                 to: "MenuList"
                 ScriptAction {
                     script: {
-                        bg.source = "qrc:/Theme/Theme3/Image/MenuPanel/bg.png"   //星空图
+                        bg.source = staBgImage   //星空图
                         dashboardLeft.state = "Menu_1_style"
                         dashboardRight.state = "Menu_1_style"
                     }
@@ -126,7 +138,7 @@ CommonItem {
                 to: "MainView"
                 ScriptAction {
                     script: {
-                        bg.source = "qrc:/Theme/Theme3/Image/HomePane/bg.png"     //蓝图
+                        bg.source = bgImage     //蓝图
                         dashboardLeft.state = "Main_style"
                         dashboardRight.state = "Main_style"
                     }
@@ -137,7 +149,6 @@ CommonItem {
                 to: "MenuParameter"
                 ScriptAction {
                     script: {
-//                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/2ed.png"
                         dashboardLeft.state = "Menu_2_style"
                         dashboardRight.state = "Menu_2_style"
                     }
@@ -148,7 +159,6 @@ CommonItem {
                 to: "MenuList"
                 ScriptAction {
                     script: {
-//                        bg.source = "qrc:/Theme/Theme3/Image/2ed/bg/bg.png"
                         dashboardLeft.state = "Menu_1_style"
                         dashboardRight.state = "Menu_1_style"
                     }

@@ -1,6 +1,39 @@
 import QtQuick 2.0
+import "qrc:/Common/Component"
 
-Item {
+CommonItem {
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string lampLeftImage:sourceImageUrl+"Image/HomePane/l_arrow.png";
+    property string lampRightImage:sourceImageUrl+"Image/HomePane/r_arrow.png";
+    property string thIconImage:sourceImageUrl+"Image/HomePane/th.png";
+    property string tlIconImage:sourceImageUrl+"Image/HomePane/tl.png";
+    property string vhIconImage:sourceImageUrl+"Image/HomePane/vh.png";
+    property string vlIconImage:sourceImageUrl+"Image/HomePane/vl.png";
+    property string lichengImage:sourceImageUrl+"Image/HomePane/licheng.png";
+    property string licheng2Image:sourceImageUrl+"Image/HomePane/lichengTotal.png";
+    property string leftTopLineImage:sourceImageUrl+"Image/HomePane/top_left_line.png";
+    property string rightTopLineImage:sourceImageUrl+"Image/HomePane/top_right_line.png";
+    property string leftRoadImage:sourceImageUrl+"Image/HomePane/road_left.png";
+    property string rightRoadImage:sourceImageUrl+"Image/HomePane/road_right.png";
+    property string bottomLineImage:sourceImageUrl+"Image/HomePane/licheng.png";
+    property string licheng2Image:sourceImageUrl+"Image/HomePane/lichengTotal.png";
+    property string leftTopLineImage:sourceImageUrl+"Image/HomePane/top_left_line.png";
+    property string rightTopLineImage:sourceImageUrl+"Image/HomePane/top_right_line.png";
+    property string leftRoadImage:sourceImageUrl+"Image/HomePane/road_left.png";
+    property string rightRoadImage:sourceImageUrl+"Image/HomePane/road_right.png";
+    property string bottomLineImage:sourceImageUrl+"Image/HomePane/bottom_line.png";
+    property string staSocIconImage:sourceImageUrl+"Image/HomePane/soc.png";
+    property string staBatteryIconImage:sourceImageUrl+"Image/HomePane/soc_right_icon.png";
+    property string socImage:sourceImageUrl+"Image/HomePane/soc_left_bg.png";
+    property string socRed1Image:sourceImageUrl+"Image/HomePane/soc_left_orange-.png";
+    property string socRed2Image:sourceImageUrl+"Image/HomePane/soc_left_orange-.png";
+    property string socNImage:sourceImageUrl+"Image/HomePane/soc_left_green.png";
+    property string batteryImage:sourceImageUrl+"Image/HomePane/soc_right_bg.png";
+    property string batteryRed1Image:sourceImageUrl+"Image/HomePane/soc_right_lightred.png";
+    property string batteryRed2Image:sourceImageUrl+"Image/HomePane/soc_right_lightred.png";
+    property string batteryNImage:sourceImageUrl+"Image/HomePane/soc_right_lightblue.png";
+
     function setTime()
     {
         var today = new Date();
@@ -27,7 +60,7 @@ Item {
         y:17
         width: 50
         height:50
-        source: "qrc:/Theme/Theme3/Image/HomePane/l_arrow.png"
+        source: lampLeftImage
     }
     Image{    //lamp_right的图标
         id:lamp_right
@@ -35,7 +68,7 @@ Item {
         y:17
         width: 50
         height:50
-        source: "qrc:/Theme/Theme3/Image/HomePane/r_arrow.png"
+        source: lampRightImage
     }
 
 
@@ -45,7 +78,7 @@ Item {
         y:12
         width: 37
         height:19
-        source: "qrc:/Theme/Theme3/Image/HomePane/th.png"
+        source: thIconImage
     }
     Text{     //th的图标文本
         id: th_Icon_text
@@ -66,7 +99,7 @@ Item {
         y:42
         width: 37
         height:19
-        source: "qrc:/Theme/Theme3/Image/HomePane/tl.png"
+        source: tlIconImage
     }
     Text{     //tl的图标文本
         id: tl_Icon_text
@@ -88,7 +121,7 @@ Item {
         y:13
         width: 31
         height:17
-        source: "qrc:/Theme/Theme3/Image/HomePane/vh.png"
+        source: vhIconImage
     }
     Text{     //vh的图标文本
         id: vh_Icon_text
@@ -109,7 +142,7 @@ Item {
         y:41
         width: 31
         height:17
-        source: "qrc:/Theme/Theme3/Image/HomePane/vl.png"
+        source: vlIconImage
     }
     Text{     //vl的图标文本
         id: vl_Icon_text
@@ -155,7 +188,7 @@ Item {
             y:509
             width:80
             height:30
-            source: "qrc:/Theme/Theme3/Image/HomePane/licheng.png"
+            source: lichengarea1Image
             visible: true;
         }
         Text{
@@ -180,7 +213,7 @@ Item {
             y:509
             width:80
             height:30
-            source: "qrc:/Theme/Theme3/Image/HomePane/lichengTotal.png"
+            source: licheng2Image
             visible: true;
         }
         Text{
@@ -228,7 +261,7 @@ Item {
             y:-103
             width:300
             height:300
-            source: "qrc:/Theme/Theme3/Image/HomePane/top_left_line.png"
+            source: leftTopLineImage
             visible: true;
         }
         Image{
@@ -237,7 +270,7 @@ Item {
             y:-105
             width:300
             height:300
-            source: "qrc:/Theme/Theme3/Image/HomePane/top_right_line.png"
+            source: rightTopLineImage
             visible: true;
         }
         Image{
@@ -246,7 +279,7 @@ Item {
             y:326
             width:248
             height:206
-            source: "qrc:/Theme/Theme3/Image/HomePane/road_left.png"
+            source: leftRoadImage
             visible: true;
         }
         Image{
@@ -255,7 +288,7 @@ Item {
             y:323
             width:248
             height:206
-            source: "qrc:/Theme/Theme3/Image/HomePane/road_right.png"
+            source: rightRoadImage
             visible: true;
         }
         Image{
@@ -264,7 +297,7 @@ Item {
             y:501
             width:943
             height:37
-            source: "qrc:/Theme/Theme3/Image/HomePane/bottom_line.png"
+            source: bottomLineImage
             visible: true;
         }
     }
@@ -276,7 +309,7 @@ Item {
         y:515
         width: 35
         height: 17
-        source: "qrc:/Theme/Theme3/Image/HomePane/soc.png"
+        source: staSocIconImage
         visible: true
         }
 
@@ -286,7 +319,7 @@ Item {
         y:502
         width: 36
         height: 28
-        source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_icon.png"
+        source: staBatteryIconImage
         visible: true
         }
         Image{   //soc底图
@@ -295,7 +328,7 @@ Item {
             y:523
             width: 264
             height: 7
-            source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_bg.png"
+            source: socImage
             visible: true
 
             Timer{     //soc_n的定时器
@@ -371,7 +404,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_orange-.png"
+                    source: socRed1Image
                     visible: true
                 }
                 Image{
@@ -380,7 +413,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_orange-.png"
+                    source: socRed2Image
                     visible: true
                 }
             }
@@ -398,7 +431,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
+                    source: socNImage
                     visible: true
                 }
                 Image{
@@ -407,7 +440,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
+                    source: socNImage
                     visible: true
                 }
                 Image{
@@ -416,7 +449,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
+                    source: socNImage
                     visible: true
                 }
                 Image{
@@ -425,7 +458,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_left_green.png"
+                    source: socNImage
                     visible: true
                 }
             }
@@ -437,7 +470,7 @@ Item {
             y:523
             width: 264
             height: 6
-            source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_bg.png"
+            source: batteryImage
             visible: true
             Timer{
                 id:battery_timer
@@ -522,7 +555,7 @@ Item {
                     y:0
                     width:61
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightred.png"
+                    source: batteryRed1Image
                     visible:true
                 }
                 Image{
@@ -531,7 +564,7 @@ Item {
                     y:0
                     width:61
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightred.png"
+                    source: batteryRed2Image
                     visible:true
                 }
             }
@@ -550,7 +583,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
+                    source: batteryNImage
                     visible: true
                 }
                 Image{
@@ -559,7 +592,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
+                    source: batteryNImage
                     visible: true
                 }
                 Image{
@@ -568,7 +601,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
+                    source: batteryNImage
                     visible: true
                 }
                 Image{
@@ -577,7 +610,7 @@ Item {
                     y:0
                     width: 62
                     height: 6
-                    source: "qrc:/Theme/Theme3/Image/HomePane/soc_right_lightblue.png"
+                    source: batteryNImage
                     visible: true
                 }
             }

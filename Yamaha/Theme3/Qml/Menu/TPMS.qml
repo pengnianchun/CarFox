@@ -9,6 +9,11 @@ Item{
     y:85
     visible: false
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string tpmsTitleImage:sourceImageUrl+"Image/MenuPanel/TPMS.png";
+    property string tpmsLuntaiImage:sourceImageUrl+"Image/MenuPanel/luntai.png";
+
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg
@@ -31,7 +36,7 @@ Item{
         y:3
         width:163
         height:44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/TPMS.png"
+        source: tpmsTitleImage
     }
     Image{
         id:tpms_luntai  //大图标
@@ -39,7 +44,7 @@ Item{
         y:58
         width:302
         height:285
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/luntai.png"
+        source: tpmsLuntaiImage
     }
 
     TPMSRow{

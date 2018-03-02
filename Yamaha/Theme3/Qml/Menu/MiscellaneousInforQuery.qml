@@ -10,6 +10,9 @@ Item{
     y:52
     visible: false
 
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string miscellaneousInforTitleImage:sourceImageUrl+"Image/MenuPanel/miscellaneousInforQuery.png";
+
     Connections {
         // 链接CarMsg信号
         target: CarMsg
@@ -32,7 +35,7 @@ Item{
         y:56
         width: 163
         height:44
-        source:"qrc:/Theme/Theme3/Image/MenuPanel/miscellaneousInforQuery.png"
+        source:miscellaneousInforTitleImage
     }
     Text{
         id:speedrate_name
