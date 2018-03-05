@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import "qrc:/Common/Component"
 
-CommonItem {
+Item {
     id: mainView
 
     property alias dot_timer_running: dash_left_dot_timer.running;
@@ -270,6 +270,33 @@ CommonItem {
                 ParallelAnimation {
                     NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.8; to: 0.9; duration: 100 }
                     NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.7; to: 0.8; duration: 100 }
+                }
+            }
+        },
+        Transition {
+            from: "Menu_2_style"
+            to: "Main_style"
+
+            SequentialAnimation {
+                ScriptAction {
+                    script: {
+                        dashBoardBackground.transformOrigin = Item.Left
+                    }
+                }
+                ParallelAnimation {
+                    NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.8; to: 0.9; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.7; to: 0.8; duration: 100 }
+                }
+                ParallelAnimation {
+                    NumberAnimation { target: dashBoardBackground; property: "rotation"; from: -10; to: 0; duration: 100 }
+                    NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.9; to: 1; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.8; to: 1; duration: 100 }
+
+                    NumberAnimation { target: dashBoardBackground; property: "x"; to: 66; duration: 100 }
+                    NumberAnimation { target: dashBoardBackground; property: "y"; to: 26; duration: 100 }
+
+                    NumberAnimation { target: dashboardLeftText; property: "x"; to: 259; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "y"; to: 170; duration: 100 }
                 }
             }
         }

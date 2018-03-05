@@ -8,58 +8,49 @@ MenuItem{
     id:root
     x:552
     y:144
-    visible:false
+    menuLayerId: "BringhtnessControl"
+    parentMenuId: "MenuPanel"
+
     property int briValue: 100
     property real eachValue: 331/10.0
 
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string brightTitleImage:sourceImageUrl+"Image/MenuPanel/bringhtnessControl.png";
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
-                UiController.hideLayer("BringhtnessControl");
-                UiController.showLayer("MenuPanel");
-            }
-            if(key === 2) //pre键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
 
-                if(briValue <= 0)
-                {
-                    briValue = 0;
-                    return;
-                }
-                brightinsideRect.width -= eachValue;
-                briValue = briValue - 10;
-                brightValue.text = briValue;
-            }
-            if(key === 3) //next键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
-                if(briValue >= 100)
-                {
-                    briValue = 100;
-                    return;
-                }
-                brightinsideRect.width += eachValue;
-                briValue = briValue + 10;
-                brightValue.text = briValue;
-            }
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("BringhtnessControl");
+        UiController.showLayer("MenuPanel");
+    }
+    previousMenu: function(){
+        if(briValue <= 0)
+        {
+            briValue = 0;
+            return;
         }
+        brightinsideRect.width -= eachValue;
+        briValue = briValue - 10;
+        brightValue.text = briValue;
+    }
+    nextMenu: function(){
+        if(briValue >= 100)
+        {
+            briValue = 100;
+            return;
+        }
+        brightinsideRect.width += eachValue;
+        briValue = briValue + 10;
+        brightValue.text = briValue;
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("BringhtnessControl");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
     Image{

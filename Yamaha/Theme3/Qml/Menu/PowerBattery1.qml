@@ -3,39 +3,61 @@ import CustomEnum 1.0
 
 import "./"
 import "qrc:/Common/Component"
-Item{
+MenuItem{
     id:root
     x:377
     y:44
-    visible: false
+    visible: false    
+    menuLayerId: "PowerBattery1"
+    parentMenuId: "MenuPanel"
 
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string powerBattery1TitleImage:sourceImageUrl+"Image/MenuPanel/powerBattery1.png";
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("PowerBattery1");
-                UiController.showLayer("MenuPanel");
-            }
-            if(key === 3) //next键
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("PowerBattery1");
-                UiController.showLayer("PowerBattery2");
-            }
-        }
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("PowerBattery1");
+        UiController.showLayer("MenuPanel");
     }
+    previousMenu: function(){
+    }
+    nextMenu: function(){
+        UiController.hideLayer("PowerBattery1");
+        UiController.showLayer("PowerBattery2");
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("PowerBattery1");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+    }
+
+//    Connections {
+//        // 链接CarMsg信号
+//        target: CarMsg
+//        onKeyShortPressed: {
+//            if(key === 1) //back键
+//            {
+//                if(root.visible == false)
+//                {
+//                    return;
+//                }
+//                UiController.hideLayer("PowerBattery1");
+//                UiController.showLayer("MenuPanel");
+//            }
+//            if(key === 3) //next键
+//            {
+//                if(root.visible == false)
+//                {
+//                    return;
+//                }
+
+//            }
+//        }
+//    }
 
     Image {
         id: powerBattery1_title

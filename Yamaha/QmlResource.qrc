@@ -217,7 +217,7 @@
         <file>Theme2/Qml/Menu/InstrumentModuleWeir.qml</file>
         <file>Theme2/Qml/MenuPanelWeir.qml</file>
         <file>Theme2/Qml/Splash/Splash.qml</file>
-		<file>Theme2/Qml/AutomaticRoutine.qml</file>
+        <file>Theme2/Qml/AutomaticRoutine.qml</file>
         <file>Theme2/JS/InstrumentController.js</file>
         <file>Theme2/JS/MenuMainController.js</file>
         <file>Theme2/JS/MenuMainDetailController.js</file>
@@ -542,5 +542,7 @@
         <file>Theme3/Image/IndicatorPanel/waterTempWarn.png</file>
         <file>Theme3/Image/IndicatorPanel/batteryCut.png</file>
         <file>Theme3/Image/IndicatorPanel/batteryFault.png</file>
+        <file>Theme3/Image/IndicatorPanel/leftHatchDoorAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/rightHatchDoorAlarm.png</file>
     </qresource>
 </RCC>

@@ -3,19 +3,49 @@ import CustomEnum 1.0
 import "./"
 import "qrc:/Common/Component"
 
-
 CommonItem {
     id: mainPanel
     width: 1440
     height: 540
     opacity: 0.0
-    visible: false
     z: 0
 
+    property string externState: ""
+    property bool busPanelVisible:true
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string gifImage:sourceImageUrl+"Image/Gif/splash.gif";
     property string bgImage:sourceImageUrl+"Image/HomePane/bg.png";
     property string staBgImage:sourceImageUrl+"Image/MenuPanel/bg.png";
+
+    onKeyEnter: function(){
+        if(externState == "MainView")
+        {
+            externState = "MenuList";
+            UiController.showLayer("MenuPanel");
+            busPanelVisible = false;
+        }
+
+        else if(externState == "MenuList") //list
+        {
+            externState = "MenuParameter"
+        }
+    }
+
+    onKeyBack: function(){
+        if(externState == "MainView")
+        {
+
+        }
+        else if(externState == "MenuList") //list
+        {
+            externState = "MainView";
+            busPanelVisible = true;
+        }
+        else if(externState == "MenuParameter")
+        {
+            externState = "MenuList";
+        }
+    }
 
     onVisibleChanged: {
         if(visible) {
@@ -23,7 +53,7 @@ CommonItem {
             gmlGifImage.playing = true
         }
         else {
-            state = "";
+            externState = "";
         }
     }
 
@@ -53,24 +83,23 @@ CommonItem {
             if(count > 100)
                 count = 0;
             dashboardLeft.text_content = count
-            dashboardRight.text_content = count
         }
     }
 
     Rectangle {   //主界面
         id: mainView
+        state: externState
         anchors.fill: parent
         color: "transparent"
         visible: false
         onVisibleChanged:{      //主界面一显示出来
             if(visible)
             {
-                state = "MainView";
+                externState = "MainView";
             }
 
             busPanel.bus_ready_running = true;
             dashboardLeft.dot_timer_running = true;
-            dashboardRight.dot_timer_runing = true;
         }
         Image {     //主界面背景
             id: bg
@@ -97,6 +126,7 @@ CommonItem {
 
             BusPanel {
                 id: busPanel
+                visible:busPanelVisible
                 x:369
                 y:74
             }
@@ -163,85 +193,21 @@ CommonItem {
                         dashboardRight.state = "Menu_1_style"
                     }
                 }
+            },
+            Transition {
+                from: "MenuParameter"
+                to: "MainView"
+                ScriptAction {
+                    script: {
+                        dashboardLeft.state = "Main_style"
+                        dashboardRight.state = "Main_style"
+                    }
+                }
             }
         ]
     }
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
 
-        onCarSpeedChanged: {
-            console.log(value);
-        }
-
-        onKeyShortPressed: {
-            if(key === 0) //enter键
-            {
-                if(mainView.state == "MainView")
-                {
-                    mainView.state = "MenuList";
-                    UiController.showLayer("MenuPanel");
-                    busPanel.visible = false;
-                }
-
-                else if(mainView.state == "MenuList") //list
-                {
-                    mainView.state = "MenuParameter"
-//                    UiController.hideLayer("MenuPanel");
-                }
-            }
-            else if(key === 1) //back返回
-            {
-                if(mainView.state == "MainView")
-                {
-//                    UiController.hideLayer("MenuPanel");
-//                    busPanel.visible = true;
-                }
-
-                else if(mainView.state == "MenuList") //list
-                {
-                    mainView.state = "MainView";
-                    UiController.hideLayer("MenuPanel");
-                    busPanel.visible = true;
-                }
-                else if(mainView.state == "MenuParameter")
-                {
-                    mainView.state = "MenuList";
-                    UiController.showLayer("MenuPanel");
-                }
-            }
-            else if(key === 2) //pre
-            {
-                if(mainView.state == "MenuList")
-                {
-//                    middleMenu.menuListExteral.decrementCurrentIndex();
-                }
-            }
-            else if(key === 3)  //next
-            {
-                if(mainView.state == "MenuList")
-                {
-//                    middleMenu.menuListExteral.incrementCurrentIndex();
-                }
-            }
-        }
-
-        onKeyLongPressed: {
-            if (key === 3) {
-                // 切换主题
-                //CarMsg.themeSetChanged(CustomEnum.Theme3Mode);
-            }
-            else if (key === 4){
-                //CarMsg.themeSetChanged(CustomEnum.Theme4Mode);
-            }
-        }
-
-        onCarModeChanged: {
-            console.log("---------: mode:", CarMsg.carMode);
-            if (CarMsg.carMode === CustomEnum.IgOffMode) state = "shutdown";
-        }
-    }
 
 //    Text {
 //        id: theme1Name
