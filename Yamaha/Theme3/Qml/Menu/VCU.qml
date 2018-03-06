@@ -3,36 +3,62 @@ import CustomEnum 1.0
 
 import "./"
 import "qrc:/Common/Component"
-Item{
+MenuItem{
     id:root
     x:366
     y:64
     visible: false
+    menuLayerId: "VCU"
+    parentMenuId: "MenuPanel"
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
-                UiController.hideLayer("VCU");
-                UiController.showLayer("MenuPanel");
-            }
-            if(key === 3) //back键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
-                UiController.hideLayer("VCU");
-                UiController.showLayer("VehicleCtrlSysDiagInterface");
-            }
-        }
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string vcuTitleImage:sourceImageUrl+"Image/MenuPanel/VCU.png";
+
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("VCU");
+        UiController.showLayer("MenuPanel");
     }
+    previousMenu: function(){
+    }
+    nextMenu: function(){
+        UiController.hideLayer("VCU");
+        UiController.showLayer("VehicleCtrlSysDiagInterface");
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("TPMS");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+    }
+
+//    Connections {
+//        // 链接CarMsg信号
+//        target: CarMsg
+//        onKeyShortPressed: {
+//            if(key === 1) //back键
+//            {
+//                if(root.visible === false)
+//                {
+//                    return;
+//                }
+//                UiController.hideLayer("VCU");
+//                UiController.showLayer("MenuPanel");
+//            }
+//            if(key === 3) //next键
+//            {
+//                if(root.visible === false)
+//                {
+//                    return;
+//                }
+//                UiController.hideLayer("VCU");
+//                UiController.showLayer("VehicleCtrlSysDiagInterface");
+//            }
+//        }
+//    }
 
     Image{
         id:vcu_title
@@ -40,7 +66,7 @@ Item{
         y:0
         width:164
         height:44
-        source:"qrc:/Theme/Theme3/Image/MenuPanel/VCU.png"
+        source:vcuTitleImage
     }
 
     Row{

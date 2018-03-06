@@ -3,36 +3,62 @@ import CustomEnum 1.0
 
 import "./"
 import "qrc:/Common/Component"
-Item{
+MenuItem{
     id:root
     x:380
     y:57
     visible: false
+    menuLayerId: "VehicleCtrlSysDiagInterface"
+    parentMenuId: "MenuPanel"
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
-                UiController.hideLayer("VehicleCtrlSysDiagInterface");
-                UiController.showLayer("MenuPanel");
-            }
-            if(key === 2) //prev键
-            {
-                if(root.visible === false)
-                {
-                    return;
-                }
-                UiController.hideLayer("VehicleCtrlSysDiagInterface");
-                UiController.showLayer("VCU");
-            }
-        }
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string powerBattery1TitleImage:sourceImageUrl+"Image/MenuPanel/vehicleCtrlSysDiagInterface.png";
+
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("VehicleCtrlSysDiagInterface");
+        UiController.showLayer("MenuPanel");
     }
+    previousMenu: function(){
+        UiController.hideLayer("VehicleCtrlSysDiagInterface");
+        UiController.showLayer("VCU");
+    }
+    nextMenu: function(){
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("VehicleCtrlSysDiagInterface");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+    }
+
+//    Connections {
+//        // 链接CarMsg信号
+//        target: CarMsg
+//        onKeyShortPressed: {
+//            if(key === 1) //back键
+//            {
+//                if(root.visible === false)
+//                {
+//                    return;
+//                }
+//                UiController.hideLayer("VehicleCtrlSysDiagInterface");
+//                UiController.showLayer("MenuPanel");
+//            }
+//            if(key === 2) //prev键
+//            {
+//                if(root.visible === false)
+//                {
+//                    return;
+//                }
+//                UiController.hideLayer("VehicleCtrlSysDiagInterface");
+//                UiController.showLayer("VCU");
+//            }
+//        }
+//    }
 
     Image {
         id: powerBattery1_title
@@ -40,7 +66,7 @@ Item{
         y:0
         width: 256
         height: 43
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/vehicleCtrlSysDiagInterface.png"
+        source: powerBattery1TitleImage
     }
     Row{
         x:32

@@ -4,13 +4,26 @@ import CustomEnum 1.0
 import "./"
 import "qrc:/Common/Component"
 
-Item {
+CommonItem {
     id: root
     x:369
     y:30
     width:693
     height:457
 //    property alias menuListExteral: menuList
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string iconDcImage:sourceImageUrl+"Image/MenuPanel/icon_dc.png";
+    property string iconTPMSImage:sourceImageUrl+"Image/MenuPanel/icon_TPMS.png";
+    property string iconModuleImage:sourceImageUrl+"Image/MenuPanel/icon_module.png";
+    property string iconTimeSettingImage:sourceImageUrl+"Image/MenuPanel/icon_timeSetting.png";
+    property string iconBringhtnessControlImage:sourceImageUrl+"Image/MenuPanel/icon_bringhtnessControl.png";
+    property string iconMiscellaneousInforQueryImage:sourceImageUrl+"Image/MenuPanel/icon_miscellaneousInforQuery.png";
+    property string iconVehicleImage:sourceImageUrl+"Image/MenuPanel/icon_vehicle.png";
+    property string iconPowerBatteryImage:sourceImageUrl+"Image/MenuPanel/icon_powerBattery.png";
+    property string iconVideoSwitchImage:sourceImageUrl+"Image/MenuPanel/icon_videoSwitch.png";
+    property string menuListBgImage:sourceImageUrl+"Image/MenuPanel/rect.png";
+
     visible: false;
 
     function updateIcon()
@@ -22,122 +35,114 @@ Item {
         }
         else if(menuList.currentIndex == 1)  //dc-dc
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_dc.png";
+            menuIcon.source = iconDcImage;
         }
         else if(menuList.currentIndex == 2)  //胎压监测系统
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_TPMS.png";
+            menuIcon.source = iconTPMSImage;
         }
         else if(menuList.currentIndex == 3)  //模块信息查询
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_module.png";
+            menuIcon.source = iconModuleImage;
         }
         else if(menuList.currentIndex == 4)  //时间设置
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_timeSetting.png";
+            menuIcon.source = iconTimeSettingImage;
         }
         else if(menuList.currentIndex == 5)  //亮度调节
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_bringhtnessControl.png";
+            menuIcon.source = iconBringhtnessControlImage;
         }
         else if(menuList.currentIndex == 6)  //杂项信息查询
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_miscellaneousInforQuery.png";
+            menuIcon.source = iconMiscellaneousInforQueryImage;
         }
         else if(menuList.currentIndex == 7)  //整车系统状态
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_vehicle.png";
+            menuIcon.source = iconVehicleImage;
         }
         else if(menuList.currentIndex == 8)  //动力电池信息
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_powerBattery.png";
+            menuIcon.source = iconPowerBatteryImage;
         }
         else if(menuList.currentIndex == 9)  //视频信息切换
         {
-            menuIcon.source = "qrc:/Theme/Theme3/Image/MenuPanel/icon_videoSwitch.png";
+            menuIcon.source = iconVideoSwitchImage;
         }
     }
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 0) //enter键
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("MenuPanel");
-                if(menuList.currentIndex == 0)  //单体电池温度信息
-                {
-                    UiController.showLayer("SBatteryTempInfo");
-                }
-                else if(menuList.currentIndex == 1)  //dc-dc
-                {
-                    UiController.showLayer("DCDC");
-                }
-                else if(menuList.currentIndex == 2)  //胎压监测系统
-                {
-                    UiController.showLayer("TPMS");
-                }
-                else if(menuList.currentIndex == 3)  //模块信息查询
-                {
-                }
-                else if(menuList.currentIndex == 4)  //时间设置
-                {
-                    UiController.showLayer("TimeSetting");
-                }
-                else if(menuList.currentIndex == 5)  //亮度调节
-                {
-                    UiController.showLayer("BringhtnessControl");
-                }
-                else if(menuList.currentIndex == 6)  //杂项信息查询
-                {
-                    UiController.showLayer("MiscellaneousInforQuery");
-                }
-                else if(menuList.currentIndex == 7)  //整车系统状态
-                {
-                    UiController.showLayer("VCU");
-                }
-                else if(menuList.currentIndex == 8)  //动力电池信息
-                {
-                    UiController.showLayer("PowerBattery1");
-                }
-                else if(menuList.currentIndex == 9)  //视频信息切换
-                {
+    onKeyEnter: function() {
+        if(root.visible == false)
+        {
+            return;
+        }
+        UiController.hideLayer("MenuPanel");
+        if(menuList.currentIndex == 0)  //单体电池温度信息
+        {
+            UiController.showLayer("SBatteryTempInfo");
+        }
+        else if(menuList.currentIndex == 1)  //dc-dc
+        {
+            UiController.showLayer("DCDC");
+        }
+        else if(menuList.currentIndex == 2)  //胎压监测系统
+        {
+            UiController.showLayer("TPMS");
+        }
+        else if(menuList.currentIndex == 3)  //模块信息查询
+        {
+        }
+        else if(menuList.currentIndex == 4)  //时间设置
+        {
+            UiController.showLayer("TimeSetting");
+        }
+        else if(menuList.currentIndex == 5)  //亮度调节
+        {
+            UiController.showLayer("BringhtnessControl");
+        }
+        else if(menuList.currentIndex == 6)  //杂项信息查询
+        {
+            UiController.showLayer("MiscellaneousInforQuery");
+        }
+        else if(menuList.currentIndex == 7)  //整车系统状态
+        {
+            UiController.showLayer("VCU");
+        }
+        else if(menuList.currentIndex == 8)  //动力电池信息
+        {
+            UiController.showLayer("PowerBattery1");
+        }
+        else if(menuList.currentIndex == 9)  //视频信息切换
+        {
 
-                }
+        }
+    }
 
-            }
-            else if(key === 1)   //back
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("MenuPanel");
-            }
-            else if(key === 2)  //pre
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                menuList.decrementCurrentIndex();
-                updateIcon();
-            }
-            else if(key === 3)  //next
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                menuList.incrementCurrentIndex();
-                updateIcon();
-            }
-         }
-     }
+    onKeyBack: function() {
+        if(root.visible == false)
+        {
+            return;
+        }
+        UiController.hideLayer("MenuPanel");
+    }
+
+    onKeyUp: function() {
+        if(root.visible == false)
+        {
+            return;
+        }
+        menuList.decrementCurrentIndex();
+        updateIcon();
+    }
+
+    onKeyDown: function() {
+        if(root.visible == false)
+        {
+            return;
+        }
+        menuList.incrementCurrentIndex();
+        updateIcon();
+    }
 
     Image {
         id: menuIcon
@@ -145,7 +150,7 @@ Item {
         y:176
         width: 100
         height: 100
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/icon_powerBattery.png"
+        source: iconPowerBatteryImage
     }
     Image {
         id: menuListBg
@@ -153,7 +158,7 @@ Item {
         y:215
         width: 332
         height: 43
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/rect.png"
+        source: menuListBgImage
     }
     PathView {
         id: menuList

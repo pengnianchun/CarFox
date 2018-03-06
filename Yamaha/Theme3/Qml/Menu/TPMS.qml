@@ -3,27 +3,52 @@ import CustomEnum 1.0
 
 import "./"
 import "qrc:/Common/Component"
-Item{
+MenuItem{
     id:root
     x:370
     y:85
     visible: false
+    menuLayerId: "TPMS"
+    parentMenuId: "MenuPanel"
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("TPMS");
-                UiController.showLayer("MenuPanel");
-            }
-        }
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string tpmsTitleImage:sourceImageUrl+"Image/MenuPanel/TPMS.png";
+    property string tpmsLuntaiImage:sourceImageUrl+"Image/MenuPanel/luntai.png";
+
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("TPMS");
+        UiController.showLayer("MenuPanel");
     }
+    previousMenu: function(){
+    }
+    nextMenu: function(){
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("TPMS");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+    }
+
+//    Connections {
+//        // 链接CarMsg信号
+//        target: CarMsg
+//        onKeyShortPressed: {
+//            if(key === 1) //back键
+//            {
+//                if(root.visible == false)
+//                {
+//                    return;
+//                }
+//                UiController.hideLayer("TPMS");
+//                UiController.showLayer("MenuPanel");
+//            }
+//        }
+//    }
 
     Image{
         id:tpmsTitle
@@ -31,7 +56,7 @@ Item{
         y:3
         width:163
         height:44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/TPMS.png"
+        source: tpmsTitleImage
     }
     Image{
         id:tpms_luntai  //大图标
@@ -39,7 +64,7 @@ Item{
         y:58
         width:302
         height:285
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/luntai.png"
+        source: tpmsLuntaiImage
     }
 
     TPMSRow{

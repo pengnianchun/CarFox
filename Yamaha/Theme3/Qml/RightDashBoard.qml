@@ -1,12 +1,23 @@
 import QtQuick 2.0
+import "qrc:/Common/Component"
 
 Item {
     id: mainView
 
-    property alias dot_timer_runing: dash_right_dot_timer.running;
-    property alias text_content: dashboardRightText.text;
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string dashBoardBackgroundImage:sourceImageUrl+"Image/DashBoard/right_dashboard.png";
+    property string mpaRightImage:sourceImageUrl+"Image/DashBoard/right_mpa_line.png";
+    property string dashboardRightDotImage:sourceImageUrl+"Image/DashBoard/right_dot.png";
+    property string dashboardRightLineImage:sourceImageUrl+"Image/DashBoard/right_line.png";
 
     state: "Main_style"
+
+    Connections {
+        target: visible ? CarMsg : null
+        //ignoreUnknownSignals: true
+        onCarSpeedChanged: {
+        }
+    }
 
     Text {    //右仪表文字
         id: dashboardRightText
@@ -15,7 +26,7 @@ Item {
         width:211
         height:151
         horizontalAlignment: Text.AlignHCenter
-        text: qsTr("80")
+        text: CarMsg.carSpeed
         font.family: "PingFang SC Regular"
         font.pixelSize:110
         color: "white"
@@ -24,10 +35,10 @@ Item {
         id: dashBoardBackground
         x:910
         y:26
-        source: "qrc:/Theme/Theme3/Image/DashBoard/right_dashboard.png"
+        source: dashBoardBackgroundImage
         Image {
             id: mpa_right
-            source: "qrc:/Theme/Theme3/Image/DashBoard/right_mpa_line.png"
+            source: mpaRightImage
             x:163
             y:113
             width:188
@@ -35,8 +46,11 @@ Item {
         }
         Timer{    //右仪表dot定时器
             id:dash_right_dot_timer
-            property int dstValue: -124
-            interval: 4
+            property int dstValue: -CarMsg.carSpeed * ((123+124) / 140) + 123;
+            onDstValueChanged: {
+                running = true;
+            }
+            interval: 2
             running: false
             repeat: true
             onTriggered: {
@@ -52,15 +66,15 @@ Item {
                 }
                 if(dash_right_dot_rotate.angle == dstValue)
                 {
-//                            running = false;
-                    if(dstValue == -124)
-                    {
-                        dstValue = 123;
-                    }
-                    else if(dstValue == 123)
-                    {
-                        dstValue = -124;
-                    }
+                     running = false;
+//                    if(dstValue == -124)
+//                    {
+//                        dstValue = 123;
+//                    }
+//                    else if(dstValue == 123)
+//                    {
+//                        dstValue = -124;
+//                    }
                 }
             }
         }
@@ -78,7 +92,7 @@ Item {
             }
             Image{
                 id:dashboard_right_dot
-                source: "qrc:/Theme/Theme3/Image/DashBoard/right_dot.png"
+                source: dashboardRightDotImage
                 x:383
                 y:196
                 width:82
@@ -125,7 +139,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line1
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
+                    source: dashboardRightLineImage
                     x:110
                     y:233
                     width:204
@@ -134,7 +148,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line2
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
+                    source: dashboardRightLineImage
                     x:110
                     y:233
                     width:204
@@ -145,7 +159,7 @@ Item {
                 }
                 Image{
                     id:dashboard_right_line3
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/2.png"
+                    source: dashboardRightLineImage
                     x:110
                     y:233
                     width:204
@@ -244,6 +258,32 @@ Item {
                 ParallelAnimation {
                     NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.8; to: 0.9; duration: 100 }
                     NumberAnimation { target: dashboardRightText; property: "scale"; from: 0.7; to: 0.8; duration: 100 }
+                }
+            }
+        },
+        Transition {
+            from: "Menu_2_style"
+            to: "Main_style"
+
+            SequentialAnimation {
+                ScriptAction {
+                    script: {
+                        dashBoardBackground.transformOrigin = Item.Left
+                    }
+                }
+                ParallelAnimation {
+                    NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.8; to: 0.9; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.7; to: 0.8; duration: 100 }
+                }
+                ParallelAnimation {
+                    NumberAnimation { target: dashBoardBackground; property: "rotation"; from: 10; to: 0; duration: 100 }
+                    NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.9; to: 1; duration: 100 }
+                    NumberAnimation { target: dashboardRightText; property: "scale"; from: 0.8; to: 1; duration: 100 }
+
+                    NumberAnimation { target: dashBoardBackground; property: "x"; to:910; duration: 100}
+                    NumberAnimation { target: dashBoardBackground; property: "y"; to:26; duration:100}
+                    NumberAnimation { target: dashboardRightText; property: "x"; to:1012; duration: 100}
+                    NumberAnimation { target: dashboardRightText; property: "y"; to:170; duration:100}
                 }
             }
         }

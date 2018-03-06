@@ -1,7 +1,18 @@
 import QtQuick 2.0
+import "qrc:/Common/Component"
 
-Item {
+
+CommonItem {
     property alias bus_ready_running: readyTimer.running
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string busImage:sourceImageUrl+"Image/MiddlePanel/bus.png";
+    property string busLightImage:sourceImageUrl+"Image/MiddlePanel/bus_light.png";
+    property string busReadyImage:sourceImageUrl+"Image/MiddlePanel/ready.png";
+    property string busWaitImage:sourceImageUrl+"Image/MiddlePanel/wait.png";
+    property string arrowReadyLeftImage:sourceImageUrl+"Image/MiddlePanel/wait.png";
+    property string arrowReadyRightImage:sourceImageUrl+"Image/MiddlePanel/ready_arrow_right.png";
+
     id: root
     width: 693
     height: 457
@@ -9,14 +20,14 @@ Item {
 
     Image {     //汽车
         id: bus
-        source: "qrc:/Theme/Theme3/Image/MiddlePanel/bus.png"
+        source: busImage
         x:190
         y:110
         width:336
         height:214
         Image {   //车灯
             id: bus_light
-            source: "qrc:/Theme/Theme3/Image/MiddlePanel/bus_light.png"
+            source: busLightImage
             x:180
             y:140
             width:181
@@ -66,7 +77,7 @@ Item {
         }
         Image {     //ready动画
             id: bus_ready
-            source: "qrc:/Theme/Theme3/Image/MiddlePanel/ready.png"
+            source: busReadyImage
             x:27
             y:0
             width:121
@@ -92,7 +103,7 @@ Item {
         }
         Image {     //wait
             id: bus_wait
-            source: "qrc:/Theme/Theme3/Image/MiddlePanel/wait.png"
+            source: busWaitImage
             x:27
             y:0
             width:95
@@ -101,7 +112,7 @@ Item {
         }
         Image {     //ready左箭头
             id: arrow_ready_left
-            source: "qrc:/Theme/Theme3/Image/MiddlePanel/ready_arrow_left.png"
+            source: arrowReadyLeftImage
             x:0
             y:16
             width:13
@@ -136,7 +147,7 @@ Item {
         }
         Image {      //ready右边箭头初始化
             id: arrow_ready_right
-            source: "qrc:/Theme/Theme3/Image/MiddlePanel/ready_arrow_right.png"
+            source: arrowReadyRightImage
             x:158
             y:16
             width:13

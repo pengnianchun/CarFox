@@ -4,26 +4,35 @@ import CustomEnum 1.0
 import "./"
 import "qrc:/Common/Component"
 
-Item {
+MenuItem {
     id: root
     x:373
     y:80
     visible: false;
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("DCDC");
-                UiController.showLayer("MenuPanel");
-            }
-        }
+    menuLayerId: "DCDC"
+    parentMenuId: "MenuPanel"
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string dcStateTitleImage:sourceImageUrl+"Image/MenuPanel/dc_title.png";
+
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("DCDC");
+        UiController.showLayer("MenuPanel");
+    }
+    previousMenu: function(){
+    }
+    nextMenu: function(){
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("DCDC");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
     Image {
