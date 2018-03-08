@@ -122,6 +122,7 @@
         <file>Fonts/WenQuanYiMicroHei.ttf</file>
         <file>CommonImage/Indicator/Lamp_batteryWarning.png</file>
         <file>Component/ProgressViewWeir.qml</file>
+        <file>Component/CanvasViewWeir.qml</file>
     </qresource>
     <qresource prefix="/Theme">
         <file>Theme1/Qml/Splash/Splash.qml</file>
@@ -217,7 +218,7 @@
         <file>Theme2/Qml/Menu/InstrumentModuleWeir.qml</file>
         <file>Theme2/Qml/MenuPanelWeir.qml</file>
         <file>Theme2/Qml/Splash/Splash.qml</file>
-		<file>Theme2/Qml/AutomaticRoutine.qml</file>
+        <file>Theme2/Qml/AutomaticRoutine.qml</file>
         <file>Theme2/JS/InstrumentController.js</file>
         <file>Theme2/JS/MenuMainController.js</file>
         <file>Theme2/JS/MenuMainDetailController.js</file>
@@ -538,5 +539,20 @@
         <file>Theme3/Image/MiddlePanel/ready_arrow_left.png</file>
         <file>Theme3/Image/MiddlePanel/ready_arrow_right.png</file>
         <file>Theme3/Image/MiddlePanel/wait.png</file>
+        <file>Theme1/Image/HomePanel/D.png</file>
+        <file>Theme1/Image/HomePanel/N.png</file>
+        <file>Theme1/Image/HomePanel/P.png</file>
+        <file>Theme1/Image/HomePanel/R.png</file>
+        <file>Theme1/Image/HomePanel/S.png</file>
+        <file>Theme1/Image/HomePanel/leftHalo.png</file>
+        <file>Theme1/Image/HomePanel/leftHalo_red.png</file>
+        <file>Theme1/Image/HomePanel/rightHalo.png</file>
+        <file>Theme1/Image/HomePanel/rightHalo_red.png</file>
+        <file>Theme1/Image/IndicatorPanel/batteryCharg.png</file>
+        <file>Theme1/Image/IndicatorPanel/batteryCut.png</file>
+        <file>Theme1/Image/IndicatorPanel/batteryFault.png</file>
+        <file>Theme1/Image/IndicatorPanel/motorHeat.png</file>
+        <file>Theme1/Image/IndicatorPanel/motorLimitation.png</file>
+        <file>Theme1/Image/MenuPanel/title_bg.png</file>
     </qresource>
 </RCC>

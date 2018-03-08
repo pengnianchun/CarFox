@@ -19,19 +19,14 @@ MenuItem {
             bKeyEnable = false;
         }
     }
-
-    Item {
-        x: 670
-        y: 108
-        width: 100
-        height: 20
-        Text {
-            id: title
-            anchors.centerIn: parent
-            text: "视频转化信息"
-            color: "white"
-            font.pixelSize: 25
-            //font.family:FontName.fontCurrentFzLt
-        }
+    TextFieldWeir {
+        id: title
+        textValue: "视频转化信息"
+        width: 150
+        height: 30
+        fontSize: 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 110
     }
 }

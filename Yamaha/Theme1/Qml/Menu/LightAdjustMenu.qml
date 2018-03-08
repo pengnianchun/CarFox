@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "../../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
@@ -19,19 +20,14 @@ MenuItem {
             bKeyEnable = false;
         }
     }
-
-    Item {
-        x: 670
-        y: 108
-        width: 100
-        height: 20
-        Text {
-            id: title
-            anchors.centerIn: parent
-            text: "灯光调节信息"
-            color: "white"
-            font.pixelSize: 25
-            //font.family:FontName.fontCurrentFzLt
-        }
-    }
+    TextFieldWeir {
+        id: title
+        textValue: "灯光调节信息"
+        width: 150
+        height: 30
+        fontSize: 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 110
+    }    
 }
