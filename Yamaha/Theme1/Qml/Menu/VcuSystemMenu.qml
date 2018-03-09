@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
-import "../../JS/MenuMainController.js" as MenuMainController
+import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 import "qrc:/Common/Component"
 
 MenuItem {
@@ -16,7 +16,7 @@ MenuItem {
 
     hideMenu: function(){
         if(bKeyEnable){
-            MenuMainController.backMenuPanel(menuLayerId, parentMenuId)
+            MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
             bKeyEnable = false;
         }
     }
@@ -71,7 +71,7 @@ MenuItem {
             height: parent.height
             widthListView: parent.width/2-70
             textWidthList: parent.width/2-70
-            fontSizeList: 11
+            fontSizeList: 12
             titleColorList: "#00a7f5"
             listViewSpacing: 25
         }
@@ -81,7 +81,7 @@ MenuItem {
             height: parent.height
             widthListView: parent.width/2-70
             textWidthList: parent.width/2-70
-            fontSizeList: 11
+            fontSizeList: 12
             titleColorList: "#00a7f5"
             listViewSpacing: 25
             unitWidthList: 40

@@ -3,25 +3,34 @@ import CustomEnum 1.0
 import "./"
 import QtQuick.Layouts 1.1
 import "qrc:/Common/Component"
-Item {
+MenuItem {
     id: root
-    anchors.fill: parent
+    x:382
+    y:77
     visible: false;
+    menuLayerId: "SBatteryTempInfo"
+    parentMenuId: "MenuPanel"
 
-    Connections {
-        // 链接CarMsg信号
-        target: CarMsg
-        onKeyShortPressed: {
-            if(key === 1) //back键
-            {
-                if(root.visible == false)
-                {
-                    return;
-                }
-                UiController.hideLayer("SBatteryTempInfo");
-                UiController.showLayer("MenuPanel");
-            }
-        }
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string bettaryTempTitleImage:sourceImageUrl+"Image/MenuPanel/battery_temp_title.png";
+
+    enterMenu: function(){}
+    hideMenu: function(){
+        UiController.hideLayer("SBatteryTempInfo");
+        UiController.showLayer("MenuPanel");
+    }
+    previousMenu: function(){
+    }
+    nextMenu: function(){
+    }
+    timeoutMenu: function() {
+        //console.log("MenuItem timeout", me);
+        // 隐藏自己， 父菜单， 根菜单
+        UiController.hideLayer("SBatteryTempInfo");
+        //UiController.showLayer("MenuPanel");
+        UiController.showLayer("MainPanel");
+        UiController.setLayerProperty("MainPanel", "externState", "MainView");
+        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
     Image {
@@ -30,7 +39,7 @@ Item {
         y:23
         width:210
         height:44
-        source: "qrc:/Theme/Theme3/Image/MenuPanel/battery_temp_title.png"
+        source: bettaryTempTitleImage
     }
 
     Row {

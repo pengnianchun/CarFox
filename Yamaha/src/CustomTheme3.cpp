@@ -22,8 +22,7 @@ void CustomTheme3::create()
 //       addLayer("qrc:/Theme/Theme3/Qml/Menu/IconPanel.qml","IconPanel",carfox::Layer::ManualShow);
        addLayer("qrc:/Theme/Theme3/Qml/Menu/MiscellaneousInforQuery.qml","MiscellaneousInforQuery",carfox::Layer::ManualShow);
        addLayer("qrc:/Theme/Theme3/Qml/Menu/PowerBattery1.qml","PowerBattery1",carfox::Layer::ManualShow);
-//       addLayer("qrc:/Theme/Theme3/Qml/Menu/PowerBattery2.qml","PowerBattery2",carfox::Layer::ManualShow);
-//       addLayer("qrc:/Theme/Theme3/Qml/Menu/SBatteryTempColumn.qml","SBatteryTempColumn",carfox::Layer::ManualShow);
+       addLayer("qrc:/Theme/Theme3/Qml/Menu/PowerBattery2.qml","PowerBattery2",carfox::Layer::ManualShow);
        addLayer("qrc:/Theme/Theme3/Qml/Menu/SBatteryTempInfo.qml","SBatteryTempInfo",carfox::Layer::ManualShow);
 //       addLayer("qrc:/Theme/Theme3/Qml/Menu/SBatteryVoltageInfo.qml","SBatteryVoltageInfo",carfox::Layer::ManualShow);
        addLayer("qrc:/Theme/Theme3/Qml/Menu/TimeSetting.qml","TimeSetting",carfox::Layer::ManualShow);

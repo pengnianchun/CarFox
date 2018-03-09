@@ -170,10 +170,10 @@ MenuItem {
                 displayText = qsTr("电机电池信息");
                 break;
             case 5:
-                displayText = qsTr("杂项查询信息");
+                displayText = qsTr("杂项信息查询");
                 break;
             case 6:
-                displayText = qsTr("时间设置信息");
+                displayText = qsTr("系统设置信息");
                 break;
             case 7:
                 displayText = qsTr("胎压检测信息");

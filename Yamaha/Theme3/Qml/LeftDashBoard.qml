@@ -1,10 +1,19 @@
 import QtQuick 2.0
+import "qrc:/Common/Component"
 
 Item {
     id: mainView
 
     property alias dot_timer_running: dash_left_dot_timer.running;
     property alias text_content: dashboardLeftText.text;
+
+    property string sourceImageUrl:"qrc:/Theme/Theme3/";
+    property string dashBoardBackgroundImage:sourceImageUrl+"Image/DashBoard/l_dashboard.png";
+    property string mpaLeftImage:sourceImageUrl+"Image/DashBoard/left_mpa_line.png";
+    property string dashboardLeftDotImage:sourceImageUrl+"Image/DashBoard/left_dot.png";
+    property string dashboardLeftLine1Image:sourceImageUrl+"Image/DashBoard/left_line.png";
+    property string dashboardLeftLine2Image:sourceImageUrl+"Image/DashBoard/left_line.png";
+    property string dashboardLeftLine3Image:sourceImageUrl+"Image/DashBoard/left_line.png";
 
     state: "Main_style"
 
@@ -32,11 +41,11 @@ Item {
         id: dashBoardBackground
         x:68     //68
         y:26  //26
-        source: "qrc:/Theme/Theme3/Image/DashBoard/l_dashboard.png"
+        source: dashBoardBackgroundImage
 
         Image {     //左边仪表盘上的mpa
             id: mpa_left
-            source: "qrc:/Theme/Theme3/Image/DashBoard/left_mpa_line.png"
+            source: mpaLeftImage
             x:103
             y:111
             width:185
@@ -86,7 +95,7 @@ Item {
             }
             Image {     //左边仪表盘指示点
                 id: dashboard_left_dot
-                source: "qrc:/Theme/Theme3/Image/DashBoard/left_dot.png"
+                source: dashboardLeftDotImage
                 x:-7
                 y:208
                 width:73
@@ -133,7 +142,7 @@ Item {
                 }
                 Image {
                     id: dashboard_left_line_1
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/1.png"
+                    source: dashboardLeftLine1Image
                     x:35
                     y:234
                     width:199
@@ -142,7 +151,7 @@ Item {
                 }
                 Image {
                     id: dashboard_left_line_2
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/1.png"
+                    source: dashboardLeftLine2Image
                     x:35
                     y:234
                     width:199
@@ -153,7 +162,7 @@ Item {
                 }
                 Image {
                     id: dashboard_left_line_3
-                    source: "qrc:/Theme/Theme3/Image/DashBoard/1.png"
+                    source: dashboardLeftLine3Image
                     x:35
                     y:234
                     width:199
@@ -261,6 +270,33 @@ Item {
                 ParallelAnimation {
                     NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.8; to: 0.9; duration: 100 }
                     NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.7; to: 0.8; duration: 100 }
+                }
+            }
+        },
+        Transition {
+            from: "Menu_2_style"
+            to: "Main_style"
+
+            SequentialAnimation {
+                ScriptAction {
+                    script: {
+                        dashBoardBackground.transformOrigin = Item.Left
+                    }
+                }
+                ParallelAnimation {
+                    NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.8; to: 0.9; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.7; to: 0.8; duration: 100 }
+                }
+                ParallelAnimation {
+                    NumberAnimation { target: dashBoardBackground; property: "rotation"; from: -10; to: 0; duration: 100 }
+                    NumberAnimation { target: dashBoardBackground; property: "scale"; from: 0.9; to: 1; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "scale"; from: 0.8; to: 1; duration: 100 }
+
+                    NumberAnimation { target: dashBoardBackground; property: "x"; to: 66; duration: 100 }
+                    NumberAnimation { target: dashBoardBackground; property: "y"; to: 26; duration: 100 }
+
+                    NumberAnimation { target: dashboardLeftText; property: "x"; to: 259; duration: 100 }
+                    NumberAnimation { target: dashboardLeftText; property: "y"; to: 170; duration: 100 }
                 }
             }
         }

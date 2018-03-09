@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import CustomEnum 1.0
-import "../../JS/MenuMainController.js" as MenuMainController
+import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 import "qrc:/Common/Component"
 
 MenuItem {
@@ -15,7 +15,7 @@ MenuItem {
 
     hideMenu: function(){
         if(bKeyEnable){
-            MenuMainController.backMenuPanel(menuLayerId, parentMenuId)
+            MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
             bKeyEnable = false;
         }
     }
