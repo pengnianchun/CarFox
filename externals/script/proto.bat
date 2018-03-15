@@ -18,10 +18,13 @@ if NOT EXIST protofile (
 ) else (
   echo found extracted sources
   cd protofile
+  git checkout .
+  git reset HEAD .
+  git clean -df
+  git checkout master
+  git branch -D %PROTOTAG%
   echo %~dp0
   git fetch
-  git checkout master
-  git branch -d %PROTOTAG%
   git checkout %PROTOTAG% -B %PROTOTAG%
 )
 
