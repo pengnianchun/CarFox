@@ -13,76 +13,58 @@ CommonItem {
     visible: false
     state: ""
 
-    property real airPressure1: 0
-    property real airPressure2: 0
+    property real airPressure1: CarMsg.apVol1
+    property real airPressure2: CarMsg.apVol2
+    property real airPressure1Total: 1.2
+    property real airPressure2Total: 1.2
     property bool bKeyEnable: true
 
     property string sourceImageUrl: "qrc:/Theme/Theme1/Image/HomePanel/"
     property string gearImageUrl: sourceImageUrl + "P.png"
     //车速初始值/蓄电池电压
     property int speedTotal: 180;
-    property int carSpeedValue: 0;
+    property int carSpeedValue: CarMsg.carSpeed;//0;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: 16;
-    property int batteryValueStart: 16
+    property int batteryValue: CarMsg.battery//16;
+    property int batteryValueStart: 0
     //档位初始值
-    property real gearValue: 0;
+    property real gearValue: CarMsg.gear//0;
     //发动机转速/soc充电状态
     property int engineTotalSpeed: 100;
-    property int engineSpeedValue: 0;
+    property int engineSpeedValue: CarMsg.rpm;//0;
     property int engineSpeedValueStart: 0;
     property int socTotalValue: 100;
-    property int socValue: 0;
+    property int socValue: CarMsg.soc;//0;
     property int socValueStart: 0
     //报警计数
-    property int alarmCode: 0
+    property int alarmCode: CarMsg.warningId;//0
     //动画过度时间
     property int excessiveDurationTime: 1000;//1000;
     property bool timerStatus: true;
     property bool bDisplay: true
 
-    Timer {
-        id: timer
-        interval: 1000
-        repeat: true
-        running: false
-        onTriggered: {
-            if(gearValue === 0){
-                gear_control.source = sourceImageUrl + "D.png";
-            }else if(gearValue === 1){
-                gear_control.source = sourceImageUrl + "N.png";
-            }else if(gearValue === 2){
-                gear_control.source = sourceImageUrl + "P.png";
-            }else if(gearValue === 3){
-                gear_control.source = sourceImageUrl + "R.png";
-            }else if(gearValue === 4){
-                gear_control.source = sourceImageUrl + "S.png";
-            }else{}
-            if(gearValue === 4){
-                gearValue = 0;
-            }else{
-                gearValue++;
-            }
-            for(var i=0;i<38;i++){
-                if(alarmCode === i){
-                    var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[i];
-                    alarm_info.textValue = alarmCodeInfo;
-                    break;
-                }else{}
-            }
-            if(alarmCode === 37){
-                alarmCode = 0;
-            }else{
-                alarmCode++;
-            }
-        }
+    onGearValueChanged: {
+        if(gearValue === 0){
+            gear_control.source = sourceImageUrl + "D.png";
+        }else if(gearValue === 1){
+            gear_control.source = sourceImageUrl + "N.png";
+        }else if(gearValue === 2){
+            gear_control.source = sourceImageUrl + "P.png";
+        }else if(gearValue === 3){
+            gear_control.source = sourceImageUrl + "R.png";
+        }else if(gearValue === 4){
+            gear_control.source = sourceImageUrl + "S.png";
+        }else{}
+    }
+    onAlarmCodeChanged: {
+        var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
+        alarm_info.textValue = alarmCodeInfo;
     }
     onVisibleChanged: {
         if(visible){
             homeIndex.state = "normal"
             CarMsg.sendEnableKeys(true);
-            timer.running = true;
         } else {
             CarMsg.sendEnableKeys(false);
         }
@@ -121,7 +103,7 @@ CommonItem {
     NumberAnimation { id: speed_animation; target: homeIndex; property: "carSpeedValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
     NumberAnimation { id: battery_animation; target: homeIndex; property: "batteryValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
     onCarSpeedValueChanged: {
-        if(typeof carSpeedValue === 'number' && carSpeedValue%1 === 0){
+        if(typeof carSpeedValue === 'number' && carSpeedValue%1 === 0 && carSpeedValue <= speedTotal){
             setSpeedValue();
             canvas4.angleValue = 95 + (carSpeedValue/speedTotal)*260;
             canvas5.angleValue = 185 + (carSpeedValue/speedTotal)*180;
@@ -137,7 +119,7 @@ CommonItem {
     onBatteryValueChanged: {
         if(typeof batteryValue === 'number' && batteryValue%1 === 0){
             setBatteryValue();
-            battery_panel.width = ((batteryValue-16)/(batteryTotalValue-16))*260;
+            battery_panel.width = (batteryValue/batteryTotalValue)*260;
         }else{}
     }
     function setBatteryValue(){
@@ -150,7 +132,7 @@ CommonItem {
     NumberAnimation { id: engine_animation; target: homeIndex; property: "engineSpeedValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
     NumberAnimation { id: soc_animation; target: homeIndex; property: "socValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
     onEngineSpeedValueChanged: {
-        if(typeof engineSpeedValue === 'number' && engineSpeedValue%1 === 0){
+        if(typeof engineSpeedValue === 'number' && engineSpeedValue%1 === 0 && engineSpeedValue <= engineTotalSpeed){
             setEngineSpeedValue();
             canvas1.angleValue = 95 + (engineSpeedValue/engineTotalSpeed)*260;
             canvas2.angleValue = 185 + (engineSpeedValue/engineTotalSpeed)*180;
@@ -164,7 +146,7 @@ CommonItem {
         engine_animation.running = true;
     }
     onSocValueChanged: {
-        if(typeof socValue === 'number' && socValue%1 === 0){
+        if(typeof socValue === 'number' && socValue%1 === 0 && socValue <= socTotalValue){
             setSocValue();
             soc_panel.width = (socValue/socTotalValue)*260;
         }else{}
@@ -247,7 +229,7 @@ CommonItem {
                 SequentialAnimation {
                     NumberAnimation { target: homeIndex; property: "batteryValue"; to:batteryTotalValue; duration: 0 }
                     PauseAnimation { duration: 1500 }
-                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:16; duration: 0 }
+                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:0; duration: 0 }
                 }
                 SequentialAnimation {
                     NumberAnimation { target: homeIndex; property: "socValue"; to:socTotalValue; duration: 0 }
@@ -309,7 +291,7 @@ CommonItem {
                 TextFieldWeir {
                     id: rpmNum
                     anchors.centerIn: parent
-                    textValue: engineSpeedValue
+                    textValue: engineSpeedValue > engineTotalSpeed ? engineTotalSpeed : engineSpeedValue
                     fontSize: 90
                 }
             }
@@ -334,7 +316,7 @@ CommonItem {
                 id: soValue
                 x: 82
                 y: 47
-                textValue: socValue
+                textValue: socValue > socTotalValue ? socTotalValue : socValue
                 fontColor: "#18fd00"
             }
         }
@@ -352,7 +334,7 @@ CommonItem {
             Behavior on height { SpringAnimation { spring: 2; damping: 0.3; duration: 500 } }
             Image {
                 x: 14; y: 38;
-                source: (canvas2.angleValue>275) ? sourceImageUrl + "leftHalo_red.png" : sourceImageUrl + "leftHalo.png"
+                source: (canvas2.angleValue>305) ? sourceImageUrl + "leftHalo_red.png" : sourceImageUrl + "leftHalo.png"
             }
         }
     }
@@ -374,7 +356,7 @@ CommonItem {
                 TextFieldWeir {
                     id: speedNum
                     anchors.centerIn: parent
-                    textValue: carSpeedValue
+                    textValue: carSpeedValue > speedTotal ? speedTotal : carSpeedValue
                     fontSize: 90
                 }
             }
@@ -398,7 +380,7 @@ CommonItem {
             TextFieldWeir {
                 id: batValue
                 x: 62; y: 25
-                textValue: batteryValue
+                textValue: batteryValue > batteryTotalValue ? batteryTotalValue : batteryValue
                 fontSize: 24
             }
         }
@@ -416,7 +398,7 @@ CommonItem {
             Behavior on height { SpringAnimation { spring: 2; damping: 0.3; duration: 500 } }
             Image {
                 x: 62; y: 40;
-                source:(canvas5.angleValue>275) ? sourceImageUrl + "rightHalo_red.png" : sourceImageUrl + "rightHalo.png"
+                source:(canvas5.angleValue>305) ? sourceImageUrl + "rightHalo_red.png" : sourceImageUrl + "rightHalo.png"
             }
         }
     }
@@ -430,7 +412,7 @@ CommonItem {
             id: airPressure1Bar
             x: 1
             width: 135
-            height: (airPressure1>=0) ? 122*airPressure1 : 0
+            height: (airPressure1>=0) ? 122*airPressure1/airPressure1Total : 0
             clip: true
             transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 180 }
             Image {
@@ -449,7 +431,7 @@ CommonItem {
             id: airPressure2Bar
             x: -1
             width: 155
-            height: (airPressure2>=0) ? 122*airPressure2 : 0
+            height: (airPressure2>=0) ? 122*airPressure2/airPressure2Total : 0
             clip: true
             transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 180 }
             Image {
@@ -468,7 +450,7 @@ CommonItem {
         TextFieldWeir {
             id: charAirPress1
             fontSize: 15
-            textValue: qsTr("%1 Mpa").arg((airPressure1Bar.height/122.0).toFixed(1))
+            textValue: qsTr("%1 Mpa").arg((airPressure1).toFixed(1))
         }
     }
     Item {
@@ -479,7 +461,7 @@ CommonItem {
         TextFieldWeir {
             id: charAirPress2
             fontSize: 15
-            textValue: qsTr("%1 Mpa").arg((airPressure2Bar.height/122.0).toFixed(1))
+            textValue: qsTr("%1 Mpa").arg((airPressure2).toFixed(1))
         }
     }
     //主页面信息
@@ -587,11 +569,11 @@ CommonItem {
             anchors.left: parent.left
             anchors.leftMargin: 60
             anchors.top: parent.top
-            anchors.topMargin: 220
+            anchors.topMargin: -10
             fontColor: "#fb4a52"
             fontBold: true
-            fontSize: 24
-            textValue: qsTr("正常")
+            fontSize: 18
+            textValue: qsTr("")
         }
     }
     //时间
@@ -629,7 +611,7 @@ CommonItem {
         id: tripDisplay
         x: 415; y: 480
         fontSize: 15
-        textValue: qsTr("小计里程 %1 Km").arg(0)
+        textValue: qsTr("小计里程 %1 Km").arg(CarMsg.trip)
     }
     TextFieldWeir {
         id: device_code
@@ -641,7 +623,7 @@ CommonItem {
         id: odoDisplay
         x: 892; y: 480
         fontSize: 15
-        textValue: qsTr("总里程 %1 Km").arg(0)
+        textValue: qsTr("总里程 %1 Km").arg(CarMsg.odo)
     }
     states: [
         State {

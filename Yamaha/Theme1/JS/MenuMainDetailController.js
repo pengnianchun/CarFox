@@ -138,4 +138,13 @@ function getDateValue(scopeValue,currentValue,action){
     }else{}
     return setValueE;
 }
-
+//轮胎状态功能切换函数
+function switchTireStatus(tireIdArray){
+    if(tireIdArray[0].fontColor === "red"){
+        tireIdArray[0].fontColor = "#06fd00";
+        tireIdArray[1].fontColor = "red";
+    }else{
+        tireIdArray[0].fontColor = "red";
+        tireIdArray[1].fontColor = "#06fd00";
+    }
+}

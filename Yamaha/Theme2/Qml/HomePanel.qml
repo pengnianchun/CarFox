@@ -174,7 +174,7 @@ CommonItem {
     }
     Component.onCompleted: {
         console.log("/--------------------------------------------/");
-        console.log("/-------------"+ AlarmInfoCode.getInfo() +"---------------/");
+        console.log("/-------------Theme 2 is Active---------------/");
         console.log("/--------------------------------------------/");
         HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
     }

@@ -59,13 +59,9 @@ Item {
                     UiController.showLayer("HomePanel");
                     UiController.showLayer("MenuPanel");
                     UiController.setLayerProperty("MenuPanel","animationAction",3);
-<<<<<<< HEAD
                     UiController.showLayer("AutomaticRoutine");
                     // 按键触发
                     CarMsg.sendEnableKeys(true);
-=======
-                    //UiController.showLayer("AutomaticRoutine");
->>>>>>> ccec04512b65448cbe9f2ce8b819a7e2a318d4e4
                 }
             }
         }
