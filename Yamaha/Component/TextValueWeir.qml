@@ -14,6 +14,8 @@ Item {
     property string fontColor: "#ffffff"
     property string unitColor: "#ffffff"//"#00deff"
     property real unitWidth: 30
+    property bool leftAlignStatus: false
+    property real leftMarginValue: 0
     FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
     Rectangle{anchors.fill: parent;color: "#000000"}
     Text {
@@ -35,7 +37,8 @@ Item {
         height: textHeight
         text: qsTr(textValue)
         anchors.left: text_title.right
-        horizontalAlignment: Text.AlignRight
+        anchors.leftMargin: leftMarginValue
+        horizontalAlignment: leftAlignStatus ? Text.AlignLeft : Text.AlignRight
         font.family: fontFamily
         font.pointSize: fontSize
         font.bold: true
@@ -52,6 +55,6 @@ Item {
         font.family: fontFamily
         font.pointSize: fontSize
         font.bold: true
-        color: titleColor
+        color: unitColor
     }
 }

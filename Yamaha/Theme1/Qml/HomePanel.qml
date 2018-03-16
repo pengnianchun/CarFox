@@ -1,7 +1,9 @@
-import QtQuick 2.0
+import QtQuick 2.6
+import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
+import "qrc:/Common/JS/AlarmCode.js" as AlarmInfoCode
 //import TransformRing 1.0
 
 CommonItem {
@@ -11,12 +13,54 @@ CommonItem {
     visible: false
     state: ""
 
-    property real rpmValue: 0
-    property real speedValue: 0
-    property real airPressure1: 0
-    property real airPressure2: 0
+    property real airPressure1: CarMsg.apVol1
+    property real airPressure2: CarMsg.apVol2
+    property real airPressure1Total: 1.2
+    property real airPressure2Total: 1.2
     property bool bKeyEnable: true
 
+    property string sourceImageUrl: "qrc:/Theme/Theme1/Image/HomePanel/"
+    property string gearImageUrl: sourceImageUrl + "P.png"
+    //车速初始值/蓄电池电压
+    property int speedTotal: 180;
+    property int carSpeedValue: CarMsg.carSpeed;//0;
+    property int carSpeedValueStart: 0;
+    property int batteryTotalValue: 32;
+    property int batteryValue: CarMsg.battery//16;
+    property int batteryValueStart: 0
+    //档位初始值
+    property real gearValue: CarMsg.gear//0;
+    //发动机转速/soc充电状态
+    property int engineTotalSpeed: 100;
+    property int engineSpeedValue: CarMsg.rpm;//0;
+    property int engineSpeedValueStart: 0;
+    property int socTotalValue: 100;
+    property int socValue: CarMsg.soc;//0;
+    property int socValueStart: 0
+    //报警计数
+    property int alarmCode: CarMsg.warningId;//0
+    //动画过度时间
+    property int excessiveDurationTime: 1000;//1000;
+    property bool timerStatus: true;
+    property bool bDisplay: true
+
+    onGearValueChanged: {
+        if(gearValue === 0){
+            gear_control.source = sourceImageUrl + "D.png";
+        }else if(gearValue === 1){
+            gear_control.source = sourceImageUrl + "N.png";
+        }else if(gearValue === 2){
+            gear_control.source = sourceImageUrl + "P.png";
+        }else if(gearValue === 3){
+            gear_control.source = sourceImageUrl + "R.png";
+        }else if(gearValue === 4){
+            gear_control.source = sourceImageUrl + "S.png";
+        }else{}
+    }
+    onAlarmCodeChanged: {
+        var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
+        alarm_info.textValue = alarmCodeInfo;
+    }
     onVisibleChanged: {
         if(visible){
             homeIndex.state = "normal"
@@ -25,11 +69,9 @@ CommonItem {
             CarMsg.sendEnableKeys(false);
         }
     }
-
     onStateChanged: {
         UiController.setLayerProperty("IndicatorPanel", "state", state);
     }
-
     onKeyEnter: function() {
         if(bKeyEnable) {
             UiController.showLayer("MenuPanel");
@@ -37,10 +79,84 @@ CommonItem {
             UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
             UiController.setLayerProperty("MenuPanel", "state", "show");
             UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
+            UiController.setLayerProperty("IndicatorPanel", "indicatorStatus", false);
             bKeyEnable = false;
         }
     }
-
+    onBKeyEnableChanged: {
+        if(bKeyEnable){
+            main_panel.visible = true;
+        }else{
+            main_panel.visible = false;
+        }
+    }
+    //报警码显示动画
+    SequentialAnimation {
+        loops: Animation.Infinite
+        running: true
+        PauseAnimation { duration: 2000 }
+        PropertyAnimation{ target: alarm_info; property: "anchors.topMargin"; to: 245 ;duration: 100; easing.type: Easing.Linear; }
+        PropertyAnimation{ target: alarm_info; property: "anchors.topMargin"; to: 255 ;duration: 100; easing.type: Easing.Linear; }
+        PropertyAnimation{ target: alarm_info; property: "anchors.topMargin"; to: 250 ;duration: 50; easing.type: Easing.Linear; }
+    }
+    //车速/蓄电池电量
+    NumberAnimation { id: speed_animation; target: homeIndex; property: "carSpeedValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
+    NumberAnimation { id: battery_animation; target: homeIndex; property: "batteryValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
+    onCarSpeedValueChanged: {
+        if(typeof carSpeedValue === 'number' && carSpeedValue%1 === 0 && carSpeedValue <= speedTotal){
+            setSpeedValue();
+            canvas4.angleValue = 95 + (carSpeedValue/speedTotal)*260;
+            canvas5.angleValue = 185 + (carSpeedValue/speedTotal)*180;
+            canvas6.angleValue = 275 + (carSpeedValue/speedTotal)*80;
+        }else{}
+    }
+    function setSpeedValue(){
+        speed_animation.from = carSpeedValueStart;
+        speed_animation.to = carSpeedValue;
+        carSpeedValueStart = carSpeedValue;
+        speed_animation.running = true;
+    }
+    onBatteryValueChanged: {
+        if(typeof batteryValue === 'number' && batteryValue%1 === 0){
+            setBatteryValue();
+            battery_panel.width = (batteryValue/batteryTotalValue)*260;
+        }else{}
+    }
+    function setBatteryValue(){
+        battery_animation.from = batteryValueStart;
+        battery_animation.to = batteryValue;
+        batteryValueStart = batteryValue;
+        battery_animation.running = true;
+    }
+    //发动机转速/soc充电状态
+    NumberAnimation { id: engine_animation; target: homeIndex; property: "engineSpeedValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
+    NumberAnimation { id: soc_animation; target: homeIndex; property: "socValue"; duration: excessiveDurationTime; easing.type: Easing.Linear }
+    onEngineSpeedValueChanged: {
+        if(typeof engineSpeedValue === 'number' && engineSpeedValue%1 === 0 && engineSpeedValue <= engineTotalSpeed){
+            setEngineSpeedValue();
+            canvas1.angleValue = 95 + (engineSpeedValue/engineTotalSpeed)*260;
+            canvas2.angleValue = 185 + (engineSpeedValue/engineTotalSpeed)*180;
+            canvas3.angleValue = 275 + (engineSpeedValue/engineTotalSpeed)*80;
+        }else{}
+    }
+    function setEngineSpeedValue(){
+        engine_animation.from = engineSpeedValueStart;
+        engine_animation.to = engineSpeedValue;
+        engineSpeedValueStart = engineSpeedValue;
+        engine_animation.running = true;
+    }
+    onSocValueChanged: {
+        if(typeof socValue === 'number' && socValue%1 === 0 && socValue <= socTotalValue){
+            setSocValue();
+            soc_panel.width = (socValue/socTotalValue)*260;
+        }else{}
+    }
+    function setSocValue(){
+        soc_animation.from = socValueStart;
+        soc_animation.to = socValue;
+        socValueStart = socValue;
+        soc_animation.running = true;
+    }
     ParallelAnimation {
         id: startFlash
         running: false
@@ -101,12 +217,33 @@ CommonItem {
             }
             ParallelAnimation {
                 SequentialAnimation {
-                    NumberAnimation { target: airPressure1Bar; property: "height"; from:0; to:122; duration: 800}
-                    NumberAnimation { target: airPressure1Bar; property: "height"; from:122; to:0; duration: 800}
-                 }
+                    NumberAnimation { target: homeIndex; property: "carSpeedValue"; to:speedTotal; duration: 0 }
+                    PauseAnimation { duration: 1500 }
+                    NumberAnimation { target: homeIndex; property: "carSpeedValue"; to:0; duration: 0 }
+                }
                 SequentialAnimation {
-                    NumberAnimation { target: airPressure2Bar; property: "height"; from:0; to:122; duration: 800}
-                    NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800}
+                    NumberAnimation { target: homeIndex; property: "engineSpeedValue"; to:engineTotalSpeed; duration: 0 }
+                    PauseAnimation { duration: 1500 }
+                    NumberAnimation { target: homeIndex; property: "engineSpeedValue"; to:0; duration: 0 }
+                }
+                SequentialAnimation {
+                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:batteryTotalValue; duration: 0 }
+                    PauseAnimation { duration: 1500 }
+                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:0; duration: 0 }
+                }
+                SequentialAnimation {
+                    NumberAnimation { target: homeIndex; property: "socValue"; to:socTotalValue; duration: 0 }
+                    PauseAnimation { duration: 1500 }
+                    NumberAnimation { target: homeIndex; property: "socValue"; to:0; duration: 0 }
+                }
+                SequentialAnimation {
+                    NumberAnimation { target: airPressure1Bar; property: "height"; from:0; to:122; duration: 800 }
+                    NumberAnimation { target: airPressure1Bar; property: "height"; from:122; to:0; duration: 800 }
+                }
+                SequentialAnimation {
+                    NumberAnimation { target: airPressure2Bar; property: "height"; from:0; to:122; duration: 800 }
+                    NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800 }
+
                 }
             }
         }
@@ -116,253 +253,378 @@ CommonItem {
             }
         }
     }
-
-    Rectangle {
-        id: backgroundImage
-        anchors.fill: parent
-        color: "black"
-    }
-
+    Rectangle { id: backgroundImage; anchors.fill: parent; color: "black" }
     Image {
         id: topBar
-        x: 324
-        y: 18
+        x: 324; y: 18
         rotation: 180
         opacity: 1.0
-        source: "qrc:/Theme/Theme1/Image/HomePanel/baseBar.png"
+        source: sourceImageUrl + "baseBar.png"
     }
-
     Image {
         id: baseBar
-        x: 330
-        y: 447
+        x: 330; y: 447
         opacity: 1.0
-        source: "qrc:/Theme/Theme1/Image/HomePanel/baseBar.png"
+        source: sourceImageUrl + "baseBar.png"
     }
-
     Image {
         id: readyStatus
-        x: 623
-        y: 96
+        x: 623; y: 96
         visible: homeIndex.state === "normal"
-        source: "qrc:/Theme/Theme1/Image/HomePanel/ready.png"
+        source: sourceImageUrl + "ready.png"
     }
-
     Image {
         id: leftBgImage
-        x:20
-        source: "qrc:/Theme/Theme1/Image/HomePanel/leftBg.png"
+        x: 20; z: 2
+        source: sourceImageUrl + "leftBg.png"
         Image {
             id: rpmBg
-            x: -20
-            y: 2
+            x: -20; y: 2; z: 3
             opacity: 0.0
             scale: 0.6
-            source: "qrc:/Theme/Theme1/Image/HomePanel/rpmBg.png"
+            source: sourceImageUrl + "rpmBg.png"
             Item {
-                x: 220
-                y: 218
-                width: 100
+                x: 100
+                y: 130
+                width: 200
                 height: 100
-                Text {
+                TextFieldWeir {
                     id: rpmNum
                     anchors.centerIn: parent
-                    text: homeIndex.rpmValue.toFixed(0)
-                    color: "white"
-                    font.pixelSize: 95
-                    //font.family:FontName.fontCurrentFzLt
+                    textValue: engineSpeedValue > engineTotalSpeed ? engineTotalSpeed : engineSpeedValue
+                    fontSize: 90
                 }
             }
+        }
+        //soc充电状态
+        Item {
+            id: soc_panel
+            width: 0//260
+            height: 200
+            clip: true
+            x: 116; y: 336; z: 3
             Image {
                 id: socImg
-                x: 138
-                y: 336
-                source: "qrc:/Theme/Theme1/Image/HomePanel/socValue.png"
+                source: sourceImageUrl + "socValue.png"
             }
+        }
+        Image {
+            id: socBg
+            x: 116; y: 336; z: 4
+            source: sourceImageUrl + "socBg.png"
+            TextFieldWeir {
+                id: soValue
+                x: 82
+                y: 47
+                textValue: socValue > socTotalValue ? socTotalValue : socValue
+                fontColor: "#18fd00"
+            }
+        }
+        //发动机转速表盘动画
+        CanvasViewWeir { id: canvas1; z: 2; width: 500; height: 500; angleValue: 95 }
+        CanvasViewWeir { id: canvas2; z: 2; width: 500; height: 500; angleValue: 185 }
+        CanvasViewWeir { id: canvas3; z: 2; width: 500; height: 500; angleValue: 275 }
+        Item {
+            id: rpmProgressBar
+            z: 1
+            clip: true
+            width: 500
+            height: 500//(carSpeedValue>=0) ? 122*carSpeedValue : 0
+            transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 0 }
+            Behavior on height { SpringAnimation { spring: 2; damping: 0.3; duration: 500 } }
             Image {
-                id: socBg
-                x: 138
-                y: 336
-                source: "qrc:/Theme/Theme1/Image/HomePanel/socBg.png"
-                Text {
-                    id: socValue
-                    x: 135
-                    y: 45
-                    text: qsTr("100")
-                    color: "green"
-                    font.pixelSize: 20
-                }
+                x: 14; y: 38;
+                source: (canvas2.angleValue>305) ? sourceImageUrl + "leftHalo_red.png" : sourceImageUrl + "leftHalo.png"
             }
         }
     }
-
     Image {
         id: rightBgImage
-        x:876
-        source: "qrc:/Theme/Theme1/Image/HomePanel/rightBg.png"
+        x: 876; z: 2
+        source: sourceImageUrl + "rightBg.png"
         Image {
             id: speedBg
-            x: 24
-            y: 2
+            x: 24; y: 2; z: 3
             opacity: 0.0
             scale: 0.6
-            source: "qrc:/Theme/Theme1/Image/HomePanel/speedBg.png"
+            source: sourceImageUrl + "speedBg.png"
             Item {
-                x: 222
-                y: 218
-                width: 100
+                x: 100
+                y: 130
+                width: 200
                 height: 100
-                Text {
+                TextFieldWeir {
                     id: speedNum
                     anchors.centerIn: parent
-                    text: homeIndex.speedValue.toFixed(0)
-                    color: "white"
-                    font.pixelSize: 95
-                    //font.family:FontName.fontCurrentFzLt
-                }
-            }
-            Image {
-                id: batImg
-                x: 136
-                y: 336
-                source: "qrc:/Theme/Theme1/Image/HomePanel/batteryValue.png"
-            }
-            Image {
-                id: batBg
-                x: 136
-                y: 336
-                source: "qrc:/Theme/Theme1/Image/HomePanel/batteryBg.png"
-                Text {
-                    id: batValue
-                    x: 122
-                    y: 28
-                    text: qsTr("32")
-                    color: "white"
-                    font.pixelSize: 20
+                    textValue: carSpeedValue > speedTotal ? speedTotal : carSpeedValue
+                    fontSize: 90
                 }
             }
         }
+        //蓄电池电量
+        Item {
+            id: battery_panel
+            width: 0//260
+            height: 200
+            clip: true
+            x: 160; y: 336; z: 3
+            Image {
+                id: batImg
+                source: sourceImageUrl + "batteryValue.png"
+            }
+        }
+        Image {
+            id: batBg
+            x: 160; y: 336; z: 4
+            source: sourceImageUrl + "batteryBg.png"
+            TextFieldWeir {
+                id: batValue
+                x: 62; y: 25
+                textValue: batteryValue > batteryTotalValue ? batteryTotalValue : batteryValue
+                fontSize: 24
+            }
+        }
+        //速度值表盘动画
+        CanvasViewWeir { id: canvas4; x: 46.5; z: 2; width: 500; height: 500; angleValue: 95 }
+        CanvasViewWeir { id: canvas5; x: 46.5; z: 2; width: 500; height: 500; angleValue: 185 }
+        CanvasViewWeir { id: canvas6; x: 46.5; z: 2; width: 500; height: 500; angleValue: 275 }
+        Item {
+            id: speedProgressBar
+            z: 1
+            clip: true
+            width: 500
+            height: 500
+            transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 0 }
+            Behavior on height { SpringAnimation { spring: 2; damping: 0.3; duration: 500 } }
+            Image {
+                x: 62; y: 40;
+                source:(canvas5.angleValue>305) ? sourceImageUrl + "rightHalo_red.png" : sourceImageUrl + "rightHalo.png"
+            }
+        }
     }
-
+    //空气压力进度条
     Image {
         id: leftBg
         y: 360
         opacity: 1.0
-        source: "qrc:/Theme/Theme1/Image/HomePanel/leftRing.png"
+        source: sourceImageUrl + "leftRing.png"
         Item {
             id: airPressure1Bar
             x: 1
             width: 135
-            height: (airPressure1>=0)?122*airPressure1:0
+            height: (airPressure1>=0) ? 122*airPressure1/airPressure1Total : 0
             clip: true
             transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 180 }
             Image {
                 transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: -180 }
-                source: (airPressure1Bar.height>73) ? "qrc:/Theme/Theme1/Image/HomePanel/leftUpFull.png" :"qrc:/Theme/Theme1/Image/HomePanel/leftUp.png"
+                source: (airPressure1Bar.height>73) ? sourceImageUrl + "leftUpFull.png" : sourceImageUrl + "leftUp.png"
             }
             Behavior on height { SpringAnimation { spring: 2; damping: 0.3; duration: 500 } }
         }
     }
-
     Image {
         id: rightBg
-        x: 1272
-        y: 360
+        x: 1272; y: 360
         opacity: 1.0
-        source: "qrc:/Theme/Theme1/Image/HomePanel/rightRing.png"
+        source: sourceImageUrl + "rightRing.png"
         Item {
             id: airPressure2Bar
             x: -1
             width: 155
-            height: (airPressure2>=0)?122*airPressure2:0
+            height: (airPressure2>=0) ? 122*airPressure2/airPressure2Total : 0
             clip: true
             transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 180 }
             Image {
                 transform: Rotation { origin.x: 42; origin.y: 78.5; axis { x: 1; y: 0; z: 0 } angle: 180 }
-                source: (airPressure2Bar.height>73) ? "qrc:/Theme/Theme1/Image/HomePanel/rightUpFull.png" :"qrc:/Theme/Theme1/Image/HomePanel/rightUp.png"
+                source: (airPressure2Bar.height>73) ? sourceImageUrl + "rightUpFull.png" : sourceImageUrl + "rightUp.png"
             }
             Behavior on height { SpringAnimation { spring: 2; damping: 0.3; duration: 500 } }
         }
     }
-
+    //空气压力
     Item {
         id: airPressure1Dispaly
-        x: 2
-        y: 496
+        x: -20; y: 496
         width: 100
         height: 100
-        Text {
+        TextFieldWeir {
             id: charAirPress1
-            x:20
-            text: qsTr("%1").arg((airPressure1Bar.height/122.0).toFixed(1))
-            color: "white"
-            font.italic: false
-            font.pixelSize: 18
-            //font.family:FontName.fontCurrentFzLt
-        }
-        Text {
-            id: charAirPressMeasure1
-            x:50
-            text: "MPa"
-            color: "#808080"
-            font.italic: true
-            font.pixelSize: 18
-            //font.family:FontName.fontCurrentFzLt
+            fontSize: 15
+            textValue: qsTr("%1 Mpa").arg((airPressure1).toFixed(1))
         }
     }
-
     Item {
         id: airPressure2Dispaly
-        x: 1330
-        y: 496
+        x: 1320; y: 496
         width: 100
         height: 100
-        Text {
+        TextFieldWeir {
             id: charAirPress2
-            x:20
-            text: qsTr("%1").arg((airPressure2Bar.height/122.0).toFixed(1))
-            color: "white"
-            font.italic: false
-            font.pixelSize: 18
-            //font.family:FontName.fontCurrentFzLt
-        }
-        Text {
-            id: charAirPressMeasure2
-            x:50
-            text: "MPa"
-            color: "#808080"
-            font.italic: true
-            font.pixelSize: 18
-            //font.family:FontName.fontCurrentFzLt
+            fontSize: 15
+            textValue: qsTr("%1 Mpa").arg((airPressure2).toFixed(1))
         }
     }
-
-    Text {
-        id: odoDisplay
-        x: 892
-        y: 480
-        width: 120
-        text: qsTr("总里程 %1 Km").arg(0)
-        //font.family:FontName.fontCurrentFzLt
-        font.italic: false
-        font.pointSize: 15
-        color: "white"
-        horizontalAlignment: Text.AlignLeft
+    //主页面信息
+    ColumnLayout {
+        id: main_panel
+        z: 1
+        anchors.top: parent.top
+        anchors.topMargin: 160
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 10
+        property string totlaAmpere: "-200.1"
+        property string totlaVolt: "576.5"
+        property string singleVoltMax: "0"
+        property string singleVoltMin: "0"
+        property string singleTemperatureMax: "-40"
+        property string singleTemperatureMin: "-40"
+        property string batteryPackValue: "245.6"
+        property string motorTemperature: "0"
+        property string controlTemperature: "0"
+        property string coolingTemperature: "20"
+        TextValueWeir {
+            width: 420
+            height: 30
+            textTitle: "电池总电流与总电压"
+            textValue: main_panel.totlaAmpere + " A / "
+                       + main_panel.totlaVolt + " V"
+            unitValue: ""
+            textWidth: 420
+            fontSize: 18
+            leftAlignStatus: true
+            leftMarginValue: 90
+        }
+        TextValueWeir {
+            width: 420
+            height: 30
+            textTitle: "单体电压最高最低"
+            textValue: main_panel.singleVoltMax + " V / "
+                       + main_panel.singleVoltMin + " V"
+            unitValue: ""
+            textWidth: 420
+            fontSize: 18
+            leftAlignStatus: true
+            leftMarginValue: 90
+        }
+        TextValueWeir {
+            width: 420
+            height: 30
+            textTitle: "单体温度最高最低"
+            textValue: main_panel.singleTemperatureMax + " ℃ / "
+                       + main_panel.singleTemperatureMin + " ℃"
+            unitValue: ""
+            textWidth: 420
+            fontSize: 18
+            leftAlignStatus: true
+            leftMarginValue: 90
+        }
+        TextValueWeir {
+            width: 420
+            height: 30
+            textTitle: "电池组当前电量值"
+            textValue: main_panel.batteryPackValue + " Kw.h"
+            unitValue: ""
+            textWidth: 420
+            fontSize: 18
+            leftAlignStatus: true
+            leftMarginValue: 90
+        }
+        TextValueWeir {
+            width: 420
+            height: 30
+            textTitle: "电机与控制器温度"
+            textValue: main_panel.motorTemperature + " ℃ / "
+                       + main_panel.controlTemperature + " ℃"
+            unitValue: ""
+            textWidth: 420
+            fontSize: 18
+            leftAlignStatus: true
+            leftMarginValue: 90
+        }
+        TextValueWeir {
+            width: 420
+            height: 30
+            textTitle: "冷却液温度"
+            textValue: main_panel.coolingTemperature + " ℃"
+            unitValue: ""
+            textWidth: 420
+            fontSize: 18
+            leftAlignStatus: true
+            leftMarginValue: 90
+        }
+        //档位
+        Image{
+            id: gear_control
+            source: gearImageUrl
+            anchors.right: parent.right
+            anchors.rightMargin: -35
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 150
+        }
+        //报警
+        TextFieldWeir {
+            id: alarm_info
+            textOpacity: 1
+            textWidth: 300
+            anchors.left: parent.left
+            anchors.leftMargin: 60
+            anchors.top: parent.top
+            anchors.topMargin: -10
+            fontColor: "#fb4a52"
+            fontBold: true
+            fontSize: 18
+            textValue: qsTr("")
+        }
     }
-
-    Text {
+    //时间
+    TimeHMSWeir {
+        id: hmsDisplay
+        x: 950; y: 428
+        hourValue: "00"
+        spaceValue: ":"
+        minuteValue: "00"
+    }
+    TimeInfoWeir {
+        id: timeInfo
+        x: 460; y: 438
+        visible: true
+        onHourChanged: {
+            hmsDisplay.hourValue = qsTr("%1").arg(hour)
+        }
+        onMinuteChanged: {
+            hmsDisplay.minuteValue = qsTr("%1").arg(minute);
+        }
+        onSecondChanged: {
+            if(bDisplay) {
+                hmsDisplay.spaceValue = ":";
+            } else {
+                hmsDisplay.spaceValue = " ";
+            }
+            bDisplay = !bDisplay
+        }
+        onWeekChanged: {
+            //weekDisplay.textValue = qsTr("%1").arg(week);
+        }
+    }
+    //FooterPanel信息
+    TextFieldWeir {
         id: tripDisplay
-        x: 440
-        y: 480
-        width: 120
-        text: qsTr("小计里程 %1 Km").arg(0)
-        //font.family:FontName.fontCurrentFzLt
-        font.italic: false
-        font.pointSize: 15
-        color: "white"
-        horizontalAlignment: Text.AlignRight
+        x: 415; y: 480
+        fontSize: 15
+        textValue: qsTr("小计里程 %1 Km").arg(CarMsg.trip)
     }
-
+    TextFieldWeir {
+        id: device_code
+        x: 660; y: 480
+        fontSize: 15
+        textValue: qsTr("设备代码 %1").arg(7027)
+    }
+    TextFieldWeir {
+        id: odoDisplay
+        x: 892; y: 480
+        fontSize: 15
+        textValue: qsTr("总里程 %1 Km").arg(CarMsg.odo)
+    }
     states: [
         State {
             name: ""
@@ -380,16 +642,13 @@ CommonItem {
             PropertyChanges { target: rightBgImage; opacity: 1.0; x: 922; y: 60; scale: 0.75 }
         }
     ]
-
     transitions: [
         Transition {
             from: ""
             to: "normal"
             ParallelAnimation{
                 ScriptAction {
-                    script: {
-                        startFlash.running = true;
-                    }
+                    script: { startFlash.running = true }
                 }
             }
         },
@@ -414,24 +673,31 @@ CommonItem {
         Transition {
             from: "menu"
             to: "normal"
-            ParallelAnimation {
-                NumberAnimation {
-                    target: leftBgImage
-                    properties: "x, y, scale"
-                    duration: 800
-                    easing.type: Easing.OutBounce
+            SequentialAnimation {
+                ParallelAnimation {
+                    NumberAnimation {
+                        target: leftBgImage
+                        properties: "x, y, scale"
+                        duration: 800
+                        easing.type: Easing.OutBounce
+                    }
+                    NumberAnimation {
+                        target: rightBgImage
+                        properties: "x, y, scale"
+                        duration: 800
+                        easing.type: Easing.OutBounce
+                    }
                 }
-                NumberAnimation {
-                    target: rightBgImage
-                    properties: "x, y, scale"
-                    duration: 800
-                    easing.type: Easing.OutBounce
+                ScriptAction {
+                    script: { UiController.setLayerProperty("IndicatorPanel", "indicatorStatus", true) }
                 }
             }
         }
     ]
-
     Component.onCompleted: {
+        console.log("/--------------------------------------------/");
+        console.log("/-------------Theme 1 is Active--------------/");
+        console.log("/--------------------------------------------/");
         //homeIndex.state = "normal"
         //homeIndex.state = "menu"
     }

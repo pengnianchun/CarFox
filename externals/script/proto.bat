@@ -52,4 +52,3 @@ echo #endif //_PROTOBUF_HEADERS_H_ >> protoheader.h
 cd ..\..
 echo ---------- end --------------
 
-

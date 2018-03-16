@@ -1,4 +1,5 @@
-import QtQuick 2.0
+import QtQuick 2.6
+import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
@@ -12,8 +13,11 @@ MenuItem {
     state: ""
     visible: false
 
+    property string fontFamily: localFont.name
     property int menuCurrentIndex: 0
     property bool bKeyEnable: false
+    property string titleBgUrl: "qrc:/Theme/Theme1/Image/MenuPanel/title_bg.png"
+    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
 
     enterMenu: function(){
         if(bKeyEnable){
@@ -23,7 +27,6 @@ MenuItem {
             bKeyEnable = false;
         }
     }
-
     hideMenu: function(){
         if(bKeyEnable){
             UiController.setLayerProperty("HomePanel", "state", "normal");
@@ -34,7 +37,6 @@ MenuItem {
             bKeyEnable = false;
         }
     }
-
     previousMenu: function() {
         if(bKeyEnable){
             menuCurrentIndex--;
@@ -43,7 +45,6 @@ MenuItem {
             }
         }
     }
-
     nextMenu: function() {
         if(bKeyEnable){
             menuCurrentIndex++;
@@ -52,11 +53,9 @@ MenuItem {
             }
         }
     }
-
     onMenuCurrentIndexChanged: {
         pathViewMenu.menuIndex = menuCurrentIndex
     }
-
     Item {
         id: pathViewMenu
         x: 420
@@ -75,15 +74,12 @@ MenuItem {
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vcu.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
         }
-
         Component {
             id: displayDelegate
-
             Item {
                 width:  200
                 height: 200
                 scale: PathView.iconScale
-
                 Image {
                     id: myIcon
                     y: 20;
@@ -98,25 +94,24 @@ MenuItem {
                     }
                     text: name
                     font.pointSize: 16
+                    font.family: fontFamily
                     style: Text.Sunken
                     styleColor: "green"
                     smooth: true
                 }
             }
         }
-
         Component {
             id: displayHighlight
             Rectangle {
                 width:  200
                 height: 200;
                 border.color: "red"
-                color: "lightsteelblue"
+                color: "transparent"//"lightsteelblue"
                 radius: 20
-                opacity: 0.1
+                opacity: 0//0.1
             }
         }
-
         PathView {
             id: pathView
             anchors.fill: parent
@@ -138,31 +133,28 @@ MenuItem {
             pathItemCount: 7
             currentIndex:  0
         }
-
         onMenuIndexChanged: {
             pathView.currentIndex = menuIndex-1;
             title.text = getDisplayText(menuIndex);
         }
     }
-
     Item {
         id: menuBackground
         x: 755
         y: 257
+        Image{ x: -155;y: 58 ;source: titleBgUrl }
         Text{
             id: title
             anchors.horizontalCenter: menuBackground.horizontalCenter
             anchors.horizontalCenterOffset: -35
             y: 62
             text: qsTr("")
-            //font.family:FontName.fontCurrentFzLt
+            font.family: fontFamily
             font.pixelSize: 28
             color: "#d3dbe8"
         }
     }
-
     function getDisplayText(menuIndex) {
-
         var displayText = qsTr("");
         switch(menuIndex){
             case 1:
@@ -178,10 +170,10 @@ MenuItem {
                 displayText = qsTr("电机电池信息");
                 break;
             case 5:
-                displayText = qsTr("杂项查询信息");
+                displayText = qsTr("杂项信息查询");
                 break;
             case 6:
-                displayText = qsTr("时间设置信息");
+                displayText = qsTr("系统设置信息");
                 break;
             case 7:
                 displayText = qsTr("胎压检测信息");
@@ -198,7 +190,6 @@ MenuItem {
         }
         return displayText;
     }
-
     states:[
         State {
             name: ""
@@ -211,7 +202,6 @@ MenuItem {
             PropertyChanges { target: menuBackground; opacity: 1.0 }
         }
     ]
-
     transitions: [
         Transition {
             from: ""
@@ -235,7 +225,6 @@ MenuItem {
             }
         }
     ]
-
     Component.onCompleted: {
         menuCurrentIndex = 1
     }

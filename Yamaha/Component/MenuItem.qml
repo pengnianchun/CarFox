@@ -59,7 +59,7 @@ CommonItem {
         running: false
         triggeredOnStart: false
         onTriggered: {
-            menu.timeoutMenu();
+            //menu.timeoutMenu();
         }
     }
 

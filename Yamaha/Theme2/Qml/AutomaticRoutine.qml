@@ -11,15 +11,71 @@ Item {
     property var onBackAction: function(){ CarMsg.keyShortPressed(1) }
     property var onPreviousAction: function(){ CarMsg.keyShortPressed(2) }
     property var onNextAction: function(){ CarMsg.keyShortPressed(3) }
+
+    //车速初始值
+    property int speedTotal: 180;
+    //档位初始值
+    property real gearValue: 0;
+    //发动机转速
+    property int engineTotalSpeed: 9999;
+    //蓄电池电压
+    property int batteryTotalVolt: 120;
+    //动力电池电压
+    property int batteryPowerTotalVolt: 220;
+    //动力电池电流
+    property int batteryPowerTotalAmpere: 100;
+    property bool timerStatus: true;
+    //自动程序按键切换执行时间间隔
+    property int intervalTime: 3000
     onVisibleChanged: {
         if(visible){
             animation1.running = true;
+            timer.running = true;
         }else{}
+    }
+
+    //MenuPanel自定义定时器测试使用
+    Timer {
+        id: timer
+        repeat: true
+        interval: 6000
+        running: false
+        onTriggered: {
+            if(timerStatus){
+                //车速测试
+                UiController.setLayerProperty("MenuPanel","speedValue",speedTotal);
+                //发动机测试
+                UiController.setLayerProperty("MenuPanel","engineSpeedValue",engineTotalSpeed);
+                //蓄电池测试
+                UiController.setLayerProperty("MenuPanel","batteryCurrentVolt",batteryTotalVolt);
+                //动力电池电压测试
+                UiController.setLayerProperty("MenuPanel","batteryPowerVolt",batteryPowerTotalVolt);
+                //动力电池电流测试
+                UiController.setLayerProperty("MenuPanel","batteryPowerAmpere",batteryPowerTotalAmpere);
+                //档位测试
+                UiController.setLayerProperty("MenuPanel","gearValue",1);
+                timerStatus = false;
+            }else{
+                //车速测试
+                UiController.setLayerProperty("MenuPanel","speedValue",0);
+                //发动机测试
+                UiController.setLayerProperty("MenuPanel","engineSpeedValue",0);
+                //蓄电池测试
+                UiController.setLayerProperty("MenuPanel","batteryCurrentVolt",0);
+                //动力电池电压测试
+                UiController.setLayerProperty("MenuPanel","batteryPowerVolt",0);
+                //动力电池电流测试
+                UiController.setLayerProperty("MenuPanel","batteryPowerAmpere",0);
+                //档位测试
+                UiController.setLayerProperty("MenuPanel","gearValue",0);
+                timerStatus = true;
+            }
+        }
     }
     //前一页翻页定时器
     Timer {
         id: previous_timer
-        interval: 2000
+        interval: intervalTime-1000
         repeat: true
         running: false
         onTriggered: {
@@ -42,7 +98,7 @@ Item {
     //后一页翻页定时器
     Timer {
         id: next_timer
-        interval: 2000
+        interval: intervalTime-1000
         repeat: true
         running: false
         onTriggered: {
@@ -65,9 +121,7 @@ Item {
     //主动画
     SequentialAnimation {
         id: animation1
-        //running: true
-        //loops: Animation.Infinite
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: 5000 }
         ScriptAction {
             script: {
                 onEnterAction();
@@ -95,18 +149,19 @@ Item {
                 onEnterAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 animation1.running = true;
@@ -121,43 +176,43 @@ Item {
                 onEnterAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onNextAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onNextAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onNextAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onPreviousAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 animation1.running = true;
@@ -172,55 +227,55 @@ Item {
                 onEnterAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onEnterAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onNextAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onEnterAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onNextAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 2000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 onBackAction();
             }
         }
-        PauseAnimation { duration: 3000 }
+        PauseAnimation { duration: intervalTime }
         ScriptAction {
             script: {
                 animation1.running = true;

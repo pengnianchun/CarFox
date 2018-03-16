@@ -9,7 +9,7 @@ UI_DIR = build
 MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
-PROTOTAG=v1.2
+PROTOTAG=v2.6
 
 unix:!macx{
     INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
