@@ -472,16 +472,16 @@ CommonItem {
         anchors.topMargin: 160
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 10
-        property string totlaAmpere: "-200.1"
-        property string totlaVolt: "576.5"
-        property string singleVoltMax: "0"
-        property string singleVoltMin: "0"
-        property string singleTemperatureMax: "-40"
-        property string singleTemperatureMin: "-40"
-        property string batteryPackValue: "245.6"
-        property string motorTemperature: "0"
-        property string controlTemperature: "0"
-        property string coolingTemperature: "20"
+        property string totlaAmpere: CarMsg.totalCurrent.toFixed(1)//"-200.1"
+        property string totlaVolt: CarMsg.totalVoltage.toFixed(1)//"576.5"
+        property string singleVoltMax: CarMsg.aloneBatteryHighVoltage.toFixed(1)//"0"
+        property string singleVoltMin: CarMsg.aloneBatteryLowVoltage.toFixed(1)//"0"
+        property string singleTemperatureMax: CarMsg.batteryHighTemperature//"-40"
+        property string singleTemperatureMin: CarMsg.batteryLowTemperature//"-40"
+        property string batteryPackValue: CarMsg.batteryPackEnergy.toFixed(1)//"245.6"
+        property string motorTemperature: CarMsg.moterTemp//"0"
+        property string controlTemperature: CarMsg.moterControlTemp//"0"
+        property string coolingTemperature: CarMsg.engineWaterTemp//"20"
         TextValueWeir {
             width: 420
             height: 30
@@ -489,6 +489,7 @@ CommonItem {
             textValue: main_panel.totlaAmpere + " A / "
                        + main_panel.totlaVolt + " V"
             unitValue: ""
+            titleColor: "#00a7f5"
             textWidth: 420
             fontSize: 18
             leftAlignStatus: true
@@ -501,6 +502,7 @@ CommonItem {
             textValue: main_panel.singleVoltMax + " V / "
                        + main_panel.singleVoltMin + " V"
             unitValue: ""
+            titleColor: "#00a7f5"
             textWidth: 420
             fontSize: 18
             leftAlignStatus: true
@@ -513,6 +515,7 @@ CommonItem {
             textValue: main_panel.singleTemperatureMax + " ℃ / "
                        + main_panel.singleTemperatureMin + " ℃"
             unitValue: ""
+            titleColor: "#00a7f5"
             textWidth: 420
             fontSize: 18
             leftAlignStatus: true
@@ -524,6 +527,7 @@ CommonItem {
             textTitle: "电池组当前电量值"
             textValue: main_panel.batteryPackValue + " Kw.h"
             unitValue: ""
+            titleColor: "#00a7f5"
             textWidth: 420
             fontSize: 18
             leftAlignStatus: true
@@ -536,6 +540,7 @@ CommonItem {
             textValue: main_panel.motorTemperature + " ℃ / "
                        + main_panel.controlTemperature + " ℃"
             unitValue: ""
+            titleColor: "#00a7f5"
             textWidth: 420
             fontSize: 18
             leftAlignStatus: true
@@ -547,6 +552,7 @@ CommonItem {
             textTitle: "冷却液温度"
             textValue: main_panel.coolingTemperature + " ℃"
             unitValue: ""
+            titleColor: "#00a7f5"
             textWidth: 420
             fontSize: 18
             leftAlignStatus: true

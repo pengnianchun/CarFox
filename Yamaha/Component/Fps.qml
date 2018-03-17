@@ -19,7 +19,7 @@ Item {
         }
         onXChanged: ++frameCounter
     }
-
+/*
     Text {
         anchors.left: parent.left
         anchors.leftMargin: 350
@@ -153,4 +153,5 @@ Item {
             }
         }
     }
+    */
 }
