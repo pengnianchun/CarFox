@@ -270,8 +270,20 @@ CommonItem {
     Image {
         id: readyStatus
         x: 623; y: 96
-        visible: homeIndex.state === "normal"
+        visible: CarMsg.ready
         source: sourceImageUrl + "ready.png"
+    }
+    Image {
+        id: stopStatus
+        x: 623; y: 96
+        visible: CarMsg.wait
+        source: sourceImageUrl + "wait.png"
+    }
+    Image {
+        id: waitStatus
+        x: 623; y: 96
+        visible: CarMsg.stop
+        source: sourceImageUrl + "stop.png"
     }
     Image {
         id: leftBgImage

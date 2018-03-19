@@ -13,6 +13,15 @@ MenuItem {
     visible: false
 
     property bool bKeyEnable: false
+    property string dcLowVoltage: CarMsg.dcLowVoltage.toFixed(1)
+    property string dcLowCurrent: CarMsg.dcLowCurrent.toFixed(1)
+    property string dcTemp: CarMsg.dcTemp.toFixed(0)
+    property string dcStatus2: CarMsg.dcStatus2.toFixed(0)
+    property string dcUndervoltage: CarMsg.dcUndervoltage ? "正常" : "报警"
+    property string dcOvervoltage: CarMsg.dcOvervoltage ? "正常" : "报警"
+    property string dcOverheating: CarMsg.dcOverheating ? "正常" : "报警"
+    property string dcShortCircuit: CarMsg.dcShortCircuit ? "正常" : "报警"
+    property string dcWorkStatus: CarMsg.dcWorkStatus ? "正常" : "报警"
 
     hideMenu: function(){
         if(bKeyEnable){
@@ -30,20 +39,37 @@ MenuItem {
         anchors.top: parent.top
         anchors.topMargin: 110
     }
+    onDcStatus2Changed: {
+        if(dcTemp === "1"){
+            listmodelone.setProperty(4,"value","工作");
+        }else if(dcTemp === "2"){
+            listmodelone.setProperty(4,"value","断开");
+        }else{
+            listmodelone.setProperty(4,"value","报警");
+        }
+    }
+    onDcLowCurrentChanged: { listmodelone.setProperty(0,"value",dcLowCurrent) }
+    onDcLowVoltageChanged: { listmodeltwo.setProperty(0,"value",dcLowVoltage) }
+    onDcTempChanged: { listmodelone.setProperty(1,"value",dcTemp) }
+    onDcOvervoltageChanged: { listmodeltwo.setProperty(2,"value",dcOvervoltage) }
+    onDcOverheatingChanged: { listmodelone.setProperty(3,"value",dcOverheating) }
+    onDcUndervoltageChanged: { listmodelone.setProperty(2,"value",dcUndervoltage) }
+    onDcShortCircuitChanged: { listmodeltwo.setProperty(3,"value",dcShortCircuit) }
+    onDcWorkStatusChanged: { listmodeltwo.setProperty(1,"value",dcWorkStatus) }
     ListModel {
         id: listmodelone
-        ListElement { name: "DCDC低压电压";value: "26.9";unit: "V" }
-        ListElement { name: "DCDC温度";value: "24";unit: "℃" }
-        ListElement { name: "DCDC欠压";value: "正常";unit: "" }
-        ListElement { name: "DCDC过热";value: "正常";unit: "" }
-        ListElement { name: "DCDC状态2";value: "工作";unit: "" }
+        ListElement { name: "DCDC低压电压";value: "";unit: "V" }
+        ListElement { name: "DCDC温度";value: "";unit: "℃" }
+        ListElement { name: "DCDC欠压";value: "";unit: "" }
+        ListElement { name: "DCDC过热";value: "";unit: "" }
+        ListElement { name: "DCDC状态2";value: "";unit: "" }
     }
     ListModel {
         id: listmodeltwo
-        ListElement { name: "DCDC低压电流";value: "4.1";unit: "A" }
-        ListElement { name: "DCDC工作状态";value: "启动工作";unit: "" }
-        ListElement { name: "DCDC过压";value: "正常";unit: "" }
-        ListElement { name: "DCDC短路";value: "正常";unit: "" }
+        ListElement { name: "DCDC低压电流";value: "";unit: "A" }
+        ListElement { name: "DCDC工作状态";value: "";unit: "" }
+        ListElement { name: "DCDC过压";value: "";unit: "" }
+        ListElement { name: "DCDC短路";value: "";unit: "" }
     }
     RowLayout {
         width: 560

@@ -26,12 +26,20 @@ function enterSettingSystemAction(settingSystem,settingSystemId,dateYMDHMId){
         for(var i=0;i<dateYMDHMStatusCount;i++){
             if(settingSystem.dateYMDHMStatus[i]){
                 if(i === dateYMDHMStatusCount-1){
-                    console.log("时间设置请求发送...")
+                    var year = dateYMDHMId[2].textValue;
+                    var month = dateYMDHMId[3].textValue;
+                    var day = dateYMDHMId[4].textValue;
+                    var hour = dateYMDHMId[0].textValue;
+                    var miniute = dateYMDHMId[1].textValue;
+                    var date = new Date( year + '-' + month + '-' + day + ' ' + hour +':' + miniute +':00');
+                    var timestamp = date.getTime()/1000;
+                    CarMsg.sendDateTime(timestamp);
                     settingSystem.dateYMDHMStatus[i] = false;
                     dateYMDHMId[i].fontColor = "#ffffff";
                     settingSystem.dateYMDHMStatus[0] = true;
                     dateYMDHMId[0].fontColor = "#00deff";
-                    settingSystem.settingSystemStatus = [true,false,false];
+                    settingSystem.settingSystemStatus = [false,false,true];
+                    console.log("时间设置请求发送...时间戳：" + timestamp);
                 }else{
                     settingSystem.dateYMDHMStatus[i] = false;
                     dateYMDHMId[i].fontColor = "#ffffff";
@@ -47,6 +55,7 @@ function enterSettingSystemAction(settingSystem,settingSystemId,dateYMDHMId){
  * 设置页面Return键功能实现
  */
 function returnSettingSystemAction(settingSystem,dateYMDHMId,menuLayerId,parentMenuId) {
+    /*
     if(!settingSystem.settingSystemStatus[0]){
         var dateYMDHMStatusCount = settingSystem.dateYMDHMStatus.length;
         settingSystem.settingSystemStatus = [true,false,false];
@@ -57,8 +66,10 @@ function returnSettingSystemAction(settingSystem,dateYMDHMId,menuLayerId,parentM
         settingSystem.dateYMDHMStatus[0] = true;
         dateYMDHMId[0].fontColor = "#00deff";
     }else{
-        returnMenuPanel(menuLayerId,parentMenuId)
+        returnMenuPanel(menuLayerId,parentMenuId);
     }
+    */
+    returnMenuPanel(menuLayerId,parentMenuId)
 }
 /*
  * 设置UI翻页切换功能

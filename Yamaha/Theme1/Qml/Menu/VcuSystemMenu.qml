@@ -12,23 +12,56 @@ MenuItem {
     parentMenuId: "MenuPanel"
     visible: false
 
+    property var carLoadTitleArray: ["整车控制系统","整车控制系统诊断页面"]
+    property int carLoadCurrentIndex: 0
     property bool bKeyEnable: false
 
     hideMenu: function(){
         if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
             bKeyEnable = false;
+            carLoadCurrentIndex = 0;
         }
+    }
+    previousMenu: function(){
+        if(bKeyEnable){
+            if(carLoadCurrentIndex === 0){
+                carLoadCurrentIndex = carLoadTitleArray.length-1;
+            }else{
+                carLoadCurrentIndex--;
+            }
+        }else{}
+    }
+    nextMenu: function(){
+        if(bKeyEnable){
+            if(carLoadCurrentIndex === carLoadTitleArray.length-1){
+                carLoadCurrentIndex = 0;
+            }else{
+                carLoadCurrentIndex++;
+            }
+        }else{}
     }
     TextFieldWeir {
         id: title
-        textValue: "整车系统信息"
+        textValue: carLoadTitleArray[carLoadCurrentIndex]
         width: 150
         height: 30
         fontSize: 15
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 110
+    }
+    TurnPageWeir {
+        id: turn_page
+        width: 100
+        height: 30
+        anchors.right: parent.right
+        anchors.rightMargin: 360
+        anchors.top: parent.top
+        anchors.topMargin: 110
+        fontSize: 15
+        currentPageIndex: (carLoadCurrentIndex+1)//"1"
+        totalPageCount: carLoadTitleArray.length
     }
     ListModel {
         id: listmodelone
@@ -58,6 +91,46 @@ MenuItem {
         ListElement { name: "故障报警形式";value: "正常";unit: "" }
         ListElement { name: "档位驱动模式";value: "直驱模式";unit: "" }
     }
+    ListModel {
+        id: listmodelthree
+        ListElement { name: "驱动系统故障报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动控制器过压报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动控制器欠压报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "驱动控制器编码器故障";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动控制器高温报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "驱动控制器高温截止报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动控制器主接触器故障";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动控制器过流报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动电机高温报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "驱动电机高温截止报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动电机旋转故障报警";value: "";unit: "";checkstatus: true }
+    }
+    ListModel {
+        id: listmodelfour
+        ListElement { name: "驱动电机功率受限报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动电机转矩首先报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "驱动电机水温过高报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "加速踏板信号值异常报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "刹车踏板信号值异常报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "安全带报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "座椅开关报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "右侧舱门开启报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "左侧舱门开启报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "司机门未关报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "高压开关门开启报警";value: "";unit: "";checkstatus: true }
+    }
+    ListModel {
+        id: listmodelfive
+        ListElement { name: "充电门开启报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "安全门开启报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "低压开关门开启报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "ABS系统故障";value: "";unit: "";checkstatus: false }
+        ListElement { name: "空压机控制器高温报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "空压机电机高温报警";value: "";unit: "";checkstatus: false }
+        ListElement { name: "助力泵控制器高温报警";value: "";unit: "";checkstatus: true }
+        ListElement { name: "助力泵电机高温报警";value: "";unit: "";checkstatus: true }
+    }
+    //整车控制系统
     RowLayout {
         width: 560
         height: 360
@@ -65,6 +138,7 @@ MenuItem {
         anchors.top: parent.top
         anchors.topMargin: 150
         spacing: 50
+        visible: carLoadCurrentIndex === 0 ? true : false
         ListViewWeir {
             listModel: listmodelone
             width: parent.width/2-70
@@ -85,6 +159,113 @@ MenuItem {
             titleColorList: "#00a7f5"
             listViewSpacing: 25
             unitWidthList: 40
+        }
+    }
+    //整车控制诊断信息
+    RowLayout {
+        width: 560
+        height: 360
+        visible: carLoadCurrentIndex === 1 ? true : false
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: -20
+        anchors.top: parent.top
+        anchors.topMargin: 150
+        spacing: 20
+        ColumnLayout {
+            width: parent.width/3
+            height: parent.height
+            spacing: -5
+            Repeater {
+                width: parent.width
+                height: parent.height
+                model: listmodelthree
+                delegate: TextRadioWeir {
+                    width: 180
+                    height: 30
+                    radioType: 1
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    checkRadioStatus: checkstatus
+                    fontSize: 12
+                }
+            }
+        }
+        ColumnLayout {
+            width: parent.width/3
+            height: parent.height
+            spacing: -5
+            Repeater {
+                width: parent.width
+                height: parent.height
+                model: listmodelfour
+                delegate: TextRadioWeir {
+                    width: 180
+                    height: 30
+                    radioType: 1
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    checkRadioStatus: checkstatus
+                    fontSize: 12
+                }
+            }
+        }
+        ColumnLayout {
+            width: parent.width/3
+            height: parent.height
+            spacing: -5
+            Repeater {
+                width: parent.width
+                height: parent.height
+                model: listmodelfive
+                delegate: TextRadioWeir {
+                    width: 180
+                    height: 30
+                    radioType: 1
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    checkRadioStatus: checkstatus
+                    fontSize: 12
+                }
+            }
+            ColumnLayout{
+                anchors.top: parent.top
+                anchors.topMargin: 200
+                anchors.right: parent.right
+                spacing: -5
+                TextValueWeir {
+                    width: 180
+                    height: 30
+                    textTitle: "VCU程序版本号"
+                    textValue: "00.00"
+                    unitValue: ""
+                    titleColor: "#00a7f5"
+                    textWidth: 180
+                    fontSize: 12
+                }
+                TextValueWeir {
+                    width: 180
+                    height: 30
+                    textTitle: "VCU系统Life值"
+                    textValue: "000"
+                    unitValue: ""
+                    titleColor: "#00a7f5"
+                    textWidth: 180
+                    fontSize: 12
+                }
+                TextValueWeir {
+                    width: 180
+                    height: 30
+                    textTitle: "沂星CAN通信协议"
+                    textValue: "5.2"
+                    unitValue: ""
+                    titleColor: "#00a7f5"
+                    textWidth: 180
+                    fontSize: 12
+                }
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ MenuItem {
     property string sourceImageUrl: "qrc:/Theme/Theme1/Image/"
     property string menuTipsBackGroundImage: sourceImageUrl + "MenuPanel/menutips.png";
     property var settingSystemId: [listview_setting,listview_theme,date_setting]
-    property var settingSystemStatus: [true,false,false]
+    property var settingSystemStatus: [false,false,true]
     property var dateYMDHMId: [hour,miniute,year,month,day,submit]
     property var dateYMDHMStatus: [true,false,false,false,false,false]
 
@@ -44,12 +44,12 @@ MenuItem {
         running: false
         repeat: false
         onTriggered:{
-            utcMcuDateTime = Qt.formatDateTime(new Date(), "yyyy-MM-dd-hh-mm-ss-ddd").split("-");
+            utcMcuDateTime = Qt.formatDateTime(new Date(CarMsg.dataTime*1000), "yyyy-MM-dd-hh-mm-ss-ddd").split("-");
         }
     }
     TextFieldWeir {
         id: title
-        textValue: "系统设置信息"
+        textValue: "时间设置信息"
         width: 150
         height: 30
         fontSize: 15

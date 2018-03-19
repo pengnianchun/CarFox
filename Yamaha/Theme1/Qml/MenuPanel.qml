@@ -164,16 +164,16 @@ MenuItem {
                 displayText = qsTr("仪表系统信息");
                 break;
             case 3:
-                displayText = qsTr("灯光调节信息");
+                displayText = qsTr("亮度调节信息");
                 break;
             case 4:
-                displayText = qsTr("电机电池信息");
+                displayText = qsTr("动力电池信息");
                 break;
             case 5:
                 displayText = qsTr("杂项信息查询");
                 break;
             case 6:
-                displayText = qsTr("系统设置信息");
+                displayText = qsTr("时间设置信息");
                 break;
             case 7:
                 displayText = qsTr("胎压检测信息");

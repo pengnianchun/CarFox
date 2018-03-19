@@ -429,10 +429,10 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(bool, ecasKneelingStatusLed, true)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, ecasSpecialHeightLed, true)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, dropOffDoorbell, true)
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, wait, true)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, wait, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, frontDoorExigencyAlarm, true)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, middleDoorExigencyAlarm, true)
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, stop, true)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, stop, false)
     //胎压模块信息
     MEMBER_PROPERTY_WITH_NOTIFY(float, frontLeftTirePress, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, fronRightTirePress, 0)

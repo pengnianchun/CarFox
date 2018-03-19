@@ -154,6 +154,8 @@
         <file>Theme1/Image/HomePanel/baseBar.png</file>
         <file>Theme1/Image/HomePanel/batteryValue.png</file>
         <file>Theme1/Image/HomePanel/ready.png</file>
+		<file>Theme1/Image/HomePanel/stop.png</file>
+		<file>Theme1/Image/HomePanel/wait.png</file>
         <file>Theme1/Image/HomePanel/socValue.png</file>
         <file>Theme1/Image/HomePanel/socBg.png</file>
         <file>Theme1/Image/HomePanel/batteryBg.png</file>

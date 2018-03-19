@@ -28,8 +28,8 @@ Item {
     Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: CarMsg.airPress1Lamp ? 1.0 : 0 }
     //左前蹄片磨损报警
     Image { id: lamp_leftFriction; x: 570; y: 22; source: sourceImageUrl + "Lamp_leftFriction.png"; opacity: CarMsg.lampLeftShoeWear ? 1.0 : 0 }
-    //制动脚刹
-    Image { id: lamp_backCabin; x: 631; y: 20; source: sourceImageUrl + "Lamp_backCabin.png"; opacity: CarMsg.lampBrake ? 1.0 : 0 }
+    //后仓门
+    Image { id: lamp_backCabin; x: 631; y: 20; source: sourceImageUrl + "Lamp_backCabin.png"; opacity: CarMsg.lampRearDoorOpen ? 1.0 : 0 }
     //危险报警指示
     Image { id: lamp_danger; x: 690; y: 20; source: sourceImageUrl + "Lamp_danger.png"; opacity: CarMsg.lampWarningLed ? 1.0 : 0 }
     //低水位报警

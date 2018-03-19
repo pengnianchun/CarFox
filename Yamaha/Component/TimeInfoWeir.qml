@@ -13,9 +13,9 @@ Item {
     property string week   : "Mon"
     property string textDateTime : ""
     property string tempValue : ""
-    property real utcDateTime : 1516251482;
-    property real utcLocalDateTime : 1516251482;
-    property int utcMcuDateTime: -1;//CarStatus.dateTime
+    property real utcDateTime : 1521440581;
+    property real utcLocalDateTime : 1521440581;
+    property int utcMcuDateTime: CarMsg.dateTime;
     property real dateFontSize: 18
     property bool timerDate: true
     property string dateValue: ""
