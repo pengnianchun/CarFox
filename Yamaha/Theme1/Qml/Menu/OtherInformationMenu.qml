@@ -33,7 +33,7 @@ MenuItem {
         width: 200
         height: 30
         textTitle: "速比"
-        textValue: "1500"
+        textValue: CarMsg.velocityRatio.toFixed(0)
         unitValue: ""
         titleColor: "#00a7f5"
         textWidth: 400
@@ -44,7 +44,7 @@ MenuItem {
         leftAlignStatus: true
     }
     TextValueWeir {
-        property bool hummerStatus: true
+        property bool hummerStatus: CarMsg.buzzerStatus
         width: 200
         height: 30
         textTitle: "蜂鸣器"

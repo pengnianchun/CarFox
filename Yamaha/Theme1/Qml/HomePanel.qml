@@ -23,19 +23,19 @@ CommonItem {
     property string gearImageUrl: sourceImageUrl + "P.png"
     //车速初始值/蓄电池电压
     property int speedTotal: 180;
-    property int carSpeedValue: CarMsg.carSpeed;//0;
+    property int carSpeedValue: CarMsg.carSpeed;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: CarMsg.battery//16;
-    property int batteryValueStart: 0
+    property int batteryValue: CarMsg.battery
+    property int batteryValueStart: 16
     //档位初始值
-    property real gearValue: CarMsg.gear//0;
+    property real gearValue: CarMsg.gear
     //发动机转速/soc充电状态
     property int engineTotalSpeed: 100;
-    property int engineSpeedValue: CarMsg.rpm;//0;
+    property int engineSpeedValue: CarMsg.rpm;
     property int engineSpeedValueStart: 0;
     property int socTotalValue: 100;
-    property int socValue: CarMsg.soc;//0;
+    property int socValue: CarMsg.soc;
     property int socValueStart: 0
     //报警计数
     property int alarmCode: CarMsg.warningId;//0
@@ -119,7 +119,7 @@ CommonItem {
     onBatteryValueChanged: {
         if(typeof batteryValue === 'number' && batteryValue%1 === 0){
             setBatteryValue();
-            battery_panel.width = (batteryValue/batteryTotalValue)*260;
+            battery_panel.width = (batteryValue-16)/(batteryTotalValue-16)*260;
         }else{}
     }
     function setBatteryValue(){
@@ -229,7 +229,7 @@ CommonItem {
                 SequentialAnimation {
                     NumberAnimation { target: homeIndex; property: "batteryValue"; to:batteryTotalValue; duration: 0 }
                     PauseAnimation { duration: 1500 }
-                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:0; duration: 0 }
+                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:16; duration: 0 }
                 }
                 SequentialAnimation {
                     NumberAnimation { target: homeIndex; property: "socValue"; to:socTotalValue; duration: 0 }
@@ -270,19 +270,19 @@ CommonItem {
     Image {
         id: readyStatus
         x: 623; y: 96
-        visible: CarMsg.ready
+        visible: homeIndex.state === "normal" ? CarMsg.ready : false
         source: sourceImageUrl + "ready.png"
     }
     Image {
         id: stopStatus
         x: 623; y: 96
-        visible: CarMsg.wait
+        visible: homeIndex.state === "normal" ? CarMsg.wait : false
         source: sourceImageUrl + "wait.png"
     }
     Image {
         id: waitStatus
         x: 623; y: 96
-        visible: CarMsg.stop
+        visible: homeIndex.state === "normal" ? CarMsg.stop : false
         source: sourceImageUrl + "stop.png"
     }
     Image {
@@ -303,7 +303,7 @@ CommonItem {
                 TextFieldWeir {
                     id: rpmNum
                     anchors.centerIn: parent
-                    textValue: engineSpeedValue > engineTotalSpeed ? engineTotalSpeed : engineSpeedValue
+                    textValue: engineSpeedValue > engineTotalSpeed ? engineTotalSpeed.toFixed(0) : engineSpeedValue.toFixed(0)
                     fontSize: 90
                 }
             }
@@ -328,7 +328,7 @@ CommonItem {
                 id: soValue
                 x: 82
                 y: 47
-                textValue: socValue > socTotalValue ? socTotalValue : socValue
+                textValue: socValue > socTotalValue ? socTotalValue.toFixed(0) : socValue.toFixed(0)
                 fontColor: "#18fd00"
             }
         }
@@ -368,7 +368,7 @@ CommonItem {
                 TextFieldWeir {
                     id: speedNum
                     anchors.centerIn: parent
-                    textValue: carSpeedValue > speedTotal ? speedTotal : carSpeedValue
+                    textValue: carSpeedValue > speedTotal ? speedTotal.toFixed(0) : carSpeedValue.toFixed(0)
                     fontSize: 90
                 }
             }
@@ -392,7 +392,7 @@ CommonItem {
             TextFieldWeir {
                 id: batValue
                 x: 62; y: 25
-                textValue: batteryValue > batteryTotalValue ? batteryTotalValue : batteryValue
+                textValue: batteryValue > batteryTotalValue ? batteryTotalValue.toFixed(0) : batteryValue.toFixed(0)
                 fontSize: 24
             }
         }

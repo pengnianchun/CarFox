@@ -586,7 +586,6 @@ private slots:
     void updateHighVoltageInterlock(bool value);
     void updateHighVoltagePowerUp(bool value);
     void updateAirCompressorWork(bool value);
-
     void updateBoosterPumpWork(bool value);
     void updateAirCompressorMotorSpeed(uint value);
     void updateSteeringAssistMotorSpeed(uint value);

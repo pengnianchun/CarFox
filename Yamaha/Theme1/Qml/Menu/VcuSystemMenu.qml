@@ -15,6 +15,30 @@ MenuItem {
     property var carLoadTitleArray: ["整车控制系统","整车控制系统诊断页面"]
     property int carLoadCurrentIndex: 0
     property bool bKeyEnable: false
+    /*
+    property string updateDriveSystemStatus: CarMsg.updateDriveSystemStatus
+    property string updateDriveMotorStatus: CarMsg.updateDriveMotorStatus
+    property string updateMechanicalBrakeStatus: CarMsg.updateMechanicalBrakeStatus
+    property string updateKeyAcc: CarMsg.updateKeyAcc
+    property string updateKeyOn: CarMsg.updateKeyOn
+    property string updateHighVoltageInterlock: CarMsg.updateHighVoltageInterlock
+    property string updateHighVoltagePowerUp: CarMsg.updateHighVoltagePowerUp
+    property string updateAirCompressorWork: CarMsg.updateAirCompressorWork
+    property string updateBoosterPumpWork: CarMsg.updateBoosterPumpWork
+    property string updateAirCompressorMotorSpeed: CarMsg.updateAirCompressorMotorSpeed
+    property string updateSteeringAssistMotorSpeed: CarMsg.updateSteeringAssistMotorSpeed
+    property string updateSteeringAssistMotorTemp: CarMsg.updateSteeringAssistMotorTemp
+    property string updateAirCompressorMotorTemp: CarMsg.updateAirCompressorMotorTemp
+    property string updateAirCompressorControlTemp: CarMsg.updateAirCompressorControlTemp
+    property string updateSteeringControlDeviceTemp: CarMsg.updateSteeringControlDeviceTemp
+    property string updateAirPress3: CarMsg.updateAirPress3
+    property string updateAirPress4: CarMsg.updateAirPress4
+    property string updateAirPress5: CarMsg.updateAirPress5
+    property string updateHighestAlarmGrade: CarMsg.updateHighestAlarmGrade
+    property string updateFaultAlarmSituation: CarMsg.updateFaultAlarmSituation
+    property string updateDriveGearsMode: CarMsg.updateDriveGearsMode
+    property string updateBduSwitch: CarMsg.updateBduSwitch
+    */
 
     hideMenu: function(){
         if(bKeyEnable){
@@ -60,7 +84,7 @@ MenuItem {
         anchors.top: parent.top
         anchors.topMargin: 110
         fontSize: 15
-        currentPageIndex: (carLoadCurrentIndex+1)//"1"
+        currentPageIndex: (carLoadCurrentIndex+1)
         totalPageCount: carLoadTitleArray.length
     }
     ListModel {
@@ -150,6 +174,8 @@ MenuItem {
             listViewSpacing: 25
         }
         ListViewWeir {
+            anchors.top: parent.top
+            anchors.topMargin: 50
             listModel: listmodeltwo
             width: parent.width/2-70
             height: parent.height
