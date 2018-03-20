@@ -92,6 +92,9 @@ void CustomCarMsgWorker::registerCallback()
     mHandler.registerMsgCallback(fySystemSettingsInfo::MilesClearSettings::descriptor(), bind(&CustomCarMsgWorker::handleMilesClear, this, _1));
     mHandler.registerMsgCallback(fySystemSettingsInfo::UpgradeSettings::descriptor(), bind(&CustomCarMsgWorker::handleProtoUpgradeNotify, this, _1));
     mHandler.registerMsgCallback(fySystemSettingsInfo::CloseBuzzerSettings::descriptor(), bind(&CustomCarMsgWorker::handleProtoCloseBuzzer, this, _1));
+    mHandler.registerMsgCallback(fySystemSettingsInfo::DateTimeVerify::descriptor(), bind(&CustomCarMsgWorker::handleProtoDateTimeVerify, this, _1));
+    mHandler.registerMsgCallback(fySystemSettingsInfo::MilesClearVerify::descriptor(), bind(&CustomCarMsgWorker::handleProtoMilesClearVerify, this, _1));
+    mHandler.registerMsgCallback(fySystemSettingsInfo::CloseBuzzerVerify::descriptor(), bind(&CustomCarMsgWorker::handleProtoCloseBuzzerVerify, this, _1));
     //控制系统信息
     mHandler.registerMsgCallback(fyControlSystemInfo::ControlSystemMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoControlSystemMenuInfo, this, _1));
     //仪表信息
@@ -258,7 +261,7 @@ void CustomCarMsgWorker::handleCustomInfoFrame(const carfox::MessagePtr &msg)
     updateStates<qint32>(mStateData.batteryLowTemperature.data, p->battery_low_temperature(), [this](qint32 value) {
         emit this->batteryLowTemperatureChanged(value);
     });
-    updateStates<qint32>(mStateData.batteryPackEnergy.data, p->battery_pack_energy(), [this](qint32 value) {
+    updateStates<float>(mStateData.batteryPackEnergy.data, p->battery_pack_energy(), [this](float value) {
         emit this->batteryPackEnergyChanged(value);
     });
 }
@@ -281,6 +284,13 @@ void CustomCarMsgWorker::handleProtoDatetime(const carfox::MessagePtr &msg)
         emit this->dateTimeChanged(value);
     });
 }
+void CustomCarMsgWorker::handleProtoDateTimeVerify(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fySystemSettingsInfo::DateTimeVerify> p = carfox::down_pointer_cast<fySystemSettingsInfo::DateTimeVerify>(msg);
+    updateStates<bool>(mStateData.checkDateTimeSetting.data, p->check_date_time(), [this](bool value) {
+        emit this->checkDateTimeChanged(value);
+    });
+}
 //里程清零
 void CustomCarMsgWorker::handleMilesClear(const carfox::MessagePtr &msg)
 {
@@ -288,6 +298,10 @@ void CustomCarMsgWorker::handleMilesClear(const carfox::MessagePtr &msg)
     updateStates<bool>(mStateData.tripMilesClear.data, p->trip_miles_clear(), [this](bool value) {
         emit this->tripMilesClearChanged(value);
     });
+}
+void CustomCarMsgWorker::handleProtoMilesClearVerify(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fySystemSettingsInfo::MilesClearVerify> p = carfox::down_pointer_cast<fySystemSettingsInfo::MilesClearVerify>(msg);
     updateStates<bool>(mStateData.checkMilesClear.data, p->check_miles_clear(), [this](bool value) {
         emit this->checkMilesClearChanged(value);
     });
@@ -309,6 +323,10 @@ void CustomCarMsgWorker::handleProtoCloseBuzzer(const carfox::MessagePtr &msg)
     updateStates<bool>(mStateData.closeBuzzerClear.data, p->close_buzzer(), [this](bool value) {
         emit this->closeBuzzerClearChanged(value);
     });
+}
+void CustomCarMsgWorker::handleProtoCloseBuzzerVerify(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fySystemSettingsInfo::CloseBuzzerVerify> p = carfox::down_pointer_cast<fySystemSettingsInfo::CloseBuzzerVerify>(msg);
     updateStates<bool>(mStateData.checkCloseBuzzerClear.data, p->check_close_buzzer(), [this](bool value) {
         emit this->checkCloseBuzzerClearChanged(value);
     });
@@ -389,22 +407,22 @@ void CustomCarMsgWorker::handleProtoControlSystemMenuInfo(const carfox::MessageP
     updateStates<bool>(mStateData.boosterPumpWork.data, p->booster_pump_work(), [this](bool value) {
         emit this->boosterPumpWorkChanged(value);
     });
-    updateStates<quint32>(mStateData.airCompressorMotorSpeed.data, p->air_compressor_motor_speed(), [this](quint32 value) {
+    updateStates<float>(mStateData.airCompressorMotorSpeed.data, p->air_compressor_motor_speed(), [this](float value) {
         emit this->airCompressorMotorSpeedChanged(value);
     });
-    updateStates<quint32>(mStateData.steeringAssistMotorSpeed.data, p->steering_assist_motor_speed(), [this](quint32 value) {
+    updateStates<float>(mStateData.steeringAssistMotorSpeed.data, p->steering_assist_motor_speed(), [this](float value) {
         emit this->steeringAssistMotorSpeedChanged(value);
     });
-    updateStates<quint32>(mStateData.steeringAssistMotorTemp.data, p->steering_assist_motor_temp(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.steeringAssistMotorTemp.data, p->steering_assist_motor_temp(), [this](qint32 value) {
         emit this->steeringAssistMotorTempChanged(value);
     });
-    updateStates<quint32>(mStateData.airCompressorMotorTemp.data, p->air_compressor_motor_temp(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.airCompressorMotorTemp.data, p->air_compressor_motor_temp(), [this](qint32 value) {
         emit this->airCompressorMotorTempChanged(value);
     });
-    updateStates<quint32>(mStateData.airCompressorControlTemp.data, p->air_compressor_control_temp(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.airCompressorControlTemp.data, p->air_compressor_control_temp(), [this](qint32 value) {
         emit this->airCompressorControlTempChanged(value);
     });
-    updateStates<quint32>(mStateData.steeringControlDeviceTemp.data, p->steering_control_device_temp(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.steeringControlDeviceTemp.data, p->steering_control_device_temp(), [this](qint32 value) {
         emit this->steeringControlDeviceTempChanged(value);
     });
     updateStates<float>(mStateData.airPress3.data, p->air_press3(), [this](float value) {
@@ -416,16 +434,16 @@ void CustomCarMsgWorker::handleProtoControlSystemMenuInfo(const carfox::MessageP
     updateStates<float>(mStateData.airPress5.data, p->air_press5(), [this](float value) {
         emit this->airPress5Changed(value);
     });
-    updateStates<quint32>(mStateData.highestAlarmGrade.data, p->highest_alarm_grade(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.highestAlarmGrade.data, p->highest_alarm_grade(), [this](qint32 value) {
         emit this->highestAlarmGradeChanged(value);
     });
-    updateStates<quint32>(mStateData.faultAlarmSituation.data, p->fault_alarm_situation(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.faultAlarmSituation.data, p->fault_alarm_situation(), [this](qint32 value) {
         emit this->faultAlarmSituationChanged(value);
     });
-    updateStates<quint32>(mStateData.driveGearsMode.data, p->drive_gears_mode(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.driveGearsMode.data, p->drive_gears_mode(), [this](qint32 value) {
         emit this->driveGearsModeChanged(value);
     });
-    updateStates<quint32>(mStateData.bduSwitch.data, p->bdu_switch(), [this](quint32 value) {
+    updateStates<qint32>(mStateData.bduSwitch.data, p->bdu_switch(), [this](qint32 value) {
         emit this->bduSwitchChanged(value);
     });
 }
@@ -1151,7 +1169,7 @@ void CustomCarMsgWorker::handleProtoBatteryManageSystemMenuInfo(const carfox::Me
     updateStates<qint32>(mStateData.batteryPackMinTemp.data, p->battery_pack_min_temp(), [this](qint32 value) {
         emit this->batteryPackMinTempChanged(value);
     });
-    updateStates<float>(mStateData.batteryManagePackEnergy.data, p->battery_pack_energy(), [this](float value) {
+    updateStates<float>(mStateData.batteryManagePackEnergy.data, p->battery_pack_elec(), [this](float value) {
         emit this->batteryManagePackEnergyChanged(value);
     });
     updateStates<qint32>(mStateData.bmsControlStatus.data, p->bms_control_status(), [this](qint32 value) {
@@ -1280,7 +1298,7 @@ void CustomCarMsgWorker::handleProtoDcStatusMessageMenuInfo(const carfox::Messag
     updateStates<qint32>(mStateData.dcTemp.data, p->dc_temp(), [this](qint32 value) {
         emit this->dcTempChanged(value);
     });
-    updateStates<qint32>(mStateData.dcStatus2.data, p->dc_status2(), [this](qint32 value) {
+    updateStates<qint32>(mStateData.dcStatus2.data, p->dc_status(), [this](qint32 value) {
         emit this->dcStatus2Changed(value);
     });
     updateStates<bool>(mStateData.dcUndervoltage.data, p->dc_undervoltage(), [this](bool value) {

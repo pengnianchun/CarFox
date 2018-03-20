@@ -58,6 +58,7 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::upgradeMsgCtxChanged, this, &CustomCarMsg::updateUpgradeMsgCtx);
     connect(worker, &CustomCarMsgWorker::closeBuzzerClearChanged, this, &CustomCarMsg::updateCloseBuzzerClear);
     connect(worker, &CustomCarMsgWorker::checkCloseBuzzerClearChanged, this, &CustomCarMsg::updateCheckCloseBuzzerClear);
+    connect(worker, &CustomCarMsgWorker::checkDateTimeChanged, this, &CustomCarMsg::updateCheckDateTimeSetting);
     //控制模块信息
     connect(worker, &CustomCarMsgWorker::motorInVoltageChanged, this, &CustomCarMsg::updateMotorInVoltage);
     connect(worker, &CustomCarMsgWorker::motorInCurrentChanged, this, &CustomCarMsg::updateMotorInCurrent);
@@ -623,7 +624,7 @@ void CustomCarMsg::updateBatteryHighTemperature(int value) {
 void CustomCarMsg::updateBatteryLowTemperature(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batteryLowTemperature, value);
 }
-void CustomCarMsg::updateBatteryPackEnergy(int value) {
+void CustomCarMsg::updateBatteryPackEnergy(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batteryPackEnergy, value);
 }
 void CustomCarMsg::updateVelocityRatio(int value) {
@@ -656,6 +657,10 @@ void CustomCarMsg::updateCloseBuzzerClear(bool data)
 void CustomCarMsg::updateCheckCloseBuzzerClear(bool data)
 {
     MEMBER_PROPERTY_VALUE_CHANGED(checkCloseBuzzerClear, data);
+}
+void CustomCarMsg::updateCheckDateTimeSetting(bool data)
+{
+    MEMBER_PROPERTY_VALUE_CHANGED(checkDateTimeSetting, data);
 }
 //控制系统信息
 void CustomCarMsg::updateMotorInVoltage(float value) {
@@ -730,22 +735,22 @@ void CustomCarMsg::updateAirCompressorWork(bool value) {
 void CustomCarMsg::updateBoosterPumpWork(bool value) {
     MEMBER_PROPERTY_VALUE_CHANGED(boosterPumpWork, value);
 }
-void CustomCarMsg::updateAirCompressorMotorSpeed(uint value) {
+void CustomCarMsg::updateAirCompressorMotorSpeed(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(airCompressorMotorSpeed, value);
 }
-void CustomCarMsg::updateSteeringAssistMotorSpeed(uint value) {
+void CustomCarMsg::updateSteeringAssistMotorSpeed(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(steeringAssistMotorSpeed, value);
 }
-void CustomCarMsg::updateSteeringAssistMotorTemp(uint value) {
+void CustomCarMsg::updateSteeringAssistMotorTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(steeringAssistMotorTemp, value);
 }
-void CustomCarMsg::updateAirCompressorMotorTemp(uint value) {
+void CustomCarMsg::updateAirCompressorMotorTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(airCompressorMotorTemp, value);
 }
-void CustomCarMsg::updateAirCompressorControlTemp(uint value) {
+void CustomCarMsg::updateAirCompressorControlTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(airCompressorControlTemp, value);
 }
-void CustomCarMsg::updateSteeringControlDeviceTemp(uint value) {
+void CustomCarMsg::updateSteeringControlDeviceTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(steeringControlDeviceTemp, value);
 }
 void CustomCarMsg::updateAirPress3(float value) {
@@ -757,16 +762,16 @@ void CustomCarMsg::updateAirPress4(float value) {
 void CustomCarMsg::updateAirPress5(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(airPress5, value);
 }
-void CustomCarMsg::updateHighestAlarmGrade(uint value) {
+void CustomCarMsg::updateHighestAlarmGrade(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(highestAlarmGrade, value);
 }
-void CustomCarMsg::updateFaultAlarmSituation(uint value) {
+void CustomCarMsg::updateFaultAlarmSituation(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(faultAlarmSituation, value);
 }
-void CustomCarMsg::updateDriveGearsMode(uint value) {
+void CustomCarMsg::updateDriveGearsMode(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(driveGearsMode, value);
 }
-void CustomCarMsg::updateBduSwitch(uint value) {
+void CustomCarMsg::updateBduSwitch(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(bduSwitch, value);
 }
 //仪表信息

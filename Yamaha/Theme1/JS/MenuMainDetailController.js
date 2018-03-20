@@ -8,6 +8,7 @@ function returnMenuPanel(menuLayerId,parentMenuId){
     UiController.setLayerProperty(parentMenuId, "visible", true);
     UiController.setLayerProperty(parentMenuId, "state", "show");
     UiController.hideRootMenu();
+    CarMsg.sendMenuInfo(0,0);
 }
 /*
  * 设置页面Enter键功能实现
@@ -39,7 +40,8 @@ function enterSettingSystemAction(settingSystem,settingSystemId,dateYMDHMId){
                     settingSystem.dateYMDHMStatus[0] = true;
                     dateYMDHMId[0].fontColor = "#00deff";
                     settingSystem.settingSystemStatus = [false,false,true];
-                    console.log("时间设置请求发送...时间戳：" + timestamp);
+                    console.log("time date send:::::::::::::::::::::::::" + year + '-' + month + '-' + day + ' ' + hour +':' + miniute +':00');
+                    console.log("time stamp:::::::::::::::::::::::::" + timestamp);
                 }else{
                     settingSystem.dateYMDHMStatus[i] = false;
                     dateYMDHMId[i].fontColor = "#ffffff";
@@ -96,10 +98,10 @@ function turnPageStatus(settingSystem,settingSystemId,dateYMDHMId,action){
         var setValueS,setValueE,currentValue;
         if(settingSystem.dateYMDHMStatus[0]){
             currentValue = dateYMDHMId[0].textValue;
-            dateYMDHMId[0].textValue = getDateValue(24,currentValue,action);
+            dateYMDHMId[0].textValue = getDateValue(24,currentValue,action,false);
         }else if(settingSystem.dateYMDHMStatus[1]){
             currentValue = dateYMDHMId[1].textValue;
-            dateYMDHMId[1].textValue = getDateValue(60,currentValue,action);
+            dateYMDHMId[1].textValue = getDateValue(59,currentValue,action,true);
         }else if(settingSystem.dateYMDHMStatus[2]){
             currentValue = dateYMDHMId[2].textValue;
             if(action === "add"){
@@ -112,10 +114,10 @@ function turnPageStatus(settingSystem,settingSystemId,dateYMDHMId,action){
             dateYMDHMId[2].textValue = setValueE;
         }else if(settingSystem.dateYMDHMStatus[3]){
             currentValue = dateYMDHMId[3].textValue;
-            dateYMDHMId[3].textValue = getDateValue(12,currentValue,action);
+            dateYMDHMId[3].textValue = getDateValue(12,currentValue,action,false);
         }else if(settingSystem.dateYMDHMStatus[4]){
             currentValue = dateYMDHMId[4].textValue;
-            dateYMDHMId[4].textValue = getDateValue(31,currentValue,action);
+            dateYMDHMId[4].textValue = getDateValue(31,currentValue,action,false);
         }else if(settingSystem.dateYMDHMStatus[5]){
             console.log("确认...")
         }else{}
@@ -124,7 +126,7 @@ function turnPageStatus(settingSystem,settingSystemId,dateYMDHMId,action){
 /*
  * add reduce 功能
  */
-function getDateValue(scopeValue,currentValue,action){
+function getDateValue(scopeValue,currentValue,action,zero){
     var setValueS,setValueE;
     if(action === "add"){
         if(parseInt(currentValue)<scopeValue){
@@ -133,6 +135,8 @@ function getDateValue(scopeValue,currentValue,action){
             if(setValueS<10){
                 setValueE = "0"+ setValueS;
             }else{}
+        }else if(zero){
+            setValueE = "00";
         }else{
             setValueE = "01";
         }

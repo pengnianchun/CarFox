@@ -16,7 +16,7 @@ MenuItem {
     property string dcLowVoltage: CarMsg.dcLowVoltage.toFixed(1)
     property string dcLowCurrent: CarMsg.dcLowCurrent.toFixed(1)
     property string dcTemp: CarMsg.dcTemp.toFixed(0)
-    property string dcStatus2: CarMsg.dcStatus2.toFixed(0)
+    property string dcStatus: CarMsg.dcStatus2.toFixed(0)
     property string dcUndervoltage: CarMsg.dcUndervoltage ? "正常" : "报警"
     property string dcOvervoltage: CarMsg.dcOvervoltage ? "正常" : "报警"
     property string dcOverheating: CarMsg.dcOverheating ? "正常" : "报警"
@@ -39,10 +39,10 @@ MenuItem {
         anchors.top: parent.top
         anchors.topMargin: 110
     }
-    onDcStatus2Changed: {
-        if(dcTemp === "1"){
+    onDcStatusChanged: {
+        if(dcStatus === "1"){
             listmodelone.setProperty(4,"value","工作");
-        }else if(dcTemp === "2"){
+        }else if(dcStatus === "2"){
             listmodelone.setProperty(4,"value","断开");
         }else{
             listmodelone.setProperty(4,"value","报警");
@@ -62,7 +62,7 @@ MenuItem {
         ListElement { name: "DCDC温度";value: "";unit: "℃" }
         ListElement { name: "DCDC欠压";value: "";unit: "" }
         ListElement { name: "DCDC过热";value: "";unit: "" }
-        ListElement { name: "DCDC状态2";value: "";unit: "" }
+        ListElement { name: "DCDC状态";value: "";unit: "" }
     }
     ListModel {
         id: listmodeltwo

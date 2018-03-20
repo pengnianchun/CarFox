@@ -13,11 +13,10 @@ Item {
     property string week   : "Mon"
     property string textDateTime : ""
     property string tempValue : ""
-    property real utcDateTime : 1521440581;
-    property real utcLocalDateTime : 1521440581;
+    property real utcDateTime : 1514736000;
+    property real utcLocalDateTime : 1514736000;
     property int utcMcuDateTime: CarMsg.dateTime;
     property real dateFontSize: 18
-    property bool timerDate: true
     property string dateValue: ""
 
     TextFieldWeir {
@@ -26,9 +25,8 @@ Item {
         fontSize: dateFontSize
         textValue: dateValue
     }
-
     function currentDateTime(){
-        return Qt.formatDateTime(new Date(), "yyyy-MM-dd-hh-mm-ss-ddd");
+        return "2018-03-20-00-00-00-Mon";//Qt.formatDateTime(new Date(), "yyyy-MM-dd-hh-mm-ss-ddd");
     }
     function currentDateTimeByUTC(milisecond) {
         return Qt.formatDateTime(new Date(milisecond*1000), "yyyy-MM-dd-hh-mm-ss-ddd");
@@ -60,7 +58,7 @@ Item {
     Timer{
         id: timer
         interval: 200
-        repeat: timerDate
+        repeat: true
         onTriggered:{
             textDateTime = (utcMcuDateTime>0) ? currentDateTimeByUTC(utcMcuDateTime) : currentDateTime();
             var textDateTimeArray = textDateTime.split("-");

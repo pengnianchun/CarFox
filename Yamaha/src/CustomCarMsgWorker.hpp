@@ -62,7 +62,7 @@ signals:
     void aloneBatteryHighVoltageChanged(float value);
     void batteryHighTemperatureChanged(int value);
     void batteryLowTemperatureChanged(int value);
-    void batteryPackEnergyChanged(int value);
+    void batteryPackEnergyChanged(float value);
     void velocityRatioChanged(int value);
     void buzzerStatusChanged(bool value);
     //设置模块信息
@@ -72,6 +72,7 @@ signals:
     void upgradeMsgCtxChanged(QString upgradeMsgCtx);
     void closeBuzzerClearChanged(bool value);
     void checkCloseBuzzerClearChanged(bool value);
+    void checkDateTimeChanged(bool value);
     //控制模块信息
     void motorInVoltageChanged(float value);
     void motorInCurrentChanged(float value);
@@ -97,8 +98,8 @@ signals:
     void highVoltagePowerUpChanged(bool value);
     void airCompressorWorkChanged(bool value);
     void boosterPumpWorkChanged(bool value);
-    void airCompressorMotorSpeedChanged(int value);
-    void steeringAssistMotorSpeedChanged(int value);
+    void airCompressorMotorSpeedChanged(float value);
+    void steeringAssistMotorSpeedChanged(float value);
     void steeringAssistMotorTempChanged(int value);
     void airCompressorMotorTempChanged(int value);
     void airCompressorControlTempChanged(int value);
@@ -556,6 +557,9 @@ private:
     void handleMilesClear(const carfox::MessagePtr &msg);
     void handleProtoUpgradeNotify(const carfox::MessagePtr &msg);
     void handleProtoCloseBuzzer(const carfox::MessagePtr &msg);
+    void handleProtoDateTimeVerify(const carfox::MessagePtr &msg);
+    void handleProtoMilesClearVerify(const carfox::MessagePtr &msg);
+    void handleProtoCloseBuzzerVerify(const carfox::MessagePtr &msg);
     //控制系统信息
     void handleProtoControlSystemMenuInfo(const carfox::MessagePtr &msg);
     //仪表信息
@@ -596,9 +600,6 @@ private:
     void handleProtoPicLampFrameInfo(const carfox::MessagePtr &msg);
     //胎压监测系统
     void handleProtoTirePressInfoFrameInfo(const carfox::MessagePtr &msg);
-    //请求菜单信息
-    //void menuInfoRequest(const carfox::MessagePtr &msg);
-    //void yxMenuIdRequest(const carfox::MessagePtr &msg);
     //胎压监测系统
     void handleProtoControlSystemDiagnoseMenuInfo(const carfox::MessagePtr &msg);
     //动力电池诊断系统信息

@@ -36,16 +36,17 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, aloneBatteryHighVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, batteryHighTemperature, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, batteryLowTemperature, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, batteryPackEnergy, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(float, batteryPackEnergy, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, velocityRatio, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, buzzerStatus, true)
     //设置模块信息
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, tripMilesClear, true)
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, checkMilesClear, true)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, tripMilesClear, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, checkMilesClear, false)
     MEMBER_PROPERTY_WITH_NOTIFY(int, upgradeMsgId, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(QString, upgradeMsgCtx, "")
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, closeBuzzerClear, true)
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, checkCloseBuzzerClear, true)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, closeBuzzerClear, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, checkCloseBuzzerClear, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, checkDateTimeSetting, false)
     //控制系统信息
     MEMBER_PROPERTY_WITH_NOTIFY(float, motorInVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, motorInCurrent, 0)
@@ -71,19 +72,19 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(bool, highVoltagePowerUp, true)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, airCompressorWork, true)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, boosterPumpWork, true)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, airCompressorMotorSpeed, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, steeringAssistMotorSpeed, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, steeringAssistMotorTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, airCompressorMotorTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, airCompressorControlTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, steeringControlDeviceTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(float, airCompressorMotorSpeed, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(float, steeringAssistMotorSpeed, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, steeringAssistMotorTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, airCompressorMotorTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, airCompressorControlTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, steeringControlDeviceTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, airPress3, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, airPress4, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, airPress5, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, highestAlarmGrade, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, faultAlarmSituation, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, driveGearsMode, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, bduSwitch, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, highestAlarmGrade, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, faultAlarmSituation, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, driveGearsMode, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, bduSwitch, 0)
     //仪表信息
     MEMBER_PROPERTY_WITH_NOTIFY(bool, inputCtrl01, true)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, inputCtrl02, true)
@@ -552,7 +553,7 @@ private slots:
     void updateAloneBatteryHighVoltage(float value);
     void updateBatteryHighTemperature(int value);
     void updateBatteryLowTemperature(int value);
-    void updateBatteryPackEnergy(int value);
+    void updateBatteryPackEnergy(float value);
     void updateVelocityRatio(int value);
     void updateVuzzerStatus(bool value);
     //设置模块信息
@@ -562,6 +563,7 @@ private slots:
     void updateUpgradeMsgCtx(QString data);
     void updateCloseBuzzerClear(bool data);
     void updateCheckCloseBuzzerClear(bool data);
+    void updateCheckDateTimeSetting(bool data);
     //控制系统信息
     void updateMotorInVoltage(float value);
     void updateMotorInCurrent(float value);
@@ -587,19 +589,19 @@ private slots:
     void updateHighVoltagePowerUp(bool value);
     void updateAirCompressorWork(bool value);
     void updateBoosterPumpWork(bool value);
-    void updateAirCompressorMotorSpeed(uint value);
-    void updateSteeringAssistMotorSpeed(uint value);
-    void updateSteeringAssistMotorTemp(uint value);
-    void updateAirCompressorMotorTemp(uint value);
-    void updateAirCompressorControlTemp(uint value);
-    void updateSteeringControlDeviceTemp(uint value);
+    void updateAirCompressorMotorSpeed(float value);
+    void updateSteeringAssistMotorSpeed(float value);
+    void updateSteeringAssistMotorTemp(int value);
+    void updateAirCompressorMotorTemp(int value);
+    void updateAirCompressorControlTemp(int value);
+    void updateSteeringControlDeviceTemp(int value);
     void updateAirPress3(float value);
     void updateAirPress4(float value);
     void updateAirPress5(float value);
-    void updateHighestAlarmGrade(uint value);
-    void updateFaultAlarmSituation(uint value);
-    void updateDriveGearsMode(uint value);
-    void updateBduSwitch(uint value);
+    void updateHighestAlarmGrade(int value);
+    void updateFaultAlarmSituation(int value);
+    void updateDriveGearsMode(int value);
+    void updateBduSwitch(int value);
     //仪表信息
     void updateInputCtrl01(bool value);
     void updateInputCtrl02(bool value);

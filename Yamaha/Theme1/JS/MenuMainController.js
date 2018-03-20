@@ -30,6 +30,8 @@ function showMenuDetail(menuCurrentIndex){
         UiController.showLayer("TirePressureMenu");
         UiController.setLayerProperty("TirePressureMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 8){
+        CarMsg.sendMenuInfo(21,0);
+        CarMsg.sendMenuInfo(22,0);
         UiController.showLayer("VcuSystemMenu");
         UiController.setLayerProperty("VcuSystemMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 9){

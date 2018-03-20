@@ -117,7 +117,7 @@ CommonItem {
         speed_animation.running = true;
     }
     onBatteryValueChanged: {
-        if(typeof batteryValue === 'number' && batteryValue%1 === 0){
+        if(typeof batteryValue === 'number' && batteryValue%1 === 0 && batteryTotalValue<= 32 && batteryTotalValue>=16){
             setBatteryValue();
             battery_panel.width = (batteryValue-16)/(batteryTotalValue-16)*260;
         }else{}
@@ -243,12 +243,15 @@ CommonItem {
                 SequentialAnimation {
                     NumberAnimation { target: airPressure2Bar; property: "height"; from:0; to:122; duration: 800 }
                     NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800 }
-
                 }
             }
         }
         ScriptAction {
             script: {
+                carSpeedValue = 0;
+                engineSpeedValue = 0;
+                batteryValue = 0;
+                socValue = 0
                 UiController.showLayer("IndicatorPanel");
             }
         }
@@ -484,16 +487,16 @@ CommonItem {
         anchors.topMargin: 160
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 10
-        property string totlaAmpere: CarMsg.totalCurrent.toFixed(1)//"-200.1"
-        property string totlaVolt: CarMsg.totalVoltage.toFixed(1)//"576.5"
-        property string singleVoltMax: CarMsg.aloneBatteryHighVoltage.toFixed(1)//"0"
-        property string singleVoltMin: CarMsg.aloneBatteryLowVoltage.toFixed(1)//"0"
-        property string singleTemperatureMax: CarMsg.batteryHighTemperature//"-40"
-        property string singleTemperatureMin: CarMsg.batteryLowTemperature//"-40"
-        property string batteryPackValue: CarMsg.batteryPackEnergy.toFixed(1)//"245.6"
-        property string motorTemperature: CarMsg.moterTemp//"0"
-        property string controlTemperature: CarMsg.moterControlTemp//"0"
-        property string coolingTemperature: CarMsg.engineWaterTemp//"20"
+        property string totlaAmpere: CarMsg.totalCurrent.toFixed(1)
+        property string totlaVolt: CarMsg.totalVoltage.toFixed(1)
+        property string singleVoltMax: CarMsg.aloneBatteryHighVoltage.toFixed(1)
+        property string singleVoltMin: CarMsg.aloneBatteryLowVoltage.toFixed(1)
+        property string singleTemperatureMax: CarMsg.batteryHighTemperature
+        property string singleTemperatureMin: CarMsg.batteryLowTemperature
+        property string batteryPackValue: CarMsg.batteryPackEnergy.toFixed(1)
+        property string motorTemperature: CarMsg.moterTemp
+        property string controlTemperature: CarMsg.moterControlTemp
+        property string coolingTemperature: CarMsg.engineWaterTemp
         TextValueWeir {
             width: 420
             height: 30
@@ -635,7 +638,7 @@ CommonItem {
         id: device_code
         x: 660; y: 480
         fontSize: 15
-        textValue: qsTr("设备代码 %1").arg(7027)
+        textValue: qsTr("设备代码 %1").arg(CarMsg.faultCode)
     }
     TextFieldWeir {
         id: odoDisplay
