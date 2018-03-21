@@ -4,12 +4,18 @@ Item {
     id: indicatorIndex
     width: 1440
     height: 544
+    visible: false
     state: "normal"
 
     property string sourceImageUrl: "qrc:/Theme/Theme1/Image/IndicatorPanel/"
     property bool light: true
     property bool indicatorStatus: true;
 
+    onVisibleChanged: {
+        if(visible){
+            animation_indicator.running = true;
+        }else{}
+    }
     //左转
     Image { id: lamp_leftTurn; x: 410; y: 22; source: sourceImageUrl + "Lamp_turnLeft.png"; opacity: (CarMsg.lampTurnLeft || CarMsg.lampDoubleFlash) ? 1.0 : 0 }
     //右转
@@ -56,114 +62,62 @@ Item {
     Image { id: lamp_motor_Heat; x: 270; y: 306; source: sourceImageUrl + "motorHeat.png"; visible: indicatorStatus; opacity: CarMsg.controlMotorOverheating ? 1.0 : 0 }
     //电机功率受限指示
     Image { id: lamp_motor_Limitation; x: 205; y: 313; source: sourceImageUrl + "motorLimitation.png"; visible: indicatorStatus; opacity: CarMsg.motorPowerLimitation ? 1.0 : 0 }
-    /*
-    Item {
-        id: leftId
-        width: 554
-        height: 542
-        scale: 0.6
-        Image {
-            id: lamp_test1
-            x: 213
-            y: 336
-            visible: light
-            //source: "qrc:/Theme/Theme1/Image/IndicatorPanel/Lamp_brake.png"
+    SequentialAnimation {
+        id: animation_indicator
+        ParallelAnimation {
+            NumberAnimation { target: lamp_leftTurn; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_rightTurn; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_frontFog; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_rearFog; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_highBeam; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_headlight; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_door1; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_airPress1; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_leftFriction; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_backCabin; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_danger; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_waterLevel; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_rightFriction; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_airPress2; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_door2; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_positionLight; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_chargePlugin; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_Charging; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_battery_Charg; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_battery_Cut; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_battery_Fault; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_motor_Heat; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_motor_Limitation; property: "opacity"; duration: 1000;to:1 }
         }
+        ParallelAnimation {
+            NumberAnimation { target: lamp_leftTurn; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_rightTurn; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_frontFog; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_rearFog; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_highBeam; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_headlight; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_door1; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_airPress1; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_leftFriction; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_backCabin; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_danger; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_waterLevel; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_rightFriction; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_airPress2; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_door2; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_positionLight; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_chargePlugin; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_Charging; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_battery_Charg; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_battery_Cut; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_battery_Fault; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_motor_Heat; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_motor_Limitation; property: "opacity"; duration: 1000;to:0 }
+        }
+        ScriptAction{
+            script: {
 
-        Image {
-            id: lamp_test2
-            x: 283
-            y: 336
-            visible: light
-            //source: "qrc:/Theme/Theme1/Image/IndicatorPanel/Lamp_brake.png"
+            }
         }
     }
-    Item {
-        id: rightId
-        width: 554
-        height: 542
-        scale: 0.6
-        Image {
-            id: lamp_test3
-            x: 1118
-            y: 336
-            visible: light
-            //source: "qrc:/Theme/Theme1/Image/IndicatorPanel/Lamp_brake.png"
-        }
-
-        Image {
-            id: lamp_test4
-            x: 1188
-            y: 336
-            visible: light
-            //source: "qrc:/Theme/Theme1/Image/IndicatorPanel/Lamp_brake.png"
-        }
-    }
-    states: [
-        State {
-            name: ""
-            PropertyChanges { target: leftId;  opacity: 0.0; y: 60; scale: 0.0 }
-            PropertyChanges { target: rightId; opacity: 0.0; y: 60; scale: 0.0 }
-        },
-        State {
-            name: "normal"
-            PropertyChanges { target: leftId;  opacity: 1.0; x: 0; y: 0; scale: 1.0 }
-            PropertyChanges { target: rightId; opacity: 1.0; x: 0; y: 0; scale: 1.0 }
-        },
-        State {
-            name: "menu"
-            PropertyChanges { target: leftId;  opacity: 1.0; x: -46; y: 60; scale: 0.75 }
-            PropertyChanges { target: rightId; opacity: 1.0; x: 262; y: 60; scale: 0.75 }
-        }
-    ]
-    transitions: [
-        Transition {
-            from: ""
-            to: "normal"
-            ParallelAnimation{
-                ScriptAction {
-                    script: {
-                        light = true;
-                    }
-                }
-            }
-        },
-        Transition {
-            from: "normal"
-            to: "menu"
-            ParallelAnimation {
-                NumberAnimation {
-                    target: leftId
-                    properties: "x, y, scale"
-                    duration: 800
-                    easing.type: Easing.OutBounce
-                }
-                NumberAnimation {
-                    target: rightId
-                    properties: "x, y, scale"
-                    duration: 800
-                    easing.type: Easing.OutBounce
-                }
-            }
-        },
-        Transition {
-            from: "menu"
-            to: "normal"
-            ParallelAnimation {
-                NumberAnimation {
-                    target: leftId
-                    properties: "x, y, scale"
-                    duration: 800
-                    easing.type: Easing.OutBounce
-                }
-                NumberAnimation {
-                    target: rightId
-                    properties: "x, y, scale"
-                    duration: 800
-                    easing.type: Easing.OutBounce
-                }
-            }
-        }
-    ]
-    */
 }

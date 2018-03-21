@@ -9,12 +9,13 @@ Item {
     property real fontSizeList: 18
     property real unitWidthList: 30
     property real textWidthList: 300
+    property real listViewSpacing: 30
 
     ListView {
         width: widthListView;
         height: heightListView
         model: listModel
-        spacing: 30
+        spacing: listViewSpacing
         verticalLayoutDirection: ListView.TopToBottom
         delegate: TextRadioWeir {
             radioType: listRadioType

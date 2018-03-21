@@ -10,6 +10,10 @@ function showMenuDetail(menuCurrentIndex){
         UiController.showLayer("DcdcSystemMenu");
         UiController.setLayerProperty("DcdcSystemMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 2){
+        CarMsg.sendMenuInfo(1,0);
+        CarMsg.sendMenuInfo(6,0);
+        CarMsg.sendMenuInfo(7,0);
+        CarMsg.sendMenuInfo(8,0);
         UiController.showLayer("InstrumentSysMenu");
         UiController.setLayerProperty("InstrumentSysMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 3){

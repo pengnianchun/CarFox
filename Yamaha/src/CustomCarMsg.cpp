@@ -1019,16 +1019,16 @@ void CustomCarMsg::updateFrontSwitch15(bool value) {
 void CustomCarMsg::updateFrontSwitch16(bool value) {
     MEMBER_PROPERTY_VALUE_CHANGED(frontSwitch16, value);
 }
-void CustomCarMsg::updateFrontAnalogInput01(bool value) {
+void CustomCarMsg::updateFrontAnalogInput01(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(frontAnalogInput01, value);
 }
-void CustomCarMsg::updateFrontAnalogInput02(bool value) {
+void CustomCarMsg::updateFrontAnalogInput02(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(frontAnalogInput02, value);
 }
-void CustomCarMsg::updateFrontHzInput(bool value) {
+void CustomCarMsg::updateFrontHzInput(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(frontHzInput, value);
 }
-void CustomCarMsg::updateFrontSpeedInput(bool value) {
+void CustomCarMsg::updateFrontSpeedInput(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(frontSpeedInput, value);
 }
 //中模块信息
@@ -1170,16 +1170,16 @@ void CustomCarMsg::updateMiddleSwitch15(bool value) {
 void CustomCarMsg::updateMiddleSwitch16(bool value) {
     MEMBER_PROPERTY_VALUE_CHANGED(middleSwitch16, value);
 }
-void CustomCarMsg::updateMiddleAnalogInput01(bool value) {
+void CustomCarMsg::updateMiddleAnalogInput01(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(middleAnalogInput01, value);
 }
-void CustomCarMsg::updateMiddleAnalogInput02(bool value) {
+void CustomCarMsg::updateMiddleAnalogInput02(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(middleAnalogInput02, value);
 }
-void CustomCarMsg::updateMiddleHzInput(bool value) {
+void CustomCarMsg::updateMiddleHzInput(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(middleHzInput, value);
 }
-void CustomCarMsg::updateMiddleSpeedInput(bool value) {
+void CustomCarMsg::updateMiddleSpeedInput(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(middleSpeedInput, value);
 }
 //后模块信息
@@ -1321,16 +1321,16 @@ void CustomCarMsg::updateBackSwitch15(bool value) {
 void CustomCarMsg::updateBackSwitch16(bool value) {
     MEMBER_PROPERTY_VALUE_CHANGED(backSwitch16, value);
 }
-void CustomCarMsg::updateBackAnalogInput01(bool value) {
+void CustomCarMsg::updateBackAnalogInput01(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(backAnalogInput01, value);
 }
-void CustomCarMsg::updateBackAnalogInput02(bool value) {
+void CustomCarMsg::updateBackAnalogInput02(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(backAnalogInput02, value);
 }
-void CustomCarMsg::updateBackHzInput(bool value) {
+void CustomCarMsg::updateBackHzInput(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(backHzInput, value);
 }
-void CustomCarMsg::updateBackSpeedInput(bool value) {
+void CustomCarMsg::updateBackSpeedInput(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(backSpeedInput, value);
 }
 //警告提示

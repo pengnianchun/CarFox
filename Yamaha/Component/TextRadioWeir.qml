@@ -14,9 +14,9 @@ Item {
     property string titleColor: "#ffffff"
     property string fontColor: "#ffffff"
     property string unitColor: "#ffffff"
-    property string sourceImageUrl: "qrc:/Theme/Theme2/Image/"
-    property string radioRelease: sourceImageUrl + "ListView/radio_release.png";
-    property string radioPress: sourceImageUrl + "ListView/radio_press.png";
+    property string sourceImageUrl: "qrc:/Common/CommonImage/Other/"
+    property string radioRelease: sourceImageUrl + "ring_0.png";
+    property string radioPress: sourceImageUrl + "ring_1.png";
     property bool checkRadioStatus: false
     property int radioType: 1;//2
     property real unitWidth: 30
@@ -24,8 +24,10 @@ Item {
     Rectangle{anchors.fill: parent;color: "#000000"}
     Image {
         id: radio
+        width: 20
+        height: 20
         anchors.bottom: text_title.bottom
-        anchors.bottomMargin: 3
+        anchors.bottomMargin: 10
         source: checkRadioStatus ? radioPress : radioRelease
     }
     Text {

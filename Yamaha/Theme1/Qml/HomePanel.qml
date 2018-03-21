@@ -248,10 +248,10 @@ CommonItem {
         }
         ScriptAction {
             script: {
-                carSpeedValue = 0;
-                engineSpeedValue = 0;
-                batteryValue = 0;
-                socValue = 0
+                //carSpeedValue = 0;
+                //engineSpeedValue = 0;
+                //batteryValue = 0;
+                //socValue = 0
                 UiController.showLayer("IndicatorPanel");
             }
         }

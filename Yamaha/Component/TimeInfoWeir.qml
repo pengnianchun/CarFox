@@ -29,7 +29,7 @@ Item {
         return "2018-03-20-00-00-00-Mon";//Qt.formatDateTime(new Date(), "yyyy-MM-dd-hh-mm-ss-ddd");
     }
     function currentDateTimeByUTC(milisecond) {
-        return Qt.formatDateTime(new Date(milisecond*1000), "yyyy-MM-dd-hh-mm-ss-ddd");
+        return Qt.formatDateTime(new Date((milisecond-8*3600)*1000), "yyyy-MM-dd-hh-mm-ss-ddd");
     }
     function getCurrentUTCTime() {
         return utcLocalDateTime;
