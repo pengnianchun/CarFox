@@ -23,6 +23,7 @@ public slots:
 
     void handleThemeModeChanged(qint8 themeNo);
     void menuInfoRequest(qint64 MenuNo, qint64 pageNo = 0);
+    void yxMenuIdRequest(qint64 MenuNo, qint64 pageNo = 0);
     void datetimeInfoRequest(qint64 msec = 0);
     void upgradeStartRequest();
     void tripMilesClearRequest();
@@ -73,6 +74,7 @@ signals:
     void closeBuzzerClearChanged(bool value);
     void checkCloseBuzzerClearChanged(bool value);
     void checkDateTimeChanged(bool value);
+    void yxCheckRequestMenuChanged(bool value);
     //控制模块信息
     void motorInVoltageChanged(float value);
     void motorInCurrentChanged(float value);
@@ -351,13 +353,13 @@ signals:
     void addrNumberVoltageValueChanged(float value);
     void boxNumberVoltageChanged(int value);
     //void voltageInfoChanged(QVariantMap value);
-    //void batVoltageChanged(QVariantMap value);
+    void batVoltageChanged(QVariantMap value);
     //电池组温度信息
     void addrNumberTempChanged(int value);
     void addrNumberTempValueChanged(float value);
     void boxNumberTempChanged(int value);
     //void tempInfoChanged(QVariantMap value);
-    //void batTempChanged(QVariantMap value);
+    void batTempChanged(QVariantMap value);
     //空调模块信息
     void acFaultCodeChanged(uint value);
     void acFanStatusChanged(uint value);
@@ -560,6 +562,7 @@ private:
     void handleProtoDateTimeVerify(const carfox::MessagePtr &msg);
     void handleProtoMilesClearVerify(const carfox::MessagePtr &msg);
     void handleProtoCloseBuzzerVerify(const carfox::MessagePtr &msg);
+    void handleProtoYxMenuIdRequest(const carfox::MessagePtr &msg);
     //控制系统信息
     void handleProtoControlSystemMenuInfo(const carfox::MessagePtr &msg);
     //仪表信息

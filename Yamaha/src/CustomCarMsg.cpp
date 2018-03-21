@@ -59,6 +59,7 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::closeBuzzerClearChanged, this, &CustomCarMsg::updateCloseBuzzerClear);
     connect(worker, &CustomCarMsgWorker::checkCloseBuzzerClearChanged, this, &CustomCarMsg::updateCheckCloseBuzzerClear);
     connect(worker, &CustomCarMsgWorker::checkDateTimeChanged, this, &CustomCarMsg::updateCheckDateTimeSetting);
+    connect(worker, &CustomCarMsgWorker::yxCheckRequestMenuChanged, this, &CustomCarMsg::updateYxCheckRequestMenu);
     //控制模块信息
     connect(worker, &CustomCarMsgWorker::motorInVoltageChanged, this, &CustomCarMsg::updateMotorInVoltage);
     connect(worker, &CustomCarMsgWorker::motorInCurrentChanged, this, &CustomCarMsg::updateMotorInCurrent);
@@ -336,14 +337,12 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::addrNumberVoltageChanged, this, &CustomCarMsg::updateAddrNumberVoltage);
     connect(worker, &CustomCarMsgWorker::addrNumberVoltageValueChanged, this, &CustomCarMsg::updateAddrNumberVoltageValue);
     connect(worker, &CustomCarMsgWorker::boxNumberVoltageChanged, this, &CustomCarMsg::updateBoxNumberVoltage);
-    //connect(worker, &CustomCarMsgWorker::voltageInfoChanged, this, &CustomCarMsg::updateVoltageInfo);
-    //void batVoltageChanged(QVariantMap value);
+    connect(worker, &CustomCarMsgWorker::batVoltageChanged, this, &CustomCarMsg::updateVoltageInfo);
     //电池组温度信息
     connect(worker, &CustomCarMsgWorker::addrNumberTempChanged, this, &CustomCarMsg::updateAddrNumberTemp);
     connect(worker, &CustomCarMsgWorker::addrNumberTempValueChanged, this, &CustomCarMsg::updateAddrNumberTempValue);
     connect(worker, &CustomCarMsgWorker::boxNumberTempChanged, this, &CustomCarMsg::updateBoxNumberTemp);
-    //connect(worker, &CustomCarMsgWorker::tempInfoChanged, this, &CustomCarMsg::updateTempInfo);
-    //void batTempChanged(QVariantMap value);
+    connect(worker, &CustomCarMsgWorker::batTempChanged, this, &CustomCarMsg::updateTempInfo);
     //空调模块信息
     connect(worker, &CustomCarMsgWorker::acFaultCodeChanged, this, &CustomCarMsg::updateAcFaultCode);
     connect(worker, &CustomCarMsgWorker::acFanStatusChanged, this, &CustomCarMsg::updateAcFanStatus);
@@ -661,6 +660,10 @@ void CustomCarMsg::updateCheckCloseBuzzerClear(bool data)
 void CustomCarMsg::updateCheckDateTimeSetting(bool data)
 {
     MEMBER_PROPERTY_VALUE_CHANGED(checkDateTimeSetting, data);
+}
+void CustomCarMsg::updateYxCheckRequestMenu(bool data)
+{
+    MEMBER_PROPERTY_VALUE_CHANGED(yxCheckRequestMenu, data);
 }
 //控制系统信息
 void CustomCarMsg::updateMotorInVoltage(float value) {
@@ -1471,11 +1474,9 @@ void CustomCarMsg::updateAddrNumberVoltageValue(float value) {
 void CustomCarMsg::updateBoxNumberVoltage(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(boxNumberVoltage, value);
 }
-/*
 void CustomCarMsg::updateVoltageInfo(QVariantMap value) {
     MEMBER_PROPERTY_VALUE_CHANGED(voltageInfo, value);
 }
-*/
 //电池组温度信息
 void CustomCarMsg::updateAddrNumberTemp(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(addrNumberTemp, value);
@@ -1486,11 +1487,9 @@ void CustomCarMsg::updateAddrNumberTempValue(float value) {
 void CustomCarMsg::updateBoxNumberTemp(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(boxNumberTemp, value);
 }
-/*
 void CustomCarMsg::updateTempInfo(QVariantMap value) {
     MEMBER_PROPERTY_VALUE_CHANGED(tempInfo, value);
 }
-*/
 //空调系统信息
 void CustomCarMsg::updateAcFaultCode(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(acFaultCode, value);

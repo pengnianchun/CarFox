@@ -45,6 +45,7 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<bool> closeBuzzerClear = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> checkCloseBuzzerClear = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> checkDateTimeSetting = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> yxCheckRequestMenu = carfox::CarMsgData<bool>(-1);
     //控制系统信息
     carfox::CarMsgData<float> motorInVoltage = carfox::CarMsgData<float>(-1);		   //电机输入电压, 0 V
     carfox::CarMsgData<float> motorInCurrent = carfox::CarMsgData<float>(-1);		   //电机输入电流, 0 A

@@ -47,6 +47,7 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(bool, closeBuzzerClear, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, checkCloseBuzzerClear, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, checkDateTimeSetting, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, yxCheckRequestMenu, false)
     //控制系统信息
     MEMBER_PROPERTY_WITH_NOTIFY(float, motorInVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, motorInCurrent, 0)
@@ -137,21 +138,21 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, frontOutputCurrent13, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, frontOutputCurrent14, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, frontOutputCurrent15, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault01, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault02, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault03, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault04, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault05, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault06, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault07, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault08, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault09, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault10, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault11, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault12, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault13, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault14, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault15, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault01, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault02, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault03, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault04, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault05, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault06, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault07, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault08, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault09, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault10, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault11, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault12, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault13, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault14, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontOutputFault15, 2)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, frontSwitch01, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, frontSwitch02, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, frontSwitch03, false)
@@ -188,21 +189,21 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, middleOutputCurrent13, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, middleOutputCurrent14, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, middleOutputCurrent15, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault01, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault02, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault03, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault04, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault05, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault06, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault07, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault08, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault09, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault10, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault11, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault12, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault13, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault14, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault15, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault01, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault02, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault03, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault04, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault05, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault06, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault07, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault08, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault09, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault10, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault11, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault12, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault13, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault14, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, middleOutputFault15, 2)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, middleSwitch01, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, middleSwitch02, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, middleSwitch03, false)
@@ -239,21 +240,21 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, backOutputCurrent13, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, backOutputCurrent14, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, backOutputCurrent15, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault01, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault02, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault03, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault04, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault05, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault06, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault07, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault08, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault09, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault10, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault11, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault12, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault13, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault14, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault15, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault01, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault02, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault03, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault04, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault05, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault06, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault07, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault08, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault09, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault10, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault11, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault12, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault13, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault14, 2)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backOutputFault15, 2)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, backSwitch01, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, backSwitch02, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, backSwitch03, false)
@@ -324,12 +325,12 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberVoltageValue, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberVoltage, 0)
-    //MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, voltageInfo, QVariantMap())
+    MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, voltageInfo, QVariantMap())
     //电池组温度信息
     MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberTempValue, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberTemp, 0)
-    //MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, tempInfo, QVariantMap())
+    MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, tempInfo, QVariantMap())
     //空调系统信息
     MEMBER_PROPERTY_WITH_NOTIFY(uint, acFaultCode, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(uint, acFanStatus, 0)
@@ -564,6 +565,7 @@ private slots:
     void updateCloseBuzzerClear(bool data);
     void updateCheckCloseBuzzerClear(bool data);
     void updateCheckDateTimeSetting(bool data);
+    void updateYxCheckRequestMenu(bool data);
     //控制系统信息
     void updateMotorInVoltage(float value);
     void updateMotorInCurrent(float value);
@@ -841,12 +843,12 @@ private slots:
     void updateAddrNumberVoltage(uint value);
     void updateAddrNumberVoltageValue(float value);
     void updateBoxNumberVoltage(uint value);
-    //void updateVoltageInfo(QVariantMap value);
+    void updateVoltageInfo(QVariantMap value);
     //电池组温度信息
     void updateAddrNumberTemp(uint value);
     void updateAddrNumberTempValue(float value);
     void updateBoxNumberTemp(uint value);
-    //void updateTempInfo(QVariantMap value);
+    void updateTempInfo(QVariantMap value);
     //空调系统信息
     void updateAcFaultCode(uint value);
     void updateAcFanStatus(uint value);

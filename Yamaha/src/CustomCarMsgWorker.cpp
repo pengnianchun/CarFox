@@ -61,6 +61,14 @@ void CustomCarMsgWorker::menuInfoRequest(qint64 MenuNo, qint64 pageNo) {
     sendProtoMsg(menuInfo);
 }
 
+void CustomCarMsgWorker::yxMenuIdRequest(qint64 MenuNo, qint64 pageNo) {
+    fyMenuIdRequestInfo::YxMenuIdRequest menuInfo;
+    fyMenuIdRequestInfo::YxMenuIdRequest_yx_MenuType type = (fyMenuIdRequestInfo::YxMenuIdRequest_yx_MenuType)MenuNo;
+    menuInfo.set_yx_menu_number(type);
+    menuInfo.set_yx_page_number(pageNo);
+    sendProtoMsg(menuInfo);
+}
+
 void CustomCarMsgWorker::datetimeInfoRequest(qint64 msec) {
     fySystemSettingsInfo::DateTime timeInfo;
     timeInfo.set_date_time(msec);
@@ -135,9 +143,10 @@ void CustomCarMsgWorker::registerCallback()
     mHandler.registerMsgCallback(fyPicLampInfo::PicLampFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoPicLampFrameInfo, this, _1));
     //胎压监测系统
     mHandler.registerMsgCallback(fyTirePressInfo::TirePressInfoFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo, this, _1));
-    //请求菜单信息
+    //请求菜单返回信息
     //mHandler.registerMsgCallback(fyMenuIdRequestInfo::MenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::menuInfoRequest, this, _1));
     //mHandler.registerMsgCallback(fyMenuIdRequestInfo::YxMenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::yxMenuIdRequest, this, _1));
+    mHandler.registerMsgCallback(fyMenuIdRequestInfo::yxMenuIdVerity::descriptor(), bind(&CustomCarMsgWorker::handleProtoYxMenuIdRequest, this, _1));
     //整车控制系统诊断信息
     mHandler.registerMsgCallback(fyControlSystemDiagnoseInfo::ControlSystemDiagnoseMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoControlSystemDiagnoseMenuInfo, this, _1));
     //动力电池诊断系统信息
@@ -1208,14 +1217,12 @@ void CustomCarMsgWorker::handleProtoBatteryGroupVoltageMenuInfo(const carfox::Me
         emit this->voltageInfoChanged(value);
     });
     */
-    /*
     mBatVoltageData.clear();
-    for(int i=0; i<p->voltage_info_size(); i++) {
+    for(int i=0; i<p->box_number(); i++) {
         const fyBatteryGroupVoltageInfo::BatterySingleVoltage* voltage = p->mutable_voltage_info(i);
         mBatVoltageData.insert(QString::number(i+1), voltage->voltage());
     }
     emit this->batVoltageChanged(mBatVoltageData);
-    */
 }
 //单体电压
 void CustomCarMsgWorker::handleProtoBatterySingleVoltageMenuInfo(const carfox::MessagePtr &msg) {
@@ -1238,14 +1245,12 @@ void CustomCarMsgWorker::handleProtoBatteryGroupTemperatureMenuInfo(const carfox
         emit this->tempInfoChanged(value);
     });
     */
-    /*
     mBatTempData.clear();
     for(int i=0; i<p->temp_info_size(); i++) {
         const fyBatteryGroupTemperatureInfo::BatterySingleTemperature* temperature = p->mutable_temp_info(i);
         mBatTempData.insert(QString::number(i+1), temperature->temperature());
     }
     emit this->batTempChanged(mBatTempData);
-    */
 }
 //单体温度
 void CustomCarMsgWorker::handleProtoBatterySingleTemperatureMenuInfo(const carfox::MessagePtr &msg) {
@@ -1613,6 +1618,14 @@ void CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo(const carfox::Message
     });
     updateStates<qint32>(mStateData.backRightTireTemp2.data, p->back_right_tire_temp2(), [this](qint32 value) {
         emit this->backRightTireTemp2Changed(value);
+    });
+}
+//请求菜单信息返回状态
+void CustomCarMsgWorker::handleProtoYxMenuIdRequest(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fyMenuIdRequestInfo::yxMenuIdVerity> p = carfox::down_pointer_cast<fyMenuIdRequestInfo::yxMenuIdVerity>(msg);
+    updateStates<bool>(mStateData.yxCheckRequestMenu.data, p->yx_check_request_menu(), [this](bool value) {
+        emit this->yxCheckRequestMenuChanged(value);
     });
 }
 //控制系统诊断信息

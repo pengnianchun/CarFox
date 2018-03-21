@@ -12,6 +12,8 @@ MenuItem {
     visible: false
 
     property bool bKeyEnable: false
+    property int boxNumberVoltage: CarMsg.boxNumberVoltage
+    property var voltageInfo: CarMsg.voltageInfo
 
     hideMenu: function(){
         if(bKeyEnable){
@@ -28,5 +30,10 @@ MenuItem {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 110
+    }
+    onVoltageInfoChanged: {
+        console.log("=============0000=================" + boxNumberVoltage);
+        console.log("=============1111=================" + voltageInfo);
+        console.log("=============2222=================" + JSON.stringify(voltageInfo));
     }
 }
