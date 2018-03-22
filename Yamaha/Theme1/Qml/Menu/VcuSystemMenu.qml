@@ -321,6 +321,13 @@ MenuItem {
             }
         }else{}
     }
+    onCarLoadCurrentIndexChanged: {
+        if(carLoadCurrentIndex === 0){
+            CarMsg.sendMenuInfo(21,0);
+        }else if(carLoadCurrentIndex === 1){
+            CarMsg.sendMenuInfo(22,0);
+        }else{}
+    }
     TextFieldWeir {
         id: title
         textValue: carLoadTitleArray[carLoadCurrentIndex]

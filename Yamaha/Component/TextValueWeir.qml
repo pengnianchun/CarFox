@@ -17,7 +17,7 @@ Item {
     property bool leftAlignStatus: false
     property real leftMarginValue: 0
     FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
-    Rectangle{anchors.fill: parent;color: "#000000"}
+    //Rectangle{anchors.fill: parent;color: "#000000"}
     Text {
         id: text_title
         opacity: textOpacity

@@ -32,7 +32,7 @@ MenuItem {
         id: update_model_timer
         running: false
         repeat: true
-        interval: 200
+        interval: 1000
         onTriggered: {
             if(instrumentCurrentIndex === 0){
                 listmodel_instrument1.setProperty(0,"checkstatus",CarMsg.inputCtrl01);
@@ -287,15 +287,18 @@ MenuItem {
         //仪表信息显示前中后模块判断
         var instrumentInfoResource = InstrumentInfo.getInsteumentInfo();
         if(instrumentCurrentIndex === 0){
+            CarMsg.sendMenuInfo(5,0);
             InstrumentController.initializeInstrumentModel(listModelInstrumentIdArray,instrumentInfoResource);
         }else if(instrumentCurrentIndex === 1){
+            CarMsg.sendMenuInfo(6,0);
             InstrumentController.initializeBeforeModule(listModelIdArray,instrumentInfoResource);
         }else if(instrumentCurrentIndex === 2){
+            CarMsg.sendMenuInfo(7,0);
             InstrumentController.initializeCenterModule(listModelIdArray,instrumentInfoResource);
         }else if(instrumentCurrentIndex === 3){
+            CarMsg.sendMenuInfo(8,0);
             InstrumentController.initializeAfterModule(listModelIdArray,instrumentInfoResource);
         }else{}
-        title.textValue = instrumentTitleArray[instrumentCurrentIndex];
     }
     Component.onCompleted: { instrumentCurrentIndex = 0 }
     hideMenu: function(){
@@ -322,7 +325,7 @@ MenuItem {
     }
     TextFieldWeir {
         id: title
-        textValue: "仪表系统信息"
+        textValue: instrumentTitleArray[instrumentCurrentIndex]
         width: 150
         height: 30
         fontSize: 15
