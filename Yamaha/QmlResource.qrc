@@ -8,6 +8,7 @@
         <file>Component/DormancyPanel.qml</file>
         <file>Component/Fps.qml</file>
         <file>Component/ListViewRadioWeir.qml</file>
+		<file>Component/ListViewRadioStatusWeir.qml</file>
         <file>Component/ListViewSelectWeir.qml</file>
         <file>Component/ListViewWeir.qml</file>
         <file>Component/MenuItem.qml</file>
@@ -17,6 +18,7 @@
         <file>Component/TextIconWeir.qml</file>
         <file>Component/TextItem.qml</file>
         <file>Component/TextRadioWeir.qml</file>
+		<file>Component/TextRadioStatusWeir.qml</file>
         <file>Component/TextValueWeir.qml</file>
         <file>Component/ThemeList.qml</file>
         <file>Component/TimeHMSWeir.qml</file>
@@ -106,10 +108,10 @@
         <file>CommonImage/Other/ring_green.png</file>
         <file>CommonImage/Other/ring_red.png</file>
         <file>CommonImage/Other/ring_yellow.png</file>
-        <file>CommonImage/Other/ring-blank.png</file>
-        <file>CommonImage/Other/ring-green.png</file>
-        <file>CommonImage/Other/ring-red.png</file>
-        <file>CommonImage/Other/ring-yellow.png</file>
+        <file>CommonImage/Other/ring_0.png</file>
+        <file>CommonImage/Other/ring_1.png</file>
+        <file>CommonImage/Other/ring_2.png</file>
+        <file>CommonImage/Other/ring_3.png</file>
         <file>CommonImage/Other/success.png</file>
         <file>CommonImage/Other/title-b.png</file>
         <file>CommonImage/Other/title-g.png</file>
@@ -138,6 +140,7 @@
         <file>Theme1/Qml/Menu/MoterBatteryMenu.qml</file>
         <file>Theme1/Qml/Menu/LightAdjustMenu.qml</file>
         <file>Theme1/Qml/Menu/InstrumentSysMenu.qml</file>
+		<file>Theme1/JS/InstrumentController.js</file>
         <file>Theme1/JS/MenuMainController.js</file>
 		<file>Theme1/JS/MenuMainDetailController.js</file>
         <file>Theme1/Image/HomePanel/whiteLineBg.png</file>
@@ -154,6 +157,8 @@
         <file>Theme1/Image/HomePanel/baseBar.png</file>
         <file>Theme1/Image/HomePanel/batteryValue.png</file>
         <file>Theme1/Image/HomePanel/ready.png</file>
+		<file>Theme1/Image/HomePanel/stop.png</file>
+		<file>Theme1/Image/HomePanel/wait.png</file>
         <file>Theme1/Image/HomePanel/socValue.png</file>
         <file>Theme1/Image/HomePanel/socBg.png</file>
         <file>Theme1/Image/HomePanel/batteryBg.png</file>

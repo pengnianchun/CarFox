@@ -14,18 +14,18 @@ MenuItem {
     property bool bKeyEnable: false
     property string sourceImageUrl: "qrc:/Theme/Theme1/Image/MenuPanel/"
     //车胎压力温度信息
-    property real tire1Pressure: 1.89;
-    property real tire1Temperature: 25;
-    property real tire2Pressure: 2.89;
-    property real tire2Temperature: 25;
-    property real tire3Pressure: 3.89;
-    property real tire3Temperature: 25;
-    property real tire4Pressure: 4.89;
-    property real tire4Temperature: 25;
-    property real tire5Pressure: 5.89;
-    property real tire5Temperature: 25;
-    property real tire6Pressure: 6.89;
-    property real tire6Temperature: 25;
+    property real tire1Pressure: CarMsg.frontLeftTirePress.toFixed(1);
+    property real tire1Temperature: CarMsg.frontLeftTireTemp.toFixed(0);
+    property real tire2Pressure: CarMsg.fronRightTirePress.toFixed(1);
+    property real tire2Temperature: CarMsg.frontRightTireTemp.toFixed(0);
+    property real tire3Pressure: CarMsg.backLeftTirePress1.toFixed(1);
+    property real tire3Temperature: CarMsg.backLeftTireTemp1.toFixed(0);
+    property real tire4Pressure: CarMsg.backLeftTirePress2.toFixed(1);
+    property real tire4Temperature: CarMsg.backLeftTireTemp2.toFixed(0);
+    property real tire5Pressure: CarMsg.backRightTirePress1.toFixed(1);
+    property real tire5Temperature: CarMsg.backRightTireTemp1.toFixed(0);
+    property real tire6Pressure: CarMsg.backRightTirePress2.toFixed(1);
+    property real tire6Temperature: CarMsg.backRightTireTemp2.toFixed(0);
     property string tireInfo: "各轮胎状态正常";
     property var tireIdArray: [tire_adjust,tire_confirm];
     property bool tireStatus: true;

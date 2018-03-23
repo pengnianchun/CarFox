@@ -19,7 +19,6 @@ Item {
         }
         onXChanged: ++frameCounter
     }
-
     Text {
         anchors.left: parent.left
         anchors.leftMargin: 350
@@ -30,7 +29,6 @@ Item {
         anchors.centerIn: parent
         font.family: "WenQuanYi Micro Hei"
     }
-
     Timer {
         interval: 1000
         repeat: true

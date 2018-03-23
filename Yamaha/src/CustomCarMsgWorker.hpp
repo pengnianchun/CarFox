@@ -23,6 +23,7 @@ public slots:
 
     void handleThemeModeChanged(qint8 themeNo);
     void menuInfoRequest(qint64 MenuNo, qint64 pageNo = 0);
+    void yxMenuIdRequest(qint64 MenuNo, qint64 pageNo = 0);
     void datetimeInfoRequest(qint64 msec = 0);
     void upgradeStartRequest();
     void tripMilesClearRequest();
@@ -62,7 +63,7 @@ signals:
     void aloneBatteryHighVoltageChanged(float value);
     void batteryHighTemperatureChanged(int value);
     void batteryLowTemperatureChanged(int value);
-    void batteryPackEnergyChanged(int value);
+    void batteryPackEnergyChanged(float value);
     void velocityRatioChanged(int value);
     void buzzerStatusChanged(bool value);
     //设置模块信息
@@ -72,6 +73,8 @@ signals:
     void upgradeMsgCtxChanged(QString upgradeMsgCtx);
     void closeBuzzerClearChanged(bool value);
     void checkCloseBuzzerClearChanged(bool value);
+    void checkDateTimeChanged(bool value);
+    void yxCheckRequestMenuChanged(bool value);
     //控制模块信息
     void motorInVoltageChanged(float value);
     void motorInCurrentChanged(float value);
@@ -97,8 +100,8 @@ signals:
     void highVoltagePowerUpChanged(bool value);
     void airCompressorWorkChanged(bool value);
     void boosterPumpWorkChanged(bool value);
-    void airCompressorMotorSpeedChanged(int value);
-    void steeringAssistMotorSpeedChanged(int value);
+    void airCompressorMotorSpeedChanged(float value);
+    void steeringAssistMotorSpeedChanged(float value);
     void steeringAssistMotorTempChanged(int value);
     void airCompressorMotorTempChanged(int value);
     void airCompressorControlTempChanged(int value);
@@ -346,17 +349,17 @@ signals:
     void powerBatteryTypeChanged(float value);
     void powerBatteryRechargeChanged(float value);
     //电池组电压信息
-    void addrNumberVoltageChanged(int value);
-    void addrNumberVoltageValueChanged(float value);
-    void boxNumberVoltageChanged(int value);
+    //void addrNumberVoltageChanged(int value);
+    //void addrNumberVoltageValueChanged(float value);
+    //void boxNumberVoltageChanged(int value);
     //void voltageInfoChanged(QVariantMap value);
-    //void batVoltageChanged(QVariantMap value);
+    void batVoltageChanged(QVariantMap value);
     //电池组温度信息
-    void addrNumberTempChanged(int value);
-    void addrNumberTempValueChanged(float value);
-    void boxNumberTempChanged(int value);
+    //void addrNumberTempChanged(int value);
+    //void addrNumberTempValueChanged(float value);
+    //void boxNumberTempChanged(int value);
     //void tempInfoChanged(QVariantMap value);
-    //void batTempChanged(QVariantMap value);
+    void batTempChanged(QVariantMap value);
     //空调模块信息
     void acFaultCodeChanged(uint value);
     void acFanStatusChanged(uint value);
@@ -556,6 +559,10 @@ private:
     void handleMilesClear(const carfox::MessagePtr &msg);
     void handleProtoUpgradeNotify(const carfox::MessagePtr &msg);
     void handleProtoCloseBuzzer(const carfox::MessagePtr &msg);
+    void handleProtoDateTimeVerify(const carfox::MessagePtr &msg);
+    void handleProtoMilesClearVerify(const carfox::MessagePtr &msg);
+    void handleProtoCloseBuzzerVerify(const carfox::MessagePtr &msg);
+    void handleProtoYxMenuIdRequest(const carfox::MessagePtr &msg);
     //控制系统信息
     void handleProtoControlSystemMenuInfo(const carfox::MessagePtr &msg);
     //仪表信息
@@ -583,10 +590,10 @@ private:
     //电池管理系统信息
     void handleProtoBatteryManageSystemMenuInfo(const carfox::MessagePtr &msg);
     //电池组电压信息
-    void handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg);
+    //void handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg);
     void handleProtoBatterySingleVoltageMenuInfo(const carfox::MessagePtr &msg);
     //电池组温度信息
-    void handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg);
+    //void handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg);
     void handleProtoBatterySingleTemperatureMenuInfo(const carfox::MessagePtr &msg);
     //空调系统信息
     void handleProtoAirCtrlSystemMenuInfo(const carfox::MessagePtr &msg);
@@ -596,9 +603,6 @@ private:
     void handleProtoPicLampFrameInfo(const carfox::MessagePtr &msg);
     //胎压监测系统
     void handleProtoTirePressInfoFrameInfo(const carfox::MessagePtr &msg);
-    //请求菜单信息
-    //void menuInfoRequest(const carfox::MessagePtr &msg);
-    //void yxMenuIdRequest(const carfox::MessagePtr &msg);
     //胎压监测系统
     void handleProtoControlSystemDiagnoseMenuInfo(const carfox::MessagePtr &msg);
     //动力电池诊断系统信息

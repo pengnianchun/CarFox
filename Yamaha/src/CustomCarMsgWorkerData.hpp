@@ -34,7 +34,7 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<float> aloneBatteryHighVoltage = carfox::CarMsgData<float>(-1);
     carfox::CarMsgData<qint32> batteryHighTemperature = carfox::CarMsgData<qint32>(-1);
     carfox::CarMsgData<qint32> batteryLowTemperature = carfox::CarMsgData<qint32>(-1);
-    carfox::CarMsgData<qint32> batteryPackEnergy = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<float> batteryPackEnergy = carfox::CarMsgData<float>(-1);
     carfox::CarMsgData<qint32> velocityRatio = carfox::CarMsgData<qint32>(-1);
     carfox::CarMsgData<bool> buzzerStatus = carfox::CarMsgData<bool>(-1);
     //设置模块信息
@@ -44,6 +44,8 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<QString> upgradeMsgCtx = carfox::CarMsgData<QString>("");   //升级消息内容
     carfox::CarMsgData<bool> closeBuzzerClear = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> checkCloseBuzzerClear = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> checkDateTimeSetting = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> yxCheckRequestMenu = carfox::CarMsgData<bool>(-1);
     //控制系统信息
     carfox::CarMsgData<float> motorInVoltage = carfox::CarMsgData<float>(-1);		   //电机输入电压, 0 V
     carfox::CarMsgData<float> motorInCurrent = carfox::CarMsgData<float>(-1);		   //电机输入电流, 0 A
@@ -69,19 +71,19 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<bool> highVoltagePowerUp = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> airCompressorWork = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> boosterPumpWork = carfox::CarMsgData<bool>(-1);
-    carfox::CarMsgData<quint32> airCompressorMotorSpeed = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> steeringAssistMotorSpeed = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> steeringAssistMotorTemp = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> airCompressorMotorTemp = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> airCompressorControlTemp = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> steeringControlDeviceTemp = carfox::CarMsgData<quint32>(-1);
+    carfox::CarMsgData<float> airCompressorMotorSpeed = carfox::CarMsgData<float>(-1);
+    carfox::CarMsgData<float> steeringAssistMotorSpeed = carfox::CarMsgData<float>(-1);
+    carfox::CarMsgData<qint32> steeringAssistMotorTemp = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<qint32> airCompressorMotorTemp = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<qint32> airCompressorControlTemp = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<qint32> steeringControlDeviceTemp = carfox::CarMsgData<qint32>(-1);
     carfox::CarMsgData<float> airPress3 = carfox::CarMsgData<float>(-1);
     carfox::CarMsgData<float> airPress4 = carfox::CarMsgData<float>(-1);
     carfox::CarMsgData<float> airPress5 = carfox::CarMsgData<float>(-1);
-    carfox::CarMsgData<quint32> highestAlarmGrade = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> faultAlarmSituation = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> driveGearsMode = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<quint32> bduSwitch = carfox::CarMsgData<quint32>(-1);
+    carfox::CarMsgData<qint32> highestAlarmGrade = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<qint32> faultAlarmSituation = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<qint32> driveGearsMode = carfox::CarMsgData<qint32>(-1);
+    carfox::CarMsgData<qint32> bduSwitch = carfox::CarMsgData<qint32>(-1);
 
     //仪表信息
     carfox::CarMsgData<bool> inputCtrl01 = carfox::CarMsgData<bool>(-1);        //左转向开关
@@ -319,14 +321,14 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<qint32> powerBatteryType = carfox::CarMsgData<qint32>(-1);
     carfox::CarMsgData<qint32> powerBatteryRecharge = carfox::CarMsgData<qint32>(-1);
     //电池组电压信息
-    carfox::CarMsgData<quint32> addrNumberVoltage = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<float> addrNumberVoltageValue = carfox::CarMsgData<float>(-1);
-    carfox::CarMsgData<quint32> boxNumberVoltage = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<quint32> addrNumberVoltage = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<float> addrNumberVoltageValue = carfox::CarMsgData<float>(-1);
+    //carfox::CarMsgData<quint32> boxNumberVoltage = carfox::CarMsgData<quint32>(-1);
     //carfox::CarMsgData<QVariantMap> voltageInfo = carfox::CarMsgData<QVariantMap>(-1);
     //电池组温度信息
-    carfox::CarMsgData<quint32> addrNumberTemp = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<float> addrNumberTempValue = carfox::CarMsgData<float>(-1);
-    carfox::CarMsgData<quint32> boxNumberTemp = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<quint32> addrNumberTemp = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<float> addrNumberTempValue = carfox::CarMsgData<float>(-1);
+    //carfox::CarMsgData<quint32> boxNumberTemp = carfox::CarMsgData<quint32>(-1);
     //carfox::CarMsgData<QVariantMap> tempInfo = carfox::CarMsgData<QVariantMap>(-1);
     //空调系统信息
     carfox::CarMsgData<quint32> acFaultCode = carfox::CarMsgData<quint32>(-1);            //空调故障代码, 00000000（2进制显示）
