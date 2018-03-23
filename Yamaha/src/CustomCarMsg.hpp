@@ -322,14 +322,14 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(uint, powerBatteryType, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(uint, powerBatteryRecharge, 0)
     //电池组电压信息
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberVoltage, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberVoltageValue, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberVoltage, 0)
+    //MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberVoltage, 0)
+    //MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberVoltageValue, 0)
+    //MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, voltageInfo, QVariantMap())
     //电池组温度信息
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberTempValue, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberTemp, 0)
+    //MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberTemp, 0)
+    //MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberTempValue, 0)
+    //MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, tempInfo, QVariantMap())
     //空调系统信息
     MEMBER_PROPERTY_WITH_NOTIFY(uint, acFaultCode, 0)
@@ -343,8 +343,8 @@ class CustomCarMsg : public carfox::CarMsg
     //DCDC状态信息
     MEMBER_PROPERTY_WITH_NOTIFY(float, dcLowVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, dcLowCurrent, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, dcTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, dcStatus2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, dcTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, dcStatus2, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, dcUndervoltage, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, dcOvervoltage, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, dcOverheating, false)
@@ -840,14 +840,14 @@ private slots:
     void updatePowerBatteryType(uint value);
     void updatePowerBatteryRecharge(uint value);
     //电池组电压信息
-    void updateAddrNumberVoltage(uint value);
-    void updateAddrNumberVoltageValue(float value);
-    void updateBoxNumberVoltage(uint value);
+    //void updateAddrNumberVoltage(uint value);
+    //void updateAddrNumberVoltageValue(float value);
+    //void updateBoxNumberVoltage(uint value);
     void updateVoltageInfo(QVariantMap value);
     //电池组温度信息
-    void updateAddrNumberTemp(uint value);
-    void updateAddrNumberTempValue(float value);
-    void updateBoxNumberTemp(uint value);
+    //void updateAddrNumberTemp(uint value);
+    //void updateAddrNumberTempValue(float value);
+    //void updateBoxNumberTemp(uint value);
     void updateTempInfo(QVariantMap value);
     //空调系统信息
     void updateAcFaultCode(uint value);
@@ -861,8 +861,8 @@ private slots:
     //DCDC状态信息
     void updateDcLowVoltage(float value);
     void updateDcLowCurrent(float value);
-    void updateDcTemp(uint value);
-    void updateDcStatus2(uint value);
+    void updateDcTemp(int value);
+    void updateDcStatus2(int value);
     void updateDcUndervoltage(bool value);
     void updateDcOvervoltage(bool value);
     void updateDcOverheating(bool value);

@@ -130,10 +130,10 @@ void CustomCarMsgWorker::registerCallback()
     //电池管理系统信息
     mHandler.registerMsgCallback(fyBatteryManageSystemInfo::BatteryManageSystemMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatteryManageSystemMenuInfo, this, _1));
     //电池组电压信息
-    mHandler.registerMsgCallback(fyBatteryGroupVoltageInfo::BatteryGroupVoltageMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatteryGroupVoltageMenuInfo, this, _1));
+    //mHandler.registerMsgCallback(fyBatteryGroupVoltageInfo::BatteryGroupVoltageMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatteryGroupVoltageMenuInfo, this, _1));
     mHandler.registerMsgCallback(fyBatteryGroupVoltageInfo::BatterySingleVoltage::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatterySingleVoltageMenuInfo, this, _1));
     //电池组温度信息
-    mHandler.registerMsgCallback(fyBatteryGroupTemperatureInfo::BatteryGroupTemperatureMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatteryGroupTemperatureMenuInfo, this, _1));
+    //mHandler.registerMsgCallback(fyBatteryGroupTemperatureInfo::BatteryGroupTemperatureMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatteryGroupTemperatureMenuInfo, this, _1));
     mHandler.registerMsgCallback(fyBatteryGroupTemperatureInfo::BatterySingleTemperature::descriptor(), bind(&CustomCarMsgWorker::handleProtoBatterySingleTemperatureMenuInfo, this, _1));
     //空调系统信息
     mHandler.registerMsgCallback(fyAirCtrlSystemInfo::AirCtrlSystemMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoAirCtrlSystemMenuInfo, this, _1));
@@ -1206,61 +1206,34 @@ void CustomCarMsgWorker::handleProtoBatteryManageSystemMenuInfo(const carfox::Me
         emit this->powerBatteryRechargeChanged(value);
     });
 }
-//电池组
-void CustomCarMsgWorker::handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg) {
-    shared_ptr<fyBatteryGroupVoltageInfo::BatteryGroupVoltageMenu> p = carfox::down_pointer_cast<fyBatteryGroupVoltageInfo::BatteryGroupVoltageMenu>(msg);
-    updateStates<quint32>(mStateData.boxNumberVoltage.data, p->box_number(), [this](quint32 value) {
-        emit this->boxNumberVoltageChanged(value);
-    });
-    /*
-    updateStates<QVariantMap>(mStateData.voltageInfo.data, p->voltage_info(), [this](QVariantMap value) {
-        emit this->voltageInfoChanged(value);
-    });
-    */
-    mBatVoltageData.clear();
-    for(int i=0; i<p->box_number(); i++) {
-        const fyBatteryGroupVoltageInfo::BatterySingleVoltage* voltage = p->mutable_voltage_info(i);
-        mBatVoltageData.insert(QString::number(i+1), voltage->voltage());
-    }
-    emit this->batVoltageChanged(mBatVoltageData);
-}
 //单体电压
 void CustomCarMsgWorker::handleProtoBatterySingleVoltageMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupVoltageInfo::BatterySingleVoltage> p = carfox::down_pointer_cast<fyBatteryGroupVoltageInfo::BatterySingleVoltage>(msg);
-    updateStates<quint32>(mStateData.addrNumberVoltage.data, p->addr_number(), [this](quint32 value) {
-        emit this->addrNumberVoltageChanged(value);
-    });
-    updateStates<float>(mStateData.addrNumberVoltageValue.data, p->voltage(), [this](float value) {
-        emit this->addrNumberVoltageValueChanged(value);
-    });
-}
-//电池组
-void CustomCarMsgWorker::handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg) {
-    shared_ptr<fyBatteryGroupTemperatureInfo::BatteryGroupTemperatureMenu> p = carfox::down_pointer_cast<fyBatteryGroupTemperatureInfo::BatteryGroupTemperatureMenu>(msg);
-    updateStates<quint32>(mStateData.boxNumberTemp.data, p->box_number(), [this](quint32 value) {
-        emit this->boxNumberTempChanged(value);
-    });
-    /*
-    updateStates<QVariantMap>(mStateData.tempInfo.data, p->temp_info(), [this](QVariantMap value) {
-        emit this->tempInfoChanged(value);
-    });
-    */
-    mBatTempData.clear();
-    for(int i=0; i<p->temp_info_size(); i++) {
-        const fyBatteryGroupTemperatureInfo::BatterySingleTemperature* temperature = p->mutable_temp_info(i);
-        mBatTempData.insert(QString::number(i+1), temperature->temperature());
+    mBatVoltageData.clear();
+    for(uint i=0; i<p->addr_number(); i++) {
+        mBatVoltageData.insert(QString::number(i+1), p->voltage(i));
     }
-    emit this->batTempChanged(mBatTempData);
+    /*
+    for(int i=0; i<60; i++) {
+        mBatVoltageData.insert(QString::number(i+1), 0.66 + i);
+    }
+    */
+    emit this->batVoltageChanged(mBatVoltageData);
+    //qDebug() << "mBatVoltageData:::::::::::::::::::::::::::::::" << mBatVoltageData;
 }
 //单体温度
 void CustomCarMsgWorker::handleProtoBatterySingleTemperatureMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupTemperatureInfo::BatterySingleTemperature> p = carfox::down_pointer_cast<fyBatteryGroupTemperatureInfo::BatterySingleTemperature>(msg);
-    updateStates<quint32>(mStateData.addrNumberTemp.data, p->addr_number(), [this](quint32 value) {
-        emit this->addrNumberTempChanged(value);
-    });
-    updateStates<float>(mStateData.addrNumberTempValue.data, p->temperature(), [this](float value) {
-        emit this->addrNumberTempValueChanged(value);
-    });
+    mBatTempData.clear();
+    /*
+    for(int i=0; i<20; i++) {
+        mBatTempData.insert(QString::number(i+1), 0.11 + i);
+    }
+    */
+    for(uint i=0; i<p->addr_number(); i++) {
+        mBatTempData.insert(QString::number(i+1), p->temperature(i));
+    }
+    emit this->batTempChanged(mBatTempData);
 }
 //空调信息
 void CustomCarMsgWorker::handleProtoAirCtrlSystemMenuInfo(const carfox::MessagePtr &msg) {

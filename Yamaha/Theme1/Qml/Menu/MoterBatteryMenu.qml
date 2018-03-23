@@ -13,20 +13,27 @@ MenuItem {
     visible: false
 
     property bool bKeyEnable: false
-    property int boxNumberVoltage: CarMsg.boxNumberVoltage
     property var voltageInfo: CarMsg.voltageInfo
+    property var tempInfo: CarMsg.tempInfo
     property var carLoadTitleArray: ["电池管理系统信息","单体电池信息（电池箱1）","单体电池信息（电池箱2）",
         "单体电池信息（电池箱3）","单体电池信息（电池箱4）","单体电池信息（电池箱5）","单体电池信息（电池箱6）","单体电池信息（电池箱7）"
         ,"单体电池信息（电池箱8）","单体电池信息（电池箱9）","单体电池信息（电池箱10）","电池诊断信息1","电池诊断信息2"]
     property int carLoadCurrentIndex: 0
 
     onVoltageInfoChanged: {
-        console.log("=============0000=================" + boxNumberVoltage);
-        console.log("=============1111=================" + voltageInfo);
-        console.log("=============2222=================" + voltageInfo.toString());
-        console.log("=============3333=================" + JSON.stringify(voltageInfo));
-        console.log("=============4444=================" + voltageInfo.toString().split(","));
+        battery_model.clear();
+        for(var i in voltageInfo){
+            battery_model.append({"number":i,"voltage":voltageInfo[i].toFixed(2)});
+        }
     }
+    onTempInfoChanged: {
+        temperature_model.clear();
+        for(var i in tempInfo){
+            temperature_model.append({"number":i,"temperature":tempInfo[i].toFixed(0)});
+        }
+    }
+    ListModel { id: battery_model }
+    ListModel { id: temperature_model }
     onVisibleChanged: {
         if(visible){
             update_model_timer.running = true;
@@ -39,23 +46,155 @@ MenuItem {
         running: false
         repeat: true
         interval: 1000
-        onTriggered: {}
+        onTriggered: {
+            if(carLoadCurrentIndex === 0){
+                listmodel9.setProperty(0,"value",CarMsg.bmsVersion.toFixed(1));
+                listmodel9.setProperty(1,"value",CarMsg.bmsModuleAmount.toFixed(0));
+                var batteryType;
+                if(CarMsg.powerBatteryType === 1){
+                    batteryType = "磷酸铁锂";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "三元聚合物";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "钛酸锂";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "锰酸锂电池";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "聚合物锂离子电池";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "镍类电池";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "燃料电池";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "钴酸锂";
+                }else if(CarMsg.powerBatteryType === 1){
+                    batteryType = "超级电容";
+                }else{}
+                listmodel9.setProperty(2,"value",batteryType);
+                listmodel9.setProperty(3,"value",CarMsg.batMaxVoltage.toFixed(1));
+                listmodel9.setProperty(4,"value",CarMsg.batteryPackHighestTemp.toFixed(0));
+                listmodel9.setProperty(5,"value",CarMsg.batteryManagePackEnergy.toFixed(1));
+                listmodel9.setProperty(6,"value",CarMsg.irmOhmPositive.toFixed(1));
+                listmodel9.setProperty(7,"value",CarMsg.batAmount.toFixed(0));
+                listmodel9.setProperty(8,"value",CarMsg.tempStyletAmount.toFixed(0));
+                listmodel9.setProperty(9,"value",CarMsg.outletPositiveTemp.toFixed(0));
+                listmodel9.setProperty(10,"value",CarMsg.outletNegativeTemp.toFixed(0));
+                listmodel10.setProperty(0,"value",CarMsg.powerBatteryRecharge.toFixed(0));
+                listmodel10.setProperty(1,"value",CarMsg.bmsLife.toFixed(0));
+                listmodel10.setProperty(2,"value",CarMsg.batteryPackMinTemp.toFixed(0));
+                var bmsStatus;
+                if(CarMsg.bmsControlStatus === 0){
+                    bmsStatus = "正常";
+                }else if(CarMsg.bmsControlStatus === 1){
+                    bmsStatus = "均衡";
+                }else if(CarMsg.bmsControlStatus === 2){
+                    bmsStatus = "加热";
+                }else if(CarMsg.bmsControlStatus === 3){
+                    bmsStatus = "冷却";
+                }else{}
+                listmodel10.setProperty(3,"value",bmsStatus);
+                listmodel10.setProperty(4,"value",CarMsg.irmOhmNegative.toFixed(1));
+                var chargeStatus;
+                if(CarMsg.rechargeStatus === 0x01){
+                    chargeStatus = "停车充电";
+                }else if(CarMsg.rechargeStatus === 0x02){
+                    chargeStatus = "行驶充电";
+                }else if(CarMsg.rechargeStatus === 0x03){
+                    chargeStatus = "未充电状态";
+                }else if(CarMsg.rechargeStatus === 0x04){
+                    chargeStatus = "充电完成";
+                }else if(CarMsg.rechargeStatus === 0xFE){
+                    chargeStatus = "异常";
+                }else{}
+                listmodel10.setProperty(5,"value",chargeStatus);
+            }else if((carLoadCurrentIndex === 11)||(carLoadCurrentIndex === 12)){
+                listmodel11.setProperty(0,"checkstatus",CarMsg.batVoltageMaxAlarm);
+                listmodel11.setProperty(1,"checkstatus",CarMsg.batVoltageMaxAbortAlarm);
+                listmodel11.setProperty(2,"checkstatus",CarMsg.batVoltageMinAlarm);
+                listmodel11.setProperty(3,"checkstatus",CarMsg.batVoltageMinAbortAlarm);
+                listmodel11.setProperty(4,"checkstatus",CarMsg.chargeCurrentMaxAlarm);
+                listmodel11.setProperty(5,"checkstatus",CarMsg.dischargeCurrentMaxAlarm);
+                listmodel11.setProperty(6,"checkstatus",CarMsg.dischargeCurrentMaxAbortAlarm);
+                listmodel11.setProperty(7,"checkstatus",CarMsg.dischargeCurrentTempMinAlarm);
+                listmodel11.setProperty(8,"checkstatus",CarMsg.dischargeCurrentTempMinAbortAlarm);
+                listmodel11.setProperty(9,"checkstatus",CarMsg.chargeCurrentTempMaxAlarm);
+                listmodel11.setProperty(10,"checkstatus",CarMsg.chargeCurrentTempMaxAbortAlarm);
+                listmodel12.setProperty(0,"checkstatus",CarMsg.batTempMaxAlarm);
+                listmodel12.setProperty(1,"checkstatus",CarMsg.batTempMaxAbortAlarm);
+                listmodel12.setProperty(2,"checkstatus",CarMsg.dropoutVoltageMaxAlarm);
+                listmodel12.setProperty(3,"checkstatus",CarMsg.dropoutVoltageMaxAbortAlarm);
+                listmodel12.setProperty(4,"checkstatus",CarMsg.chargeVoltageMaxAlarm);
+                listmodel12.setProperty(5,"checkstatus",CarMsg.batTempDifferentAlarm);
+                listmodel12.setProperty(6,"checkstatus",CarMsg.batChargeTempMinAbortAlarm);
+                listmodel12.setProperty(7,"checkstatus",CarMsg.batChargeTempMinAlarm);
+                listmodel12.setProperty(8,"checkstatus",CarMsg.socMinAlarm);
+                listmodel12.setProperty(9,"checkstatus",CarMsg.socMaxAlarm);
+                listmodel12.setProperty(10,"checkstatus",CarMsg.batModuleCommunicationFail);
+                listmodel13.setProperty(0,"checkstatus",CarMsg.bmsSystemFault);
+                listmodel13.setProperty(1,"checkstatus",CarMsg.batteryFault);
+                listmodel13.setProperty(2,"checkstatus",CarMsg.energyRecoveryCurrentMaxAlarm);
+                listmodel13.setProperty(3,"checkstatus",CarMsg.energyRecoveryVoltageMaxAlarm);
+                listmodel13.setProperty(4,"checkstatus",CarMsg.energyRecoveryVoltageMaxAbort);
+                listmodel13.setProperty(5,"checkstatus",CarMsg.energyRecoveryCancel);
+                listmodel13.setProperty(6,"checkstatus",CarMsg.socJumpAlarm);
+                listmodel13.setProperty(7,"checkstatus",CarMsg.mismatchingAlarm);
+                listmodel13.setProperty(8,"checkstatus",CarMsg.vehicleMountedTypeMax);
+                listmodel13.setProperty(9,"checkstatus",CarMsg.vehicleMountedTypeMin);
+                listmodel13.setProperty(10,"checkstatus",CarMsg.vehicleMountedTypeOvercharge);
+            }else if((battery_model.count !==0)){
+                for(var i=0;i<10;i++){
+                    listmodel1.setProperty(i,"value",battery_model.get(i).voltage);
+                }
+                for(var j=10;j<20;j++){
+                    listmodel2.setProperty(j-10,"value",battery_model.get(j).voltage);
+                }
+                for(var k=20;k<30;k++){
+                    listmodel3.setProperty(k-20,"value",battery_model.get(k).voltage);
+                }
+                for(var l=30;l<40;l++){
+                    listmodel4.setProperty(l-30,"value",battery_model.get(l).voltage);
+                }
+                for(var m=40;m<50;m++){
+                    listmodel5.setProperty(m-40,"value",battery_model.get(m).voltage);
+                }
+                for(var n=50;n<60;n++){
+                    listmodel6.setProperty(n-50,"value",battery_model.get(n).voltage);
+                }
+                if(temperature_model.count !== 0){
+                    for(var o=0;o<10;o++){
+                        listmodel7.setProperty(o,"value",temperature_model.get(o).temperature);
+                    }
+                    for(var p=10;p<20;p++){
+                        listmodel8.setProperty(p-10,"value",temperature_model.get(p).temperature);
+                    }
+                }else{}
+            }else{}
+        }
     }
     onCarLoadCurrentIndexChanged: {
         if(carLoadCurrentIndex === 0){
             CarMsg.sendMenuInfo(23,0);
-        }else if(instrumentCurrentIndex === 1){
-            CarMsg.sendMenuInfo(25,0);
-        }else if(instrumentCurrentIndex === 2){
-        }else if(instrumentCurrentIndex === 3){
-        }else if(instrumentCurrentIndex === 4){
-        }else if(instrumentCurrentIndex === 5){
-        }else if(instrumentCurrentIndex === 6){
-        }else if(instrumentCurrentIndex === 7){
-        }else if(instrumentCurrentIndex === 8){
-        }else if(instrumentCurrentIndex === 9){
-        }else if(instrumentCurrentIndex === 10){
-        }else if(instrumentCurrentIndex === 11){
+        }else if(carLoadCurrentIndex === 1){
+            CarMsg.sendMenuInfo(25,1);
+        }else if(carLoadCurrentIndex === 2){
+            CarMsg.sendMenuInfo(25,2);
+        }else if(carLoadCurrentIndex === 3){
+            CarMsg.sendMenuInfo(25,3);
+        }else if(carLoadCurrentIndex === 4){
+            CarMsg.sendMenuInfo(25,4);
+        }else if(carLoadCurrentIndex === 5){
+            CarMsg.sendMenuInfo(25,5);
+        }else if(carLoadCurrentIndex === 6){
+            CarMsg.sendMenuInfo(25,6);
+        }else if(carLoadCurrentIndex === 7){
+            CarMsg.sendMenuInfo(25,7);
+        }else if(carLoadCurrentIndex === 8){
+            CarMsg.sendMenuInfo(25,8);
+        }else if(carLoadCurrentIndex === 9){
+            CarMsg.sendMenuInfo(25,9);
+        }else if(carLoadCurrentIndex === 10){
+            CarMsg.sendMenuInfo(25,10);
+        }else if(carLoadCurrentIndex === 11){
             CarMsg.sendMenuInfo(24,0);
         }else{}
     }

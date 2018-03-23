@@ -578,7 +578,7 @@ CommonItem {
             id: gear_control
             source: gearImageUrl
             anchors.right: parent.right
-            anchors.rightMargin: -35
+            anchors.rightMargin: -50
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 150
         }

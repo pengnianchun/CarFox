@@ -334,14 +334,14 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::powerBatteryTypeChanged, this, &CustomCarMsg::updatePowerBatteryType);
     connect(worker, &CustomCarMsgWorker::powerBatteryRechargeChanged, this, &CustomCarMsg::updatePowerBatteryRecharge);
     //电池组电压信息
-    connect(worker, &CustomCarMsgWorker::addrNumberVoltageChanged, this, &CustomCarMsg::updateAddrNumberVoltage);
-    connect(worker, &CustomCarMsgWorker::addrNumberVoltageValueChanged, this, &CustomCarMsg::updateAddrNumberVoltageValue);
-    connect(worker, &CustomCarMsgWorker::boxNumberVoltageChanged, this, &CustomCarMsg::updateBoxNumberVoltage);
+    //connect(worker, &CustomCarMsgWorker::addrNumberVoltageChanged, this, &CustomCarMsg::updateAddrNumberVoltage);
+    //connect(worker, &CustomCarMsgWorker::addrNumberVoltageValueChanged, this, &CustomCarMsg::updateAddrNumberVoltageValue);
+    //connect(worker, &CustomCarMsgWorker::boxNumberVoltageChanged, this, &CustomCarMsg::updateBoxNumberVoltage);
     connect(worker, &CustomCarMsgWorker::batVoltageChanged, this, &CustomCarMsg::updateVoltageInfo);
     //电池组温度信息
-    connect(worker, &CustomCarMsgWorker::addrNumberTempChanged, this, &CustomCarMsg::updateAddrNumberTemp);
-    connect(worker, &CustomCarMsgWorker::addrNumberTempValueChanged, this, &CustomCarMsg::updateAddrNumberTempValue);
-    connect(worker, &CustomCarMsgWorker::boxNumberTempChanged, this, &CustomCarMsg::updateBoxNumberTemp);
+    //connect(worker, &CustomCarMsgWorker::addrNumberTempChanged, this, &CustomCarMsg::updateAddrNumberTemp);
+    //connect(worker, &CustomCarMsgWorker::addrNumberTempValueChanged, this, &CustomCarMsg::updateAddrNumberTempValue);
+    //connect(worker, &CustomCarMsgWorker::boxNumberTempChanged, this, &CustomCarMsg::updateBoxNumberTemp);
     connect(worker, &CustomCarMsgWorker::batTempChanged, this, &CustomCarMsg::updateTempInfo);
     //空调模块信息
     connect(worker, &CustomCarMsgWorker::acFaultCodeChanged, this, &CustomCarMsg::updateAcFaultCode);
@@ -1465,28 +1465,28 @@ void CustomCarMsg::updatePowerBatteryRecharge(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(powerBatteryRecharge, value);
 }
 //电池组电压信息
-void CustomCarMsg::updateAddrNumberVoltage(uint value) {
-    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberVoltage, value);
-}
-void CustomCarMsg::updateAddrNumberVoltageValue(float value) {
-    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberVoltageValue, value);
-}
-void CustomCarMsg::updateBoxNumberVoltage(uint value) {
-    MEMBER_PROPERTY_VALUE_CHANGED(boxNumberVoltage, value);
-}
+//void CustomCarMsg::updateAddrNumberVoltage(uint value) {
+//    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberVoltage, value);
+//}
+//void CustomCarMsg::updateAddrNumberVoltageValue(float value) {
+//    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberVoltageValue, value);
+//}
+//void CustomCarMsg::updateBoxNumberVoltage(uint value) {
+//    MEMBER_PROPERTY_VALUE_CHANGED(boxNumberVoltage, value);
+//}
 void CustomCarMsg::updateVoltageInfo(QVariantMap value) {
     MEMBER_PROPERTY_VALUE_CHANGED(voltageInfo, value);
 }
 //电池组温度信息
-void CustomCarMsg::updateAddrNumberTemp(uint value) {
-    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberTemp, value);
-}
-void CustomCarMsg::updateAddrNumberTempValue(float value) {
-    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberTempValue, value);
-}
-void CustomCarMsg::updateBoxNumberTemp(uint value) {
-    MEMBER_PROPERTY_VALUE_CHANGED(boxNumberTemp, value);
-}
+//void CustomCarMsg::updateAddrNumberTemp(uint value) {
+//    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberTemp, value);
+//}
+//void CustomCarMsg::updateAddrNumberTempValue(float value) {
+//    MEMBER_PROPERTY_VALUE_CHANGED(addrNumberTempValue, value);
+//}
+//void CustomCarMsg::updateBoxNumberTemp(uint value) {
+//    MEMBER_PROPERTY_VALUE_CHANGED(boxNumberTemp, value);
+//}
 void CustomCarMsg::updateTempInfo(QVariantMap value) {
     MEMBER_PROPERTY_VALUE_CHANGED(tempInfo, value);
 }
@@ -1522,10 +1522,10 @@ void CustomCarMsg::updateDcLowVoltage(float value) {
 void CustomCarMsg::updateDcLowCurrent(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(dcLowCurrent, value);
 }
-void CustomCarMsg::updateDcTemp(uint value) {
+void CustomCarMsg::updateDcTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(dcTemp, value);
 }
-void CustomCarMsg::updateDcStatus2(uint value) {
+void CustomCarMsg::updateDcStatus2(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(dcStatus2, value);
 }
 void CustomCarMsg::updateDcUndervoltage(bool value) {

@@ -321,14 +321,14 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<qint32> powerBatteryType = carfox::CarMsgData<qint32>(-1);
     carfox::CarMsgData<qint32> powerBatteryRecharge = carfox::CarMsgData<qint32>(-1);
     //电池组电压信息
-    carfox::CarMsgData<quint32> addrNumberVoltage = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<float> addrNumberVoltageValue = carfox::CarMsgData<float>(-1);
-    carfox::CarMsgData<quint32> boxNumberVoltage = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<quint32> addrNumberVoltage = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<float> addrNumberVoltageValue = carfox::CarMsgData<float>(-1);
+    //carfox::CarMsgData<quint32> boxNumberVoltage = carfox::CarMsgData<quint32>(-1);
     //carfox::CarMsgData<QVariantMap> voltageInfo = carfox::CarMsgData<QVariantMap>(-1);
     //电池组温度信息
-    carfox::CarMsgData<quint32> addrNumberTemp = carfox::CarMsgData<quint32>(-1);
-    carfox::CarMsgData<float> addrNumberTempValue = carfox::CarMsgData<float>(-1);
-    carfox::CarMsgData<quint32> boxNumberTemp = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<quint32> addrNumberTemp = carfox::CarMsgData<quint32>(-1);
+    //carfox::CarMsgData<float> addrNumberTempValue = carfox::CarMsgData<float>(-1);
+    //carfox::CarMsgData<quint32> boxNumberTemp = carfox::CarMsgData<quint32>(-1);
     //carfox::CarMsgData<QVariantMap> tempInfo = carfox::CarMsgData<QVariantMap>(-1);
     //空调系统信息
     carfox::CarMsgData<quint32> acFaultCode = carfox::CarMsgData<quint32>(-1);            //空调故障代码, 00000000（2进制显示）

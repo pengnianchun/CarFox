@@ -349,15 +349,15 @@ signals:
     void powerBatteryTypeChanged(float value);
     void powerBatteryRechargeChanged(float value);
     //电池组电压信息
-    void addrNumberVoltageChanged(int value);
-    void addrNumberVoltageValueChanged(float value);
-    void boxNumberVoltageChanged(int value);
+    //void addrNumberVoltageChanged(int value);
+    //void addrNumberVoltageValueChanged(float value);
+    //void boxNumberVoltageChanged(int value);
     //void voltageInfoChanged(QVariantMap value);
     void batVoltageChanged(QVariantMap value);
     //电池组温度信息
-    void addrNumberTempChanged(int value);
-    void addrNumberTempValueChanged(float value);
-    void boxNumberTempChanged(int value);
+    //void addrNumberTempChanged(int value);
+    //void addrNumberTempValueChanged(float value);
+    //void boxNumberTempChanged(int value);
     //void tempInfoChanged(QVariantMap value);
     void batTempChanged(QVariantMap value);
     //空调模块信息
@@ -590,10 +590,10 @@ private:
     //电池管理系统信息
     void handleProtoBatteryManageSystemMenuInfo(const carfox::MessagePtr &msg);
     //电池组电压信息
-    void handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg);
+    //void handleProtoBatteryGroupVoltageMenuInfo(const carfox::MessagePtr &msg);
     void handleProtoBatterySingleVoltageMenuInfo(const carfox::MessagePtr &msg);
     //电池组温度信息
-    void handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg);
+    //void handleProtoBatteryGroupTemperatureMenuInfo(const carfox::MessagePtr &msg);
     void handleProtoBatterySingleTemperatureMenuInfo(const carfox::MessagePtr &msg);
     //空调系统信息
     void handleProtoAirCtrlSystemMenuInfo(const carfox::MessagePtr &msg);
