@@ -30,20 +30,12 @@ Item {
     Image { id: lamp_headlight; x: 103; y: 30; source: sourceImageUrl + "Lamp_headlight.png"; opacity: CarMsg.lampHeadLight ? 1.0 : 0 }
     //前门开到位信号
     Image { id: lamp_door1; x: 460; y: 18; source: sourceImageUrl + "Lamp_door1.png"; opacity: CarMsg.lampGate1 ? 1.0 : 0 }
-    //气压1报警
-    Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: CarMsg.airPress1Lamp ? 1.0 : 0 }
-    //左前蹄片磨损报警
-    Image { id: lamp_leftFriction; x: 570; y: 22; source: sourceImageUrl + "Lamp_leftFriction.png"; opacity: CarMsg.lampLeftShoeWear ? 1.0 : 0 }
     //后仓门
     Image { id: lamp_backCabin; x: 631; y: 20; source: sourceImageUrl + "Lamp_backCabin.png"; opacity: CarMsg.lampRearDoorOpen ? 1.0 : 0 }
     //危险报警指示
     Image { id: lamp_danger; x: 690; y: 20; source: sourceImageUrl + "Lamp_danger.png"; opacity: CarMsg.lampWarningLed ? 1.0 : 0 }
     //低水位报警
     Image { id: lamp_waterLevel; x: 753; y: 20; source: sourceImageUrl + "Lamp_waterLevel.png"; opacity: CarMsg.lampWaterLevelLow ? 1.0 : 0 }
-    //右前蹄片磨损报警
-    Image { id: lamp_rightFriction; x: 811; y: 22; source: sourceImageUrl + "Lamp_rightFriction.png"; opacity: CarMsg.lampRightShoeWear ? 1.0 : 0 }
-    //气压2报警
-    Image { id: lamp_airPress2; x: 873; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: CarMsg.airPress2Lamp ? 1.0 : 0 }
     //中门开到位信号
     Image { id: lamp_door2; x: 923; y: 18; source: sourceImageUrl + "Lamp_door2.png"; opacity: CarMsg.lampGate2 ? 1.0 : 0 }
     //位置灯
@@ -62,6 +54,15 @@ Item {
     Image { id: lamp_motor_Heat; x: 270; y: 306; source: sourceImageUrl + "motorHeat.png"; visible: indicatorStatus; opacity: CarMsg.controlMotorOverheating ? 1.0 : 0 }
     //电机功率受限指示
     Image { id: lamp_motor_Limitation; x: 205; y: 313; source: sourceImageUrl + "motorLimitation.png"; visible: indicatorStatus; opacity: CarMsg.motorPowerLimitation ? 1.0 : 0 }
+
+    //气压1报警
+    Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: CarMsg.airPress1Lamp ? 1.0 : 0 }
+    //左前蹄片磨损报警
+    Image { id: lamp_leftFriction; x: 570; y: 22; source: sourceImageUrl + "Lamp_leftFriction.png"; opacity: CarMsg.lampLeftShoeWear ? 1.0 : 0 }
+    //右前蹄片磨损报警
+    Image { id: lamp_rightFriction; x: 811; y: 22; source: sourceImageUrl + "Lamp_rightFriction.png"; opacity: CarMsg.lampRightShoeWear ? 1.0 : 0 }
+    //气压2报警
+    Image { id: lamp_airPress2; x: 873; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: CarMsg.airPress2Lamp ? 1.0 : 0 }
     SequentialAnimation {
         id: animation_indicator
         ParallelAnimation {

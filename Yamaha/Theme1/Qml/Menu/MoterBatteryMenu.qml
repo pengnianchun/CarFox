@@ -53,21 +53,21 @@ MenuItem {
                 var batteryType;
                 if(CarMsg.powerBatteryType === 1){
                     batteryType = "磷酸铁锂";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 2){
                     batteryType = "三元聚合物";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 3){
                     batteryType = "钛酸锂";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 4){
                     batteryType = "锰酸锂电池";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 5){
                     batteryType = "聚合物锂离子电池";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 6){
                     batteryType = "镍类电池";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 7){
                     batteryType = "燃料电池";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 8){
                     batteryType = "钴酸锂";
-                }else if(CarMsg.powerBatteryType === 1){
+                }else if(CarMsg.powerBatteryType === 9){
                     batteryType = "超级电容";
                 }else{}
                 listmodel9.setProperty(2,"value",batteryType);
@@ -234,130 +234,135 @@ MenuItem {
     }
     ListModel {
         id: listmodel1
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel2
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel3
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel4
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel5
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel6
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel7
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel8
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
-        ListElement { name: "";value: "0.000";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel9
-        ListElement { name: "bms程序版本号";value: "0.000";unit: "" }
-        ListElement { name: "bms模块总数量";value: "0.000";unit: "" }
-        ListElement { name: "动力电池类型";value: "0.000";unit: "" }
-        ListElement { name: "单体电池最高电圧";value: "0.000";unit: "V" }
-        ListElement { name: "电池组最高温度";value: "0.000";unit: "℃" }
-        ListElement { name: "电池组当前电量";value: "0.000";unit: "kwh" }
-        ListElement { name: "正极绝缘电阻阻值";value: "0.000";unit: "kΩ" }
-        ListElement { name: "单体电池总数";value: "0.000";unit: "" }
-        ListElement { name: "可充电储能系统温度探针个数";value: "0.000";unit: "" }
-        ListElement { name: "充电插座直流电源正极温度";value: "0.000";unit: "℃" }
-        ListElement { name: "充电插座直流电源负极温度";value: "0.000";unit: "℃" }
+        ListElement { name: "bms程序版本号";value: "";unit: "" }
+        ListElement { name: "bms模块总数量";value: "";unit: "" }
+        ListElement { name: "动力电池类型";value: "";unit: "" }
+        ListElement { name: "单体电池最高电圧";value: "";unit: "V" }
+        ListElement { name: "电池组最高温度";value: "";unit: "℃" }
+        ListElement { name: "电池组当前电量";value: "";unit: "kwh" }
+        ListElement { name: "正极绝缘电阻阻值";value: "";unit: "kΩ" }
+        ListElement { name: "单体电池总数";value: "";unit: "" }
+        ListElement { name: "可充电储能系统温度探针个数";value: "";unit: "" }
+        ListElement { name: "充电插座直流电源正极温度";value: "";unit: "℃" }
+        ListElement { name: "充电插座直流电源负极温度";value: "";unit: "℃" }
     }
     ListModel {
         id: listmodel10
-        ListElement { name: "动力电池充电次数";value: "0.000";unit: "" }
-        ListElement { name: "bms的life值";value: "0.000";unit: "" }
-        ListElement { name: "电池组最低温度";value: "0.000";unit: "℃" }
-        ListElement { name: "bms管控状态";value: "0.000";unit: "" }
-        ListElement { name: "负极绝缘电阻阻值";value: "0.000";unit: "kΩ" }
-        ListElement { name: "充电状态";value: "0.000";unit: "" }
+        ListElement { name: "动力电池充电次数";value: "";unit: "" }
+        ListElement { name: "bms的life值";value: "";unit: "" }
+        ListElement { name: "电池组最低温度";value: "";unit: "℃" }
+        ListElement { name: "bms管控状态";value: "";unit: "" }
+        ListElement { name: "负极绝缘电阻阻值";value: "";unit: "kΩ" }
+        ListElement { name: "充电状态";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
+        ListElement { name: "";value: "";unit: "" }
     }
     ListModel {
         id: listmodel11

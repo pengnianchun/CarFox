@@ -36,7 +36,7 @@ void MsgHandler::parseMessage(QByteArray &recvmsg)
 
     // get typename string
     protoTypeName = QString(recvBuffer);
-//    qDebug() << "protoTypeName:" << protoTypeName;
+    //qDebug() << "protoTypeName:" << protoTypeName;
 
     protoMessageLength = recvmsg.length() - protoTypeNameLength - sizeof(protoTypeNameLength);
 
