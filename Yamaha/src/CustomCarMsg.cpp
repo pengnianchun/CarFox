@@ -447,6 +447,18 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::frontDoorExigencyAlarmChanged, this, &CustomCarMsg::updateFrontDoorExigencyAlarm);
     connect(worker, &CustomCarMsgWorker::middleDoorExigencyAlarmChanged, this, &CustomCarMsg::updateMiddleDoorExigencyAlarm);
     connect(worker, &CustomCarMsgWorker::stopChanged, this, &CustomCarMsg::updateStop);
+    connect(worker, &CustomCarMsgWorker::lampLeftBackWearChanged, this, &CustomCarMsg::updateLampLeftBackWear);
+    connect(worker, &CustomCarMsgWorker::lampRightBackWearChanged, this, &CustomCarMsg::updateLampRightBackWear);
+    connect(worker, &CustomCarMsgWorker::lampMirrorHeatingChanged, this, &CustomCarMsg::updateLampMirrorHeating);
+    connect(worker, &CustomCarMsgWorker::lampDefroster1Changed, this, &CustomCarMsg::updateLampDefroster1);
+    connect(worker, &CustomCarMsgWorker::lampDefroster2Changed, this, &CustomCarMsg::updateLampDefroster2);
+    connect(worker, &CustomCarMsgWorker::lampLowSpeedCloseChanged, this, &CustomCarMsg::updateLampLowSpeedClose);
+    connect(worker, &CustomCarMsgWorker::lampMainSwitchChanged, this, &CustomCarMsg::updateLampMainSwitch);
+    connect(worker, &CustomCarMsgWorker::lampTirePreFaultChanged, this, &CustomCarMsg::updateLampTirePreFault);
+    connect(worker, &CustomCarMsgWorker::lampBatHigtTempChanged, this, &CustomCarMsg::updateLampBatHigtTemp);
+    connect(worker, &CustomCarMsgWorker::lampSystemFaultChanged, this, &CustomCarMsg::updateLampSystemFault);
+    connect(worker, &CustomCarMsgWorker::lampBatLegendChanged, this, &CustomCarMsg::updateLampBatLegend);
+    connect(worker, &CustomCarMsgWorker::lampRtonChanged, this, &CustomCarMsg::updateLampRton);
     //胎压模块信息
     connect(worker, &CustomCarMsgWorker::frontLeftTirePressChanged, this, &CustomCarMsg::updateFrontLeftTirePress);
     connect(worker, &CustomCarMsgWorker::fronRightTirePressChanged, this, &CustomCarMsg::updateFronRightTirePress);
@@ -1795,6 +1807,42 @@ void CustomCarMsg::updateMiddleDoorExigencyAlarm(bool value) {
 }
 void CustomCarMsg::updateStop(bool value) {
     MEMBER_PROPERTY_VALUE_CHANGED(stop, value);
+}
+void CustomCarMsg::updateLampLeftBackWear(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampLeftBackWear, value);
+}
+void CustomCarMsg::updateLampRightBackWear(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampRightBackWear, value);
+}
+void CustomCarMsg::updateLampMirrorHeating(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampMirrorHeating, value);
+}
+void CustomCarMsg::updateLampDefroster1(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampDefroster1, value);
+}
+void CustomCarMsg::updateLampDefroster2(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampDefroster2, value);
+}
+void CustomCarMsg::updateLampLowSpeedClose(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampLowSpeedClose, value);
+}
+void CustomCarMsg::updateLampMainSwitch(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampMainSwitch, value);
+}
+void CustomCarMsg::updateLampTirePreFault(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampTirePreFault, value);
+}
+void CustomCarMsg::updateLampBatHigtTemp(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampBatHigtTemp, value);
+}
+void CustomCarMsg::updateLampSystemFault(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampSystemFault, value);
+}
+void CustomCarMsg::updateLampBatLegend(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampBatLegend, value);
+}
+void CustomCarMsg::updateLampRton(bool value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(lampRton, value);
 }
 //胎压模块信息
 void CustomCarMsg::updateFrontLeftTirePress(float value) {

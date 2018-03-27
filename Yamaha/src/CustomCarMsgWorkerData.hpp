@@ -434,6 +434,18 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<bool> frontDoorExigencyAlarm = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> middleDoorExigencyAlarm = carfox::CarMsgData<bool>(-1);
     carfox::CarMsgData<bool> stop = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampLeftBackWear = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampRightBackWear = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampMirrorHeating = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampDefroster1 = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampDefroster2 = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampLowSpeedClose = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampMainSwitch = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampTirePreFault = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampBatHigtTemp = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampSystemFault = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampBatLegend = carfox::CarMsgData<bool>(-1);
+    carfox::CarMsgData<bool> lampRton = carfox::CarMsgData<bool>(-1);
     //胎压模块信息
     carfox::CarMsgData<float> frontLeftTirePress = carfox::CarMsgData<float>(-1);
     carfox::CarMsgData<float> fronRightTirePress = carfox::CarMsgData<float>(-1);

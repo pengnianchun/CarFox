@@ -1551,6 +1551,42 @@ void CustomCarMsgWorker::handleProtoPicLampFrameInfo(const carfox::MessagePtr &m
     updateStates<bool>(mStateData.stop.data, p->stop(), [this](bool value) {
         emit this->stopChanged(value);
     });
+    updateStates<bool>(mStateData.lampLeftBackWear.data, p->lamp_left_back_wear(), [this](bool value) {
+        emit this->lampLeftBackWearChanged(value);
+    });
+    updateStates<bool>(mStateData.lampRightBackWear.data, p->lamp_right_back_wear(), [this](bool value) {
+        emit this->lampRightBackWearChanged(value);
+    });
+    updateStates<bool>(mStateData.lampMirrorHeating.data, p->lamp_mirror_heating(), [this](bool value) {
+        emit this->lampMirrorHeatingChanged(value);
+    });
+    updateStates<bool>(mStateData.lampDefroster1.data, p->lamp_defroster1(), [this](bool value) {
+        emit this->lampDefroster1Changed(value);
+    });
+    updateStates<bool>(mStateData.lampDefroster2.data, p->lamp_defroster2(), [this](bool value) {
+        emit this->lampDefroster2Changed(value);
+    });
+    updateStates<bool>(mStateData.lampLowSpeedClose.data, p->lamp_low_speed_close(), [this](bool value) {
+        emit this->lampLowSpeedCloseChanged(value);
+    });
+    updateStates<bool>(mStateData.lampMainSwitch.data, p->lamp_main_switch(), [this](bool value) {
+        emit this->lampMainSwitchChanged(value);
+    });
+    updateStates<bool>(mStateData.lampTirePreFault.data, p->lamp_tire_pre_fault(), [this](bool value) {
+        emit this->lampTirePreFaultChanged(value);
+    });
+    updateStates<bool>(mStateData.lampBatHigtTemp.data, p->lamp_bat_higt_temp(), [this](bool value) {
+        emit this->lampBatHigtTempChanged(value);
+    });
+    updateStates<bool>(mStateData.lampSystemFault.data, p->lamp_system_fault(), [this](bool value) {
+        emit this->lampSystemFaultChanged(value);
+    });
+    updateStates<bool>(mStateData.lampBatLegend.data, p->lamp_bat_legend(), [this](bool value) {
+        emit this->lampBatLegendChanged(value);
+    });
+    updateStates<bool>(mStateData.lampRton.data, p->lamp_rton(), [this](bool value) {
+        emit this->lampRtonChanged(value);
+    });
 }
 //胎压监测系统信息
 void CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo(const carfox::MessagePtr &msg)

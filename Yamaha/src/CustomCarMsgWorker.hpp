@@ -464,6 +464,18 @@ signals:
     void frontDoorExigencyAlarmChanged(bool value);
     void middleDoorExigencyAlarmChanged(bool value);
     void stopChanged(bool value);
+    void lampLeftBackWearChanged(bool value);
+    void lampRightBackWearChanged(bool value);
+    void lampMirrorHeatingChanged(bool value);
+    void lampDefroster1Changed(bool value);
+    void lampDefroster2Changed(bool value);
+    void lampLowSpeedCloseChanged(bool value);
+    void lampMainSwitchChanged(bool value);
+    void lampTirePreFaultChanged(bool value);
+    void lampBatHigtTempChanged(bool value);
+    void lampSystemFaultChanged(bool value);
+    void lampBatLegendChanged(bool value);
+    void lampRtonChanged(bool value);
     //胎压模块信息
     void frontLeftTirePressChanged(float value);
     void fronRightTirePressChanged(float value);

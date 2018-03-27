@@ -50,7 +50,7 @@ MenuItem {
             if(carLoadCurrentIndex === 0){
                 listmodel9.setProperty(0,"value",CarMsg.bmsVersion.toFixed(1));
                 listmodel9.setProperty(1,"value",CarMsg.bmsModuleAmount.toFixed(0));
-                var batteryType;
+                var batteryType = "";
                 if(CarMsg.powerBatteryType === 1){
                     batteryType = "磷酸铁锂";
                 }else if(CarMsg.powerBatteryType === 2){
@@ -82,7 +82,7 @@ MenuItem {
                 listmodel10.setProperty(0,"value",CarMsg.powerBatteryRecharge.toFixed(0));
                 listmodel10.setProperty(1,"value",CarMsg.bmsLife.toFixed(0));
                 listmodel10.setProperty(2,"value",CarMsg.batteryPackMinTemp.toFixed(0));
-                var bmsStatus;
+                var bmsStatus = "";
                 if(CarMsg.bmsControlStatus === 0){
                     bmsStatus = "正常";
                 }else if(CarMsg.bmsControlStatus === 1){
@@ -94,7 +94,7 @@ MenuItem {
                 }else{}
                 listmodel10.setProperty(3,"value",bmsStatus);
                 listmodel10.setProperty(4,"value",CarMsg.irmOhmNegative.toFixed(1));
-                var chargeStatus;
+                var chargeStatus = "";
                 if(CarMsg.rechargeStatus === 0x01){
                     chargeStatus = "停车充电";
                 }else if(CarMsg.rechargeStatus === 0x02){

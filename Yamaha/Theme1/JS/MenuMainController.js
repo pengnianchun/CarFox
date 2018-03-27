@@ -17,6 +17,7 @@ function showMenuDetail(menuCurrentIndex){
         UiController.showLayer("LightAdjustMenu");
         UiController.setLayerProperty("LightAdjustMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 4){
+        CarMsg.sendMenuInfo(23,0);
         UiController.showLayer("MoterBatteryMenu");
         UiController.setLayerProperty("MoterBatteryMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 5){
@@ -31,6 +32,7 @@ function showMenuDetail(menuCurrentIndex){
         UiController.showLayer("TirePressureMenu");
         UiController.setLayerProperty("TirePressureMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 8){
+        CarMsg.sendMenuInfo(21,0);
         UiController.showLayer("VcuSystemMenu");
         UiController.setLayerProperty("VcuSystemMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 9){
