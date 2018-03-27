@@ -335,19 +335,6 @@ Item {
         ScriptAction {
             script: {
                 animationStatus = true;
-                /*
-                lampTurnLeft = false;lampDoubleFlash = false;lampTurnRight = false;lampFrontFog = false;
-                lampRearFog = false;lampHighBeam = false;lampHeadLight = false;lampGate1 = false;lampRearDoorOpen = false;
-                lampWarningLed = false;lampWaterLevelLow = false;lampGate2 = false;lampPositionLight = false;cableConnect = false;
-                powerAccumulatorsChargeStatus = false;lampChargeConfirm = false;powerBatteryCutOff = false;powerAccumulatorsFault = false;controlMotorOverheating = false;
-                motorPowerLimitation = false;airPress1Lamp = false;airPress5Lamp = false;powerDoorsOpen = false;electronicInSlope = false;
-                ascd = false;lampWaterTempHigh = false;frontDoorExigencyAlarm = false;lampLeftShoeWear = false;seatbeltAlarm = false;
-                lampAbs = false;leftDoorsOpenAlarm = false;lampRightShoeWear = false;airPress3Lamp = false;lampBrake = false;
-                bmsAlarm = false;socLowAram = false;safetySystemAlarm = false;rightDoorsOpenAlarm = false;ecasSystemFaultLed = false;
-                dropOffDoorbell = false;airPress2Lamp = false;airPress4Lamp = false;lampParkingBrake = false;driverSystemFault = false;
-                severityInsulationFault = false;slightInsulationFault = false;barrierFreeMarchReach = false;gateChargeOpen = false;ecasAlarmLed = false;
-                ecasKneelingStatusLed = false;ecasSpecialHeightLed = false;middleDoorExigencyAlarm = false;
-                */
             }
         }
     }

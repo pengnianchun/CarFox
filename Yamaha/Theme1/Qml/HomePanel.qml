@@ -251,7 +251,6 @@ CommonItem {
                     NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800 }
                 }
             }
-            PauseAnimation { duration: 1000 }
             ScriptAction {
                 script: {
                     animationStatus = true;

@@ -251,6 +251,8 @@
         <file>Theme1/Image/IndicatorPanel/turnRightLamp.png</file>
         <file>Theme1/Image/IndicatorPanel/waitRunning.png</file>
         <file>Theme1/Image/IndicatorPanel/waterHeat.png</file>
+		<file>Theme1/Image/IndicatorPanel/electronicInSlope.png</file>
+        <file>Theme1/Image/IndicatorPanel/gateChargeOpen.png</file>
         <file>Theme1/Image/AutoSplash/bg.png</file>
         <file>Theme1/Image/AutoSplash/bluelinebg.png</file>
         <file>Theme1/Image/AutoSplash/leftBlueLine.png</file>
