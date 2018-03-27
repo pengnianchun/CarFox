@@ -21,6 +21,7 @@ MenuItem {
     property var dateYMDHMStatus: [true,false,false,false,false,false]
     property var initializeDateTime: ["2018","03","20","00","00","00","Mon"]
     property bool checkDateTimeSetting: CarMsg.checkDateTimeSetting
+    property var utcMcuDateTime: CarMsg.dateTime>0 ? Qt.formatDateTime(new Date(CarMsg.dateTime*1000), "yyyy-MM-dd-hh-mm-ss-ddd").split("-") : initializeDateTime;
 
     onCheckDateTimeSettingChanged: {
         if(checkDateTimeSetting){
@@ -34,6 +35,11 @@ MenuItem {
     hideMenu: function(){
         //调用设置模块Return函数
         MenuMainDetailController.returnSettingSystemAction(setting_system,dateYMDHMId,menuLayerId,parentMenuId);
+        year.textValue = utcMcuDateTime[0];
+        month.textValue = utcMcuDateTime[1];
+        day.textValue = utcMcuDateTime[2];
+        hour.textValue = utcMcuDateTime[3];
+        miniute.textValue = utcMcuDateTime[4];
     }
     previousMenu: function(){
         //时间数值递增函数调用
@@ -43,8 +49,6 @@ MenuItem {
         //时间数值递减函数调用
         MenuMainDetailController.turnPageStatus(setting_system,settingSystemId,dateYMDHMId,"reduce");
     }
-    //CarStatus.dateTime
-    property var utcMcuDateTime: CarMsg.dateTime>0 ? Qt.formatDateTime(new Date(CarMsg.dateTime*1000), "yyyy-MM-dd-hh-mm-ss-ddd").split("-") : initializeDateTime;
     TextFieldWeir {
         id: title
         textValue: "时间设置信息"

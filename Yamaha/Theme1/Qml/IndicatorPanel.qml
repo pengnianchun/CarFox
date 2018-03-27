@@ -9,7 +9,63 @@ Item {
 
     property string sourceImageUrl: "qrc:/Theme/Theme1/Image/IndicatorPanel/"
     property bool light: true
+    property bool animationStatus: false
     property bool indicatorStatus: true;
+    property bool lampTurnLeft: animationStatus ? CarMsg.lampTurnLeft : false
+    property bool lampDoubleFlash: animationStatus ? CarMsg.lampDoubleFlash : false
+    property bool lampTurnRight: animationStatus ? CarMsg.lampTurnRight : false
+    property bool lampFrontFog: animationStatus ? CarMsg.lampFrontFog : false
+    property bool lampRearFog: animationStatus ? CarMsg.lampRearFog : false
+    property bool lampHighBeam: animationStatus ? CarMsg.lampHighBeam : false
+    property bool lampHeadLight: animationStatus ? CarMsg.lampHeadLight : false
+    property bool lampGate1: animationStatus ? CarMsg.lampGate1 : false
+    property bool lampRearDoorOpen: animationStatus ? CarMsg.lampRearDoorOpen : false
+    property bool lampWarningLed: animationStatus ? CarMsg.lampWarningLed : false
+    property bool lampWaterLevelLow: animationStatus ? CarMsg.lampWaterLevelLow : false
+    property bool lampGate2: animationStatus ? CarMsg.lampGate2 : false
+    property bool lampPositionLight: animationStatus ? CarMsg.lampPositionLight : false
+    property bool cableConnect: animationStatus ? CarMsg.cableConnect : false
+    property bool powerAccumulatorsChargeStatus: animationStatus ? CarMsg.powerAccumulatorsChargeStatus : false
+    property bool lampChargeConfirm: animationStatus ? CarMsg.lampChargeConfirm : false
+    property bool powerBatteryCutOff: animationStatus ? CarMsg.powerBatteryCutOff : false
+    property bool powerAccumulatorsFault: animationStatus ? CarMsg.powerAccumulatorsFault : false
+    property bool controlMotorOverheating: animationStatus ? CarMsg.controlMotorOverheating : false
+    property bool motorPowerLimitation: animationStatus ? CarMsg.motorPowerLimitation : false
+
+    property bool airPress1Lamp: animationStatus ? CarMsg.airPress1Lamp : false
+    property bool airPress5Lamp: animationStatus ? CarMsg.airPress5Lamp : false
+    property bool powerDoorsOpen: animationStatus ? CarMsg.powerDoorsOpen : false
+    property bool electronicInSlope: animationStatus ? CarMsg.electronicInSlope : false
+    property bool ascd: animationStatus ? CarMsg.ascd : false
+    property bool lampWaterTempHigh: animationStatus ? CarMsg.lampWaterTempHigh : false
+    property bool frontDoorExigencyAlarm: animationStatus ? CarMsg.frontDoorExigencyAlarm : false
+    property bool lampLeftShoeWear: animationStatus ? CarMsg.lampLeftShoeWear : false
+    property bool seatbeltAlarm: animationStatus ? CarMsg.seatbeltAlarm : false
+    property bool lampAbs: animationStatus ? CarMsg.lampAbs : false
+    property bool lampLeftBackWear: animationStatus ? CarMsg.lampLeftBackWear : false
+    property bool leftDoorsOpenAlarm: animationStatus ? CarMsg.leftDoorsOpenAlarm : false
+    property bool lampRightShoeWear: animationStatus ? CarMsg.lampRightShoeWear : false
+    property bool airPress3Lamp: animationStatus ? CarMsg.airPress3Lamp : false
+    property bool lampBrake: animationStatus ? CarMsg.lampBrake : false
+    property bool lampRightBackWear: animationStatus ? CarMsg.lampRightBackWear : false
+    property bool bmsAlarm: animationStatus ? CarMsg.bmsAlarm : false
+    property bool socLowAram: animationStatus ? CarMsg.socLowAram : false
+    property bool safetySystemAlarm: animationStatus ? CarMsg.safetySystemAlarm : false
+    property bool rightDoorsOpenAlarm: animationStatus ? CarMsg.rightDoorsOpenAlarm : false
+    property bool ecasSystemFaultLed: animationStatus ? CarMsg.ecasSystemFaultLed : false
+    property bool dropOffDoorbell: animationStatus ? CarMsg.dropOffDoorbell : false
+    property bool airPress2Lamp: animationStatus ? CarMsg.airPress2Lamp : false
+    property bool airPress4Lamp: animationStatus ? CarMsg.airPress4Lamp : false
+    property bool lampParkingBrake: animationStatus ? CarMsg.lampParkingBrake : false
+    property bool driverSystemFault: animationStatus ? CarMsg.driverSystemFault : false
+    property bool severityInsulationFault: animationStatus ? CarMsg.severityInsulationFault : false
+    property bool slightInsulationFault: animationStatus ? CarMsg.slightInsulationFault : false
+    property bool barrierFreeMarchReach: animationStatus ? CarMsg.barrierFreeMarchReach : false
+    property bool gateChargeOpen: animationStatus ? CarMsg.gateChargeOpen : false
+    property bool ecasAlarmLed: animationStatus ? CarMsg.ecasAlarmLed : false
+    property bool ecasKneelingStatusLed: animationStatus ? CarMsg.ecasKneelingStatusLed : false
+    property bool ecasSpecialHeightLed: animationStatus ? CarMsg.ecasSpecialHeightLed : false
+    property bool middleDoorExigencyAlarm: animationStatus ? CarMsg.middleDoorExigencyAlarm : false
 
     onVisibleChanged: {
         if(visible){
@@ -20,43 +76,43 @@ Item {
         }
     }
     //左转
-    Image { id: lamp_leftTurn; x: 410; y: 22; source: sourceImageUrl + "Lamp_turnLeft.png"; opacity: (CarMsg.lampTurnLeft || CarMsg.lampDoubleFlash) ? 1.0 : 0 }
+    Image { id: lamp_leftTurn; x: 410; y: 22; source: sourceImageUrl + "Lamp_turnLeft.png"; opacity: (lampTurnLeft || lampDoubleFlash) ? 1.0 : 0 }
     //右转
-    Image { id: lamp_rightTurn; x: 983; y: 22; source: sourceImageUrl + "Lamp_turnRight.png"; opacity: (CarMsg.lampTurnRight || CarMsg.lampDoubleFlash) ? 1.0 : 0 }
+    Image { id: lamp_rightTurn; x: 983; y: 22; source: sourceImageUrl + "Lamp_turnRight.png"; opacity: (lampTurnRight || lampDoubleFlash) ? 1.0 : 0 }
     //前雾灯
-    Image { id: lamp_frontFog; x: 54; y: 61; source: sourceImageUrl + "Lamp_frontFog.png"; opacity: CarMsg.lampFrontFog ? 1.0 : 0 }
+    Image { id: lamp_frontFog; x: 54; y: 61; source: sourceImageUrl + "Lamp_frontFog.png"; opacity: lampFrontFog ? 1.0 : 0 }
     //后雾灯
-    Image { id: lamp_rearFog; x: 20; y: 105; source: sourceImageUrl + "Lamp_rearFog.png"; opacity: CarMsg.lampRearFog ? 1.0 : 0 }
+    Image { id: lamp_rearFog; x: 20; y: 105; source: sourceImageUrl + "Lamp_rearFog.png"; opacity: lampRearFog ? 1.0 : 0 }
     //远光灯
-    Image { id: lamp_highBeam; x: 22; y: 30; source: sourceImageUrl + "Lamp_highBeam.png"; opacity: CarMsg.lampHighBeam ? 1.0 : 0 }
+    Image { id: lamp_highBeam; x: 22; y: 30; source: sourceImageUrl + "Lamp_highBeam.png"; opacity: lampHighBeam ? 1.0 : 0 }
     //近光灯
-    Image { id: lamp_headlight; x: 103; y: 30; source: sourceImageUrl + "Lamp_headlight.png"; opacity: CarMsg.lampHeadLight ? 1.0 : 0 }
+    Image { id: lamp_headlight; x: 103; y: 30; source: sourceImageUrl + "Lamp_headlight.png"; opacity: lampHeadLight ? 1.0 : 0 }
     //前门开到位信号
-    Image { id: lamp_door1; x: 460; y: 18; source: sourceImageUrl + "Lamp_door1.png"; opacity: CarMsg.lampGate1 ? 1.0 : 0 }
+    Image { id: lamp_door1; x: 460; y: 18; source: sourceImageUrl + "Lamp_door1.png"; opacity: lampGate1 ? 1.0 : 0 }
     //后仓门
-    Image { id: lamp_backCabin; x: 631; y: 20; source: sourceImageUrl + "Lamp_backCabin.png"; opacity: CarMsg.lampRearDoorOpen ? 1.0 : 0 }
+    Image { id: lamp_backCabin; x: 631; y: 20; source: sourceImageUrl + "Lamp_backCabin.png"; opacity: lampRearDoorOpen ? 1.0 : 0 }
     //危险报警指示
-    Image { id: lamp_danger; x: 690; y: 20; source: sourceImageUrl + "Lamp_danger.png"; opacity: CarMsg.lampWarningLed ? 1.0 : 0 }
+    Image { id: lamp_danger; x: 690; y: 20; source: sourceImageUrl + "Lamp_danger.png"; opacity: lampWarningLed ? 1.0 : 0 }
     //低水位报警
-    Image { id: lamp_waterLevel; x: 753; y: 20; source: sourceImageUrl + "Lamp_waterLevel.png"; opacity: CarMsg.lampWaterLevelLow ? 1.0 : 0 }
+    Image { id: lamp_waterLevel; x: 753; y: 20; source: sourceImageUrl + "Lamp_waterLevel.png"; opacity: lampWaterLevelLow ? 1.0 : 0 }
     //中门开到位信号
-    Image { id: lamp_door2; x: 923; y: 18; source: sourceImageUrl + "Lamp_door2.png"; opacity: CarMsg.lampGate2 ? 1.0 : 0 }
+    Image { id: lamp_door2; x: 923; y: 18; source: sourceImageUrl + "Lamp_door2.png"; opacity: lampGate2 ? 1.0 : 0 }
     //位置灯
-    Image { id: lamp_positionLight; x: 1305; y: 13; source: sourceImageUrl + "Lamp_littleLight.png"; opacity: CarMsg.lampPositionLight ? 1.0 : 0 }
+    Image { id: lamp_positionLight; x: 1305; y: 13; source: sourceImageUrl + "Lamp_littleLight.png"; opacity: lampPositionLight ? 1.0 : 0 }
     //充电连接线
-    Image { id: lamp_chargePlugin; x: 1358; y: 45; source: sourceImageUrl + "Lamp_chargePlugin.png"; opacity: CarMsg.cableConnect ? 1.0 : 0 }
+    Image { id: lamp_chargePlugin; x: 1358; y: 45; source: sourceImageUrl + "Lamp_chargePlugin.png"; opacity: cableConnect ? 1.0 : 0 }
     //动力蓄电池充电状态
-    Image { id: lamp_Charging; x: 1374; y: 94; source: sourceImageUrl + "Lamp_chargeIndicator.png"; opacity: CarMsg.powerAccumulatorsChargeStatus ? 1.0 : 0 }
+    Image { id: lamp_Charging; x: 1374; y: 94; source: sourceImageUrl + "Lamp_chargeIndicator.png"; opacity: powerAccumulatorsChargeStatus ? 1.0 : 0 }
     //充电指示
-    Image { id: lamp_battery_Charg; x: 1210; y: 313; source: sourceImageUrl + "batteryCharg.png"; visible: indicatorStatus; opacity: CarMsg.lampChargeConfirm ? 1.0 : 0 }
+    Image { id: lamp_battery_Charg; x: 1210; y: 313; source: sourceImageUrl + "batteryCharg.png"; visible: indicatorStatus; opacity: lampChargeConfirm ? 1.0 : 0 }
     //动力蓄电池切断
-    Image { id: lamp_battery_Cut; x: 1145; y: 313; source: sourceImageUrl + "batteryCut.png"; visible: indicatorStatus; opacity: CarMsg.powerBatteryCutOff ? 1.0 : 0 }
+    Image { id: lamp_battery_Cut; x: 1145; y: 313; source: sourceImageUrl + "batteryCut.png"; visible: indicatorStatus; opacity: powerBatteryCutOff ? 1.0 : 0 }
     //动力蓄电池故障
-    Image { id: lamp_battery_Fault; x: 1080; y: 313; source: sourceImageUrl + "batteryFault.png"; visible: indicatorStatus; opacity: CarMsg.powerAccumulatorsFault ? 1.0 : 0 }
+    Image { id: lamp_battery_Fault; x: 1080; y: 313; source: sourceImageUrl + "batteryFault.png"; visible: indicatorStatus; opacity: powerAccumulatorsFault ? 1.0 : 0 }
     //控制器及驱动电机过热
-    Image { id: lamp_motor_Heat; x: 270; y: 306; source: sourceImageUrl + "motorHeat.png"; visible: indicatorStatus; opacity: CarMsg.controlMotorOverheating ? 1.0 : 0 }
+    Image { id: lamp_motor_Heat; x: 270; y: 306; source: sourceImageUrl + "motorHeat.png"; visible: indicatorStatus; opacity: controlMotorOverheating ? 1.0 : 0 }
     //电机功率受限指示
-    Image { id: lamp_motor_Limitation; x: 205; y: 313; source: sourceImageUrl + "motorLimitation.png"; visible: indicatorStatus; opacity: CarMsg.motorPowerLimitation ? 1.0 : 0 }
+    Image { id: lamp_motor_Limitation; x: 205; y: 313; source: sourceImageUrl + "motorLimitation.png"; visible: indicatorStatus; opacity: motorPowerLimitation ? 1.0 : 0 }
 
     Timer {
         id: carousel_timer
@@ -157,73 +213,73 @@ Item {
         }
     }
     //气压1报警
-    Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: CarMsg.airPress1Lamp ? 1.0 : 0;visible: true }
+    Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: airPress1Lamp ? 1.0 : 0;visible: true }
     //气压5报警
-    Image { id: lamp_airPress5; x: 513; y: 22; source: sourceImageUrl + "airPressure5.png"; opacity: CarMsg.airPress5Lamp ? 1.0 : 0;visible: false }
+    Image { id: lamp_airPress5; x: 513; y: 22; source: sourceImageUrl + "airPressure5.png"; opacity: airPress5Lamp ? 1.0 : 0;visible: false }
     //电源门
-    Image { id: powewr_door; x: 513; y: 22; source: sourceImageUrl + "powerDoorAlarm.png"; opacity: CarMsg.powerDoorsOpen ? 1.0 : 0;visible: false }
+    Image { id: powewr_door; x: 513; y: 22; source: sourceImageUrl + "powerDoorAlarm.png"; opacity: powerDoorsOpen ? 1.0 : 0;visible: false }
     //电子驻陂（零速锁定）
-    //Image { id: electronic_park; x: 513; y: 22; source: sourceImageUrl + "absIndicator.png"; opacity: CarMsg.electronicInSlope ? 1.0 : 0;visible: false }
+    Image { id: electronic_park; x: 513; y: 22; source: sourceImageUrl + "electronicInSlope.png"; opacity: electronicInSlope ? 1.0 : 0;visible: false }
     //定速巡航开启
-    Image { id: cruise_control; x: 513; y: 22; source: sourceImageUrl + "cruiseControl.png"; opacity: CarMsg.ascd ? 1.0 : 0;visible: false }
+    Image { id: cruise_control; x: 513; y: 22; source: sourceImageUrl + "cruiseControl.png"; opacity: ascd ? 1.0 : 0;visible: false }
     //水温过高
-    Image { id: water_heat; x: 513; y: 22; source: sourceImageUrl + "waterHeat.png"; opacity: CarMsg.lampWaterTempHigh ? 1.0 : 0;visible: false }
+    Image { id: water_heat; x: 513; y: 22; source: sourceImageUrl + "waterHeat.png"; opacity: lampWaterTempHigh ? 1.0 : 0;visible: false }
     //前门应急控制器
-    Image { id: front_control; x: 513; y: 22; source: sourceImageUrl + "frontControlAlarm.png"; opacity: CarMsg.frontDoorExigencyAlarm ? 1.0 : 0;visible: false }
+    Image { id: front_control; x: 513; y: 22; source: sourceImageUrl + "frontControlAlarm.png"; opacity: frontDoorExigencyAlarm ? 1.0 : 0;visible: false }
     //左前蹄片磨损报警
-    Image { id: lamp_leftFriction; x: 570; y: 22; source: sourceImageUrl + "Lamp_leftFriction.png"; opacity: CarMsg.lampLeftShoeWear ? 1.0 : 0;visible: true }
+    Image { id: lamp_leftFriction; x: 570; y: 22; source: sourceImageUrl + "Lamp_leftFriction.png"; opacity: lampLeftShoeWear ? 1.0 : 0;visible: true }
     //安全带系指示
-    Image { id: seat_belt; x: 570; y: 22; source: sourceImageUrl + "seatBeltAlarm.png"; opacity: CarMsg.seatbeltAlarm ? 1.0 : 0;visible: false }
+    Image { id: seat_belt; x: 570; y: 22; source: sourceImageUrl + "seatBeltAlarm.png"; opacity: seatbeltAlarm ? 1.0 : 0;visible: false }
     //ABS指示
-    Image { id: abs_indicator; x: 570; y: 22; source: sourceImageUrl + "absIndicator.png"; opacity: CarMsg.lampAbs ? 1.0 : 0;visible: false }
+    Image { id: abs_indicator; x: 570; y: 22; source: sourceImageUrl + "absIndicator.png"; opacity: lampAbs ? 1.0 : 0;visible: false }
     //左后蹄片磨损报警
-    //Image { id: lamp_leftBack; x: 570; y: 22; source: sourceImageUrl + "leftBackShoe.png"; opacity: CarMsg.lamp_left_back_wear ? 1.0 : 0;visible: false }
+    Image { id: lamp_leftBack; x: 570; y: 22; source: sourceImageUrl + "leftBackShoe.png"; opacity: lampLeftBackWear ? 1.0 : 0;visible: false }
     //左舱门开报警
-    Image { id: left_hatch; x: 570; y: 22; source: sourceImageUrl + "leftHatchDoorAlarm.png"; opacity: CarMsg.leftDoorsOpenAlarm ? 1.0 : 0;visible: false }
+    Image { id: left_hatch; x: 570; y: 22; source: sourceImageUrl + "leftHatchDoorAlarm.png"; opacity: leftDoorsOpenAlarm ? 1.0 : 0;visible: false }
     //右前蹄片磨损报警
-    Image { id: lamp_rightFriction; x: 811; y: 22; source: sourceImageUrl + "Lamp_rightFriction.png"; opacity: CarMsg.lampRightShoeWear ? 1.0 : 0;visible: true }
+    Image { id: lamp_rightFriction; x: 811; y: 22; source: sourceImageUrl + "Lamp_rightFriction.png"; opacity: lampRightShoeWear ? 1.0 : 0;visible: true }
     //气压3报警
-    Image { id: lamp_airPress3; x: 811; y: 22; source: sourceImageUrl + "airPressure3.png"; opacity: CarMsg.airPress3Lamp ? 1.0 : 0;visible: false }
+    Image { id: lamp_airPress3; x: 811; y: 22; source: sourceImageUrl + "airPressure3.png"; opacity: airPress3Lamp ? 1.0 : 0;visible: false }
     //手刹指示
-    Image { id: hands_brake; x: 811; y: 22; source: sourceImageUrl + "handBrake.png"; opacity: CarMsg.lampBrake ? 1.0 : 0;visible: false }
+    Image { id: hands_brake; x: 811; y: 22; source: sourceImageUrl + "handBrake.png"; opacity: lampBrake ? 1.0 : 0;visible: false }
     //右后蹄片磨损报警
-    //Image { id: lamp_rightBack; x: 811; y: 22; source: sourceImageUrl + "rightBackShoe.png"; opacity: CarMsg.lamp_right_back_wear ? 1.0 : 0;visible: false }
+    Image { id: lamp_rightBack; x: 811; y: 22; source: sourceImageUrl + "rightBackShoe.png"; opacity: lampRightBackWear ? 1.0 : 0;visible: false }
     //BMS报警
-    Image { id: bms_alarm; x: 811; y: 22; source: sourceImageUrl + "bmsAlarm.png"; opacity: CarMsg.bmsAlarm ? 1.0 : 0;visible: false }
+    Image { id: bms_alarm; x: 811; y: 22; source: sourceImageUrl + "bmsAlarm.png"; opacity: bmsAlarm ? 1.0 : 0;visible: false }
     //SOC过低报警
-    Image { id: soc_low; x: 811; y: 22; source: sourceImageUrl + "socLowAlarm.png"; opacity: CarMsg.socLowAram ? 1.0 : 0;visible: false }
+    Image { id: soc_low; x: 811; y: 22; source: sourceImageUrl + "socLowAlarm.png"; opacity: socLowAram ? 1.0 : 0;visible: false }
     //安全系统报警
-    Image { id: safety_system; x: 811; y: 22; source: sourceImageUrl + "safetyDoorAlarm.png"; opacity: CarMsg.safetySystemAlarm ? 1.0 : 0;visible: false }
+    Image { id: safety_system; x: 811; y: 22; source: sourceImageUrl + "safetyDoorAlarm.png"; opacity: safetySystemAlarm ? 1.0 : 0;visible: false }
     //右舱门开报警
-    Image { id: right_hatch; x: 811; y: 22; source: sourceImageUrl + "rightHatchDoorAlarm.png"; opacity: CarMsg.rightDoorsOpenAlarm ? 1.0 : 0;visible: false }
+    Image { id: right_hatch; x: 811; y: 22; source: sourceImageUrl + "rightHatchDoorAlarm.png"; opacity: rightDoorsOpenAlarm ? 1.0 : 0;visible: false }
     //ECAS系统故障指示灯
-    Image { id: ecas_fault; x: 811; y: 22; source: sourceImageUrl + "ecasSystemFault.png"; opacity: CarMsg.ecasSystemFaultLed ? 1.0 : 0;visible: false }
+    Image { id: ecas_fault; x: 811; y: 22; source: sourceImageUrl + "ecasSystemFault.png"; opacity: ecasSystemFaultLed ? 1.0 : 0;visible: false }
     //下课门铃
-    Image { id: door_bell; x: 811; y: 22; source: sourceImageUrl + "doorBell.png"; opacity: CarMsg.dropOffDoorbell ? 1.0 : 0;visible: false }
+    Image { id: door_bell; x: 811; y: 22; source: sourceImageUrl + "doorBell.png"; opacity: dropOffDoorbell ? 1.0 : 0;visible: false }
     //气压2报警
-    Image { id: lamp_airPress2; x: 873; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: CarMsg.airPress2Lamp ? 1.0 : 0;visible: true }
+    Image { id: lamp_airPress2; x: 873; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: airPress2Lamp ? 1.0 : 0;visible: true }
     //气压4报警
-    Image { id: lamp_airPress4; x: 873; y: 22; source: sourceImageUrl + "airPressure4.png"; opacity: CarMsg.airPress4Lamp ? 1.0 : 0;visible: false }
+    Image { id: lamp_airPress4; x: 873; y: 22; source: sourceImageUrl + "airPressure4.png"; opacity: airPress4Lamp ? 1.0 : 0;visible: false }
     //制动脚刹指示
-    Image { id: foot_brake; x: 873; y: 22; source: sourceImageUrl + "footBrake.png"; opacity: CarMsg.lampParkingBrake ? 1.0 : 0;visible: false }
+    Image { id: foot_brake; x: 873; y: 22; source: sourceImageUrl + "footBrake.png"; opacity: lampParkingBrake ? 1.0 : 0;visible: false }
     //驱动系统故障
-    Image { id: driver_systemfault; x: 873; y: 22; source: sourceImageUrl + "driverSystemFault.png"; opacity: CarMsg.driverSystemFault ? 1.0 : 0;visible: false }
+    Image { id: driver_systemfault; x: 873; y: 22; source: sourceImageUrl + "driverSystemFault.png"; opacity: driverSystemFault ? 1.0 : 0;visible: false }
     //绝缘故障
-    Image { id: serious_insulation; x: 873; y: 22; source: sourceImageUrl + "seriousInsulationFault.png"; opacity: CarMsg.severityInsulationFault ? 1.0 : 0;visible: false }
+    Image { id: serious_insulation; x: 873; y: 22; source: sourceImageUrl + "seriousInsulationFault.png"; opacity: severityInsulationFault ? 1.0 : 0;visible: false }
     //轻微绝缘故障
-    Image { id: light_serious_insulation; x: 873; y: 22; source: sourceImageUrl + "slightInsulationFault.png"; opacity: CarMsg.slightInsulationFault ? 1.0 : 0;visible: false }
+    Image { id: light_serious_insulation; x: 873; y: 22; source: sourceImageUrl + "slightInsulationFault.png"; opacity: slightInsulationFault ? 1.0 : 0;visible: false }
     //无障碍踏步伸出报警
-    Image { id: barrier_free; x: 873; y: 22; source: sourceImageUrl + "barrierFreeAlarm.png"; opacity: CarMsg.barrierFreeMarchReach ? 1.0 : 0;visible: false }
+    Image { id: barrier_free; x: 873; y: 22; source: sourceImageUrl + "barrierFreeAlarm.png"; opacity: barrierFreeMarchReach ? 1.0 : 0;visible: false }
     //充电门开报警
-    //Image { id: charge_door; x: 873; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: CarMsg.gate_charge_open ? 1.0 : 0;visible: false }
+    Image { id: charge_door; x: 873; y: 22; source: sourceImageUrl + "gateChargeOpen.png"; opacity: gateChargeOpen ? 1.0 : 0;visible: false }
     //ECAS报警指示灯
-    Image { id: ecas_alarm; x: 873; y: 22; source: sourceImageUrl + "ecasIndicator.png"; opacity: CarMsg.ecasAlarmLed ? 1.0 : 0;visible: false }
+    Image { id: ecas_alarm; x: 873; y: 22; source: sourceImageUrl + "ecasIndicator.png"; opacity: ecasAlarmLed ? 1.0 : 0;visible: false }
     //侧跪状态指示灯
-    Image { id: ecas_side; x: 873; y: 22; source: sourceImageUrl + "ecasSide.png"; opacity: CarMsg.ecasKneelingStatusLed ? 1.0 : 0;visible: false }
+    Image { id: ecas_side; x: 873; y: 22; source: sourceImageUrl + "ecasSide.png"; opacity: ecasKneelingStatusLed ? 1.0 : 0;visible: false }
     //特殊高度指示灯
-    Image { id: ecas_height; x: 873; y: 22; source: sourceImageUrl + "ecasHeight.png"; opacity: CarMsg.ecasSpecialHeightLed ? 1.0 : 0;visible: false }
+    Image { id: ecas_height; x: 873; y: 22; source: sourceImageUrl + "ecasHeight.png"; opacity: ecasSpecialHeightLed ? 1.0 : 0;visible: false }
     //中门应急控制器
-    Image { id: middle_control; x: 873; y: 22; source: sourceImageUrl + "middleControlAlarm.png"; opacity: CarMsg.middleDoorExigencyAlarm ? 1.0 : 0;visible: false }
+    Image { id: middle_control; x: 873; y: 22; source: sourceImageUrl + "middleControlAlarm.png"; opacity: middleDoorExigencyAlarm ? 1.0 : 0;visible: false }
     SequentialAnimation {
         id: animation_indicator
         ParallelAnimation {
@@ -275,6 +331,24 @@ Item {
             NumberAnimation { target: lamp_battery_Fault; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_motor_Heat; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_motor_Limitation; property: "opacity"; duration: 1000;to:0 }
+        }
+        ScriptAction {
+            script: {
+                animationStatus = true;
+                /*
+                lampTurnLeft = false;lampDoubleFlash = false;lampTurnRight = false;lampFrontFog = false;
+                lampRearFog = false;lampHighBeam = false;lampHeadLight = false;lampGate1 = false;lampRearDoorOpen = false;
+                lampWarningLed = false;lampWaterLevelLow = false;lampGate2 = false;lampPositionLight = false;cableConnect = false;
+                powerAccumulatorsChargeStatus = false;lampChargeConfirm = false;powerBatteryCutOff = false;powerAccumulatorsFault = false;controlMotorOverheating = false;
+                motorPowerLimitation = false;airPress1Lamp = false;airPress5Lamp = false;powerDoorsOpen = false;electronicInSlope = false;
+                ascd = false;lampWaterTempHigh = false;frontDoorExigencyAlarm = false;lampLeftShoeWear = false;seatbeltAlarm = false;
+                lampAbs = false;leftDoorsOpenAlarm = false;lampRightShoeWear = false;airPress3Lamp = false;lampBrake = false;
+                bmsAlarm = false;socLowAram = false;safetySystemAlarm = false;rightDoorsOpenAlarm = false;ecasSystemFaultLed = false;
+                dropOffDoorbell = false;airPress2Lamp = false;airPress4Lamp = false;lampParkingBrake = false;driverSystemFault = false;
+                severityInsulationFault = false;slightInsulationFault = false;barrierFreeMarchReach = false;gateChargeOpen = false;ecasAlarmLed = false;
+                ecasKneelingStatusLed = false;ecasSpecialHeightLed = false;middleDoorExigencyAlarm = false;
+                */
+            }
         }
     }
 }

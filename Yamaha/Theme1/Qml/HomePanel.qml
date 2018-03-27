@@ -13,8 +13,9 @@ CommonItem {
     visible: false
     state: ""
 
-    property real airPressure1: CarMsg.apVol1
-    property real airPressure2: CarMsg.apVol2
+    property bool animationStatus: false
+    property real airPressure1: animationStatus ?  CarMsg.apVol1 : 0
+    property real airPressure2: animationStatus ? CarMsg.apVol2 : 0
     property real airPressure1Total: 1.2
     property real airPressure2Total: 1.2
     property bool bKeyEnable: true
@@ -23,38 +24,43 @@ CommonItem {
     property string gearImageUrl: sourceImageUrl + "P.png"
     //车速初始值/蓄电池电压
     property int speedTotal: 180;
-    property int carSpeedValue: CarMsg.carSpeed;
+    property int carSpeedValue: animationStatus ? CarMsg.carSpeed : 0;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: CarMsg.battery
+    property int batteryValue: animationStatus ? CarMsg.battery : 0;
     property int batteryValueStart: 16
     //档位初始值
-    property real gearValue: CarMsg.gear
+    property real gearValue: animationStatus ? CarMsg.gear : 0;
     //发动机转速/soc充电状态
     property int engineTotalSpeed: 100;
-    property int engineSpeedValue: CarMsg.rpm;
+    property int engineSpeedValue: animationStatus ? CarMsg.rpm : 0;
     property int engineSpeedValueStart: 0;
     property int socTotalValue: 100;
-    property int socValue: CarMsg.soc;
+    property int socValue: animationStatus ? CarMsg.soc : 0;
     property int socValueStart: 0
     //报警计数
-    property int alarmCode: CarMsg.warningId;//0
+    property int alarmCode: animationStatus ? CarMsg.warningId : 0;
     //动画过度时间
     property int excessiveDurationTime: 1000;//1000;
     property bool timerStatus: true;
     property bool bDisplay: true
+    //关机信号
+    property int carMode: animationStatus ? CarMsg.carMode : 1
 
+    onCarModeChanged: {
+        if(carMode === 0){
+            console.log("ig off !")
+        }else{}
+    }
     onGearValueChanged: {
-        if(gearValue === 0){
+        if(gearValue === 9){
             gear_control.source = sourceImageUrl + "D.png";
-        }else if(gearValue === 1){
+        }else if(gearValue === 0){
             gear_control.source = sourceImageUrl + "N.png";
-        }else if(gearValue === 2){
+        }else if(gearValue === 8){
             gear_control.source = sourceImageUrl + "P.png";
-        }else if(gearValue === 3){
+        }else if(gearValue === 0xB){
             gear_control.source = sourceImageUrl + "R.png";
-        }else if(gearValue === 4){
-            gear_control.source = sourceImageUrl + "S.png";
         }else{}
     }
     onAlarmCodeChanged: {
@@ -243,6 +249,12 @@ CommonItem {
                 SequentialAnimation {
                     NumberAnimation { target: airPressure2Bar; property: "height"; from:0; to:122; duration: 800 }
                     NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800 }
+                }
+            }
+            PauseAnimation { duration: 1000 }
+            ScriptAction {
+                script: {
+                    animationStatus = true;
                 }
             }
         }
