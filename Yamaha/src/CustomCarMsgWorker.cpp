@@ -86,6 +86,16 @@ void CustomCarMsgWorker::tripMilesClearRequest() {
     tripClear.set_trip_miles_clear(true);
     sendProtoMsg(tripClear);
 }
+void CustomCarMsgWorker::brightnessControlRequest(qint8 brightnessNo) {
+    fySystemSettingsInfo::IntensityCtrl brightnessControl;
+    brightnessControl.set_intensity_ctrl(brightnessNo);
+    sendProtoMsg(brightnessControl);
+}
+void CustomCarMsgWorker::igoffControlRequest() {
+    fySystemSettingsInfo::QuenchLCD igoffControl;
+    igoffControl.set_quench_lcd(true);
+    sendProtoMsg(igoffControl);
+}
 
 void CustomCarMsgWorker::registerCallback()
 {

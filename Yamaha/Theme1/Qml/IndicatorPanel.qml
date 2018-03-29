@@ -40,7 +40,8 @@ Item {
     property bool lampWaterTempHigh: animationStatus ? CarMsg.lampWaterTempHigh : false
     property bool frontDoorExigencyAlarm: animationStatus ? CarMsg.frontDoorExigencyAlarm : false
     property bool lampLeftShoeWear: animationStatus ? CarMsg.lampLeftShoeWear : false
-    property bool seatbeltAlarm: animationStatus ? CarMsg.seatbeltAlarm : false
+    property bool seatbeltAlarm: animationStatus ? CarMsg.seatbeltNotFastened : false
+    property bool driverSeatAlarm: animationStatus ? CarMsg.driverSeatAlarm : false
     property bool lampAbs: animationStatus ? CarMsg.lampAbs : false
     property bool lampLeftBackWear: animationStatus ? CarMsg.lampLeftBackWear : false
     property bool leftDoorsOpenAlarm: animationStatus ? CarMsg.leftDoorsOpenAlarm : false
@@ -116,11 +117,11 @@ Item {
 
     Timer {
         id: carousel_timer
-        property var lamp1CarouselId: [lamp_airPress1,lamp_airPress5,powewr_door,cruise_control,water_heat,front_control]
-        property var lamp2CarouselId: [lamp_leftFriction,seat_belt,abs_indicator,left_hatch]
+        property var lamp1CarouselId: [lamp_airPress1,lamp_airPress2,powewr_door,electronic_park,cruise_control,water_heat,front_control]
+        property var lamp2CarouselId: [lamp_leftFriction,seat_belt,driver_seat,abs_indicator,left_hatch]
         property var lamp3CarouselId: [lamp_rightFriction,lamp_airPress3,hands_brake,bms_alarm,soc_low,
             safety_system,right_hatch,ecas_fault,door_bell]
-        property var lamp4CarouselId: [lamp_airPress2,lamp_airPress4,foot_brake,driver_systemfault,serious_insulation,light_serious_insulation,
+        property var lamp4CarouselId: [lamp_airPress4,lamp_airPress5,foot_brake,driver_systemfault,serious_insulation,light_serious_insulation,
             barrier_free,ecas_alarm,ecas_side,ecas_height,middle_control]
         property var lamp1CarouselArray: new Array();
         property var lamp2CarouselArray: new Array();
@@ -135,9 +136,9 @@ Item {
         running: false
         onTriggered: {
             lamp1CarouselArray.splice(0,lamp1CarouselArray.length);
-            lamp2CarouselArray.splice(0,lamp1CarouselArray.length);
-            lamp3CarouselArray.splice(0,lamp1CarouselArray.length);
-            lamp4CarouselArray.splice(0,lamp1CarouselArray.length);
+            lamp2CarouselArray.splice(0,lamp2CarouselArray.length);
+            lamp3CarouselArray.splice(0,lamp3CarouselArray.length);
+            lamp4CarouselArray.splice(0,lamp4CarouselArray.length);
             for(var i=0;i<lamp1CarouselId.length;i++){
                 lamp1CarouselId[i].visible === false;
                 if(lamp1CarouselId[i].opacity === 1.0){
@@ -214,8 +215,8 @@ Item {
     }
     //气压1报警
     Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: airPress1Lamp ? 1.0 : 0;visible: true }
-    //气压5报警
-    Image { id: lamp_airPress5; x: 513; y: 22; source: sourceImageUrl + "airPressure5.png"; opacity: airPress5Lamp ? 1.0 : 0;visible: false }
+    //气压2报警
+    Image { id: lamp_airPress2; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: airPress2Lamp ? 1.0 : 0;visible: true }
     //电源门
     Image { id: powewr_door; x: 513; y: 22; source: sourceImageUrl + "powerDoorAlarm.png"; opacity: powerDoorsOpen ? 1.0 : 0;visible: false }
     //电子驻陂（零速锁定）
@@ -230,6 +231,8 @@ Item {
     Image { id: lamp_leftFriction; x: 570; y: 22; source: sourceImageUrl + "Lamp_leftFriction.png"; opacity: lampLeftShoeWear ? 1.0 : 0;visible: true }
     //安全带系指示
     Image { id: seat_belt; x: 570; y: 22; source: sourceImageUrl + "seatBeltAlarm.png"; opacity: seatbeltAlarm ? 1.0 : 0;visible: false }
+    //司机座椅报警
+    Image { id: driver_seat; x: 570; y: 22; source: sourceImageUrl + "driverSeatAlarm.png"; opacity: driverSeatAlarm ? 1.0 : 0;visible: false }
     //ABS指示
     Image { id: abs_indicator; x: 570; y: 22; source: sourceImageUrl + "absIndicator.png"; opacity: lampAbs ? 1.0 : 0;visible: false }
     //左后蹄片磨损报警
@@ -256,10 +259,10 @@ Item {
     Image { id: ecas_fault; x: 811; y: 22; source: sourceImageUrl + "ecasSystemFault.png"; opacity: ecasSystemFaultLed ? 1.0 : 0;visible: false }
     //下课门铃
     Image { id: door_bell; x: 811; y: 22; source: sourceImageUrl + "doorBell.png"; opacity: dropOffDoorbell ? 1.0 : 0;visible: false }
-    //气压2报警
-    Image { id: lamp_airPress2; x: 873; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: airPress2Lamp ? 1.0 : 0;visible: true }
     //气压4报警
     Image { id: lamp_airPress4; x: 873; y: 22; source: sourceImageUrl + "airPressure4.png"; opacity: airPress4Lamp ? 1.0 : 0;visible: false }
+    //气压5报警
+    Image { id: lamp_airPress5; x: 873; y: 22; source: sourceImageUrl + "airPressure5.png"; opacity: airPress5Lamp ? 1.0 : 0;visible: false }
     //制动脚刹指示
     Image { id: foot_brake; x: 873; y: 22; source: sourceImageUrl + "footBrake.png"; opacity: lampParkingBrake ? 1.0 : 0;visible: false }
     //驱动系统故障

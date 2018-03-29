@@ -6,7 +6,7 @@
 struct CarMsgWorkerStateData {
     carfox::CarMsgData<quint8> tmpVersion = carfox::CarMsgData<quint8>(0);
     carfox::CarMsgData<qint8> themeMode = carfox::CarMsgData<qint8>(0);
-    carfox::CarMsgData<qint32> carMode = carfox::CarMsgData<qint32>(0);             //汽车模式： 1. igOn 2. alarmOn 3. igOff
+    carfox::CarMsgData<qint32> carMode = carfox::CarMsgData<qint32>(3);             //汽车模式： 1. igOn 2. alarmOn 0. igOff
 
     //通用帧数据
     carfox::CarMsgData<qint32> dateTime = carfox::CarMsgData<qint32>(0);          //系统时间

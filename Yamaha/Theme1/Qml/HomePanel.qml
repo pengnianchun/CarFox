@@ -49,9 +49,12 @@ CommonItem {
 
     onCarModeChanged: {
         if(carMode === 0){
-            console.log("ig off !")
+            console.log("ig off !");
+            end_animation.running = true;
+            CarMsg.sendIgoffControl();
         }else{}
     }
+    NumberAnimation { id: end_animation; target: homeIndex; property: "opacity"; to: 0; duration: 1000; easing.type: Easing.Linear; }
     onGearValueChanged: {
         if(gearValue === 9){
             gear_control.source = sourceImageUrl + "D.png";
@@ -163,107 +166,106 @@ CommonItem {
         socValueStart = socValue;
         soc_animation.running = true;
     }
-    ParallelAnimation {
+    SequentialAnimation {
         id: startFlash
         running: false
         ParallelAnimation {
-            NumberAnimation {
-                target: topBar
-                property: "y"
-                duration: 800
-                from: 1
-                to: 28
-                easing.type: Easing.Linear
-            }
-            NumberAnimation {
-                target: baseBar
-                property: "y"
-                duration: 800
-                from: 455
-                to: 427
-                easing.type: Easing.Linear
-            }
-        }
-        ParallelAnimation {
             ParallelAnimation {
                 NumberAnimation {
-                    target: rpmBg
-                    property: "opacity"
+                    target: topBar
+                    property: "y"
                     duration: 800
-                    from: 0.0
-                    to: 1.0
+                    from: 1
+                    to: 28
                     easing.type: Easing.Linear
                 }
                 NumberAnimation {
-                    target: speedBg
-                    property: "opacity"
+                    target: baseBar
+                    property: "y"
                     duration: 800
-                    from: 0.0
-                    to: 1.0
+                    from: 455
+                    to: 427
                     easing.type: Easing.Linear
                 }
             }
             ParallelAnimation {
-                NumberAnimation {
-                    target: rpmBg
-                    property: "scale"
-                    duration: 800
-                    from: 0.0
-                    to: 1.0
-                    easing.type: Easing.InOutQuart
+                ParallelAnimation {
+                    NumberAnimation {
+                        target: rpmBg
+                        property: "opacity"
+                        duration: 800
+                        from: 0.0
+                        to: 1.0
+                        easing.type: Easing.Linear
+                    }
+                    NumberAnimation {
+                        target: speedBg
+                        property: "opacity"
+                        duration: 800
+                        from: 0.0
+                        to: 1.0
+                        easing.type: Easing.Linear
+                    }
                 }
-                NumberAnimation {
-                    target: speedBg
-                    property: "scale"
-                    duration: 800
-                    from: 0.0
-                    to: 1.0
-                    easing.type: Easing.InOutQuart
+                ParallelAnimation {
+                    NumberAnimation {
+                        target: rpmBg
+                        property: "scale"
+                        duration: 800
+                        from: 0.0
+                        to: 1.0
+                        easing.type: Easing.InOutQuart
+                    }
+                    NumberAnimation {
+                        target: speedBg
+                        property: "scale"
+                        duration: 800
+                        from: 0.0
+                        to: 1.0
+                        easing.type: Easing.InOutQuart
+                    }
                 }
-            }
-            ParallelAnimation {
-                SequentialAnimation {
-                    NumberAnimation { target: homeIndex; property: "carSpeedValue"; to:speedTotal; duration: 0 }
-                    PauseAnimation { duration: 1500 }
-                    NumberAnimation { target: homeIndex; property: "carSpeedValue"; to:0; duration: 0 }
-                }
-                SequentialAnimation {
-                    NumberAnimation { target: homeIndex; property: "engineSpeedValue"; to:engineTotalSpeed; duration: 0 }
-                    PauseAnimation { duration: 1500 }
-                    NumberAnimation { target: homeIndex; property: "engineSpeedValue"; to:0; duration: 0 }
-                }
-                SequentialAnimation {
-                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:batteryTotalValue; duration: 0 }
-                    PauseAnimation { duration: 1500 }
-                    NumberAnimation { target: homeIndex; property: "batteryValue"; to:16; duration: 0 }
-                }
-                SequentialAnimation {
-                    NumberAnimation { target: homeIndex; property: "socValue"; to:socTotalValue; duration: 0 }
-                    PauseAnimation { duration: 1500 }
-                    NumberAnimation { target: homeIndex; property: "socValue"; to:0; duration: 0 }
-                }
-                SequentialAnimation {
-                    NumberAnimation { target: airPressure1Bar; property: "height"; from:0; to:122; duration: 800 }
-                    NumberAnimation { target: airPressure1Bar; property: "height"; from:122; to:0; duration: 800 }
-                }
-                SequentialAnimation {
-                    NumberAnimation { target: airPressure2Bar; property: "height"; from:0; to:122; duration: 800 }
-                    NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800 }
+                ParallelAnimation {
+                    SequentialAnimation {
+                        NumberAnimation { target: homeIndex; property: "carSpeedValue"; to:speedTotal; duration: 0 }
+                        PauseAnimation { duration: 1500 }
+                        NumberAnimation { target: homeIndex; property: "carSpeedValue"; to:0; duration: 0 }
+                    }
+                    SequentialAnimation {
+                        NumberAnimation { target: homeIndex; property: "engineSpeedValue"; to:engineTotalSpeed; duration: 0 }
+                        PauseAnimation { duration: 1500 }
+                        NumberAnimation { target: homeIndex; property: "engineSpeedValue"; to:0; duration: 0 }
+                    }
+                    SequentialAnimation {
+                        NumberAnimation { target: homeIndex; property: "batteryValue"; to:batteryTotalValue; duration: 0 }
+                        PauseAnimation { duration: 1500 }
+                        NumberAnimation { target: homeIndex; property: "batteryValue"; to:16; duration: 0 }
+                    }
+                    SequentialAnimation {
+                        NumberAnimation { target: homeIndex; property: "socValue"; to:socTotalValue; duration: 0 }
+                        PauseAnimation { duration: 1500 }
+                        NumberAnimation { target: homeIndex; property: "socValue"; to:0; duration: 0 }
+                    }
+                    SequentialAnimation {
+                        NumberAnimation { target: airPressure1Bar; property: "height"; from:0; to:122; duration: 800 }
+                        NumberAnimation { target: airPressure1Bar; property: "height"; from:122; to:0; duration: 800 }
+                    }
+                    SequentialAnimation {
+                        NumberAnimation { target: airPressure2Bar; property: "height"; from:0; to:122; duration: 800 }
+                        NumberAnimation { target: airPressure2Bar; property: "height"; from:122; to:0; duration: 800 }
+                    }
                 }
             }
             ScriptAction {
                 script: {
-                    animationStatus = true;
+                    UiController.showLayer("IndicatorPanel");
                 }
             }
         }
+        PauseAnimation { duration: 2000 }
         ScriptAction {
             script: {
-                //carSpeedValue = 0;
-                //engineSpeedValue = 0;
-                //batteryValue = 0;
-                //socValue = 0
-                UiController.showLayer("IndicatorPanel");
+                animationStatus = true;
             }
         }
     }

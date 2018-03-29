@@ -13,8 +13,13 @@ MenuItem {
     visible: false
 
     property bool bKeyEnable: false
-    property int percentageValue: 0
+    property int percentageValue: 100
 
+    enterMenu: function(){
+        if(bKeyEnable){
+            CarMsg.sendBrightnessControl(percentageValue);
+        }
+    }
     hideMenu: function(){
         if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);

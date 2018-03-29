@@ -10,7 +10,7 @@ class CustomCarMsg : public carfox::CarMsg
     //通用信息
     MEMBER_PROPERTY_WITH_NOTIFY(uint, tmpVersion, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, themeMode, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, carMode, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, carMode, 3)
     MEMBER_PROPERTY_WITH_NOTIFY(int, dateTime, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, carSpeed, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, rpm, 0)
@@ -1075,6 +1075,8 @@ signals:
     void sendMenuInfo(qint64 MenuNo, qint64 pageNo);
     void sendUpgradeStart();
     void sendTripMilesClear();
+    void sendBrightnessControl(qint8 brightnessNo);
+    void sendIgoffControl();
 
 private:
     bool mEnableKeys = false;

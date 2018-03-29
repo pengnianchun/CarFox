@@ -4,16 +4,56 @@ import CustomRing 1.0
 Item {
     width: 1440
     height: 544
+    property string logoImageUrl: "qrc:/Common/CommonImage/Other/yixing_logo.png"
+    property bool igOffStatus: false
     visible: false
 
     onVisibleChanged: {
         if(visible){
-            startSplash.running = true;
+            start_logo.running = true;
         }else{
-            startSplash.running = false;
+            start_logo.running = false;
         }
     }
-
+    onIgOffStatusChanged: {
+        if(igOffStatus){
+            end_logo.running = true;
+            igOffStatus = false;
+        }else{}
+    }
+    SequentialAnimation {
+        id: start_logo
+        NumberAnimation {
+            target: splash_logo
+            property: "opacity"
+            to: 1
+            duration: 500
+            easing.type: Easing.Linear
+        }
+        NumberAnimation {
+            target: splash_logo
+            property: "opacity"
+            to: 0
+            duration: 500
+            easing.type: Easing.Linear
+        }
+        ScriptAction {
+            script: {
+                startSplash.running = true;
+            }
+        }
+    }
+    SequentialAnimation {
+        id: end_logo
+        NumberAnimation {
+            target: splash_logo
+            property: "opacity"
+            to: 1
+            duration: 1000
+            easing.type: Easing.Linear
+        }
+    }
+    Image { id: splash_logo; z: 2;source: logoImageUrl; opacity: 1 }
     SequentialAnimation {
         id: startSplash
         running: false
@@ -281,18 +321,21 @@ Item {
 
     Rectangle {
         id: splashId
+        z: 1
         anchors.fill: parent
         color: "black"
     }
 
     Image {
         id: bgId
+        z: 3
         visible: false
         source: "qrc:/Theme/Theme1/Image/AutoSplash/bluelinebg.png"
     }
 
     Image {
         id: bgWhiteId
+        z: 3
         visible: false
         source: "qrc:/Theme/Theme1/Image/AutoSplash/linebg.png"
     }
@@ -301,6 +344,7 @@ Item {
         id: leftBlueId
         x:2.8
         y:2
+        z: 3
         Item {
             id: leftTopBlue
             x: 558
@@ -346,6 +390,7 @@ Item {
         id: rightBlueId
         x: 898
         y: 2
+        z: 3
         Item {
             id: rightTopBlue
             x: -10
@@ -390,6 +435,7 @@ Item {
     Item {
         id: leftWhiteId
         x: -56
+        z: 3
         Item {
             id: leftTopWhite
             x: 620
@@ -436,6 +482,7 @@ Item {
     Item {
         id: rightWhiteId
         x: 798
+        z: 3
         Item {
             id: rightTopWhite
             x: 80

@@ -27,6 +27,8 @@ public slots:
     void datetimeInfoRequest(qint64 msec = 0);
     void upgradeStartRequest();
     void tripMilesClearRequest();
+    void brightnessControlRequest(qint8 brightnessNo = 0);
+    void igoffControlRequest();
 
 signals:
     // 上行帧 Worker to Msg
