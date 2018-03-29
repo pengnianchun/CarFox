@@ -216,7 +216,7 @@ Item {
     //气压1报警
     Image { id: lamp_airPress1; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress1.png"; opacity: airPress1Lamp ? 1.0 : 0;visible: true }
     //气压2报警
-    Image { id: lamp_airPress2; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: airPress2Lamp ? 1.0 : 0;visible: true }
+    Image { id: lamp_airPress2; x: 513; y: 22; source: sourceImageUrl + "Lamp_airPress2.png"; opacity: airPress2Lamp ? 1.0 : 0;visible: false }
     //电源门
     Image { id: powewr_door; x: 513; y: 22; source: sourceImageUrl + "powerDoorAlarm.png"; opacity: powerDoorsOpen ? 1.0 : 0;visible: false }
     //电子驻陂（零速锁定）
@@ -260,7 +260,7 @@ Item {
     //下课门铃
     Image { id: door_bell; x: 811; y: 22; source: sourceImageUrl + "doorBell.png"; opacity: dropOffDoorbell ? 1.0 : 0;visible: false }
     //气压4报警
-    Image { id: lamp_airPress4; x: 873; y: 22; source: sourceImageUrl + "airPressure4.png"; opacity: airPress4Lamp ? 1.0 : 0;visible: false }
+    Image { id: lamp_airPress4; x: 873; y: 22; source: sourceImageUrl + "airPressure4.png"; opacity: airPress4Lamp ? 1.0 : 0;visible: true }
     //气压5报警
     Image { id: lamp_airPress5; x: 873; y: 22; source: sourceImageUrl + "airPressure5.png"; opacity: airPress5Lamp ? 1.0 : 0;visible: false }
     //制动脚刹指示
@@ -299,7 +299,7 @@ Item {
             NumberAnimation { target: lamp_danger; property: "opacity"; duration: 1000;to:1 }
             NumberAnimation { target: lamp_waterLevel; property: "opacity"; duration: 1000;to:1 }
             NumberAnimation { target: lamp_rightFriction; property: "opacity"; duration: 1000;to:1 }
-            NumberAnimation { target: lamp_airPress2; property: "opacity"; duration: 1000;to:1 }
+            NumberAnimation { target: lamp_airPress4; property: "opacity"; duration: 1000;to:1 }
             NumberAnimation { target: lamp_door2; property: "opacity"; duration: 1000;to:1 }
             NumberAnimation { target: lamp_positionLight; property: "opacity"; duration: 1000;to:1 }
             NumberAnimation { target: lamp_chargePlugin; property: "opacity"; duration: 1000;to:1 }
@@ -324,7 +324,7 @@ Item {
             NumberAnimation { target: lamp_danger; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_waterLevel; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_rightFriction; property: "opacity"; duration: 1000;to:0 }
-            NumberAnimation { target: lamp_airPress2; property: "opacity"; duration: 1000;to:0 }
+            NumberAnimation { target: lamp_airPress4; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_door2; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_positionLight; property: "opacity"; duration: 1000;to:0 }
             NumberAnimation { target: lamp_chargePlugin; property: "opacity"; duration: 1000;to:0 }

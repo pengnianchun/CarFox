@@ -196,6 +196,8 @@ MenuItem {
             CarMsg.sendMenuInfo(25,10);
         }else if(carLoadCurrentIndex === 11){
             CarMsg.sendMenuInfo(24,0);
+        }else if(carLoadCurrentIndex === 12){
+            CarMsg.sendMenuInfo(24,0);
         }else{}
     }
     hideMenu: function(){

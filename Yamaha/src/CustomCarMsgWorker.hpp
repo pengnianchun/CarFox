@@ -615,6 +615,7 @@ private:
     void handleProtoDcStatusMessageMenuInfo(const carfox::MessagePtr &msg);
     //符号信息
     void handleProtoPicLampFrameInfo(const carfox::MessagePtr &msg);
+    void handleProtoPicLampFrameGmInfo(const carfox::MessagePtr &msg);
     //胎压监测系统
     void handleProtoTirePressInfoFrameInfo(const carfox::MessagePtr &msg);
     //胎压监测系统

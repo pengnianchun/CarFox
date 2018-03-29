@@ -151,6 +151,7 @@ void CustomCarMsgWorker::registerCallback()
     mHandler.registerMsgCallback(fyDcStatusMessageSystemInfo::DcStatusMessageMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoDcStatusMessageMenuInfo, this, _1));
     //符号信息
     mHandler.registerMsgCallback(fyPicLampInfo::PicLampFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoPicLampFrameInfo, this, _1));
+    mHandler.registerMsgCallback(fyPicLampInfo::PicLampFrameGm::descriptor(), bind(&CustomCarMsgWorker::handleProtoPicLampFrameGmInfo, this, _1));
     //胎压监测系统
     mHandler.registerMsgCallback(fyTirePressInfo::TirePressInfoFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo, this, _1));
     //请求菜单返回信息
@@ -1306,6 +1307,16 @@ void CustomCarMsgWorker::handleProtoDcStatusMessageMenuInfo(const carfox::Messag
     });
 }
 //符号片显示
+void CustomCarMsgWorker::handleProtoPicLampFrameGmInfo(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fyPicLampInfo::PicLampFrameGm> p = carfox::down_pointer_cast<fyPicLampInfo::PicLampFrameGm>(msg);
+    updateStates<bool>(mStateData.lampTurnLeft.data, p->lamp_turn_left(), [this](bool value) {
+        emit this->lampTurnLeftChanged(value);
+    });
+    updateStates<bool>(mStateData.lampTurnRight.data, p->lamp_turn_right(), [this](bool value) {
+        emit this->lampTurnRightChanged(value);
+    });
+}
 void CustomCarMsgWorker::handleProtoPicLampFrameInfo(const carfox::MessagePtr &msg)
 {
     shared_ptr<fyPicLampInfo::PicLampFrame> p = carfox::down_pointer_cast<fyPicLampInfo::PicLampFrame>(msg);
@@ -1347,12 +1358,6 @@ void CustomCarMsgWorker::handleProtoPicLampFrameInfo(const carfox::MessagePtr &m
     });
     updateStates<bool>(mStateData.diagnosticMode.data, p->diagnostic_mode(), [this](bool value) {
         emit this->diagnosticModeChanged(value);
-    });
-    updateStates<bool>(mStateData.lampTurnLeft.data, p->lamp_turn_left(), [this](bool value) {
-        emit this->lampTurnLeftChanged(value);
-    });
-    updateStates<bool>(mStateData.lampTurnRight.data, p->lamp_turn_right(), [this](bool value) {
-        emit this->lampTurnRightChanged(value);
     });
     updateStates<bool>(mStateData.lampDoubleFlash.data, p->lamp_double_flash(), [this](bool value) {
         emit this->lampDoubleFlashChanged(value);
