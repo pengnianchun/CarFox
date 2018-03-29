@@ -252,7 +252,7 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::backOutputCurrent13Changed, this, &CustomCarMsg::updateBackOutputCurrent13);
     connect(worker, &CustomCarMsgWorker::backOutputCurrent14Changed, this, &CustomCarMsg::updateBackOutputCurrent14);
     connect(worker, &CustomCarMsgWorker::backOutputCurrent15Changed, this, &CustomCarMsg::updateBackOutputCurrent15);
-    connect(worker, &CustomCarMsgWorker::backOutputFault01Changed, this, &CustomCarMsg::updateMiddleOutputFault01);
+    connect(worker, &CustomCarMsgWorker::backOutputFault01Changed, this, &CustomCarMsg::updateBackOutputFault01);
     connect(worker, &CustomCarMsgWorker::backOutputFault02Changed, this, &CustomCarMsg::updateBackOutputFault02);
     connect(worker, &CustomCarMsgWorker::backOutputFault03Changed, this, &CustomCarMsg::updateBackOutputFault03);
     connect(worker, &CustomCarMsgWorker::backOutputFault04Changed, this, &CustomCarMsg::updateBackOutputFault04);
@@ -324,7 +324,7 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::bmsLifeChanged, this, &CustomCarMsg::updateBmsLife);
     connect(worker, &CustomCarMsgWorker::batteryPackHighestTempChanged, this, &CustomCarMsg::updateBatteryPackHighestTemp);
     connect(worker, &CustomCarMsgWorker::batteryPackMinTempChanged, this, &CustomCarMsg::updateBatteryPackMinTemp);
-    connect(worker, &CustomCarMsgWorker::batteryPackEnergyChanged, this, &CustomCarMsg::updateBatteryPackEnergy);
+    connect(worker, &CustomCarMsgWorker::batteryManagePackEnergyChanged, this, &CustomCarMsg::updateBatteryManagePackEnergy);
     connect(worker, &CustomCarMsgWorker::bmsControlStatusChanged, this, &CustomCarMsg::updateBmsControlStatus);
     connect(worker, &CustomCarMsgWorker::batAmountChanged, this, &CustomCarMsg::updateBatAmount);
     connect(worker, &CustomCarMsgWorker::rechargeStatusChanged, this, &CustomCarMsg::updateRechargeStatus);
