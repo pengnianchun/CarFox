@@ -8,7 +8,7 @@ Item {
     property int fps: 60
     property int frameCounter: 0
     z: 100
-
+/*
     Item {
         id: spinnerImage
         NumberAnimation on x {
@@ -38,7 +38,6 @@ Item {
             frameCounter = 0
         }
     }
-
     RowLayout {
         z: 50
         spacing: 20
@@ -151,4 +150,5 @@ Item {
             }
         }
     }
+*/
 }

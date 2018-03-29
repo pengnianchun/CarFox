@@ -10,7 +10,7 @@ class CustomCarMsg : public carfox::CarMsg
     //通用信息
     MEMBER_PROPERTY_WITH_NOTIFY(uint, tmpVersion, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, themeMode, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, carMode, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, carMode, 3)
     MEMBER_PROPERTY_WITH_NOTIFY(int, dateTime, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, carSpeed, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, rpm, 0)
@@ -409,7 +409,7 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(bool, reverseGear, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, electronicInSlope, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, ascd, false)
-    MEMBER_PROPERTY_WITH_NOTIFY(bool, ready, true)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, ready, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, powerAccumulatorsChargeStatus, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, cableConnect, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, controlMotorOverheating, false)
@@ -435,6 +435,18 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(bool, frontDoorExigencyAlarm, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, middleDoorExigencyAlarm, false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, stop, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampLeftBackWear, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampRightBackWear, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampMirrorHeating, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampDefroster1, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampDefroster2, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampLowSpeedClose, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampMainSwitch, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampTirePreFault, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampBatHigtTemp, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampSystemFault, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampBatLegend, false)
+    MEMBER_PROPERTY_WITH_NOTIFY(bool, lampRton, false)
     //胎压模块信息
     MEMBER_PROPERTY_WITH_NOTIFY(float, frontLeftTirePress, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, fronRightTirePress, 0)
@@ -953,6 +965,18 @@ private slots:
     void updateFrontDoorExigencyAlarm(bool value);
     void updateMiddleDoorExigencyAlarm(bool value);
     void updateStop(bool value);
+    void updateLampLeftBackWear(bool value);
+    void updateLampRightBackWear(bool value);
+    void updateLampMirrorHeating(bool value);
+    void updateLampDefroster1(bool value);
+    void updateLampDefroster2(bool value);
+    void updateLampLowSpeedClose(bool value);
+    void updateLampMainSwitch(bool value);
+    void updateLampTirePreFault(bool value);
+    void updateLampBatHigtTemp(bool value);
+    void updateLampSystemFault(bool value);
+    void updateLampBatLegend(bool value);
+    void updateLampRton(bool value);
     //胎压模块信息
     void updateFrontLeftTirePress(float value);
     void updateFronRightTirePress(float value);
@@ -1051,6 +1075,8 @@ signals:
     void sendMenuInfo(qint64 MenuNo, qint64 pageNo);
     void sendUpgradeStart();
     void sendTripMilesClear();
+    void sendBrightnessControl(qint8 brightnessNo);
+    void sendIgoffControl();
 
 private:
     bool mEnableKeys = false;

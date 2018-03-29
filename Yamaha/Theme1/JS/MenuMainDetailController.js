@@ -98,7 +98,7 @@ function turnPageStatus(settingSystem,settingSystemId,dateYMDHMId,action){
         var setValueS,setValueE,currentValue;
         if(settingSystem.dateYMDHMStatus[0]){
             currentValue = dateYMDHMId[0].textValue;
-            dateYMDHMId[0].textValue = getDateValue(24,currentValue,action,false);
+            dateYMDHMId[0].textValue = getDateValue(23,currentValue,action,true);
         }else if(settingSystem.dateYMDHMStatus[1]){
             currentValue = dateYMDHMId[1].textValue;
             dateYMDHMId[1].textValue = getDateValue(59,currentValue,action,true);
@@ -141,11 +141,15 @@ function getDateValue(scopeValue,currentValue,action,zero){
             setValueE = "01";
         }
     }else if(action === "reduce"){
-        if(parseInt(currentValue)>1){
+        if(parseInt(currentValue)>=1){
             setValueS =  parseInt(currentValue)-1;
             setValueE = setValueS.toString();
             if(setValueS<10){
-                setValueE = "0"+ setValueS;
+                if((setValueS === 0)&&(!zero)){
+                    setValueE = scopeValue;
+                }else {
+                    setValueE = "0"+ setValueS;
+                }
             }else{}
         }else{
             setValueE = scopeValue;
