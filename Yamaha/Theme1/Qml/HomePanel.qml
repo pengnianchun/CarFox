@@ -52,8 +52,11 @@ CommonItem {
             console.log("ig off !");
             end_animation.running = true;
             CarMsg.sendIgoffControl();
+        }else if(carMode === 1){
+            start_animation.running = true;
         }else{}
     }
+    NumberAnimation { id: start_animation; target: homeIndex; property: "opacity"; to: 1; duration: 1000; easing.type: Easing.Linear; }
     NumberAnimation { id: end_animation; target: homeIndex; property: "opacity"; to: 0; duration: 1000; easing.type: Easing.Linear; }
     onGearValueChanged: {
         if(gearValue === 9){
