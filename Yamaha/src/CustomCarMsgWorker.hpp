@@ -29,6 +29,7 @@ public slots:
     void tripMilesClearRequest();
     void brightnessControlRequest(qint8 brightnessNo = 0);
     void igoffControlRequest();
+    void buzzerControlRequest(bool buzzerStatus = true);
 
 signals:
     // 上行帧 Worker to Msg
@@ -615,6 +616,7 @@ private:
     void handleProtoDcStatusMessageMenuInfo(const carfox::MessagePtr &msg);
     //符号信息
     void handleProtoPicLampFrameInfo(const carfox::MessagePtr &msg);
+    void handleProtoPicLampFrameGmInfo(const carfox::MessagePtr &msg);
     //胎压监测系统
     void handleProtoTirePressInfoFrameInfo(const carfox::MessagePtr &msg);
     //胎压监测系统

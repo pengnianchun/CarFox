@@ -1077,6 +1077,7 @@ signals:
     void sendTripMilesClear();
     void sendBrightnessControl(qint8 brightnessNo);
     void sendIgoffControl();
+    void sendBuzzerControl(bool buzzerStatus);
 
 private:
     bool mEnableKeys = false;

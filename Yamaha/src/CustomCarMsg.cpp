@@ -551,6 +551,7 @@ void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
     connect(this, &CustomCarMsg::sendTripMilesClear, worker, &CustomCarMsgWorker::tripMilesClearRequest);
     connect(this, &CustomCarMsg::sendBrightnessControl, worker, &CustomCarMsgWorker::brightnessControlRequest);
     connect(this, &CustomCarMsg::sendIgoffControl, worker, &CustomCarMsgWorker::igoffControlRequest);
+    connect(this, &CustomCarMsg::sendBuzzerControl, worker, &CustomCarMsgWorker::buzzerControlRequest);
 }
 //基本模块信息
 void CustomCarMsg::updateThemeMode(int data)
