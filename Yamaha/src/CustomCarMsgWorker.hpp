@@ -29,6 +29,7 @@ public slots:
     void tripMilesClearRequest();
     void brightnessControlRequest(qint8 brightnessNo = 0);
     void igoffControlRequest();
+    void buzzerControlRequest(bool buzzerStatus = true);
 
 signals:
     // 上行帧 Worker to Msg

@@ -96,6 +96,11 @@ void CustomCarMsgWorker::igoffControlRequest() {
     igoffControl.set_quench_lcd(true);
     sendProtoMsg(igoffControl);
 }
+void CustomCarMsgWorker::buzzerControlRequest(bool buzzerStatus) {
+    fySystemSettingsInfo::CloseBuzzerSettings buzzerControl;
+    buzzerControl.set_close_buzzer(buzzerStatus);
+    sendProtoMsg(buzzerControl);
+}
 
 void CustomCarMsgWorker::registerCallback()
 {
