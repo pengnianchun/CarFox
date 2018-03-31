@@ -56,5 +56,9 @@ Item {
                 break;
             }
         }
+        onKeyLongPressed: {
+            console.log("long press trip miles clear !");
+            CarMsg.sendTripMilesClear();
+        }
     }
 }
