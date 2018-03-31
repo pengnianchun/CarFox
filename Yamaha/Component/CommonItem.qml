@@ -58,7 +58,22 @@ Item {
         }
         onKeyLongPressed: {
             console.log("long press trip miles clear !");
-            CarMsg.sendTripMilesClear();
+            onKey(key);
+            switch (key)
+            {
+                case CustomEnum.EnterKey:
+                    //onKeyEnter();
+                break;
+                case CustomEnum.BackKey:
+                    CarMsg.sendTripMilesClear();
+                break;
+                case CustomEnum.PrevKey:
+                    //onKeyUp();
+                break;
+                case CustomEnum.NextKey:
+                    //onKeyDown();
+                break;
+            }
         }
     }
 }
