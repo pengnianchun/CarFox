@@ -21,7 +21,7 @@ CommonItem {
     property bool bKeyEnable: true
 
     property string sourceImageUrl: "qrc:/Theme/Theme1/Image/HomePanel/"
-    property string gearImageUrl: sourceImageUrl + "P.png"
+    property string gearImageUrl: sourceImageUrl + "N.png"
     //车速初始值/蓄电池电压
     property int speedTotal: 180;
     property int carSpeedValue: animationStatus ? CarMsg.carSpeed : 0;
@@ -61,11 +61,11 @@ CommonItem {
     onGearValueChanged: {
         if(gearValue === 9){
             gear_control.source = sourceImageUrl + "D.png";
-        }else if(gearValue === 0){
+        }else if(gearValue === 10){
             gear_control.source = sourceImageUrl + "N.png";
         }else if(gearValue === 8){
             gear_control.source = sourceImageUrl + "P.png";
-        }else if(gearValue === 0xB){
+        }else if(gearValue === 11){
             gear_control.source = sourceImageUrl + "R.png";
         }else{}
     }

@@ -71,6 +71,7 @@ Item {
             tempValue = textDateTimeArray[6];
             week = transformWeekFormat(tempValue);
             dateValue = qsTr("%1 - %2 - %3").arg(year).arg(month).arg(day);
+            dayWeekDisplay.textValue = dateValue;
         }
     }
     onDayChanged: {
