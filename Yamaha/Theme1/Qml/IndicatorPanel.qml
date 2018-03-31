@@ -119,10 +119,10 @@ Item {
         id: carousel_timer
         property var lamp1CarouselId: [lamp_airPress1,lamp_airPress2,powewr_door,electronic_park,cruise_control,water_heat,front_control]
         property var lamp2CarouselId: [lamp_leftFriction,seat_belt,driver_seat,abs_indicator,left_hatch]
-        property var lamp3CarouselId: [lamp_rightFriction,lamp_airPress3,hands_brake,bms_alarm,soc_low,
+        property var lamp3CarouselId: [lamp_rightFriction,lamp_airPress3,hands_brake,lamp_rightBack,bms_alarm,soc_low,
             safety_system,right_hatch,ecas_fault,door_bell]
         property var lamp4CarouselId: [lamp_airPress4,lamp_airPress5,foot_brake,driver_systemfault,serious_insulation,light_serious_insulation,
-            barrier_free,ecas_alarm,ecas_side,ecas_height,middle_control]
+            barrier_free,charge_door,ecas_alarm,ecas_side,ecas_height,middle_control]
         property var lamp1CarouselArray: new Array();
         property var lamp2CarouselArray: new Array();
         property var lamp3CarouselArray: new Array();
