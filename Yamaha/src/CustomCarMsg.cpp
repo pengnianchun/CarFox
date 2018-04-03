@@ -1440,43 +1440,43 @@ void CustomCarMsg::updateBatteryHighestTemp(float value) {
 void CustomCarMsg::updateBmsVersion(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(bmsVersion, value);
 }
-void CustomCarMsg::updateBmsModuleAmount(uint value) {
+void CustomCarMsg::updateBmsModuleAmount(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(bmsModuleAmount, value);
 }
-void CustomCarMsg::updateBmsLife(uint value) {
+void CustomCarMsg::updateBmsLife(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(bmsLife, value);
 }
-void CustomCarMsg::updateBatteryPackHighestTemp(uint value) {
+void CustomCarMsg::updateBatteryPackHighestTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batteryPackHighestTemp, value);
 }
-void CustomCarMsg::updateBatteryPackMinTemp(uint value) {
+void CustomCarMsg::updateBatteryPackMinTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batteryPackMinTemp, value);
 }
 void CustomCarMsg::updateBatteryManagePackEnergy(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batteryManagePackEnergy, value);
 }
-void CustomCarMsg::updateBmsControlStatus(uint value) {
+void CustomCarMsg::updateBmsControlStatus(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(bmsControlStatus, value);
 }
-void CustomCarMsg::updateBatAmount(uint value) {
+void CustomCarMsg::updateBatAmount(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batAmount, value);
 }
-void CustomCarMsg::updateRechargeStatus(uint value) {
+void CustomCarMsg::updateRechargeStatus(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(rechargeStatus, value);
 }
-void CustomCarMsg::updateTempStyletAmount(uint value) {
+void CustomCarMsg::updateTempStyletAmount(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(tempStyletAmount, value);
 }
-void CustomCarMsg::updateOutletPositiveTemp(uint value) {
+void CustomCarMsg::updateOutletPositiveTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(outletPositiveTemp, value);
 }
-void CustomCarMsg::updateOutletNegativeTemp(uint value) {
+void CustomCarMsg::updateOutletNegativeTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(outletNegativeTemp, value);
 }
-void CustomCarMsg::updatePowerBatteryType(uint value) {
+void CustomCarMsg::updatePowerBatteryType(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(powerBatteryType, value);
 }
-void CustomCarMsg::updatePowerBatteryRecharge(uint value) {
+void CustomCarMsg::updatePowerBatteryRecharge(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(powerBatteryRecharge, value);
 }
 //电池组电压信息

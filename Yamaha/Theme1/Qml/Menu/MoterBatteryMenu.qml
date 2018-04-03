@@ -92,8 +92,9 @@ MenuItem {
                 }else if(CarMsg.bmsControlStatus === 3){
                     bmsStatus = "冷却";
                 }else{}
-                listmodel10.setProperty(3,"value",bmsStatus);
-                listmodel10.setProperty(4,"value",CarMsg.irmOhmNegative.toFixed(1));
+                listmodel10.setProperty(3,"value",CarMsg.batMinVoltage.toFixed(1));
+                listmodel10.setProperty(4,"value",bmsStatus);
+                listmodel10.setProperty(5,"value",CarMsg.irmOhmNegative.toFixed(1));
                 var chargeStatus = "";
                 if(CarMsg.rechargeStatus === 0x01){
                     chargeStatus = "停车充电";
@@ -106,7 +107,7 @@ MenuItem {
                 }else if(CarMsg.rechargeStatus === 0xFE){
                     chargeStatus = "异常";
                 }else{}
-                listmodel10.setProperty(5,"value",chargeStatus);
+                listmodel10.setProperty(6,"value",chargeStatus);
             }else if((carLoadCurrentIndex === 11)||(carLoadCurrentIndex === 12)){
                 listmodel11.setProperty(0,"checkstatus",CarMsg.batVoltageMaxAlarm);
                 listmodel11.setProperty(1,"checkstatus",CarMsg.batVoltageMaxAbortAlarm);
@@ -357,10 +358,10 @@ MenuItem {
         ListElement { name: "动力电池充电次数";value: "";unit: "" }
         ListElement { name: "bms的life值";value: "";unit: "" }
         ListElement { name: "电池组最低温度";value: "";unit: "℃" }
+        ListElement { name: "单体电池最低电压";value: "";unit: "" }
         ListElement { name: "bms管控状态";value: "";unit: "" }
         ListElement { name: "负极绝缘电阻阻值";value: "";unit: "kΩ" }
         ListElement { name: "充电状态";value: "";unit: "" }
-        ListElement { name: "";value: "";unit: "" }
         ListElement { name: "";value: "";unit: "" }
         ListElement { name: "";value: "";unit: "" }
         ListElement { name: "";value: "";unit: "" }

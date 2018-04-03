@@ -78,7 +78,7 @@ MenuItem {
             listmodelone.setProperty(0,"value","READY");
         }else if(driveSystemStatus === 1){
             listmodelone.setProperty(0,"value","WAIT");
-        }else if(driveSystemStatus === 3){
+        }else if(driveSystemStatus === 2){
             listmodelone.setProperty(0,"value","STOP");
         }else{
             listmodelone.setProperty(0,"value","无效");
@@ -161,10 +161,10 @@ MenuItem {
         }
     }
     onAirCompressorMotorSpeedChanged: {
-        listmodelone.setProperty(5,"value",airCompressorMotorSpeed.toFixed(1));
+        listmodelone.setProperty(5,"value",airCompressorMotorSpeed.toFixed(0));
     }
     onSteeringAssistMotorSpeedChanged: {
-        listmodeltwo.setProperty(3,"value",steeringAssistMotorSpeed.toFixed(1));
+        listmodeltwo.setProperty(3,"value",steeringAssistMotorSpeed.toFixed(0));
     }
     onSteeringAssistMotorTempChanged: {
         listmodeltwo.setProperty(4,"value",steeringAssistMotorTemp.toFixed(0));
@@ -188,13 +188,37 @@ MenuItem {
         listmodelone.setProperty(10,"value",airPress5.toFixed(1));
     }
     onHighestAlarmGradeChanged: {
-        listmodeltwo.setProperty(5,"value",highestAlarmGrade.toFixed(0));
+        if(highestAlarmGrade === 0){
+            listmodeltwo.setProperty(6,"value","无故障");
+        }else if(highestAlarmGrade === 1){
+            listmodeltwo.setProperty(6,"value","1级故障");
+        }else if(highestAlarmGrade === 2){
+            listmodeltwo.setProperty(6,"value","2级故障");
+        }else if(highestAlarmGrade === 3){
+            listmodeltwo.setProperty(6,"value","3级故障");
+        }else{
+            listmodeltwo.setProperty(6,"value","异常");
+        }
     }
     onFaultAlarmSituationChanged: {
-        listmodeltwo.setProperty(6,"value",faultAlarmSituation.toFixed(0));
+        if(faultAlarmSituation === 0){
+            listmodeltwo.setProperty(7,"value","正常");
+        }else if(faultAlarmSituation === 1){
+            listmodeltwo.setProperty(7,"value","光报警");
+        }else if(faultAlarmSituation === 2){
+            listmodeltwo.setProperty(7,"value","光和声报警");
+        }else{}
     }
     onDriveGearsModeChanged: {
-        listmodeltwo.setProperty(7,"value",driveGearsMode.toFixed(0));
+        if(driveGearsMode === 0){
+            listmodeltwo.setProperty(8,"value","直驱模式");
+        }else if(driveGearsMode === 1){
+            listmodeltwo.setProperty(8,"value","AMT模式");
+        }else if(driveGearsMode === 2){
+            listmodeltwo.setProperty(8,"value","CVT模式");
+        }else{
+            listmodeltwo.setProperty(8,"value","轮边驱动模式");
+        }
     }
     onBduSwitchChanged: {
         if(bduSwitch === 0){
@@ -359,21 +383,21 @@ MenuItem {
         ListElement { name: "钥匙acc档";value: "关闭";unit: "" }
         ListElement { name: "高压互锁状态";value: "互锁";unit: "" }
         ListElement { name: "空压机工作状态";value: "停止";unit: "" }
-        ListElement { name: "空压机电机转速";value: "26.9";unit: "r/min" }
-        ListElement { name: "空压机电机温度";value: "000";unit: "℃" }
-        ListElement { name: "空压控制器温度";value: "000";unit: "℃" }
-        ListElement { name: "气压3";value: "0.00";unit: "mpa" }
-        ListElement { name: "气压4";value: "0.00";unit: "mpa" }
-        ListElement { name: "气压5";value: "0.00";unit: "mpa" }
+        ListElement { name: "空压机电机转速";value: "0";unit: "r/min" }
+        ListElement { name: "空压机电机温度";value: "0";unit: "℃" }
+        ListElement { name: "空压控制器温度";value: "0";unit: "℃" }
+        ListElement { name: "气压3";value: "0";unit: "mpa" }
+        ListElement { name: "气压4";value: "0";unit: "mpa" }
+        ListElement { name: "气压5";value: "0";unit: "mpa" }
     }
     ListModel {
         id: listmodeltwo
         ListElement { name: "钥匙on档";value: "关闭";unit: "" }
         ListElement { name: "高压上电状态";value: "下电";unit: "" }
         ListElement { name: "助力泵工作状态";value: "停止";unit: "" }
-        ListElement { name: "转向助力电机转速";value: "0000";unit: "r/min" }
-        ListElement { name: "转向助力电机温度";value: "000";unit: "℃" }
-        ListElement { name: "转向控制器温度";value: "000";unit: "℃" }
+        ListElement { name: "转向助力电机转速";value: "0";unit: "r/min" }
+        ListElement { name: "转向助力电机温度";value: "0";unit: "℃" }
+        ListElement { name: "转向控制器温度";value: "0";unit: "℃" }
         ListElement { name: "最高报警等级";value: "无故障";unit: "" }
         ListElement { name: "故障报警形式";value: "正常";unit: "" }
         ListElement { name: "档位驱动模式";value: "直驱模式";unit: "" }
@@ -435,7 +459,7 @@ MenuItem {
             fontSizeList: 12
             titleColorList: "#00a7f5"
             listViewSpacing: 25
-            unitWidthList: 40
+            unitWidthList: 50
         }
         ListViewWeir {
             anchors.top: parent.top
@@ -448,7 +472,7 @@ MenuItem {
             fontSizeList: 12
             titleColorList: "#00a7f5"
             listViewSpacing: 25
-            unitWidthList: 40
+            unitWidthList: 50
         }
     }
     RowLayout{
@@ -487,7 +511,7 @@ MenuItem {
         anchors.topMargin: 175
         anchors.right: parent.right
         anchors.rightMargin: 560
-        spacing: 25
+        spacing: 40
         TextFieldWeir {
             id: motor1
             textValue: "正常工作"
