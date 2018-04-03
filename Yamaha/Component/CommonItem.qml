@@ -57,7 +57,6 @@ Item {
             }
         }
         onKeyLongPressed: {
-            console.log("long press trip miles clear !");
             onKey(key);
             switch (key)
             {
@@ -65,6 +64,7 @@ Item {
                     //onKeyEnter();
                 break;
                 case CustomEnum.BackKey:
+                    console.log("long press trip miles clear !");
                     CarMsg.sendTripMilesClear();
                 break;
                 case CustomEnum.PrevKey:
@@ -72,6 +72,8 @@ Item {
                 break;
                 case CustomEnum.NextKey:
                     //onKeyDown();
+                    console.log("long press update software clear !");
+                    CarMsg.sendUpgradeStart();
                 break;
             }
         }
