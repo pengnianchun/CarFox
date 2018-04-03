@@ -26,4 +26,5 @@ void CustomTheme1::create()
     addLayer("qrc:/Theme/Theme1/Qml/Menu/TirePressureMenu.qml", "TirePressureMenu", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme1/Qml/Menu/VcuSystemMenu.qml", "VcuSystemMenu", carfox::Layer::ManualShow);
     addLayer("qrc:/Theme/Theme1/Qml/Menu/VideoConvertMenu.qml", "VideoConvertMenu", carfox::Layer::ManualShow);
+    addLayer("qrc:/Theme/Theme1/Qml/UpdatePanel.qml", "UpdateTheme1", carfox::Layer::ManualShow);
 }

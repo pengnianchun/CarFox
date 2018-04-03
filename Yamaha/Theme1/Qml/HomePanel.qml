@@ -46,7 +46,27 @@ CommonItem {
     property bool bDisplay: true
     //关机信号
     property int carMode: animationStatus ? CarMsg.carMode : 1
+    //请求升级信号的返回状态接收
+    property bool updateSoftWare: false
+    property int upgradeMsgId: CarMsg.upgradeMsgId
 
+    onUpgradeMsgIdChanged: {
+        if(upgradeMsgId === 1){
+            console.log("U card load is success !");
+            CarMsg.sendUpgradeStart();
+        }else if(upgradeMsgId === 5){
+            console.log("U card load is failed !");
+        }else if(upgradeMsgId === 2){
+            console.log("send update msg is success !");
+            updateSoftWare = true;
+        }else{}
+    }
+    onUpdateSoftWareChanged: {
+        if(updateSoftWare){
+            UiController.showLayer("UpdateTheme1");
+            updateSoftWare = false;
+        }else{}
+    }
     onCarModeChanged: {
         if(carMode === 0){
             console.log("ig off !");
