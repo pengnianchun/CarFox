@@ -299,28 +299,28 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, batMaxChargeCurrent, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, batMaxDischargeCurrent, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, batAverageVoltage, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, batStatus1, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, batStatus2, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, batStatus3, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(uint, batStatus1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(uint, batStatus2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(uint, batStatus3, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, irmOhmPositive, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, irmOhmNegative, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, batMaxVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, batMinVoltage, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, batteryHighestTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, bmsVersion, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, bmsModuleAmount, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, bmsLife, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, batteryPackHighestTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, batteryPackMinTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, bmsModuleAmount, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, bmsLife, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, batteryPackHighestTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, batteryPackMinTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(float, batteryManagePackEnergy, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, bmsControlStatus, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, batAmount, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, rechargeStatus, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, tempStyletAmount, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, outletPositiveTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, outletNegativeTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, powerBatteryType, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(uint, powerBatteryRecharge, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, bmsControlStatus, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, batAmount, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, rechargeStatus, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, tempStyletAmount, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, outletPositiveTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, outletNegativeTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, powerBatteryType, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, powerBatteryRecharge, 0)
     //电池组电压信息
     //MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberVoltage, 0)
     //MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberVoltageValue, 0)
@@ -838,19 +838,19 @@ private slots:
     void updateBatMinVoltage(float value);
     void updateBatteryHighestTemp(float value);
     void updateBmsVersion(float value);
-    void updateBmsModuleAmount(uint value);
-    void updateBmsLife(uint value);
-    void updateBatteryPackHighestTemp(uint value);
-    void updateBatteryPackMinTemp(uint value);
+    void updateBmsModuleAmount(int value);
+    void updateBmsLife(int value);
+    void updateBatteryPackHighestTemp(int value);
+    void updateBatteryPackMinTemp(int value);
     void updateBatteryManagePackEnergy(float value);
-    void updateBmsControlStatus(uint value);
-    void updateBatAmount(uint value);
-    void updateRechargeStatus(uint value);
-    void updateTempStyletAmount(uint value);
-    void updateOutletPositiveTemp(uint value);
-    void updateOutletNegativeTemp(uint value);
-    void updatePowerBatteryType(uint value);
-    void updatePowerBatteryRecharge(uint value);
+    void updateBmsControlStatus(int value);
+    void updateBatAmount(int value);
+    void updateRechargeStatus(int value);
+    void updateTempStyletAmount(int value);
+    void updateOutletPositiveTemp(int value);
+    void updateOutletNegativeTemp(int value);
+    void updatePowerBatteryType(int value);
+    void updatePowerBatteryRecharge(int value);
     //电池组电压信息
     //void updateAddrNumberVoltage(uint value);
     //void updateAddrNumberVoltageValue(float value);

@@ -340,8 +340,8 @@ signals:
     void bmsVersionChanged(float value);
     void bmsModuleAmountChanged(float value);
     void bmsLifeChanged(float value);
-    void batteryPackHighestTempChanged(float value);
-    void batteryPackMinTempChanged(float value);
+    void batteryPackHighestTempChanged(int value);
+    void batteryPackMinTempChanged(int value);
     void batteryManagePackEnergyChanged(float value);
     void bmsControlStatusChanged(float value);
     void batAmountChanged(float value);
