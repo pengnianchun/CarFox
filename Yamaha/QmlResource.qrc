@@ -130,6 +130,7 @@
     <qresource prefix="/Theme">
         <file>Theme1/Qml/Splash/Splash.qml</file>
         <file>Theme1/Qml/HomePanel.qml</file>
+		<file>Theme1/Qml/UpdatePanel.qml</file>
         <file>Theme1/Qml/MenuPanel.qml</file>
         <file>Theme1/Qml/IndicatorPanel.qml</file>
         <file>Theme1/Qml/Menu/TirePressureMenu.qml</file>

@@ -72,8 +72,6 @@ Item {
                 break;
                 case CustomEnum.NextKey:
                     //onKeyDown();
-                    console.log("long press update software clear !");
-                    CarMsg.sendUpgradeStart();
                 break;
             }
         }
