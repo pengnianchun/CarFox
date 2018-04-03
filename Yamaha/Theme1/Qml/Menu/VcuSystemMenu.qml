@@ -161,10 +161,10 @@ MenuItem {
         }
     }
     onAirCompressorMotorSpeedChanged: {
-        listmodelone.setProperty(5,"value",airCompressorMotorSpeed.toFixed(1));
+        listmodelone.setProperty(5,"value",airCompressorMotorSpeed.toFixed(0));
     }
     onSteeringAssistMotorSpeedChanged: {
-        listmodeltwo.setProperty(3,"value",steeringAssistMotorSpeed.toFixed(1));
+        listmodeltwo.setProperty(3,"value",steeringAssistMotorSpeed.toFixed(0));
     }
     onSteeringAssistMotorTempChanged: {
         listmodeltwo.setProperty(4,"value",steeringAssistMotorTemp.toFixed(0));
@@ -459,7 +459,7 @@ MenuItem {
             fontSizeList: 12
             titleColorList: "#00a7f5"
             listViewSpacing: 25
-            unitWidthList: 40
+            unitWidthList: 50
         }
         ListViewWeir {
             anchors.top: parent.top
@@ -472,7 +472,7 @@ MenuItem {
             fontSizeList: 12
             titleColorList: "#00a7f5"
             listViewSpacing: 25
-            unitWidthList: 40
+            unitWidthList: 50
         }
     }
     RowLayout{
@@ -511,7 +511,7 @@ MenuItem {
         anchors.topMargin: 175
         anchors.right: parent.right
         anchors.rightMargin: 560
-        spacing: 25
+        spacing: 40
         TextFieldWeir {
             id: motor1
             textValue: "正常工作"
