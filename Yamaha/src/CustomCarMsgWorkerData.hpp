@@ -22,7 +22,7 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<float> apVol2 = carfox::CarMsgData<float>(0);              //气压2, 0.00 Mpa,协议收到为Kpa，需要除以1000
     carfox::CarMsgData<qint32> moterControlTemp = carfox::CarMsgData<qint32>(0);  //电机控制器温度, 0 ℃
     carfox::CarMsgData<qint32> moterTemp = carfox::CarMsgData<qint32>(0);         //电机温度, 0 ℃
-    carfox::CarMsgData<qint32> battery = carfox::CarMsgData<qint32>(0);           //蓄电池电压
+    carfox::CarMsgData<float> battery = carfox::CarMsgData<float>(0);           //蓄电池电压
     carfox::CarMsgData<qint32> spn = carfox::CarMsgData<qint32>(0);               //SPN值
     carfox::CarMsgData<qint32> engineWaterTemp = carfox::CarMsgData<qint32>(0);   //发动机水温
     carfox::CarMsgData<qint32> ureaLevel = carfox::CarMsgData<qint32>(0);          //尿素液位

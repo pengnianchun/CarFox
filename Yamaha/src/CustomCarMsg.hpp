@@ -24,7 +24,7 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, apVol2, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, moterControlTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, moterTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(int, battery, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(float, battery, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, spn, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, engineWaterTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, ureaLevel, 0)
@@ -554,7 +554,7 @@ private slots:
     void updateApVol2(float value);
     void updateMoterControlTemp(int value);
     void updateMoterTemp(int value);
-    void updateBattery(int value);
+    void updateBattery(float value);
     void updateSpn(int value);
     void updateEngineWaterTemp(int value);
     void updateUreaLevel(int value);

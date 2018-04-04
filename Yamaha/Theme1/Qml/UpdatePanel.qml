@@ -21,6 +21,7 @@ CommonItem {
         }else if(updateInfo === 2){
             title_popup.textValue = "请手动重启设备，完成软件升级！"
         }else{}
+        updateInfo = 0;
     }
     TextFieldWeir {
         id: title_popup

@@ -204,7 +204,7 @@ void CustomCarMsgWorker::handleGeneralInfoFrame(const carfox::MessagePtr &msg)
     updateStates<float>(mStateData.rpm.data, p->rpm(), [this](float value) {
         emit this->rpmChanged(value);
     });
-    updateStates<qint32>(mStateData.battery.data, p->battery(), [this](qint32 value) {
+    updateStates<float>(mStateData.battery.data, p->battery(), [this](float value) {
         emit this->batteryChanged(value);
     });
     updateStates<qint32>(mStateData.dateTime.data, p->date_time(), [this](quint32 value) {

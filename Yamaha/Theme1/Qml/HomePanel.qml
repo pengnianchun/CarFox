@@ -27,7 +27,7 @@ CommonItem {
     property int carSpeedValue: animationStatus ? CarMsg.carSpeed : 0;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: animationStatus ? CarMsg.battery : 0;
+    property int batteryValue: animationStatus ? Math.round(CarMsg.battery) : 0;
     property int batteryValueStart: 16
     //档位初始值
     property real gearValue: animationStatus ? CarMsg.gear : 0;
@@ -47,9 +47,10 @@ CommonItem {
     //关机信号
     property int carMode: animationStatus ? CarMsg.carMode : 1
     //请求升级信号的返回状态接收
-    property int upgradeMsgId: CarMsg.upgradeMsgId
+    property int upgradeMsgId: animationStatus ? 1: CarMsg.upgradeMsgId
 
     onUpgradeMsgIdChanged: {
+        UiController.showLayer("UpdateTheme1");
         if(upgradeMsgId === 1){
             console.log("U card load is success !");
             UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
@@ -60,7 +61,7 @@ CommonItem {
             console.log("send update msg is success !");
             UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else{}
-        UiController.showLayer("UpdateTheme1");
+        upgradeMsgId = 0;
     }
     onCarModeChanged: {
         if(carMode === 0){
