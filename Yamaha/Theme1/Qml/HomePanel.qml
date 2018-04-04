@@ -60,18 +60,16 @@ CommonItem {
         return value;
     }
     onUpgradeMsgIdChanged: {
+        UiController.showLayer("UpdateTheme1");
         if(upgradeMsgId === 1){
             console.log("U card load is success !");
-            UiController.showLayer("UpdateTheme1");
-            UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
+            UiController.setLayerProperty("UpdateTheme1", "updateInfo", 1);
         }else if(upgradeMsgId === 5){
             console.log("U card load is failed !");
-            UiController.showLayer("UpdateTheme1");
-            UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
+            UiController.setLayerProperty("UpdateTheme1", "updateInfo", 5);
         }else if(upgradeMsgId === 2){
             console.log("send update msg is success !");
-            UiController.showLayer("UpdateTheme1");
-            UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
+            UiController.setLayerProperty("UpdateTheme1", "updateInfo", 2);
         }else{}
         upgradeMsgId = 0;
     }
