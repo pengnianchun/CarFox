@@ -71,7 +71,6 @@ CommonItem {
             console.log("send update msg is success !");
             UiController.setLayerProperty("UpdateTheme1", "updateInfo", 2);
         }else{}
-        upgradeMsgId = 0;
     }
     onCarModeChanged: {
         if(carMode === 0){

@@ -8,7 +8,7 @@ CommonItem {
     id: homeIndex
     width: 1440
     height: 544
-    property int updateInfo: 0;
+    property int updateInfo: CarMsg.upgradeMsgId
     visible: false
     //升级提示窗口
     Rectangle { anchors.fill: parent; color: "#000000" }
@@ -21,7 +21,6 @@ CommonItem {
         }else if(updateInfo === 2){
             title_popup.textValue = "请手动重启设备，完成软件升级！";
         }else{}
-        updateInfo = 0;
     }
     TextFieldWeir {
         id: title_popup
