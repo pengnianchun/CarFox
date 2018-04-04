@@ -27,7 +27,7 @@ CommonItem {
     property int carSpeedValue: animationStatus ? CarMsg.carSpeed : 0;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: animationStatus ? Math.round(CarMsg.battery) : 0;
+    property int batteryValue: animationStatus ? dampBattery(CarMsg.battery) : 0;
     property int batteryValueStart: 16
     //档位初始值
     property real gearValue: animationStatus ? CarMsg.gear : 0;
@@ -49,16 +49,28 @@ CommonItem {
     //请求升级信号的返回状态接收
     property int upgradeMsgId: CarMsg.upgradeMsgId
 
+    //电压值跳动
+    function dampBattery(data,lastdata){
+        var value;
+        if(data > lastdata){
+            value = Math.ceil(data);
+        }else{
+            value = Math.floor(data);
+        }
+        return value;
+    }
     onUpgradeMsgIdChanged: {
-        UiController.showLayer("UpdateTheme1");
         if(upgradeMsgId === 1){
             console.log("U card load is success !");
+            UiController.showLayer("UpdateTheme1");
             UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else if(upgradeMsgId === 5){
             console.log("U card load is failed !");
+            UiController.showLayer("UpdateTheme1");
             UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else if(upgradeMsgId === 2){
             console.log("send update msg is success !");
+            UiController.showLayer("UpdateTheme1");
             UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else{}
         upgradeMsgId = 0;
