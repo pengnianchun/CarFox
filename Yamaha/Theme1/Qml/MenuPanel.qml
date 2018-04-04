@@ -41,14 +41,14 @@ MenuItem {
         if(bKeyEnable){
             menuCurrentIndex--;
             if(menuCurrentIndex <= 0) {
-                menuCurrentIndex = 9;
+                menuCurrentIndex = menuModel.count;
             }
         }
     }
     nextMenu: function() {
         if(bKeyEnable){
             menuCurrentIndex++;
-            if(menuCurrentIndex >= 10) {
+            if(menuCurrentIndex >= menuModel.count+1) {
                 menuCurrentIndex = 1;
             }
         }
@@ -72,7 +72,7 @@ MenuItem {
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/timeSet.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/tireMonitor.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vcu.png" }
-            ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
+            //ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
         }
         Component {
             id: displayDelegate
@@ -181,9 +181,11 @@ MenuItem {
             case 8:
                 displayText = qsTr("整车控制信息");
                 break;
+                /*
             case 9:
                 displayText = qsTr("视频转换信息");
                 break;
+                */
             default:
                 displayText = qsTr("");
                 break;
