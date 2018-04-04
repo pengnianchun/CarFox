@@ -47,7 +47,7 @@ CommonItem {
     //关机信号
     property int carMode: animationStatus ? CarMsg.carMode : 1
     //请求升级信号的返回状态接收
-    property int upgradeMsgId: animationStatus ? 1: CarMsg.upgradeMsgId
+    property int upgradeMsgId: CarMsg.upgradeMsgId
 
     onUpgradeMsgIdChanged: {
         UiController.showLayer("UpdateTheme1");
