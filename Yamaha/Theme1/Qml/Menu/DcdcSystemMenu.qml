@@ -48,8 +48,8 @@ MenuItem {
             listmodelone.setProperty(4,"value","报警");
         }
     }
-    onDcLowCurrentChanged: { listmodelone.setProperty(0,"value",dcLowVoltage) }
-    onDcLowVoltageChanged: { listmodeltwo.setProperty(0,"value",dcLowCurrent) }
+    onDcLowVoltageChanged: { listmodelone.setProperty(0,"value",dcLowVoltage) }
+    onDcLowCurrentChanged: { listmodeltwo.setProperty(0,"value",dcLowCurrent) }
     onDcTempChanged: { listmodelone.setProperty(1,"value",dcTemp) }
     onDcOvervoltageChanged: { listmodeltwo.setProperty(2,"value",dcOvervoltage) }
     onDcOverheatingChanged: { listmodelone.setProperty(3,"value",dcOverheating) }
