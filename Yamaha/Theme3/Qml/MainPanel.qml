@@ -10,6 +10,7 @@ CommonItem {
     opacity: 0.0
     z: 0
 
+//
     property string externState: ""
     property bool busPanelVisible:true
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
