@@ -27,7 +27,7 @@ CommonItem {
     property int carSpeedValue: animationStatus ? CarMsg.carSpeed : 0;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: animationStatus ? CarMsg.battery : 0;
+    property int batteryValue: animationStatus ? Math.round(CarMsg.battery) : 0;
     property int batteryValueStart: 16
     //档位初始值
     property real gearValue: animationStatus ? CarMsg.gear : 0;
@@ -47,25 +47,21 @@ CommonItem {
     //关机信号
     property int carMode: animationStatus ? CarMsg.carMode : 1
     //请求升级信号的返回状态接收
-    property bool updateSoftWare: false
     property int upgradeMsgId: CarMsg.upgradeMsgId
 
     onUpgradeMsgIdChanged: {
+        UiController.showLayer("UpdateTheme1");
         if(upgradeMsgId === 1){
             console.log("U card load is success !");
-            CarMsg.sendUpgradeStart();
+            UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else if(upgradeMsgId === 5){
             console.log("U card load is failed !");
+            UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else if(upgradeMsgId === 2){
             console.log("send update msg is success !");
-            updateSoftWare = true;
+            UiController.setLayerProperty("UpdateTheme1", "updateInfo", upgradeMsgId);
         }else{}
-    }
-    onUpdateSoftWareChanged: {
-        if(updateSoftWare){
-            UiController.showLayer("UpdateTheme1");
-            updateSoftWare = false;
-        }else{}
+        upgradeMsgId = 0;
     }
     onCarModeChanged: {
         if(carMode === 0){

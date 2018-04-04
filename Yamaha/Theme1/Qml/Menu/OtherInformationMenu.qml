@@ -60,6 +60,7 @@ MenuItem {
         anchors.top: parent.top
         anchors.topMargin: 110
     }
+    /*
     TextValueWeir {
         width: 200
         height: 30
@@ -74,6 +75,7 @@ MenuItem {
         anchors.topMargin: 190
         leftAlignStatus: true
     }
+    */
     TextValueWeir {
         width: 200
         height: 30
