@@ -603,6 +603,7 @@ void CustomCarMsg::updateMoterTemp(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(moterTemp, value);
 }
 void CustomCarMsg::updateBattery(float value) {
+    qDebug() << "1111111" << value;
     MEMBER_PROPERTY_VALUE_CHANGED(battery, value);
 }
 void CustomCarMsg::updateSpn(int value) {

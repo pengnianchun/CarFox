@@ -2,7 +2,7 @@ import QtQuick 2.0
 import "qrc:/Common/Component"
 
 
-CommonItem {
+Item {
     property alias bus_ready_running: readyTimer.running
 
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
@@ -16,7 +16,7 @@ CommonItem {
     id: root
     width: 693
     height: 457
-    visible: true;
+    visible: true
 
     Image {     //汽车
         id: bus

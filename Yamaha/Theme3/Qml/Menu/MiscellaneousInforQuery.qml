@@ -31,7 +31,7 @@ MenuItem{
         //UiController.showLayer("MenuPanel");
         UiController.showLayer("MainPanel");
         UiController.setLayerProperty("MainPanel", "externState", "MainView");
-        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+//        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
     Image{
@@ -60,7 +60,7 @@ MenuItem{
         y:144
         width:46
         height:22
-        text:"1500"
+        text: CarMsg.velocityRatio  //"1500"
         font.family: "PingFang SC Regular"
         font.bold: true
         font.pixelSize: 23
@@ -88,7 +88,7 @@ MenuItem{
         font.family: "PingFang SC Regular"
         font.bold: true
         font.pixelSize: 23
-        color:"#06fd00"
+        color:CarMsg?((CarMsg.buzzerStatus === true)? "#06fd00":"white"):"white"
     }
     Text{
         id:buzzer_value_sprit  //斜杠
@@ -108,6 +108,6 @@ MenuItem{
         font.family: "PingFang SC Regular"
         font.bold: true
         font.pixelSize: 23
-        color:"white"
+        color:CarMsg?((CarMsg.buzzerStatus === true)?"white":"#06fd00"):"white"
     }
 }

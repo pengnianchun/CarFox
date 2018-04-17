@@ -31,6 +31,19 @@ Item {
         font.pixelSize:110
         color: "white"
     }
+    Text {    //右仪表文字单位
+        id: dashboardRightTextUnit
+        x:1100
+        y:292
+        width:43
+        height:15
+        horizontalAlignment: Text.AlignHCenter
+        text: "Km/h"
+        font.family: "PingFang SC Regular"
+        font.pixelSize:17
+        font.bold: true
+        color: "white"
+    }
     Image {     //右边仪表盘
         id: dashBoardBackground
         x:910
@@ -43,6 +56,19 @@ Item {
             y:113
             width:188
             height:256
+        }
+        Text {    //右仪表mpa文字
+            id: dashboardRightMpaText
+            x:186
+            y:335
+            width:43
+            height:15
+            horizontalAlignment: Text.AlignHCenter
+            text: "Mpa"
+            font.family: "PingFang SC Regular"
+            font.pixelSize:17
+            font.bold: true
+            color: "white"
         }
         Timer{    //右仪表dot定时器
             id:dash_right_dot_timer

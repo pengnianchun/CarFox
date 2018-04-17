@@ -3,28 +3,26 @@ import CustomEnum 1.0
 
 import "./"
 
-Column{
+Row{
     id:root
-    spacing: 5
-    property alias model:repeaterlist.model
-    Repeater{
-        id:repeaterlist
-        Row{
-            spacing: 4
-            Text{
-               text:name
-               font.family: "PingFang SC Regular"
-               font.pixelSize: 16; font.weight: Font.Black
-               color: "#00ccff"
-               horizontalAlignment: Text.AlignLeft
-            }
-            Text{
-               text:value
-               font.family: "PingFang SC Regular"
-               font.pixelSize: 16; font.weight: Font.Black
-               color: "white"
-               horizontalAlignment: Text.AlignLeft
-            }
-        }
+    property bool pSwitch: false
+    property string pID:""
+    property string pText:""
+
+    spacing: 4
+    Text{
+       text:pID
+       font.family: "PingFang SC Regular"
+       font.pixelSize: 15; font.weight: Font.Black
+       color: "#00ccff"
+       horizontalAlignment: Text.AlignLeft
+    }
+    Text{
+       text:pText
+       font.family: "PingFang SC Regular"
+       font.pixelSize: 15; font.weight: Font.Black
+       color: pSwitch? "#ffcc00":"white"
+       horizontalAlignment: Text.AlignLeft
     }
 }
+
