@@ -32,7 +32,7 @@ MenuItem{
         //UiController.showLayer("MenuPanel");
         UiController.showLayer("MainPanel");
         UiController.setLayerProperty("MainPanel", "externState", "MainView");
-        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+//        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
 //    Connections {
@@ -72,32 +72,25 @@ MenuItem{
     Row{
        x:80
        y:62
-       spacing: 250
-
-       PowerBattery2Column{
-           id:colunm_1
-           model:ListModel{
-               ListElement{name:"1";value:"峰值放电电流过大截止报警"}
-               ListElement{name:"2";value:"电池充电温度过高报警"}
-               ListElement{name:"3";value:"电池充电温度过高截止报警"}
-               ListElement{name:"4";value:"电池充电温度过低截止报警"}
-               ListElement{name:"5";value:"动力电池soc过高报警"}
-               ListElement{name:"6";value:"制动能量回收单体电压过高报警"}
-               ListElement{name:"7";value:"制动能量回收单体电压过高截止报警"}
-               ListElement{name:"8";value:"取消制动能力回收功能"}
-           }
+       spacing: 283
+       Column{
+           spacing: 11
+           PowerBattery2Column{name:"1";value:"峰值放电电流过大截止报警";pSwitch: CarMsg?CarMsg.dischargeCurrentMaxAbortAlarm:false;}
+           PowerBattery2Column{name:"2";value:"电池充电温度过高报警";pSwitch: CarMsg?CarMsg.chargeCurrentTempMaxAlarm:false;}
+           PowerBattery2Column{name:"3";value:"电池充电温度过高截止报警";pSwitch: CarMsg?CarMsg.chargeCurrentTempMaxAbortAlarm:false;}
+           PowerBattery2Column{name:"4";value:"电池充电温度过低截止报警";pSwitch: CarMsg?CarMsg.batChargeTempMinAbortAlarm:false;}
+           PowerBattery2Column{name:"5";value:"动力电池soc过高报警";pSwitch: CarMsg?CarMsg.socMaxAlarm:false;}
+           PowerBattery2Column{name:"6";value:"制动能量回收单体电压过高报警";pSwitch: CarMsg?CarMsg.energyRecoveryVoltageMaxAlarm:false;}
+           PowerBattery2Column{name:"7";value:"制动能量回收单体电压过高截止报警";pSwitch: CarMsg?CarMsg.energyRecoveryVoltageMaxAbort:false;}
+           PowerBattery2Column{name:"8";value:"取消制动能力回收功能";pSwitch: CarMsg?CarMsg.energyRecoveryCancel:false;}
        }
-
-       PowerBattery2Column{
-           id:colunm_2
-           model:ListModel{
-               ListElement{name:"1";value:"soc跳变报警"}
-               ListElement{name:"2";value:"可充电储能系统不匹配报警"}
-               ListElement{name:"3";value:"车载储能装置类型过压报警"}
-               ListElement{name:"4";value:"车载储能装置类型欠压报警"}
-               ListElement{name:"5";value:"车载储能装置类型过充"}
-            }
-        }
+       Column{
+           spacing: 11
+           PowerBattery2Column{name:"1";value:"soc跳变报警";pSwitch: CarMsg?CarMsg.socJumpAlarm:false;}
+           PowerBattery2Column{name:"2";value:"可充电储能系统不匹配报警";pSwitch: CarMsg?CarMsg.mismatchingAlarm:false;}
+           PowerBattery2Column{name:"3";value:"车载储能装置类型过压报警";pSwitch: CarMsg?CarMsg.vehicleMountedTypeMax:false;}
+           PowerBattery2Column{name:"4";value:"车载储能装置类型欠压报警";pSwitch: CarMsg?CarMsg.vehicleMountedTypeMin:false;}
+           PowerBattery2Column{name:"5";value:"车载储能装置类型过充";pSwitch: CarMsg?CarMsg.vehicleMountedTypeOvercharge:false;}
+       }
     }
 }
-

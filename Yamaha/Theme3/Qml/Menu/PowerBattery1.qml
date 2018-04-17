@@ -7,7 +7,7 @@ MenuItem{
     id:root
     x:377
     y:44
-    visible: false    
+
     menuLayerId: "PowerBattery1"
     parentMenuId: "MenuPanel"
 
@@ -20,6 +20,8 @@ MenuItem{
         UiController.showLayer("MenuPanel");
     }
     previousMenu: function(){
+        UiController.hideLayer("PowerBattery1");
+        UiController.showLayer("BatteryManageSysInfo");
     }
     nextMenu: function(){
         UiController.hideLayer("PowerBattery1");
@@ -32,7 +34,7 @@ MenuItem{
         //UiController.showLayer("MenuPanel");
         UiController.showLayer("MainPanel");
         UiController.setLayerProperty("MainPanel", "externState", "MainView");
-        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+//        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
 //    Connections {
@@ -73,39 +75,32 @@ MenuItem{
         y:62
         spacing: 270    //列距
 
-        PowerBattery1Column{
-            id: column_1
-            model:ListModel{
-                ListElement{name:"1";value:""}
-                ListElement{name:"2";value:"单体电压过高报警"}
-                ListElement{name:"3";value:"单体电压过高截止报警"}
-                ListElement{name:"4";value:"单体电压过低报警"}
-                ListElement{name:"5";value:"单体电压过低截止报警"}
-                ListElement{name:"6";value:"峰值放电电流过大"}
-                ListElement{name:"7";value:"峰值充电电流过大"}
-                ListElement{name:"8";value:"电池温度过高报警"}
-                ListElement{name:"9";value:"电池放电温度过低报警"}
-                ListElement{name:"10";value:"电池温度过高截止报警"}
-                ListElement{name:"11";value:"电池放电温度过低报警"}
-                ListElement{name:"12";value:"单体电压压差过大报警"}
-            }
+        Column{
+            spacing:11    //行距
+            PowerBattery1Column{ pID:1; pText:"单体电压过高报警"; pSwitch: CarMsg?CarMsg.batVoltageMaxAlarm:false; }
+            PowerBattery1Column{ pID:2; pText:"单体电压过高截止报警"; pSwitch: CarMsg?CarMsg.batVoltageMaxAbortAlarm:false; }
+            PowerBattery1Column{ pID:3; pText:"单体电压过低报警"; pSwitch: CarMsg?CarMsg.batVoltageMinAlarm:false; }
+            PowerBattery1Column{ pID:4; pText:"单体电压过低截止报警"; pSwitch: CarMsg?CarMsg.batVoltageMinAbortAlarm:false; }
+            PowerBattery1Column{ pID:5; pText:"峰值放电电流过大"; pSwitch: CarMsg?CarMsg.dischargeCurrentMaxAlarm:false; }
+            PowerBattery1Column{ pID:6; pText:"峰值充电电流过大"; pSwitch: CarMsg?CarMsg.chargeCurrentMaxAlarm:false; }
+            PowerBattery1Column{ pID:7; pText:"电池温度过高报警"; pSwitch: CarMsg?CarMsg.batTempMaxAlarm:false; }
+            PowerBattery1Column{ pID:8; pText:"电池放电温度过低报警"; pSwitch: CarMsg?CarMsg.dischargeCurrentTempMinAlarm:false; }
+            PowerBattery1Column{ pID:9; pText:"电池温度过高截止报警"; pSwitch: CarMsg?CarMsg.batTempMaxAbortAlarm:false; }
+            PowerBattery1Column{ pID:10; pText:"电池放电温度过低截止报警"; pSwitch: CarMsg?CarMsg.dischargeCurrentTempMinAbortAlarm:false; }
+            PowerBattery1Column{ pID:11; pText:"单体电压压差过大报警"; pSwitch: CarMsg?CarMsg.dropoutVoltageMaxAlarm:false; }
         }
 
-        PowerBattery1Column{
-            id: column_2
-            model:ListModel{
-                ListElement{name:"13";value:"单体电压压差过大截止报警"}
-                ListElement{name:"14";value:"电池充电电流过高"}
-                ListElement{name:"15";value:"动力电池温度差异报警"}
-                ListElement{name:"16";value:"动力电池充电温度过低"}
-                ListElement{name:"17";value:"动力电池soc过低报警"}
-                ListElement{name:"18";value:""}
-                ListElement{name:"19";value:""}
-                ListElement{name:"20";value:"动力电池模块通讯失效"}
-                ListElement{name:"21";value:"bms系统故障"}
-                ListElement{name:"22";value:"动力蓄电池故障"}
-                ListElement{name:"23";value:"制动能力回收电流过大报警"}
-            }
+        Column{
+            spacing:11    //行距
+            PowerBattery1Column{ pID:13; pText:"单体电压压差过大截止报警"; pSwitch: CarMsg?CarMsg.dropoutVoltageMaxAbortAlarm:false; }
+            PowerBattery1Column{ pID:14; pText:"电池充电电压过高"; pSwitch: CarMsg?CarMsg.chargeVoltageMaxAlarm:false; }
+            PowerBattery1Column{ pID:15; pText:"动力电池温度差异报警"; pSwitch: CarMsg?CarMsg.batTempDifferentAlarm:false; }
+            PowerBattery1Column{ pID:16; pText:"动力电池充电温度过低"; pSwitch: CarMsg?CarMsg.batChargeTempMinAlarm:false;  }
+            PowerBattery1Column{ pID:17; pText:"动力电池soc过低报警"; pSwitch: CarMsg?CarMsg.socMinAlarm:false; }
+            PowerBattery1Column{ pID:18; pText:"动力电池模块通讯失效"; pSwitch: CarMsg?CarMsg.batModuleCommunicationFail:false; }
+            PowerBattery1Column{ pID:19; pText:"bms系统故障"; pSwitch: CarMsg?CarMsg.bmsSystemFault:false; }
+            PowerBattery1Column{ pID:20; pText:"动力蓄电池故障"; pSwitch: CarMsg?CarMsg.batteryFault:false; }
+            PowerBattery1Column{ pID:21; pText:"制动能力回收电流过大报警"; pSwitch: CarMsg?CarMsg.energyRecoveryCurrentMaxAlarm:false; }
         }
     }
 }

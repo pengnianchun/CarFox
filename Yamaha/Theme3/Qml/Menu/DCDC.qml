@@ -32,7 +32,7 @@ MenuItem {
         //UiController.showLayer("MenuPanel");
         UiController.showLayer("MainPanel");
         UiController.setLayerProperty("MainPanel", "externState", "MainView");
-        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+//        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
     Image {
@@ -61,7 +61,7 @@ MenuItem {
         y:60
         width:54
         height:20
-        text: qsTr("26.9v")
+        text: CarMsg? CarMsg.dcLowVoltage:0.0  //qsTr("26.9v")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color:"white"
@@ -85,7 +85,7 @@ MenuItem {
         y:89
         width:54
         height:12
-        text: qsTr("024℃")
+        text: CarMsg? CarMsg.dcTemp:0.0  //qsTr("024℃")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color: "white"
@@ -104,13 +104,14 @@ MenuItem {
         color: "#00ccff"    //rgba(0,92,189,255)
         horizontalAlignment: Text.AlignHCenter
     }
+
     Text {
         id: dc_qianya_value
         x:299
         y:111
         width:41
         height:20
-        text: qsTr("正常")
+        text: CarMsg?((CarMsg.dcUndervoltage === false)?qsTr("正常"):qsTr("报警")):qsTr("正常")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color: "white"
@@ -134,7 +135,7 @@ MenuItem {
         y:137
         width:41
         height:20
-        text: qsTr("正常")
+        text: CarMsg?((CarMsg.dcOverheating === false)?qsTr("正常"):qsTr("报警")):qsTr("正常")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color: "white"
@@ -159,7 +160,7 @@ MenuItem {
         y:162
         width:41
         height:20
-        text: qsTr("工作")
+        text: CarMsg? ((CarMsg.dcStatus2 === 0x01)?qsTr("工作") :((CarMsg.dcStatus2 === 0x02)? qsTr("断开"):((CarMsg.dcStatus2 === 0xFE)? qsTr("异常"):qsTr("未知")))) : qsTr("工作")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color: "white"
@@ -183,7 +184,7 @@ MenuItem {
         y:60
         width:69
         height:20
-        text: qsTr("004.1a")
+        text:  CarMsg? CarMsg.dcLowCurrent:0.0 + "a" //qsTr("004.1a")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color:"white"
@@ -208,7 +209,7 @@ MenuItem {
         y:86
         width:76
         height:20
-        text: qsTr("启动工作")
+        text: CarMsg? ((CarMsg.dcWorkStatus === false)? qsTr("正常"):qsTr("报警")):qsTr("正常")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color:"white"
@@ -232,7 +233,7 @@ MenuItem {
         y:111
         width:41
         height:20
-        text: qsTr("正常")
+        text: CarMsg?((CarMsg.dcOvervoltage===false)?qsTr("正常"):qsTr("报警")):qsTr("正常")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color:"white"
@@ -256,7 +257,7 @@ MenuItem {
         y:137
         width:41
         height:20
-        text: qsTr("正常")
+        text: CarMsg?((CarMsg.dcShortCircuit===false)?qsTr("正常"):qsTr("报警")):qsTr("正常")
         font.family: "PingFang SC Regular"
         font.pixelSize: 17; font.weight: Font.Black
         color: "white"

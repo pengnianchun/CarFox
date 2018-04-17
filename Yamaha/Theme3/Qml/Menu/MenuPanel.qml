@@ -29,29 +29,29 @@ CommonItem {
     function updateIcon()
     {
         console.log(menuList.currentIndex);
-        if(menuList.currentIndex == 0)  //单体电池温度信息
-        {
-            menuIcon.source = "";
-        }
-        else if(menuList.currentIndex == 1)  //dc-dc
+        if(menuList.currentIndex == 0)  //dc-dc
         {
             menuIcon.source = iconDcImage;
         }
-        else if(menuList.currentIndex == 2)  //胎压监测系统
+        else if(menuList.currentIndex == 1)  //胎压监测系统
         {
             menuIcon.source = iconTPMSImage;
         }
-        else if(menuList.currentIndex == 3)  //模块信息查询
+        else if(menuList.currentIndex == 2)  //模块信息查询
         {
             menuIcon.source = iconModuleImage;
         }
-        else if(menuList.currentIndex == 4)  //时间设置
+        else if(menuList.currentIndex == 3)  //时间设置
         {
             menuIcon.source = iconTimeSettingImage;
         }
-        else if(menuList.currentIndex == 5)  //亮度调节
+        else if(menuList.currentIndex == 4)  //亮度调节
         {
             menuIcon.source = iconBringhtnessControlImage;
+        }
+        else if(menuList.currentIndex == 5)  //电池信息帧
+        {
+//            menuIcon.source = iconPowerBatteryImage;
         }
         else if(menuList.currentIndex == 6)  //杂项信息查询
         {
@@ -77,28 +77,30 @@ CommonItem {
             return;
         }
         UiController.hideLayer("MenuPanel");
-        if(menuList.currentIndex == 0)  //单体电池温度信息
-        {
-            UiController.showLayer("SBatteryTempInfo");
-        }
-        else if(menuList.currentIndex == 1)  //dc-dc
+
+        if(menuList.currentIndex == 0)  //dc-dc
         {
             UiController.showLayer("DCDC");
         }
-        else if(menuList.currentIndex == 2)  //胎压监测系统
+        else if(menuList.currentIndex == 1)  //胎压监测系统
         {
             UiController.showLayer("TPMS");
         }
-        else if(menuList.currentIndex == 3)  //模块信息查询
+        else if(menuList.currentIndex == 2)  //模块信息查询
         {
+            UiController.showLayer("FrontModule");
         }
-        else if(menuList.currentIndex == 4)  //时间设置
+        else if(menuList.currentIndex == 3)  //时间设置
         {
             UiController.showLayer("TimeSetting");
         }
-        else if(menuList.currentIndex == 5)  //亮度调节
+        else if(menuList.currentIndex == 4)  //亮度调节
         {
             UiController.showLayer("BringhtnessControl");
+        }
+        else if(menuList.currentIndex == 5)  //单体电池温度信息
+        {
+            UiController.showLayer("SBatteryVolTempInfo1");
         }
         else if(menuList.currentIndex == 6)  //杂项信息查询
         {
@@ -110,7 +112,7 @@ CommonItem {
         }
         else if(menuList.currentIndex == 8)  //动力电池信息
         {
-            UiController.showLayer("PowerBattery1");
+            UiController.showLayer("BatteryManageSysInfo");
         }
         else if(menuList.currentIndex == 9)  //视频信息切换
         {
@@ -124,6 +126,8 @@ CommonItem {
             return;
         }
         UiController.hideLayer("MenuPanel");
+//        nPanelVisible = true;
+//        busPanelVisible = true;
     }
 
     onKeyUp: function() {
@@ -197,12 +201,12 @@ CommonItem {
         ListElement { textContent: "动 力 电 池 信 息"; }
 //        ListElement { textContent: "动 力 电 池 信 息2"; }
         ListElement { textContent: "视 频 信 号 切 换"; }
-        ListElement { textContent: "单 体 电 池 温 度 信 息"; }
-        ListElement { textContent: "D C - D C 信 息"; }
+        ListElement { textContent: "D C - D C 状 态 信 息"; }
         ListElement { textContent: "胎 压 监 测 系 统"; }
         ListElement { textContent: "模 块 信 息 查 询"; }
-        ListElement { textContent: "时 间 设 置"; }
+        ListElement { textContent: "时 间 校 准"; }
         ListElement { textContent: "亮 度 调 节"; }
+        ListElement { textContent: "电 池 信 息 帧"; }
         ListElement { textContent: "杂 项 信 息 查 询"; }
     }
     Component {

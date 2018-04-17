@@ -253,7 +253,7 @@
         <file>Theme1/Image/IndicatorPanel/turnRightLamp.png</file>
         <file>Theme1/Image/IndicatorPanel/waitRunning.png</file>
         <file>Theme1/Image/IndicatorPanel/waterHeat.png</file>
-		<file>Theme1/Image/IndicatorPanel/electronicInSlope.png</file>
+        <file>Theme1/Image/IndicatorPanel/electronicInSlope.png</file>
         <file>Theme1/Image/IndicatorPanel/gateChargeOpen.png</file>
         <file>Theme1/Image/AutoSplash/bg.png</file>
         <file>Theme1/Image/AutoSplash/bluelinebg.png</file>
@@ -460,7 +460,19 @@
         <file>Theme3/Qml/BusPanel.qml</file>
         <file>Theme3/Qml/StaticControls.qml</file>
         <file>Theme3/Image/Gif/splash.gif</file>
+        <file>Theme3/Qml/IconItem.qml</file>
         <file>Theme3/Qml/IconPanel.qml</file>
+        <file>Theme3/Qml/WarningDcDcPanel.qml</file>
+        <file>Theme3/Qml/WarningChargeOkPanel.qml</file>
+        <file>Theme3/Qml/WarningChargeAbnormalPanel.qml</file>
+        <file>Theme3/Qml/WarningBatteryPanel.qml</file>
+        <file>Theme3/Qml/WarningFrontDoorOpenPanel.qml</file>
+        <file>Theme3/Qml/WarningDriveSystemPanel.qml</file>
+        <file>Theme3/Qml/WarningVehiclePanel.qml</file>
+        <file>Theme3/Qml/WarningChargingPanel.qml</file>
+        <file>Theme3/Qml/WarningMiddleDoorOpenPanel.qml</file>
+        <file>Theme3/Qml/WarningSeatBeltsPanel.qml</file>
+        <file>Theme3/Qml/WarningVehicleCtrlPanel.qml</file>
         <file>Theme3/Qml/Menu/BatteryManageSysInfo.qml</file>
         <file>Theme3/Qml/Menu/BringhtnessControl.qml</file>
         <file>Theme3/Qml/Menu/DCDC.qml</file>
@@ -468,9 +480,17 @@
         <file>Theme3/Qml/Menu/MiscellaneousInforQuery.qml</file>
         <file>Theme3/Qml/Menu/PowerBattery1.qml</file>
         <file>Theme3/Qml/Menu/PowerBattery2.qml</file>
-        <file>Theme3/Qml/Menu/SBatteryTempColumn.qml</file>
-        <file>Theme3/Qml/Menu/SBatteryTempInfo.qml</file>
-        <file>Theme3/Qml/Menu/SBatteryVoltageInfo.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempColumn.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo1.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo2.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo3.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo4.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo5.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo6.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo7.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo8.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo9.qml</file>
+        <file>Theme3/Qml/Menu/SBatteryVolTempInfo10.qml</file>
         <file>Theme3/Qml/Menu/TimeSetting.qml</file>
         <file>Theme3/Qml/Menu/TPMS.qml</file>
         <file>Theme3/Qml/Menu/VCU.qml</file>
@@ -480,6 +500,13 @@
         <file>Theme3/Qml/Menu/TPMSRow.qml</file>
         <file>Theme3/Qml/Menu/VCUColumn.qml</file>
         <file>Theme3/Qml/Menu/VehicleCtrlSysDiagInterfaceColumn.qml</file>
+        <file>Theme3/Qml/Menu/FrontModule.qml</file>
+        <file>Theme3/Qml/Menu/FrontModuleColumn.qml</file>
+        <file>Theme3/Qml/Menu/BackModule.qml</file>
+        <file>Theme3/Qml/Menu/MiddleModule.qml</file>
+        <file>Theme3/Qml/Menu/BatteryManageColumn.qml</file>
+        <file>Theme3/Qml/Menu/BatteryManageColumn1.qml</file>
+        <file>Theme3/Qml/Menu/FrontModuleColumn1.qml</file>
         <file>Theme3/Image/DashBoard/left_line.png</file>
         <file>Theme3/Image/DashBoard/right_line.png</file>
         <file>Theme3/Image/DashBoard/l_dashboard.png</file>
@@ -579,6 +606,10 @@
         <file>Theme3/Image/MenuPanel/icon_TPMS.png</file>
         <file>Theme3/Image/MenuPanel/icon_vehicle.png</file>
         <file>Theme3/Image/MenuPanel/icon_videoSwitch.png</file>
+        <file>Theme3/Image/MenuPanel/module_back_title.png</file>
+        <file>Theme3/Image/MenuPanel/module_front_title.png</file>
+        <file>Theme3/Image/MenuPanel/module_middle_title.png</file>
+        <file>Theme3/Image/MenuPanel/table.png</file>
         <file>Theme3/Image/MiddlePanel/back_redline.png</file>
         <file>Theme3/Image/MiddlePanel/backdoor.png</file>
         <file>Theme3/Image/MiddlePanel/backdoor_open.png</file>
@@ -592,38 +623,85 @@
         <file>Theme3/Image/MiddlePanel/ready_arrow_left.png</file>
         <file>Theme3/Image/MiddlePanel/ready_arrow_right.png</file>
         <file>Theme3/Image/MiddlePanel/wait.png</file>
-        <file>Theme3/Image/IndicatorPanel/airBagErr.png</file>
-        <file>Theme3/Image/IndicatorPanel/driverSeatAlarm.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_ASR.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_can.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_chargeIndicator.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_chargePlugin.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_danger.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_defroster.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_door1.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_door2.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_dryere.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_frontFog.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_headlight.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_highBeam.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_leftFriction.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_leftShoeWear.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_lowAirPressure.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_mainERRyellow.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_motor.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_parkingBrake.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_positionLight.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_rearFog.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_retarder.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_rightFriction.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_waterLevel.png</file>
-        <file>Theme3/Image/IndicatorPanel/lamp_waterLow.png</file>
-        <file>Theme3/Image/IndicatorPanel/oilPressLow.png</file>
-        <file>Theme3/Image/IndicatorPanel/seatBeltLight.png</file>
-        <file>Theme3/Image/IndicatorPanel/waterTempWarn.png</file>
+        <file>Theme3/Image/MiddlePanel/warningBatteryFailure.png</file>
+        <file>Theme3/Image/MiddlePanel/warningDriveSystem.png</file>
+        <file>Theme3/Image/MiddlePanel/warningFontDoorOpen.png</file>
+        <file>Theme3/Image/MiddlePanel/warningMidDoorOpen.png</file>
+        <file>Theme3/Image/MiddlePanel/warningVehicleCtrlFailure.png</file>
+        <file>Theme3/Image/MiddlePanel/warningVehicleFailure.png</file>
+        <file>Theme3/Image/MiddlePanel/warningChargedOk.png</file>
+        <file>Theme3/Image/MiddlePanel/warningCharging.png</file>
+        <file>Theme3/Image/MiddlePanel/warningChargingAbnormal.png</file>
+        <file>Theme3/Image/MiddlePanel/warningSeatBelts.png</file>
+        <file>Theme3/Image/MiddlePanel/dc.png</file>
+        <file>Theme3/Image/IndicatorPanel/absIndicator.png</file>
+        <file>Theme3/Image/IndicatorPanel/airPressure1.png</file>
+        <file>Theme3/Image/IndicatorPanel/airPressure2.png</file>
+        <file>Theme3/Image/IndicatorPanel/airPressure3.png</file>
+        <file>Theme3/Image/IndicatorPanel/airPressure4.png</file>
+        <file>Theme3/Image/IndicatorPanel/airPressure5.png</file>
+        <file>Theme3/Image/IndicatorPanel/asternGear.png</file>
+        <file>Theme3/Image/IndicatorPanel/backFlogLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/backHatchDoorAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/barrierFreeAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/batteryCharg.png</file>
+        <file>Theme3/Image/IndicatorPanel/batteryCharging.png</file>
         <file>Theme3/Image/IndicatorPanel/batteryCut.png</file>
         <file>Theme3/Image/IndicatorPanel/batteryFault.png</file>
+        <file>Theme3/Image/IndicatorPanel/bmsAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/chargingCable.png</file>
+        <file>Theme3/Image/IndicatorPanel/cruiseControl.png</file>
+        <file>Theme3/Image/IndicatorPanel/dangerAlarmPrompt.png</file>
+        <file>Theme3/Image/IndicatorPanel/defroster.png</file>
+        <file>Theme3/Image/IndicatorPanel/doorBell.png</file>
+        <file>Theme3/Image/IndicatorPanel/driverSeatAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/driverSystemFault.png</file>
+        <file>Theme3/Image/IndicatorPanel/ecasHeight.png</file>
+        <file>Theme3/Image/IndicatorPanel/ecasIndicator.png</file>
+        <file>Theme3/Image/IndicatorPanel/ecasSide.png</file>
+        <file>Theme3/Image/IndicatorPanel/ecasSystemFault.png</file>
+        <file>Theme3/Image/IndicatorPanel/electronicInSlope.png</file>
+        <file>Theme3/Image/IndicatorPanel/footBrake.png</file>
+        <file>Theme3/Image/IndicatorPanel/forbidRunning.png</file>
+        <file>Theme3/Image/IndicatorPanel/forwardGear.png</file>
+        <file>Theme3/Image/IndicatorPanel/frontControlAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/frontDoorSignal.png</file>
+        <file>Theme3/Image/IndicatorPanel/frontFlogLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/gapGear.png</file>
+        <file>Theme3/Image/IndicatorPanel/gateChargeOpen.png</file>
+        <file>Theme3/Image/IndicatorPanel/handBrake.png</file>
+        <file>Theme3/Image/IndicatorPanel/headLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/highBeamLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/lampBatHigtTemp.png</file>
+        <file>Theme3/Image/IndicatorPanel/lampBatLegend.png</file>
+        <file>Theme3/Image/IndicatorPanel/lampLowSpeedClose.png</file>
+        <file>Theme3/Image/IndicatorPanel/lampMainSwitch.png</file>
+        <file>Theme3/Image/IndicatorPanel/lampRton.png</file>
+        <file>Theme3/Image/IndicatorPanel/leftBackShoe.png</file>
+        <file>Theme3/Image/IndicatorPanel/leftFrontShoe.png</file>
         <file>Theme3/Image/IndicatorPanel/leftHatchDoorAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/lowWaterAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/middleControlAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/middleDoorSignal.png</file>
+        <file>Theme3/Image/IndicatorPanel/motorHeat.png</file>
+        <file>Theme3/Image/IndicatorPanel/motorLimitation.png</file>
+        <file>Theme3/Image/IndicatorPanel/placeLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/powerDoorAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/readyRunning.png</file>
+        <file>Theme3/Image/IndicatorPanel/rearFogLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/rightBackShoe.png</file>
+        <file>Theme3/Image/IndicatorPanel/rightFrontShoe.png</file>
         <file>Theme3/Image/IndicatorPanel/rightHatchDoorAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/safetyDoorAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/seatBeltAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/seriousInsulationFault.png</file>
+        <file>Theme3/Image/IndicatorPanel/slightInsulationFault.png</file>
+        <file>Theme3/Image/IndicatorPanel/socLowAlarm.png</file>
+        <file>Theme3/Image/IndicatorPanel/tirePressure.png</file>
+        <file>Theme3/Image/IndicatorPanel/turnLeftLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/turnRightLamp.png</file>
+        <file>Theme3/Image/IndicatorPanel/waitRunning.png</file>
+        <file>Theme3/Image/IndicatorPanel/waterHeat.png</file>
+        <file>Theme3/Image/IndicatorPanel/lampMirrorHeating.png</file>
     </qresource>
 </RCC>

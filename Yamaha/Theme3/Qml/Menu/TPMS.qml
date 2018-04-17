@@ -31,7 +31,7 @@ MenuItem{
         //UiController.showLayer("MenuPanel");
         UiController.showLayer("MainPanel");
         UiController.setLayerProperty("MainPanel", "externState", "MainView");
-        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
+//        UiController.setLayerProperty("MainPanel","busPanelVisible",true);
     }
 
 //    Connections {

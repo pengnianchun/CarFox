@@ -4,8 +4,8 @@ import "qrc:/Common/Component"
 Item {
     id: mainView
 
-    property alias dot_timer_running: dash_left_dot_timer.running;
-    property alias text_content: dashboardLeftText.text;
+//    property alias dot_timer_running: dash_left_dot_timer.running;
+//    property alias text_content: dashboardLeftText.text;
 
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string dashBoardBackgroundImage:sourceImageUrl+"Image/DashBoard/l_dashboard.png";
@@ -17,22 +17,28 @@ Item {
 
     state: "Main_style"
 
-    function setDashboardLeftValue(pValue)  //0~8
-    {
-        var tmpAngelValue = pValue * ((128+124) / 8) - 124;
-        dash_left_dot_timer.dstValue = tmpAngelValue;
-        dash_left_dot_timer.running = true;
-    }
-
     Text {    //左边仪表盘的数字
         id: dashboardLeftText
-        text: qsTr("4")
+        text: CarMsg.rpm
         x:259
         y:170
         width:67
         height:91
         font.family: "PingFang SC Regular"
         font.pixelSize: 110
+        color: "white"
+        horizontalAlignment:Text.AlignHCenter
+    }
+    Text {    //左边仪表盘的数字单位
+        id: dashboardLeftTextUint
+        text: "x1000r/min"
+        x:258
+        y:293
+        width:87
+        height:15
+        font.family: "PingFang SC Regular"
+        font.pixelSize: 17
+        font.bold: true
         color: "white"
         horizontalAlignment:Text.AlignHCenter
     }
@@ -51,9 +57,26 @@ Item {
             width:185
             height:256
         }
+        Text {    //左边仪表盘mpa文本
+            id: dashboardLeftmpaText
+            text: "Mpa"
+            x:217
+            y:333
+            width:36
+            height:18
+            font.family: "PingFang SC Regular"
+            font.pixelSize: 17
+            font.bold: true
+            color: "white"
+            horizontalAlignment:Text.AlignHCenter
+        }
         Timer{      //左边仪表盘的指示点定时器
             id:dash_left_dot_timer
-            property int dstValue: 128
+            property int dstValue:CarMsg.rpm * ((128+124) / 8) - 124 //128
+            onDstValueChanged: {
+                running = true
+            }
+
             interval: 4
             running: false
             repeat: true
@@ -70,15 +93,15 @@ Item {
                 }
                 else if(dash_left_dot_rotate.angle == dstValue)
                 {
-//                                running = false;
-                    if(dstValue == -124)
-                    {
-                        dstValue = 128;
-                    }
-                    else if(dstValue == 128)
-                    {
-                        dstValue = -124;
-                    }
+                     running = false;
+//                    if(dstValue == -124)
+//                    {
+//                        dstValue = 128;
+//                    }
+//                    else if(dstValue == 128)
+//                    {
+//                        dstValue = -124;
+//                    }
                 }
             }
         }
