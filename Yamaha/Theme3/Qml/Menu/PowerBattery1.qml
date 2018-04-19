@@ -14,6 +14,13 @@ MenuItem{
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string powerBattery1TitleImage:sourceImageUrl+"Image/MenuPanel/powerBattery1.png";
 
+    onVisibleChanged: {
+        if(visible)
+        {
+            CarMsg.sendMenuInfo(24, 0);
+        }
+    }
+
     enterMenu: function(){}
     hideMenu: function(){
         UiController.hideLayer("PowerBattery1");

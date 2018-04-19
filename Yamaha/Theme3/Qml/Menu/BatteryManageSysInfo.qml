@@ -13,6 +13,13 @@ MenuItem{
     menuLayerId: "BatteryManageSysInfo"
     parentMenuId: "MenuPanel"
 
+    onVisibleChanged: {
+        if(visible)
+        {
+            CarMsg.sendMenuInfo(23, 0);
+        }
+    }
+
     enterMenu: function(){}
     hideMenu: function(){
         UiController.hideLayer("BatteryManageSysInfo");

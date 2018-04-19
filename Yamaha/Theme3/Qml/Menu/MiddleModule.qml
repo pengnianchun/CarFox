@@ -12,6 +12,13 @@ MenuItem{
     menuLayerId: "MiddleModule"
     parentMenuId: "MenuPanel"
 
+    onVisibleChanged: {
+        if(visible)
+        {
+            CarMsg.sendMenuInfo(7, 0);
+        }
+    }
+
     enterMenu: function(){}
     hideMenu: function(){
         UiController.hideLayer("MiddleModule");

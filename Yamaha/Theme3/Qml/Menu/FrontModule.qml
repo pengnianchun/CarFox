@@ -16,7 +16,7 @@ MenuItem{
         if(visible)
         {
             console.log("slllllllll")
-            CarMsg.sendMenuInfo(1, 5)
+            CarMsg.sendMenuInfo(6, 0);
         }
     }
 
