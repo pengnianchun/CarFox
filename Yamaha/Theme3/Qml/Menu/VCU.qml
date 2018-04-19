@@ -11,6 +11,13 @@ MenuItem{
     menuLayerId: "VCU"
     parentMenuId: "MenuPanel"
 
+    onVisibleChanged: {
+        if(visible)
+        {
+            CarMsg.sendMenuInfo(21, 0);
+        }
+    }
+
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string vcuTitleImage:sourceImageUrl+"Image/MenuPanel/VCU.png";
 

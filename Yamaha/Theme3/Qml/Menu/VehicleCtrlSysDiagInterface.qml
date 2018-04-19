@@ -14,6 +14,13 @@ MenuItem{
     property string sourceImageUrl:"qrc:/Theme/Theme3/";
     property string powerBattery1TitleImage:sourceImageUrl+"Image/MenuPanel/vehicleCtrlSysDiagInterface.png";
 
+    onVisibleChanged: {
+        if(visible)
+        {
+            CarMsg.sendMenuInfo(22, 0);
+        }
+    }
+
     enterMenu: function(){}
     hideMenu: function(){
         UiController.hideLayer("VehicleCtrlSysDiagInterface");

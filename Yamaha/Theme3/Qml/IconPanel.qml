@@ -51,9 +51,9 @@ Item {
 //档位D
     IconItem{objectName:"forwardGear";           visible:initialized?(CarMsg?CarMsg.forwardGear:false):true;  x:54;y:445;     source:sourceImageUrl+"Image/IndicatorPanel/forwardGear.png";}
 //档位N
-    IconItem{objectName:"gapGear";           visible:initialized?(CarMsg?CarMsg.neutralGear:false):true;  x:54;y:445;     source:sourceImageUrl+"Image/IndicatorPanel/gapGear.png";}
+    IconItem{objectName:"gapGear";           visible:initialized?(CarMsg?CarMsg.neutralGear:false):false;  x:54;y:445;     source:sourceImageUrl+"Image/IndicatorPanel/gapGear.png";}
 //档位R
-    IconItem{objectName:"asternGear";           visible:initialized?(CarMsg?CarMsg.reverseGear:false):true;  x:54;y:445;     source:sourceImageUrl+"Image/IndicatorPanel/asternGear.png";}
+    IconItem{objectName:"asternGear";           visible:initialized?(CarMsg?CarMsg.reverseGear:false):false;  x:54;y:445;     source:sourceImageUrl+"Image/IndicatorPanel/asternGear.png";}
 //位置灯
     IconItem{objectName:"lamp_positionLight";    visible:initialized?(CarMsg?CarMsg.lampPositionLight:false):true;  x:387;y:14;     source:sourceImageUrl+"Image/IndicatorPanel/placeLamp.png";}
 //左转向灯

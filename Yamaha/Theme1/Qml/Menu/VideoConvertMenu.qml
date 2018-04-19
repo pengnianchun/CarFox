@@ -2,6 +2,7 @@ import QtQuick 2.6
 import CustomEnum 1.0
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 import "qrc:/Common/Component"
+import VideoImageItem 1.0
 
 MenuItem {
     id: menuPanelIndex
@@ -28,5 +29,17 @@ MenuItem {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 110
+    }
+    Item {
+        id: item
+            VideoImageItem {
+                videoImage: [
+                    LvdsImage {
+                        id: videoImage  // "180*0*1080*544"
+                        rect:  "360*180*600*400"
+                        active: title.visible
+                    }
+                ]
+            }
     }
 }

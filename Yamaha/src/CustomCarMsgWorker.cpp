@@ -160,8 +160,8 @@ void CustomCarMsgWorker::registerCallback()
     //胎压监测系统
     mHandler.registerMsgCallback(fyTirePressInfo::TirePressInfoFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo, this, _1));
     //请求菜单返回信息
-    //mHandler.registerMsgCallback(fyMenuIdRequestInfo::MenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::menuInfoRequest, this, _1));
-    //mHandler.registerMsgCallback(fyMenuIdRequestInfo::YxMenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::yxMenuIdRequest, this, _1));
+//    mHandler.registerMsgCallback(fyMenuIdRequestInfo::MenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::menuInfoRequest, this, _1));
+//    mHandler.registerMsgCallback(fyMenuIdRequestInfo::YxMenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::yxMenuIdRequest, this, _1));
     mHandler.registerMsgCallback(fyMenuIdRequestInfo::yxMenuIdVerity::descriptor(), bind(&CustomCarMsgWorker::handleProtoYxMenuIdRequest, this, _1));
     //整车控制系统诊断信息
     mHandler.registerMsgCallback(fyControlSystemDiagnoseInfo::ControlSystemDiagnoseMenu::descriptor(), bind(&CustomCarMsgWorker::handleProtoControlSystemDiagnoseMenuInfo, this, _1));

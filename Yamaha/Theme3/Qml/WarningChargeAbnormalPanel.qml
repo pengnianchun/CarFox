@@ -31,6 +31,5 @@ Item {
             font.bold: true
             font.pixelSize:24
             color: "white"
-        }
-    }
+        }    }
 }

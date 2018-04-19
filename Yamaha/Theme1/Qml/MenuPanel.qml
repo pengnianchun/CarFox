@@ -72,7 +72,7 @@ MenuItem {
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/timeSet.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/tireMonitor.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vcu.png" }
-            //ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
+            ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
         }
         Component {
             id: displayDelegate
