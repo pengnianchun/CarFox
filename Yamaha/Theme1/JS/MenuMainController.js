@@ -27,15 +27,15 @@ function showMenuDetail(menuCurrentIndex){
     }else if(menuCurrentIndex === 6){
         UiController.showLayer("TimeSettingsMenu");
         UiController.setLayerProperty("TimeSettingsMenu", "bKeyEnable", true);
+//    }else if(menuCurrentIndex === 7){
+//        CarMsg.sendMenuInfo(27,0);
+//        UiController.showLayer("TirePressureMenu");
+//        UiController.setLayerProperty("TirePressureMenu", "bKeyEnable", true);
     }else if(menuCurrentIndex === 7){
-        CarMsg.sendMenuInfo(27,0);
-        UiController.showLayer("TirePressureMenu");
-        UiController.setLayerProperty("TirePressureMenu", "bKeyEnable", true);
-    }else if(menuCurrentIndex === 8){
         CarMsg.sendMenuInfo(21,0);
         UiController.showLayer("VcuSystemMenu");
         UiController.setLayerProperty("VcuSystemMenu", "bKeyEnable", true);
-    }else if(menuCurrentIndex === 9){
+    }else if(menuCurrentIndex === 8){
         UiController.showLayer("VideoConvertMenu");
         UiController.setLayerProperty("VideoConvertMenu", "bKeyEnable", true);
     }
