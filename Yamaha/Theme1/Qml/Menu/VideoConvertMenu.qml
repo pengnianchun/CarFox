@@ -36,7 +36,7 @@ MenuItem {
                 videoImage: [
                     LvdsImage {
                         id: videoImage  // "180*0*1080*544"
-                        rect:  "360*180*600*400"
+                        rect:  "360*182*720*288"
                         active: title.visible
                     }
                 ]

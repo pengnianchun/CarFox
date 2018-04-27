@@ -27,7 +27,7 @@ CommonItem {
     property int carSpeedValue: animationStatus ? CarMsg.carSpeed : 0;
     property int carSpeedValueStart: 0;
     property int batteryTotalValue: 32;
-    property int batteryValue: animationStatus ? dampBattery(CarMsg.battery) : 0;
+    property int batteryValue: animationStatus ? CarMsg.battery : 0;
     property int batteryValueStart: 16
     //档位初始值
     property real gearValue: animationStatus ? CarMsg.gear : 0;

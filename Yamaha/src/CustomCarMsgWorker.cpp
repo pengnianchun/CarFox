@@ -171,7 +171,7 @@ void CustomCarMsgWorker::registerCallback()
 //按键操作
 void CustomCarMsgWorker::handleProtoKey(const carfox::MessagePtr &msg)
 {
-    qDebug() << "CustomCarMsgWorker::handleProtoKey";
+ //   qDebug() << "CustomCarMsgWorker::handleProtoKey";  //按键打印暂时注释掉
     shared_ptr<fyGeneralInfo::KeyFrame> p = carfox::down_pointer_cast<fyGeneralInfo::KeyFrame>(msg);
     mKeyManager->detectKeyEvent(p->key1(), CustomEnum::EnterKey);
     mKeyManager->detectKeyEvent(p->key2(), CustomEnum::BackKey);
@@ -197,14 +197,14 @@ void CustomCarMsgWorker::handleProtoAutoFlash(const carfox::MessagePtr &msg)
 void CustomCarMsgWorker::handleGeneralInfoFrame(const carfox::MessagePtr &msg)
 {
     shared_ptr<fyGeneralInfo::GeneralFrame> p = carfox::down_pointer_cast<fyGeneralInfo::GeneralFrame>(msg);
-    qDebug() << "===gear value:" << p->gear();
+  //  qDebug() << "===gear value:" << p->gear();  //暂时注释掉按键打印信息
     updateStates<float>(mStateData.carSpeed.data, p->speed(), [this](float value) {
         emit this->carSpeedChanged(value);
     });
     updateStates<float>(mStateData.rpm.data, p->rpm(), [this](float value) {
         emit this->rpmChanged(value);
     });
-    updateStates<float>(mStateData.battery.data, p->battery(), [this](float value) {
+    updateStates<qint32>(mStateData.battery.data, p->battery(), [this](qint32 value) {
         emit this->batteryChanged(value);
     });
     updateStates<qint32>(mStateData.dateTime.data, p->date_time(), [this](quint32 value) {

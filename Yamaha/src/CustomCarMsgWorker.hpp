@@ -54,7 +54,7 @@ signals:
     void apVol2Changed(float value);
     void moterControlTempChanged(int value);
     void moterTempChanged(int value);
-    void batteryChanged(float value);
+    void batteryChanged(int value);
     void spnChanged(int value);
     void engineWaterTempChanged(int value);
     void ureaLevelChanged(int value);
