@@ -1076,6 +1076,7 @@ signals:
     void sendUpgradeStart();
     void sendTripMilesClear();
     void sendBrightnessControl(qint8 brightnessNo);
+    void sendVideoSwitchControl(qint8 videoSwitchNo);
     void sendIgoffControl();
     void sendBuzzerControl(bool buzzerStatus);
 

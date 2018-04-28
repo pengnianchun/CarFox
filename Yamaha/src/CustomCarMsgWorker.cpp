@@ -91,6 +91,12 @@ void CustomCarMsgWorker::brightnessControlRequest(qint8 brightnessNo) {
     brightnessControl.set_intensity_ctrl(brightnessNo);
     sendProtoMsg(brightnessControl);
 }
+void CustomCarMsgWorker::videoSwitchControlRequest(qint8 videoSwitchNo)
+{
+    fySystemSettingsInfo::VideoSwitch videoSwitchControl;
+    videoSwitchControl.set_video_switch(videoSwitchNo);
+    sendProtoMsg(videoSwitchControl);
+}
 void CustomCarMsgWorker::igoffControlRequest() {
     fySystemSettingsInfo::QuenchLCD igoffControl;
     igoffControl.set_quench_lcd(true);

@@ -28,6 +28,7 @@ public slots:
     void upgradeStartRequest();
     void tripMilesClearRequest();
     void brightnessControlRequest(qint8 brightnessNo = 0);
+    void videoSwitchControlRequest(qint8 videoSwitchNo);
     void igoffControlRequest();
     void buzzerControlRequest(bool buzzerStatus = true);
 

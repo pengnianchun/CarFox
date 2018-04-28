@@ -550,6 +550,7 @@ void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
     connect(this, &CustomCarMsg::sendUpgradeStart, worker, &CustomCarMsgWorker::upgradeStartRequest);
     connect(this, &CustomCarMsg::sendTripMilesClear, worker, &CustomCarMsgWorker::tripMilesClearRequest);
     connect(this, &CustomCarMsg::sendBrightnessControl, worker, &CustomCarMsgWorker::brightnessControlRequest);
+    connect(this, &CustomCarMsg::sendVideoSwitchControl, worker, &CustomCarMsgWorker::videoSwitchControlRequest);
     connect(this, &CustomCarMsg::sendIgoffControl, worker, &CustomCarMsgWorker::igoffControlRequest);
     connect(this, &CustomCarMsg::sendBuzzerControl, worker, &CustomCarMsgWorker::buzzerControlRequest);
 }
