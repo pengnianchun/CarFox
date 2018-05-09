@@ -5,6 +5,7 @@ import "../JS/MenuMainController.js" as MenuMainController
 import "qrc:/Common/Component"
 import "qrc:/Common/JS/AlarmCode.js" as AlarmInfoCode
 //import TransformRing 1.0
+import VideoImageItem 1.0
 
 CommonItem {
     id: homeIndex
@@ -86,13 +87,24 @@ CommonItem {
     onGearValueChanged: {
         if(gearValue === 9){
             gear_control.source = sourceImageUrl + "D.png";
+            videoImage.active = false;
+            hideVedio.visible = true;
         }else if(gearValue === 10){
             gear_control.source = sourceImageUrl + "N.png";
+            videoImage.active = false;
+            hideVedio.visible = true;
         }else if(gearValue === 8){
             gear_control.source = sourceImageUrl + "P.png";
+            videoImage.active = false;
+            hideVedio.visible = true;
         }else if(gearValue === 11){
             gear_control.source = sourceImageUrl + "R.png";
-        }else{}
+            videoImage.active = true;
+            hideVedio.visible = true;
+        }else{
+            videoImage.active = false;
+            hideVedio.visible = true;
+        }
     }
     onAlarmCodeChanged: {
         var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
@@ -125,6 +137,27 @@ CommonItem {
             main_panel.visible = true;
         }else{
             main_panel.visible = false;
+        }
+    }
+    //倒车影像显示
+    Item {
+        id: item
+        VideoImageItem {
+            videoImage: [
+                LvdsImage {
+                    id: videoImage  // "180*0*1080*544"
+                    rect:  "0*0*1440*576"
+                    active: false
+                }
+            ]
+        }
+    }
+    Item {
+        id: hideVedio       //通过控制ID属性，黑色画布是否可见
+        Rectangle {
+            width: 1440
+            height: 540
+            color: "black"
         }
     }
     //报警码显示动画
@@ -762,5 +795,6 @@ CommonItem {
         console.log("/--------------------------------------------/");
         //homeIndex.state = "normal"
         //homeIndex.state = "menu"
+       // homeIndex.gearValue = 11;
     }
 }

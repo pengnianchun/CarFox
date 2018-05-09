@@ -14,6 +14,7 @@ MenuItem {
 
     property bool bKeyEnable: false
     property int videoSwitchValue: 0
+    property bool displayVideo: title.visible
 
     enterMenu: function(){
         if(bKeyEnable){
@@ -61,11 +62,39 @@ MenuItem {
         VideoImageItem {
             videoImage: [
                 LvdsImage {
-                    id: videoImage  // "180*0*1080*544"
-                    rect:  "360*182*720*288"
-                    active: title.visible
+                    id: videoImage  // "180*0*1080*544" "360*160*1440*576"
+                    rect:  "0*0*1440*576"
+                    active: false
                 }
             ]
+        }
+    }
+
+    onDisplayVideoChanged: {
+        setDisplayVedioEnable()
+    }
+
+    function setDisplayVedioEnable(){
+        if(displayVideo == true){
+            videoImage.active = true;
+            hideVedio.visible = false;          //控制黑色的画布是不可见的
+       //     menuPanelIndex.opacity = 0.0;           //只设置了那个黑色方框是透明的
+            title.opacity = 0.0;
+
+            console.log(" --- current video is open flag = ", displayVideo)
+        }else if(displayVideo == false){
+            videoImage.active = false;
+            hideVedio.visible = true;           //控制黑色的画布可见的
+            console.log(" --- current video is open flag = ", displayVideo)
+        }
+    }
+
+    Item {
+        id: hideVedio       //通过控制ID属性，黑色画布是否可见
+        Rectangle {
+            width: 1440
+            height: 540
+            color: "black"
         }
     }
 //    Image {                     //调用挖空图片资源
