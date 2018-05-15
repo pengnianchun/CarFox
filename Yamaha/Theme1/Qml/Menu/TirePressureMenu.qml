@@ -132,19 +132,19 @@ MenuItem {
     onStudentStatusChanged: {//正在学习中的轮胎学习状态
         setStudentIndexEnable();
     }
-    onTire1AirOutChanged: if(tire1AirOut == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎漏气"}
-    onTire2AirOutChanged: if(tire2AirOut == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎漏气"}
-    onTire3AirOutChanged: if(tire3AirOut == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎漏气"}
-    onTire4AirOutChanged: if(tire4AirOut == 1) {tireIndexArray[3].opacity = 1.0; tireIndexArray[3].source = sourceImageUrl + "tireRed.png"; tireInfo = "4轮胎漏气"}
-    onTire5AirOutChanged: if(tire5AirOut == 1) {tireIndexArray[4].opacity = 1.0; tireIndexArray[4].source = sourceImageUrl + "tireRed.png"; tireInfo = "5轮胎漏气"}
-    onTire6AirOutChanged: if(tire6AirOut == 1) {tireIndexArray[5].opacity = 1.0; tireIndexArray[5].source = sourceImageUrl + "tireRed.png"; tireInfo = "6轮胎漏气"}
+    onTire1AirOutChanged: if(tire1AirOut == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎漏气"}else{tireIndexArray[0].opacity = 0.0;}
+    onTire2AirOutChanged: if(tire2AirOut == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎漏气"}else{tireIndexArray[1].opacity = 0.0;}
+    onTire3AirOutChanged: if(tire3AirOut == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎漏气"}else{tireIndexArray[2].opacity = 0.0;}
+    onTire4AirOutChanged: if(tire4AirOut == 1) {tireIndexArray[3].opacity = 1.0; tireIndexArray[3].source = sourceImageUrl + "tireRed.png"; tireInfo = "4轮胎漏气"}else{tireIndexArray[3].opacity = 0.0;}
+    onTire5AirOutChanged: if(tire5AirOut == 1) {tireIndexArray[4].opacity = 1.0; tireIndexArray[4].source = sourceImageUrl + "tireRed.png"; tireInfo = "5轮胎漏气"}else{tireIndexArray[4].opacity = 0.0;}
+    onTire6AirOutChanged: if(tire6AirOut == 1) {tireIndexArray[5].opacity = 1.0; tireIndexArray[5].source = sourceImageUrl + "tireRed.png"; tireInfo = "6轮胎漏气"}else{tireIndexArray[5].opacity = 0.0;}
 
-    onTire1SensorBadChanged: if(tire1SensorBad == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎传感器故障"}
-    onTire2SensorBadChanged: if(tire2SensorBad == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎传感器故障"}
-    onTire3SensorBadChanged: if(tire3SensorBad == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎传感器故障"}
-    onTire4SensorBadChanged: if(tire4SensorBad == 1) {tireIndexArray[3].opacity = 1.0; tireIndexArray[3].source = sourceImageUrl + "tireRed.png"; tireInfo = "4轮胎传感器故障"}
-    onTire5SensorBadChanged: if(tire5SensorBad == 1) {tireIndexArray[4].opacity = 1.0; tireIndexArray[4].source = sourceImageUrl + "tireRed.png"; tireInfo = "5轮胎传感器故障"}
-    onTire6SensorBadChanged: if(tire6SensorBad == 1) {tireIndexArray[5].opacity = 1.0; tireIndexArray[5].source = sourceImageUrl + "tireRed.png"; tireInfo = "6轮胎传感器故障"}
+    onTire1SensorBadChanged: if(tire1SensorBad == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎传感器故障"}else{tireIndexArray[0].opacity = 0.0;}
+    onTire2SensorBadChanged: if(tire2SensorBad == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎传感器故障"}else{tireIndexArray[1].opacity = 0.0;}
+    onTire3SensorBadChanged: if(tire3SensorBad == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎传感器故障"}else{tireIndexArray[2].opacity = 0.0;}
+    onTire4SensorBadChanged: if(tire4SensorBad == 1) {tireIndexArray[3].opacity = 1.0; tireIndexArray[3].source = sourceImageUrl + "tireRed.png"; tireInfo = "4轮胎传感器故障"}else{tireIndexArray[3].opacity = 0.0;}
+    onTire5SensorBadChanged: if(tire5SensorBad == 1) {tireIndexArray[4].opacity = 1.0; tireIndexArray[4].source = sourceImageUrl + "tireRed.png"; tireInfo = "5轮胎传感器故障"}else{tireIndexArray[4].opacity = 0.0;}
+    onTire6SensorBadChanged: if(tire6SensorBad == 1) {tireIndexArray[5].opacity = 1.0; tireIndexArray[5].source = sourceImageUrl + "tireRed.png"; tireInfo = "6轮胎传感器故障"}else{tireIndexArray[5].opacity = 0.0;}
 
     function setTireIndexEnable(){
         for(var i = 0; i <= tireIndex; i++ ){
@@ -182,11 +182,24 @@ MenuItem {
             tireInfo = "已取消学习";
         }else{}
     }
+    /* 退出时对相应数据初始化*/
     function setTireStudentDisable(){
         for(var i = 0; i <= 5; i ++){
             tireIndexArray[i].opacity = 0.0;
             tireIndex = -1;
         }
+        if(tire1AirOut == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎漏气"}
+        if(tire2AirOut == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎漏气"}
+        if(tire3AirOut == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎漏气"}
+        if(tire4AirOut == 1) {tireIndexArray[3].opacity = 1.0; tireIndexArray[3].source = sourceImageUrl + "tireRed.png"; tireInfo = "4轮胎漏气"}
+        if(tire5AirOut == 1) {tireIndexArray[4].opacity = 1.0; tireIndexArray[4].source = sourceImageUrl + "tireRed.png"; tireInfo = "5轮胎漏气"}
+        if(tire6AirOut == 1) {tireIndexArray[5].opacity = 1.0; tireIndexArray[5].source = sourceImageUrl + "tireRed.png"; tireInfo = "6轮胎漏气"}
+        if(tire1SensorBad == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎传感器故障"}
+        if(tire2SensorBad == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎传感器故障"}
+        if(tire3SensorBad == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎传感器故障"}
+        if(tire4SensorBad == 1) {tireIndexArray[3].opacity = 1.0; tireIndexArray[3].source = sourceImageUrl + "tireRed.png"; tireInfo = "4轮胎传感器故障"}
+        if(tire5SensorBad == 1) {tireIndexArray[4].opacity = 1.0; tireIndexArray[4].source = sourceImageUrl + "tireRed.png"; tireInfo = "5轮胎传感器故障"}
+        if(tire6SensorBad == 1) {tireIndexArray[5].opacity = 1.0; tireIndexArray[5].source = sourceImageUrl + "tireRed.png"; tireInfo = "6轮胎传感器故障"}
     }
 
     Image {
