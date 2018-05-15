@@ -116,7 +116,7 @@
         <file>CommonImage/Other/title-b.png</file>
         <file>CommonImage/Other/title-g.png</file>
         <file>CommonImage/Other/title-r.png</file>
-		<file>CommonImage/Other/yixing_logo.png</file>
+        <file>CommonImage/Other/yixing_logo.png</file>
         <file>JS/AlarmCode.js</file>
         <file>JS/DataReset.js</file>
         <file>JS/Language.js</file>
@@ -130,7 +130,7 @@
     <qresource prefix="/Theme">
         <file>Theme1/Qml/Splash/Splash.qml</file>
         <file>Theme1/Qml/HomePanel.qml</file>
-		<file>Theme1/Qml/UpdatePanel.qml</file>
+        <file>Theme1/Qml/UpdatePanel.qml</file>
         <file>Theme1/Qml/MenuPanel.qml</file>
         <file>Theme1/Qml/IndicatorPanel.qml</file>
         <file>Theme1/Qml/Menu/TirePressureMenu.qml</file>
@@ -200,7 +200,7 @@
         <file>Theme1/Image/IndicatorPanel/batteryFault.png</file>
         <file>Theme1/Image/IndicatorPanel/motorHeat.png</file>
         <file>Theme1/Image/IndicatorPanel/motorLimitation.png</file>
-		<file>Theme1/Image/IndicatorPanel/absIndicator.png</file>
+        <file>Theme1/Image/IndicatorPanel/absIndicator.png</file>
         <file>Theme1/Image/IndicatorPanel/airPressure1.png</file>
         <file>Theme1/Image/IndicatorPanel/airPressure2.png</file>
         <file>Theme1/Image/IndicatorPanel/airPressure3.png</file>
@@ -703,5 +703,9 @@
         <file>Theme3/Image/IndicatorPanel/waitRunning.png</file>
         <file>Theme3/Image/IndicatorPanel/waterHeat.png</file>
         <file>Theme3/Image/IndicatorPanel/lampMirrorHeating.png</file>
+        <file>Theme1/Image/MenuPanel/tireGreen.png</file>
+        <file>Theme1/Image/MenuPanel/tireYellow.png</file>
+        <file>Theme1/Image/MenuPanel/tireOther.png</file>
+        <file>Theme1/Image/MenuPanel/tireRed.png</file>
     </qresource>
 </RCC>

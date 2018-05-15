@@ -472,6 +472,27 @@ void CustomCarMsg::connectWorkerToMsg(CustomCarMsgWorker *worker)
     connect(worker, &CustomCarMsgWorker::backRightTireTemp1Changed, this, &CustomCarMsg::updateBackRightTireTemp1);
     connect(worker, &CustomCarMsgWorker::backLeftTireTemp2Changed, this, &CustomCarMsg::updateBackLeftTireTemp2);
     connect(worker, &CustomCarMsgWorker::backRightTireTemp2Changed, this, &CustomCarMsg::updateBackRightTireTemp2);
+    connect(worker, &CustomCarMsgWorker::frontLeftTireVoltageChanged, this, &CustomCarMsg::updateFrontLeftTireVoltage);
+    connect(worker, &CustomCarMsgWorker::fronRightTireVoltageChanged, this, &CustomCarMsg::updateFronRightTireVoltage);
+    connect(worker, &CustomCarMsgWorker::backLeftTireVoltage1Changed, this, &CustomCarMsg::updateBackLeftTireVoltage1);
+    connect(worker, &CustomCarMsgWorker::backLeftTireVoltage2Changed, this, &CustomCarMsg::updateBackLeftTireVoltage2);
+    connect(worker, &CustomCarMsgWorker::backRightTireVoltage1Changed, this, &CustomCarMsg::updateBackRightTireVoltage1);
+    connect(worker, &CustomCarMsgWorker::backRightTireVoltage2Changed, this, &CustomCarMsg::updateBackRightTireVoltage2);
+    connect(worker, &CustomCarMsgWorker::frontLeftTireAirOutChanged, this, &CustomCarMsg::updateFrontLeftTireAirOut);
+    connect(worker, &CustomCarMsgWorker::frontRightTireAirOutChanged, this, &CustomCarMsg::updateFrontRightTireAirOut);
+    connect(worker, &CustomCarMsgWorker::backLeftTireAirOut1Changed, this, &CustomCarMsg::updateBackLeftTireAirOut1);
+    connect(worker, &CustomCarMsgWorker::backLeftTireAirOut2Changed, this, &CustomCarMsg::updateBackLeftTireAirOut2);
+    connect(worker, &CustomCarMsgWorker::backRightTireAirOut1Changed, this, &CustomCarMsg::updateBackRightTireAirOut1);
+    connect(worker, &CustomCarMsgWorker::backRightTireAirOut2Changed, this, &CustomCarMsg::updateBackRightTireAirOut2);
+    connect(worker, &CustomCarMsgWorker::frontLeftTireSensorBadChanged, this, &CustomCarMsg::updateFrontLeftTireSensorBad);
+    connect(worker, &CustomCarMsgWorker::frontRightTireSensorBadChanged, this, &CustomCarMsg::updateFrontRightTireSensorBad);
+    connect(worker, &CustomCarMsgWorker::backLeftTireSensorBad1Changed, this, &CustomCarMsg::updateBackLeftTireSensorBad1);
+    connect(worker, &CustomCarMsgWorker::backLeftTireSensorBad2Changed, this, &CustomCarMsg::updateBackLeftTireSensorBad2);
+    connect(worker, &CustomCarMsgWorker::backRightTireSensorBad1Changed, this, &CustomCarMsg::updateBackRightTireSensorBad1);
+    connect(worker, &CustomCarMsgWorker::backRightTireSensorBad2Changed, this, &CustomCarMsg::updateBackRightTireSensorBad2);
+    //胎压学习状态返回信息
+    connect(worker, &CustomCarMsgWorker::tirepIndexChanged, this, &CustomCarMsg::updatetirepIndex);
+    connect(worker, &CustomCarMsgWorker::tirepStatusChanged, this, &CustomCarMsg::updatetirepStatus);
     //整车控制系统诊断信息
     connect(worker, &CustomCarMsgWorker::driveFaultAlarmChanged, this, &CustomCarMsg::updateDriveFaultAlarm);
     connect(worker, &CustomCarMsgWorker::controlOvervoltageAlarmChanged, this, &CustomCarMsg::updateControlOvervoltageAlarm);
@@ -553,6 +574,7 @@ void CustomCarMsg::connectMsgToWorker(CustomCarMsgWorker *worker)
     connect(this, &CustomCarMsg::sendVideoSwitchControl, worker, &CustomCarMsgWorker::videoSwitchControlRequest);
     connect(this, &CustomCarMsg::sendIgoffControl, worker, &CustomCarMsgWorker::igoffControlRequest);
     connect(this, &CustomCarMsg::sendBuzzerControl, worker, &CustomCarMsgWorker::buzzerControlRequest);
+    connect(this, &CustomCarMsg::sendTirePressContrl, worker, &CustomCarMsgWorker::tirePressContrlRequest);
 }
 //基本模块信息
 void CustomCarMsg::updateThemeMode(int data)
@@ -1885,6 +1907,67 @@ void CustomCarMsg::updateBackLeftTireTemp2(int value) {
 }
 void CustomCarMsg::updateBackRightTireTemp2(int value) {
     MEMBER_PROPERTY_VALUE_CHANGED(backRightTireTemp2, value);
+}
+void CustomCarMsg::updateFrontLeftTireVoltage(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(frontLeftTireVoltage, value);
+}
+void CustomCarMsg::updateFronRightTireVoltage(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(fronRightTireVoltage, value);
+}
+void CustomCarMsg::updateBackLeftTireVoltage1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backLeftTireVoltage1, value);
+}
+void CustomCarMsg::updateBackLeftTireVoltage2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backLeftTireVoltage2, value);
+}
+void CustomCarMsg::updateBackRightTireVoltage1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backRightTireVoltage1, value);
+}
+void CustomCarMsg::updateBackRightTireVoltage2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backRightTireVoltage2, value);
+}
+void CustomCarMsg::updateFrontLeftTireAirOut(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(frontLeftTireAirOut, value);
+}
+void CustomCarMsg::updateFrontRightTireAirOut(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(frontRightTireAirOut, value);
+}
+void CustomCarMsg::updateBackLeftTireAirOut1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backLeftTireAirOut1, value);
+}
+void CustomCarMsg::updateBackLeftTireAirOut2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backLeftTireAirOut2, value);
+}
+void CustomCarMsg::updateBackRightTireAirOut1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backRightTireAirOut1, value);
+}
+void CustomCarMsg::updateBackRightTireAirOut2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backRightTireAirOut2, value);
+}
+void CustomCarMsg::updateFrontLeftTireSensorBad(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(frontLeftTireSensorBad, value);
+}
+void CustomCarMsg::updateFrontRightTireSensorBad(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(frontRightTireSensorBad, value);
+}
+void CustomCarMsg::updateBackLeftTireSensorBad1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backLeftTireSensorBad1, value);
+}
+void CustomCarMsg::updateBackLeftTireSensorBad2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backLeftTireSensorBad2, value);
+}
+void CustomCarMsg::updateBackRightTireSensorBad1(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backRightTireSensorBad1, value);
+}
+void CustomCarMsg::updateBackRightTireSensorBad2(int value) {
+    MEMBER_PROPERTY_VALUE_CHANGED(backRightTireSensorBad2, value);
+}
+//胎压学习状态返回信息
+void CustomCarMsg::updatetirepIndex(int value){
+    MEMBER_PROPERTY_VALUE_CHANGED(tirepIndex, value);
+}
+void CustomCarMsg::updatetirepStatus(int value){
+    MEMBER_PROPERTY_VALUE_CHANGED(tirepStatus, value);
 }
 //控制系统诊断信息
 void CustomCarMsg::updateDriveFaultAlarm(bool value) {

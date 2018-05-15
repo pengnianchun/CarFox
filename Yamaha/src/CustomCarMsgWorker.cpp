@@ -107,7 +107,12 @@ void CustomCarMsgWorker::buzzerControlRequest(bool buzzerStatus) {
     buzzerControl.set_close_buzzer(buzzerStatus);
     sendProtoMsg(buzzerControl);
 }
-
+void CustomCarMsgWorker::tirePressContrlRequest(qint8 tirepNo, qint8 tirepStatus) {
+    fyTirePressInfo::TirePressContrl tireStudentContrl;
+    tireStudentContrl.set_tirep_contrl_index(tirepNo);
+    tireStudentContrl.set_tirep_student_status(tirepStatus);
+    sendProtoMsg(tireStudentContrl);
+}
 void CustomCarMsgWorker::registerCallback()
 {
     //通用信息
@@ -165,6 +170,8 @@ void CustomCarMsgWorker::registerCallback()
     mHandler.registerMsgCallback(fyPicLampInfo::PicLampFrameGm::descriptor(), bind(&CustomCarMsgWorker::handleProtoPicLampFrameGmInfo, this, _1));
     //胎压监测系统
     mHandler.registerMsgCallback(fyTirePressInfo::TirePressInfoFrame::descriptor(), bind(&CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo, this, _1));
+    //胎压学习状态返回
+    mHandler.registerMsgCallback(fyTirePressInfo::TirePressIndexNum::descriptor(), bind(&CustomCarMsgWorker::handleProtoTirePressIndexNumInfo, this, _1));
     //请求菜单返回信息
 //    mHandler.registerMsgCallback(fyMenuIdRequestInfo::MenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::menuInfoRequest, this, _1));
 //    mHandler.registerMsgCallback(fyMenuIdRequestInfo::YxMenuIdRequest::descriptor(), bind(&CustomCarMsgWorker::yxMenuIdRequest, this, _1));
@@ -1653,6 +1660,72 @@ void CustomCarMsgWorker::handleProtoTirePressInfoFrameInfo(const carfox::Message
     });
     updateStates<qint32>(mStateData.backRightTireTemp2.data, p->back_right_tire_temp2(), [this](qint32 value) {
         emit this->backRightTireTemp2Changed(value);
+    });
+    updateStates<qint32>(mStateData.fronLeftTireVoltage.data, p->front_left_tire_voltage(), [this](qint32 value) {
+        emit this->frontLeftTireVoltageChanged(value);
+    });
+    updateStates<qint32>(mStateData.fronRightTireVoltage.data, p->front_right_tire_voltage(), [this](qint32 value) {
+        emit this->fronRightTireVoltageChanged(value);
+    });
+    updateStates<qint32>(mStateData.backLeftTireVoltage1.data, p->back_left_tire_voltage1(), [this](qint32 value) {
+        emit this->backLeftTireVoltage1Changed(value);
+    });
+    updateStates<qint32>(mStateData.backLeftTireVoltage2.data, p->back_left_tire_voltage2(), [this](qint32 value) {
+        emit this->backLeftTireVoltage2Changed(value);
+    });
+    updateStates<qint32>(mStateData.backRightTireVoltage1.data, p->back_right_tire_voltage1(), [this](qint32 value) {
+        emit this->backRightTireVoltage1Changed(value);
+    });
+    updateStates<qint32>(mStateData.backRightTireVoltage2.data, p->back_right_tire_voltage2(), [this](qint32 value) {
+        emit this->backRightTireVoltage2Changed(value);
+    });
+
+    updateStates<qint32>(mStateData.frontLeftTireAirOut.data, p->front_left_tire_air_out(), [this](qint32 value) {
+        emit this->frontLeftTireAirOutChanged(value);
+    });
+    updateStates<qint32>(mStateData.frontRightTireAirOut.data, p->front_right_tire_air_out(), [this](qint32 value) {
+        emit this->frontRightTireAirOutChanged(value);
+    });
+    updateStates<qint32>(mStateData.backLeftTireAirOut1.data, p->back_left_tire_air_out1(), [this](qint32 value) {
+        emit this->backLeftTireAirOut1Changed(value);
+    });
+    updateStates<qint32>(mStateData.backLeftTireAirOut2.data, p->back_left_tire_air_out2(), [this](qint32 value) {
+        emit this->backLeftTireAirOut2Changed(value);
+    });
+    updateStates<qint32>(mStateData.backRightTireAirOut1.data, p->back_right_tire_air_out1(), [this](qint32 value) {
+        emit this->backRightTireAirOut1Changed(value);
+    });
+    updateStates<qint32>(mStateData.backRightTireAirOut2.data, p->back_right_tire_air_out2(), [this](qint32 value) {
+        emit this->backRightTireAirOut2Changed(value);
+    });
+    updateStates<qint32>(mStateData.frontLeftTireSensorBad.data, p->front_left_tire_sensor_bad(), [this](qint32 value) {
+        emit this->frontLeftTireSensorBadChanged(value);
+    });
+    updateStates<qint32>(mStateData.frontRightTireSensorBad.data, p->front_right_tire_sensor_bad(), [this](qint32 value) {
+        emit this->frontRightTireSensorBadChanged(value);
+    });
+    updateStates<qint32>(mStateData.backLeftTireSensorBad1.data, p->back_left_tire_sensor_bad1(), [this](qint32 value) {
+        emit this->backLeftTireSensorBad1Changed(value);
+    });
+    updateStates<qint32>(mStateData.backLeftTireSensorBad2.data, p->back_left_tire_sensor_bad2(), [this](qint32 value) {
+        emit this->backLeftTireSensorBad2Changed(value);
+    });
+    updateStates<qint32>(mStateData.backRightTireSensorBad1.data, p->back_right_tire_sensor_bad1(), [this](qint32 value) {
+        emit this->backRightTireSensorBad1Changed(value);
+    });
+    updateStates<qint32>(mStateData.backRightTireSensorBad2.data, p->back_right_tire_sensor_bad2(), [this](qint32 value) {
+        emit this->backRightTireSensorBad2Changed(value);
+    });
+}
+//胎压学习状态返回
+void CustomCarMsgWorker::handleProtoTirePressIndexNumInfo(const carfox::MessagePtr &msg)
+{
+    shared_ptr<fyTirePressInfo::TirePressIndexNum> p = carfox::down_pointer_cast<fyTirePressInfo::TirePressIndexNum>(msg);
+    updateStates<qint32>(mStateData.tirepIndex.data, p->tirep_index(), [this](qint32 value) {
+        emit this->tirepIndexChanged(value);
+    });
+    updateStates<qint32>(mStateData.tirepStatus.data, p->tirep_status(), [this](qint32 value) {
+        emit this->tirepStatusChanged(value);
     });
 }
 //请求菜单信息返回状态

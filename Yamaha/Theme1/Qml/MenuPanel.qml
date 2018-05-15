@@ -70,7 +70,7 @@ MenuItem {
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/motorBattery.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/other.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/timeSet.png" }
-      //      ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/tireMonitor.png" }
+            ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/tireMonitor.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vcu.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
         }
@@ -175,13 +175,13 @@ MenuItem {
             case 6:
                 displayText = qsTr("时间设置信息");
                 break;
-//            case 7:
-//                displayText = qsTr("胎压检测信息");
-//                break;
             case 7:
-                displayText = qsTr("整车控制信息");
+                displayText = qsTr("胎压检测信息");
                 break;
             case 8:
+                displayText = qsTr("整车控制信息");
+                break;
+            case 9:
                 displayText = qsTr("视频转换信息");
                 break;
             default:
