@@ -28,8 +28,10 @@ public slots:
     void upgradeStartRequest();
     void tripMilesClearRequest();
     void brightnessControlRequest(qint8 brightnessNo = 0);
+    void videoSwitchControlRequest(qint8 videoSwitchNo);
     void igoffControlRequest();
     void buzzerControlRequest(bool buzzerStatus = true);
+    void tirePressContrlRequest(qint8 tirepNo, qint8 tirepStatus);
 
 signals:
     // 上行帧 Worker to Msg
@@ -54,7 +56,7 @@ signals:
     void apVol2Changed(float value);
     void moterControlTempChanged(int value);
     void moterTempChanged(int value);
-    void batteryChanged(float value);
+    void batteryChanged(int value);
     void spnChanged(int value);
     void engineWaterTempChanged(int value);
     void ureaLevelChanged(int value);
@@ -492,6 +494,27 @@ signals:
     void backRightTireTemp1Changed(int value);
     void backLeftTireTemp2Changed(int value);
     void backRightTireTemp2Changed(int value);
+    void frontLeftTireVoltageChanged(int value);//胎压传感器电池电压
+    void fronRightTireVoltageChanged(int value);
+    void backLeftTireVoltage1Changed(int value);
+    void backLeftTireVoltage2Changed(int value);
+    void backRightTireVoltage1Changed(int value);
+    void backRightTireVoltage2Changed(int value);
+    void frontLeftTireAirOutChanged(int value);//轮胎漏气
+    void frontRightTireAirOutChanged(int value);
+    void backLeftTireAirOut1Changed(int value);
+    void backLeftTireAirOut2Changed(int value);
+    void backRightTireAirOut1Changed(int value);
+    void backRightTireAirOut2Changed(int value);
+    void frontLeftTireSensorBadChanged(int value);//胎压传感器故障
+    void frontRightTireSensorBadChanged(int value);
+    void backLeftTireSensorBad1Changed(int value);
+    void backLeftTireSensorBad2Changed(int value);
+    void backRightTireSensorBad1Changed(int value);
+    void backRightTireSensorBad2Changed(int value);
+    //胎压学习状态返回
+    void tirepIndexChanged(int value);
+    void tirepStatusChanged(int value);
     //整车控制系统诊断信息
     void driveFaultAlarmChanged(bool value) ; //驱动系统故障报警
     void controlOvervoltageAlarmChanged(bool value) ; //驱动控制器过压报警
@@ -578,6 +601,7 @@ private:
     void handleProtoMilesClearVerify(const carfox::MessagePtr &msg);
     void handleProtoCloseBuzzerVerify(const carfox::MessagePtr &msg);
     void handleProtoYxMenuIdRequest(const carfox::MessagePtr &msg);
+    void handleProtoTirePressIndexNumInfo(const carfox::MessagePtr &msg);
     //控制系统信息
     void handleProtoControlSystemMenuInfo(const carfox::MessagePtr &msg);
     //仪表信息

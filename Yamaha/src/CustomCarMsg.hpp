@@ -24,7 +24,7 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(float, apVol2, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, moterControlTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, moterTemp, 0)
-    MEMBER_PROPERTY_WITH_NOTIFY(float, battery, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, battery, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, spn, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, engineWaterTemp, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, ureaLevel, 0)
@@ -460,6 +460,27 @@ class CustomCarMsg : public carfox::CarMsg
     MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireTemp1, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireTemp2, 0)
     MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireTemp2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontLeftTireVoltage, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, fronRightTireVoltage, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireVoltage1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireVoltage2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireVoltage1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireVoltage2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontLeftTireAirOut, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontRightTireAirOut, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireAirOut1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireAirOut2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireAirOut1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireAirOut2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontLeftTireSensorBad, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, frontRightTireSensorBad, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireSensorBad1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backLeftTireSensorBad2, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireSensorBad1, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, backRightTireSensorBad2, 0)
+    //胎压学习状态返回
+    MEMBER_PROPERTY_WITH_NOTIFY(int, tirepIndex, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(int, tirepStatus, 0)
     //控制系统诊断信息
     MEMBER_PROPERTY_WITH_NOTIFY(bool, driveFaultAlarm , false)
     MEMBER_PROPERTY_WITH_NOTIFY(bool, controlOvervoltageAlarm , false)
@@ -554,7 +575,7 @@ private slots:
     void updateApVol2(float value);
     void updateMoterControlTemp(int value);
     void updateMoterTemp(int value);
-    void updateBattery(float value);
+    void updateBattery(int value);
     void updateSpn(int value);
     void updateEngineWaterTemp(int value);
     void updateUreaLevel(int value);
@@ -990,6 +1011,27 @@ private slots:
     void updateBackRightTireTemp1(int value);
     void updateBackLeftTireTemp2(int value);
     void updateBackRightTireTemp2(int value);
+    void updateFrontLeftTireVoltage(int value);
+    void updateFronRightTireVoltage(int value);
+    void updateBackLeftTireVoltage1(int value);
+    void updateBackLeftTireVoltage2(int value);
+    void updateBackRightTireVoltage1(int value);
+    void updateBackRightTireVoltage2(int value);
+    void updateFrontLeftTireAirOut(int value);
+    void updateFrontRightTireAirOut(int value);
+    void updateBackLeftTireAirOut1(int value);
+    void updateBackLeftTireAirOut2(int value);
+    void updateBackRightTireAirOut1(int value);
+    void updateBackRightTireAirOut2(int value);
+    void updateFrontLeftTireSensorBad(int value);
+    void updateFrontRightTireSensorBad(int value);
+    void updateBackLeftTireSensorBad1(int value);
+    void updateBackLeftTireSensorBad2(int value);
+    void updateBackRightTireSensorBad1(int value);
+    void updateBackRightTireSensorBad2(int value);
+    //胎压学习状态返回
+    void updatetirepIndex(int value);
+    void updatetirepStatus(int value);
     //控制系统诊断信息
     void updateDriveFaultAlarm(bool value);
     void updateControlOvervoltageAlarm(bool value);
@@ -1076,8 +1118,10 @@ signals:
     void sendUpgradeStart();
     void sendTripMilesClear();
     void sendBrightnessControl(qint8 brightnessNo);
+    void sendVideoSwitchControl(qint8 videoSwitchNo);
     void sendIgoffControl();
     void sendBuzzerControl(bool buzzerStatus);
+    void sendTirePressContrl(qint8 tirepNo, qint8 tirepStatus);
 
 private:
     bool mEnableKeys = false;

@@ -22,7 +22,7 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<float> apVol2 = carfox::CarMsgData<float>(0);              //气压2, 0.00 Mpa,协议收到为Kpa，需要除以1000
     carfox::CarMsgData<qint32> moterControlTemp = carfox::CarMsgData<qint32>(0);  //电机控制器温度, 0 ℃
     carfox::CarMsgData<qint32> moterTemp = carfox::CarMsgData<qint32>(0);         //电机温度, 0 ℃
-    carfox::CarMsgData<float> battery = carfox::CarMsgData<float>(0);           //蓄电池电压
+    carfox::CarMsgData<qint32> battery = carfox::CarMsgData<qint32>(0);           //蓄电池电压
     carfox::CarMsgData<qint32> spn = carfox::CarMsgData<qint32>(0);               //SPN值
     carfox::CarMsgData<qint32> engineWaterTemp = carfox::CarMsgData<qint32>(0);   //发动机水温
     carfox::CarMsgData<qint32> ureaLevel = carfox::CarMsgData<qint32>(0);          //尿素液位
@@ -38,14 +38,16 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<qint32> velocityRatio = carfox::CarMsgData<qint32>(0);
     carfox::CarMsgData<bool> buzzerStatus = carfox::CarMsgData<bool>(0);
     //设置模块信息
-    carfox::CarMsgData<bool> tripMilesClear = carfox::CarMsgData<bool>(0);
-    carfox::CarMsgData<bool> checkMilesClear = carfox::CarMsgData<bool>(0);
-    carfox::CarMsgData<qint32> upgradeMsgId = carfox::CarMsgData<qint32>(0);        //升级消息ID
-    carfox::CarMsgData<QString> upgradeMsgCtx = carfox::CarMsgData<QString>("");   //升级消息内容
-    carfox::CarMsgData<bool> closeBuzzerClear = carfox::CarMsgData<bool>(0);
-    carfox::CarMsgData<bool> checkCloseBuzzerClear = carfox::CarMsgData<bool>(0);
-    carfox::CarMsgData<bool> checkDateTimeSetting = carfox::CarMsgData<bool>(0);
-    carfox::CarMsgData<bool> yxCheckRequestMenu = carfox::CarMsgData<bool>(0);
+    carfox::CarMsgData<bool> tripMilesClear = carfox::CarMsgData<bool>(0);  //小计里程清零
+    carfox::CarMsgData<bool> checkMilesClear = carfox::CarMsgData<bool>(0); //清零状态返回
+    carfox::CarMsgData<qint32> upgradeMsgId = carfox::CarMsgData<qint32>(0);//升级消息ID
+    carfox::CarMsgData<QString> upgradeMsgCtx = carfox::CarMsgData<QString>("");//升级消息内容
+    carfox::CarMsgData<bool> closeBuzzerClear = carfox::CarMsgData<bool>(0);//手动关闭蜂鸣器
+    carfox::CarMsgData<bool> checkCloseBuzzerClear = carfox::CarMsgData<bool>(0);//关闭蜂鸣器状态返回
+    carfox::CarMsgData<bool> checkDateTimeSetting = carfox::CarMsgData<bool>(0);//时间设置状态返回
+    carfox::CarMsgData<bool> yxCheckRequestMenu = carfox::CarMsgData<bool>(0);//请求界面数据状态返回
+    carfox::CarMsgData<qint32> tirepIndex = carfox::CarMsgData<qint32>(0);//轮胎顺序编号 0 - 5
+    carfox::CarMsgData<qint32> tirepStatus = carfox::CarMsgData<qint32>(0);//轮胎结果为三态 0学习失败1学习成功2取消学习
     //控制系统信息
     carfox::CarMsgData<float> motorInVoltage = carfox::CarMsgData<float>(0);		   //电机输入电压, 0 V
     carfox::CarMsgData<float> motorInCurrent = carfox::CarMsgData<float>(0);		   //电机输入电流, 0 A
@@ -447,18 +449,39 @@ struct CarMsgWorkerStateData {
     carfox::CarMsgData<bool> lampBatLegend = carfox::CarMsgData<bool>(0);
     carfox::CarMsgData<bool> lampRton = carfox::CarMsgData<bool>(0);
     //胎压模块信息
-    carfox::CarMsgData<float> frontLeftTirePress = carfox::CarMsgData<float>(0);
-    carfox::CarMsgData<float> fronRightTirePress = carfox::CarMsgData<float>(0);
-    carfox::CarMsgData<float> backLeftTirePress1 = carfox::CarMsgData<float>(0);
-    carfox::CarMsgData<float> backRightTirePress1 = carfox::CarMsgData<float>(0);
-    carfox::CarMsgData<float> backLeftTirePress2 = carfox::CarMsgData<float>(0);
-    carfox::CarMsgData<float> backRightTirePress2 = carfox::CarMsgData<float>(0);
-    carfox::CarMsgData<qint32> frontLeftTireTemp = carfox::CarMsgData<qint32>(0);
-    carfox::CarMsgData<qint32> frontRightTireTemp = carfox::CarMsgData<qint32>(0);
-    carfox::CarMsgData<qint32> backLeftTireTemp1 = carfox::CarMsgData<qint32>(0);
-    carfox::CarMsgData<qint32> backRightTireTemp1 = carfox::CarMsgData<qint32>(0);
-    carfox::CarMsgData<qint32> backLeftTireTemp2 = carfox::CarMsgData<qint32>(0);
-    carfox::CarMsgData<qint32> backRightTireTemp2 = carfox::CarMsgData<qint32>(0);
+    carfox::CarMsgData<float> frontLeftTirePress = carfox::CarMsgData<float>(0);//左前轮胎胎压 0.0 Mpa
+    carfox::CarMsgData<float> fronRightTirePress = carfox::CarMsgData<float>(0);//右前轮胎胎压 0.0 Mpa
+    carfox::CarMsgData<float> backLeftTirePress1 = carfox::CarMsgData<float>(0);//左后轮胎胎压1 0.0 Mpa
+    carfox::CarMsgData<float> backRightTirePress1 = carfox::CarMsgData<float>(0);//右后轮胎胎压1 0.0 Mpa
+    carfox::CarMsgData<float> backLeftTirePress2 = carfox::CarMsgData<float>(0);//左后轮胎胎压2 0.0 Mpa
+    carfox::CarMsgData<float> backRightTirePress2 = carfox::CarMsgData<float>(0);//右后轮胎胎压2 0.0 Mpa
+    carfox::CarMsgData<qint32> frontLeftTireTemp = carfox::CarMsgData<qint32>(0);//左前轮胎温度  0 ℃
+    carfox::CarMsgData<qint32> frontRightTireTemp = carfox::CarMsgData<qint32>(0);//右前轮胎温度  0 ℃
+    carfox::CarMsgData<qint32> backLeftTireTemp1 = carfox::CarMsgData<qint32>(0);//左后轮胎温度1  0 ℃
+    carfox::CarMsgData<qint32> backRightTireTemp1 = carfox::CarMsgData<qint32>(0);//右后轮胎温度1  0 ℃
+    carfox::CarMsgData<qint32> backLeftTireTemp2 = carfox::CarMsgData<qint32>(0);//左后轮胎温度2  0 ℃
+    carfox::CarMsgData<qint32> backRightTireTemp2 = carfox::CarMsgData<qint32>(0);//右后轮胎温度2  0 ℃
+    carfox::CarMsgData<qint32> fronLeftTireVoltage = carfox::CarMsgData<qint32>(0);//左前轮胎电池电压
+    carfox::CarMsgData<qint32> fronRightTireVoltage = carfox::CarMsgData<qint32>(0);//右前轮胎电池电压
+    carfox::CarMsgData<qint32> backLeftTireVoltage1 = carfox::CarMsgData<qint32>(0);//左后轮胎电池电压1
+    carfox::CarMsgData<qint32> backLeftTireVoltage2 = carfox::CarMsgData<qint32>(0);//左后轮胎电池电压2
+    carfox::CarMsgData<qint32> backRightTireVoltage1 = carfox::CarMsgData<qint32>(0);//右后轮胎电池电压1
+    carfox::CarMsgData<qint32> backRightTireVoltage2 = carfox::CarMsgData<qint32>(0);//右后轮胎电池电压2
+
+    carfox::CarMsgData<qint32> frontLeftTireAirOut = carfox::CarMsgData<qint32>(0);//左前轮胎漏气
+    carfox::CarMsgData<qint32> frontRightTireAirOut = carfox::CarMsgData<qint32>(0);//右前轮胎漏气
+    carfox::CarMsgData<qint32> backLeftTireAirOut1 = carfox::CarMsgData<qint32>(0);//左后轮胎漏气1
+    carfox::CarMsgData<qint32> backLeftTireAirOut2 = carfox::CarMsgData<qint32>(0);//左后轮胎漏气2
+    carfox::CarMsgData<qint32> backRightTireAirOut1 = carfox::CarMsgData<qint32>(0);//右后轮胎漏气1
+    carfox::CarMsgData<qint32> backRightTireAirOut2 = carfox::CarMsgData<qint32>(0);//右后轮胎漏气2
+
+    carfox::CarMsgData<qint32> frontLeftTireSensorBad = carfox::CarMsgData<qint32>(0);//左前轮胎传感器故障
+    carfox::CarMsgData<qint32> frontRightTireSensorBad = carfox::CarMsgData<qint32>(0);//右前轮胎传感器故障
+    carfox::CarMsgData<qint32> backLeftTireSensorBad1 = carfox::CarMsgData<qint32>(0);//左后轮胎传感器故障1
+    carfox::CarMsgData<qint32> backLeftTireSensorBad2 = carfox::CarMsgData<qint32>(0);//左后轮胎传感器故障2
+    carfox::CarMsgData<qint32> backRightTireSensorBad1 = carfox::CarMsgData<qint32>(0);//右后轮胎传感器故障1
+    carfox::CarMsgData<qint32> backRightTireSensorBad2 = carfox::CarMsgData<qint32>(0);//右后轮胎传感器故障2
+
     //控制系统诊断信息
     carfox::CarMsgData<bool> driveFaultAlarm = carfox::CarMsgData<bool>(0); //驱动系统故障报警
     carfox::CarMsgData<bool> controlOvervoltageAlarm = carfox::CarMsgData<bool>(0); //驱动控制器过压报警

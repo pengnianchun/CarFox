@@ -181,11 +181,9 @@ MenuItem {
             case 8:
                 displayText = qsTr("整车控制信息");
                 break;
-                /*
             case 9:
                 displayText = qsTr("视频转换信息");
                 break;
-                */
             default:
                 displayText = qsTr("");
                 break;

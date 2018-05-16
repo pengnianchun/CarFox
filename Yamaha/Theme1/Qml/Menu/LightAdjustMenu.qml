@@ -12,30 +12,25 @@ MenuItem {
     parentMenuId: "MenuPanel"
     visible: false
 
-    property bool bKeyEnable: false
     property int percentageValue: 50
 
     enterMenu: function(){
-        if(bKeyEnable){
-            CarMsg.sendBrightnessControl(percentageValue);
-        }else{}
     }
     hideMenu: function(){
-        if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
-            bKeyEnable = false;
-        }
     }
     previousMenu: function(){
         if(percentageValue > 0){
             percentageValue-=10;
             progress.width = (percentageValue/100)*270;
+            CarMsg.sendBrightnessControl(percentageValue);
         }else{}
     }
     nextMenu: function(){
         if(percentageValue < 100){
             percentageValue+=10;
             progress.width = (percentageValue/100)*270;
+            CarMsg.sendBrightnessControl(percentageValue);
         }else{}
     }
     TextFieldWeir {
