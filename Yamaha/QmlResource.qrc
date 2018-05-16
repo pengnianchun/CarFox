@@ -707,5 +707,6 @@
         <file>Theme1/Image/MenuPanel/tireYellow.png</file>
         <file>Theme1/Image/MenuPanel/tireOther.png</file>
         <file>Theme1/Image/MenuPanel/tireRed.png</file>
+        <file>Theme1/Image/HomePanel/frame2.png</file>
     </qresource>
 </RCC>

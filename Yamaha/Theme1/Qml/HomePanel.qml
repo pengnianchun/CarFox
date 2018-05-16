@@ -88,22 +88,17 @@ CommonItem {
         if(gearValue === 9){
             gear_control.source = sourceImageUrl + "D.png";
             videoImage.active = false;
-            hideVedio.visible = true;
         }else if(gearValue === 10){
             gear_control.source = sourceImageUrl + "N.png";
             videoImage.active = false;
-            hideVedio.visible = true;
         }else if(gearValue === 8){
             gear_control.source = sourceImageUrl + "P.png";
             videoImage.active = false;
-            hideVedio.visible = true;
         }else if(gearValue === 11){
             gear_control.source = sourceImageUrl + "R.png";
             videoImage.active = true;
-            hideVedio.visible = true;
         }else{
             videoImage.active = false;
-            hideVedio.visible = true;
         }
     }
     onAlarmCodeChanged: {
@@ -150,14 +145,6 @@ CommonItem {
                     active: false
                 }
             ]
-        }
-    }
-    Item {
-        id: hideVedio       //通过控制ID属性，黑色画布是否可见
-        Rectangle {
-            width: 1440
-            height: 540
-            color: "black"
         }
     }
     //报警码显示动画
@@ -330,7 +317,16 @@ CommonItem {
             }
         }
     }
-    Rectangle { id: backgroundImage; anchors.fill: parent; color: "black" }
+    //Rectangle { id: backgroundImage; anchors.fill: parent; color: "black" }
+    Image {
+        id: videoFrameMask
+        x:0
+        y:0
+        width: 1440
+        height: 544
+        opacity: 1.0
+        source: sourceImageUrl + "frame2.png"
+    }
     Image {
         id: topBar
         x: 324; y: 18

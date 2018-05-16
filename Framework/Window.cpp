@@ -10,7 +10,7 @@ Window::Window()
 #ifdef Q_PROCESSOR_ARM
     setWindowState(Qt::WindowFullScreen);
 #endif
-    setColor(Qt::black);
+    setColor(QColor(Qt::transparent));
 }
 
 Window::~Window()
