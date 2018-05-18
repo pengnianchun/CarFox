@@ -324,6 +324,7 @@ MenuItem {
         if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
             bKeyEnable = false;
+            UiController.currentLayerId = "closeVcu";
             carLoadCurrentIndex = 0;
         }
     }

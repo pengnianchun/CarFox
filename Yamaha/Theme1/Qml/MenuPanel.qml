@@ -33,6 +33,7 @@ MenuItem {
             UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
             UiController.setLayerProperty("MenuPanel", "visible", false);
             UiController.setLayerProperty("MenuPanel", "state", "");
+            UiController.currentLayerId = "";
             UiController.hideRootMenu();
             bKeyEnable = false;
         }

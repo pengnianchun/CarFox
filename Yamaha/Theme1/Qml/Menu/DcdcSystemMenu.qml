@@ -26,6 +26,7 @@ MenuItem {
     hideMenu: function(){
         if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
+            UiController.currentLayerId = "closeDcdc";
             bKeyEnable = false;
         }
     }

@@ -18,6 +18,7 @@ MenuItem {
     }
     hideMenu: function(){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
+            UiController.currentLayerId = "closeLight";
     }
     previousMenu: function(){
         if(percentageValue > 0){

@@ -204,6 +204,7 @@ MenuItem {
     hideMenu: function(){
         if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
+            UiController.currentLayerId = "closeMoter";
             bKeyEnable = false;
         }
     }

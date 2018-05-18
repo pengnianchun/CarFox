@@ -49,6 +49,9 @@ CommonItem {
     property int carMode: animationStatus ? CarMsg.carMode : 1
     //请求升级信号的返回状态接收
     property int upgradeMsgId: animationStatus ? CarMsg.upgradeMsgId : 0
+    //倒车影像
+    property var videoIdArray: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+    property string currentLayerId: UiController.currentLayerId
 
     //电压值跳动
     function dampBattery(data,lastdata){
@@ -82,23 +85,70 @@ CommonItem {
             start_animation.running = true;
         }else{}
     }
+
     NumberAnimation { id: start_animation; target: homeIndex; property: "opacity"; to: 1; duration: 1000; easing.type: Easing.Linear; }
     NumberAnimation { id: end_animation; target: homeIndex; property: "opacity"; to: 0; duration: 1000; easing.type: Easing.Linear; }
     onGearValueChanged: {
         if(gearValue === 9){
             gear_control.source = sourceImageUrl + "D.png";
-            videoImage.active = false;
+            videoDisplayCtrl(gearValue);
+
         }else if(gearValue === 10){
             gear_control.source = sourceImageUrl + "N.png";
-            videoImage.active = false;
+            videoDisplayCtrl(gearValue);
+
         }else if(gearValue === 8){
             gear_control.source = sourceImageUrl + "P.png";
-            videoImage.active = false;
+            videoDisplayCtrl(gearValue);
+
         }else if(gearValue === 11){
             gear_control.source = sourceImageUrl + "R.png";
-            videoImage.active = true;
+            videoDisplayCtrl(gearValue);
         }else{
+            videoDisplayCtrl(gearValue);
+        }
+    }
+    function videoDisplayCtrl(gearValue) {
+        if(gearValue === 11 && UiController.currentLayerId !== "VideoConvertMenu"){
+            videoImage.active = true;
+            hideVedio.visible = false;
+            if(main_panel.visible == true){
+                homeIndex.state = "menu"     //仪表盘缩小
+                main_panel.visible = false;  //主界面信息隐藏
+                videoIdArray[0] = 0;
+            }else{
+                console.log(" showMenuDetail_1:" + UiController.currentLayerId);
+                if(UiController.isLayerShown("MenuPanel")){UiController.hideLayer("MenuPanel");videoIdArray[0] = 1; }
+                if(currentLayerId === "DcdcSystemMenu"){UiController.hideLayer("DcdcSystemMenu"); videoIdArray[1] = 2; }
+                if(currentLayerId === "InstrumentSysMenu" ){UiController.hideLayer("InstrumentSysMenu"); videoIdArray[2] = 3; }
+                if(currentLayerId === "LightAdjustMenu"){UiController.hideLayer("LightAdjustMenu"); videoIdArray[3] = 4; }
+                if(currentLayerId === "MoterBatteryMenu"){UiController.hideLayer("MoterBatteryMenu"); videoIdArray[4] = 5; }
+                if(currentLayerId === "OtherInformationMenu"){UiController.hideLayer("OtherInformationMenu"); videoIdArray[5] = 6; }
+                if(currentLayerId === "TimeSettingsMenu"){UiController.hideLayer("TimeSettingsMenu"); videoIdArray[6] = 7; }
+                if(currentLayerId === "TirePressureMenu"){UiController.hideLayer("TirePressureMenu"); videoIdArray[7] = 8; }
+                if(currentLayerId === "VcuSystemMenu"){UiController.hideLayer("VcuSystemMenu"); videoIdArray[8] = 9; }
+            }
+        }else{
+            if(UiController.currentLayerId !== "VideoConvertMenu"){videoImage.active = false; hideVedio.visible = true; }
+            if(videoIdArray[0] === 0){homeIndex.state = "normal"; main_panel.visible = true; }
+            if(videoIdArray[0] === 1){UiController.showLayer("MenuPanel"); videoIdArray[0] = -1; }
+            if(videoIdArray[1] === 2){UiController.showLayer("DcdcSystemMenu"); videoIdArray[1] = -1; }
+            if(videoIdArray[2] === 3){UiController.showLayer("InstrumentSysMenu"); videoIdArray[2] = -1; }
+            if(videoIdArray[3] === 4){UiController.showLayer("LightAdjustMenu"); videoIdArray[3] = -1; }
+            if(videoIdArray[4] === 5){UiController.showLayer("MoterBatteryMenu");videoIdArray[4] = -1; }
+            if(videoIdArray[5] === 6){UiController.showLayer("OtherInformationMenu"); videoIdArray[5] = -1; }
+            if(videoIdArray[6] === 7){UiController.showLayer("TimeSettingsMenu"); videoIdArray[6] = -1; }
+            if(videoIdArray[7] === 8){UiController.showLayer("TirePressureMenu"); videoIdArray[7] = -1; }
+            if(videoIdArray[8] === 9){UiController.showLayer("VcuSystemMenu"); videoIdArray[8] = -1;}
+        }
+    }
+    onCurrentLayerIdChanged: {
+        if(currentLayerId === "VideoConvertMenu"){
+            videoImage.active = true;
+            hideVedio.visible = false;
+        }else if(currentLayerId === "closeVideo"){
             videoImage.active = false;
+            hideVedio.visible = true;
         }
     }
     onAlarmCodeChanged: {
@@ -141,10 +191,18 @@ CommonItem {
             videoImage: [
                 LvdsImage {
                     id: videoImage  // "180*0*1080*544"
-                    rect:  "0*0*1440*576"
+                    rect:  "360*100*720*576"
                     active: false
                 }
             ]
+        }
+    }
+    Item {
+        id: hideVedio       //通过控制ID属性，黑色画布是否可见
+        Rectangle {
+            width: 1440
+            height: 544
+            color: "black"
         }
     }
     //报警码显示动画
