@@ -121,6 +121,7 @@ MenuItem {
             CarMsg.sendTirePressContrl(tireIndex ,0);   //胎压学习设置接口  取消学习
             tireInfo = "轮胎状态正常"
             setTireStudentDisable();
+            UiController.currentLayerId = "closeTire";
         }
     }
     onTireIndexChanged: {

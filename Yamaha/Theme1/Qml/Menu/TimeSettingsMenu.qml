@@ -40,6 +40,7 @@ MenuItem {
         day.textValue = utcMcuDateTime[2];
         hour.textValue = utcMcuDateTime[3];
         miniute.textValue = utcMcuDateTime[4];
+        UiController.currentLayerId = "closeTime";
     }
     previousMenu: function(){
         //时间数值递增函数调用

@@ -31,6 +31,7 @@ class UiController : public QObject
     Q_PROPERTY(QVariantMap rc MEMBER mRemainContent NOTIFY remainContentChanged)
     Q_PROPERTY(bool firstInstance MEMBER mFirstInstance NOTIFY firstInstanceChanged)
     Q_PROPERTY(bool isMenuShown READ isMenuShown NOTIFY isMenuShownChanged)
+    Q_PROPERTY(QString currentLayerId MEMBER mRootMenuId NOTIFY currentLayerIdChanged)
 
 public:
     UiController(int screenWidth, int screenHeight, bool firstInstance = true);
@@ -82,6 +83,8 @@ signals:
     void remainContentChanged();
     void firstInstanceChanged();
     void isMenuShownChanged();
+
+    void currentLayerIdChanged();
 
 protected:
     // 纯需函数， 子类必须实现

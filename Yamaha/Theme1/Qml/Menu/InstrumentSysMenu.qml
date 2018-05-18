@@ -306,6 +306,7 @@ MenuItem {
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
             bKeyEnable = false;
             instrumentCurrentIndex = 0;
+            UiController.currentLayerId = "closeInstrument";
             title.textValue = instrumentTitleArray[instrumentCurrentIndex];
         }
     }

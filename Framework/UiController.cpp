@@ -431,6 +431,4 @@ void UiController::updateRootMenuStatus(const QString &layerId, bool status)
     }
 }
 
-
-
 CARFOX_END_NAMESPACE

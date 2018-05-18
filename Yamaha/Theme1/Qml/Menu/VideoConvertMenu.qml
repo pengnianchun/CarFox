@@ -14,7 +14,6 @@ MenuItem {
 
     property bool bKeyEnable: false
     property int videoSwitchValue: 0
-    property bool displayVideo: title.visible
 
     enterMenu: function(){
         if(bKeyEnable){
@@ -25,6 +24,7 @@ MenuItem {
     hideMenu: function(){
         if(bKeyEnable){
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
+            UiController.currentLayerId = "closeVideo";
             bKeyEnable = false;
         }
     }
@@ -49,7 +49,7 @@ MenuItem {
 
     TextFieldWeir {
         id: title
-        textValue: "视频转化信息"
+        textValue: "视频切換信息"
         width: 150
         height: 30
         fontSize: 15
@@ -57,54 +57,20 @@ MenuItem {
         anchors.top: parent.top
         anchors.topMargin: 110
     }
-    Item {
-        id: item
-        VideoImageItem {
-            videoImage: [
-                LvdsImage {
-                    id: videoImage  // "180*0*1080*544" "360*160*1440*576"
-                    rect:  "0*0*1440*576"
-                    active: false
-                }
-            ]
-        }
+    TextFieldWeir {
+        id: switch_ctr
+        textValue: ""
+        width: 150
+        height: 30
+        fontSize: 15
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 130
     }
-
-    onDisplayVideoChanged: {
-        setDisplayVedioEnable()
+    onVideoSwitchValueChanged: {
+        if(videoSwitchValue === 0){switch_ctr.textValue = "通道1"; switch_ctr.fontColor = "red";}
+        if(videoSwitchValue === 1){switch_ctr.textValue = "通道2"; switch_ctr.fontColor = "red";}
+        if(videoSwitchValue === 2){switch_ctr.textValue = "通道3"; switch_ctr.fontColor = "red";}
+        if(videoSwitchValue === 3){switch_ctr.textValue = "通道4"; switch_ctr.fontColor = "red";}
     }
-
-    function setDisplayVedioEnable(){
-        if(displayVideo == true){
-            videoImage.active = true;
-            hideVedio.visible = false;          //控制黑色的画布是不可见的
-       //     menuPanelIndex.opacity = 0.0;           //只设置了那个黑色方框是透明的
-            title.opacity = 0.0;
-
-            console.log(" --- current video is open flag = ", displayVideo)
-        }else if(displayVideo == false){
-            videoImage.active = false;
-            hideVedio.visible = true;           //控制黑色的画布可见的
-            console.log(" --- current video is open flag = ", displayVideo)
-        }
-    }
-
-    Item {
-        id: hideVedio       //通过控制ID属性，黑色画布是否可见
-        Rectangle {
-            width: 1440
-            height: 540
-            color: "black"
-        }
-    }
-//    Image {                     //调用挖空图片资源
-//        id: vedioFrameMask      //此ID没有被调用
-//        x:0
-//        y:0
-//        width: 1440
-//        height: 544
-//        opacity: 1.0            //设置成不透明的
-//        source: "qrc:/Theme/Theme1/Image/AutoSplash/testyx.png"
-//    }
-
 }
