@@ -8,20 +8,55 @@ CarMsgWorker::CarMsgWorker()
 {
 
 }
+CarMsgWorker::~CarMsgWorker()
+{
+    if(m_timerId > 0){
+        killTimer(m_timerId);
+    }
+}
 
 void CarMsgWorker::onStarted()
 {
     qDebug() << "CarMsgWorker::onStarted";
     initSocket();
+    m_timerId = startTimer(200);
 }
 
 void CarMsgWorker::onReadyRead()
 {
     QByteArray recvData = mSubSock->read();
-//    qDebug() << " --- Recv: " << recvData.toHex();
+    //qDebug() << " --- Recv: " << recvData.toHex();
     mHandler.parseMessage(recvData);
+
+    m_isLive = true;
 }
 
+void CarMsgWorker::timerEvent(QTimerEvent *e)
+{
+    static int counter = 3;
+    if(m_isLive == true){
+        m_isLive = false;
+        counter = 3;
+    }else{
+        if(counter -- < 0){
+            QString cmd;
+            QString filePath = "/home/root/error.txt";
+            QFile file(filePath);
+
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)){
+                qDebug() << "open file fail...";
+                return;
+            }
+            QTextStream out(&file);
+
+            out << "timerEvent:qt socket overtime！" <<endl;
+            file.close();
+
+            cmd = QString("kill -9 %1 ").arg(getpid());
+            system(cmd.toUtf8().data());
+        }
+    }
+}
 void CarMsgWorker::sendProtoMsg(const google::protobuf::Message &msg)
 {
     QByteArray packedData;

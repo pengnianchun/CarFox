@@ -17,6 +17,7 @@ class CarMsgWorker : public QObject
     Q_OBJECT
 public:
     CarMsgWorker();
+    ~CarMsgWorker();
 
 public slots:
 
@@ -39,6 +40,7 @@ signals:
 
 protected:
 
+    void timerEvent(QTimerEvent *e);
     // 注册回调函数, 子类必须实现
     virtual void registerCallback() = 0;
 
@@ -79,6 +81,9 @@ private:
 protected:
     // 成员变量： 打包等类
     MsgHandler mHandler;
+
+    int m_timerId = -1;
+    bool m_isLive = false;
 
 private:
     std::shared_ptr<PubSocket> mPubSock; // = std::make_shared<PubSocket>();

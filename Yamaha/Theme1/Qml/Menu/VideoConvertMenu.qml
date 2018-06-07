@@ -49,7 +49,7 @@ MenuItem {
 
     TextFieldWeir {
         id: title
-        textValue: "视频切換信息"
+        textValue: "视频切换信息"
         width: 150
         height: 30
         fontSize: 15
