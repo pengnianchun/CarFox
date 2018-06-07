@@ -2,7 +2,6 @@ import QtQuick 2.6
 import CustomEnum 1.0
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 import "qrc:/Common/Component"
-import VideoImageItem 1.0
 
 MenuItem {
     id: menuPanelIndex

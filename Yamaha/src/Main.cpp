@@ -1,3 +1,11 @@
+#include <QGuiApplication>
+#include <Global.hpp>
+//#include <CarFox/Splash.hpp>
+#include <UndeadMain.hpp>
+#include <ThemeManager.hpp>
+#include "CustomUiController.hpp"
+
+#if defined(Q_OS_LINUX)
 #include <unistd.h>
 #include <syslog.h>
 #include <execinfo.h>
@@ -5,21 +13,11 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-#include <QGuiApplication>
-
-#include <Global.hpp>
-//#include <CarFox/Splash.hpp>
-#include <UndeadMain.hpp>
-#include <ThemeManager.hpp>
-
-#include "CustomUiController.hpp"
-
+#define MXCFB_SET_GBL_ALPHA     _IOW('F', 0x21, struct mxcfb_gbl_alpha)
 struct mxcfb_gbl_alpha {
     int enable;
     int alpha;
 };
-
-#define MXCFB_SET_GBL_ALPHA     _IOW('F', 0x21, struct mxcfb_gbl_alpha)
 
 void initfb() {
     mxcfb_gbl_alpha alpha;
@@ -41,11 +39,12 @@ void initEnv() {
     setenv("QT_QPA_EGLFS_FB","/dev/fb1",1);
     setenv("QML_USE_GLYPHCACHE_WORKAROUND","1",1);
 }
+#endif
 
 int main(int argc, char *argv[]) {
-
+#if defined(Q_OS_LINUX)
     initEnv();
-
+#endif
     std::shared_ptr<QGuiApplication> app = std::make_shared<QGuiApplication>(argc, argv);
     std::unique_ptr<CustomUiController> uiController(new CustomUiController(1440, 540, false));
     uiController->setReleaseVersion("v1.0.0");
