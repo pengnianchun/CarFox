@@ -33,6 +33,7 @@ void CarMsgWorker::onReadyRead()
 
 void CarMsgWorker::timerEvent(QTimerEvent *e)
 {
+#if defined(Q_OS_LINUX) {
     static int counter = 3;
     if(m_isLive == true){
         m_isLive = false;
@@ -56,6 +57,7 @@ void CarMsgWorker::timerEvent(QTimerEvent *e)
             system(cmd.toUtf8().data());
         }
     }
+#endif
 }
 void CarMsgWorker::sendProtoMsg(const google::protobuf::Message &msg)
 {
