@@ -33,7 +33,7 @@ void CarMsgWorker::onReadyRead()
 
 void CarMsgWorker::timerEvent(QTimerEvent *e)
 {
-#if defined(Q_OS_LINUX) {
+#if defined(Q_OS_LINUX)
     static int counter = 3;
     if(m_isLive == true){
         m_isLive = false;
