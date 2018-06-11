@@ -3,7 +3,6 @@
 *~
 bin
 build
-Makefile
 build-*
 *_plugin_import.cpp
 *_qml_plugin_import.cpp
