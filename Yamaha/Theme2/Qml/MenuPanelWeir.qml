@@ -61,11 +61,11 @@ CommonItem {
     //动力电池电压
     property int batteryPowerTotalVolt: 220
     property int batteryPowerVoltStart: 0
-    property int batteryPowerVolt: CarMsg.totalCurrent;
+    property int batteryPowerVolt: CarMsg.totalVoltage;
     //动力电池电流
     property int batteryPowerTotalAmpere: 100
     property int batteryPowerAmpereStart: 0;
-    property int batteryPowerAmpere: CarMsg.totalVoltage;
+    property int batteryPowerAmpere: CarMsg.totalCurrent;
     //图片尺寸
     property real numberImageWidth: 32;
     property real numberImageHeight: 32;
