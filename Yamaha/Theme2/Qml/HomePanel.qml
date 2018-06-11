@@ -244,14 +244,14 @@ CommonItem {
                     //textOpacity: 0.0
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("SPN  %1 ").arg(0)//setTextDisplay(CarStatus.SPN)
+                    textValue: qsTr("SPN  %1 ").arg(CarMsg.spn)//setTextDisplay(CarStatus.SPN)
                 }
                 TextIconWeir {
                     id: oilPressValue
                     anchors.right: parent.right
                     anchors.rightMargin: 350
                     anchors.verticalCenter: parent.verticalCenter
-                    textIconValue: qsTr(" %1 KPa").arg(0)//CarStatus.engine_oil_pressure.toFixed(0)
+                    textIconValue: qsTr(" %1 KPa").arg(CarMsg.engineOilPressure)//CarStatus.engine_oil_pressure.toFixed(0)
                     iconSource: oilPressureImage
                 }
                 TextFieldWeir {
@@ -306,7 +306,7 @@ CommonItem {
                     anchors.verticalCenter: parent.verticalCenter
                     imageTopMargin: -5
                     spaceWidth: -20
-                    textIconValue: qsTr(" %1 ℃").arg(0)//(CarStatus.engine_water_temp.toFixed(0))
+                    textIconValue: qsTr(" %1 ℃").arg(CarMsg.engineWaterTemp)//(CarStatus.engine_water_temp.toFixed(0))
                     iconSource: waterTempImage
                 }
                 TextFieldWeir {
@@ -315,7 +315,7 @@ CommonItem {
                     anchors.right: parent.right
                     anchors.rightMargin: 160
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("系统代码  %1").arg(0)//(CarStatus.fault_code)
+                    textValue: qsTr("系统代码  %1").arg(CarMsg.faultCode)//(CarStatus.fault_code)
                 }
             }
         }
