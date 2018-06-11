@@ -74,8 +74,10 @@ CommonItem {
 
     //监测速度档位信号变化信号（实际应监测CarMsg中值的变化）
     onVisibleChanged: {
-        if(visible){
-        }else{}
+        if (visible) {
+            // Accept HardKey Event
+            CarMsg.sendEnableKeys(true);
+        }
     }
     Component.onCompleted: {
         //初始化
