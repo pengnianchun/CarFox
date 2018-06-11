@@ -16,6 +16,45 @@ MenuItem {
 
     property int currentIndex: 0
 
+    enterMenu: function(){
+        // Do nothing
+    }
+    hideMenu: function(){
+        //调用关闭三层菜单通用函数
+        MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
+    }
+    previousMenu: function(){
+        //上一页
+        currentIndex = (currentIndex + 1) % 2
+    }
+    nextMenu: function(){
+        //下一页
+        currentIndex = (currentIndex - 1) % 2
+    }
+
+    // 9.整车控制系统信息帧
+    property int driveSystemStatus: CarMsg.driveSystemStatus //驱动系统状态
+    property int driveMotorStatus: CarMsg.driveMotorStatus //驱动电机状态
+    property int mechanicalBrakeStatus: CarMsg.mechanicalBrakeStatus //机械制动状态(手刹/脚刹)
+    property bool keyAcc: CarMsg.keyAcc //钥匙ACC档
+    property bool keyOn: CarMsg.keyOn //钥匙ON档
+    property bool highVoltageInterLock: CarMsg.highVoltageInterLock //高压互锁状态
+    property bool highVoltagePowerUp: CarMsg.highVoltagePowerUp //高压上电状态
+    property bool airCompressorWork: CarMsg.airCompressorWork //空压机工作状态
+    property bool boosterPumpWork: CarMsg.boosterPumpWork //助力泵工作状态
+    property real airCompressorMotorSpeed: CarMsg.airCompressorMotorSpeed //空压机电机转速
+    property real steeringAssistMotorSpeed: CarMsg.steeringAssistMotorSpeed //转向助力电机转速
+    property int steeringAssistMotorTemp: CarMsg.steeringAssistMotorTemp //转向助力电机温度
+    property int airCompressorMotorTemp: CarMsg.airCompressorMotorTemp //空压机电机温度
+    property int airCompressorControlTemp: CarMsg.airCompressorControlTemp //空压控制器温度
+    property int steeringControlDeviceTemp: CarMsg.steeringControlDeviceTemp //转向控制器温度
+    property real airPress3: CarMsg.airPress3 //气压3
+    property real airPress4: CarMsg.airPress4 //气压4
+    property real airPress5: CarMsg.airPress5 //气压5
+    property int highestAlarmGrade: CarMsg.highestAlarmGrade //最高报警等级
+    property int faultAlarmSituation: CarMsg.faultAlarmSituation //故障报警形式
+    property int driveGearsMode: CarMsg.driveGearsMode //档位驱动模式
+    property int bduSwitch: CarMsg.bduSwitch //BDU箱内主回路继电器上下电命令
 
     // 10.整车控制系统诊断信息帧(报警帧)
     property bool driveFaultAlarm: CarMsg.driveFaultAlarm //驱动系统故障报警
@@ -50,38 +89,6 @@ MenuItem {
     property bool boosterPumpMotorHighTemp: CarMsg.boosterPumpMotorHighTemp //助力泵电机高温报警
     property string vcuVersion: CarMsg.vcuVersion.toFixed(1) //VCU程序版本号
     property string vcuLife: CarMsg.vcuLife.toFixed(0) //VCU系统Life值
-
-    enterMenu: function(){}
-    hideMenu: function(){
-        //调用关闭三层菜单通用函数
-        MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-    }
-    previousMenu: function(){}
-    nextMenu: function(){}
-
-    // 9.整车控制系统信息帧
-    property int driveSystemStatus: CarMsg.driveSystemStatus //驱动系统状态
-    property int driveMotorStatus: CarMsg.driveMotorStatus //驱动电机状态
-    property int mechanicalBrakeStatus: CarMsg.mechanicalBrakeStatus //机械制动状态(手刹/脚刹)
-    property bool keyAcc: CarMsg.keyAcc //钥匙ACC档
-    property bool keyOn: CarMsg.keyOn //钥匙ON档
-    property bool highVoltageInterLock: CarMsg.highVoltageInterLock //高压互锁状态
-    property bool highVoltagePowerUp: CarMsg.highVoltagePowerUp //高压上电状态
-    property bool airCompressorWork: CarMsg.airCompressorWork //空压机工作状态
-    property bool boosterPumpWork: CarMsg.boosterPumpWork //助力泵工作状态
-    property real airCompressorMotorSpeed: CarMsg.airCompressorMotorSpeed //空压机电机转速
-    property real steeringAssistMotorSpeed: CarMsg.steeringAssistMotorSpeed //转向助力电机转速
-    property int steeringAssistMotorTemp: CarMsg.steeringAssistMotorTemp //转向助力电机温度
-    property int airCompressorMotorTemp: CarMsg.airCompressorMotorTemp //空压机电机温度
-    property int airCompressorControlTemp: CarMsg.airCompressorControlTemp //空压控制器温度
-    property int steeringControlDeviceTemp: CarMsg.steeringControlDeviceTemp //转向控制器温度
-    property real airPress3: CarMsg.airPress3 //气压3
-    property real airPress4: CarMsg.airPress4 //气压4
-    property real airPress5: CarMsg.airPress5 //气压5
-    property int highestAlarmGrade: CarMsg.highestAlarmGrade //最高报警等级
-    property int faultAlarmSituation: CarMsg.faultAlarmSituation //故障报警形式
-    property int driveGearsMode: CarMsg.driveGearsMode //档位驱动模式
-    property int bduSwitch: CarMsg.bduSwitch //BDU箱内主回路继电器上下电命令
 
     //#ListModelOne
     onDriveSystemStatusChanged: { //驱动系统状态
@@ -247,6 +254,105 @@ MenuItem {
     }
     //#ListModelTwo END
 
+    //#ListModelThree
+    onDriveFaultAlarmChanged: {
+        listmodelthree.setProperty(0, "checkstatus", driveFaultAlarm);
+    }
+    onControlOvervoltageAlarmChanged: {
+        listmodelthree.setProperty(1, "checkstatus", controlOvervoltageAlarm);
+    }
+    onControlUndervoltageAlarmChanged: {
+        listmodelthree.setProperty(2, "checkstatus", controlUndervoltageAlarm);
+    }
+    onControlEncodingFaultChanged: {
+        listmodelthree.setProperty(3, "checkstatus", controlEncodingFault);
+    }
+    onControlHighTempAlarmChanged: {
+        listmodelthree.setProperty(4, "checkstatus", controlHighTempAlarm);
+    }
+    onControlHighTempAbortAlarmChanged: {
+        listmodelthree.setProperty(5, "checkstatus", controlHighTempAbortAlarm);
+    }
+    onControlMainContactorFaultChanged: {
+        listmodelthree.setProperty(6, "checkstatus", controlMainContactorFault);
+    }
+    onControlOvercurrentAlarmChanged: {
+        listmodelthree.setProperty(7, "checkstatus", controlOvercurrentAlarm);
+    }
+    onMotorHighTempAlarmChanged: {
+        listmodelthree.setProperty(8, "checkstatus", motorHighTempAlarm);
+    }
+    onMotorHigtTempAbortAlarmChanged: {
+        listmodelthree.setProperty(9, "checkstatus", motorHigtTempAbortAlarm);
+    }
+    onMotorRotaryFaultChanged: {
+        listmodelthree.setProperty(10, "checkstatus", motorRotaryFault);
+    }
+    //#ListModelThree END
+
+    //#ListModelFour
+    onControlMotorPowerLimitationChanged: {
+        listmodelfour.setProperty(0, "checkstatus", controlMotorPowerLimitation);
+    }
+    onMotorRotaryLimitationChanged: {
+        listmodelfour.setProperty(1, "checkstatus", motorRotaryLimitation);
+    }
+    onMotorWaterTempOvertopChanged: {
+        listmodelfour.setProperty(2, "checkstatus", motorWaterTempOvertop);
+    }
+    onAcceleratorPedalFaultChanged: {
+        listmodelfour.setProperty(3, "checkstatus", acceleratorPedalFault);
+    }
+    onBrakePedalFauleChanged: {
+        listmodelfour.setProperty(4, "checkstatus", brakePedalFaule);
+    }
+    onSeatbeltAlarmChanged: {
+        listmodelfour.setProperty(5, "checkstatus", seatbeltAlarm);
+    }
+    onSeatSwitchAlarmChanged: {
+        listmodelfour.setProperty(6, "checkstatus", seatSwitchAlarm);
+    }
+    onControlRightDoorsOpenAlarmChanged: {
+        listmodelfour.setProperty(7, "checkstatus", controlRightDoorsOpenAlarm);
+    }
+    onControlLeftDoorsOpenAlarmChanged: {
+        listmodelfour.setProperty(8, "checkstatus", controlLeftDoorsOpenAlarm);
+    }
+    onChauffeurDoorsNotCloseChanged: {
+        listmodelfour.setProperty(9, "checkstatus", chauffeurDoorsNotClose);
+    }
+    onHighTensionSwitchOpenChanged: {
+        listmodelfour.setProperty(10, "checkstatus", highTensionSwitchOpen);
+    }
+    //#ListModelFour END
+
+    //#ListModelFive
+    onChargeDoorOpenChanged: {
+        listmodelfive.setProperty(0, "checkstatus", chargeDoorOpen);
+    }
+    onSafetyDoorOpenChanged: {
+        listmodelfive.setProperty(1, "checkstatus", safetyDoorOpen);
+    }
+    onLowVoltageSwitchOpenChanged: {
+        listmodelfive.setProperty(2, "checkstatus", lowVoltageSwitchOpen);
+    }
+    onAbsSystemFaultChanged: {
+        listmodelfive.setProperty(3, "checkstatus", absSystemFault);
+    }
+    onAirCompressorControlHighTempChanged: {
+        listmodelfive.setProperty(4, "checkstatus", airCompressorControlHighTemp);
+    }
+    onAirCompressorMotorHighTempChanged: {
+        listmodelfive.setProperty(5, "checkstatus", airCompressorMotorHighTemp);
+    }
+    onBoosterPumpControlHighTempChanged: {
+        listmodelfive.setProperty(6, "checkstatus", boosterPumpControlHighTemp);
+    }
+    onBoosterPumpMotorHighTempChanged: {
+        listmodelfive.setProperty(7, "checkstatus", boosterPumpMotorHighTemp);
+    }
+    //#ListModelFive END
+
     GridLayout { //驱动电机状态
         x: 170
         columns: 2
@@ -304,7 +410,7 @@ MenuItem {
             id: system1
             width: 90
             height: 30
-            textTitle: "脚刹" //"脚" Break the layout?
+            textTitle: "脚刹" //"脚" will Break the layout?
             textValue: "制动"
             unitValue: ""
             titleColor: "#00a7f5"
@@ -354,9 +460,53 @@ MenuItem {
         ListElement { name: "BDU箱内主回路继电器"; value: ""; unit: "" }
     }
 
+    ListModel {
+        id: listmodelthree
+        ListElement { name: "驱动系统故障报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器过压报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器欠压报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器编码器故障"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器高温报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器高温截止报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器主接触器故障"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动控制器过流报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动电机高温报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动电机高温截止报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动电机旋转故障报警"; value: ""; unit: ""; checkstatus: false }
+    }
+
+    ListModel {
+        id: listmodelfour
+        ListElement { name: "驱动电机功率受限报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动电机转矩首先报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "驱动电机水温过高报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "加速踏板信号值异常报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "刹车踏板信号值异常报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "安全带报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "座椅开关报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "右侧舱门开启报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "左侧舱门开启报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "司机门未关报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "高压开关门开启报警"; value: ""; unit: ""; checkstatus: false }
+    }
+
+    ListModel {
+        id: listmodelfive
+        ListElement { name: "充电门开启报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "安全门开启报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "低压开关门开启报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "ABS系统故障"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "空压机控制器高温报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "空压机电机高温报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "助力泵控制器高温报警"; value: ""; unit: ""; checkstatus: false }
+        ListElement { name: "助力泵电机高温报警"; value: ""; unit: ""; checkstatus: false }
+    }
+
+    // 9.整车控制系统信息帧
     RowLayout {
         anchors.fill: parent
         spacing: 50
+        visible: currentIndex === 0 ? true : false
 
         ListViewWeir {
             listModel: listmodelone
@@ -372,6 +522,113 @@ MenuItem {
             height: parent.height
             fontSizeList: 15
             unitWidthList: 45
+        }
+    }
+
+    // 10.整车控制系统诊断信息帧(报警帧)
+    RowLayout {
+        anchors.fill: parent
+        visible: currentIndex === 1 ? true : false
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: -20
+        anchors.top: parent.top
+        spacing: 20
+        ColumnLayout {
+            width: parent.width/3
+            height: parent.height
+            spacing: -5
+
+            Repeater {
+                width: parent.width
+                height: parent.height
+                model: listmodelthree
+                delegate: TextRadioWeir {
+                    width: 180
+                    height: 30
+                    radioType: 1
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    checkRadioStatus: checkstatus
+                    fontSize: 12
+                }
+            }
+        }
+        ColumnLayout {
+            width: parent.width/3
+            height: parent.height
+            spacing: -5
+            Repeater {
+                width: parent.width
+                height: parent.height
+                model: listmodelfour
+                delegate: TextRadioWeir {
+                    width: 180
+                    height: 30
+                    radioType: 1
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    checkRadioStatus: checkstatus
+                    fontSize: 12
+                }
+            }
+        }
+        ColumnLayout {
+            width: parent.width/3
+            height: parent.height
+            spacing: -5
+            Repeater {
+                width: parent.width
+                height: parent.height
+                model: listmodelfive
+                delegate: TextRadioWeir {
+                    width: 180
+                    height: 30
+                    radioType: 1
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    checkRadioStatus: checkstatus
+                    fontSize: 12
+                }
+            }
+            ColumnLayout{
+                anchors.top: parent.top
+                anchors.topMargin: 200
+                anchors.right: parent.right
+                spacing: -5
+                TextValueWeir {
+                    width: 180
+                    height: 30
+                    textTitle: "VCU程序版本号"
+                    textValue: vcuVersion
+                    unitValue: ""
+                    titleColor: "#00a7f5"
+                    textWidth: 180
+                    fontSize: 12
+                }
+                TextValueWeir {
+                    width: 180
+                    height: 30
+                    textTitle: "VCU系统Life值"
+                    textValue: vcuLife
+                    unitValue: ""
+                    titleColor: "#00a7f5"
+                    textWidth: 180
+                    fontSize: 12
+                }
+                TextValueWeir {
+                    width: 180
+                    height: 30
+                    textTitle: "沂星CAN通信协议"
+                    textValue: "5.2"
+                    unitValue: ""
+                    titleColor: "#00a7f5"
+                    textWidth: 180
+                    fontSize: 12
+                }
+            }
         }
     }
 
