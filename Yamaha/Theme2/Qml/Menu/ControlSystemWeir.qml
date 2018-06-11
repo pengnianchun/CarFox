@@ -16,20 +16,30 @@ MenuItem {
 
     property int currentIndex: 0
 
-    enterMenu: function(){
-        // Do nothing
+    enterMenu: function() {
+        // do nothing
     }
-    hideMenu: function(){
+    hideMenu: function() {
         //调用关闭三层菜单通用函数
         MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
     }
-    previousMenu: function(){
+    previousMenu: function() {
         //上一页
-        currentIndex = (currentIndex + 1) % 2
+        currentIndex = !currentIndex
     }
-    nextMenu: function(){
+    nextMenu: function() {
         //下一页
-        currentIndex = (currentIndex - 1) % 2
+        currentIndex = !currentIndex
+    }
+
+    onCurrentIndexChanged: {
+        if (currentIndex === 0) {
+            CarMsg.sendMenuInfo(21, 0);
+        } else if (currentIndex === 1) {
+            CarMsg.sendMenuInfo(22, 0);
+        } else {
+            // do nothing
+        }
     }
 
     // 9.整车控制系统信息帧
