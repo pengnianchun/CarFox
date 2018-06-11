@@ -50,12 +50,12 @@ CommonItem {
     property bool animationPhase1: true
     property bool animationPhase2: true
     //报警计数
-    property int alarmCode: 0
+    property int alarmCode: CarMsg.warningId
     //Mpa计数
     property int mpa1ValueStart: 0
-    property int mpa1ValueEnd: 0
+    property int mpa1ValueEnd: CarMsg.apVol1
     property int mpa2ValueStart: 0
-    property int mpa2ValueEnd: 0
+    property int mpa2ValueEnd: CarMsg.apVol2
     //动画过度时间
     property int excessiveDurationTime: 1000;
 
@@ -79,10 +79,10 @@ CommonItem {
     onVisibleChanged: {
         if(visible){
             // 按键触发
-            //CarMsg.sendEnableKeys(true);
-            timer.running = true;
+            CarMsg.sendEnableKeys(true);
+            //timer.running = true;
         }else{
-            timer.running = false;
+            //timer.running = false;
         }
     }
     //Mpa过度动画
@@ -174,7 +174,7 @@ CommonItem {
     }
     Component.onCompleted: {
         console.log("/--------------------------------------------/");
-        console.log("/-------------Theme 2 is Active---------------/");
+        console.log("/-------------Theme 2 is Active--------------/");
         console.log("/--------------------------------------------/");
         HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
     }
@@ -468,7 +468,7 @@ CommonItem {
                     anchors.left: parent.left
                     anchors.leftMargin: 30
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("总里程  %1 Km").arg(0)//(CarStatus.odo.toFixed(0))
+                    textValue: qsTr("总里程  %1 Km").arg(CarMsg.odo)//(CarStatus.odo.toFixed(0))
                 }
                 TextFieldWeir {
                     id: motorCtlTemp
@@ -476,7 +476,7 @@ CommonItem {
                     anchors.right: parent.right
                     anchors.rightMargin: 330
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("电机/控制器 %1℃/%2℃ ").arg(0).arg(0)//(CarStatus.moter_temp.toFixed(0)).arg(CarStatus.moter_control_temp.toFixed(0))
+                    textValue: qsTr("电机/控制器 %1℃/%2℃ ").arg(CarMsg.moterTemp).arg(CarMsg.moterControlTemp)//(CarStatus.moter_temp.toFixed(0)).arg(CarStatus.moter_control_temp.toFixed(0))
                 }
             }
             Item {
@@ -488,7 +488,7 @@ CommonItem {
                     anchors.left: parent.left
                     anchors.leftMargin: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("尿素液位 %1 % ").arg(0)//(CarStatus.urea_level.toFixed(1))
+                    textValue: qsTr("尿素液位 %1 % ").arg(CarMsg.ureaLevel)//(CarStatus.urea_level.toFixed(1))
                 }
                 TextIconWeir {
                     id: oilfuelValue
@@ -497,7 +497,7 @@ CommonItem {
                     anchors.verticalCenter: parent.verticalCenter
                     imageTopMargin: 0
                     spaceWidth: -30
-                    textIconValue: qsTr("%1 %").arg(0)//(CarStatus.oil_level.toFixed(0))
+                    textIconValue: qsTr("%1 %").arg(CarMsg.oilLevel)//(CarStatus.oil_level.toFixed(0))
                     iconSource: oilImage
                 }
                 TextFieldWeir {
@@ -506,7 +506,7 @@ CommonItem {
                     anchors.right: parent.right
                     anchors.rightMargin: 180
                     anchors.verticalCenter: parent.verticalCenter
-                    textValue: qsTr("小计里程  %1 Km").arg(0)//(CarStatus.trip.toFixed(1))
+                    textValue: qsTr("小计里程  %1 Km").arg(CarMsg.trip)//(CarStatus.trip.toFixed(1))
                 }
             }
         }

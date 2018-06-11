@@ -46,26 +46,26 @@ CommonItem {
 
     //车速初始值
     property int speedTotal: 180;
-    property real speedValue: 0;
+    property real speedValue: CarMsg.carSpeed;
     property real speedValueStart: 0;
     //档位初始值
-    property real gearValue: 0;
+    property real gearValue: CarMsg.gear;
     //发动机转速
     property int engineTotalSpeed: 9999;
-    property int engineSpeedValue: 0;
+    property int engineSpeedValue: CarMsg.rpm;
     property int engineSpeedValueStart: 0;
     //蓄电池电压
     property int batteryTotalVolt: 120;
     property int batteryCurrentVoltStart: 0;
-    property int batteryCurrentVolt: 0;
+    property int batteryCurrentVolt: CarMsg.battery;
     //动力电池电压
     property int batteryPowerTotalVolt: 220
     property int batteryPowerVoltStart: 0
-    property int batteryPowerVolt: 0;
+    property int batteryPowerVolt: CarMsg.totalCurrent;
     //动力电池电流
     property int batteryPowerTotalAmpere: 100
     property int batteryPowerAmpereStart: 0;
-    property int batteryPowerAmpere: 0;
+    property int batteryPowerAmpere: CarMsg.totalVoltage;
     //图片尺寸
     property real numberImageWidth: 32;
     property real numberImageHeight: 32;
