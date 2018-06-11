@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package fyControlSystemDiagnoseInfo; //整车控制系统诊断信息
+
+message ControlSystemDiagnoseMenu //控制系统诊断信息
+{	
+	optional bool drive_fault_alarm = 1;		//驱动系统故障报警
+	optional bool control_overvoltage_alarm = 2;	//驱动控制器过压报警
+	optional bool control_undervoltage_alarm = 3;	//驱动控制器欠压报警
+	optional bool control_encoding_fault = 4;	//驱动控制器编码故障
+	optional bool control_high_temp_alarm = 5;	//驱动控制器高温报警
+	optional bool control_high_temp_abort_alarm = 6;//驱动控制器高温截止报警
+	optional bool control_main_contactor_fault = 7;	//驱动控制器主接触器故障
+	optional bool control_overcurrent_alarm = 8;	//驱动控制器过流报警
+	optional bool motor_high_temp_alarm = 9;	//驱动电机高温报警
+	optional bool motor_higt_temp_abort_alarm = 10;	//驱动电机高温截止报警
+	optional bool motor_rotary_fault = 11;		//驱动电机旋变故障报警
+	optional bool motor_power_limitation = 12;	//驱动电机功率受限报警
+	optional bool motor_rotary_limitation = 13;	//驱动电机转矩受限报警
+	optional bool motor_water_temp_overtop = 14;	//驱动电机水温过高报警
+	optional bool accelerator_pedal_fault = 15;	//加速踏板信号值异常报警
+	optional bool brake_pedal_faule = 16; 		//刹车踏板信号值异常报警
+	optional bool seatbelt_alarm = 17;		//安全带报警
+	optional bool seat_switch_alarm = 18;		//座椅开关报警
+	optional bool right_doors_open_alarm = 19;	//右侧舱门开启报警
+	optional bool left_doors_open_alarm = 20;	//左侧舱门开启报警
+	optional bool chauffeur_doors_not_close = 21;	//司机门未关报警
+	optional bool high_tension_switch_open = 22;	//高压开关门开启报警
+	optional bool charge_door_open = 23;		//充电门开启报警
+	optional bool safety_door_open = 24;		//安全门开启报警
+	optional bool low_voltage_switch_open = 25;	//低压开关门开启报警
+	optional bool abs_system_fault = 26;		//ABS系统故障
+	optional bool air_compressor_control_high_temp = 27;//空压机控制器高温报警
+	optional bool air_compressor_motor_high_temp = 28;//空压机电机高温报警
+	optional bool booster_pump_control_high_temp = 29;//助力泵控制器高温报警
+	optional bool booster_pump_motor_high_temp = 30;//助力泵电机高温报警
+	optional float vcu_version = 31;		//VCU程序版本号，0.0
+	optional int32 vcu_life = 32;			//VCU系统Life值
+}
+

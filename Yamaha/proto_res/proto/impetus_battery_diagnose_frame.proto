@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package fyImpetusBatteryDiagnoseSystemInfo; //动力电池诊断系统信息
+
+message BatteryDiagnoseSystemMenu //动力电池诊断信息
+{
+	optional bool	bat_voltage_max_alarm = 1;			//单体电压过高报警
+	optional bool	bat_voltage_max_abort_alarm = 2;		//单体电压过高截止报警
+	optional bool	bat_voltage_min_alarm = 3;			//单体电压过低报警
+	optional bool	bat_voltage_min_abort_alarm = 4;		//单体电压过低截止报警
+	optional bool	charge_current_max_alarm = 5;			//峰值充电电流过大	
+	optional bool	discharge_current_max_alarm = 6;		//峰值放电电流过大
+	optional bool	discharge_current_max_abort_alarm = 7;	      //峰值放电电流过大截止报警	
+	optional bool	discharge_current_temp_min_alarm = 8;		//电池放电温度过低报警
+	optional bool	discharge_current_temp_min_abort_alarm = 9;	//电池放电温度过低截止报警
+	optional bool	charge_current_temp_max_alarm = 10;		//电池充电温度过高报警
+	optional bool	charge_current_temp_max_abort_alarm = 11;	//电池充电温度过高截止报警
+	optional bool	bat_temp_max_alarm = 12;			//电池温度过高报警
+	optional bool	bat_temp_max_abort_alarm = 13;			//电池温度过高截止报警
+	optional bool	dropout_voltage_max_alarm = 14;			//单体电压压差过大报警
+	optional bool	dropout_voltage_max_abort_alarm = 15;		//单体电压压差过大截止报警
+	optional bool	charge_voltage_max_alarm = 16;			//电池充电电压过高
+	optional bool	bat_temp_different_alarm = 17;			//动力电池温度差异报警
+	optional bool	bat_charge_temp_min_abort_alarm = 18;		//电池充电温度过低截止报警
+	optional bool	bat_charge_temp_min_alarm = 19;			//动力电池充电温度过低报警
+	optional bool	soc_min_alarm = 20;				//动力电池SOC过低报警
+	optional bool	soc_max_alarm = 21;				//动力电池SOC过高报警
+	optional bool	bat_module_communication_fail = 22;		//动力电池模块通讯失效
+	optional bool	bms_system_fault = 23;				//BMS系统故障
+	optional bool	battery_fault = 24;				//动力蓄电池故障
+	optional bool	energy_recovery_current_max_alarm = 25;		//制动能量回收电流过大报警
+	optional bool	energy_recovery_voltage_max_alarm = 26;	     //制动能量回收单体电压过高报警
+	optional bool	energy_recovery_voltage_max_abort = 27;	   //制动能量回收单体电压过高截止报警
+	optional bool	energy_recovery_cancel = 28;			//取消制动能量回收功能
+	optional bool	soc_jump_alarm = 29;				//SOC跳变报警
+	optional bool	mismatching_alarm = 30;				//可充电储能系统不匹配报警
+	optional bool	vehicle_mounted_type_max = 31;			//车载储能装置类型过压报警
+	optional bool	vehicle_mounted_type_min = 32;			//车载储能装置类型欠压报警
+	optional bool	vehicle_mounted_type_overcharge = 33;		//车载储能装置类型过充
+}
