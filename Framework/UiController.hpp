@@ -75,6 +75,7 @@ public:
     Q_INVOKABLE QVariant remainContent(const QString &key);
 
     Q_INVOKABLE void setWindowBackgroundColor(const QColor &color);
+    Q_INVOKABLE void switchThemeTo(const QString &themeId);
 
 signals:
     void requestSystemShutdown();
@@ -113,7 +114,6 @@ protected:
     ThemeManager *themeManager(); // app层的UiController继承者可以拿到这个对象
 
     void loadWith(const QString &themeId);
-    void switchThemeTo(const QString &themeId);
 private:
     void updateRootMenuStatus(const QString &layerId, bool status);
 

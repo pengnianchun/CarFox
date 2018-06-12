@@ -47,6 +47,10 @@ function showMenuDetail(menuCurrentIndex){
         UiController.showLayer("VideoConvertMenu");
         UiController.currentLayerId = "VideoConvertMenu";
         UiController.setLayerProperty("VideoConvertMenu", "bKeyEnable", true);
+    }else if(menuCurrentIndex === 10){
+        UiController.showLayer("ThemeSetting");
+        UiController.currentLayerId = "ThemeSetting";
+        UiController.setLayerProperty("ThemeSetting", "bKeyEnable", true);
     }
 }
 

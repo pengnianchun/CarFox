@@ -74,6 +74,7 @@ MenuItem {
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/tireMonitor.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vcu.png" }
             ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/vedio.png" }
+            ListElement { name: ""; icon: "qrc:/Theme/Theme1/Image/MenuPanel/theme1.png" }
         }
         Component {
             id: displayDelegate
@@ -184,6 +185,9 @@ MenuItem {
                 break;
             case 9:
                 displayText = qsTr("视频转换信息");
+                break;
+            case 10:
+                displayText = qsTr("主题切换");
                 break;
             default:
                 displayText = qsTr("");
