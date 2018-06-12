@@ -12,6 +12,7 @@ MenuItem {
 
     property bool bKeyEnable: false
     property int  currentIndex: 0
+    property int  themeCount: 3 // CustomTheme1, CustomTheme2, CustomTheme3
 
     enterMenu: function() {
         currentIndex = listview_theme.listViewSelectId.currentIndex
@@ -23,7 +24,7 @@ MenuItem {
         } else if (2 === currentIndex) {
             UiController.switchThemeTo("CustomTheme3")
         } else {
-            // do nothing
+            // default
         }
     }
     hideMenu: function() {
@@ -35,15 +36,15 @@ MenuItem {
     }
     previousMenu: function() {
         //上一页
-        currentIndex = (currentIndex - 1) % 3
+        currentIndex = (currentIndex - 1) % themeCount
         if (currentIndex < 0) {
-            currentIndex = 2
+            currentIndex = themeCount - 1
         }
         listview_theme.listViewSelectId.currentIndex = currentIndex
     }
     nextMenu: function() {
         //下一页
-        currentIndex = (currentIndex + 1) % 3
+        currentIndex = (currentIndex + 1) % themeCount
         listview_theme.listViewSelectId.currentIndex = currentIndex
     }
 

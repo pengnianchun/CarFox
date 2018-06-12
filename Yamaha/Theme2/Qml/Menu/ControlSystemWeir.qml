@@ -420,7 +420,7 @@ MenuItem {
             id: system1
             width: 90
             height: 30
-            textTitle: "脚刹" //"脚" will Break the layout?
+            textTitle: "刹车" //"脚刹" will Break the layout?
             textValue: "制动"
             unitValue: ""
             titleColor: "#00a7f5"

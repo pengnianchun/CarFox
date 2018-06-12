@@ -27,7 +27,11 @@ function showMenuDetail(menuCurrentIndex){
         var dateYMDHMStatus = [true,false,false,false,false,false];
         UiController.setLayerProperty("SettingSystem","settingSystemStatus",settingSystemStatus);
         UiController.setLayerProperty("SettingSystem","dateYMDHMStatus",dateYMDHMStatus);
-    }else{}
+    } else if(menuCurrentIndex === 9) {
+        UiController.showLayer("ThemeSetting");
+    } else {
+        // default
+    }
     UiController.hideLayer("MenuPanel");
 }
 /*
