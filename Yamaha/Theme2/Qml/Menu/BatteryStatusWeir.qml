@@ -1,66 +1,453 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
-import "qrc:/Common/Component"
 import CustomEnum 1.0
+import "qrc:/Common/Component"
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
-    menuLayerId: "BatteryStatus"
-    parentMenuId: "MenuMainDetail"
-    width: 750
-    height: 350
     x: 360
     y: 130
+    width: 750
+    height: 350
 
-    enterMenu: function(){}
-    hideMenu: function(){
+    menuLayerId: "BatteryStatus"
+    parentMenuId: "MenuMainDetail"
+
+    enterMenu: function() {
+        // default
+    }
+    hideMenu: function() {
         //调用关闭三层菜单通用函数
-        MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
+        MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
     }
-    previousMenu: function(){}
-    nextMenu: function(){}
+    previousMenu: function() {
+        // default
+    }
+    nextMenu: function() {
+        // default
+    }
+
+    property var voltageInfo: CarMsg.voltageInfo
+    property var tempInfo: CarMsg.tempInfo
+
+    onVoltageInfoChanged: {
+        battery_model.clear();
+        for(var i in voltageInfo){
+            battery_model.append({"number":i,"voltage":voltageInfo[i].toFixed(2)});
+        }
+    }
+    onTempInfoChanged: {
+        temperature_model.clear();
+        for(var i in tempInfo){
+            temperature_model.append({"number":i,"temperature":tempInfo[i].toFixed(0)});
+        }
+    }
+
+    ListModel { id: battery_model }
+    ListModel { id: temperature_model }
 
     ListModel {
-        id: listmodelone
-        ListElement { name: "电池 01";value: "0.000";unit: "V" }
-        ListElement { name: "电池 02";value: "0.000";unit: "V" }
-        ListElement { name: "电池 03";value: "0.000";unit: "V" }
-        ListElement { name: "电池 04";value: "0.000";unit: "V" }
-        ListElement { name: "电池 05";value: "0.000";unit: "V" }
-        ListElement { name: "电池 06";value: "0.000";unit: "V" }
-        ListElement { name: "电池 07";value: "0.000";unit: "V" }
-        ListElement { name: "电池 08";value: "0.000";unit: "V" }
-        ListElement { name: "电池 09";value: "0.000";unit: "V" }
-        ListElement { name: "电池 10";value: "0.000";unit: "V" }
+        id: listmodel1
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
     }
     ListModel {
-        id: listmodeltwo
-        ListElement { name: "探针 01";value: "0";unit: "℃" }
-        ListElement { name: "探针 02";value: "0";unit: "℃" }
-        ListElement { name: "探针 03";value: "0";unit: "℃" }
-        ListElement { name: "探针 04";value: "0";unit: "℃" }
-        ListElement { name: "探针 05";value: "0";unit: "℃" }
-        ListElement { name: "探针 06";value: "0";unit: "℃" }
-        ListElement { name: "探针 07";value: "0";unit: "℃" }
-        ListElement { name: "探针 08";value: "0";unit: "℃" }
-        ListElement { name: "探针 09";value: "0";unit: "℃" }
-        ListElement { name: "探针 10";value: "0";unit: "℃" }
+        id: listmodel2
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
     }
-    RowLayout {
-        anchors.fill: parent
-        spacing: 50
-        ListViewWeir {
-            listModel: listmodelone
-            width: parent.width/2-50
-            height: parent.height
-            fontSizeList: 15
+    ListModel {
+        id: listmodel3
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+    }
+    ListModel {
+        id: listmodel4
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+    }
+    ListModel {
+        id: listmodel5
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+    }
+    ListModel {
+        id: listmodel6
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+    }
+    ListModel {
+        id: listmodel7
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+    }
+    ListModel {
+        id: listmodel8
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+        ListElement { name: ""; value: ""; unit: "" }
+    }
+
+    //电池组信息
+    ColumnLayout {
+        z: 1
+        width: 750
+        height: 350
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        spacing: -150
+
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "01~10"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel7
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
         }
-        ListViewWeir {
-            listModel: listmodeltwo
-            width: parent.width/2-50
-            height: parent.height
-            fontSizeList: 15
-            unitWidthList: 40
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "11~20"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel8
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
+        }
+
+        Item {
+            width: parent.width;
+            height: 30
+            TextFieldWeir {
+                textValue: "(单位：V)"
+                width: 50
+                height: 30
+                textHeight: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+        }
+
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "01~10"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel1
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 0
+                    leftAlignStatus: true
+                }
+            }
+        }
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "11~20"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel2
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
+        }
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "21~30"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel3
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
+        }
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 1
+                textValue: "31~40"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel4
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
+        }
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "41~50"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel5
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
+        }
+        RowLayout {
+            width: parent.width
+            height: 30
+            spacing: 0
+            TextFieldWeir {
+                z: 2
+                textValue: "51~60"
+                anchors.left: parent.left
+                anchors.leftMargin: -40
+                width: 50
+                height: 30
+                fontSize: 12
+                fontColor: "#00a7f5"
+            }
+            Repeater {
+                z: 1
+                width: parent.width-50
+                height: parent.height
+                model: listmodel6
+                delegate: TextValueWeir {
+                    width: 60
+                    height: 30
+                    textTitle: name
+                    textValue: value
+                    unitValue: unit
+                    titleColor: "#00a7f5"
+                    textWidth: 60
+                    fontSize: 12
+                    unitWidth: 5
+                    leftAlignStatus: true
+                }
+            }
+        }
+        TextFieldWeir {
+            x: 940
+            y: 330
+            z: 3
+            textValue: "(单位：℃)"
+            width: 50
+            height: 30
+            textHeight: 30
+            fontSize: 12
+            fontColor: "#00a7f5"
         }
     }
 }
