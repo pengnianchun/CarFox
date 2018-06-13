@@ -61,17 +61,17 @@ MenuItem {
 
     ListModel {
         id: listmodelone
-        ListElement { name: "发动机水温";value: "0";unit: "℃" }
-        ListElement { name: "发动机机油压力";value: "00000000";unit: "KPM" }
-        ListElement { name: "发动机油耗";value: "0";unit: "L/H" }
-        ListElement { name: "发动机负荷";value: "0";unit: "%" }
+        ListElement { name: "发动机水温"; value: "0"; unit: "℃" }
+        ListElement { name: "发动机机油压力"; value: "00000000"; unit: "KPM" }
+        ListElement { name: "发动机油耗"; value: "0"; unit: "L/H" }
+        ListElement { name: "发动机负荷"; value: "0"; unit: "%" }
     }
 
     ListModel {
         id: listmodeltwo
-        ListElement { name: "发动机目标油门";value: "0.0";unit: "%" }
-        ListElement { name: "发动机实际油门";value: "0.0";unit: "%" }
-        ListElement { name: "发动机进气温度";value: "00000000";unit: "℃" }
+        ListElement { name: "发动机目标油门"; value: "0.0"; unit: "%" }
+        ListElement { name: "发动机实际油门"; value: "0.0"; unit: "%" }
+        ListElement { name: "发动机进气温度"; value: "00000000"; unit: "℃" }
     }
 
     RowLayout {
