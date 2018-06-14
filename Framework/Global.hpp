@@ -17,6 +17,8 @@
 #define CARFOX_BEGIN_NAMESPACE namespace CARFOX_NAME_SPACE {
 #define CARFOX_END_NAMESPACE }
 
+#define FUNC __PRETTY_FUNCTION__
+
 /*
  * Q_PROPERTY的替代宏定义，方便代码书写
  */

@@ -1,23 +1,38 @@
 import QtQuick 2.6
 import CustomEnum 1.0
+import "qrc:/Common/Component"
 
 Item {
     width: 1440
     height: 544
     visible: false
-    property string animationUrl: "qrc:/Theme/Theme2/Image/Gif/wingsMotion.gif";
-    property string sourceImageUrl: "qrc:/Theme/Theme2/Image/";
-    property string centerLightImage: sourceImageUrl + "DialPanel/centerLight.png";
-    property bool animationStatus: true;
-    property real durationTime: 1000
+
+    property string sourceImageUrl: "qrc:/Theme/Theme2/Image/"
+    property string animationUrl: sourceImageUrl + "Gif/wingsMotion.gif"
+    property string centerLightImage: sourceImageUrl + "DialPanel/centerLight.png"
+    property real durationTime: 1500
 
     onVisibleChanged: {
-        if(visible){
+        if (visible) {
+            gmlGifImage.playing = true
             boot_animation.running = true;
-        }else{
+        } else {
+            gmlGifImage.playing = false
             boot_animation.running = false;
         }
     }
+
+    QmlGifImage {
+        id: gmlGifImage
+        gifSource: animationUrl
+        playing: false
+        anchors.fill: parent
+        onFinished: {
+            gmlGifImage.visible = false;
+            UiController.hideLayer("Splash");
+        }
+    }
+
     Image {
         id: center_light
         x: 435
@@ -25,42 +40,21 @@ Item {
         scale: 0.1
         opacity: 0
         source: centerLightImage
+
         SequentialAnimation {
             id: boot_animation
-            PauseAnimation { duration: durationTime/2 }
-            /*
-            ParallelAnimation {
-                NumberAnimation {
-                    target: center_light
-                    property: "scale";
-                    to: 1.15;
-                    duration: 200
-                }
-                NumberAnimation {
-                    target: center_light
-                    property: "opacity";
-                    to: 1;
-                    duration: 200
-                }
-            }
-            PauseAnimation {
-                duration: durationTime/20
-            }
-            NumberAnimation {
-                target: center_light
-                property: "scale";
-                to: 1;
-                duration: 200
-            }
-            */
+
+            PauseAnimation { duration: durationTime }
+
             ScriptAction {
                 script: {
-                    UiController.hideLayer("Splash");
+                    // 等待开机Gif完成后关闭Splash层
+                    // UiController.hideLayer("Splash");
                     UiController.showLayer("HomePanel");
                     UiController.showLayer("MenuPanel");
-                    UiController.setLayerProperty("MenuPanel","animationAction",3);
+                    UiController.setLayerProperty("MenuPanel", "animationAction", 3);
                     // Demo Run
-                    //UiController.showLayer("AutomaticRoutine");
+                    // UiController.showLayer("AutomaticRoutine");
                     // 按键触发
                     CarMsg.sendEnableKeys(true);
                 }

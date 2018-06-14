@@ -69,6 +69,7 @@ void UiController::setLayerChildObjectProperty(const QString &layerId, const QSt
  */
 void UiController::hideLayer(const QString &layerId)
 {
+    qDebug() << FUNC << layerId;
     mThemeManager->hideLayer(layerId);
     updateRootMenuStatus(layerId, false);
 }
