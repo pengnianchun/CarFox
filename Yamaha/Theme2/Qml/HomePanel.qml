@@ -1,16 +1,17 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
-import "qrc:/Common/JS/AlarmCode.js" as AlarmInfoCode
 import "qrc:/Common/Component"
+import "qrc:/Common/JS/AlarmCode.js" as AlarmInfoCode
 import "../JS/HomePanelController.js" as HomePanel
 
 CommonItem {
     id: home_panel
-    visible: false
-    opacity: 0
     width: 1440
     height: 544
+    visible: false
+    opacity: 0
+
     property real screenWidth: 1440;
     property real screenHeight: 544;
     property real topPanelHeight: 80;
@@ -20,7 +21,7 @@ CommonItem {
     property string backgroundImage: sourceImageUrl + "HomePanel/background.png";
     property string topBarImage: sourceImageUrl + "HomePanel/topBar.png";
     property string bottomBarImage: sourceImageUrl + "HomePanel/bottomBar.png";
-    property string oilPressureImage: sourceCommonImageUrl + "Indicator/oilPressureValue.png";//oilPressLow
+    property string oilPressureImage: sourceCommonImageUrl + "Indicator/oilPressureValue.png";
     property string waterTempImage: sourceCommonImageUrl + "Indicator/waterTempValue.png"
     property string oilImage: sourceImageUrl + "DialPanel/oil.png"
     property string mpaLeftImage: sourceImageUrl + "HomePanel/mpaLeft.png"
@@ -46,10 +47,17 @@ CommonItem {
     property string lampBatteryFaultImage: sourceImageUrl + "StarLamp/batteryFault.png"
     property bool bDisplay: true
 
+    onVisibleChanged: {
+        if(visible){
+            // 按键触发
+            CarMsg.sendEnableKeys(true);
+        }
+    }
+
     //初始化执行动画阶段
     property bool animationPhase1: true
     property bool animationPhase2: true
-    //报警计数
+    //警告提示
     property int alarmCode: CarMsg.warningId
     //Mpa计数
     property int mpa1ValueStart: 0
@@ -58,12 +66,16 @@ CommonItem {
     property int mpa2ValueEnd: CarMsg.apVol2
     //动画过度时间
     property int excessiveDurationTime: 1000;
-
     //HomePanel遮罩效果信号监测
     property string maskBackGroundStatus: "";
+
+    //警告提示
+    onAlarmCodeChanged: {
+        alarm_info.textValue = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
+    }
     //监测遮罩信号变化
     onMaskBackGroundStatusChanged: {
-        console.log("maskBackGroundStatus:::::::::::::::::::::::::::" + maskBackGroundStatus);
+        console.log("onMaskBackGroundStatusChanged" + maskBackGroundStatus);
         if(maskBackGroundStatus === "show"){
             mask_background.state = "";
             mask_background.state = "show";
@@ -76,18 +88,11 @@ CommonItem {
         }else{}
         maskBackGroundStatus = "";
     }
-    onVisibleChanged: {
-        if(visible){
-            // 按键触发
-            CarMsg.sendEnableKeys(true);
-            //timer.running = true;
-        }else{
-            //timer.running = false;
-        }
-    }
+
     //Mpa过度动画
     NumberAnimation { id: mpa_animation1; target: home_panel; property: "mpa1ValueEnd"; duration: excessiveDurationTime; easing.type: Easing.Linear }
     NumberAnimation { id: mpa_animation2; target: home_panel; property: "mpa2ValueEnd"; duration: excessiveDurationTime; easing.type: Easing.Linear }
+
     //报警码显示动画
     SequentialAnimation {
         loops: Animation.Infinite
@@ -97,87 +102,42 @@ CommonItem {
         PropertyAnimation{ target: alarm_info; property: "anchors.bottomMargin"; to: 35 ;duration: 100; easing.type: Easing.Linear; }
         PropertyAnimation{ target: alarm_info; property: "anchors.bottomMargin"; to: 40 ;duration: 50; easing.type: Easing.Linear; }
     }
+
     onMpa1ValueEndChanged: {
         mpa_animation1.from = mpa1ValueStart;
         mpa_animation1.to = mpa1ValueEnd;
         mpa_animation1.running = true;
-        if(mpa1ValueEnd > mpa1ValueStart){
+        if (mpa1ValueEnd > mpa1ValueStart) {
             HomePanel.upMpaLeftModel(mpaLeftModel,mpa1ValueEnd);
-        }else if(mpa1ValueEnd < mpa1ValueStart){
+        } else if (mpa1ValueEnd < mpa1ValueStart) {
             HomePanel.downMpaLeftModel(mpaLeftModel,mpa1ValueEnd);
-        }else{}
+        } else {
+            // default
+        }
         mpa1ValueStart = mpa1ValueEnd;
     }
+
     onMpa2ValueEndChanged: {
         mpa_animation2.from = mpa2ValueStart;
         mpa_animation2.to = mpa2ValueEnd;
         mpa_animation2.running = true;
-        if(mpa2ValueEnd > mpa2ValueStart){
+        if (mpa2ValueEnd > mpa2ValueStart) {
             HomePanel.upMpaRightModel(mpaRightModel,mpa2ValueEnd);
-        }else if(mpa2ValueEnd < mpa2ValueStart){
+        } else if (mpa2ValueEnd < mpa2ValueStart) {
             HomePanel.downMpaRightModel(mpaRightModel,mpa2ValueEnd);
-        }else{}
+        } else {
+            // default
+        }
         mpa2ValueStart = mpa2ValueEnd;
     }
-    //自定义定时器测试使用
-    Timer {
-        id: timer
-        repeat: true
-        interval: 2000
-        running: false
-        onTriggered: {
-            //console.log("=================home panel timer=========================");
-            if(animationPhase1){
-                if(!animationPhase2){
-                    //oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressureValue.png";
-                    left_cornering_lamp.opacity = 0;right_cornering_lamp.opacity = 0;
-                    lamp_headlight.opacity = 0;lamp_highBeam.opacity = 0;
-                    lamp_positionLight.opacity = 0;charging.opacity = 0;
-                    lamp_frontFog.opacity = 0;lamp_rearFog.opacity = 0;
-                    charge_light.opacity = 0;lamp_mainERRred.opacity = 0;
-                    backCang.opacity = 0;lamp_leftShoeWear.opacity = 0;
-                    lamp_rightShoeWear.opacity = 0;lamp_waterLow.opacity = 0;
-                    lamp_motor.opacity = 0;motorFault.opacity = 0;
-                    lamp_battery.opacity = 0;lamp_battery_warning.opacity = 0;
-                    lamp_battery_fault.opacity = 0;
-                    mpa1ValueEnd = 0;mpa2ValueEnd = 0;
-                    animationPhase1 = false;
-                }else{
-                    //oilPressureImage = sourceCommonImageUrl + "Indicator/oilPressLow.png";
-                    left_cornering_lamp.opacity = 1.0;right_cornering_lamp.opacity = 1.0;
-                    lamp_headlight.opacity = 1.0;lamp_highBeam.opacity = 1.0;
-                    lamp_positionLight.opacity = 1.0;charging.opacity = 1.0;
-                    lamp_frontFog.opacity = 1.0;lamp_rearFog.opacity = 1.0;
-                    charge_light.opacity = 1.0;lamp_mainERRred.opacity = 1.0;
-                    backCang.opacity = 1.0;lamp_leftShoeWear.opacity = 1.0;
-                    lamp_rightShoeWear.opacity = 1.0;lamp_waterLow.opacity = 1.0;
-                    lamp_motor.opacity = 1.0;motorFault.opacity = 1.0;
-                    lamp_battery.opacity = 1.0;lamp_battery_warning.opacity = 1.0;
-                    lamp_battery_fault.opacity = 1.0;
-                    mpa1ValueEnd = 10;mpa2ValueEnd = 10;
-                    animationPhase2 = false;
-                }
-            }else{}
-            for(var i=0;i<38;i++){
-                if(alarmCode === i){
-                    var alarmCodeInfo = AlarmInfoCode.getAlarmCodeInfo()[i];
-                    alarm_info.textValue = alarmCodeInfo;
-                    break;
-                }else{}
-            }
-            if(alarmCode === 37){
-                alarmCode = 0;
-            }else{
-                alarmCode++;
-            }
-        }
-    }
+
     Component.onCompleted: {
         console.log("/--------------------------------------------/");
         console.log("/-------------Theme 2 is Active--------------/");
         console.log("/--------------------------------------------/");
-        HomePanel.initializeMpaModel(mpaLeftModel,mpaRightModel);
+        HomePanel.initializeMpaModel(mpaLeftModel, mpaRightModel);
     }
+
     Item {
         id: home
         anchors.fill: parent
@@ -219,16 +179,13 @@ CommonItem {
             opacity: 1.0
             source: backgroundImage
         }
-        //转向灯显示模块
-        RowLayout {
-            anchors.top: parent.top
-            anchors.topMargin: 10
-            anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 200
-            Image { id: left_cornering_lamp; source: leftCorneringLampImage; opacity: 0 }
-            Image { id: right_cornering_lamp; source: rightCorneringLampImage; opacity: 0 }
+        //符号片显示
+        IconPanel {
+            id: iconPanel
+            z: 10
+            anchors.fill: parent
         }
-        //nav层模块
+        //上层模块
         Row {
             id: navPanel
             z: 1
@@ -241,7 +198,6 @@ CommonItem {
                 height: topPanelHeight
                 TextFieldWeir {
                     id: spnDisplay
-                    //textOpacity: 0.0
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
                     textValue: qsTr("SPN  %1 ").arg(CarMsg.spn)//setTextDisplay(CarStatus.SPN)
@@ -256,7 +212,6 @@ CommonItem {
                 }
                 TextFieldWeir {
                     id: weekDisplay
-                    //textOpacity: 0.0
                     anchors.right: parent.right
                     anchors.rightMargin: 400
                     anchors.verticalCenter: parent.verticalCenter
@@ -311,7 +266,6 @@ CommonItem {
                 }
                 TextFieldWeir {
                     id: systemCode
-                    //textOpacity: 0.0
                     anchors.right: parent.right
                     anchors.rightMargin: 160
                     anchors.verticalCenter: parent.verticalCenter
@@ -319,7 +273,7 @@ CommonItem {
                 }
             }
         }
-        //center层模块
+        //中层模块
         Item {
             id: centerPanel
             z: 1
@@ -450,7 +404,7 @@ CommonItem {
                 }
             }
         }
-        //botter层模块
+        //下层模块
         Row {
             id: booterPanel
             z: 1
@@ -464,7 +418,6 @@ CommonItem {
                 height: topPanelHeight
                 TextFieldWeir {
                     id: odoDisplay
-                    //textOpacity: 0.0
                     anchors.left: parent.left
                     anchors.leftMargin: 30
                     anchors.verticalCenter: parent.verticalCenter
@@ -472,7 +425,6 @@ CommonItem {
                 }
                 TextFieldWeir {
                     id: motorCtlTemp
-                    //textOpacity: 0.0
                     anchors.right: parent.right
                     anchors.rightMargin: 330
                     anchors.verticalCenter: parent.verticalCenter
@@ -484,7 +436,6 @@ CommonItem {
                 height: topPanelHeight
                 TextFieldWeir {
                     id: levelDisplay
-                    //textOpacity: 0.0
                     anchors.left: parent.left
                     anchors.leftMargin: 180
                     anchors.verticalCenter: parent.verticalCenter
@@ -502,7 +453,6 @@ CommonItem {
                 }
                 TextFieldWeir {
                     id: tripDisplay
-                    //textOpacity: 0.0
                     anchors.right: parent.right
                     anchors.rightMargin: 180
                     anchors.verticalCenter: parent.verticalCenter

@@ -1,9 +1,9 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
+import "qrc:/Common/Component"
 import "../JS/MenuMainController.js" as MenuMainController
 import "../JS/MenuPanelController.js" as MenuPanelController
-import "qrc:/Common/Component"
 
 CommonItem {
     id: menu_panel_weir
