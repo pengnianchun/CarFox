@@ -36,20 +36,22 @@ function setSpeedValueAction(speedHundredId,speedTenId,speedBitsId,value){
 /*
  * 挡位值处理函数
  */
-function setGearValueAction(gearId,gearValue){
+function setGearValueAction(gearId, gearValue){
     var gearValueImage = "qrc:/Theme/Theme2/Image/HomePanel/gear";
     var gear;
-    if(gearValue === 0){
+    if (gearValue === 0) {
         gear = "D";
-    }else if(gearValue === 1){
+    } else if (gearValue === 1) {
         gear = "N";
-    }else if(gearValue === 2){
+    } else if (gearValue === 2) {
         gear = "P";
-    }else if(gearValue === 3){
+    } else if (gearValue === 3) {
         gear = "R";
-    }else if(gearValue === 4){
+    } else if (gearValue === 4) {
         gear = "S";
-    }else{}
+    } else{
+        gear = "P"; // default
+    }
     gearId.source = gearValueImage + gear + ".png";
 }
 /*

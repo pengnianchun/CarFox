@@ -3,21 +3,21 @@ import CustomEnum 1.0
 import "qrc:/Common/Component"
 
 RootMenu {
-    visible: false
     rootMenu: true
-    level1: "MenuMain"      // 一级菜单的ID
-
-    onShutdown: function() {
-        //JS_Menu.exitWarning(me);
-    }
+    level1: "MenuMain"        // 一级菜单的ID
+    visible: false
 
     onVisibleChanged: {
         if (visible) {
             state = "show";
+        } else {
+            state = "shutdown";
         }
-        else state = "shutdown";
     }
 
+    onShutdown: function() {
+        //JS_Menu.exitWarning(me);
+    }
 
     states: [
         State {
@@ -30,6 +30,7 @@ RootMenu {
             name: "shutdown"
         }
     ]
+
     transitions: [
         Transition {
             from: ""
@@ -38,7 +39,7 @@ RootMenu {
                 if(!running) {
                     CarMsg.sendEnableKeys(true);
                     UiController.showLayer(level1);
-                    console.log("-------------show----------------" + state)
+                    console.log("MenuMain State: " + state + " Transition: \"\" -> show")
                 }
             }
         },
@@ -47,18 +48,17 @@ RootMenu {
             to: ""
             onRunningChanged: {
                 if(!running && state === "") {
-                    console.log("-------------null----------------" + state)
+                    console.log("MenuMain State: " + state + " Transition: show -> \"\"")
                     CarMsg.sendEnableKeys(true);
                     UiController.hideRootMenu();
                 }
             }
         },
-
         Transition {
             to: "shutdown"
             onRunningChanged: {
                 if(!running && state === "shutdown") {
-                    console.log("-------------shutdown---------------" + state);
+                    console.log("MenuMain State: " + state + " Transition: ANY -> shutdown");
                     UiController.hideLayer(level1);
                     state = "";
                 }

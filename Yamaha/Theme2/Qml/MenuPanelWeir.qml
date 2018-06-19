@@ -79,6 +79,7 @@ CommonItem {
             CarMsg.sendEnableKeys(true);
         }
     }
+
     Component.onCompleted: {
         //初始化
         setSpeedValue();

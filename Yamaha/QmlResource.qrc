@@ -711,5 +711,7 @@
         <file>Theme1/Image/MenuPanel/tireRed.png</file>
         <file>Theme1/Image/HomePanel/frame2.png</file>
         <file>Theme2/Qml/IconPanel.qml</file>
+        <file>Theme2/Qml/Menu/DcdcSystemMenu.qml</file>
+        <file>Theme2/Image/SubMenu/dc-dc.png</file>
     </qresource>
 </RCC>

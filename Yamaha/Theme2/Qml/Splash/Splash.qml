@@ -34,7 +34,6 @@ Item {
     }
 
     Image {
-        id: center_light
         x: 435
         y: 25
         scale: 0.1
@@ -55,8 +54,6 @@ Item {
                     UiController.setLayerProperty("MenuPanel", "animationAction", 3);
                     // Demo Run
                     // UiController.showLayer("AutomaticRoutine");
-                    // 按键触发
-                    CarMsg.sendEnableKeys(true);
                 }
             }
         }

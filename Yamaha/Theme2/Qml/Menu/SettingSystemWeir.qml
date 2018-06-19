@@ -1,17 +1,18 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
-import "qrc:/Common/Component"
 import CustomEnum 1.0
+import "qrc:/Common/Component"
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
     id: setting_system
-    menuLayerId: "SettingSystem"
-    parentMenuId: "MenuMainDetail"
     width: 900
     height: 350
     x: 270
     y: 130
+
+    menuLayerId: "SettingSystem"
+    parentMenuId: "MenuMainDetail"
 
     property string sourceImageUrl: "qrc:/Theme/Theme2/Image/"
     property string menuTipsBackGroundImage: sourceImageUrl + "SubMenu/menutips.png";
