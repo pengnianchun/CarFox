@@ -404,7 +404,6 @@
         <file>Theme2/Image/StarLamp/airPressure3.png</file>
         <file>Theme2/Image/StarLamp/airPressure4.png</file>
         <file>Theme2/Image/StarLamp/airPressure5.png</file>
-        <file>Theme2/Image/StarLamp/asternGear.png</file>
         <file>Theme2/Image/StarLamp/backFlogLamp.png</file>
         <file>Theme2/Image/StarLamp/backHatchDoorAlarm.png</file>
         <file>Theme2/Image/StarLamp/barrierFreeAlarm.png</file>
@@ -425,11 +424,9 @@
         <file>Theme2/Image/StarLamp/ecasSystemFault.png</file>
         <file>Theme2/Image/StarLamp/footBrake.png</file>
         <file>Theme2/Image/StarLamp/forbidRunning.png</file>
-        <file>Theme2/Image/StarLamp/forwardGear.png</file>
         <file>Theme2/Image/StarLamp/frontControlAlarm.png</file>
         <file>Theme2/Image/StarLamp/frontDoorSignal.png</file>
         <file>Theme2/Image/StarLamp/frontFlogLamp.png</file>
-        <file>Theme2/Image/StarLamp/gapGear.png</file>
         <file>Theme2/Image/StarLamp/handBrake.png</file>
         <file>Theme2/Image/StarLamp/headLamp.png</file>
         <file>Theme2/Image/StarLamp/highBeamLamp.png</file>
@@ -713,5 +710,10 @@
         <file>Theme2/Qml/IconPanel.qml</file>
         <file>Theme2/Qml/Menu/DcdcSystemMenu.qml</file>
         <file>Theme2/Image/SubMenu/dc-dc.png</file>
+        <file>Theme2/Image/StarLamp/highVoltageMaintenance.png</file>
+        <file>Theme2/Image/StarLamp/oilPressureLow.png</file>
+        <file>Theme2/Image/StarLamp/oilLevelLow.png</file>
+        <file>Theme2/Image/StarLamp/batteryMainContact.png</file>
+        <file>Theme2/Image/StarLamp/airPressure.png</file>
     </qresource>
 </RCC>

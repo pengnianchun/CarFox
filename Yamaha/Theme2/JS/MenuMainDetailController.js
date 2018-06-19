@@ -19,7 +19,18 @@ function enterSettingSystemAction(settingSystem,settingSystemId,dateYMDHMId){
             settingSystem.settingSystemStatus = [false,true,false];
         }else{}
     }else if(settingSystem.settingSystemStatus[1]){
-        console.log("主题" + (settingSystemId[1].listViewSelectId.currentIndex+1) + "切换成功！");
+        var currentIndex = settingSystemId[1].listViewSelectId.currentIndex
+        console.debug("CustomTheme: " + currentIndex)
+        if (0 === currentIndex) {
+            UiController.switchThemeTo("CustomTheme1")
+        } else if (1 === currentIndex) {
+            UiController.switchThemeTo("CustomTheme2")
+        } else if (2 === currentIndex) {
+            UiController.switchThemeTo("CustomTheme3")
+        } else {
+            // default
+        }
+        console.log("主题" + (currentIndex + 1) + "切换成功！");
     }else if(settingSystem.settingSystemStatus[2]){
         var dateYMDHMStatusCount = settingSystem.dateYMDHMStatus.length;
         for(var i=0;i<dateYMDHMStatusCount;i++){

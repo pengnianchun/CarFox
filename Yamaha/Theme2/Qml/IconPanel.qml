@@ -63,17 +63,15 @@ Item {
     //右转向灯
     Image { visible:getVisible(CarMsg.lampTurnRight); x:855;y:25; source:sourceImageUrl+"turnRightLamp.png"; }
 
-    //?左上告警 // TODO: 图片
-    Image { visible:getVisible(CarMsg.lampTurnRight); x:40;y:90; source:sourceImageUrl+"airPressure1.png"; }
-    //?右上告警 // TODO: 图片
-    Image { visible:getVisible(CarMsg.lampTurnRight); x:1340;y:90; source:sourceImageUrl+"airPressure1.png"; }
-
+    //?左上告警
+    //Image { visible:getVisible(CarMsg.lampTurnLeft); x:40;y:90; source:sourceImageUrl+"airPressure.png"; }
+    //?右上告警
+    //Image { visible:getVisible(CarMsg.lampTurnRight); x:1340;y:90; source:sourceImageUrl+"airPressure.png"; }
 
     //左一
     ColumnLayout {
-        x: 140;
-        anchors.top: parent.top
-        anchors.topMargin: 160
+        x: 138
+        y: 140
         spacing: 10
         //前雾灯
         Image { visible:getVisible(CarMsg.lampFrontFog); source:sourceImageUrl+"frontFlogLamp.png"; }
@@ -89,17 +87,23 @@ Item {
 
     //左二
     ColumnLayout {
-        x: 200;
-        anchors.top: parent.top
-        anchors.topMargin: 230
+        x: 205
+        y: 192
         spacing: 10
+        //机油压力低
+        Image { visible:getVisible(CarMsg.lampOilPressureLow); source:sourceImageUrl+"oilPressureLow.png"; }
+        //油量低报警
+        Image { visible:getVisible(CarMsg.lampOilLevelLow); source:sourceImageUrl+"oilLevelLow.png"; }
+        //高压检修
+        Image { visible:getVisible(CarMsg.lampHighVoltageMaintenance); source:sourceImageUrl+"highVoltageMaintenance.png"; }
+        //后舱门指示
+        Image { visible:getVisible(CarMsg.lampRearDoorOpen); source:sourceImageUrl+"backHatchDoorAlarm.png"; }
     }
 
     //左三
     ColumnLayout {
-        x: 250;
-        anchors.top: parent.top
-        anchors.topMargin: 300
+        x: 268
+        y: 296
         spacing: 10
         //左侧舱门开报警
         Image { visible:getVisible(CarMsg.leftDoorsOpenAlarm); source:sourceImageUrl+"leftFrontShoe.png"; }
@@ -109,17 +113,17 @@ Item {
 
     //右一
     ColumnLayout {
-        x: 1250;
-        anchors.top: parent.top
-        anchors.topMargin: 160
+        x: 1256
+        y: 140
         spacing: 10
+        //电池主接触器KT
+        Image { visible:getVisible(CarMsg.lampBatteryMainContact); source:sourceImageUrl+"batteryMainContact.png"; }
     }
 
     //右二
     ColumnLayout {
-        x: 1200;
-        anchors.top: parent.top
-        anchors.topMargin: 200
+        x: 1189
+        y: 192
         spacing: 10
         //ABS指示
         Image { visible:getVisible(CarMsg.lampAbs); source:sourceImageUrl+"absIndicator.png"; }
@@ -127,37 +131,33 @@ Item {
         Image { visible:getVisible(CarMsg.lampBrake); source:sourceImageUrl+"footBrake.png"; }
         //驻车制动
         Image { visible:getVisible(CarMsg.lampParkingBrake); source:sourceImageUrl+"handBrake.png"; }
-
     }
 
     //右三
     ColumnLayout {
-        x: 1120;
-        anchors.top: parent.top
-        anchors.topMargin: 300
+        x: 1125;
+        y: 296
         spacing: 10
         //右侧舱门开报警
         Image { visible:getVisible(CarMsg.rightDoorsOpenAlarm); source:sourceImageUrl+"rightFrontShoe.png"; }
         //中门开
         Image { visible:getVisible(CarMsg.lampGate2); source:sourceImageUrl+"middleDoorSignal.png"; }
-
     }
 
     //右四
     ColumnLayout {
-        x: 1050;
-        anchors.top: parent.top
-        anchors.topMargin: 380
+        x: 1073
+        y: 351
         spacing: 10
         //水温高报警
         Image { visible:getVisible(CarMsg.lampWaterTempHigh); source:sourceImageUrl+"waterHeat.png"; }
     }
 
-    //左下其他
+    //左其他
     RowLayout {
         x: 120
-        y: 410
-        width: 450
+        y: 80
+        width: 440
         height: 50
         spacing: 5
         clip: true
@@ -196,15 +196,13 @@ Item {
         Image { visible:getVisible(CarMsg.airPress5Lamp); source:sourceImageUrl+"airPressure5.png"; }
         //电源门开启
         Image { visible:getVisible(CarMsg.powerDoorsOpen); source:sourceImageUrl+"powerDoorAlarm.png"; }
-        //后舱门指示
-        Image { visible:getVisible(CarMsg.lampRearDoorOpen); source:sourceImageUrl+"backHatchDoorAlarm.png"; }
     }
 
-    //右下其他
+    //右其他
     RowLayout {
-        x: 910
-        y: 410
-        width: 450
+        x: 890
+        y: 80
+        width: 435
         height: 50
         spacing: 5
         clip: true

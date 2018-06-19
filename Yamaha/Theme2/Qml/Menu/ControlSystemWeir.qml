@@ -524,6 +524,7 @@ MenuItem {
             height: parent.height
             fontSizeList: 15
             unitWidthList: 45
+            titleColorList: "#00a7f5"
         }
 
         ListViewWeir {
@@ -532,6 +533,7 @@ MenuItem {
             height: parent.height
             fontSizeList: 15
             unitWidthList: 45
+            titleColorList: "#00a7f5"
         }
     }
 
