@@ -63,6 +63,10 @@ Item {
     //右转向灯
     Image { visible:getVisible(CarMsg.lampTurnRight); x:855;y:25; source:sourceImageUrl+"turnRightLamp.png"; }
 
+    //双闪开启
+    Image { visible:getVisible(CarMsg.lampDoubleFlash); x:545;y:25; source:sourceImageUrl+"turnLeftLamp.png"; }
+    Image { visible:getVisible(CarMsg.lampDoubleFlash); x:855;y:25; source:sourceImageUrl+"turnRightLamp.png"; }
+
     //?左上告警
     //Image { visible:getVisible(CarMsg.lampTurnLeft); x:40;y:90; source:sourceImageUrl+"airPressure.png"; }
     //?右上告警
