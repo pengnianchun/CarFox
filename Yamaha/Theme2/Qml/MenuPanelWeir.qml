@@ -66,6 +66,10 @@ CommonItem {
     property int batteryPowerTotalAmpere: 100
     property int batteryPowerAmpereStart: 0;
     property int batteryPowerAmpere: CarMsg.totalCurrent;
+    //剩余电量SOC
+    property int socTotal: 100
+    property int socStart: 0
+    property int soc: CarMsg.soc
     //图片尺寸
     property real numberImageWidth: 32;
     property real numberImageHeight: 32;
@@ -145,17 +149,21 @@ CommonItem {
     onBatteryCurrentVoltChanged: {
         setBatteryCurrentVolt();
     }
+    onSocChanged: {
+        setBatteryCurrentVolt();
+    }
     function setBatteryCurrentVolt(){
         battery_animation1.from = batteryCurrentVoltStart;
         battery_animation1.to = batteryCurrentVolt;
-        battery_animation2.from = batteryCurrentVoltStart/batteryTotalVolt*127;
-        battery_animation2.to = batteryCurrentVolt/batteryTotalVolt*127;
+        battery_animation2.from = socStart/socTotal*127;
+        battery_animation2.to = soc/socTotal*127;
         battery_animation3.from = batteryCurrentVoltStart/batteryTotalVolt*127;
         battery_animation3.to = batteryCurrentVolt/batteryTotalVolt*127;
         batteryCurrentVoltStart = batteryCurrentVolt;
+        socStart = soc
         batteryAnimation.running = true;
         //蓄电池百分比
-        MenuPanelController.setGeneralValueAction(batteryPercentage_hundred,batteryPercentage_ten,batteryPercentage_bits,parseInt(batteryCurrentVolt/batteryTotalVolt*100));
+        MenuPanelController.setGeneralValueAction(batteryPercentage_hundred,batteryPercentage_ten,batteryPercentage_bits,soc);
         //蓄电池电量
         MenuPanelController.setGeneralValueAction(batteryVolt_hundred,batteryVolt_ten,batteryVolt_bits,batteryCurrentVolt);
     }

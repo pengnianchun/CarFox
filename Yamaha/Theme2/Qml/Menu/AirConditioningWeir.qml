@@ -27,15 +27,19 @@ MenuItem {
         // default
     }
 
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
+    }
+
     //空调系统信息
-    property int acFaultCode: CarMsg.acFaultCode //空调故障代码
-    property int acFanStatus: CarMsg.acFanStatus //空调风机状态
-    property int acWorkStatus: CarMsg.acWorkStatus //空调工作状态
+    property int acFaultCode: CarMsg.acFaultCode.toString(2) //空调故障代码
+    property int acFanStatus: CarMsg.acFanStatus.toString(2) //空调风机状态
+    property int acWorkStatus: CarMsg.acWorkStatus.toString(2) //空调工作状态
     property int acLife: CarMsg.acLife //空调Life
     property int acOutTemp: CarMsg.acOutTemp //车外实际温度
     property int acInTemp: CarMsg.acInTemp //车内实际温度
     property int acSetTemp: CarMsg.acSetTemp //设定温度
-    property int acRefrigereReq: CarMsg.acRefrigereReq //空调制冷请求
+    property int acRefrigereReq: CarMsg.acRefrigereReq.toString(2) //空调制冷请求
 
     onAcFaultCodeChanged: { //空调故障代码
         listmodelone.setProperty(0, "value", acFaultCode);

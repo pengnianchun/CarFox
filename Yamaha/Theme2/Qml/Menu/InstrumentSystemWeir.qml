@@ -45,7 +45,7 @@ MenuItem {
         var instrumentInfoResource = InstrumentInfo.getInsteumentInfo();
         InstrumentController.initializeInstrumentModel(listModelIdArray, instrumentInfoResource);
         //请求数据
-        CarMsg.sendMenuInfo(5,0);
+        CarMsg.sendMenuInfo(5, 0);
     }
 
     Timer {
