@@ -52,15 +52,15 @@ MenuItem {
     property bool highVoltagePowerUp: CarMsg.highVoltagePowerUp //高压上电状态
     property bool airCompressorWork: CarMsg.airCompressorWork //空压机工作状态
     property bool boosterPumpWork: CarMsg.boosterPumpWork //助力泵工作状态
-    property real airCompressorMotorSpeed: CarMsg.airCompressorMotorSpeed //空压机电机转速
-    property real steeringAssistMotorSpeed: CarMsg.steeringAssistMotorSpeed //转向助力电机转速
+    property real airCompressorMotorSpeed: CarMsg.airCompressorMotorSpeed.toFixed(1) //空压机电机转速
+    property real steeringAssistMotorSpeed: CarMsg.steeringAssistMotorSpeed.toFixed(1) //转向助力电机转速
     property int steeringAssistMotorTemp: CarMsg.steeringAssistMotorTemp //转向助力电机温度
     property int airCompressorMotorTemp: CarMsg.airCompressorMotorTemp //空压机电机温度
     property int airCompressorControlTemp: CarMsg.airCompressorControlTemp //空压控制器温度
     property int steeringControlDeviceTemp: CarMsg.steeringControlDeviceTemp //转向控制器温度
-    property real airPress3: CarMsg.airPress3 //气压3
-    property real airPress4: CarMsg.airPress4 //气压4
-    property real airPress5: CarMsg.airPress5 //气压5
+    property real airPress3: CarMsg.airPress3.toFixed(2) //气压3
+    property real airPress4: CarMsg.airPress4.toFixed(2) //气压4
+    property real airPress5: CarMsg.airPress5.toFixed(2) //气压5
     property int highestAlarmGrade: CarMsg.highestAlarmGrade //最高报警等级
     property int faultAlarmSituation: CarMsg.faultAlarmSituation //故障报警形式
     property int driveGearsMode: CarMsg.driveGearsMode //档位驱动模式

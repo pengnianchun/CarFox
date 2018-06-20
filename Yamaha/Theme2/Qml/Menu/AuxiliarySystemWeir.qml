@@ -27,12 +27,15 @@ MenuItem {
         // default
     }
 
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
+    }
+
     //辅助系统信息
-    property double oilPumpDcacWoutputCurrent: CarMsg.oilPumpDcacWoutputCurrent //油泵DC/AC W相输出电流
-    property double oilPumpDcacVoutputCurrent: CarMsg.oilPumpDcacVoutputCurrent //油泵DC/AC V相输出电流
-    property double oilPumpDcacUoutputCurrent: CarMsg.oilPumpDcacUoutputCurrent //油泵DC/AC U相输出电流
-    property int radiatorTemperature: CarMsg.radiatorTemperature //散热器温度
-    property int faultCode: CarMsg.faultCode //故障代码
+    property string oilPumpDcacWoutputCurrent: CarMsg.oilPumpDcacWoutputCurrent.toFixed(0) //油泵DC/AC W相输出电流
+    property string oilPumpDcacVoutputCurrent: CarMsg.oilPumpDcacVoutputCurrent.toFixed(0) //油泵DC/AC V相输出电流
+    property string oilPumpDcacUoutputCurrent: CarMsg.oilPumpDcacUoutputCurrent.toFixed(0) //油泵DC/AC U相输出电流
+    property string radiatorTemperature: CarMsg.radiatorTemperature //散热器温度
 
     onOilPumpDcacWoutputCurrentChanged: { //油泵DC/AC W相输出电流
         listmodelone.setProperty(0, "value", oilPumpDcacWoutputCurrent);
@@ -46,9 +49,6 @@ MenuItem {
     onRadiatorTemperatureChanged: { //散热器温度
         listmodelone.setProperty(3, "value", radiatorTemperature);
     }
-    onFaultCodeChanged: { //故障代码
-        listmodelone.setProperty(4, "value", faultCode);
-    }
 
     ListModel {
         id: listmodelone
@@ -56,7 +56,6 @@ MenuItem {
         ListElement { name: "油泵DC/AC V相输出电流"; value: "0"; unit: "A" }
         ListElement { name: "油泵DC/AC U相输出电流"; value: "0"; unit: "A" }
         ListElement { name: "散热器温度"; value: "0"; unit: "℃" }
-        ListElement { name: "故障代码"; value: "0"; unit: "" }
     }
 
     ListViewWeir {

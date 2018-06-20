@@ -28,13 +28,12 @@ MenuItem {
     }
 
     //TCU系统信息
-    property int actualClutchPosition: CarMsg.actualClutchPosition //离合实际位置
-    property int tcuFaultCode: CarMsg.tcuFaultCode //TCU故障信息
-    property int axisRpm: CarMsg.axisRpm //变速箱输出轴转速
-    property int fmi: CarMsg.fmi //FMI值
-    property int cm: CarMsg.cm //CM值
-    property int oc: CarMsg.oc //OC值
-
+    property string actualClutchPosition: CarMsg.actualClutchPosition //离合实际位置
+    property string tcuFaultCode: CarMsg.tcuFaultCode.toString(2) //TCU故障信息
+    property string axisRpm: CarMsg.axisRpm //变速箱输出轴转速
+    property string fmi: CarMsg.fmi //FMI值
+    property string cm: CarMsg.cm //CM值
+    property string oc: CarMsg.oc.toString(16) //OC值
 
     onActualClutchPositionChanged: { //离合实际位置
         listmodelone.setProperty(0, "value", actualClutchPosition);

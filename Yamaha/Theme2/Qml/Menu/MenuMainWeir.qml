@@ -48,9 +48,10 @@ MenuItem {
     previousMenu: function() {
         if(keyBoardStatus){
             //菜单切换上一步处理
-            menuCurrentIndex = (menuCurrentIndex - 1) % MenuMainController.menuInfoTitleArray.length
-            if (menuCurrentIndex < 0) {
+            if (menuCurrentIndex === 0) {
                 menuCurrentIndex = MenuMainController.menuInfoTitleArray.length - 1
+            } else {
+                menuCurrentIndex = (menuCurrentIndex - 1) % MenuMainController.menuInfoTitleArray.length
             }
         }
     }
