@@ -201,13 +201,13 @@ Item {
         //电源门开启
         Image { visible:getVisible(CarMsg.powerDoorsOpen); source:sourceImageUrl+"powerDoorAlarm.png"; }
         //除霜器
-        //Image { visible:getVisible(CarMsg.lampDefroster); source:sourceImageUrl+"defroster.png"; }
+        Image { visible:getVisible(CarMsg.lampDefroster); source:sourceImageUrl+"defroster.png"; }
         //除霜器1档位工作指示
-        //Image { visible:getVisible(CarMsg.lampDefroster1); source:sourceImageUrl+"defroster1.png"; }
+        Image { visible:getVisible(CarMsg.lampDefroster1); source:sourceImageUrl+"defroster.png"; }
         //除霜器2档位工作指示
-        //Image { visible:getVisible(CarMsg.lampDefroster2); source:sourceImageUrl+"defroster2.png"; }
+        Image { visible:getVisible(CarMsg.lampDefroster2); source:sourceImageUrl+"defroster.png"; }
         //电子驻坡
-        //Image { visible:getVisible(CarMsg.electronicInSlope); source:sourceImageUrl+"electronicInSlope.png"; }
+        Image { visible:getVisible(CarMsg.electronicInSlope); source:sourceImageUrl+"electronicInSlope.png"; }
     }
 
     //右其他
@@ -224,7 +224,7 @@ Item {
         //右后蹄片磨损报警
         Image { visible:getVisible(CarMsg.lampRightBackWear); source:sourceImageUrl+"rightBackShoe.png"; }
         //后视镜加热工作指示
-        //Image { visible:initialized?(CarMsg?CarMsg.lampMirrorHeating:false):false; x:761;y:12; source:sourceImageUrl+"lampMirrorHeating.png"; }
+        Image { visible:getVisible(CarMsg.lampMirrorHeating); source:sourceImageUrl+"lampMirrorHeating.png"; }
         //定速巡航开启
         Image { visible:getVisible(CarMsg.ascd); source:sourceImageUrl+"cruiseControl.png"; }
         //控制器及驱动电机过热
@@ -249,7 +249,7 @@ Item {
         //无障碍踏步伸出报警
         Image { visible:getVisible(CarMsg.barrierFreeMarchReach); source:sourceImageUrl+"barrierFreeAlarm.png"; }
         //充电门开报警
-        //Image { visible:getVisible(CarMsg.gateChargeOpen); source:sourceImageUrl+"gateChargeOpen.png"; }
+        Image { visible:getVisible(CarMsg.gateChargeOpen); source:sourceImageUrl+"gateChargeOpen.png"; }
 
         //ECAS系统故障指示灯
         Image { visible:getVisible(CarMsg.ecasSystemFaultLed); source:sourceImageUrl+"ecasSystemFault.png"; }
@@ -265,26 +265,37 @@ Item {
         Image { visible:getVisible(CarMsg.frontDoorExigencyAlarm); source:sourceImageUrl+"frontControlAlarm.png"; }
         //中门应急控制器报警
         Image { visible:getVisible(CarMsg.middleDoorExigencyAlarm); source:sourceImageUrl+"middleControlAlarm.png"; }
-
         //运行准备就绪
-        //Image { visible:getVisible(CarMsg.ready); source:sourceImageUrl+"ready.png"; }
+        Image { visible:getVisible(CarMsg.ready); source:sourceImageUrl+"readyRunning.png"; }
         //运行等待
         Image { visible:getVisible(CarMsg.wait); source:sourceImageUrl+"waitRunning.png"; }
         //禁止运行
         Image { visible:getVisible(CarMsg.stop); source:sourceImageUrl+"forbidRunning.png"; }
+        //车辆低速警示音关闭
+        Image { visible:getVisible(CarMsg.lampLowSpeedClose); source:sourceImageUrl+"lampLowSpeedClose.png"; }
+        //灯光总开关
+        Image { visible:getVisible(CarMsg.lampMainSwitch); source:sourceImageUrl+"lampMainSwitch.png"; }
+        //胎压异常报警
+        //Image { visible:getVisible(CarMsg.lampTirePreFault); source:sourceImageUrl+"tirePressure.png"; }
+        //动力蓄电池高温
+        Image { visible:getVisible(CarMsg.lampBatHigtTemp); source:sourceImageUrl+"lampBatHigtTemp.png"; }
+        //蓄驶里程指示器
+        Image { visible:getVisible(CarMsg.lampBatLegend); source:sourceImageUrl+"lampBatLegend.png"; }
+        //定时充电信号
+        Image { visible:getVisible(CarMsg.lampRton); source:sourceImageUrl+"lampRton.png"; }
     }
 
     RowLayout {
         x: 900
         y: 410
-        width: 106
-        height: 24
+        width: 82
+        height: 20
         clip: true
 
         //爬坡模式符号片
-        TextValueWeir { visible:getVisible(CarMsg.climbingMode); width: 106; height: 24; textTitle: "爬坡模式"; fontSize: 12; titleColor: "red" }
+        Image { visible:getVisible(CarMsg.climbingMode); source:sourceImageUrl+"climbingMode.png"; }
         //诊断模式符号片
-        TextValueWeir { visible:getVisible(CarMsg.diagnosticMode); width: 106; height: 24; textTitle: "诊断模式"; fontSize: 12; titleColor: "red" }
+        Image { visible:getVisible(CarMsg.diagnosticMode); source:sourceImageUrl+"diagnosticMode.png"; }
     }
 
     //Power模式符号片(纯电动模式 or 混动模式 or 插电模式)
@@ -295,7 +306,6 @@ Item {
         height: 24
         clip: true
 
-        //TextValueWeir { width: 106; height: 24; textTitle: "动力模式"; fontSize: 12; titleColor: "red" }
         //power纯电动模式
         Image { visible:getVisible(CarMsg.powerSupply); source:sourceImageUrl+"powerSupply.png"; }
         //power插电模式
@@ -303,14 +313,4 @@ Item {
         //power混动模式
         Image { visible:getVisible(CarMsg.powerByvridMode); source:sourceImageUrl+"powerByvridMode.png"; }
     }
-
-    //404 IMG NOT FOUND?
-    //车辆低速警示音关闭
-    //Image { visible:initialized?(CarMsg?CarMsg.lampLowSpeedClose:false):false; x:761;y:12; source:sourceImageUrl+"lampLowSpeedClose.png"; }
-    //灯光总开关
-    //Image { visible:initialized?(CarMsg?CarMsg.lampMainSwitch:false):false; x:761;y:12; source:sourceImageUrl+"lampMainSwitch.png"; }
-    //胎压异常报警
-    //Image { visible:initialized?(CarMsg?CarMsg.lampTirePreFault:false):false; x:761;y:12; source:sourceImageUrl+"tirePressure.png"; }
-    //动力蓄电池高温
-    //Image { visible:initialized?(CarMsg?CarMsg.lampBatHigtTemp:false):false; x:761;y:12; source:sourceImageUrl+"lampBatHigtTemp.png"; }
 }
