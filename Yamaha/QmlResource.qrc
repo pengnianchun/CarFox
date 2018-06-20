@@ -715,5 +715,16 @@
         <file>Theme2/Image/StarLamp/powerByvridMode.png</file>
         <file>Theme2/Image/StarLamp/powerPlugInMode.png</file>
         <file>Theme2/Image/StarLamp/powerSupply.png</file>
+        <file>Theme2/Image/StarLamp/defroster.png</file>
+        <file>Theme2/Image/StarLamp/climbingMode.png</file>
+        <file>Theme2/Image/StarLamp/diagnosticMode.png</file>
+        <file>Theme2/Image/StarLamp/lampRton.png</file>
+        <file>Theme2/Image/StarLamp/lampBatLegend.png</file>
+        <file>Theme2/Image/StarLamp/lampBatHigtTemp.png</file>
+        <file>Theme2/Image/StarLamp/lampMainSwitch.png</file>
+        <file>Theme2/Image/StarLamp/lampLowSpeedClose.png</file>
+        <file>Theme2/Image/StarLamp/gateChargeOpen.png</file>
+        <file>Theme2/Image/StarLamp/lampMirrorHeating.png</file>
+        <file>Theme2/Image/StarLamp/electronicInSlope.png</file>
     </qresource>
 </RCC>
