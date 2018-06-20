@@ -313,9 +313,6 @@
         <file>Theme2/Image/DialPanel/lightBlue.png</file>
         <file>Theme2/Image/DialPanel/lightRed.png</file>
         <file>Theme2/Image/DialPanel/mainRing.png</file>
-        <file>Theme2/Image/DialPanel/mode1.png</file>
-        <file>Theme2/Image/DialPanel/mode2.png</file>
-        <file>Theme2/Image/DialPanel/mode3.png</file>
         <file>Theme2/Image/DialPanel/oil.png</file>
         <file>Theme2/Image/DialPanel/oilPressure2.png</file>
         <file>Theme2/Image/DialPanel/rightWing.png</file>
@@ -715,5 +712,8 @@
         <file>Theme2/Image/StarLamp/oilLevelLow.png</file>
         <file>Theme2/Image/StarLamp/batteryMainContact.png</file>
         <file>Theme2/Image/StarLamp/airPressure.png</file>
+        <file>Theme2/Image/StarLamp/powerByvridMode.png</file>
+        <file>Theme2/Image/StarLamp/powerPlugInMode.png</file>
+        <file>Theme2/Image/StarLamp/powerSupply.png</file>
     </qresource>
 </RCC>

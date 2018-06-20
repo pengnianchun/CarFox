@@ -67,10 +67,10 @@ Item {
     Image { visible:getVisible(CarMsg.lampDoubleFlash); x:545;y:25; source:sourceImageUrl+"turnLeftLamp.png"; }
     Image { visible:getVisible(CarMsg.lampDoubleFlash); x:855;y:25; source:sourceImageUrl+"turnRightLamp.png"; }
 
-    //?左上告警
-    //Image { visible:getVisible(CarMsg.lampTurnLeft); x:40;y:90; source:sourceImageUrl+"airPressure.png"; }
-    //?右上告警
-    //Image { visible:getVisible(CarMsg.lampTurnRight); x:1340;y:90; source:sourceImageUrl+"airPressure.png"; }
+    //左气压低报警
+    Image { visible:getVisible(CarMsg.lampLeftLowAirPressure); x:40;y:90; source:sourceImageUrl+"airPressure.png"; }
+    //右气压低报警
+    Image { visible:getVisible(CarMsg.lampRightLowAirPressure); x:1340;y:90; source:sourceImageUrl+"airPressure.png"; }
 
     //左一
     ColumnLayout {
@@ -200,6 +200,14 @@ Item {
         Image { visible:getVisible(CarMsg.airPress5Lamp); source:sourceImageUrl+"airPressure5.png"; }
         //电源门开启
         Image { visible:getVisible(CarMsg.powerDoorsOpen); source:sourceImageUrl+"powerDoorAlarm.png"; }
+        //除霜器
+        //Image { visible:getVisible(CarMsg.lampDefroster); source:sourceImageUrl+"defroster.png"; }
+        //除霜器1档位工作指示
+        //Image { visible:getVisible(CarMsg.lampDefroster1); source:sourceImageUrl+"defroster1.png"; }
+        //除霜器2档位工作指示
+        //Image { visible:getVisible(CarMsg.lampDefroster2); source:sourceImageUrl+"defroster2.png"; }
+        //电子驻坡
+        //Image { visible:getVisible(CarMsg.electronicInSlope); source:sourceImageUrl+"electronicInSlope.png"; }
     }
 
     //右其他
@@ -241,7 +249,7 @@ Item {
         //无障碍踏步伸出报警
         Image { visible:getVisible(CarMsg.barrierFreeMarchReach); source:sourceImageUrl+"barrierFreeAlarm.png"; }
         //充电门开报警
-        //Image { visible:initialized?(CarMsg?CarMsg.gateChargeOpen:false):false; x:761;y:12; source:sourceImageUrl+"gateChargeOpen.png"; }
+        //Image { visible:getVisible(CarMsg.gateChargeOpen); source:sourceImageUrl+"gateChargeOpen.png"; }
 
         //ECAS系统故障指示灯
         Image { visible:getVisible(CarMsg.ecasSystemFaultLed); source:sourceImageUrl+"ecasSystemFault.png"; }
@@ -257,11 +265,46 @@ Item {
         Image { visible:getVisible(CarMsg.frontDoorExigencyAlarm); source:sourceImageUrl+"frontControlAlarm.png"; }
         //中门应急控制器报警
         Image { visible:getVisible(CarMsg.middleDoorExigencyAlarm); source:sourceImageUrl+"middleControlAlarm.png"; }
+
+        //运行准备就绪
+        //Image { visible:getVisible(CarMsg.ready); source:sourceImageUrl+"ready.png"; }
+        //运行等待
+        Image { visible:getVisible(CarMsg.wait); source:sourceImageUrl+"waitRunning.png"; }
+        //禁止运行
+        Image { visible:getVisible(CarMsg.stop); source:sourceImageUrl+"forbidRunning.png"; }
+    }
+
+    RowLayout {
+        x: 900
+        y: 410
+        width: 106
+        height: 24
+        clip: true
+
+        //爬坡模式符号片
+        TextValueWeir { visible:getVisible(CarMsg.climbingMode); width: 106; height: 24; textTitle: "爬坡模式"; fontSize: 12; titleColor: "red" }
+        //诊断模式符号片
+        TextValueWeir { visible:getVisible(CarMsg.diagnosticMode); width: 106; height: 24; textTitle: "诊断模式"; fontSize: 12; titleColor: "red" }
+    }
+
+    //Power模式符号片(纯电动模式 or 混动模式 or 插电模式)
+    RowLayout {
+        x: 1050
+        y: 410
+        width: 106
+        height: 24
+        clip: true
+
+        //TextValueWeir { width: 106; height: 24; textTitle: "动力模式"; fontSize: 12; titleColor: "red" }
+        //power纯电动模式
+        Image { visible:getVisible(CarMsg.powerSupply); source:sourceImageUrl+"powerSupply.png"; }
+        //power插电模式
+        Image { visible:getVisible(CarMsg.powerPlugInMode); source:sourceImageUrl+"powerPlugInMode.png"; }
+        //power混动模式
+        Image { visible:getVisible(CarMsg.powerByvridMode); source:sourceImageUrl+"powerByvridMode.png"; }
     }
 
     //404 IMG NOT FOUND?
-    //除霜器1档位工作指示
-    //Image { visible:initialized?(CarMsg?CarMsg.lampDefroster1:false):false; x:761;y:12; source:sourceImageUrl+"defroster.png"; }
     //车辆低速警示音关闭
     //Image { visible:initialized?(CarMsg?CarMsg.lampLowSpeedClose:false):false; x:761;y:12; source:sourceImageUrl+"lampLowSpeedClose.png"; }
     //灯光总开关
