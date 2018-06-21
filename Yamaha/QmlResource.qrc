@@ -726,5 +726,7 @@
         <file>Theme2/Image/StarLamp/gateChargeOpen.png</file>
         <file>Theme2/Image/StarLamp/lampMirrorHeating.png</file>
         <file>Theme2/Image/StarLamp/electronicInSlope.png</file>
+        <file>Theme2/Qml/Menu/OtherInformationMenu.qml</file>
+        <file>Theme2/Qml/Menu/TirePressureMenu.qml</file>
     </qresource>
 </RCC>

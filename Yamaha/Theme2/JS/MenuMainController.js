@@ -5,17 +5,20 @@ var menuInfoLayerArray = ["ControlSystem", "EngineSystem",
                           "AuxiliarySystem", "TcuSystem",
                           "BatterySystem", "BatteryStatus",
                           "AirCondition", "InstrumentSystem",
-                          "SettingSystem", "DcdcSystemMenu"]
+                          "SettingSystem", "DcdcSystemMenu",
+                          "OtherInformationMenu", "TirePressureMenu"]
 var menuInfoTitleArray = ["控制系统信息", "发动机系统信息",
                           "辅助系统信息", "TCU系统信息",
                           "电池管理系统信息", "电池状态系统信息",
                           "空调系统信息", "仪表系统信息",
-                          "设置", "DC/DC系统信息"]
+                          "设置", "DC/DC系统信息",
+                          "杂项信息查询", "胎压监测系统信息"]
 var menuInfoIconArray = ["icon1.png", "icon2.png",
                          "icon3.png", "icon4.png",
                          "icon5.png", "icon6.png",
                          "icon7.png", "icon8.png",
-                         "icon9.png", "dc-dc.png"]
+                         "icon9.png", "dc-dc.png",
+                         "icon9.png", "icon9.png"]
 var moduleInfoTitleArray = ["仪表系统信息", "前模块",
                             "中模块", "后模块"]
 var menuInstrumentSystemIndexSP = 7 // 仪表系统信息IndexSP
