@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import CustomEnum 1.0
 import "qrc:/Common/Component"
-
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
@@ -12,13 +11,25 @@ MenuItem {
     parentMenuId: "MenuMainDetail"
 
     property bool bKeyEnable: false
+
+    onVisibleChanged: {
+        if (visible) {
+            bKeyEnable = true
+        }
+    }
+
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
+    }
+
     property int tireIndex: -1;
     property int tireStudentNo: 0;  //需要学习轮胎的个数
-    property string sourceImageUrl: "qrc:/Theme/Theme1/Image/MenuPanel/"
+    property string sourceImageUrl: "qrc:/Theme/Theme2/Image/TirePressure/"
+
     //车胎压力温度信息
     property int tire1SensorBad: CarMsg.frontLeftTireSensorBad;
     property int tire1AirOut: CarMsg.frontLeftTireAirOut;
-    property real tire1Voltage: CarMsg.frontLeftTireVoltage;     //new
+    property real tire1Voltage: CarMsg.frontLeftTireVoltage;
     property real tire1Pressure: CarMsg.frontLeftTirePress.toFixed(1);
     property int tire1Temperature: CarMsg.frontLeftTireTemp;
 
@@ -59,25 +70,19 @@ MenuItem {
     property var tireIndexArray: [tireOne, tireTwo, tireThree, tireFour, tireFive, tireSix]
     property bool tireStatus: true;
 
-    onVisibleChanged: {
-        if (visible) {
-            bKeyEnable = true
-        }
-    }
-
-    enterMenu: function(){
-        if(bKeyEnable){
-            if(tireStatus){
+    enterMenu: function() {
+        if (bKeyEnable) {
+            if (tireStatus) {
                 tireIdArray[0].fontColor = "red";
                 tireIdArray[1].fontColor = "#06fd00";
                 CarMsg.sendTirePressContrl(tireIndex ,1);   //胎压学习设置接口  开始学习
                 tireStudentNo = tireIndex;
                 console.log("start student " + tireIndex);
                 tireStatus = false;
-            }else{
-                if(tireIdArray[0].fontColor === "red"){
+            } else {
+                if (tireIdArray[0].fontColor === "red") {
                     console.log("tire function " + tireIdArray[0].textValue);
-                }else{
+                } else {
                     console.log("tire function " + tireIdArray[1].textValue);
                 }
                 tireIdArray[0].fontColor = "#06fd00";
@@ -86,40 +91,40 @@ MenuItem {
                 setTireStudentDisable();
                 tireStatus = true;
             }
-        }else{}
+        }
     }
-    nextMenu: function(){
-        if((bKeyEnable)&&(!tireStatus)){
+    nextMenu: function() {
+        if ((bKeyEnable) && (!tireStatus)) {
             MenuMainDetailController.switchTireStatus(tireIdArray);
-        }else{
-            if(bKeyEnable){
+        } else {
+            if (bKeyEnable) {
                 tireIndex++;
-                if(tireIndex >= 6){
+                if (tireIndex >= 6) {
                     tireIndex = 5;
                 }
                 console.log("tire ++ " + tireIndex);
             }
         }
     }
-    previousMenu: function(){
-        if((bKeyEnable)&&(!tireStatus)){
+    previousMenu: function() {
+        if ((bKeyEnable) && (!tireStatus)) {
             MenuMainDetailController.switchTireStatus(tireIdArray);
-        }else{
-            if(bKeyEnable){
+        } else {
+            if (bKeyEnable) {
                 tireIndex --;
-                if(tireIndex <= -1){
+                if (tireIndex <= -1) {
                     tireIndex = -1
                 }
                 console.log("tire -- " + tireIndex);
             }
         }
     }
-    hideMenu: function(){
-        if(bKeyEnable){
-            if(tireStatus){
+    hideMenu: function() {
+        if (bKeyEnable) {
+            if (tireStatus) {
                 MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
                 bKeyEnable = false;
-            }else{
+            } else {
                 tireIdArray[0].fontColor = "#06fd00";
                 tireIdArray[1].fontColor = "#06fd00";
             }
@@ -139,6 +144,7 @@ MenuItem {
     onStudentStatusChanged: {//正在学习中的轮胎学习状态
         setStudentIndexEnable();
     }
+
     onTire1AirOutChanged: if(tire1AirOut == 1) {tireIndexArray[0].opacity = 1.0; tireIndexArray[0].source = sourceImageUrl + "tireRed.png"; tireInfo = "1轮胎漏气"}else{tireIndexArray[0].opacity = 0.0;}
     onTire2AirOutChanged: if(tire2AirOut == 1) {tireIndexArray[1].opacity = 1.0; tireIndexArray[1].source = sourceImageUrl + "tireRed.png"; tireInfo = "2轮胎漏气"}else{tireIndexArray[1].opacity = 0.0;}
     onTire3AirOutChanged: if(tire3AirOut == 1) {tireIndexArray[2].opacity = 1.0; tireIndexArray[2].source = sourceImageUrl + "tireRed.png"; tireInfo = "3轮胎漏气"}else{tireIndexArray[2].opacity = 0.0;}

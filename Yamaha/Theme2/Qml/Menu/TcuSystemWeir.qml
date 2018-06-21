@@ -27,6 +27,10 @@ MenuItem {
         // default
     }
 
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
+    }
+
     //TCU系统信息
     property string actualClutchPosition: CarMsg.actualClutchPosition //离合实际位置
     property string tcuFaultCode: CarMsg.tcuFaultCode.toString(2) //TCU故障信息

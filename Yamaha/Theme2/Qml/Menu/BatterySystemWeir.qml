@@ -27,6 +27,10 @@ MenuItem {
         // default
     }
 
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
+    }
+
     //电池管理系统
     property double batMaxChargeCurrent: CarMsg.batMaxChargeCurrent //最大允许充电电流
     property double batMaxDischargeCurrent: CarMsg.batMaxDischargeCurrent //最大允许放电电流

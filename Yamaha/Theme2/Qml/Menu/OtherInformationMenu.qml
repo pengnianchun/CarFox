@@ -19,7 +19,11 @@ MenuItem {
         }
     }
 
-    enterMenu: function(){
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
+    }
+
+    enterMenu: function() {
         if (bKeyEnable) {
             if (open_buzzer.fontColor === "#00a7f5") {
                 CarMsg.sendBuzzerControl(true);
@@ -32,19 +36,19 @@ MenuItem {
             }
         }
     }
-    hideMenu: function(){
+    hideMenu: function() {
         if (bKeyEnable) {
             MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId)
             UiController.currentLayerId = "closeOtherInformationMenu";
             bKeyEnable = false;
         }
     }
-    previousMenu: function(){
+    previousMenu: function() {
         if (bKeyEnable) {
             chooseBuzzerStatusAction();
         }
     }
-    nextMenu: function(){
+    nextMenu: function() {
         if (bKeyEnable) {
             chooseBuzzerStatusAction();
         }

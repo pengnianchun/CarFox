@@ -728,5 +728,10 @@
         <file>Theme2/Image/StarLamp/electronicInSlope.png</file>
         <file>Theme2/Qml/Menu/OtherInformationMenu.qml</file>
         <file>Theme2/Qml/Menu/TirePressureMenu.qml</file>
+        <file>Theme2/Image/TirePressure/tireYellow.png</file>
+        <file>Theme2/Image/TirePressure/tireRed.png</file>
+        <file>Theme2/Image/TirePressure/tireOther.png</file>
+        <file>Theme2/Image/TirePressure/tireGreen.png</file>
+        <file>Theme2/Image/TirePressure/tire.png</file>
     </qresource>
 </RCC>
