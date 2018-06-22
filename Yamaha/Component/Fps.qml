@@ -3,14 +3,15 @@ import QtQuick.Layouts 1.0
 
 Item {
     id: root
-    width: 800
-    height: 50
+    z: 100
+    width: 1440
+    height: 100
+
     property int fps: 60
     property int frameCounter: 0
-    z: 100
-/*
+    property bool hidden: false
+
     Item {
-        id: spinnerImage
         NumberAnimation on x {
             from:0
             to: 1000
@@ -19,16 +20,17 @@ Item {
         }
         onXChanged: ++frameCounter
     }
+
     Text {
-        anchors.left: parent.left
-        anchors.leftMargin: 350
+        anchors.right: parent.right
+        anchors.rightMargin: 10
         objectName: "fpsText"
-        text: root.fps + " fps"
+        text: "FPS: " + root.fps
         color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1);
         font.pixelSize: 24
-        anchors.centerIn: parent
         font.family: "WenQuanYi Micro Hei"
     }
+
     Timer {
         interval: 1000
         repeat: true
@@ -38,11 +40,17 @@ Item {
             frameCounter = 0
         }
     }
+
     RowLayout {
+        id: debugKey
         z: 50
+        width: 200
+        height: 80
         spacing: 20
         anchors.top: parent.top
         anchors.left: parent.left
+        visible: root.hidden
+
         Rectangle {
             id: button1
             width: 50
@@ -145,10 +153,15 @@ Item {
                     console.log("press igOn !")
                     CarMsg.carMode = 1;
                     CarMsg.carModeChanged(1);
-//                    CarMsg.keyShortPressed(3);
                 }
             }
         }
     }
-*/
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            root.hidden = !root.hidden
+        }
+    }
 }

@@ -5,7 +5,7 @@ TEMPLATE = app
 
 # Binary and obj files path
 DESTDIR = bin
-UI_DIR = build
+UI_DIR  = build
 MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
@@ -61,14 +61,16 @@ win32 {
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
+CONFIG += resources_big
+CONFIG += debug_and_release
 QMAKE_DISTCLEAN += .qtquickcompiler/*
 QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
-
-DEFINES += CARFOX_DEBUG_FPS
 
 # Close Debug Info When Release
 CONFIG(release, debug|release) {
 #    DEFINES += QT_NO_DEBUG_OUTPUT
+} else {
+    DEFINES += CARFOX_DEBUG_FPS
 }
 
 INCLUDEPATH += ./
@@ -79,7 +81,3 @@ fonts.path = /usr/lib
 INSTALLS += fonts
 
 include($$PWD/Yamaha.pri)
-CONFIG+=resources_big
-
-
-
