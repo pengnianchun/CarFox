@@ -1,0 +1,8 @@
+clean:
+  script: "make clean && make distclean"
+
+make:
+  script: "qmake && make -j4"
+
+install:
+  script: "cp Yamaha/bin/Yamaha /tmp"
