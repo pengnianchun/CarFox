@@ -1,6 +1,8 @@
-QT += qml quick serialport
+QT += quick
+QT += qml
+QT += serialport
 
-TARGET = Yamaha
+TARGET   = Yamaha
 TEMPLATE = app
 
 # Binary and obj files path
@@ -42,8 +44,6 @@ unix:!macx{
     QMAKE_POST_LINK += $(STRIP) $(TARGET)
 }
 win32 {
-
-
     INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
     LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll
     INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
@@ -74,11 +74,13 @@ CONFIG(release, debug|release) {
     DEFINES += CARFOX_DEBUG_FPS
 }
 
-INCLUDEPATH += ./
-INCLUDEPATH += ../Framework
-INCLUDEPATH += ../protofile/protocode
+#INCLUDEPATH += ./
+INCLUDEPATH += $$PWD/../Framework
+INCLUDEPATH += $$PWD/protofile/protocode
 
 fonts.path = /usr/lib
 INSTALLS += fonts
+
+QMAKE_CXXFLAGS += -Wno-unused-parameter
 
 include($$PWD/Yamaha.pri)
