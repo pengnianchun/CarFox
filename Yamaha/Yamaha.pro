@@ -76,7 +76,7 @@ CONFIG(release, debug|release) {
 
 INCLUDEPATH += ./
 INCLUDEPATH += ../Framework
-INCLUDEPATH += ../Yamaha/protofile/protocode
+INCLUDEPATH += ../protofile/protocode
 
 fonts.path = /usr/lib
 INSTALLS += fonts

@@ -39,7 +39,7 @@ unix {
 }
 
 win32 {
-    QMAKE_DEL_FILE          = del /f /s /q
+    QMAKE_DEL_FILE = del /f /s /q
     DEST = $$replace(PWD, /, \\)
     QMAKE_DISTCLEAN += $$DEST\protofile
 }
