@@ -1,4 +1,4 @@
-#include "qmlgifimage.h"
+#include "QmlGifImage.hpp"
 
 QmlGifImage::QmlGifImage(QQuickItem *parent) : QQuickPaintedItem(parent)
 {
