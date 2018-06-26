@@ -63,6 +63,7 @@ CONFIG += c++11
 CONFIG += qtquickcompiler
 CONFIG += resources_big
 CONFIG += debug_and_release
+CONFIG += qml_debug
 QMAKE_DISTCLEAN += .qtquickcompiler/*
 QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
 
@@ -75,7 +76,7 @@ CONFIG(release, debug|release) {
 
 INCLUDEPATH += ./
 INCLUDEPATH += ../Framework
-INCLUDEPATH += ./protofile/protocode
+INCLUDEPATH += ../Yamaha/protofile/protocode
 
 fonts.path = /usr/lib
 INSTALLS += fonts
