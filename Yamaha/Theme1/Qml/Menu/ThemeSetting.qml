@@ -12,7 +12,7 @@ MenuItem {
 
     property bool bKeyEnable: false
     property int  currentIndex: 0
-    property int  themeCount: 3 // CustomTheme1, CustomTheme2, CustomTheme3
+    property int  themeCount: 2 // CustomTheme1, CustomTheme2, CustomTheme3
 
     enterMenu: function() {
         currentIndex = listview_theme.listViewSelectId.currentIndex
