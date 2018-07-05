@@ -52,7 +52,6 @@ MenuItem {
         id: theme_model
         ListElement { name: "主题 1" }
         ListElement { name: "主题 2" }
-        ListElement { name: "主题 3" }
     }
 
     ListViewSelectWeir {
