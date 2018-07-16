@@ -9,8 +9,8 @@ CustomTheme2::CustomTheme2(std::shared_ptr<carfox::ContextProperty> contextPrope
 void CustomTheme2::create()
 {
     qDebug() << "CustomTheme2::create";
-    // 主界面 for instant show
-    //addLayer("qrc:/Theme2/Qml/Theme2/MainPanel.qml", "Themem2MainPanel", carfox::Layer::InstantShow);
+    // 主界面
+    addLayer("qrc:/Theme/theme2/MainPanel.qml", "MainPanel", carfox::Layer::InstantShow);
     // 触发界面 for manual show
     //addLayer("qrc:/Theme2/Qml/Theme2/TriggerPanel.qml", "Theme2TriggerPanel", carfox::Layer::ManualShow);
 

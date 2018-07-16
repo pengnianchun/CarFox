@@ -28,8 +28,9 @@
         <file>Component/TurnPageWeir.qml</file>
         <file>Component/WarningItem.qml</file>
     </qresource>
-    <qresource prefix="/Theme1">
+    <qresource prefix="/Theme">
         <file>theme1/Splash/Splash.qml</file>
         <file>theme1/HomePanel.qml</file>
+        <file>theme2/MainPanel.qml</file>
     </qresource>
 </RCC>
