@@ -1,9 +1,7 @@
-*.pro.user
-*.pro.user.*
 *~
+*.user
 bin
 build
-build-*
 Makefile
 *_plugin_import.cpp
 *_qml_plugin_import.cpp
@@ -13,4 +11,5 @@ Makefile
 Framework/lib/
 *.Debug
 *.Release
-win
+Thumbs.db
+Thumbs.db:encryptable
