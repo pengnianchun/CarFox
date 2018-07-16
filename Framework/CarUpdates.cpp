@@ -328,6 +328,7 @@ bool CarUpdates::readFile(std::string &content, const std::string &fileName)
 
     content.clear();
     if (fgets(buffer, 255, fp) == NULL) {
+	fclose(fp);
         return false;
     }
     content = buffer;
