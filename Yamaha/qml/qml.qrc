@@ -12,7 +12,7 @@
         <file>Component/ListViewRadioWeir.qml</file>
         <file>Component/ListViewSelectWeir.qml</file>
         <file>Component/ListViewWeir.qml</file>
-        <file>Component/MenuItem.qml</file>
+        <file alias="/Theme1">Component/MenuItem.qml</file>
         <file>Component/MpaListView.qml</file>
         <file>Component/ProgressViewWeir.qml</file>
         <file>Component/RootMenu.qml</file>
@@ -27,5 +27,9 @@
         <file>Component/TimeInfoWeir.qml</file>
         <file>Component/TurnPageWeir.qml</file>
         <file>Component/WarningItem.qml</file>
+    </qresource>
+    <qresource prefix="/Theme1">
+        <file>theme1/Splash/Splash.qml</file>
+        <file>theme1/HomePanel.qml</file>
     </qresource>
 </RCC>

@@ -22,7 +22,7 @@ QMAKE_DISTCLEAN += .qtquickcompiler/*
 QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
 
 # Close Debug Info When Release
-CONFIG(release, debug|release) {
+CONFIG(debug, debug|release) {
     DEFINES += QT_NO_DEBUG_OUTPUT
     QMAKE_CXXFLAGS += -Wno-unused-parameter
 } else {

@@ -29,20 +29,8 @@ SOURCES += \
     ./src/CustomTheme4.cpp \ 
     ./src/QmlGifImage.cpp
 
-#SOURCES += $$files($$PWD/protofile/protocode/*.pb.cc)
-#HEADERS += $$files($$PWD/protofile/protocode/*.pb.h)
 HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
-
-
-
-fonts.files += \ 
-    ./fonts/WenQuanYiZhenHei.ttf
 
 RESOURCES += \ 
     $$PWD/design.qrc \
     $$PWD/qml/qml.qrc
-
-DISTFILES += \
-    $$PWD/JS/MenuMainDetailController.js \
-    $$PWD/qml/theme1/main.qml \
-    $$PWD/qml/theme2/main.qml

@@ -14,8 +14,8 @@ void CustomTheme1::create()
     // 触发界面 for manual show
     //addLayer("qrc:/Theme/Theme1/Qml/TriggerPanel.qml", "Theme1TriggerPanel", carfox::Layer::ManualShow);
 
-//    addLayer("qrc:/Theme/Theme1/Qml/Splash/Splash.qml", "Splash", carfox::Layer::InstantShow);
-//    addLayer("qrc:/Theme/Theme1/Qml/HomePanel.qml", "HomePanel", carfox::Layer::ManualShow);
+//    addLayer("qrc:/Theme1/theme1/Splash/Splash.qml", "Splash", carfox::Layer::InstantShow);
+    addLayer("qrc:/Theme1/theme1/HomePanel.qml", "HomePanel", carfox::Layer::ManualShow);
 //    addLayer("qrc:/Theme/Theme1/Qml/MenuPanel.qml", "MenuPanel", carfox::Layer::ManualShow);
 //    addLayer("qrc:/Theme/Theme1/Qml/IndicatorPanel.qml", "IndicatorPanel", carfox::Layer::ManualShow);
 //    addLayer("qrc:/Theme/Theme1/Qml/Menu/DcdcSystemMenu.qml", "DcdcSystemMenu", carfox::Layer::ManualShow);
