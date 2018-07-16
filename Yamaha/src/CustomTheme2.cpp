@@ -10,7 +10,8 @@ void CustomTheme2::create()
 {
     qDebug() << "CustomTheme2::create";
     // 主界面
-    addLayer("qrc:/Theme/theme2/MainPanel.qml", "MainPanel", carfox::Layer::InstantShow);
+    addLayer("qrc:/Theme/theme2/HomePanel.qml", "HomePanel", carfox::Layer::InstantShow);
+    addLayer("qrc:/Theme/theme2/MenuPanel.qml", "MenuPanel", carfox::Layer::ManualShow);
     // 触发界面 for manual show
     //addLayer("qrc:/Theme2/Qml/Theme2/TriggerPanel.qml", "Theme2TriggerPanel", carfox::Layer::ManualShow);
 
