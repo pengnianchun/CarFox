@@ -6,4 +6,4 @@ cppcheck:
     script: "cppcheck -q ."
 
 build:
-    script: "./CI.sh"
+    script: "./.CI.sh"
