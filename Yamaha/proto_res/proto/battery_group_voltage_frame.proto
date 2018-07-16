@@ -1,9 +1,0 @@
-syntax = "proto2";
-
-package fyBatteryGroupVoltageInfo; //电池组电压信息
-
-message BatterySingleVoltage //单体电压信息
-{
-        required uint32 addr_number = 1;       //单体电池个数
-        repeated float voltage = 2;            //所有单体电池的电压值
-}

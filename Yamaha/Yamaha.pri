@@ -29,20 +29,11 @@ SOURCES += \
     ./src/CustomTheme4.cpp \ 
     ./src/QmlGifImage.cpp
 
-SOURCES += $$files($$PWD/protofile/protocode/*.pb.cc)
-HEADERS += $$files($$PWD/protofile/protocode/*.pb.h)
+#SOURCES += $$files($$PWD/protofile/protocode/*.pb.cc)
+#HEADERS += $$files($$PWD/protofile/protocode/*.pb.h)
 HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
 
-unix {
-    QMAKE_DEL_FILE = rm -rf
-    QMAKE_DISTCLEAN += -r $$PWD/protofile
-}
 
-win32 {
-    QMAKE_DEL_FILE = del /f /s /q
-    DEST = $$replace(PWD, /, \\)
-    QMAKE_DISTCLEAN += $$DEST\protofile
-}
 
 fonts.files += \ 
     ./fonts/WenQuanYiZhenHei.ttf

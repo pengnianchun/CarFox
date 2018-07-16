@@ -1,0 +1,4 @@
+[submodule "external/protofile"]
+	path = external/protofile
+	url = ssh://git@192.168.3.200:10022/qt/protofile.git
+	branch = Aries

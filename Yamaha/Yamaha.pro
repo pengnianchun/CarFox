@@ -1,86 +1,81 @@
+TEMPLATE = app
+
 QT += quick
 QT += qml
 QT += serialport
 
-TARGET   = Yamaha
-TEMPLATE = app
+CONFIG += c++11
+CONFIG += qtquickcompiler
+CONFIG += resources_big
+CONFIG += qml_debug
+CONFIG += debug_and_release
 
-# Binary and obj files path
+TARGET   = Yamaha
+
 DESTDIR = bin
 UI_DIR  = build
 MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
-PROTOTAG=v3.7
+
+QMAKE_DISTCLEAN += .qtquickcompiler/*
+QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
+
+# Close Debug Info When Release
+CONFIG(release, debug|release) {
+    DEFINES += QT_NO_DEBUG_OUTPUT
+    QMAKE_CXXFLAGS += -Wno-unused-parameter
+} else {
+    DEFINES += CARFOX_DEBUG_FPS
+}
+
+include($$PWD/../external/protofile/proto.pri)
+
+INCLUDEPATH += $$PWD/../Framework
+INCLUDEPATH += $$PWD/../external/protofile
 
 unix:!macx{
-    INCLUDEPATH += $$PWD/../externals/nanomsg/linux/include
-    INCLUDEPATH += $$PWD/../externals/protobuf/linux/include
+    INCLUDEPATH += $$PWD/../external/nanomsg/linux/include
+    INCLUDEPATH += $$PWD/../external/protofile/protobuf/linux/include
 
     LIBS += -L$$PWD/../Framework/lib/
 
     QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
     QMAKE_CXXFLAGS += -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
-    system(bash $$PWD/../externals/script/proto.sh $$PROTOTAG)
-
-    cross_compile { # ARM平台
+    cross_compile {
         LIBS += -lCarFoxArm
 
-        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/arm
-        LIBS += -L$$PWD/../externals/protobuf/linux/lib/arm
+        LIBS += -L$$PWD/../external/nanomsg/linux/lib/arm
+        LIBS += -L$$PWD/../external/protofile/protobuf/linux/lib/arm
     }
     else {
         LIBS += -lCarFoxLinux
 
-        LIBS += -L$$PWD/../externals/nanomsg/linux/lib/x86
-        LIBS += -L$$PWD/../externals/protobuf/linux/lib/x86
+        LIBS += -L$$PWD/../external/nanomsg/linux/lib/x86
+        LIBS += -L$$PWD/../external/protofile/protobuf/linux/lib/x86
 
         QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../Framework/lib/
-        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/nanomsg/linux/lib/x86
-        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../externals/protobuf/linux/lib/x86
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../external/nanomsg/linux/lib/x86
+        QMAKE_LFLAGS += -Wl,--rpath=$$PWD/../external/protofile/protobuf/linux/lib/x86
     }
     LIBS += -lnanomsg -lprotobuf
     QMAKE_POST_LINK += $(STRIP) $(TARGET)
 }
 win32 {
-    INCLUDEPATH += $$PWD/../externals/nanomsg/windows/include
-    LIBS += $$PWD/../externals/nanomsg/windows/libnanomsg.dll
-    INCLUDEPATH += $$PWD/../externals/protobuf/windows/include
-    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf.a
-#    LIBS += $$PWD/../externals/protobuf/windows/libprotobuf-lite.a
-#    LIBS += $$PWD/../externals/protobuf/windows/libprotoc.a
+    INCLUDEPATH += $$PWD/../external/nanomsg/windows/include
+    LIBS += $$PWD/../external/nanomsg/windows/libnanomsg.dll
+    INCLUDEPATH += $$PWD/../external/protofile/protobuf/windows/include
+    LIBS += $$PWD/../external/protofile/protobuf/windows/libprotobuf.a
     LIBS += $$PWD/../Framework/lib/libCarFoxWindows.a
 
     DEST = $$replace(PWD, /, \\)
-    QMAKE_POST_LINK += xcopy $$DEST\\..\\externals\\nanomsg\\windows\\libnanomsg.dll $$DESTDIR /y /e
-    system($$PWD/../externals/script/proto.bat $$PROTOTAG)
+    QMAKE_POST_LINK += xcopy $$DEST\\..\\external\\nanomsg\\windows\\libnanomsg.dll $$DESTDIR /y /e
+    system($$PWD/../external/script/proto.bat $$PROTOTAG)
     QMAKE_CXXFLAGS += -DGIT_VERSION="windowsVersion"
 }
 
-
-CONFIG += c++11
-CONFIG += qtquickcompiler
-CONFIG += resources_big
-CONFIG += debug_and_release
-CONFIG += qml_debug
-QMAKE_DISTCLEAN += .qtquickcompiler/*
-QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
-
-# Close Debug Info When Release
-CONFIG(release, debug|release) {
-#    DEFINES += QT_NO_DEBUG_OUTPUT
-} else {
-    DEFINES += CARFOX_DEBUG_FPS
-}
-
-#INCLUDEPATH += ./
-INCLUDEPATH += $$PWD/../Framework
-INCLUDEPATH += $$PWD/protofile/protocode
-
 fonts.path = /usr/lib
 INSTALLS += fonts
-
-QMAKE_CXXFLAGS += -Wno-unused-parameter
 
 include($$PWD/Yamaha.pri)

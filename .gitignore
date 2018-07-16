@@ -10,7 +10,6 @@ Makefile
 .qtquickcompiler/
 *_qtquickcompiler.qrc
 .qmake.stash
-*/protofile/
 Framework/lib/
 *.Debug
 *.Release
