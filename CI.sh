@@ -1,5 +1,7 @@
 #/bin/bash
 
+git submodule update
+
 qmake && make -j`nproc` && make clean
 qmake && make -j`nproc` && make distclean
 
