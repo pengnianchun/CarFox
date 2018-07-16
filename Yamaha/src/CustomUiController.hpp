@@ -1,14 +1,10 @@
 #pragma once
 
 #include <QObject>
-
 #include <UiController.hpp>
-
 #include "CustomMultiLanguage.hpp"
-
 #include "CustomCarMsg.hpp"
 #include "CustomCarMsgWorker.hpp"
-
 
 class CustomUiController : public carfox::UiController
 {
@@ -16,10 +12,7 @@ class CustomUiController : public carfox::UiController
 
 public:
     CustomUiController(int screenWidth, int screenHeight, bool firstInstance = true);
-
     void setReleaseVersion(const QString &releaseVersion);
-
-
 
 protected:
     virtual void createThemes(std::shared_ptr<carfox::ContextProperty> cp);
@@ -35,7 +28,7 @@ private slots: //槽函数
     void handleThemeModeChanged();
     void handleSystemShutdown();
     void handleSystemWakeup();
-    void handleInitialized(); // CarMsgWorker 收到重要信息后， 执行
+    void handleInitialized(); // CarMsgWorker 收到重要信息后，执行
     void handleStartShow(int data);   // CarMsgWorker 收到动画完成之后，执行
     void switchLanguage(); // 切换语言时候执行
     void showDormancy(); // 显示休眠界面

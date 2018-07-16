@@ -33,7 +33,7 @@ void CarMsgWorker::onReadyRead()
 
 void CarMsgWorker::timerEvent(QTimerEvent *e)
 {
-#if defined(Q_OS_LINUX)
+#if defined(Q_PROCESSOR_ARM)
     static int counter = 3;
     if(m_isLive == true){
         m_isLive = false;
@@ -41,17 +41,17 @@ void CarMsgWorker::timerEvent(QTimerEvent *e)
     }else{
         if(counter -- < 0){
             QString cmd;
-            QString filePath = "/home/root/error.txt";
-            QFile file(filePath);
+//            QString filePath = "/home/root/error.txt";
+//            QFile file(filePath);
 
-            if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)){
-                qDebug() << "open file fail...";
-                return;
-            }
-            QTextStream out(&file);
+//            if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append)){
+//                qDebug() << "open file fail...";
+//                return;
+//            }
+//            QTextStream out(&file);
 
-            out << "timerEvent:qt socket overtime！" <<endl;
-            file.close();
+//            out << "timerEvent:qt socket overtime！" <<endl;
+//            file.close();
 
             cmd = QString("kill -9 %1 ").arg(getpid());
             system(cmd.toUtf8().data());

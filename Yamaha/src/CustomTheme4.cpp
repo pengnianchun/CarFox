@@ -10,7 +10,7 @@ void CustomTheme4::create()
 {
     qDebug() << "CustomTheme1::create";
     // 主界面 for instant show
-       addLayer("qrc:/Theme4/Qml/Theme4/MainPanel.qml", "Themem4MainPanel", carfox::Layer::InstantShow);
-       // 触发界面 for manual show
-       addLayer("qrc:/Theme4/Qml/Theme4/TriggerPanel.qml", "Theme4TriggerPanel", carfox::Layer::ManualShow);
+//       addLayer("qrc:/Theme4/Qml/Theme4/MainPanel.qml", "Themem4MainPanel", carfox::Layer::InstantShow);
+//       // 触发界面 for manual show
+//       addLayer("qrc:/Theme4/Qml/Theme4/TriggerPanel.qml", "Theme4TriggerPanel", carfox::Layer::ManualShow);
 }

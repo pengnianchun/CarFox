@@ -39,8 +39,8 @@ fonts.files += \
     ./fonts/WenQuanYiZhenHei.ttf
 
 RESOURCES += \ 
-    ./QmlResource.qrc \
-    $$PWD/design.qrc
+    $$PWD/design.qrc \
+    $$PWD/qml/qml.qrc
 
 DISTFILES += \
     $$PWD/JS/MenuMainDetailController.js \
