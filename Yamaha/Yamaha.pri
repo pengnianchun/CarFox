@@ -43,4 +43,6 @@ RESOURCES += \
     $$PWD/design.qrc
 
 DISTFILES += \
-    $$PWD/JS/MenuMainDetailController.js
+    $$PWD/JS/MenuMainDetailController.js \
+    $$PWD/qml/theme1/main.qml \
+    $$PWD/qml/theme2/main.qml
