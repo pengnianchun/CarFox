@@ -7,8 +7,6 @@ QT += serialport
 CONFIG += c++11
 CONFIG += qtquickcompiler
 CONFIG += resources_big
-CONFIG += qml_debug
-CONFIG += debug_and_release
 
 TARGET   = Yamaha
 
@@ -23,10 +21,12 @@ QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
 
 # Close Debug Info When Release
 CONFIG(debug, debug|release) {
-    DEFINES += QT_NO_DEBUG_OUTPUT
+    CONFIG += qml_debug
+    CONFIG += debug_and_release
+    DEFINES += CARFOX_DEBUG_FPS
     QMAKE_CXXFLAGS += -Wno-unused-parameter
 } else {
-    DEFINES += CARFOX_DEBUG_FPS
+    DEFINES += QT_NO_DEBUG_OUTPUT
 }
 
 include($$PWD/../external/protofile/proto.pri)
