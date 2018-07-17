@@ -31,6 +31,9 @@
     <qresource prefix="/Theme">
         <file>theme1/Splash/Splash.qml</file>
         <file>theme1/HomePanel.qml</file>
-        <file>theme2/MainPanel.qml</file>
+        <file>theme2/HomePanel.qml</file>
+        <file>theme2/NQBackground.qml</file>
+        <file>theme2/NQImage.qml</file>
+        <file>theme2/MenuPanel.qml</file>
     </qresource>
 </RCC>
