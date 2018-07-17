@@ -6,53 +6,58 @@ Item {
     width: 1440
     height: 60
 
+    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
+    property string sourceImageGreyUrl: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
+
     ListModel {
         id: modelLeft
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/driverSystemFault.png"; enable: true}
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/HatchDoor1Alarm.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/chargingCable.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryCharging.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/motorHeat.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/lamp_AC.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/highPressureOverhaul.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_airFilter.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/HatchDoor2Alarm.png"; }
+        ListElement { src: "driverSystemFault.png"; enable: true }
+        ListElement { src: "HatchDoor1Alarm.png"; enable: true }
+        ListElement { src: "chargingCable.png"; enable: false }
+        ListElement { src: "batteryCharging.png"; enable: false }
+        ListElement { src: "motorHeat.png"; enable: false }
+        ListElement { src: "lamp_AC.png"; enable: false }
+        ListElement { src: "highPressureOverhaul.png"; enable: false }
+        ListElement { src: "Lamp_airFilter.png"; enable: false }
+        ListElement { src: "HatchDoor2Alarm.png"; enable: false }
     }
 
     ListModel {
         id: modelMiddle
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/TurnLeftWL.png"; enable: true}
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/leftBrakeAlarm.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/BrakeLight.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Defroster.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/mainPowerIndication.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_waterLow.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/ready.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_headlight.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/backFlogLamp.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_parkingBrake.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_airPress.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_ABS.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/TurnRightWL.png"; }
+        ListElement { src: "TurnLeftWL.png"; enable: true}
+        ListElement { src: "leftBrakeAlarm.png"; enable: false }
+        ListElement { src: "BrakeLight.png"; enable: false }
+        ListElement { src: "Defroster.png"; enable: false }
+        ListElement { src: "mainPowerIndication.png"; enable: false }
+        ListElement { src: "Lamp_waterLow.png"; enable: false }
+        ListElement { src: "ready.png"; enable: false }
+        ListElement { src: "Lamp_headlight.png"; enable: false }
+        ListElement { src: "backFlogLamp.png"; enable: false }
+        ListElement { src: "Lamp_parkingBrake.png"; enable: false }
+        ListElement { src: "Lamp_airPress.png"; enable: false }
+        ListElement { src: "Lamp_ABS.png"; enable: false }
+        ListElement { src: "TurnRightWL.png"; enable: false }
     }
 
     ListModel {
         id: modelRight
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_littleLight.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_insulationRed.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/motor_notworking.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryCut.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFault.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/lampBatHigtTemp.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFireAlarm.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/engineFailue.png"; }
+        ListElement { src: "Lamp_littleLight.png"; enable: false }
+        ListElement { src: "Lamp_insulationRed.png"; enable: false }
+        ListElement { src: "motor_notworking.png"; enable: false }
+        ListElement { src: "batteryCut.png"; enable: false }
+        ListElement { src: "batteryFault.png"; enable: false }
+        ListElement { src: "lampBatHigtTemp.png"; enable: false }
+        ListElement { src: "batteryFireAlarm.png"; enable: false }
+        ListElement { src: "engineFailue.png"; enable: false }
     }
 
     Component {
         id: nameDelegate
 
         Image {
-            source: model.src
+            asynchronous: true
+            cache: true
+            source: model.enable ? sourceImageUrl + model.src : sourceImageGreyUrl + model.src
         }
     }
 
