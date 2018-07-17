@@ -322,8 +322,6 @@ Item {
                 delegate: displayDelegate;
                 path: Path {
                     startX: 0; startY: 0;
-//                    PathAttribute { name: "iconScale"; value: 1.0; }
-//                    PathAttribute { name: "iconOpacity"; value: 1.0; }
                     PathQuad { x: 250; y: 20; controlX: 150; controlY: -20; }
                 }
                 pathItemCount: 3;
@@ -333,81 +331,6 @@ Item {
                 pathView.currentIndex = menuIndex-1;
             }
         }
-//        Item {
-//            id: pathViewMenu;
-//            x: 725;
-//            y: 10;
-//            opacity: 1;
-//            property int menuIndex: 0;
-//            ListModel {
-//                id: menuModel;
-//                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia.png";}
-//                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage.png";}
-//                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure.png";}
-//            }
-//            Component {
-//                id: displayDelegate;
-//                Item {
-//                    width:  0;
-//                    height: 0;
-//                    scale: PathView.iconScale;
-//                    Image {
-//                        id: myIcon;
-//                        y: 20;
-//                        anchors.horizontalCenter: parent.horizontalCenter;
-//                        source: icon;
-//                        smooth: true;
-//                    }
-//                    Text {
-//                        anchors {
-//                            horizontalCenter: parent.horizontalCenter;
-//                            bottom: myIcon.bottom;
-//                        }
-//                        text: name;
-//                        font.pointSize: 24;
-//                        font.family: fontFamily;
-//                        style: Text.Sunken;
-//                        styleColor: "green";
-//                        smooth: true;
-//                    }
-//                }
-//            }
-//            Component {
-//                id: displayHighlight;
-//                Rectangle {
-//                    width:  200;
-//                    height: 200;
-//                    border.color: "red";
-//                    color: "transparent"; //"lightsteelblue"
-//                    radius: 20;
-//                    opacity: 0; // 0.1
-//                }
-//            }
-//            PathView {
-//                id: pathView;
-//                highlight: displayHighlight;
-//                preferredHighlightBegin: 0.5;
-//                preferredHighlightEnd: 0.5;
-//                focus: true;
-//                model: menuModel;
-//                delegate: displayDelegate;
-//                path: Path {
-//                    startX: 10;
-//                    startY: 180;
-//                    PathAttribute { name: "iconScale"; value: 1; }
-//                    PathQuad { x: 0; y: 0; controlX: 50; controlY: 50; }
-//                    PathAttribute { name: "iconScale"; value: 1.0; }
-//                    PathQuad { x: 0; y: 0; controlX: 50; controlY: 50; }
-//                    PathAttribute { name: "iconScale"; value: 1; }
-//                }
-//                pathItemCount: 3;
-//                currentIndex: 0;
-//            }
-//            onMenuIndexChanged: {
-//                pathView.currentIndex = menuIndex-1;
-////                title.text = getDisplayText(menuIndex);
-//            }
-//        }
 
         // ------------------------- car picture -------------------------
         Item {
@@ -530,20 +453,20 @@ Item {
             }
         }
     }
-    Image {
-        id: pointer;
-        x: 120;
-        y: 100;
-        visible: true;
-        source: "qrc:/theme1/slice/Theme1/Slice/Pointer.png";
-    }
-
     MouseArea{
         id: mouseArea;
         anchors.fill: parent;
         onClicked: pathAnim.start();
     }
 
+    Image {
+        id: pointer;
+        x: 90;
+        y: 494;
+        visible: true;
+        rotation: -45;
+        source: "qrc:/theme1/slice/Theme1/Slice/Pointer.png";
+    }
     PathAnimation {
         id: pathAnim;
         target: pointer;
@@ -553,35 +476,18 @@ Item {
         orientationExitDuration: 100;
         easing.type: Easing.Linear;
         orientation: PathAnimation.TopFirst;
+        endRotation: 90;
 
         path: Path {
-            startX: 130;
-            startY: 537;
-            PathCurve { x: 127-30; y: 536; }  // position 0
-            PathCurve { x: 103-30; y: 514; }
-            PathCurve { x: 95-30;  y: 500; }
-            PathCurve { x: 87-30;  y: 478; }
-            PathCurve { x: 78-30;  y: 447; }  // position 40
-            PathCurve { x: 74-30;  y: 424; }
-            PathCurve { x: 73-30;  y: 410; }
-            PathCurve { x: 71-30;  y: 397; }
-            PathCurve { x: 69-30;  y: 374; }  // position 80
-            PathCurve { x: 67-30;  y: 346; }
-            PathCurve { x: 67-30;  y: 330; }
-            PathCurve { x: 67-30;  y: 304; }
-            PathCurve { x: 70-30;  y: 282; }  // position 120
-            PathCurve { x: 82-30;  y: 254; }
-            PathCurve { x: 93-30;  y: 229; }
-            PathCurve { x: 106-30; y: 207; }
-            PathCurve { x: 114-30; y: 196; }  // position 160
-            PathCurve { x: 144-30; y: 165; }
-            PathCurve { x: 165-30; y: 151; }
-            PathCurve { x: 191-30; y: 137; }
-            PathCurve { x: 242-30; y: 121-70; }  // position 200
-            PathCurve { x: 256-30; y: 118-70; }
-            PathCurve { x: 289-30; y: 110-70; }
-            PathCurve { x: 320-30; y: 106-70; }
-            PathCurve { x: 367-30; y: 105-70; }  // position 240
+            startX: 90;
+            startY: 494;
+            PathCurve { x: 90;  y: 494; }  // position 0
+            PathCurve { x: 49;  y: 401; }  // position 40
+            PathCurve { x: 36;  y: 311; }  // position 80
+            PathCurve { x: 40;  y: 223; }  // position 120
+            PathCurve { x: 94;  y: 112; }  // position 160
+            PathCurve { x: 246; y: 47; }   // position 200
+            PathCurve { x: 381; y: 38; }   // position 240
         }
     }
 }
