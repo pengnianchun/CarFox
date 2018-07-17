@@ -35,5 +35,7 @@
         <file>theme2/NQBackground.qml</file>
         <file>theme2/NQImage.qml</file>
         <file>theme2/MenuPanel.qml</file>
+        <file>theme2/IconPanel.qml</file>
+        <file>theme2/JS/HomePanelCtrl.js</file>
     </qresource>
 </RCC>

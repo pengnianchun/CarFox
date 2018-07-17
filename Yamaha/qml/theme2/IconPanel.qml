@@ -5,7 +5,7 @@ Item {
 
     RowLayout {
         anchors.verticalCenter: parent.verticalCenter
-        NQImage { src: "qrc:/Theme2/Symbol/resource/Theme2/Symbol/driverSystemFault.png" }
+        NQImage { src: "qrc:/theme2/symbol/Theme2/Symbol/driverSystemFault.png" }
 
     }
 
