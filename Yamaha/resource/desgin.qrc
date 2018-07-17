@@ -114,6 +114,9 @@
         <file>Theme1/Slice/Pointer_Projection.png</file>
         <file>Theme1/Slice/Pointer.png</file>
         <file>Theme1/Slice/Symbol_label.jpg</file>
+        <file>Theme1/Slice/mainpage.png</file>
+        <file>Theme1/Slice/multimedia.png</file>
+        <file>Theme1/Slice/tirepressure.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>font/msyhl.ttc</file>

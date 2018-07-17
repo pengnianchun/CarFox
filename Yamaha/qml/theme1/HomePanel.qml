@@ -295,6 +295,120 @@ Item {
             }
         }
 
+        // ------------------------- main menu panel -------------------------
+        Item {
+            x: 630;
+            y: 50;
+            property int menuIndex: 0;
+            ListModel {
+                id: menuModel;
+                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia.png";}
+                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage.png";}
+                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure.png";}
+            }
+
+            Component {
+                id: displayDelegate
+                Item {
+                    width: 40; height: 40;
+                    Image { source: icon; }
+                }
+            }
+
+            PathView {
+                id: pathView;
+                anchors.fill: parent;
+                model: menuModel;
+                delegate: displayDelegate;
+                path: Path {
+                    startX: 0; startY: 0;
+//                    PathAttribute { name: "iconScale"; value: 1.0; }
+//                    PathAttribute { name: "iconOpacity"; value: 1.0; }
+                    PathQuad { x: 250; y: 20; controlX: 150; controlY: -20; }
+                }
+                pathItemCount: 3;
+                currentIndex: 0;
+            }
+            onMenuIndexChanged: {
+                pathView.currentIndex = menuIndex-1;
+            }
+        }
+//        Item {
+//            id: pathViewMenu;
+//            x: 725;
+//            y: 10;
+//            opacity: 1;
+//            property int menuIndex: 0;
+//            ListModel {
+//                id: menuModel;
+//                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia.png";}
+//                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage.png";}
+//                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure.png";}
+//            }
+//            Component {
+//                id: displayDelegate;
+//                Item {
+//                    width:  0;
+//                    height: 0;
+//                    scale: PathView.iconScale;
+//                    Image {
+//                        id: myIcon;
+//                        y: 20;
+//                        anchors.horizontalCenter: parent.horizontalCenter;
+//                        source: icon;
+//                        smooth: true;
+//                    }
+//                    Text {
+//                        anchors {
+//                            horizontalCenter: parent.horizontalCenter;
+//                            bottom: myIcon.bottom;
+//                        }
+//                        text: name;
+//                        font.pointSize: 24;
+//                        font.family: fontFamily;
+//                        style: Text.Sunken;
+//                        styleColor: "green";
+//                        smooth: true;
+//                    }
+//                }
+//            }
+//            Component {
+//                id: displayHighlight;
+//                Rectangle {
+//                    width:  200;
+//                    height: 200;
+//                    border.color: "red";
+//                    color: "transparent"; //"lightsteelblue"
+//                    radius: 20;
+//                    opacity: 0; // 0.1
+//                }
+//            }
+//            PathView {
+//                id: pathView;
+//                highlight: displayHighlight;
+//                preferredHighlightBegin: 0.5;
+//                preferredHighlightEnd: 0.5;
+//                focus: true;
+//                model: menuModel;
+//                delegate: displayDelegate;
+//                path: Path {
+//                    startX: 10;
+//                    startY: 180;
+//                    PathAttribute { name: "iconScale"; value: 1; }
+//                    PathQuad { x: 0; y: 0; controlX: 50; controlY: 50; }
+//                    PathAttribute { name: "iconScale"; value: 1.0; }
+//                    PathQuad { x: 0; y: 0; controlX: 50; controlY: 50; }
+//                    PathAttribute { name: "iconScale"; value: 1; }
+//                }
+//                pathItemCount: 3;
+//                currentIndex: 0;
+//            }
+//            onMenuIndexChanged: {
+//                pathView.currentIndex = menuIndex-1;
+////                title.text = getDisplayText(menuIndex);
+//            }
+//        }
+
         // ------------------------- car picture -------------------------
         Item {
             id: car_picture;
