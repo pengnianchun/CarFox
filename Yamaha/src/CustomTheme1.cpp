@@ -15,7 +15,7 @@ void CustomTheme1::create()
     //addLayer("qrc:/Theme/Theme1/Qml/TriggerPanel.qml", "Theme1TriggerPanel", carfox::Layer::ManualShow);
 
 //    addLayer("qrc:/Theme1/theme1/Splash/Splash.qml", "Splash", carfox::Layer::InstantShow);
-    addLayer("qrc:/Theme1/theme1/HomePanel.qml", "HomePanel", carfox::Layer::ManualShow);
+    addLayer("qrc:/Theme/theme1/HomePanel.qml", "HomePanel", carfox::Layer::InstantShow);
 //    addLayer("qrc:/Theme/Theme1/Qml/MenuPanel.qml", "MenuPanel", carfox::Layer::ManualShow);
 //    addLayer("qrc:/Theme/Theme1/Qml/IndicatorPanel.qml", "IndicatorPanel", carfox::Layer::ManualShow);
 //    addLayer("qrc:/Theme/Theme1/Qml/Menu/DcdcSystemMenu.qml", "DcdcSystemMenu", carfox::Layer::ManualShow);

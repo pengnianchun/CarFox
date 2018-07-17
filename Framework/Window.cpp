@@ -10,14 +10,13 @@ Window::Window()
 #ifdef Q_PROCESSOR_ARM
     setWindowState(Qt::WindowFullScreen);
 #endif
-    setColor(QColor(Qt::transparent));
+//    setColor(QColor(Qt::transparent));
+    setColor(QColor(Qt::black));
 }
 
 Window::~Window()
 {
 
 }
-
-
 
 CARFOX_END_NAMESPACE

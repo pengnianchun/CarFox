@@ -48,43 +48,10 @@ void initEnv() {
 }
 #endif
 
-void initFont() {
-    QStringList m_fontList;
-
-    //QString fontFilePath("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/EuropeExt.ttf");
-    QString fontFilePath("/home/samba/CarFox_old/CarFox/Yamaha/Fonts/ConceptFont.ttf");
-    QFile fontFile(fontFilePath);
-    if (!fontFile.open(QIODevice::ReadOnly)) {
-        qWarning() << "font file" << fontFilePath << "load fail";
-        return;
-    }
-
-    int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
-    QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
-    std::for_each(loadedFontFamilies.begin(), loadedFontFamilies.end(),
-                  [=] (QString fontFamily) { qDebug() << fontFilePath << " : " << fontFamily; });
-
-    //int lcdFontId = QFontDatabase::addApplicationFont(":/Theme1/font/resource/Theme1/font/EuropeExt.ttf"); // 从source资源文件
-//    QString dir = QCoreApplication::applicationDirPath();
-//    int lcdFontId = QFontDatabase::addApplicationFont(dir + "/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/EuropeExt.ttf"); //从外部资源文件
-//    if (lcdFontId != -1) { // -1为加载失败
-//        m_fontList << QFontDatabase::applicationFontFamilies(lcdFontId);
-//    }
-
-    qDebug() << "m_fontList:" << m_fontList;
-//    if (!m_fontList.isEmpty()) {
-//        QFont font;
-//        font.setFamily(m_fontList.at(0));
-//    }
-}
-
-
 int main(int argc, char *argv[]) {
 #if defined(Q_PROCESSOR_ARM)
     initEnv();
 #endif
-
-    initFont();
 
     std::shared_ptr<QGuiApplication> app = std::make_shared<QGuiApplication>(argc, argv);
     std::unique_ptr<CustomUiController> uiController(new CustomUiController(1440, 540, false));

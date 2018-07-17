@@ -24,6 +24,7 @@ QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
 # Close Debug Info When Release
 CONFIG(debug, debug|release) {
     DEFINES += QT_NO_DEBUG_OUTPUT
+    DEFINES += CARFOX_DEBUG_FPS
     QMAKE_CXXFLAGS += -Wno-unused-parameter
 } else {
     DEFINES += CARFOX_DEBUG_FPS

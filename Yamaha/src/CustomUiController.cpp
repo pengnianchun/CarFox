@@ -223,6 +223,8 @@ void CustomUiController::loadFonts()
     loadFont(QDir::currentPath() + "/fonts/ConceptFont.ttf");
     loadFont(QDir::currentPath() + "/fonts/WenQuanYiMicroHei.ttf");
 #endif
+
+    qDebug() << "CustomUiController::loadFonts()";
 }
 
 std::shared_ptr<carfox::CarMsg> CustomUiController::createCarMsg()
