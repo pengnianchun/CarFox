@@ -345,7 +345,7 @@ void UiController::loadFont(const QString &fontPath)
     }
 
     // You can see the family names here
-    //#define DEBUG_FAMILIES
+    #define DEBUG_FAMILIES
 #ifdef DEBUG_FAMILIES
     int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
     QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
