@@ -105,6 +105,7 @@
         <file>Theme2/Num/2.png</file>
         <file>Theme2/Num/1.png</file>
         <file>Theme2/Num/0.png</file>
+        <file>Theme2/Symbol/circle_line.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

@@ -1,9 +1,10 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
+import CustomEnum 1.0
 import "qrc:/Component/Component"
 import "qrc:/Theme/theme2/JS/HomePanelCtrl.js" as HomeCtrl
 
-Item {
+CommonItem {
     width: 1440
     height: 540
 
@@ -16,7 +17,6 @@ Item {
     property int carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
     property int carBattery: 12; // 蓄电池电压
-
 
     FontLoader {
         id: msyh
@@ -65,6 +65,7 @@ Item {
 
     // 续航里程 & SOC
     Rectangle {
+        id: rectLeft
         anchors.top: carSpeed.bottom
         anchors.topMargin: 20
         anchors.left: carSpeed.left
@@ -112,6 +113,22 @@ Item {
         }
     }
 
+    RowLayout {
+        anchors.top: rectLeft.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: rectLeft.horizontalCenter
+
+        Image {
+            source: "qrc:/theme2/symbol/Theme2/Symbol/StopWL.png"
+        }
+        Text {
+            text: qsTr("水温高于98度")
+            color: "white"
+            font.family: msyh.name
+            font.pixelSize: 20
+        }
+    }
+
     // 转速
     Item {
         id: engineSpeed
@@ -143,6 +160,7 @@ Item {
 
     // 制动气压 & 蓄电池电压
     Rectangle {
+        id: rectRight
         anchors.top: engineSpeed.bottom
         anchors.topMargin: 20
         anchors.left: engineSpeed.left
@@ -187,6 +205,18 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Symbol/gear_R.png"
             }
         }
+    }
+
+    Image {
+        id: modePP
+        anchors.top: rectRight.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: rectRight.horizontalCenter
+        source: "qrc:/theme2/symbol/Theme2/Symbol/climbingmode.png"
+    }
+
+    MenuPanel {
+
     }
 
     Timer {

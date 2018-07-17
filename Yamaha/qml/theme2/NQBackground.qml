@@ -27,7 +27,7 @@ Item {
 
         ColumnLayout{
             anchors.fill: parent
-//            spacing: 10
+
             RowLayout {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: 20
@@ -52,8 +52,6 @@ Item {
                 font.pixelSize: 50
             }
         }
-
-
     }
 
     Image {
@@ -107,12 +105,31 @@ Item {
             source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
             asynchronous: true
             cache: true
+
+            Image {
+                id: circle_lineLeft
+                anchors.horizontalCenter: speed_left.horizontalCenter
+                source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
+                asynchronous: true
+                cache: true
+                rotation: 0
+            }
         }
+
         Image {
             id: speed_right
             source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
             asynchronous: true
             cache: true
+
+            Image {
+                id: circle_lineRight
+                anchors.horizontalCenter: speed_right.horizontalCenter
+                source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
+                asynchronous: true
+                cache: true
+                rotation: 0
+            }
         }
     }
 }
