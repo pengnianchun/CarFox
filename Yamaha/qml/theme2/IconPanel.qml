@@ -55,6 +55,8 @@ Item {
         id: nameDelegate
 
         Image {
+            asynchronous: true
+            cache: true
             source: model.enable ? sourceImageUrl + model.src : sourceImageGreyUrl + model.src
         }
     }

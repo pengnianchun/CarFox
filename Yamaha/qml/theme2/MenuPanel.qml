@@ -10,17 +10,7 @@ MenuItem {
     height: 350
 
 
-    ListModel {
-        id: modelRight
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_littleLight.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_insulationRed.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/motor_notworking.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryCut.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFault.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/lampBatHigtTemp.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFireAlarm.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/engineFailue.png"; }
-    }
+
 
     menuLayerId: "AuxiliarySystem"
     parentMenuId: "MenuMainDetail"
@@ -37,5 +27,40 @@ MenuItem {
     }
     nextMenu: function() {
         // default
+    }
+
+    ListModel {
+        id: modelMenu
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_littleLight.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_insulationRed.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/motor_notworking.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryCut.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFault.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/lampBatHigtTemp.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFireAlarm.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/engineFailue.png"; }
+    }
+
+    Component {
+        id: nameDelegate
+
+        Image {
+            asynchronous: true
+            cache: true
+            source: model.enable ? sourceImageUrl + model.src : sourceImageGreyUrl + model.src
+        }
+    }
+
+    ListView {
+        id: listLeft
+        width: 320
+        height: 40
+        anchors.right: listMiddle.left
+        anchors.verticalCenter: listMiddle.verticalCenter
+        clip: true
+        model: modelMenu
+        delegate: nameDelegate
+        spacing: 5
+        orientation: ListView.Horizontal
     }
 }
