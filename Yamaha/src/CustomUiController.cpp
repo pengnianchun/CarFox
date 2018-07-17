@@ -212,17 +212,20 @@ void CustomUiController::registerQmlTypes()
 
 void CustomUiController::loadFonts()
 {
-#ifdef Q_PROCESSOR_ARM
-    loadFont("/usr/lib/fonts/FangYan.ttf");
-    loadFont("/usr/lib/fonts/NotoSansHans-DemiLight.ttf");
-    loadFont("/usr/lib/fonts/ConceptFont.ttf");
-    loadFont("/usr/lib/fonts/WenQuanYiMicroHei.ttf");
-#else
-    loadFont(QDir::currentPath() + "/fonts/FangYan.ttf");
-    loadFont(QDir::currentPath() + "/fonts/NotoSansHans-DemiLight.ttf");
-    loadFont(QDir::currentPath() + "/fonts/ConceptFont.ttf");
-    loadFont(QDir::currentPath() + "/fonts/WenQuanYiMicroHei.ttf");
-#endif
+//#ifdef Q_PROCESSOR_ARM
+//    loadFont("/usr/lib/fonts/FangYan.ttf");
+//    loadFont("/usr/lib/fonts/NotoSansHans-DemiLight.ttf");
+//    loadFont("/usr/lib/fonts/ConceptFont.ttf");
+//    loadFont("/usr/lib/fonts/WenQuanYiMicroHei.ttf");
+//#else
+//    loadFont(QDir::currentPath() + "/fonts/FangYan.ttf");
+//    loadFont(QDir::currentPath() + "/fonts/NotoSansHans-DemiLight.ttf");
+//    loadFont(QDir::currentPath() + "/fonts/ConceptFont.ttf");
+//    loadFont(QDir::currentPath() + "/fonts/WenQuanYiMicroHei.ttf");
+//#endif
+
+    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/EuropeExt.ttf");
+    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/AdobeHeitiStd.ttc");
 
     qDebug() << "CustomUiController::loadFonts()";
 }
