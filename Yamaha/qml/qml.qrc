@@ -12,7 +12,7 @@
         <file>Component/ListViewRadioWeir.qml</file>
         <file>Component/ListViewSelectWeir.qml</file>
         <file>Component/ListViewWeir.qml</file>
-        <file alias="/Theme1">Component/MenuItem.qml</file>
+        <file>Component/MenuItem.qml</file>
         <file>Component/MpaListView.qml</file>
         <file>Component/ProgressViewWeir.qml</file>
         <file>Component/RootMenu.qml</file>
@@ -35,5 +35,8 @@
         <file>theme2/NQBackground.qml</file>
         <file>theme2/NQImage.qml</file>
         <file>theme2/MenuPanel.qml</file>
+        <file>theme2/IconPanel.qml</file>
+        <file>theme2/JS/HomePanelCtrl.js</file>
+        <file>theme2/NQText.qml</file>
     </qresource>
 </RCC>

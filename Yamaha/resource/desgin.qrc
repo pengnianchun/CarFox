@@ -84,16 +84,6 @@
         <file>Theme2/Symbol/motorHeat.png</file>
         <file>Theme2/Symbol/music.png</file>
         <file>Theme2/Symbol/navigation.png</file>
-        <file>Theme2/Symbol/no_0.png</file>
-        <file>Theme2/Symbol/no_1.png</file>
-        <file>Theme2/Symbol/no_2.png</file>
-        <file>Theme2/Symbol/no_3.png</file>
-        <file>Theme2/Symbol/no_4.png</file>
-        <file>Theme2/Symbol/no_5.png</file>
-        <file>Theme2/Symbol/no_6.png</file>
-        <file>Theme2/Symbol/no_7.png</file>
-        <file>Theme2/Symbol/no_8.png</file>
-        <file>Theme2/Symbol/no_9.png</file>
         <file>Theme2/Symbol/phone.png</file>
         <file>Theme2/Symbol/radiio.png</file>
         <file>Theme2/Symbol/ready.png</file>
@@ -105,6 +95,16 @@
         <file>Theme2/Symbol/StopWL.png</file>
         <file>Theme2/Symbol/TurnLeftWL.png</file>
         <file>Theme2/Symbol/TurnRightWL.png</file>
+        <file>Theme2/Num/9.png</file>
+        <file>Theme2/Num/8.png</file>
+        <file>Theme2/Num/7.png</file>
+        <file>Theme2/Num/6.png</file>
+        <file>Theme2/Num/5.png</file>
+        <file>Theme2/Num/4.png</file>
+        <file>Theme2/Num/3.png</file>
+        <file>Theme2/Num/2.png</file>
+        <file>Theme2/Num/1.png</file>
+        <file>Theme2/Num/0.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>
@@ -114,5 +114,10 @@
         <file>Theme1/Slice/Pointer_Projection.png</file>
         <file>Theme1/Slice/Pointer.png</file>
         <file>Theme1/Slice/Symbol_label.jpg</file>
+    </qresource>
+    <qresource prefix="/Fonts">
+        <file>font/msyhl.ttc</file>
+        <file>font/msyhbd.ttc</file>
+        <file>font/msyh.ttc</file>
     </qresource>
 </RCC>
