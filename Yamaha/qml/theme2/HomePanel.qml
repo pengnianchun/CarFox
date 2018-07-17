@@ -10,8 +10,13 @@ Item {
     visible: false
     layer.enabled: true
 
-    property real speedValue: CarMsg.carSpeed;
+    property int carSpeedValue: CarMsg.carSpeed;
     property int engineSpeedValue: CarMsg.rpm;
+
+    FontLoader {
+        id: msyh
+        source: "qrc:/Fonts/font/msyh.ttc"
+    }
 
     NQBackground {
         id: background
@@ -24,13 +29,6 @@ Item {
         height: 60
     }
 
-    function setSpeedValue(){
-        HomeCtrl.setSpeedValueAction(speed_hundred, speed_ten, speed_bits, speedValue);
-    }
-    function setEngineSpeedValue(){
-        HomeCtrl.setEngineValueAction(engine_thousand, engine_hundred, engine_ten, engine_bits, engineSpeedValue);
-    }
-
     Item {
         id: carSpeed
         anchors.top: parent.top
@@ -40,12 +38,12 @@ Item {
         width: 200
         height: 110
 
-        RowLayout {
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            Image { id: speed_hundred }
-            Image { id: speed_ten }
-            Image { id: speed_bits }
+        Text {
+            anchors.centerIn: parent
+            text: carSpeedValue
+            font.family: msyh.name
+            color: "white"
+            font.pixelSize: 135
         }
     }
 
@@ -58,13 +56,12 @@ Item {
         width: 200
         height: 110
 
-        RowLayout {
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
-            Image { id: engine_thousand }
-            Image { id: engine_hundred }
-            Image { id: engine_ten }
-            Image { id: engine_bits }
+        Text {
+            anchors.centerIn: parent
+            text: engineSpeedValue
+            font.family: msyh.name
+            color: "white"
+            font.pixelSize: 135
         }
     }
 
@@ -73,9 +70,9 @@ Item {
     }
 
     Component.onCompleted: {
-        setSpeedValue();
-        setEngineSpeedValue()
-        HomeCtrl.setSpeedValueAction(speed_hundred, speed_ten, speed_bits, 11);
-        HomeCtrl.setEngineValueAction(engine_thousand, engine_hundred, engine_ten, engine_bits, 222);
+        carSpeedValue = 111
+        engineSpeedValue = 222
     }
+
+
 }

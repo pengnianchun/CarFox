@@ -115,4 +115,9 @@
         <file>Theme1/Slice/Pointer.png</file>
         <file>Theme1/Slice/Symbol_label.jpg</file>
     </qresource>
+    <qresource prefix="/Fonts">
+        <file>font/msyhl.ttc</file>
+        <file>font/msyhbd.ttc</file>
+        <file>font/msyh.ttc</file>
+    </qresource>
 </RCC>
