@@ -10,8 +10,13 @@ Item {
     visible: false
     layer.enabled: true
 
-    property int carSpeedValue: CarMsg.carSpeed;
-    property int engineSpeedValue: CarMsg.rpm;
+    property int carSpeedValue: CarMsg.carSpeed; // 车速
+    property int engineSpeedValue: CarMsg.rpm; // 转速
+    property int carVoyage: 99 // 续航里程
+    property int carSoc: CarMsg.soc; // SOC
+    property real carBreakPressure: 1.0; // 制动气压
+    property int carBattery: 12; // 蓄电池电压
+
 
     FontLoader {
         id: msyh
@@ -29,6 +34,7 @@ Item {
         height: 60
     }
 
+    // 车速
     Item {
         id: carSpeed
         anchors.top: parent.top
@@ -41,12 +47,72 @@ Item {
         Text {
             anchors.centerIn: parent
             text: carSpeedValue
-            font.family: msyh.name
             color: "white"
+            font.family: msyh.name
             font.pixelSize: 135
         }
     }
 
+    // 车速单位
+    Text {
+        anchors.left: carSpeed.right
+        anchors.bottom: carSpeed.bottom
+        text: qsTr("km/h")
+        color: "#666666"
+        font.family: msyh.name
+        font.pixelSize: 16
+    }
+
+    // 续航里程 & SOC
+    Rectangle {
+        anchors.top: carSpeed.bottom
+        anchors.topMargin: 20
+        anchors.left: carSpeed.left
+        width: 220
+        height: 120
+        radius: 10
+        color: "#111111"
+
+        ColumnLayout {
+            spacing: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+            Text {
+                text: qsTr("续航里程：") + carVoyage + qsTr(" km")
+                color: "#666666"
+                font.family: msyh.name
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("SOC：") + carSoc + qsTr(" %")
+                color: "#666666"
+                font.family: msyh.name
+                font.pixelSize: 16
+            }
+        }
+
+        // SOC  图片
+        Image {
+            id: socImage
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "qrc:/theme2/symbol/Theme2/Symbol/soc.png"
+        }
+
+        Row {
+            anchors.left: socImage.left
+            anchors.leftMargin: 8
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 25
+            spacing: 3
+            Repeater {
+                model: 10
+                Image { source: "qrc:/theme2/symbol/Theme2/Symbol/soc_progress.png" }
+            }
+        }
+    }
+
+    // 转速
     Item {
         id: engineSpeed
         anchors.top: parent.top
@@ -59,9 +125,82 @@ Item {
         Text {
             anchors.centerIn: parent
             text: engineSpeedValue
-            font.family: msyh.name
             color: "white"
+            font.family: msyh.name
             font.pixelSize: 135
+        }
+    }
+
+    // 转速单位
+    Text {
+        anchors.left: engineSpeed.right
+        anchors.bottom: engineSpeed.bottom
+        text: qsTr("x1000\r\nr/min")
+        color: "#666666"
+        font.family: msyh.name
+        font.pixelSize: 16
+    }
+
+    // 制动气压 & 蓄电池电压
+    Rectangle {
+        anchors.top: engineSpeed.bottom
+        anchors.topMargin: 20
+        anchors.left: engineSpeed.left
+        width: 220
+        height: 120
+        radius: 10
+        color: "#111111"
+
+        ColumnLayout {
+            spacing: 5
+            anchors.horizontalCenter: parent.horizontalCenter
+            Text {
+                text: qsTr("制动气压： ") + carBreakPressure + qsTr(" Mpa")
+                color: "#666666"
+                font.family: msyh.name
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("蓄电池电压： ") + carBattery + qsTr(" V")
+                color: "#666666"
+                font.family: msyh.name
+                font.pixelSize: 16
+            }
+        }
+
+        // 档位
+        RowLayout {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            spacing: 20
+            Image {
+                id: gearN
+                source: "qrc:/theme2/symbol/Theme2/Symbol/gear-N.png"
+            }
+            Image {
+                id: gearD
+                source: "qrc:/theme2/symbol/Theme2/Symbol/gear_D.png"
+            }
+            Image {
+                id: gearP
+                source: "qrc:/theme2/symbol/Theme2/Symbol/gear_R.png"
+            }
+        }
+    }
+
+    Timer {
+        id: demo_run
+        interval: 100
+        repeat: true
+        running: false
+        onTriggered: {
+            carSpeedValue = carSpeedValue++ // 车速
+            engineSpeedValue = Math.random(20) // 转速
+            carVoyage = Math.random(20) // 续航里程
+            carSoc = Math.random(20) // SOC
+            //carBreakPressure = Math.random(20) // 制动气压
+            carBattery = Math.random(30) // 蓄电池电压
         }
     }
 
@@ -70,9 +209,6 @@ Item {
     }
 
     Component.onCompleted: {
-        carSpeedValue = 111
-        engineSpeedValue = 222
+        demo_run.running = true
     }
-
-
 }

@@ -13,13 +13,19 @@ Item {
         visible: visible
     }
 
-    DropShadow {
+    ColorOverlay {
         anchors.fill: image
-        horizontalOffset: 3
-        verticalOffset: 3
-        radius: 8.0
-        samples: 17
-        color: "#666666"
-        source: image
+        source: src
+        color: "grey"
     }
+
+//    DropShadow {
+//        anchors.fill: image
+//        horizontalOffset: 3
+//        verticalOffset: 3
+//        radius: 8.0
+//        samples: 17
+//        color: "#666666"
+//        source: image
+//    }
 }

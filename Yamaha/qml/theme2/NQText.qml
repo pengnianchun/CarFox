@@ -6,7 +6,7 @@ Item {
     property string textValue: ""
 
     FontLoader {
-        id: fixedFont
+        id: msyh
         source: "qrc:/Fonts/font/msyh.ttc"
     }
 
