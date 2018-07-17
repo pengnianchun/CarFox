@@ -6,6 +6,11 @@ Item {
 
     layer.enabled: true
 
+    FontLoader {
+        id: msyh
+        source: "qrc:/Fonts/font/msyh.ttc"
+    }
+
     Rectangle {
         id: blackbg
         anchors.fill: parent
@@ -19,6 +24,34 @@ Item {
         visible: homepanel_visible
         color: "#111111"
         radius: 10
+
+        ColumnLayout{
+            anchors.fill: parent
+
+            RowLayout {
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 20
+                Image {
+                    source: "qrc:/theme2/symbol/Theme2/Symbol/Countdown.png"
+                    asynchronous: true
+                    cache: true
+                }
+
+                Text {
+                    text: qsTr("发车倒计时")
+                    color: "#0088ff"
+                    font.family: msyh.name
+                    font.pixelSize: 30
+                }
+            }
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("00:00")
+                color: "white"
+                font.family: msyh.name
+                font.pixelSize: 50
+            }
+        }
     }
 
     Image {
@@ -72,12 +105,31 @@ Item {
             source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
             asynchronous: true
             cache: true
+
+            Image {
+                id: circle_lineLeft
+                anchors.horizontalCenter: speed_left.horizontalCenter
+                source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
+                asynchronous: true
+                cache: true
+                rotation: 0
+            }
         }
+
         Image {
             id: speed_right
             source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
             asynchronous: true
             cache: true
+
+            Image {
+                id: circle_lineRight
+                anchors.horizontalCenter: speed_right.horizontalCenter
+                source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
+                asynchronous: true
+                cache: true
+                rotation: 0
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 import QtQuick 2.6
 import CustomEnum 1.0
 import QtQuick.Layouts 1.1
-import "qrc:/Common/Component"
 
 
 CommonItem {
