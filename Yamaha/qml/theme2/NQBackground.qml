@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.1
 
 Item {
     property bool homepanel_visible: true
+    property int carSpeedRotation: -120
 
     layer.enabled: true
 
@@ -112,7 +113,7 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
                 asynchronous: true
                 cache: true
-                rotation: 0
+                rotation: carSpeedRotation
             }
         }
 
@@ -128,8 +129,15 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
                 asynchronous: true
                 cache: true
-                rotation: 0
+                //rotation: carSpeedRotation
+
+                PathArc {
+                        x: 0; y: 100
+                        radiusX: 100; radiusY: 100
+                        useLargeArc: true
+                    }
             }
         }
     }
+
 }

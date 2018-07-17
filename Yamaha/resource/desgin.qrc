@@ -106,6 +106,41 @@
         <file>Theme2/Num/1.png</file>
         <file>Theme2/Num/0.png</file>
         <file>Theme2/Symbol/circle_line.png</file>
+        <file>Theme2/Symbol_gray/backFlogLamp.png</file>
+        <file>Theme2/Symbol_gray/batteryCharging.png</file>
+        <file>Theme2/Symbol_gray/batteryCut.png</file>
+        <file>Theme2/Symbol_gray/batteryFault.png</file>
+        <file>Theme2/Symbol_gray/batteryFireAlarm.png</file>
+        <file>Theme2/Symbol_gray/BrakeLight.png</file>
+        <file>Theme2/Symbol_gray/chargingCable.png</file>
+        <file>Theme2/Symbol_gray/Defroster.png</file>
+        <file>Theme2/Symbol_gray/driverSystemFault.png</file>
+        <file>Theme2/Symbol_gray/engineFailue.png</file>
+        <file>Theme2/Symbol_gray/HatchDoor1Alarm.png</file>
+        <file>Theme2/Symbol_gray/HatchDoor2Alarm.png</file>
+        <file>Theme2/Symbol_gray/highPressureOverhaul.png</file>
+        <file>Theme2/Symbol_gray/Lamp_ABS.png</file>
+        <file>Theme2/Symbol_gray/lamp_AC.png</file>
+        <file>Theme2/Symbol_gray/Lamp_airFilter.png</file>
+        <file>Theme2/Symbol_gray/Lamp_airPress.png</file>
+        <file>Theme2/Symbol_gray/Lamp_frontFog.png</file>
+        <file>Theme2/Symbol_gray/Lamp_headlight.png</file>
+        <file>Theme2/Symbol_gray/Lamp_highBeam.png</file>
+        <file>Theme2/Symbol_gray/Lamp_insulationRed.png</file>
+        <file>Theme2/Symbol_gray/Lamp_littleLight.png</file>
+        <file>Theme2/Symbol_gray/Lamp_parkingBrake.png</file>
+        <file>Theme2/Symbol_gray/Lamp_waterLow.png</file>
+        <file>Theme2/Symbol_gray/lampBatHigtTemp.png</file>
+        <file>Theme2/Symbol_gray/leftBrakeAlarm.png</file>
+        <file>Theme2/Symbol_gray/mainPowerIndication.png</file>
+        <file>Theme2/Symbol_gray/motor_notworking.png</file>
+        <file>Theme2/Symbol_gray/motorHeat.png</file>
+        <file>Theme2/Symbol_gray/ready.png</file>
+        <file>Theme2/Symbol_gray/rightBrakeAlarm.png</file>
+        <file>Theme2/Symbol_gray/Thumbs.db</file>
+        <file>Theme2/Symbol_gray/Thumbs.db:encryptable</file>
+        <file>Theme2/Symbol_gray/TurnLeftWL.png</file>
+        <file>Theme2/Symbol_gray/TurnRightWL.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

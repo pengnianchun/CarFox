@@ -223,14 +223,15 @@ CommonItem {
         id: demo_run
         interval: 100
         repeat: true
-        running: false
+        running: true
         onTriggered: {
-            carSpeedValue = carSpeedValue++ // 车速
-            engineSpeedValue = Math.random(20) // 转速
-            carVoyage = Math.random(20) // 续航里程
-            carSoc = Math.random(20) // SOC
-            //carBreakPressure = Math.random(20) // 制动气压
-            carBattery = Math.random(30) // 蓄电池电压
+            carSpeedValue ++ // 车速
+            engineSpeedValue++ // 转速
+            background.carSpeedRotation = carSpeedValue
+            carVoyage++ // 续航里程
+            carSoc++ // SOC
+            carBreakPressure++ // 制动气压
+            carBattery++ // 蓄电池电压
         }
     }
 

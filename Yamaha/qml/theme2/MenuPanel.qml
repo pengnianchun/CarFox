@@ -9,6 +9,19 @@ MenuItem {
     width: 750
     height: 350
 
+
+    ListModel {
+        id: modelRight
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_littleLight.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_insulationRed.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/motor_notworking.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryCut.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFault.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/lampBatHigtTemp.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFireAlarm.png"; }
+        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/engineFailue.png"; }
+    }
+
     menuLayerId: "AuxiliarySystem"
     parentMenuId: "MenuMainDetail"
 
