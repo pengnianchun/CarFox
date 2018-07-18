@@ -127,7 +127,6 @@
         <file>Theme2/Menu/music.png</file>
         <file>Theme2/Menu/navigation.png</file>
         <file>Theme2/Menu/phone.png</file>
-        <file>Theme2/Menu/radiio.png</file>
         <file>Theme2/Menu/setting.png</file>
         <file>Theme2/Modules/adas/anti_collision.png</file>
         <file>Theme2/Modules/adas/anti_offset.png</file>
@@ -201,6 +200,7 @@
         <file>Theme2/Modules/tirePressure/circle_wrong.png</file>
         <file>Theme2/Modules/tirePressure/right.png</file>
         <file>Theme2/Modules/tirePressure/wrong.png</file>
+        <file>Theme2/Menu/radio.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>
