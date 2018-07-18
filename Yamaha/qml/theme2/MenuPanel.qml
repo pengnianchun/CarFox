@@ -2,17 +2,13 @@ import QtQuick 2.0
 import CustomEnum 1.0
 import "qrc:/Component/Component"
 
-
 MenuItem {
-    id: root_item;
+    id: menu_item
 
-    width: 750
-    height: 350
+    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Menu/"
+    property string sourceImageGreyUrl: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
 
-
-
-
-    menuLayerId: "AuxiliarySystem"
+    menuLayerId: "MenuMainDetail"
     parentMenuId: "MenuMainDetail"
 
     enterMenu: function() {
@@ -31,14 +27,14 @@ MenuItem {
 
     ListModel {
         id: modelMenu
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_littleLight.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/Lamp_insulationRed.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/motor_notworking.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryCut.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFault.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/lampBatHigtTemp.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/batteryFireAlarm.png"; }
-        ListElement { src: "qrc:/theme2/symbol/Theme2/Symbol/engineFailue.png"; }
+        ListElement { src: "home.png"; enable: true }
+        ListElement { src: "navigation.png"; enable: true }
+        ListElement { src: "phone.png"; enable: true }
+        ListElement { src: "music.png"; enable: true }
+        ListElement { src: "radio.png"; enable: true }
+        ListElement { src: "setting.png"; enable: true }
+        ListElement { src: "adas.png"; enable: true }
+        ListElement { src: "more.png"; enable: true }
     }
 
     Component {
@@ -53,14 +49,13 @@ MenuItem {
 
     ListView {
         id: listLeft
-        width: 320
-        height: 40
-        anchors.right: listMiddle.left
-        anchors.verticalCenter: listMiddle.verticalCenter
+        width: 500
+        height: 35
+        anchors.centerIn: parent
         clip: true
         model: modelMenu
         delegate: nameDelegate
-        spacing: 5
+        spacing: 35
         orientation: ListView.Horizontal
     }
 }

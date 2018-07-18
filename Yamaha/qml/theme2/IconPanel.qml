@@ -58,7 +58,7 @@ Item {
             asynchronous: true
             cache: true
             source: model.enable ? sourceImageUrl + model.src : sourceImageGreyUrl + model.src
-            transform: Rotation { origin.x: 30; origin.y: 30; axis { x: 0; y: 0; z: 1 } angle: 50 }
+            transform: Rotation { origin.x: 30; origin.y: 30; axis { x: 0; y: 0; z: 1 } angle: 0 }
         }
     }
 
