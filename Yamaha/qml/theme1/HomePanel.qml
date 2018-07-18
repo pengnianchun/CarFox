@@ -605,12 +605,8 @@ Item {
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
         orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
-        var i=0;
-        console.log("-------------------------------------------------------");
         console.log("orbitData.length = " + orbitData.length);
-        while(i<240) {
-            console.log(i + orbitData[i][0] + orbitData[i][1]);
-        }
-        console.log("-------------------------------------------------------");
+        console.log("orbitData[0][0] = " + orbitData[0][0]);
+        console.log("orbitData[0][1] = " + orbitData[0][1]);
     }
 }
