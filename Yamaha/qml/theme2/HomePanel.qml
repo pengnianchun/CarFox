@@ -11,17 +11,14 @@ CommonItem {
     visible: false
     layer.enabled: true
 
+    property bool homepanel_visible: true
+
     property int carSpeedValue: CarMsg.carSpeed; // 车速
     property int engineSpeedValue: CarMsg.rpm; // 转速
     property int carVoyage: 99 // 续航里程
     property int carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
     property int carBattery: 12; // 蓄电池电压
-
-    FontLoader {
-        id: msyh
-        source: "qrc:/Fonts/Font/msyh.ttc"
-    }
 
     NQBackground {
         id: background

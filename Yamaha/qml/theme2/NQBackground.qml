@@ -3,8 +3,8 @@ import QtQuick.Layouts 1.1
 import QtQml 2.0
 
 Item {
-    property bool homepanel_visible: true
     property int carSpeedRotation: -120
+    property int remainTime: 10
 
     property real carTrip: 1.0
     property date currentDate: new Date()
@@ -83,14 +83,15 @@ Item {
 
             Image {
                 id: circle_lineLeft
-                anchors.horizontalCenter: speed_left.horizontalCenter
-                source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
+                x: 185
+                y: -5
+                source: "qrc:/theme2/symbol/Theme2/Symbol/circle.png"
                 asynchronous: true
                 cache: true
 
                 transform: Rotation {
                     id: minuteRotation
-                    //origin.x: 0; origin.y: 0;
+                    origin.x: 0; origin.y: 190;
                     angle: carSpeedRotation * 6
                     Behavior on angle {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
@@ -105,21 +106,40 @@ Item {
             asynchronous: true
             cache: true
 
-            Image {
-                id: circle_lineRight
-                anchors.horizontalCenter: speed_right.horizontalCenter
-                source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
-                asynchronous: true
-                cache: true
+            Rectangle {
+                x: 185
+                y: -5
+                width: 20
+                height: 20
+                radius: 10
+                color: "lightblue"
 
                 transform: Rotation {
-                    origin.x: 6.5; origin.y: 83;
+                    origin.x: 0; origin.y: 190;
                     angle: carSpeedRotation * 6
                     Behavior on angle {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
                 }
+
             }
+
+//            Image {
+//                id: circle_lineRight
+//                x: 185
+//                y: -5
+//                source: "qrc:/theme2/symbol/Theme2/Symbol/circle.png"
+//                asynchronous: true
+//                cache: true
+
+//                transform: Rotation {
+//                    origin.x: 0; origin.y: 190;
+//                    angle: carSpeedRotation * 6
+//                    Behavior on angle {
+//                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
+//                    }
+//                }
+//            }
         }
     }
 
@@ -252,7 +272,7 @@ Item {
             source: "qrc:/theme2/symbol/Theme2/Symbol/StopWL.png"
         }
         Text {
-            text: qsTr("水温高于98度")
+            text: qsTr("水温高于105度")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20

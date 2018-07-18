@@ -38,5 +38,6 @@
         <file>theme2/IconPanel.qml</file>
         <file>theme2/JS/HomePanelCtrl.js</file>
         <file>theme2/NQText.qml</file>
+        <file>theme2/Navigation.qml</file>
     </qresource>
 </RCC>
