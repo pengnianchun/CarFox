@@ -487,6 +487,7 @@ Item {
         visible: true;
         rotation: -23;
         source: "qrc:/theme1/slice/Theme1/Slice/Pointer.png";
+        scale: 0.8;
         //source: "qrc:/theme1/slice/Theme1/Slice/symmetry_pointer.png";
     }
 
@@ -636,10 +637,9 @@ Item {
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
-        orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
+        orbitData = MainpanelJS.initializeMainPanelPointerOrbitDataDiscrete();
         for(var i=0; i<240; i++) {
-//            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1]);
-//            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1]);
+            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1] + ", [2]=" + orbitData[i][2] + ", [3]=" + orbitData[i][3]);
         }
     }
 }
