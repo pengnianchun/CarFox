@@ -10,6 +10,7 @@ Item {
     width: 1440;
     height: 540;
     property var orbitData: [];
+    property int currentCarSpeedGraduation: 0
 
     Image {
         id: background;
@@ -460,11 +461,12 @@ Item {
         id: mouseArea;
         anchors.fill: parent;
         onClicked: {
-            if(turnForPathAnimGo) {
-                pathAnimGo.start();
-            } else {
-                pathAnimBack.start();
-            }
+            timer.start();
+//            if(turnForPathAnimGo) {
+//                pathAnimGo.start();
+//            } else {
+//                pathAnimBack.start();
+//            }
         }
 //        onPressed: {
 //            if(pathAnimGo.running) {
@@ -559,54 +561,85 @@ Item {
         }
     }
 
-//    PathAnimation {
-//        property int begin_x: 0;
-//        property int begin_y: 0;
-//        property int end_x: 0;
-//        property int end_y: 0;
+    PathAnimation {
+        property int begin_x: 0;
+        property int begin_y: 0;
+        property int end_x: 0;
+        property int end_y: 0;
 
-//        id: pathAnimGo_custom;
-//        target: pointer;
-//        duration: 3000;
-//        orientationEntryDuration: 0;
-//        orientationExitDuration: 0;
-//        easing.type: Easing.Linear;
-//        orientation: PathAnimation.TopFirst;
-//        endRotation: 0;
+        id: pathAnimGo_custom;
+        target: pointer;
+        duration: 100;
+        orientationEntryDuration: 100;
+        orientationExitDuration: 100;
+        easing.type: Easing.Linear;
+        orientation: PathAnimation.TopFirst;
+//        endRotation: 90;
 
-//        path: Path {
-//            startX: begin_x;
-//            startY: begin_y;
-//            PathCurve { x: end_x;  y: end_y; }
-//        }
+        path: Path {
+            startX: pathAnimGo_custom.begin_x;
+            startY: pathAnimGo_custom.begin_y;
+            PathCurve { x: pathAnimGo_custom.end_x;  y: pathAnimGo_custom.end_y; }
+        }
 
-//        onStarted: {
-//            console.log("pathAnimGo_custom start");
-//        }
+        onStarted: {
+            console.log("pathAnimGo_custom start");
+        }
 
-//        onStopped: {
-//            console.log("pathAnimGo_custom stoped");
-//        }
-//    }
+        onStopped: {
+            console.log("pathAnimGo_custom stoped");
+        }
+    }
 
-//    Timer {
-//        interval: 100;
-//        running: true;
-//        repeat: true
-//        onTriggered: {
-//            pathAnimGo_custom.begin_x = 0;
-//            pathAnimGo_custom.begin_y = 0;
-//            pathAnimGo_custom.end_x = 0;
-//            pathAnimGo_custom.end_y = 0;
-//            pathAnimGo_custom.start();
-//        }
-//    }
+    Timer {
+        property bool direction_forward : true
+        id: timer;
+        interval: 10;
+        running: false;
+        repeat: true
+        onTriggered: {
+            if(direction_forward) {
+                currentCarSpeedGraduation++;
+                if(currentCarSpeedGraduation >= 239) {
+                    running = false;
+                    direction_forward = false;
+                } else {
+                    pointer.rotation = orbitData[currentCarSpeedGraduation][2];
+                    pointer.scale = orbitData[currentCarSpeedGraduation][3];
+
+                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeedGraduation][0];
+                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeedGraduation][1];
+                    pathAnimGo_custom.end_x = orbitData[currentCarSpeedGraduation+1][0];
+                    pathAnimGo_custom.end_y = orbitData[currentCarSpeedGraduation+1][1];
+
+                    pathAnimGo_custom.start();
+                }
+            } else {
+                currentCarSpeedGraduation--;
+                if(currentCarSpeedGraduation <= 0) {
+                    running = false;
+                    direction_forward = true;
+                } else {
+                    pointer.rotation = orbitData[currentCarSpeedGraduation][2];
+                    pointer.scale = orbitData[currentCarSpeedGraduation][3];
+
+                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeedGraduation][0];
+                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeedGraduation][1];
+                    pathAnimGo_custom.end_x = orbitData[currentCarSpeedGraduation+1][0];
+                    pathAnimGo_custom.end_y = orbitData[currentCarSpeedGraduation+1][1];
+
+                    pathAnimGo_custom.start();
+                }
+            }
+        }
+    }
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
         orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
         for(var i=0; i<240; i++) {
-            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1]);
+//            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1]);
+//            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1]);
         }
     }
 }
