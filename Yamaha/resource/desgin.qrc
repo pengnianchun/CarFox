@@ -40,7 +40,6 @@
         <file>Theme1/label/home_label.png</file>
     </qresource>
     <qresource prefix="/theme2/symbol">
-        <file>Theme2/Symbol/adas.png</file>
         <file>Theme2/Symbol/backFlogLamp.png</file>
         <file>Theme2/Symbol/batteryCharging.png</file>
         <file>Theme2/Symbol/batteryCut.png</file>
@@ -60,7 +59,6 @@
         <file>Theme2/Symbol/HatchDoor1Alarm.png</file>
         <file>Theme2/Symbol/HatchDoor2Alarm.png</file>
         <file>Theme2/Symbol/highPressureOverhaul.png</file>
-        <file>Theme2/Symbol/home.png</file>
         <file>Theme2/Symbol/Lamp_ABS.png</file>
         <file>Theme2/Symbol/lamp_AC.png</file>
         <file>Theme2/Symbol/Lamp_airFilter.png</file>
@@ -79,32 +77,16 @@
         <file>Theme2/Symbol/line_right.png</file>
         <file>Theme2/Symbol/line_up.png</file>
         <file>Theme2/Symbol/mainPowerIndication.png</file>
-        <file>Theme2/Symbol/more.png</file>
         <file>Theme2/Symbol/motor_notworking.png</file>
         <file>Theme2/Symbol/motorHeat.png</file>
-        <file>Theme2/Symbol/music.png</file>
-        <file>Theme2/Symbol/navigation.png</file>
-        <file>Theme2/Symbol/phone.png</file>
-        <file>Theme2/Symbol/radiio.png</file>
         <file>Theme2/Symbol/ready.png</file>
         <file>Theme2/Symbol/rightBrakeAlarm.png</file>
-        <file>Theme2/Symbol/setting.png</file>
         <file>Theme2/Symbol/soc_progress.png</file>
         <file>Theme2/Symbol/soc.png</file>
         <file>Theme2/Symbol/speed.png</file>
         <file>Theme2/Symbol/StopWL.png</file>
         <file>Theme2/Symbol/TurnLeftWL.png</file>
         <file>Theme2/Symbol/TurnRightWL.png</file>
-        <file>Theme2/Num/9.png</file>
-        <file>Theme2/Num/8.png</file>
-        <file>Theme2/Num/7.png</file>
-        <file>Theme2/Num/6.png</file>
-        <file>Theme2/Num/5.png</file>
-        <file>Theme2/Num/4.png</file>
-        <file>Theme2/Num/3.png</file>
-        <file>Theme2/Num/2.png</file>
-        <file>Theme2/Num/1.png</file>
-        <file>Theme2/Num/0.png</file>
         <file>Theme2/Symbol/circle_line.png</file>
         <file>Theme2/Symbol_gray/backFlogLamp.png</file>
         <file>Theme2/Symbol_gray/batteryCharging.png</file>
@@ -139,78 +121,86 @@
         <file>Theme2/Symbol_gray/rightBrakeAlarm.png</file>
         <file>Theme2/Symbol_gray/TurnLeftWL.png</file>
         <file>Theme2/Symbol_gray/TurnRightWL.png</file>
-        <file>Theme2/adas/anti_collision.png</file>
-        <file>Theme2/adas/anti_offset.png</file>
-        <file>Theme2/adas/speedLimit.png</file>
-        <file>Theme2/adas/warining.png</file>
-        <file>Theme2/calendarTemp/airPressure.png</file>
-        <file>Theme2/calendarTemp/calendar_white.png</file>
-        <file>Theme2/calendarTemp/calendar.png</file>
-        <file>Theme2/calendarTemp/coludy.png</file>
-        <file>Theme2/calendarTemp/humidity.png</file>
-        <file>Theme2/calendarTemp/lessThan.png</file>
-        <file>Theme2/calendarTemp/moreThan.png</file>
-        <file>Theme2/calendarTemp/wind.png</file>
-        <file>Theme2/consumptionAnalysis/consumptionAnalysis.png</file>
-        <file>Theme2/diagnosticInfo/diagnosticInfo.png</file>
-        <file>Theme2/diagnosticInfo/scanning.png</file>
-        <file>Theme2/diagnosticInfo/scanning01.png</file>
-        <file>Theme2/diagnosticInfo/score_89.png</file>
-        <file>Theme2/driveAnalysis/bullet_blue.png</file>
-        <file>Theme2/driveAnalysis/calling.png</file>
-        <file>Theme2/driveAnalysis/changeLane.png</file>
-        <file>Theme2/driveAnalysis/consumptionAnalysis_white.png</file>
-        <file>Theme2/driveAnalysis/diagnosticInfo_white.png</file>
-        <file>Theme2/driveAnalysis/driveAnalysis_white.png</file>
-        <file>Theme2/driveAnalysis/driveAnalysis.png</file>
-        <file>Theme2/driveAnalysis/fatigueDriving.png</file>
-        <file>Theme2/driveAnalysis/help_white.png</file>
-        <file>Theme2/driveAnalysis/infoSearch_white.png</file>
-        <file>Theme2/driveAnalysis/maintenanceForcast_white.png</file>
-        <file>Theme2/driveAnalysis/more_before.png</file>
-        <file>Theme2/driveAnalysis/more.png</file>
-        <file>Theme2/driveAnalysis/rapidAcceleration.png</file>
-        <file>Theme2/driveAnalysis/schedule_white.png</file>
-        <file>Theme2/driveAnalysis/score.png</file>
-        <file>Theme2/driveAnalysis/speeding.png</file>
-        <file>Theme2/help/help.png</file>
-        <file>Theme2/infoSearch/bg_title.png</file>
-        <file>Theme2/infoSearch/infoSearch.png</file>
-        <file>Theme2/maintenanceForcast/maintenanceForcast.png</file>
-        <file>Theme2/maintenanceForcast/score_87.png</file>
-        <file>Theme2/music/album_big.png</file>
-        <file>Theme2/music/album_small.png</file>
-        <file>Theme2/music/loop.png</file>
-        <file>Theme2/music/music.png</file>
-        <file>Theme2/music/next.png</file>
-        <file>Theme2/music/pause.png</file>
-        <file>Theme2/music/previous.png</file>
-        <file>Theme2/music/singleCycle.png</file>
-        <file>Theme2/music/soundWaves.png</file>
-        <file>Theme2/navigation/circle_green.png</file>
-        <file>Theme2/navigation/circle_red.png</file>
-        <file>Theme2/navigation/icon_voice.png</file>
-        <file>Theme2/navigation/location_end.png</file>
-        <file>Theme2/navigation/location_start.png</file>
-        <file>Theme2/navigation/location.png</file>
-        <file>Theme2/navigation/navigation.png</file>
-        <file>Theme2/navigation/straight.png</file>
-        <file>Theme2/navigation/turn_left.png</file>
-        <file>Theme2/phone/Bluetooth.png</file>
-        <file>Theme2/phone/call_in.png</file>
-        <file>Theme2/phone/people.png</file>
-        <file>Theme2/phone/phone.png</file>
-        <file>Theme2/radio/bg_left.png</file>
-        <file>Theme2/radio/radio.png</file>
-        <file>Theme2/reverseImage/car_right.png</file>
-        <file>Theme2/schedule/schedule.png</file>
-        <file>Theme2/setting/bullet_gray.png</file>
-        <file>Theme2/setting/bullet.png</file>
-        <file>Theme2/setting/setting.png</file>
-        <file>Theme2/tirePressure/circle_ok.png</file>
-        <file>Theme2/tirePressure/circle_wrong.png</file>
-        <file>Theme2/tirePressure/right.png</file>
-        <file>Theme2/tirePressure/wrong.png</file>
+        <file>Theme2/Menu/adas.png</file>
+        <file>Theme2/Menu/home.png</file>
+        <file>Theme2/Menu/more.png</file>
+        <file>Theme2/Menu/music.png</file>
+        <file>Theme2/Menu/navigation.png</file>
+        <file>Theme2/Menu/phone.png</file>
+        <file>Theme2/Menu/radiio.png</file>
+        <file>Theme2/Menu/setting.png</file>
+        <file>Theme2/Modules/adas/anti_collision.png</file>
+        <file>Theme2/Modules/adas/anti_offset.png</file>
+        <file>Theme2/Modules/adas/speedLimit.png</file>
+        <file>Theme2/Modules/adas/warining.png</file>
+        <file>Theme2/Modules/calendarTemp/airPressure.png</file>
+        <file>Theme2/Modules/calendarTemp/calendar_white.png</file>
+        <file>Theme2/Modules/calendarTemp/calendar.png</file>
+        <file>Theme2/Modules/calendarTemp/coludy.png</file>
+        <file>Theme2/Modules/calendarTemp/humidity.png</file>
+        <file>Theme2/Modules/calendarTemp/lessThan.png</file>
+        <file>Theme2/Modules/calendarTemp/moreThan.png</file>
+        <file>Theme2/Modules/calendarTemp/wind.png</file>
+        <file>Theme2/Modules/consumptionAnalysis/consumptionAnalysis.png</file>
+        <file>Theme2/Modules/diagnosticInfo/diagnosticInfo.png</file>
+        <file>Theme2/Modules/diagnosticInfo/scanning.png</file>
+        <file>Theme2/Modules/diagnosticInfo/scanning01.png</file>
+        <file>Theme2/Modules/diagnosticInfo/score_89.png</file>
+        <file>Theme2/Modules/driveAnalysis/bullet_blue.png</file>
+        <file>Theme2/Modules/driveAnalysis/calling.png</file>
+        <file>Theme2/Modules/driveAnalysis/changeLane.png</file>
+        <file>Theme2/Modules/driveAnalysis/consumptionAnalysis_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/diagnosticInfo_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/driveAnalysis_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/driveAnalysis.png</file>
+        <file>Theme2/Modules/driveAnalysis/fatigueDriving.png</file>
+        <file>Theme2/Modules/driveAnalysis/help_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/infoSearch_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/maintenanceForcast_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/more_before.png</file>
+        <file>Theme2/Modules/driveAnalysis/more.png</file>
+        <file>Theme2/Modules/driveAnalysis/rapidAcceleration.png</file>
+        <file>Theme2/Modules/driveAnalysis/schedule_white.png</file>
+        <file>Theme2/Modules/driveAnalysis/score.png</file>
+        <file>Theme2/Modules/driveAnalysis/speeding.png</file>
+        <file>Theme2/Modules/help/help.png</file>
+        <file>Theme2/Modules/infoSearch/bg_title.png</file>
+        <file>Theme2/Modules/infoSearch/infoSearch.png</file>
+        <file>Theme2/Modules/maintenanceForcast/maintenanceForcast.png</file>
+        <file>Theme2/Modules/maintenanceForcast/score_87.png</file>
+        <file>Theme2/Modules/music/album_big.png</file>
+        <file>Theme2/Modules/music/album_small.png</file>
+        <file>Theme2/Modules/music/loop.png</file>
+        <file>Theme2/Modules/music/music.png</file>
+        <file>Theme2/Modules/music/next.png</file>
+        <file>Theme2/Modules/music/pause.png</file>
+        <file>Theme2/Modules/music/previous.png</file>
+        <file>Theme2/Modules/music/singleCycle.png</file>
+        <file>Theme2/Modules/music/soundWaves.png</file>
+        <file>Theme2/Modules/navigation/circle_green.png</file>
+        <file>Theme2/Modules/navigation/circle_red.png</file>
+        <file>Theme2/Modules/navigation/icon_voice.png</file>
+        <file>Theme2/Modules/navigation/location_end.png</file>
+        <file>Theme2/Modules/navigation/location_start.png</file>
+        <file>Theme2/Modules/navigation/location.png</file>
+        <file>Theme2/Modules/navigation/navigation.png</file>
+        <file>Theme2/Modules/navigation/straight.png</file>
+        <file>Theme2/Modules/navigation/turn_left.png</file>
+        <file>Theme2/Modules/phone/Bluetooth.png</file>
+        <file>Theme2/Modules/phone/call_in.png</file>
+        <file>Theme2/Modules/phone/people.png</file>
+        <file>Theme2/Modules/phone/phone.png</file>
+        <file>Theme2/Modules/radio/bg_left.png</file>
+        <file>Theme2/Modules/radio/radio.png</file>
+        <file>Theme2/Modules/reverseImage/car_right.png</file>
+        <file>Theme2/Modules/schedule/schedule.png</file>
+        <file>Theme2/Modules/setting/bullet_gray.png</file>
+        <file>Theme2/Modules/setting/bullet.png</file>
+        <file>Theme2/Modules/setting/setting.png</file>
+        <file>Theme2/Modules/tirePressure/circle_ok.png</file>
+        <file>Theme2/Modules/tirePressure/circle_wrong.png</file>
+        <file>Theme2/Modules/tirePressure/right.png</file>
+        <file>Theme2/Modules/tirePressure/wrong.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>
@@ -222,8 +212,8 @@
         <file>Theme1/Slice/Symbol_label.jpg</file>
     </qresource>
     <qresource prefix="/Fonts">
-        <file>font/msyhl.ttc</file>
-        <file>font/msyhbd.ttc</file>
-        <file>font/msyh.ttc</file>
+        <file>Font/msyhl.ttc</file>
+        <file>Font/msyhbd.ttc</file>
+        <file>Font/msyh.ttc</file>
     </qresource>
 </RCC>

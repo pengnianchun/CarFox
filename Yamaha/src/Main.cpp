@@ -53,6 +53,8 @@ int main(int argc, char *argv[]) {
     initEnv();
 #endif
 
+    qputenv("FB_MULTI_BUFFER", "3");
+
     std::shared_ptr<QGuiApplication> app = std::make_shared<QGuiApplication>(argc, argv);
     std::unique_ptr<CustomUiController> uiController(new CustomUiController(1440, 540, false));
     uiController->setReleaseVersion("v1.0.0");

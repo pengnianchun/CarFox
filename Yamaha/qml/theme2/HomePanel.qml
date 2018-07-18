@@ -219,14 +219,18 @@ CommonItem {
 
     }
 
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
     Timer {
         id: demo_run
-        interval: 100
+        interval: 500
         repeat: true
         running: true
         onTriggered: {
-            carSpeedValue ++ // 车速
-            engineSpeedValue++ // 转速
+            carSpeedValue += getRandomInt(3) // 车速
+            engineSpeedValue += 1 // 转速
             background.carSpeedRotation = carSpeedValue
             carVoyage++ // 续航里程
             carSoc++ // SOC

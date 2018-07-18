@@ -113,7 +113,15 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
                 asynchronous: true
                 cache: true
-                rotation: carSpeedRotation
+
+                transform: Rotation {
+                    id: minuteRotation
+                    //origin.x: 0; origin.y: 0;
+                    angle: carSpeedRotation * 6
+                    Behavior on angle {
+                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
+                    }
+                }
             }
         }
 
@@ -129,13 +137,14 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Symbol/circle_line.png"
                 asynchronous: true
                 cache: true
-                //rotation: carSpeedRotation
 
-                PathArc {
-                        x: 0; y: 100
-                        radiusX: 100; radiusY: 100
-                        useLargeArc: true
+                transform: Rotation {
+                    origin.x: 6.5; origin.y: 83;
+                    angle: carSpeedRotation * 6
+                    Behavior on angle {
+                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
+                }
             }
         }
     }
