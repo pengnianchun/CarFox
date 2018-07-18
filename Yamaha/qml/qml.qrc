@@ -41,6 +41,6 @@
         <file>theme2/Navigation.qml</file>
     </qresource>
     <qresource prefix="/">
-        <file>theme1/JS/mainpanel_pointer_orbitdata.js</file>
+        <file>JS/mainpanel_pointer_orbitdata.js</file>
     </qresource>
 </RCC>
