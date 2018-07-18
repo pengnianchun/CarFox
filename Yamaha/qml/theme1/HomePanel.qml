@@ -2,12 +2,14 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
+import "qrc:/theme1/JS/mainpanel_pointer_orbitdata.js" as MainpanelJS
 
 Item {
     id: root_item;
     z: 0
-    width: 1440
-    height: 540
+    width: 1440;
+    height: 540;
+    property var orbitData: [];
 
     Image {
         id: background;
@@ -365,7 +367,7 @@ Item {
                 x: 645+65;
                 y: 367;
                 visible: true;
-                text: "50%";
+                text: "50 %";
                 color: "#068ca5";
                 font.family: "Europe_Ext";
                 font.pixelSize: 24;
@@ -453,41 +455,162 @@ Item {
             }
         }
     }
+    property bool turnForPathAnimGo: true;
     MouseArea{
         id: mouseArea;
         anchors.fill: parent;
-        onClicked: pathAnim.start();
+        onClicked: {
+            if(turnForPathAnimGo) {
+                pathAnimGo.start();
+            } else {
+                pathAnimBack.start();
+            }
+        }
+//        onPressed: {
+//            if(pathAnimGo.running) {
+//                pathAnimGo.pause();
+//            }
+//        }
+//        onReleased: {
+//            if(pathAnimGo.paused) {
+//                pathAnimGo.resume();
+//            }
+//        }
     }
 
     Image {
         id: pointer;
-        x: 90;
-        y: 494;
+        x: 70;
+        y: 474;
         visible: true;
-        rotation: -45;
+        rotation: -23;
         source: "qrc:/theme1/slice/Theme1/Slice/Pointer.png";
+        //source: "qrc:/theme1/slice/Theme1/Slice/symmetry_pointer.png";
     }
+
     PathAnimation {
-        id: pathAnim;
+        id: pathAnimGo;
         target: pointer;
         duration: 3000;
-        anchorPoint: "20, 20";
-        orientationEntryDuration: 100;
-        orientationExitDuration: 100;
+//        orientationEntryDuration: 100;
+//        orientationExitDuration: 100;
         easing.type: Easing.Linear;
         orientation: PathAnimation.TopFirst;
         endRotation: 90;
 
         path: Path {
-            startX: 90;
-            startY: 494;
-            PathCurve { x: 90;  y: 494; }  // position 0
-            PathCurve { x: 49;  y: 401; }  // position 40
-            PathCurve { x: 36;  y: 311; }  // position 80
-            PathCurve { x: 40;  y: 223; }  // position 120
-            PathCurve { x: 94;  y: 112; }  // position 160
-            PathCurve { x: 246; y: 47; }   // position 200
-            PathCurve { x: 381; y: 38; }   // position 240
+            startX: 70;
+            startY: 474;
+//            PathCurve { x: 70;  y: 474; }  // position 0
+            PathCurve { x: 49-20;  y: 401-20; }  // position 40
+            PathCurve { x: 36-20;  y: 311-20; }  // position 80
+            PathCurve { x: 40-20;  y: 223-20; }  // position 120
+            PathCurve { x: 94-10;  y: 112-10; }  // position 160
+            PathCurve { x: 246-0; y: 47-0; }   // position 200
+            PathCurve { x: 381-0; y: 38-0; }   // position 240
         }
+
+        onStarted: {
+            console.log("PathAnimation pathAnimGo start");
+            pointer.rotation = -23;
+//            pointer.x = 90;
+//            pointer.y = 494;
+        }
+
+        onStopped: {
+            console.log("athAnimation pathAnimGo stoped");
+//            pathAnimBack.start();
+            turnForPathAnimGo = false;
+        }
+    }
+
+    PathAnimation {
+        id: pathAnimBack;
+        target: pointer;
+        duration: 3000;
+//        orientationEntryDuration: 200;
+        orientationExitDuration: 100;
+        easing.type: Easing.Linear;
+        orientation: PathAnimation.BottomFirst;
+
+        path: Path {
+            startX: 381-0;
+            startY: 38-0;
+//            PathCurve { x: 381-0; y: 38-0; }   // position 240
+            PathCurve { x: 246-0; y: 47-0; }   // position 200
+            PathCurve { x: 94-10;  y: 112-10; }  // position 160
+            PathCurve { x: 40-20;  y: 223-20; }  // position 120
+            PathCurve { x: 36-20;  y: 311-20; }  // position 80
+            PathCurve { x: 49-20;  y: 401-20; }  // position 40
+            PathCurve { x: 90-20;  y: 494-20; }  // position 0
+        }
+
+        onStarted: {
+            console.log("PathAnimation pathAnimGo start");
+//            pointer.rotation = 180;
+//            pointer.x = 381;
+//            pointer.y = 38;
+        }
+
+        onStopped: {
+            console.log("athAnimation pathAnimGo stoped");
+//            pathAnimGo.start();
+            turnForPathAnimGo = true;
+        }
+    }
+
+//    PathAnimation {
+//        property int begin_x: 0;
+//        property int begin_y: 0;
+//        property int end_x: 0;
+//        property int end_y: 0;
+
+//        id: pathAnimGo_custom;
+//        target: pointer;
+//        duration: 3000;
+//        orientationEntryDuration: 0;
+//        orientationExitDuration: 0;
+//        easing.type: Easing.Linear;
+//        orientation: PathAnimation.TopFirst;
+//        endRotation: 0;
+
+//        path: Path {
+//            startX: begin_x;
+//            startY: begin_y;
+//            PathCurve { x: end_x;  y: end_y; }
+//        }
+
+//        onStarted: {
+//            console.log("pathAnimGo_custom start");
+//        }
+
+//        onStopped: {
+//            console.log("pathAnimGo_custom stoped");
+//        }
+//    }
+
+//    Timer {
+//        interval: 100;
+//        running: true;
+//        repeat: true
+//        onTriggered: {
+//            pathAnimGo_custom.begin_x = 0;
+//            pathAnimGo_custom.begin_y = 0;
+//            pathAnimGo_custom.end_x = 0;
+//            pathAnimGo_custom.end_y = 0;
+//            pathAnimGo_custom.start();
+//        }
+//    }
+
+    Component.onCompleted: {
+        console.log("----------------------- Component.onCompleted --------------------------------");
+        orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
+        var i=0;
+        console.log("-------------------------------------------------------");
+        console.log("orbitData.length = " + orbitData.length);
+        while(i<240) {
+            console.log(i + orbitData[i][0] + orbitData[i][1]);
+        }
+        console.log("-------------------------------------------------------");
     }
 }

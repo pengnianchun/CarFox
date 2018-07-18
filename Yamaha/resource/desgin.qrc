@@ -223,6 +223,7 @@
         <file>Theme1/Slice/mainpage.png</file>
         <file>Theme1/Slice/multimedia.png</file>
         <file>Theme1/Slice/tirepressure.png</file>
+        <file>Theme1/Slice/symmetry_pointer.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>font/msyhl.ttc</file>

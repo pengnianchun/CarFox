@@ -39,4 +39,7 @@
         <file>theme2/JS/HomePanelCtrl.js</file>
         <file>theme2/NQText.qml</file>
     </qresource>
+    <qresource prefix="/">
+        <file>theme1/JS/mainpanel_pointer_orbitdata.js</file>
+    </qresource>
 </RCC>
