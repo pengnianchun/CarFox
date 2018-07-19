@@ -42,6 +42,7 @@
         <file>theme2/Phone.qml</file>
         <file>theme2/Music.qml</file>
         <file>theme2/Radio.qml</file>
+        <file>theme2/Setting.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>JS/mainpanel_pointer_orbitdata.js</file>

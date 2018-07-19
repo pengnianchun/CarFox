@@ -6,10 +6,8 @@ Item {
     property int carSpeedRotation: -120
     property int remainTime: 10
 
-    property real carTrip: 1.0
     property date currentDate: new Date()
     property string dateString
-    property real carOdo: 1000
 
     layer.enabled: true
 
@@ -92,7 +90,7 @@ Item {
                 transform: Rotation {
                     id: minuteRotation
                     origin.x: 0; origin.y: 190;
-                    angle: carSpeedRotation * 6
+                    angle: (carSpeedValue * 2.5) - 135
                     Behavior on angle {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
@@ -116,7 +114,7 @@ Item {
 
                 transform: Rotation {
                     origin.x: 0; origin.y: 190;
-                    angle: carSpeedRotation * 6
+                    angle: (engineSpeedValue * 13.5) - 135
                     Behavior on angle {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
@@ -324,13 +322,13 @@ Item {
             spacing: 5
             anchors.horizontalCenter: parent.horizontalCenter
             Text {
-                text: qsTr("制动气压： ") + carBreakPressure + qsTr(" Mpa")
+                text: qsTr("制动气压： ") + carBreakPressure.toFixed(1) + qsTr(" Mpa")
                 color: "#666666"
                 font.family: msyhl.name
                 font.pixelSize: 16
             }
             Text {
-                text: qsTr("蓄电池电压： ") + carBattery + qsTr(" V")
+                text: qsTr("蓄电池电压： ") + carBattery.toFixed(1) + qsTr(" V")
                 color: "#666666"
                 font.family: msyhl.name
                 font.pixelSize: 16
@@ -375,7 +373,7 @@ Item {
         spacing: 100
 
         Text {
-            text: qsTr("TRIP: ") + carTrip + qsTr(" km")
+            text: qsTr("TRIP: ") + carTrip.toFixed(1) + qsTr(" km")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
@@ -387,7 +385,7 @@ Item {
             font.pixelSize: 20
         }
         Text {
-            text: qsTr("ODO： ") + carOdo + qsTr(" km")
+            text: qsTr("ODO： ") + carOdo.toFixed(1) + qsTr(" km")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20

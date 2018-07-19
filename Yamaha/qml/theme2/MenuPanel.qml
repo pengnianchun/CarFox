@@ -5,50 +5,62 @@ import CustomEnum 1.0
 import "qrc:/Component/Component"
 
 MenuItem {
-    id: menu_item
+    id: menuItem
 
-    property bool bKeyEnable: false
+    property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Menu/"
 
     menuLayerId: "MenuPanel"
-    parentMenuId: "Null"
+    parentMenuId: "NULL"
 
     enterMenu: function() {
         if (bKeyEnable) {
-        //default
-            console.debug("MenuPanel onKeyEnter")
+            console.debug("MenuPanel enterMenu")
             homepanel_visible = false
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
         }
     }
 
     hideMenu: function() {
         //调用关闭三层菜单通用函数
         //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-        homepanel_visible = true
+        //homepanel_visible = true
+        //listMenu.currentIndex = 0
+
+        if (bKeyEnable) {
+            console.debug("MenuPanel hideMenu")
+            homepanel_visible = true
+            mainMenuIndex = listMenu.currentIndex = 0
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", false);
+        }
     }
 
     previousMenu: function() {
-        // default
-        mainMenuIndex--
-        listMenu.currentIndex = mainMenuIndex
+        if (bKeyEnable) {
+            console.debug("MenuPanel previousMenu")
+            mainMenuIndex = --listMenu.currentIndex
+        }
     }
 
     nextMenu: function() {
-        // default
-        mainMenuIndex++
-        listMenu.currentIndex = mainMenuIndex
+        if (bKeyEnable) {
+            console.debug("MenuPanel nextMenu")
+            mainMenuIndex = ++listMenu.currentIndex
+        }
     }
 
     ListModel {
         id: modelMenu
-        ListElement { src: "home.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "navigation.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "phone.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "music.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "radio.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "setting.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "adas.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "more.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
+        ListElement { src: "home.png"; }
+        ListElement { src: "navigation.png"; }
+        ListElement { src: "phone.png"; }
+        ListElement { src: "music.png"; }
+        ListElement { src: "radio.png"; }
+        ListElement { src: "setting.png"; }
+        ListElement { src: "adas.png"; }
+        ListElement { src: "more.png"; }
     }
 
     Component {
@@ -80,15 +92,9 @@ MenuItem {
         spacing: 35
         orientation: ListView.Horizontal
         highlight: Rectangle { color: "lightsteelblue"; radius: 3; }
-        onHighlightChanged: {
-            navi.visible = true
-            console.debug("onHighlightChanged"+modelMenu.qml)
-            mloder.setSource(modelMenu.qml)
-        }
     }
 
     Component.onCompleted: {
 
     }
-
 }

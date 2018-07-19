@@ -91,7 +91,6 @@
         <file>Theme2/Symbol/StopWL.png</file>
         <file>Theme2/Symbol/TurnLeftWL.png</file>
         <file>Theme2/Symbol/TurnRightWL.png</file>
-        <file>Theme2/Symbol/circle_line.png</file>
         <file>Theme2/Symbol_gray/backFlogLamp.png</file>
         <file>Theme2/Symbol_gray/batteryCharging.png</file>
         <file>Theme2/Symbol_gray/batteryCut.png</file>
@@ -206,6 +205,10 @@
         <file>Theme2/Menu/radio.png</file>
         <file>Theme2/Modules/radio/radio_line.png</file>
         <file>Theme2/Modules/radio/red_line.png</file>
+        <file>Theme2/Modules/phone/music_line.png</file>
+        <file>Theme2/Modules/adas/bus.png</file>
+        <file>Theme2/Modules/adas/pepole.png</file>
+        <file>Theme2/Modules/adas/road.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

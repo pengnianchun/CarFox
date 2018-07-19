@@ -20,29 +20,38 @@ CommonItem {
     property int carVoyage: 99 // 续航里程
     property int carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
-    property int carBattery: 12; // 蓄电池电压
+    property real carBattery: 12; // 蓄电池电压
+    property real carTrip: 0 // TRIP
+    property real carOdo: 0 // ODO
 
     property bool bKeyEnable: true
-
 
     onKeyEnter: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyEnter")
-            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
+            menuPanel.visible = true
             UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
         }
     }
 
     onKeyBack: function() {
-        console.debug("HomePanel onKeyBack")
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyBack")
+            menuPanel.visible = false
+        }
     }
 
     onKeyUp: function() {
-        console.debug("HomePanel onKeyUp")
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyUp")
+        }
     }
 
     onKeyDown: function() {
-        console.debug("HomePanel onKeyDown")
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyDown")
+        }
     }
 
     onMainMenuIndexChanged: {
@@ -80,13 +89,18 @@ CommonItem {
         Radio {
             visible: mainMenuIndex === 4
         }
+
+        Setting {
+            visible: mainMenuIndex === 5
+        }
     }
 
     MenuPanel {
+        id: menuPanel
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 80
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: true
+        visible: false
     }
 
     // Demo
@@ -96,29 +110,77 @@ CommonItem {
 
     Timer {
         id: demo_run
-        interval: 500
+        interval: 200
         repeat: true
         running: false
         onTriggered: {
-            carSpeedValue += getRandomInt(3) // 车速
-            engineSpeedValue += 1 // 转速
-            background.carSpeedRotation = carSpeedValue
+            if (carSpeedValue > 99) { // 车速
+                carSpeedValue = 0
+            } else {
+                carSpeedValue += 1
+            }
+
+            if (engineSpeedValue > 20) { // 转速
+                engineSpeedValue = 0
+            } else {
+                engineSpeedValue += 1
+            }
+
             carVoyage++ // 续航里程
-            carSoc++ // SOC
-            carBreakPressure++ // 制动气压
-            carBattery++ // 蓄电池电压
+
+            if (carSoc === 100) { // SOC
+                carSoc = 0
+            } else {
+                carSoc++
+            }
+
+
+            //background.carSpeedRotation = carSpeedValue
+
+            if (carBreakPressure > 10) { // 制动气压
+                carBreakPressure = 0
+            } else {
+                carBreakPressure += 0.1
+            }
+
+            if (carBattery > 24) {  // 蓄电池电压
+                carBattery = 0.0
+            } else {
+                carBattery += 0.1
+            }
+
+            if (carTrip > 1000000) {
+                carTrip = 0
+            } else {
+                carTrip += getRandomInt(5)
+            }
+
+            if (carOdo > 1000000) {
+                carOdo = 0
+            } else {
+                carOdo += getRandomInt(5)
+            }
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            iconPanel.enableTest = !iconPanel.enableTest
         }
     }
 
     onVisibleChanged: {
         if(visible){
             CarMsg.sendEnableKeys(true);
+            demo_run.running = true
         } else {
             CarMsg.sendEnableKeys(false);
+            demo_run.running = false
         }
     }
 
     Component.onCompleted: {
-        demo_run.running = true
+
     }
 }

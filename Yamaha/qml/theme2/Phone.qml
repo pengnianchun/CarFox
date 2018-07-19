@@ -28,6 +28,12 @@ Item {
     }
 
     Image {
+        x: 373
+        y: 50
+        source: sourceImageUrl + "music_line.png"
+    }
+
+    Image {
         id: call_in
         x: 562
         y: 81
