@@ -224,8 +224,13 @@ void CustomUiController::loadFonts()
 //    loadFont(QDir::currentPath() + "/fonts/WenQuanYiMicroHei.ttf");
 //#endif
 
-    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/EuropeExt.ttf");
-    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/AdobeHeitiStd.ttc");
+//#if defined(Q_PROCESSOR_ARM)
+//    loadFont("/home/root/EuropeExt.ttf");
+//    loadFont("/home/root/AdobeHeitiStd.ttc");
+//#elif
+//    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/EuropeExt.ttf");
+//    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/AdobeHeitiStd.ttc");
+//#endif
 
     qDebug() << "CustomUiController::loadFonts()";
 }

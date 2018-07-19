@@ -213,10 +213,13 @@
         <file>Theme1/Slice/mainpage.png</file>
         <file>Theme1/Slice/multimedia.png</file>
         <file>Theme1/Slice/tirepressure.png</file>
+        <file>Theme1/Slice/background_v2.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Font/msyhl.ttc</file>
         <file>Font/msyhbd.ttc</file>
         <file>Font/msyh.ttc</file>
+        <file>Theme1/font/AdobeHeitiStd.ttc</file>
+        <file>Theme1/font/EuropeExt.ttf</file>
     </qresource>
 </RCC>
