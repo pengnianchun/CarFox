@@ -214,6 +214,7 @@
         <file>Theme1/Slice/multimedia.png</file>
         <file>Theme1/Slice/tirepressure.png</file>
         <file>Theme1/Slice/background_v2.png</file>
+        <file>Theme1/Slice/background_v3.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Font/msyhl.ttc</file>

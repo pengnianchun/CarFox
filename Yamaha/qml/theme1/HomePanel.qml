@@ -27,7 +27,7 @@ Item {
         x: 0;
         y: 0;
         visible: true;
-        source: "qrc:/theme1/slice/Theme1/Slice/background_v2.png";
+        source: "qrc:/theme1/slice/Theme1/Slice/background_v3.png";
 
         // ------------------------- car speed dial -------------------------
         Item {
@@ -49,7 +49,7 @@ Item {
             Text {
                 id: car_speed_dial_measurement_unit;
                 x: 279;
-                y: 349;
+                y: 353;
                 visible: true;
                 text: "km/h";
                 color: "white";
@@ -62,7 +62,7 @@ Item {
             Text {
                 id: car_speed_dial_strip;
                 x: 210;
-                y: 394;
+                y: 380;
                 visible: true;
                 text: "trip:              km";
                 color: "#103d44";
@@ -73,8 +73,8 @@ Item {
             // trip title content
             Text {
                 id: car_speed_dial_strip_content;
-                x: 260;
-                y: 398;
+                x: 260 + 2;
+                y: 383;
                 visible: true;
                 text: "500.2";
                 color: "#047f93";
@@ -105,7 +105,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: car_speed_dial_scale_80;
@@ -117,7 +117,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: car_speed_dial_scale_120;
@@ -129,7 +129,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: car_speed_dial_scale_160;
@@ -141,7 +141,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: car_speed_dial_scale_200;
@@ -153,7 +153,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: car_speed_dial_scale_240;
@@ -165,7 +165,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
         }
         // ------------------------- rotation speed dial -------------------------
@@ -201,7 +201,7 @@ Item {
             Text {
                 id: rotation_speed_dial_strip;
                 x: 1042;
-                y: 394;
+                y: 380;
                 visible: true;
                 text: "odo:                      km";
                 color: "#103d44";
@@ -212,8 +212,8 @@ Item {
             // trip title content
             Text {
                 id: rotation_speed_dial_strip_content;
-                x: 1047 + 50;
-                y: 398;
+                x: 1047 + 50 + 2;
+                y: 383;
                 visible: true;
                 text: "3000000";
                 color: "#047f93";
@@ -232,7 +232,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: rotation_speed_dial_scale_20;
@@ -244,7 +244,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: rotation_speed_dial_scale_40;
@@ -256,7 +256,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: rotation_speed_dial_scale_60;
@@ -268,7 +268,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: rotation_speed_dial_scale_80;
@@ -280,7 +280,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: rotation_speed_dial_scale_100;
@@ -292,7 +292,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
             Text {
                 id: rotation_speed_dial_scale_120;
@@ -304,7 +304,7 @@ Item {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.4;
+                opacity: 0.2;
             }
         }
 
@@ -396,7 +396,7 @@ Item {
                 style: ProgressBarStyle {
                     background: Rectangle {
                     color:"white";
-                    opacity: 0.2;
+                    opacity: 0.6;
                     }
                     progress: Rectangle{
                         color: "#068ca5";
@@ -473,38 +473,38 @@ Item {
         id: symbols;
         Image {
             id: symbol_batteryCharging;
-            x: 0;
-            y: 0;
+            x: 1060;
+            y: 125;
             source: "qrc:/theme1/symbol/Theme1/Symbol/batteryCharging.png";
         }
         Image {
             id: symbol_batteryCut;
-            x: 0;
-            y: 0;
+            x: 942;
+            y: 97;
             source: "qrc:/theme1/symbol/Theme1/Symbol/batteryCut.png";
         }
         Image {
             id: symbol_batteryFault;
-            x: 0;
-            y: 0;
+            x: 1170;
+            y: 98;
             source: "qrc:/theme1/symbol/Theme1/Symbol/batteryFault.png";
         }
         Image {
             id: symbol_batteryFireAlarm;
-            x: 0;
-            y: 0;
+            x: 1205;
+            y: 138;
             source: "qrc:/theme1/symbol/Theme1/Symbol/batteryFireAlarm.png";
         }
         Image {
             id: symbol_brakeLight;
-            x: 0;
-            y: 0;
+            x: 416;
+            y: 70;
             source: "qrc:/theme1/symbol/Theme1/Symbol/BrakeLight.png";
         }
         Image {
             id: symbol_chargingCable;
-            x: 0;
-            y: 0;
+            x: 1152;
+            y: 137;
             source: "qrc:/theme1/symbol/Theme1/Symbol/chargingCable.png";
         }
         Image {
@@ -515,14 +515,14 @@ Item {
         }
         Image {
             id: symbol_driverSystemFault;
-            x: 0;
-            y: 0;
+            x: 1104;
+            y: 134;
             source: "qrc:/theme1/symbol/Theme1/Symbol/driverSystemFault.png";
         }
         Image {
             id: symbol_engineFailue;
-            x: 0;
-            y: 0;
+            x: 445;
+            y: 115;
             source: "qrc:/theme1/symbol/Theme1/Symbol/engineFailue.png";
         }
         Image {
@@ -533,7 +533,7 @@ Item {
         }
         Image {
             id: symbol_hatchDoor2Alarm;
-            x: 230;
+            x: 203;
             y: 111;
             source: "qrc:/theme1/symbol/Theme1/Symbol/HatchDoor2Alarm.png";
         }
@@ -545,8 +545,8 @@ Item {
         }
         Image {
             id: symbol_lamp_ABS;
-            x: 0;
-            y: 0;
+            x: 994;
+            y: 65;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_ABS.png";
         }
         Image {
@@ -557,62 +557,62 @@ Item {
         }
         Image {
             id: symbol_lamp_airFilter;
-            x: 0;
-            y: 0;
+            x: 886;
+            y: 68;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_airFilter.png";
         }
         Image {
             id: symbol_lamp_airPress;
-            x: 0;
-            y: 0;
-            source: "qrc:/theme1/symboTl/Theme1/Symbol/Lamp_airPress.png";
+            x: 1052;
+            y: 85;
+            source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_airPress.png";
         }
         Image {
             id: symbol_lamp_frontFog;
-            x: 0;
-            y: 0;
+            x: 623;
+            y: 88;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_frontFog.png";
         }
         Image {
             id: symbol_lamp_headlight;
-            x: 0;
-            y: 0;
+            x: 663;
+            y: 88;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_headlight.png";
         }
         Image {
             id: symbol_lamp_highBeam;
-            x: 0;
-            y: 0;
+            x: 703;
+            y: 88;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_highBeam.png";
         }
         Image {
             id: symbol_lamp_insulationRed;
-            x: 0;
-            y: 0;
+            x: 1110;
+            y: 91;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_insulationRed.png";
         }
         Image {
             id: symbol_lamp_parkingBrake;
-            x: 0;
-            y: 0;
+            x: 943;
+            y: 48;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_parkingBrake.png";
         }
         Image {
             id: symbol_Lamp_positionLight;
-            x: 0;
-            y: 0;
+            x: 743;
+            y: 88;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_positionLight.png";
         }
         Image {
             id: lsymbol_amp_rearFog;
-            x: 0;
-            y: 0;
+            x: 783;
+            y: 88;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_rearFog.png";
         }
         Image {
             id: symbol_lamp_waterLow;
-            x: 0;
-            y: 0;
+            x: 528;
+            y: 61;
             source: "qrc:/theme1/symbol/Theme1/Symbol/Lamp_waterLow.png";
         }
         Image {
@@ -623,14 +623,14 @@ Item {
         }
         Image {
             id: symbol_mainPowerIndication;
-            x: 0;
-            y: 0;
+            x: 469;
+            y: 64;
             source: "qrc:/theme1/symbol/Theme1/Symbol/mainPowerIndication.png";
         }
         Image {
             id: symbol_motor_notworking;
-            x: 0;
-            y: 0;
+            x: 496;
+            y: 109;
             source: "qrc:/theme1/symbol/Theme1/Symbol/motor_notworking.png";
         }
         Image {
@@ -641,14 +641,14 @@ Item {
         }
         Image {
             id: symbol_oil_pressure;
-            x: 0;
-            y: 0;
+            x: 891;
+            y: 116;
             source: "qrc:/theme1/symbol/Theme1/Symbol/oil pressure.png";
         }
         Image {
             id: symbol_ready;
-            x: 0;
-            y: 0;
+            x: 268;
+            y: 432;
             source: "qrc:/theme1/symbol/Theme1/Symbol/READY.png";
         }
         Image {
@@ -659,20 +659,20 @@ Item {
         }
         Image {
             id: symbol_stopWL;
-            x: 0;
-            y: 0;
+            x: 1139;
+            y: 432;
             source: "qrc:/theme1/symbol/Theme1/Symbol/StopWL.png";
         }
         Image {
             id: symbol_turnLeftWL;
-            x: 0;
-            y: 0;
+            x: 577;
+            y: 78;
             source: "qrc:/theme1/symbol/Theme1/Symbol/TurnLeftWL.png";
         }
         Image {
             id: symbol_turnRightWL;
-            x: 0;
-            y: 0;
+            x: 823;
+            y: 88;
             source: "qrc:/theme1/symbol/Theme1/Symbol/TurnRightWL.png";
         }
     }
