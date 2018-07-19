@@ -1,11 +1,14 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
 
 Item {
-    width: 200
-    height: 100
+    width: 800
+    height: 410
 
-    Rectangle {
-        anchors.fill: parent
-        color: "yellow"
+    Image {
+        id: navi
+        source: "qrc:/theme2/symbol/Theme2/Modules/navigation/navigation.png"
+        sourceSize.width: 810
+        sourceSize.height: 400
     }
 }

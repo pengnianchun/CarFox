@@ -1,5 +1,6 @@
 import QtQuick 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Controls 1.3
+import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
 import "qrc:/Theme/theme2/JS/HomePanelCtrl.js" as HomeCtrl
@@ -12,6 +13,7 @@ CommonItem {
     layer.enabled: true
 
     property bool homepanel_visible: true
+    property int  mainMenuIndex: 0
 
     property int carSpeedValue: CarMsg.carSpeed; // 车速
     property int engineSpeedValue: CarMsg.rpm; // 转速
@@ -19,6 +21,33 @@ CommonItem {
     property int carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
     property int carBattery: 12; // 蓄电池电压
+
+    property bool bKeyEnable: true
+
+
+    onKeyEnter: function() {
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyEnter")
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
+        }
+    }
+
+    onKeyBack: function() {
+        console.debug("HomePanel onKeyBack")
+    }
+
+    onKeyUp: function() {
+        console.debug("HomePanel onKeyUp")
+    }
+
+    onKeyDown: function() {
+        console.debug("HomePanel onKeyDown")
+    }
+
+    onMainMenuIndexChanged: {
+        homepanel_visible = mainMenuIndex ? false : true
+    }
 
     NQBackground {
         id: background
@@ -29,6 +58,28 @@ CommonItem {
         id: iconPanel
         width: parent.width
         height: 60
+    }
+
+    Item {
+        width: 800
+        height: 410
+        anchors.centerIn: parent
+
+        Navigation {
+            visible: mainMenuIndex === 1
+        }
+
+        Phone {
+            visible: mainMenuIndex === 2
+        }
+
+        Music {
+            visible: mainMenuIndex === 3
+        }
+
+        Radio {
+            visible: mainMenuIndex === 4
+        }
     }
 
     MenuPanel {
@@ -60,7 +111,11 @@ CommonItem {
     }
 
     onVisibleChanged: {
-
+        if(visible){
+            CarMsg.sendEnableKeys(true);
+        } else {
+            CarMsg.sendEnableKeys(false);
+        }
     }
 
     Component.onCompleted: {

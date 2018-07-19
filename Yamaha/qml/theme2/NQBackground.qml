@@ -345,7 +345,7 @@ Item {
             spacing: 20
             Image {
                 id: gearN
-                source: "qrc:/theme2/symbol/Theme2/Symbol/gear-N.png"
+                source: "qrc:/theme2/symbol/Theme2/Symbol/gear_N.png"
             }
             Image {
                 id: gearD
@@ -396,13 +396,5 @@ Item {
 
     Component.onCompleted: {
         dateString = currentDate.toLocaleDateString();
-    }
-
-    // Demo
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            homepanel_visible = !homepanel_visible
-        }
     }
 }

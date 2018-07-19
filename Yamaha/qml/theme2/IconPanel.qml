@@ -9,9 +9,7 @@ Item {
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
     property string sourceImageGreyUrl: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
 
-    property bool enableTest: false
-
-
+    property bool enableTest: true
 
     ListModel {
         id: modelLeft
@@ -34,7 +32,6 @@ Item {
             append({"src": "highPressureOverhaul.png", enable: enableTest});
             append({"src": "Lamp_airFilter.png", enable: enableTest});
             append({"src": "HatchDoor2Alarm.png", enable: enableTest});
-            completed = true;
         }
     }
 
@@ -80,40 +77,40 @@ Item {
 
     ListView {
         id: listLeft
-        width: 320
+        width: 360
         height: 40
         anchors.right: listMiddle.left
         anchors.verticalCenter: listMiddle.verticalCenter
         clip: true
         model: modelLeft
         delegate: nameDelegate
-        spacing: 5
+        spacing: 2
         orientation: ListView.Horizontal
     }
 
     ListView {
         id: listMiddle
         y: 20
-        width: 570
+        width: 565
         height: 40
         anchors.horizontalCenter: parent.horizontalCenter
         clip: true
         model: modelMiddle
         delegate: nameDelegate
-        spacing: 5
+        spacing: 2
         orientation: ListView.Horizontal
     }
 
     ListView {
         id: listRight
-        width: 500
+        width: 320
         height: 40
         anchors.left: listMiddle.right
         anchors.verticalCenter: listMiddle.verticalCenter
         clip: true
         model: modelRight
         delegate: nameDelegate
-        spacing: 10
+        spacing: 2
         orientation: ListView.Horizontal
     }
 }
