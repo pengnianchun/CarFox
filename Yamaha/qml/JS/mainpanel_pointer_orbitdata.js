@@ -1,6 +1,6 @@
 function initializeMainPanelPointerOrbitData() {
     var array = new Array;
-    var baseX=0, baseY=0, currentAngle=-23, currentScale=0.85;
+    var baseX=0, baseY=0, currentAngle=-23.0, currentScale=0.85;
     var deltaX=0, deltaY=0, deltaAngle=0, deltaScale=-0.0025;
     var stepCount=0;
     for(var i=0; i<240; i++) {
@@ -28,9 +28,9 @@ function initializeMainPanelPointerOrbitData() {
             stepCount = 0;
         }
 
-        currentAngle += deltaAngle;
+//        currentAngle += deltaAngle;
         currentScale += deltaScale;
-        array.push([[baseX+stepCount*deltaX, baseY+stepCount*deltaY, currentAngle, currentScale]]);
+        array.push([baseX+stepCount*deltaX, baseY+stepCount*deltaY, currentAngle, currentScale]);
         stepCount++;
     }
     return array;
