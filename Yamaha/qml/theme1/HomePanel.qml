@@ -37,7 +37,7 @@ Item {
             // dial center number
             Text {
                 id: car_speed_dial_center_number;
-                x: 196;
+                x: 256;
                 y: 203;
                 visible: true;
                 text: "84";
@@ -176,7 +176,7 @@ Item {
             // dial center number
             Text {
                 id: rotation_speed_dial_center_number;
-                x: 1038;
+                x: 1098;
                 y: 203;
                 visible: true;
                 text: "42";
@@ -864,24 +864,28 @@ Item {
 
 
             car_speed_dial_center_number.text = currentCarSpeed;
-
-            if(currentCarSpeed%2 == 0) {
-                rotation_speed_dial_center_number.text = currentTireRotation;
-                if(++currentTireRotation >= 120) {
-                    currentTireRotation = 0;
-                }
-            }
+            rotation_speed_dial_center_number.text = currentTireRotation;
 
             // adjust number position
             if(currentTireRotation >= 100) {
                 rotation_speed_dial_center_number.x = 1038-100;
-            } else {
+            } else if(currentTireRotation >= 10) {
                 rotation_speed_dial_center_number.x = 1038;
+            } else {
+                rotation_speed_dial_center_number.x = 1098;
             }
             if(currentCarSpeed >= 100) {
                 car_speed_dial_center_number.x = 196-50;
+            } else if(currentCarSpeed >= 10) {
+                car_speed_dial_center_number.x = 196-10;
             } else {
-                car_speed_dial_center_number.x = 196;
+                car_speed_dial_center_number.x = 256;
+            }
+
+            if(currentCarSpeed%2 == 0) {
+                if(++currentTireRotation >= 120) {
+                    currentTireRotation = 0;
+                }
             }
         }
     }
