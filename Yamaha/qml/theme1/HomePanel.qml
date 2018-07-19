@@ -316,9 +316,9 @@ Item {
             property int menuIndex: 0;
             ListModel {
                 id: menuModel;
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia.png";}
+                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia-1.png";}
                 ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage.png";}
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure.png";}
+                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure-1.png";}
             }
 
             Component {
@@ -448,7 +448,7 @@ Item {
             Glow {
                 source: d;
                 anchors.fill: d;
-                radius: 6;
+                radius: 8;
 //                samples: 8;
                 color: "white";
                 opacity: 0.2;
@@ -825,7 +825,7 @@ Item {
         property bool direction_forward : true
         id: timer;
         interval: 100;
-        running: true;
+        running: false;
         repeat: true
         onTriggered: {
             if(direction_forward) {
@@ -834,20 +834,23 @@ Item {
 //                    running = false;
                     direction_forward = false;
                 } else {
-                    pointer.rotation = orbitData[currentCarSpeed][2];
-                    pointer.scale = orbitData[currentCarSpeed][3];
+//                    pointer.rotation = orbitData[currentCarSpeed][2];
+//                    pointer.scale = orbitData[currentCarSpeed][3];
 
                     pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
                     pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
                     pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
                     pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
 
-//                    pathAnimGo_custom.start();
+                    pathAnimGo_custom.start();
+                }
+                if(currentCarSpeed%2 == 0) {
+                    currentTireRotation++;
                 }
             } else {
                 currentCarSpeed--;
                 if(currentCarSpeed <= 0) {
-                    running = false;
+//                    running = false;
                     direction_forward = true;
                 } else {
                     pointer.rotation = orbitData[currentCarSpeed][2];
@@ -858,7 +861,10 @@ Item {
                     pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
                     pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
 
-//                    pathAnimGo_custom.start();
+                    pathAnimGo_custom.start();
+                }
+                if(currentCarSpeed%2 == 0) {
+                    currentTireRotation--;
                 }
             }
 
@@ -881,20 +887,16 @@ Item {
             } else {
                 car_speed_dial_center_number.x = 256;
             }
-
-            if(currentCarSpeed%2 == 0) {
-                if(++currentTireRotation >= 120) {
-                    currentTireRotation = 0;
-                }
-            }
         }
     }
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
-        orbitData = MainpanelJS.initializeMainPanelPointerOrbitDataDiscrete();
+        orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
+        //orbitData = MainpanelJS.initializeMainPanelPointerOrbitDataDiscrete();
         for(var i=0; i<240; i++) {
             console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1] + ", [2]=" + orbitData[i][2] + ", [3]=" + orbitData[i][3]);
         }
+        timer.running = true;
     }
 }
