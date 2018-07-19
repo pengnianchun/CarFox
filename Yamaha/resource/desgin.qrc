@@ -34,6 +34,7 @@
         <file>Theme1/Symbol/StopWL.png</file>
         <file>Theme1/Symbol/TurnLeftWL.png</file>
         <file>Theme1/Symbol/TurnRightWL.png</file>
+        <file>Theme1/Symbol/Battery overheating alarm.png</file>
     </qresource>
     <qresource prefix="/theme1/label">
         <file>Theme1/label/count down.png</file>
@@ -215,6 +216,33 @@
         <file>Theme1/Slice/tirepressure.png</file>
         <file>Theme1/Slice/background_v2.png</file>
         <file>Theme1/Slice/background_v3.png</file>
+        <file>Theme1/Slice/Analysis of driving behavior-1.png</file>
+        <file>Theme1/Slice/Analysis of driving behavior.png</file>
+        <file>Theme1/Slice/Auxiliary driving-1.png</file>
+        <file>Theme1/Slice/Auxiliary driving.png</file>
+        <file>Theme1/Slice/dispatching system-1.png</file>
+        <file>Theme1/Slice/dispatching system.png</file>
+        <file>Theme1/Slice/Drive for help-1.png</file>
+        <file>Theme1/Slice/Drive for help.png</file>
+        <file>Theme1/Slice/Energy consumption analysis-1.png</file>
+        <file>Theme1/Slice/Energy consumption analysis.png</file>
+        <file>Theme1/Slice/fault-1.png</file>
+        <file>Theme1/Slice/fault.png</file>
+        <file>Theme1/Slice/information-1.png</file>
+        <file>Theme1/Slice/information.png</file>
+        <file>Theme1/Slice/mainpage-1.png</file>
+        <file>Theme1/Slice/multimedia-1.png</file>
+        <file>Theme1/Slice/Navigation-1.png</file>
+        <file>Theme1/Slice/Navigation.png</file>
+        <file>Theme1/Slice/Pointer (2).png</file>
+        <file>Theme1/Slice/Pointer_negative_25.png</file>
+        <file>Theme1/Slice/Set up-1.png</file>
+        <file>Theme1/Slice/Set up.png</file>
+        <file>Theme1/Slice/speed.png</file>
+        <file>Theme1/Slice/symmetry_pointer.png</file>
+        <file>Theme1/Slice/tirepressure-1.png</file>
+        <file>Theme1/Slice/Vehicle information-1.png</file>
+        <file>Theme1/Slice/Vehicle information.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Font/msyhl.ttc</file>

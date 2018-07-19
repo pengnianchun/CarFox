@@ -10,7 +10,8 @@ Item {
     width: 1440;
     height: 540;
     property var orbitData: [];
-    property int currentCarSpeedGraduation: 0
+    property int currentCarSpeed: 0
+    property int currentTireRotation: 0
 
     FontLoader {
         id: adobeHeitiStd
@@ -175,7 +176,7 @@ Item {
             // dial center number
             Text {
                 id: rotation_speed_dial_center_number;
-                x: 1058;
+                x: 1038;
                 y: 203;
                 visible: true;
                 text: "42";
@@ -200,7 +201,7 @@ Item {
             // trip title
             Text {
                 id: rotation_speed_dial_strip;
-                x: 1042;
+                x: 1032;
                 y: 380;
                 visible: true;
                 text: "odo:                      km";
@@ -212,7 +213,7 @@ Item {
             // trip title content
             Text {
                 id: rotation_speed_dial_strip_content;
-                x: 1047 + 50 + 2;
+                x: 1037 + 50 + 2;
                 y: 383;
                 visible: true;
                 text: "3000000";
@@ -472,6 +473,12 @@ Item {
     Item {
         id: symbols;
         Image {
+            id: symbol_overheating;
+            x: 994;
+            y: 114;
+            source: "qrc:/theme1/symbol/Theme1/Symbol/Battery overheating alarm.png";
+        }
+        Image {
             id: symbol_batteryCharging;
             x: 1060;
             y: 125;
@@ -647,7 +654,7 @@ Item {
         }
         Image {
             id: symbol_ready;
-            x: 268;
+            x: 258;
             y: 432;
             source: "qrc:/theme1/symbol/Theme1/Symbol/READY.png";
         }
@@ -659,20 +666,20 @@ Item {
         }
         Image {
             id: symbol_stopWL;
-            x: 1139;
+            x: 1129;
             y: 432;
             source: "qrc:/theme1/symbol/Theme1/Symbol/StopWL.png";
         }
         Image {
             id: symbol_turnLeftWL;
             x: 577;
-            y: 78;
+            y: 83;
             source: "qrc:/theme1/symbol/Theme1/Symbol/TurnLeftWL.png";
         }
         Image {
             id: symbol_turnRightWL;
             x: 823;
-            y: 88;
+            y: 83;
             source: "qrc:/theme1/symbol/Theme1/Symbol/TurnRightWL.png";
         }
     }
@@ -793,8 +800,8 @@ Item {
         id: pathAnimGo_custom;
         target: pointer;
         duration: 100;
-        orientationEntryDuration: 100;
-        orientationExitDuration: 100;
+//        orientationEntryDuration: 100;
+//        orientationExitDuration: 100;
         easing.type: Easing.Linear;
         orientation: PathAnimation.TopFirst;
 //        endRotation: 90;
@@ -817,42 +824,64 @@ Item {
     Timer {
         property bool direction_forward : true
         id: timer;
-        interval: 10;
-        running: false;
+        interval: 100;
+        running: true;
         repeat: true
         onTriggered: {
             if(direction_forward) {
-                currentCarSpeedGraduation++;
-                if(currentCarSpeedGraduation >= 239) {
-                    running = false;
+                currentCarSpeed++;
+                if(currentCarSpeed >= 239) {
+//                    running = false;
                     direction_forward = false;
                 } else {
-                    pointer.rotation = orbitData[currentCarSpeedGraduation][2];
-                    pointer.scale = orbitData[currentCarSpeedGraduation][3];
+                    pointer.rotation = orbitData[currentCarSpeed][2];
+                    pointer.scale = orbitData[currentCarSpeed][3];
 
-                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeedGraduation][0];
-                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeedGraduation][1];
-                    pathAnimGo_custom.end_x = orbitData[currentCarSpeedGraduation+1][0];
-                    pathAnimGo_custom.end_y = orbitData[currentCarSpeedGraduation+1][1];
+                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
+                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
+                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
+                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
 
-                    pathAnimGo_custom.start();
+//                    pathAnimGo_custom.start();
                 }
             } else {
-                currentCarSpeedGraduation--;
-                if(currentCarSpeedGraduation <= 0) {
+                currentCarSpeed--;
+                if(currentCarSpeed <= 0) {
                     running = false;
                     direction_forward = true;
                 } else {
-                    pointer.rotation = orbitData[currentCarSpeedGraduation][2];
-                    pointer.scale = orbitData[currentCarSpeedGraduation][3];
+                    pointer.rotation = orbitData[currentCarSpeed][2];
+                    pointer.scale = orbitData[currentCarSpeed][3];
 
-                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeedGraduation][0];
-                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeedGraduation][1];
-                    pathAnimGo_custom.end_x = orbitData[currentCarSpeedGraduation+1][0];
-                    pathAnimGo_custom.end_y = orbitData[currentCarSpeedGraduation+1][1];
+                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
+                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
+                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
+                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
 
-                    pathAnimGo_custom.start();
+//                    pathAnimGo_custom.start();
                 }
+            }
+
+
+            car_speed_dial_center_number.text = currentCarSpeed;
+
+            if(currentCarSpeed%2 == 0) {
+                rotation_speed_dial_center_number.text = currentTireRotation;
+                if(++currentTireRotation >= 120) {
+                    currentTireRotation = 0;
+                }
+            }
+
+            // adjust number position
+            if(currentTireRotation >= 100) {
+                rotation_speed_dial_center_number.x = 1038-100;
+            } else {
+                rotation_speed_dial_center_number.x = 1038;
+            }
+            if(currentCarSpeed >= 100) {
+                car_speed_dial_center_number.x = 196-50;
+            } else {
+                car_speed_dial_center_number.x = 196;
             }
         }
     }
