@@ -22,6 +22,10 @@ MenuItem {
         }
     }
 
+    onBKeyEnableChanged: {
+        console.debug("MenuPanle onBKeyEnableChanged " + bKeyEnable)
+    }
+
     hideMenu: function() {
         //调用关闭三层菜单通用函数
         //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
@@ -70,11 +74,13 @@ MenuItem {
             asynchronous: true
             cache: true
             source: sourceImageUrl + model.src
+            sourceSize.width: 40
+            sourceSize.height: 36
         }
     }
 
     Rectangle {
-        width: 550
+        width: 650
         height: 45
         anchors.centerIn: parent
         color: "lightblue"
@@ -83,7 +89,7 @@ MenuItem {
 
     ListView {
         id: listMenu
-        width: 500
+        width: 600
         height: 35
         anchors.centerIn: parent
         clip: true

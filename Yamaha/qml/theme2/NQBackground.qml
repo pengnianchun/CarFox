@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QtQml 2.0
 
@@ -33,6 +34,8 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: 61
         source: "qrc:/theme2/symbol/Theme2/Symbol/line_up.png"
+        sourceSize.width: 1245
+        sourceSize.height: 2
         asynchronous: true
         cache: true
     }
@@ -43,6 +46,8 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 20
         source: "qrc:/theme2/symbol/Theme2/Symbol//line_left.png"
+        sourceSize.width: 75
+        sourceSize.height: 447
         asynchronous: true
         cache: true
     }
@@ -53,6 +58,8 @@ Item {
         anchors.right: parent.right
         anchors.rightMargin: 20
         source: "qrc:/theme2/symbol/Theme2/Symbol//line_right.png"
+        sourceSize.width: 75
+        sourceSize.height: 447
         asynchronous: true
         cache: true
     }
@@ -63,6 +70,8 @@ Item {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 46
         source: "qrc:/theme2/symbol/Theme2/Symbol//line_down.png"
+        sourceSize.width: 1245
+        sourceSize.height: 2
         asynchronous: true
         cache: true
     }
@@ -76,31 +85,53 @@ Item {
         Image {
             id: speed_left
             source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
+            sourceSize.width: 370
+            sourceSize.height: 370
             asynchronous: true
             cache: true
 
-            Image {
-                id: circle_lineLeft
+
+            Rectangle {
                 x: 185
                 y: -5
-                source: "qrc:/theme2/symbol/Theme2/Symbol/circle.png"
-                asynchronous: true
-                cache: true
+                width: 20
+                height: 20
+                radius: 10
+                color: "lightblue"
 
                 transform: Rotation {
-                    id: minuteRotation
                     origin.x: 0; origin.y: 190;
                     angle: (carSpeedValue * 2.5) - 135
                     Behavior on angle {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
                 }
+
             }
+//            Image {
+//                id: circle_lineLeft
+//                x: 185
+//                y: -5
+//                source: "qrc:/theme2/symbol/Theme2/Symbol/circle.png"
+//                asynchronous: true
+//                cache: true
+
+//                transform: Rotation {
+//                    id: minuteRotation
+//                    origin.x: 0; origin.y: 190;
+//                    angle: (carSpeedValue * 2.5) - 135
+//                    Behavior on angle {
+//                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
+//                    }
+//                }
+//            }
         }
 
         Image {
             id: speed_right
             source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
+            sourceSize.width: 370
+            sourceSize.height: 370
             asynchronous: true
             cache: true
 
@@ -119,9 +150,7 @@ Item {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
                 }
-
             }
-
 //            Image {
 //                id: circle_lineRight
 //                x: 185
@@ -141,6 +170,89 @@ Item {
         }
     }
 
+//    //#CANVAS START
+//    //信息
+//    property int rangeValue: carSpeedValue;
+//    property int nowRange: 0;
+
+//    //画布
+//    property int mW: 400;
+//    property int mH: 400;
+//    property int lineWidth: 2;
+
+//    //圆
+//    property double r: mH / 2; //圆心
+//    property double cR: r - 16 * lineWidth; //圆半径
+
+//    //Sin曲线
+//    property int sX: 0;
+//    property int sY: mH / 2;
+//    property int axisLength: mW;        //轴长
+//    property double waveWidth: 0.015;   //波浪宽度,数越小越宽
+//    property double waveHeight: 6;      //波浪高度,数越大越高
+//    property double speed: 0.09;        //波浪速度，数越大速度越快
+//    property double xOffset: 0;         //波浪x偏移量
+
+//    Canvas{
+//        id: canvas
+//        x: 60
+//        y: 70
+//        height: mH
+//        width: mW
+//        //anchors.centerIn: parent
+//        onPaint: {
+//            var ctx = getContext("2d");
+
+//            ctx.clearRect(0, 0, mW, mH);
+
+//            //显示外圈
+//            ctx.beginPath();
+//            ctx.stroke();
+//            ctx.beginPath();
+//            ctx.arc(r, r, cR, 0, 2*Math.PI);
+//            ctx.clip();
+
+//            //显示sin曲线
+//            ctx.save();
+//            var points=[];
+//            ctx.beginPath();
+//            for(var x = sX; x < sX + axisLength; x += 20 / axisLength){
+//                var y = -Math.sin((sX + x) * waveWidth + xOffset);
+//                var dY = mH * (1 - nowRange / 100 );
+//                points.push([x, dY + y * waveHeight]);
+//                ctx.lineTo(x, dY + y * waveHeight);
+//            }
+
+//            //显示波浪
+//            ctx.lineTo(axisLength, mH);
+//            ctx.lineTo(sX, mH);
+//            ctx.lineTo(points[0][0],points[0][1]);
+//            ctx.fillStyle = '#1c86d1';
+//            ctx.fill();
+//            ctx.restore();
+
+//            if(nowRange <= rangeValue){
+//                nowRange += 1;
+//            }
+
+//            if(nowRange > rangeValue){
+//                nowRange -= 1;
+//            }
+//            xOffset += speed;
+//        }
+
+//        Timer{
+//            id: timer
+//            running: true
+//            repeat: true
+//            interval: 10
+//            onTriggered:{
+//                parent.requestPaint();
+//            }
+//        }
+//    }
+//    //#CANVAS END
+
     // 发车倒计时
     Rectangle {
         anchors.centerIn: parent
@@ -158,6 +270,8 @@ Item {
                 spacing: 20
                 Image {
                     source: "qrc:/theme2/symbol/Theme2/Symbol/Countdown.png"
+                    sourceSize.width: 24
+                    sourceSize.height: 33
                     asynchronous: true
                     cache: true
                 }
@@ -244,6 +358,10 @@ Item {
             anchors.bottomMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
             source: "qrc:/theme2/symbol/Theme2/Symbol/soc.png"
+            sourceSize.width: 127
+            sourceSize.height: 31
+            asynchronous: true
+            cache: true
         }
 
         Row {
@@ -268,6 +386,8 @@ Item {
 
         Image {
             source: "qrc:/theme2/symbol/Theme2/Symbol/StopWL.png"
+            asynchronous: true
+            cache: true
         }
         Text {
             text: qsTr("水温高于105度")
@@ -344,14 +464,20 @@ Item {
             Image {
                 id: gearN
                 source: "qrc:/theme2/symbol/Theme2/Symbol/gear_N.png"
+                asynchronous: true
+                cache: true
             }
             Image {
                 id: gearD
                 source: "qrc:/theme2/symbol/Theme2/Symbol/gear_D.png"
+                asynchronous: true
+                cache: true
             }
             Image {
                 id: gearP
                 source: "qrc:/theme2/symbol/Theme2/Symbol/gear_R.png"
+                asynchronous: true
+                cache: true
             }
         }
     }
@@ -364,6 +490,8 @@ Item {
         anchors.horizontalCenter: rectRight.horizontalCenter
         source: "qrc:/theme2/symbol/Theme2/Symbol/climbingmode.png"
         visible: homepanel_visible
+        asynchronous: true
+        cache: true
     }
 
     RowLayout {
