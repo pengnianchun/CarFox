@@ -39,6 +39,10 @@
         <file>theme2/JS/HomePanelCtrl.js</file>
         <file>theme2/NQText.qml</file>
         <file>theme2/Navigation.qml</file>
+        <file>theme2/Phone.qml</file>
+        <file>theme2/Music.qml</file>
+        <file>theme2/Radio.qml</file>
+        <file>theme2/Setting.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>JS/mainpanel_pointer_orbitdata.js</file>

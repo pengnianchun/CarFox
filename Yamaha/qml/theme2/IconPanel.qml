@@ -6,71 +6,63 @@ Item {
     width: 1440
     height: 60
 
+    property bool enableTest: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
     property string sourceImageGreyUrl: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
 
-    property bool enableTest: false
-
-
-
     ListModel {
         id: modelLeft
-//        ListElement { src: "driverSystemFault.png"; enable: true }
-//        ListElement { src: "HatchDoor1Alarm.png"; enable: true }
-//        ListElement { src: "chargingCable.png"; enable: true }
-//        ListElement { src: "batteryCharging.png"; enable: true }
-//        ListElement { src: "motorHeat.png"; enable: true }
-//        ListElement { src: "lamp_AC.png"; enable: true }
-//        ListElement { src: "highPressureOverhaul.png"; enable: true }
-//        ListElement { src: "Lamp_airFilter.png"; enable: true }
-//        ListElement { src: "HatchDoor2Alarm.png"; enable: true }
         Component.onCompleted: {
-            append({"src": "driverSystemFault.png", enable: enableTest});
-            append({"src": "HatchDoor1Alarm.png", enable: enableTest});
-            append({"src": "chargingCable.png", enable: enableTest});
-            append({"src": "batteryCharging.png", enable: enableTest});
-            append({"src": "motorHeat.png", enable: enableTest});
-            append({"src": "lamp_AC.png", enable: enableTest});
-            append({"src": "highPressureOverhaul.png", enable: enableTest});
-            append({"src": "Lamp_airFilter.png", enable: enableTest});
-            append({"src": "HatchDoor2Alarm.png", enable: enableTest});
-            completed = true;
+            append({"src": "driverSystemFault.png", "enable": enableTest});
+            append({"src": "HatchDoor1Alarm.png", "enable": enableTest});
+            append({"src": "chargingCable.png", "enable": enableTest});
+            append({"src": "batteryCharging.png", "enable": enableTest});
+            append({"src": "motorHeat.png", "enable": enableTest});
+            append({"src": "lamp_AC.png", "enable": enableTest});
+            append({"src": "highPressureOverhaul.png", "enable": enableTest});
+            append({"src": "Lamp_airFilter.png", "enable": enableTest});
+            append({"src": "HatchDoor2Alarm.png", "enable": enableTest});
         }
     }
 
     ListModel {
         id: modelMiddle
-        ListElement { src: "TurnLeftWL.png"; enable: true}
-        ListElement { src: "leftBrakeAlarm.png"; enable: true }
-        ListElement { src: "BrakeLight.png"; enable: true }
-        ListElement { src: "Defroster.png"; enable: true }
-        ListElement { src: "mainPowerIndication.png"; enable: true }
-        ListElement { src: "Lamp_waterLow.png"; enable: true }
-        ListElement { src: "ready.png"; enable: true }
-        ListElement { src: "Lamp_headlight.png"; enable: true }
-        ListElement { src: "backFlogLamp.png"; enable: true }
-        ListElement { src: "Lamp_parkingBrake.png"; enable: true }
-        ListElement { src: "Lamp_airPress.png"; enable: true }
-        ListElement { src: "Lamp_ABS.png"; enable: true }
-        ListElement { src: "TurnRightWL.png"; enable: true }
+        Component.onCompleted: {
+            append({"src": "TurnLeftWL.png", "enable": enableTest});
+            append({"src": "leftBrakeAlarm.png", "enable": enableTest});
+            append({"src": "BrakeLight.png", "enable": enableTest});
+            append({"src": "Defroster.png", "enable": enableTest});
+            append({"src": "mainPowerIndication.png", "enable": enableTest});
+            append({"src": "Lamp_waterLow.png", "enable": enableTest});
+            append({"src": "ready.png", "enable": enableTest});
+            append({"src": "Lamp_headlight.png", "enable": enableTest});
+            append({"src": "backFlogLamp.png", "enable": enableTest});
+            append({"src": "Lamp_parkingBrake.png", "enable": enableTest});
+            append({"src": "Lamp_airPress.png", "enable": enableTest});
+            append({"src": "Lamp_ABS.png", "enable": enableTest});
+            append({"src": "TurnRightWL.png", "enable": enableTest});
+        }
     }
 
     ListModel {
         id: modelRight
-        ListElement { src: "Lamp_littleLight.png"; enable: true }
-        ListElement { src: "Lamp_insulationRed.png"; enable: true }
-        ListElement { src: "motor_notworking.png"; enable: true }
-        ListElement { src: "batteryCut.png"; enable: true }
-        ListElement { src: "batteryFault.png"; enable: true }
-        ListElement { src: "lampBatHigtTemp.png"; enable: true }
-        ListElement { src: "batteryFireAlarm.png"; enable: true }
-        ListElement { src: "engineFailue.png"; enable: true }
+        Component.onCompleted: {
+            append({"src": "Lamp_littleLight.png", "enable": enableTest});
+            append({"src": "Lamp_insulationRed.png", "enable": enableTest});
+            append({"src": "motor_notworking.png", "enable": enableTest});
+            append({"src": "batteryCut.png", "enable": enableTest});
+            append({"src": "batteryFault.png", "enable": enableTest});
+            append({"src": "lampBatHigtTemp.png", "enable": enableTest});
+            append({"src": "batteryFireAlarm.png", "enable": enableTest});
+            append({"src": "engineFailue.png", "enable": enableTest});
+        }
     }
 
     Component {
         id: nameDelegate
 
         Image {
+            verticalAlignment: Image.AlignVCenter
             asynchronous: true
             cache: true
             source: model.enable ? sourceImageUrl + model.src : sourceImageGreyUrl + model.src
@@ -80,40 +72,40 @@ Item {
 
     ListView {
         id: listLeft
-        width: 320
+        width: 360
         height: 40
         anchors.right: listMiddle.left
         anchors.verticalCenter: listMiddle.verticalCenter
         clip: true
         model: modelLeft
         delegate: nameDelegate
-        spacing: 5
+        spacing: 2
         orientation: ListView.Horizontal
     }
 
     ListView {
         id: listMiddle
         y: 20
-        width: 570
+        width: 565
         height: 40
         anchors.horizontalCenter: parent.horizontalCenter
         clip: true
         model: modelMiddle
         delegate: nameDelegate
-        spacing: 5
+        spacing: 2
         orientation: ListView.Horizontal
     }
 
     ListView {
         id: listRight
-        width: 500
+        width: 330
         height: 40
         anchors.left: listMiddle.right
         anchors.verticalCenter: listMiddle.verticalCenter
         clip: true
         model: modelRight
         delegate: nameDelegate
-        spacing: 10
+        spacing: 4
         orientation: ListView.Horizontal
     }
 }

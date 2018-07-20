@@ -1,5 +1,6 @@
 import QtQuick 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Controls 1.3
+import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
 import "qrc:/Theme/theme2/JS/HomePanelCtrl.js" as HomeCtrl
@@ -12,13 +13,50 @@ CommonItem {
     layer.enabled: true
 
     property bool homepanel_visible: true
+    property int  mainMenuIndex: 0
 
     property int carSpeedValue: CarMsg.carSpeed; // 车速
     property int engineSpeedValue: CarMsg.rpm; // 转速
     property int carVoyage: 99 // 续航里程
     property int carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
-    property int carBattery: 12; // 蓄电池电压
+    property real carBattery: 12; // 蓄电池电压
+    property real carTrip: 0 // TRIP
+    property real carOdo: 0 // ODO
+
+    property bool bKeyEnable: true
+
+    onKeyEnter: function() {
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyEnter")
+            menuPanel.visible = true
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
+        }
+    }
+
+    onKeyBack: function() {
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyBack")
+            menuPanel.visible = false
+        }
+    }
+
+    onKeyUp: function() {
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyUp")
+        }
+    }
+
+    onKeyDown: function() {
+        if (bKeyEnable) {
+            console.debug("HomePanel onKeyDown")
+        }
+    }
+
+    onMainMenuIndexChanged: {
+        homepanel_visible = mainMenuIndex ? false : true
+    }
 
     NQBackground {
         id: background
@@ -31,11 +69,38 @@ CommonItem {
         height: 60
     }
 
+    Item {
+        width: 800
+        height: 410
+        anchors.centerIn: parent
+
+        Navigation {
+            visible: mainMenuIndex === 1
+        }
+
+        Phone {
+            visible: mainMenuIndex === 2
+        }
+
+        Music {
+            visible: mainMenuIndex === 3
+        }
+
+        Radio {
+            visible: mainMenuIndex === 4
+        }
+
+        Setting {
+            visible: mainMenuIndex === 5
+        }
+    }
+
     MenuPanel {
+        id: menuPanel
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 80
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: true
+        visible: false
     }
 
     // Demo
@@ -45,25 +110,77 @@ CommonItem {
 
     Timer {
         id: demo_run
-        interval: 500
+        interval: 200
         repeat: true
         running: false
         onTriggered: {
-            carSpeedValue += getRandomInt(3) // 车速
-            engineSpeedValue += 1 // 转速
-            background.carSpeedRotation = carSpeedValue
+            if (carSpeedValue > 99) { // 车速
+                carSpeedValue = 0
+            } else {
+                carSpeedValue += 1
+            }
+
+            if (engineSpeedValue > 20) { // 转速
+                engineSpeedValue = 0
+            } else {
+                engineSpeedValue += 1
+            }
+
             carVoyage++ // 续航里程
-            carSoc++ // SOC
-            carBreakPressure++ // 制动气压
-            carBattery++ // 蓄电池电压
+
+            if (carSoc === 100) { // SOC
+                carSoc = 0
+            } else {
+                carSoc++
+            }
+
+
+            //background.carSpeedRotation = carSpeedValue
+
+            if (carBreakPressure > 10) { // 制动气压
+                carBreakPressure = 0
+            } else {
+                carBreakPressure += 0.1
+            }
+
+            if (carBattery > 24) {  // 蓄电池电压
+                carBattery = 0.0
+            } else {
+                carBattery += 0.1
+            }
+
+            if (carTrip > 1000000) {
+                carTrip = 0
+            } else {
+                carTrip += getRandomInt(5)
+            }
+
+            if (carOdo > 1000000) {
+                carOdo = 0
+            } else {
+                carOdo += getRandomInt(5)
+            }
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            iconPanel.enableTest = !iconPanel.enableTest
         }
     }
 
     onVisibleChanged: {
-
+        if(visible){
+            CarMsg.sendEnableKeys(true);
+            demo_run.running = true
+        } else {
+            CarMsg.sendEnableKeys(false);
+            demo_run.running = false
+        }
     }
 
     Component.onCompleted: {
-        demo_run.running = true
+
     }
 }

@@ -1,44 +1,66 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
+import QtQml.Models 2.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
 
 MenuItem {
-    id: menu_item
+    id: menuItem
 
+    property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Menu/"
 
-    menuLayerId: "MenuMainDetail"
-    parentMenuId: "MenuMainDetail"
+    menuLayerId: "MenuPanel"
+    parentMenuId: "NULL"
 
     enterMenu: function() {
-        //default
-        homepanel_visible = false
-
+        if (bKeyEnable) {
+            console.debug("MenuPanel enterMenu")
+            homepanel_visible = false
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
+        }
     }
+
     hideMenu: function() {
         //调用关闭三层菜单通用函数
         //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-        homepanel_visible = true
+        //homepanel_visible = true
+        //listMenu.currentIndex = 0
+
+        if (bKeyEnable) {
+            console.debug("MenuPanel hideMenu")
+            homepanel_visible = true
+            mainMenuIndex = listMenu.currentIndex = 0
+            UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", false);
+        }
     }
+
     previousMenu: function() {
-        // default
-        listLeft.currentIndex++
+        if (bKeyEnable) {
+            console.debug("MenuPanel previousMenu")
+            mainMenuIndex = --listMenu.currentIndex
+        }
     }
+
     nextMenu: function() {
-        // default
-        listLeft.currentIndex--
+        if (bKeyEnable) {
+            console.debug("MenuPanel nextMenu")
+            mainMenuIndex = ++listMenu.currentIndex
+        }
     }
 
     ListModel {
         id: modelMenu
-        ListElement { src: "home.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "navigation.png"; qml: "qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "phone.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "music.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "radio.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "setting.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "adas.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
-        ListElement { src: "more.png"; qml:"qrc:/Theme/theme2/Navigation.qml"; }
+        ListElement { src: "home.png"; }
+        ListElement { src: "navigation.png"; }
+        ListElement { src: "phone.png"; }
+        ListElement { src: "music.png"; }
+        ListElement { src: "radio.png"; }
+        ListElement { src: "setting.png"; }
+        ListElement { src: "adas.png"; }
+        ListElement { src: "more.png"; }
     }
 
     Component {
@@ -48,31 +70,6 @@ MenuItem {
             asynchronous: true
             cache: true
             source: sourceImageUrl + model.src
-        }
-
-
-
-    }
-
-    Item {
-        width: 200
-        height: 200
-
-        Loader {
-            id: mloder
-            source: ""
-            onSourceChanged: {
-                console.debug("source"+source)
-            }
-        }
-    }
-
-    Item {
-        width: 800
-        height: 400
-
-        Rectangle {
-            color: "red"
         }
     }
 
@@ -85,7 +82,7 @@ MenuItem {
     }
 
     ListView {
-        id: listLeft
+        id: listMenu
         width: 500
         height: 35
         anchors.centerIn: parent
@@ -95,121 +92,9 @@ MenuItem {
         spacing: 35
         orientation: ListView.Horizontal
         highlight: Rectangle { color: "lightsteelblue"; radius: 3; }
-        onHighlightChanged: {
-            console.debug("onHighlightChanged"+modelMenu.qml)
-            mloder.setSource(modelMenu.qml)
-        }
     }
 
+    Component.onCompleted: {
 
-
-//    Component {
-//        id: widgetdelegate
-//        Item {
-//            width: grid.cellWidth; height: grid.cellHeight
-//            Loader { source: element
-//                id: im
-//                state: "inactive"
-
-//                anchors.centerIn: parent
-//                width: grid.cellWidth; height: grid.cellHeight
-//                smooth: true
-//                //fillMode: Image.PreserveAspectFit
-//                SequentialAnimation on rotation {
-//                    NumberAnimation { to:  2; duration: 50 }
-//                    NumberAnimation { to: -2; duration: 100 }
-//                    NumberAnimation { to:   0; duration: 50 }
-//                    running: im.state == "squiggle"
-//                    loops: Animation.Infinite
-//                }
-//                Rectangle {
-//                    id: imRect
-//                    anchors.fill: parent; radius: 5
-//                    anchors.centerIn: parent
-//                    border.color: "#ffffff"; color: "transparent"; border.width: 6;
-//                    opacity: 0
-//                }
-//                states: [
-//                    State {
-//                        name: "squiggle";
-//                        when: (grid.firstIndexDrag != -1) && (grid.firstIndexDrag != index)
-//                    },
-//                    State {
-//                        name: "inactive";
-//                        when: (grid.firstIndexDrag == -1) || (grid.firstIndexDrag == index)
-//                        PropertyChanges { target: im; rotation: 0}
-//                    }
-//                ]
-//            }
-
-//            Rectangle {
-//                id: backgroundcircle
-//                width: 20; height: 20; radius: 20
-//                smooth: true
-//                anchors.centerIn: parent
-//                color: "#222222";
-//                opacity: 0
-
-//            }
-//            states: [
-//                State {
-//                    name: "inDrag"
-//                    when: index == grid.firstIndexDrag
-//                    PropertyChanges { target: backgroundcircle; opacity: 1 }
-//                    PropertyChanges { target: imRect; opacity: 1 }
-//                    PropertyChanges { target: im; parent: container }
-//                    PropertyChanges { target: im; width: (grid.cellWidth - 10) / 1 }
-//                    PropertyChanges { target: im; height: (grid.cellHeight - 10) / 1 }
-//                    PropertyChanges { target: im; anchors.centerIn: undefined }
-//                    PropertyChanges { target: im; x: coords.mouseX - im.width / 2 }
-//                    PropertyChanges { target: im; y: coords.mouseY - im.height / 2 }
-//                }
-//            ]
-//            transitions: [
-//                Transition { NumberAnimation { properties: "width, height, opacity"; duration: 300; easing.type: Easing.InOutQuad } }
-//            ]
-//        }
-//    }
-
-
-
-
-
-//    GridView {
-//        property int firstIndexDrag: -1
-
-//        id: grid
-//        x: 0; y: 0
-//        interactive: false
-
-
-//        anchors.fill: parent
-//        cellWidth: 186; cellHeight: 96;
-
-//        model: modelMenu { id: widgetmodel }
-//        delegate: widgetdelegate
-//        Item {
-//            id: container
-//            anchors.fill: parent
-
-
-//        }
-//        MouseArea {
-//            id: coords
-//            anchors.fill: parent
-//            onReleased: {
-//                if (grid.firstIndexDrag != -1)
-//                    widgetmodel.move(grid.firstIndexDrag,grid.indexAt(mouseX, mouseY),1)
-//                grid.firstIndexDrag = -1
-//            }
-//            onPressAndHold: {
-//                grid.firstIndexDrag=grid.indexAt(mouseX, mouseY)
-//            }
-//        }
-//    }
-
-
-
-
-
+    }
 }
