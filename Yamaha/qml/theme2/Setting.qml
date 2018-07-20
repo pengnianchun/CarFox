@@ -1,7 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import CustomEnum 1.0
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
@@ -43,10 +45,9 @@ Item {
     }
 
     PathView {
-        Keys.onRightPressed: if (!moving) { incrementCurrentIndex(); console.log(moving) }
-        Keys.onLeftPressed: if (!moving) decrementCurrentIndex()
         id: view
-        anchors.centerIn: parent
+        x: 200
+        y: 50
         highlight: appHighlight
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
@@ -61,6 +62,17 @@ Item {
             PathAttribute { name: "iconScale"; value: 1.0 }
             PathQuad { x: 390; y: 50; controlX: 350; controlY: 200 }
             PathAttribute { name: "iconScale"; value: 0.5 }
+        }
+
+        Keys.onRightPressed: if (!moving) { incrementCurrentIndex(); console.log(moving) }
+        Keys.onLeftPressed: if (!moving) decrementCurrentIndex()
+    }
+
+    onVisibleChanged: {
+        if(visible){
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", false, false);
+        } else {
+            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true, false);
         }
     }
 

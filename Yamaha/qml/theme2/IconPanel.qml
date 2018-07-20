@@ -6,7 +6,7 @@ Item {
     width: 1440
     height: 60
 
-    property bool enableTest: false
+    property bool enableTest: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
     property string sourceImageGreyUrl: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
 
@@ -66,6 +66,8 @@ Item {
             asynchronous: true
             cache: true
             source: model.enable ? sourceImageUrl + model.src : sourceImageGreyUrl + model.src
+            sourceSize.width: 85
+            sourceSize.height: 40
             transform: Rotation { origin.x: 30; origin.y: 30; axis { x: 0; y: 0; z: 1 } angle: 0 }
         }
     }

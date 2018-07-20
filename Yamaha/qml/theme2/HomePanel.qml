@@ -93,6 +93,10 @@ CommonItem {
         Setting {
             visible: mainMenuIndex === 5
         }
+
+        Adas {
+            visible: mainMenuIndex === 6
+        }
     }
 
     MenuPanel {
