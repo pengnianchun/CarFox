@@ -46,10 +46,8 @@ Item {
         Keys.onRightPressed: if (!moving) { incrementCurrentIndex(); console.log(moving) }
         Keys.onLeftPressed: if (!moving) decrementCurrentIndex()
         id: view
-        anchors.fill: parent
+        anchors.centerIn: parent
         highlight: appHighlight
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
         focus: true
