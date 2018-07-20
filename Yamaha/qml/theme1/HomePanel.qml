@@ -315,7 +315,7 @@ CommonItem {
             id: main_menu_panel;
             x: 580;
             y: 40;
-            property int menuIndex: 0;
+            property int menuIndex: -1;
             property var menu_icons: [
                 "qrc:/theme1/slice/Theme1/Slice/dashed_car.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/car_info.png",
@@ -324,12 +324,12 @@ CommonItem {
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/ADAS.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/analys.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/comsume.png",
-                "qrc:/theme1/slice/Theme1/Slice/dispatching system-1.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/dispatche.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/help.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/tire_pressure.png",
-                "qrc:/theme1/slice/Theme1/Slice/fault-1.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/error.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/settings.png",
-                "qrc:/theme1/slice/Theme1/Slice/information-1.png"];
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/info.png"];
 
             ListModel {
                 id: menuModel;
@@ -349,7 +349,7 @@ CommonItem {
             }
 
             Component {
-                id: displayDelegate
+                id: displayDelegate;
                 Item {
                     width: 40; height: 40;
                     Image { source: icon; }
@@ -744,8 +744,12 @@ CommonItem {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyUp")
         }
-        if(--index < 0) {
-            index = menuModel.count-1;
+//        if(--index < 0) {
+////            index = menuModel.count-1;
+//        }
+        index--;
+        if(index < -1) {
+            index = main_menu_panel.menu_icons.length-2;
         }
         set_subscreen(index);
     }
@@ -753,8 +757,12 @@ CommonItem {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyDown")
         }
-        if(++index >= menuModel.count) {
-            index = 0;
+//        if(++index >= menuModel.count) {
+////            index = 0;
+//        }
+        index++;
+        if(index >= main_menu_panel.menu_icons.length-1) {
+            index = -1;
         }
         set_subscreen(index);
     }
@@ -767,46 +775,34 @@ CommonItem {
     }
 
     function set_subscreen(index) {
-        if(index > main_menu_panel.menu_icons.length) {
-            pathView.currentIndex = main_menu_panel.menu_icons.length;
-        }
-        if(index < 0) {
-            index = 0;
-        }
 
         pathView.currentIndex = index;
         console.log("pathView.currentIndex: " + pathView.currentIndex);
 
-        subscreen_image.source = main_menu_panel.menu_icons[pathView.currentIndex];
+        subscreen_image.source = main_menu_panel.menu_icons[index+1];
         console.log("subscreen_image.source: " + subscreen_image.source);
-        if(pathView.currentIndex == 1) {
-            subscreen_image.x = 564-80;
-            subscreen_image.y = 136-70;
-            subscreen_image.scale = 0.8;
-        } else if(pathView.currentIndex == 2) {
-            subscreen_image.x = 564-80;
-            subscreen_image.y = 136-70;
-            subscreen_image.scale = 0.8;
-        } else if(pathView.currentIndex == 3) {
-            subscreen_image.x = 564-80;
-            subscreen_image.y = 136-70;
-            subscreen_image.scale = 0.8;
-        } else if(pathView.currentIndex == 4) {
-            subscreen_image.x = 564-80;
-            subscreen_image.y = 136-70;
-            subscreen_image.scale = 0.8;
-        } else if(pathView.currentIndex == 5) {
-            subscreen_image.x = 564-80;
-            subscreen_image.y = 136-70;
-            subscreen_image.scale = 0.8;
-        } else if(pathView.currentIndex == 6) {
-            subscreen_image.x = 564-80;
-            subscreen_image.y = 136-70;
-            subscreen_image.scale = 0.8;
-        } else if(pathView.currentIndex == 0) {
+        switch(index+1) {
+        case 0:
             subscreen_image.x = 564;
             subscreen_image.y = 136;
             subscreen_image.scale = 0.9;
+            break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+            subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         }
     }
 

@@ -304,5 +304,8 @@
         <file>Theme1/sub_screen_slice/settings.png</file>
         <file>Theme1/sub_screen_slice/submenu.png</file>
         <file>Theme1/sub_screen_slice/tire_pressure.png</file>
+        <file>Theme1/sub_screen_slice/dispatche.png</file>
+        <file>Theme1/sub_screen_slice/error.png</file>
+        <file>Theme1/sub_screen_slice/info.png</file>
     </qresource>
 </RCC>
