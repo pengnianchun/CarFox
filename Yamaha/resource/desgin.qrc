@@ -250,6 +250,7 @@
         <file>Theme1/Slice/tirepressure-1.png</file>
         <file>Theme1/Slice/Vehicle information-1.png</file>
         <file>Theme1/Slice/Vehicle information.png</file>
+        <file>Theme1/Slice/sun.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Font/msyhl.ttc</file>

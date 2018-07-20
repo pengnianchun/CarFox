@@ -715,19 +715,18 @@ Item {
         y: 474;
         visible: true;
         rotation: -23;
-        source: "qrc:/theme1/slice/Theme1/Slice/Pointer.png";
+        source: "qrc:/theme1/slice/Theme1/Slice/sun.png";
         scale: 0.8;
-        //source: "qrc:/theme1/slice/Theme1/Slice/symmetry_pointer.png";
     }
 
     PathAnimation {
         id: pathAnimGo;
         target: pointer;
         duration: 3000;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
+        orientationEntryDuration: 100;
+        orientationExitDuration: 100;
         easing.type: Easing.Linear;
-        orientation: PathAnimation.TopFirst;
+//        orientation: PathAnimation.TopFirst;
         endRotation: 90;
 
         path: Path {
@@ -744,7 +743,7 @@ Item {
 
         onStarted: {
             console.log("PathAnimation pathAnimGo start");
-            pointer.rotation = -23;
+//            pointer.rotation = -23;
 //            pointer.x = 90;
 //            pointer.y = 494;
         }
@@ -800,10 +799,10 @@ Item {
         id: pathAnimGo_custom;
         target: pointer;
         duration: 100;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
-        easing.type: Easing.Linear;
-        orientation: PathAnimation.TopFirst;
+        orientationEntryDuration: 100;
+        orientationExitDuration: 100;
+        easing.type: Easing.OutQuad;
+//        orientation: PathAnimation.TopFirst;
 //        endRotation: 90;
 
         path: Path {
@@ -821,71 +820,112 @@ Item {
         }
     }
 
+//    Timer {
+//        property bool direction_forward : true
+//        id: timer;
+//        interval: 100;
+//        running: false;
+//        repeat: true
+//        onTriggered: {
+//            if(direction_forward) {
+//                currentCarSpeed++;
+//                if(currentCarSpeed >= 239) {
+////                    running = false;
+//                    direction_forward = false;
+//                } else {
+////                    pointer.rotation = orbitData[currentCarSpeed][2];
+//                    pointer.scale = orbitData[currentCarSpeed][3];
+
+//                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
+//                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
+//                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
+//                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
+
+//                    pathAnimGo_custom.start();
+//                }
+//                if(currentCarSpeed%2 == 0) {
+//                    currentTireRotation++;
+//                }
+//            } else {
+//                currentCarSpeed--;
+//                if(currentCarSpeed <= 0) {
+////                    running = false;
+//                    direction_forward = true;
+//                } else {
+////                    pointer.rotation = orbitData[currentCarSpeed][2];
+//                    pointer.scale = orbitData[currentCarSpeed][3];
+
+//                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
+//                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
+//                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
+//                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
+
+//                    pathAnimGo_custom.start();
+//                }
+//                if(currentCarSpeed%2 == 0) {
+//                    currentTireRotation--;
+//                }
+//            }
+
+
+//            car_speed_dial_center_number.text = currentCarSpeed;
+//            rotation_speed_dial_center_number.text = currentTireRotation;
+
+//            // adjust number position
+//            if(currentTireRotation >= 100) {
+//                rotation_speed_dial_center_number.x = 1038-100;
+//            } else if(currentTireRotation >= 10) {
+//                rotation_speed_dial_center_number.x = 1038;
+//            } else {
+//                rotation_speed_dial_center_number.x = 1098;
+//            }
+//            if(currentCarSpeed >= 100) {
+//                car_speed_dial_center_number.x = 196-50;
+//            } else if(currentCarSpeed >= 10) {
+//                car_speed_dial_center_number.x = 196-10;
+//            } else {
+//                car_speed_dial_center_number.x = 256;
+//            }
+//        }
+//    }
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+
     Timer {
-        property bool direction_forward : true
+        property int counter: 0;
+        property int carSpeedRandom: 0;
+        property int tireRotationRandom: 0;
         id: timer;
         interval: 100;
         running: false;
         repeat: true
         onTriggered: {
-            if(direction_forward) {
-                currentCarSpeed++;
-                if(currentCarSpeed >= 239) {
-//                    running = false;
-                    direction_forward = false;
-                } else {
-//                    pointer.rotation = orbitData[currentCarSpeed][2];
-//                    pointer.scale = orbitData[currentCarSpeed][3];
+            carSpeedRandom = getRandomInt(240);
+            tireRotationRandom = getRandomInt(120);
 
-                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
-                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
-                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
-                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
-
-                    pathAnimGo_custom.start();
-                }
-                if(currentCarSpeed%2 == 0) {
-                    currentTireRotation++;
-                }
-            } else {
-                currentCarSpeed--;
-                if(currentCarSpeed <= 0) {
-//                    running = false;
-                    direction_forward = true;
-                } else {
-                    pointer.rotation = orbitData[currentCarSpeed][2];
-                    pointer.scale = orbitData[currentCarSpeed][3];
-
-                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
-                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
-                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
-                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
-
-                    pathAnimGo_custom.start();
-                }
-                if(currentCarSpeed%2 == 0) {
-                    currentTireRotation--;
-                }
-            }
-
-
-            car_speed_dial_center_number.text = currentCarSpeed;
-            rotation_speed_dial_center_number.text = currentTireRotation;
-
+            car_speed_dial_center_number.text = carSpeedRandom;
             // adjust number position
-            if(currentTireRotation >= 100) {
-                rotation_speed_dial_center_number.x = 1038-100;
-            } else if(currentTireRotation >= 10) {
-                rotation_speed_dial_center_number.x = 1038;
-            } else {
-                rotation_speed_dial_center_number.x = 1098;
-            }
-            if(currentCarSpeed >= 100) {
+            if(carSpeedRandom >= 100) {
                 car_speed_dial_center_number.x = 196-50;
-            } else if(currentCarSpeed >= 10) {
+            } else if(carSpeedRandom >= 10) {
                 car_speed_dial_center_number.x = 196-10;
             } else {
                 car_speed_dial_center_number.x = 256;
+            }
+
+            if(counter++>4) {
+                counter = 0;
+                rotation_speed_dial_center_number.text = tireRotationRandom;
+                // adjust number position
+                if(tireRotationRandom >= 100) {
+                    rotation_speed_dial_center_number.x = 1038-100;
+                } else if(tireRotationRandom >= 10) {
+                    rotation_speed_dial_center_number.x = 1038;
+                } else {
+                    rotation_speed_dial_center_number.x = 1098;
+                }
             }
         }
     }
