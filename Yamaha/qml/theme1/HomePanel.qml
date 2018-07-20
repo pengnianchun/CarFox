@@ -43,7 +43,7 @@ Item {
                 text: "84";
                 color: "white";
                 font.family: europeExt.name;
-                font.pixelSize: 135;
+                font.pixelSize: 120;
                 smooth:true;
             }
             // Measurement unit
@@ -176,13 +176,13 @@ Item {
             // dial center number
             Text {
                 id: rotation_speed_dial_center_number;
-                x: 1098;
+                x: 1038;
                 y: 203;
                 visible: true;
                 text: "42";
                 color: "white";
                 font.family: europeExt.name;
-                font.pixelSize: 135;
+                font.pixelSize: 120;
                 smooth:true;
             }
             // Measurement unit
@@ -311,14 +311,24 @@ Item {
 
         // ------------------------- main menu panel -------------------------
         Item {
-            x: 630;
+            x: 620;
             y: 50;
             property int menuIndex: 0;
             ListModel {
                 id: menuModel;
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia-1.png";}
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage.png";}
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure-1.png";}
+                ListElement { name: "mainpage"; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage-1.png";}
+                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Vehicle information-1.png";}
+                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Navigation-1.png";}
+                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia-1.png";}
+                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Auxiliary driving-1.png";}
+                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Analysis of driving behavior-1.png";}
+                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Energy consumption analysis-1.png";}
+                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/slice/Theme1/Slice/dispatching system-1.png";}
+                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Drive for help-1.png";}
+                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure-1.png";}
+                ListElement { name: "fault-1"; icon: "qrc:/theme1/slice/Theme1/Slice/fault-1.png";}
+                ListElement { name: "Set up-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Set up-1.png";}
+                ListElement { name: "information-1"; icon: "qrc:/theme1/slice/Theme1/Slice/information-1.png";}
             }
 
             Component {
@@ -335,8 +345,9 @@ Item {
                 model: menuModel;
                 delegate: displayDelegate;
                 path: Path {
+                    id: pathView_path;
                     startX: 0; startY: 0;
-                    PathQuad { x: 250; y: 20; controlX: 150; controlY: -20; }
+                    PathQuad { id: pathView_pathQuad; x: 350; y: 20; controlX: 100; controlY: -20; }
                 }
                 pathItemCount: 3;
                 currentIndex: 0;
@@ -687,10 +698,19 @@ Item {
 
     property bool turnForPathAnimGo: true;
     MouseArea{
+        property int index: 0;
         id: mouseArea;
         anchors.fill: parent;
         onClicked: {
-            timer.start();
+//            timer.start();
+
+            pathView.currentIndex = index++;
+            console.log("pathView.currentIndex: " + pathView.currentIndex);
+//            pathView.pathView_path.pathView_pathQuad.x = 350;
+//            pathView.pathView_path.pathView_pathQuad.y = 20;
+//            pathView.pathView_path.pathView_pathQuad.controlX = 100;
+//            pathView.pathView_path.pathView_pathQuad.controlY = -20;
+
 //            if(turnForPathAnimGo) {
 //                pathAnimGo.start();
 //            } else {
@@ -790,15 +810,45 @@ Item {
         }
     }
 
+//    PathAnimation {
+//        property int begin_x: 0;
+//        property int begin_y: 0;
+//        property int end_x: 0;
+//        property int end_y: 0;
+
+//        id: pathAnimGo_custom;
+//        target: pointer;
+//        duration: 100;
+//        orientationEntryDuration: 100;
+//        orientationExitDuration: 100;
+//        easing.type: Easing.OutQuad;
+////        orientation: PathAnimation.TopFirst;
+////        endRotation: 90;
+
+//        path: Path {
+//            startX: pathAnimGo_custom.begin_x;
+//            startY: pathAnimGo_custom.begin_y;
+//            PathCurve { x: pathAnimGo_custom.end_x;  y: pathAnimGo_custom.end_y; }
+//        }
+
+//        onStarted: {
+//            console.log("pathAnimGo_custom start");
+//        }
+
+//        onStopped: {
+//            console.log("pathAnimGo_custom stoped");
+//        }
+//    }
+
     PathAnimation {
         property int begin_x: 0;
         property int begin_y: 0;
         property int end_x: 0;
         property int end_y: 0;
 
-        id: pathAnimGo_custom;
+        id: pathAnim_custom;
         target: pointer;
-        duration: 100;
+        duration: 2000;
         orientationEntryDuration: 100;
         orientationExitDuration: 100;
         easing.type: Easing.OutQuad;
@@ -806,17 +856,18 @@ Item {
 //        endRotation: 90;
 
         path: Path {
-            startX: pathAnimGo_custom.begin_x;
-            startY: pathAnimGo_custom.begin_y;
-            PathCurve { x: pathAnimGo_custom.end_x;  y: pathAnimGo_custom.end_y; }
+            id: pathAnim_custom_path;
+            startX: pathAnim_custom.begin_x;
+            startY: pathAnim_custom.begin_y;
+            PathCurve { x: pathAnim_custom.end_x;  y: pathAnim_custom.end_y; }
         }
 
         onStarted: {
-            console.log("pathAnimGo_custom start");
+            console.log("pathAnim_custom start");
         }
 
         onStopped: {
-            console.log("pathAnimGo_custom stoped");
+            console.log("pathAnim_custom stoped");
         }
     }
 
@@ -890,15 +941,25 @@ Item {
 //    }
 
     function getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max));
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    function startPathAnimCustom(start, stop) {
+        pathAnim_custom.begin_x = orbitData[start][0];
+        pathAnim_custom.begin_y = orbitData[start][1];
+        pathAnim_custom.end_x = orbitData[stop][0];
+        pathAnim_custom.end_y = orbitData[stop][1];
+        pathAnim_custom.start();
     }
 
     Timer {
         property int counter: 0;
         property int carSpeedRandom: 0;
+        property int carSpeedRandomPre: 0;
         property int tireRotationRandom: 0;
+        property int tireRotationRandomPre: 0;
         id: timer;
-        interval: 100;
+        interval: 1000;
         running: false;
         repeat: true
         onTriggered: {
@@ -917,7 +978,6 @@ Item {
 
             if(counter++>4) {
                 counter = 0;
-                rotation_speed_dial_center_number.text = tireRotationRandom;
                 // adjust number position
                 if(tireRotationRandom >= 100) {
                     rotation_speed_dial_center_number.x = 1038-100;
@@ -926,7 +986,12 @@ Item {
                 } else {
                     rotation_speed_dial_center_number.x = 1098;
                 }
+                rotation_speed_dial_center_number.text = tireRotationRandom;
             }
+
+            startPathAnimCustom(carSpeedRandomPre, carSpeedRandom);
+
+            carSpeedRandomPre = carSpeedRandom;
         }
     }
 
