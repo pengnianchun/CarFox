@@ -7,8 +7,7 @@ Item {
 
     Image {
         id: navi
+        anchors.fill: parent
         source: "qrc:/theme2/symbol/Theme2/Modules/navigation/navigation.png"
-        sourceSize.width: 810
-        sourceSize.height: 400
     }
 }

@@ -27,17 +27,17 @@ CommonItem {
     property bool bKeyEnable: true
 
     onKeyEnter: function() {
-        if (bKeyEnable) {
-            console.debug("HomePanel onKeyEnter")
+        console.debug("HomePanel onKeyEnter")
+        if (mainMenuIndex === 0) {
+            console.debug("HomePanel show menuPanel")
             menuPanel.visible = true
-            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
-            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
         }
     }
 
     onKeyBack: function() {
-        if (bKeyEnable) {
-            console.debug("HomePanel onKeyBack")
+        console.debug("HomePanel onKeyBack")
+        if (mainMenuIndex === 0) {
+            console.debug("HomePanel hide menuPanel")
             menuPanel.visible = false
         }
     }
@@ -105,7 +105,7 @@ CommonItem {
 
     // Demo
     function getRandomInt(max) {
-      return Math.floor(Math.random() * Math.floor(max));
+        return Math.floor(Math.random() * Math.floor(max));
     }
 
     Timer {
@@ -160,13 +160,6 @@ CommonItem {
             } else {
                 carOdo += getRandomInt(5)
             }
-        }
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            iconPanel.enableTest = !iconPanel.enableTest
         }
     }
 
