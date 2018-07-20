@@ -74,29 +74,38 @@ CommonItem {
         height: 410
         anchors.centerIn: parent
 
-        Navigation {
-            visible: mainMenuIndex === 1
-        }
-
-        Phone {
-            visible: mainMenuIndex === 2
-        }
-
-        Music {
-            visible: mainMenuIndex === 3
-        }
-
-        Radio {
-            visible: mainMenuIndex === 4
-        }
-
-        Setting {
-            visible: mainMenuIndex === 5
-        }
-
-        Adas {
-            visible: mainMenuIndex === 6
-        }
+        // 导航
+        Navigation { visible: mainMenuIndex === 1; }
+        // 电话
+        Phone { visible: mainMenuIndex === 2; }
+        // 音乐
+        Music { visible: mainMenuIndex === 3; }
+        // 广播
+        Radio { visible: mainMenuIndex === 4; }
+        // 设置
+        Setting { visible: mainMenuIndex === 5; }
+        // ADAS
+        Adas { visible: mainMenuIndex === 6; }
+        // 雷达
+        Radar { visible: mainMenuIndex === 7; }
+        // 胎压
+        TirePressure { visible: mainMenuIndex === 8; }
+        // 倒车影像
+        BackCamera { visible: mainMenuIndex === 9; }
+        // 驾驶行为分析
+        DriveAnalysis { visible: mainMenuIndex === 10; }
+        // 智能维保预测
+        Consumption { visible: mainMenuIndex === 11; }
+        // 历史能耗分析
+        ConsumptionHistory { visible: mainMenuIndex === 12; }
+        // 整车诊断
+        Diagnostic { visible: mainMenuIndex === 13; }
+        // 整车调度
+        Schedule { visible: mainMenuIndex === 14; }
+        // 驾驶求助
+        Ask4Help { visible: mainMenuIndex === 15; }
+        // 天气日历
+        CalendarWeather { visible: mainMenuIndex === 16; }
     }
 
     MenuPanel {
@@ -138,9 +147,6 @@ CommonItem {
                 carSoc++
             }
 
-
-            //background.carSpeedRotation = carSpeedValue
-
             if (carBreakPressure > 10) { // 制动气压
                 carBreakPressure = 0
             } else {
@@ -153,13 +159,13 @@ CommonItem {
                 carBattery += 0.1
             }
 
-            if (carTrip > 1000000) {
+            if (carTrip > 1000000) { // TRIP
                 carTrip = 0
             } else {
                 carTrip += getRandomInt(5)
             }
 
-            if (carOdo > 1000000) {
+            if (carOdo > 1000000) { // ODO
                 carOdo = 0
             } else {
                 carOdo += getRandomInt(5)
