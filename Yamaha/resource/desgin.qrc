@@ -250,6 +250,8 @@
         <file>Theme1/Slice/tirepressure-1.png</file>
         <file>Theme1/Slice/Vehicle information-1.png</file>
         <file>Theme1/Slice/Vehicle information.png</file>
+        <file>Theme1/Slice/sun.png</file>
+        <file>Theme1/Slice/Monitoring state.png</file>
     </qresource>
     <qresource prefix="/Fonts">
         <file>Font/msyhl.ttc</file>
@@ -257,5 +259,22 @@
         <file>Font/msyh.ttc</file>
         <file>Theme1/font/AdobeHeitiStd.ttc</file>
         <file>Theme1/font/EuropeExt.ttf</file>
+    </qresource>
+    <qresource prefix="/theme1/sub_screen_slice">
+        <file>Theme1/sub_screen_slice/ADAS.png</file>
+        <file>Theme1/sub_screen_slice/analys.png</file>
+        <file>Theme1/sub_screen_slice/bluetruth.png</file>
+        <file>Theme1/sub_screen_slice/car_info.png</file>
+        <file>Theme1/sub_screen_slice/comsume.png</file>
+        <file>Theme1/sub_screen_slice/date.png</file>
+        <file>Theme1/sub_screen_slice/FM.png</file>
+        <file>Theme1/sub_screen_slice/health.png</file>
+        <file>Theme1/sub_screen_slice/help.png</file>
+        <file>Theme1/sub_screen_slice/multimedia.png</file>
+        <file>Theme1/sub_screen_slice/navigation.png</file>
+        <file>Theme1/sub_screen_slice/radar.png</file>
+        <file>Theme1/sub_screen_slice/settings.png</file>
+        <file>Theme1/sub_screen_slice/submenu.png</file>
+        <file>Theme1/sub_screen_slice/tire_pressure.png</file>
     </qresource>
 </RCC>

@@ -43,7 +43,7 @@ Item {
                 text: "84";
                 color: "white";
                 font.family: europeExt.name;
-                font.pixelSize: 135;
+                font.pixelSize: 120;
                 smooth:true;
             }
             // Measurement unit
@@ -176,13 +176,13 @@ Item {
             // dial center number
             Text {
                 id: rotation_speed_dial_center_number;
-                x: 1098;
+                x: 1038;
                 y: 203;
                 visible: true;
                 text: "42";
                 color: "white";
                 font.family: europeExt.name;
-                font.pixelSize: 135;
+                font.pixelSize: 120;
                 smooth:true;
             }
             // Measurement unit
@@ -311,14 +311,40 @@ Item {
 
         // ------------------------- main menu panel -------------------------
         Item {
-            x: 630;
+            id: main_menu_panel;
+            x: 620;
             y: 50;
-            property int menuIndex: 0;
+            property int menuIndex: -1;
+            property var menu_icons: [
+                "qrc:/theme1/slice/Theme1/Slice/dashed_car.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/car_info.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/navigation.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/multimedia.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/ADAS.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/analys.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/comsume.png",
+                "qrc:/theme1/slice/Theme1/Slice/dispatching system-1.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/help.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/tire_pressure.png",
+                "qrc:/theme1/slice/Theme1/Slice/fault-1.png",
+                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/settings.png",
+                "qrc:/theme1/slice/Theme1/Slice/information-1.png"];
+
             ListModel {
                 id: menuModel;
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia-1.png";}
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage.png";}
-                ListElement { name: ""; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure-1.png";}
+                ListElement { name: "mainpage"; icon: "qrc:/theme1/slice/Theme1/Slice/mainpage-1.png";}
+                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Vehicle information-1.png";}
+                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Navigation-1.png";}
+                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/slice/Theme1/Slice/multimedia-1.png";}
+                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Auxiliary driving-1.png";}
+                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Analysis of driving behavior-1.png";}
+                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Energy consumption analysis-1.png";}
+                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/slice/Theme1/Slice/dispatching system-1.png";}
+                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Drive for help-1.png";}
+                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/slice/Theme1/Slice/tirepressure-1.png";}
+                ListElement { name: "fault-1"; icon: "qrc:/theme1/slice/Theme1/Slice/fault-1.png";}
+                ListElement { name: "Set up-1"; icon: "qrc:/theme1/slice/Theme1/Slice/Set up-1.png";}
+                ListElement { name: "information-1"; icon: "qrc:/theme1/slice/Theme1/Slice/information-1.png";}
             }
 
             Component {
@@ -335,25 +361,27 @@ Item {
                 model: menuModel;
                 delegate: displayDelegate;
                 path: Path {
+                    id: pathView_path;
                     startX: 0; startY: 0;
-                    PathQuad { x: 250; y: 20; controlX: 150; controlY: -20; }
+                    PathQuad { id: pathView_pathQuad; x: 350; y: 20; controlX: 100; controlY: -20; }
                 }
                 pathItemCount: 3;
-                currentIndex: 0;
+                currentIndex: main_menu_panel.menuIndex;
             }
             onMenuIndexChanged: {
-                pathView.currentIndex = menuIndex-1;
+                pathView.currentIndex = menuIndex;
             }
         }
 
         // ------------------------- car picture -------------------------
         Item {
-            id: car_picture;
+            id: subscreen;
             Image {
-                id: car_image;
+                id: subscreen_image;
                 x: 564;
                 y: 136;
                 source: "qrc:/theme1/slice/Theme1/Slice/dashed_car.png";
+                scale: 0.9;
             }
         }
 
@@ -365,7 +393,7 @@ Item {
             Text {
                 id: soc_label;
                 x: 645;
-                y: 367;
+                y: 367+10;
                 visible: true;
                 text: "soc :";
                 color: "#068ca5";
@@ -377,7 +405,7 @@ Item {
             Text {
                 id: soc_value;
                 x: 645+65;
-                y: 367;
+                y: 367+10;
                 visible: true;
                 text: "50 %";
                 color: "#068ca5";
@@ -390,7 +418,7 @@ Item {
             ProgressBar {
                 id: progressbar_soc;
                 x: 545;
-                y: 407;
+                y: 407+10;
                 width: 360;
                 height: 1;
                 value: 0.5;
@@ -685,12 +713,70 @@ Item {
     }
 
 
+    Text {
+        id: debug_id;
+        x: 564 - 50;
+        y: 136;
+        text: pathView.currentIndex;
+        visible: true;
+        color: "#068ca5";
+        font.family: europeExt.name;
+        font.pixelSize: 48;
+        font.bold: false;
+        smooth:true;
+    }
+
     property bool turnForPathAnimGo: true;
     MouseArea{
+        property int index: 1;
         id: mouseArea;
         anchors.fill: parent;
         onClicked: {
-            timer.start();
+//            timer.start();
+
+            if(index >= menuModel.count) {
+                index = 0;
+            }
+            pathView.currentIndex = index++;
+            console.log("pathView.currentIndex: " + pathView.currentIndex);
+
+            subscreen_image.source = main_menu_panel.menu_icons[pathView.currentIndex];
+            console.log("subscreen_image.source: " + subscreen_image.source);
+            if(pathView.currentIndex == 1) {
+                subscreen_image.x = 564-80;
+                subscreen_image.y = 136-70;
+                subscreen_image.scale = 0.8;
+            } else if(pathView.currentIndex == 2) {
+                subscreen_image.x = 564-80;
+                subscreen_image.y = 136-70;
+                subscreen_image.scale = 0.8;
+            } else if(pathView.currentIndex == 3) {
+                subscreen_image.x = 564-80;
+                subscreen_image.y = 136-70;
+                subscreen_image.scale = 0.8;
+            } else if(pathView.currentIndex == 4) {
+                subscreen_image.x = 564-80;
+                subscreen_image.y = 136-70;
+                subscreen_image.scale = 0.8;
+            } else if(pathView.currentIndex == 5) {
+                subscreen_image.x = 564-80;
+                subscreen_image.y = 136-70;
+                subscreen_image.scale = 0.8;
+            } else if(pathView.currentIndex == 6) {
+                subscreen_image.x = 564-80;
+                subscreen_image.y = 136-70;
+                subscreen_image.scale = 0.8;
+            } else if(pathView.currentIndex == 12) {
+                subscreen_image.x = 564;
+                subscreen_image.y = 136;
+                subscreen_image.scale = 0.9;
+            }
+
+//            pathView.pathView_path.pathView_pathQuad.x = 350;
+//            pathView.pathView_path.pathView_pathQuad.y = 20;
+//            pathView.pathView_path.pathView_pathQuad.controlX = 100;
+//            pathView.pathView_path.pathView_pathQuad.controlY = -20;
+
 //            if(turnForPathAnimGo) {
 //                pathAnimGo.start();
 //            } else {
@@ -715,19 +801,18 @@ Item {
         y: 474;
         visible: true;
         rotation: -23;
-        source: "qrc:/theme1/slice/Theme1/Slice/Pointer.png";
+        source: "qrc:/theme1/slice/Theme1/Slice/sun.png";
         scale: 0.8;
-        //source: "qrc:/theme1/slice/Theme1/Slice/symmetry_pointer.png";
     }
 
     PathAnimation {
         id: pathAnimGo;
         target: pointer;
         duration: 3000;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
+        orientationEntryDuration: 100;
+        orientationExitDuration: 100;
         easing.type: Easing.Linear;
-        orientation: PathAnimation.TopFirst;
+//        orientation: PathAnimation.TopFirst;
         endRotation: 90;
 
         path: Path {
@@ -744,7 +829,7 @@ Item {
 
         onStarted: {
             console.log("PathAnimation pathAnimGo start");
-            pointer.rotation = -23;
+//            pointer.rotation = -23;
 //            pointer.x = 90;
 //            pointer.y = 494;
         }
@@ -791,104 +876,195 @@ Item {
         }
     }
 
+//    PathAnimation {
+//        property int begin_x: 0;
+//        property int begin_y: 0;
+//        property int end_x: 0;
+//        property int end_y: 0;
+
+//        id: pathAnimGo_custom;
+//        target: pointer;
+//        duration: 100;
+//        orientationEntryDuration: 100;
+//        orientationExitDuration: 100;
+//        easing.type: Easing.OutQuad;
+////        orientation: PathAnimation.TopFirst;
+////        endRotation: 90;
+
+//        path: Path {
+//            startX: pathAnimGo_custom.begin_x;
+//            startY: pathAnimGo_custom.begin_y;
+//            PathCurve { x: pathAnimGo_custom.end_x;  y: pathAnimGo_custom.end_y; }
+//        }
+
+//        onStarted: {
+//            console.log("pathAnimGo_custom start");
+//        }
+
+//        onStopped: {
+//            console.log("pathAnimGo_custom stoped");
+//        }
+//    }
+
     PathAnimation {
         property int begin_x: 0;
         property int begin_y: 0;
         property int end_x: 0;
         property int end_y: 0;
 
-        id: pathAnimGo_custom;
+        id: pathAnim_custom;
         target: pointer;
-        duration: 100;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
-        easing.type: Easing.Linear;
-        orientation: PathAnimation.TopFirst;
+        duration: 2000;
+        orientationEntryDuration: 100;
+        orientationExitDuration: 100;
+        easing.type: Easing.OutQuad;
+//        orientation: PathAnimation.TopFirst;
 //        endRotation: 90;
 
         path: Path {
-            startX: pathAnimGo_custom.begin_x;
-            startY: pathAnimGo_custom.begin_y;
-            PathCurve { x: pathAnimGo_custom.end_x;  y: pathAnimGo_custom.end_y; }
+            id: pathAnim_custom_path;
+            startX: pathAnim_custom.begin_x;
+            startY: pathAnim_custom.begin_y;
+            PathCurve { x: pathAnim_custom.end_x;  y: pathAnim_custom.end_y; }
         }
 
         onStarted: {
-            console.log("pathAnimGo_custom start");
+            console.log("pathAnim_custom start");
         }
 
         onStopped: {
-            console.log("pathAnimGo_custom stoped");
+            console.log("pathAnim_custom stoped");
         }
     }
 
+//    Timer {
+//        property bool direction_forward : true
+//        id: timer;
+//        interval: 100;
+//        running: false;
+//        repeat: true
+//        onTriggered: {
+//            if(direction_forward) {
+//                currentCarSpeed++;
+//                if(currentCarSpeed >= 239) {
+////                    running = false;
+//                    direction_forward = false;
+//                } else {
+////                    pointer.rotation = orbitData[currentCarSpeed][2];
+//                    pointer.scale = orbitData[currentCarSpeed][3];
+
+//                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
+//                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
+//                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
+//                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
+
+//                    pathAnimGo_custom.start();
+//                }
+//                if(currentCarSpeed%2 == 0) {
+//                    currentTireRotation++;
+//                }
+//            } else {
+//                currentCarSpeed--;
+//                if(currentCarSpeed <= 0) {
+////                    running = false;
+//                    direction_forward = true;
+//                } else {
+////                    pointer.rotation = orbitData[currentCarSpeed][2];
+//                    pointer.scale = orbitData[currentCarSpeed][3];
+
+//                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
+//                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
+//                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
+//                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
+
+//                    pathAnimGo_custom.start();
+//                }
+//                if(currentCarSpeed%2 == 0) {
+//                    currentTireRotation--;
+//                }
+//            }
+
+
+//            car_speed_dial_center_number.text = currentCarSpeed;
+//            rotation_speed_dial_center_number.text = currentTireRotation;
+
+//            // adjust number position
+//            if(currentTireRotation >= 100) {
+//                rotation_speed_dial_center_number.x = 1038-100;
+//            } else if(currentTireRotation >= 10) {
+//                rotation_speed_dial_center_number.x = 1038;
+//            } else {
+//                rotation_speed_dial_center_number.x = 1098;
+//            }
+//            if(currentCarSpeed >= 100) {
+//                car_speed_dial_center_number.x = 196-50;
+//            } else if(currentCarSpeed >= 10) {
+//                car_speed_dial_center_number.x = 196-10;
+//            } else {
+//                car_speed_dial_center_number.x = 256;
+//            }
+//        }
+//    }
+
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
+    function startPathAnimCustom(start, stop) {
+        pathAnim_custom.begin_x = orbitData[start][0];
+        pathAnim_custom.begin_y = orbitData[start][1];
+        pathAnim_custom.end_x = orbitData[stop][0];
+        pathAnim_custom.end_y = orbitData[stop][1];
+        pathAnim_custom.start();
+    }
+
     Timer {
-        property bool direction_forward : true
+        property int counter: 0;
+        property int carSpeedRandom: 0;
+        property int carSpeedRandomPre: 0;
+        property int tireRotationRandom: 0;
+        property int tireRotationRandomPre: 0;
         id: timer;
-        interval: 100;
+        interval: 1000;
         running: false;
         repeat: true
         onTriggered: {
-            if(direction_forward) {
-                currentCarSpeed++;
-                if(currentCarSpeed >= 239) {
-//                    running = false;
-                    direction_forward = false;
-                } else {
-//                    pointer.rotation = orbitData[currentCarSpeed][2];
-//                    pointer.scale = orbitData[currentCarSpeed][3];
+            carSpeedRandom = getRandomInt(240);
+            tireRotationRandom = getRandomInt(120);
 
-                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
-                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
-                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
-                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
-
-                    pathAnimGo_custom.start();
-                }
-                if(currentCarSpeed%2 == 0) {
-                    currentTireRotation++;
-                }
-            } else {
-                currentCarSpeed--;
-                if(currentCarSpeed <= 0) {
-//                    running = false;
-                    direction_forward = true;
-                } else {
-                    pointer.rotation = orbitData[currentCarSpeed][2];
-                    pointer.scale = orbitData[currentCarSpeed][3];
-
-                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
-                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
-                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
-                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
-
-                    pathAnimGo_custom.start();
-                }
-                if(currentCarSpeed%2 == 0) {
-                    currentTireRotation--;
-                }
-            }
-
-
-            car_speed_dial_center_number.text = currentCarSpeed;
-            rotation_speed_dial_center_number.text = currentTireRotation;
-
+            car_speed_dial_center_number.text = carSpeedRandom;
             // adjust number position
-            if(currentTireRotation >= 100) {
-                rotation_speed_dial_center_number.x = 1038-100;
-            } else if(currentTireRotation >= 10) {
-                rotation_speed_dial_center_number.x = 1038;
-            } else {
-                rotation_speed_dial_center_number.x = 1098;
-            }
-            if(currentCarSpeed >= 100) {
+            if(carSpeedRandom >= 100) {
                 car_speed_dial_center_number.x = 196-50;
-            } else if(currentCarSpeed >= 10) {
+            } else if(carSpeedRandom >= 10) {
                 car_speed_dial_center_number.x = 196-10;
             } else {
                 car_speed_dial_center_number.x = 256;
             }
+
+            if(counter++>4) {
+                counter = 0;
+                // adjust number position
+                if(tireRotationRandom >= 100) {
+                    rotation_speed_dial_center_number.x = 1038-100;
+                } else if(tireRotationRandom >= 10) {
+                    rotation_speed_dial_center_number.x = 1038;
+                } else {
+                    rotation_speed_dial_center_number.x = 1098;
+                }
+                rotation_speed_dial_center_number.text = tireRotationRandom;
+            }
+
+            startPathAnimCustom(carSpeedRandomPre, carSpeedRandom);
+
+            carSpeedRandomPre = carSpeedRandom;
         }
     }
+    states: [
+        State {
+            name: "State1"
+        }
+    ]
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
