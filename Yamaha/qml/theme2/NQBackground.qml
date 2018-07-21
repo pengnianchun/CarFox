@@ -148,6 +148,7 @@ Item {
         radius: 10
 
         ColumnLayout{
+            id: carStartup
             anchors.fill: parent
             visible: homepanel_visible && carStartRemainTime > 0
 
@@ -184,7 +185,7 @@ Item {
         }
         Text {
             anchors.centerIn: parent
-            visible: homepanel_visible && countDown.countDownTime === 0 && carSpeedValue < 10
+            visible: homepanel_visible && !carStartup.visible /*&& carSpeedValue < 10*/
             text: qsTr("谨慎驾驶 注意行人")
             color: textBlue
             font.family: msyh.name

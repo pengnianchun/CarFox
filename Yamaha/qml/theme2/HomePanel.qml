@@ -24,7 +24,7 @@ CommonItem {
     property real carTrip: 0 // TRIP
     property real carOdo: 0 // ODO
     property int  carWaterTemp: 0; // 水温
-    property int  carStartRemainTime: 60 // 发车倒计时
+    property int  carStartRemainTime: 10 // 发车倒计时
 
     property bool bKeyEnable: true
 
