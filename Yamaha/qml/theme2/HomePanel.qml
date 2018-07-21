@@ -176,6 +176,9 @@ CommonItem {
         Loader { source: "qrc:/Theme/theme2/Ask4Help.qml"; visible: mainMenuIndex === 15; }
         // 天气日历
         Loader { source: "qrc:/Theme/theme2/CalendarWeather.qml"; visible: mainMenuIndex === 16; }
+        //
+        Loader { source: "qrc:/Theme/theme2/CarInfo.qml"; visible: mainMenuIndex === 17; }
+
     }
 
     MenuPanel {

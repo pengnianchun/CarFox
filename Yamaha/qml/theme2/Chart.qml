@@ -661,7 +661,7 @@ Canvas{
                 }
                 for (var k=0; k<data.labels.length; k++){
 //                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
-                ctx.fillStyle = config.pointLabelFontColor;
+//                ctx.fillStyle = config.pointLabelFontColor;
                     var opposite = Math.sin(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
                     var adjacent = Math.cos(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
 
