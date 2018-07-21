@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.4
 import "qrc:/JS/mainpanel_pointer_orbitdata.js" as MainpanelJS
 import "qrc:/Component/Component"
 
+
 CommonItem {
     id: root_item;
     z: 0
@@ -807,38 +808,38 @@ CommonItem {
     }
 
     property bool turnForPathAnimGo: true;
-    MouseArea{
-        property int index: 1;
-        id: mouseArea;
-        anchors.fill: parent;
-//        onClicked: {
-//            timer.start();
+//    MouseArea{
+//        property int index: 1;
+//        id: mouseArea;
+//        anchors.fill: parent;
+////        onClicked: {
+////            timer.start();
 
-//            pathView.pathView_path.pathView_pathQuad.x = 350;
-//            pathView.pathView_path.pathView_pathQuad.y = 20;
-//            pathView.pathView_path.pathView_pathQuad.controlX = 100;
-//            pathView.pathView_path.pathView_pathQuad.controlY = -20;
+////            pathView.pathView_path.pathView_pathQuad.x = 350;
+////            pathView.pathView_path.pathView_pathQuad.y = 20;
+////            pathView.pathView_path.pathView_pathQuad.controlX = 100;
+////            pathView.pathView_path.pathView_pathQuad.controlY = -20;
 
-//            if(turnForPathAnimGo) {
-//                pathAnimGo.start();
-//            } else {
-//                pathAnimBack.start();
-//            }
-//        }
-//        onPressed: {
-//            if(pathAnimGo.running) {
-//                pathAnimGo.pause();
-//            }
-//        }
-//        onReleased: {
-//            if(pathAnimGo.paused) {
-//                pathAnimGo.resume();
-//            }
-//        }
-    }
+////            if(turnForPathAnimGo) {
+////                pathAnimGo.start();
+////            } else {
+////                pathAnimBack.start();
+////            }
+////        }
+////        onPressed: {
+////            if(pathAnimGo.running) {
+////                pathAnimGo.pause();
+////            }
+////        }
+////        onReleased: {
+////            if(pathAnimGo.paused) {
+////                pathAnimGo.resume();
+////            }
+////        }
+//    }
 
     Image {
-        id: pointer;
+        id: pointer_car_speed;
         x: 70;
         y: 474;
         visible: true;
@@ -849,7 +850,7 @@ CommonItem {
 
     PathAnimation {
         id: pathAnimGo;
-        target: pointer;
+        target: pointer_car_speed;
         duration: 3000;
         orientationEntryDuration: 100;
         orientationExitDuration: 100;
@@ -885,7 +886,7 @@ CommonItem {
 
     PathAnimation {
         id: pathAnimBack;
-        target: pointer;
+        target: pointer_car_speed;
         duration: 3000;
 //        orientationEntryDuration: 200;
         orientationExitDuration: 100;
@@ -955,7 +956,7 @@ CommonItem {
         property int end_y: 0;
 
         id: pathAnim_custom;
-        target: pointer;
+        target: pointer_car_speed;
         duration: 2000;
         orientationEntryDuration: 100;
         orientationExitDuration: 100;
@@ -1060,67 +1061,138 @@ CommonItem {
         pathAnim_custom.start();
     }
 
-    Timer {
-        property int symbolCounter: 0;
-        property int counter: 0;
-        property int carSpeedRandom: 0;
-        property int carSpeedRandomPre: 0;
-        property int tireRotationRandom: 0;
-        property int tireRotationRandomPre: 0;
-        id: timer;
-        interval: 100;
-        running: false;
-        repeat: true
-        onTriggered: {
-            carSpeedRandom = getRandomInt(240);
-            tireRotationRandom = getRandomInt(120);
+//    Timer {
+//        property int symbolCounter: 0;
+//        property int counter: 0;
+//        property int carSpeedRandom: 0;
+//        property int carSpeedRandomPre: 0;
+//        property int tireRotationRandom: 0;
+//        property int tireRotationRandomPre: 0;
+//        id: timer;
+//        interval: 100;
+//        running: false;
+//        repeat: true
+//        onTriggered: {
+//            carSpeedRandom = getRandomInt(240);
+//            tireRotationRandom = getRandomInt(120);
 
-            car_speed_dial_center_number.text = carSpeedRandom;
-            // adjust number position
-            if(carSpeedRandom >= 100) {
-                car_speed_dial_center_number.x = 196-50;
-            } else if(carSpeedRandom >= 10) {
-                car_speed_dial_center_number.x = 196-10;
-            } else {
-                car_speed_dial_center_number.x = 256;
+//            car_speed_dial_center_number.text = carSpeedRandom;
+//            // adjust number position
+//            if(carSpeedRandom >= 100) {
+//                car_speed_dial_center_number.x = 196-50;
+//            } else if(carSpeedRandom >= 10) {
+//                car_speed_dial_center_number.x = 196-10;
+//            } else {
+//                car_speed_dial_center_number.x = 256;
+//            }
+
+//            if(counter++>4) {
+//                counter = 0;
+//                // adjust number position
+//                if(tireRotationRandom >= 100) {
+//                    rotation_speed_dial_center_number.x = 1038-100;
+//                } else if(tireRotationRandom >= 10) {
+//                    rotation_speed_dial_center_number.x = 1038;
+//                } else {
+//                    rotation_speed_dial_center_number.x = 1098;
+//                }
+//                rotation_speed_dial_center_number.text = tireRotationRandom;
+
+//                if(symbolCounter++ > 20) {
+//                    symbols.visible = !symbols.visible;
+//                    symbolCounter = 0;
+//                }
+//            }
+
+//            startPathAnimCustom(carSpeedRandomPre, carSpeedRandom);
+
+//            carSpeedRandomPre = carSpeedRandom;
+//        }
+//    }
+
+    Text {
+        id: point_index;
+        x: 500;
+        y: 150;
+        text: "";
+        visible: true;
+        color: "white";
+        font.pixelSize: 48;
+    }
+    Text {
+        id: cordinate_x;
+        x: 500;
+        y: 200;
+        text: "";
+        visible: true;
+        color: "white";
+        font.pixelSize: 48;
+    }
+    Text {
+        id: cordinate_y;
+        x: 500;
+        y: 250;
+        text: "";
+        visible: true;
+        color: "white";
+        font.pixelSize: 48;
+    }
+
+    MouseArea{
+        id: mouseArea;
+        anchors.fill: parent;
+        acceptedButtons: Qt.LeftButton | Qt.RightButton;
+        onClicked: {
+            if(mouse.button == Qt.RightButton) {
+                timer_for_sun.direction_up = false;
+                console.log("Qt.RightButton");
+            } else if(mouse.button == Qt.LeftButton) {
+                timer_for_sun.direction_up = true;
+                console.log("Qt.LeftButton");
             }
-
-            if(counter++>4) {
-                counter = 0;
-                // adjust number position
-                if(tireRotationRandom >= 100) {
-                    rotation_speed_dial_center_number.x = 1038-100;
-                } else if(tireRotationRandom >= 10) {
-                    rotation_speed_dial_center_number.x = 1038;
-                } else {
-                    rotation_speed_dial_center_number.x = 1098;
-                }
-                rotation_speed_dial_center_number.text = tireRotationRandom;
-
-                if(symbolCounter++ > 20) {
-                    symbols.visible = !symbols.visible;
-                    symbolCounter = 0;
-                }
-            }
-
-            startPathAnimCustom(carSpeedRandomPre, carSpeedRandom);
-
-            carSpeedRandomPre = carSpeedRandom;
+            timer_for_sun.start();
         }
     }
-    states: [
-        State {
-            name: "State1"
+
+    Timer {
+//        property int car_speed_current_point_count: -1;
+        property int car_speed_current_point_count: 239;
+        property bool direction_up: true;
+        id: timer_for_sun;
+        interval: 10;
+        running: true;
+//        repeat: true;
+        onTriggered: {
+            if(direction_up) {
+                car_speed_current_point_count++;
+                if(car_speed_current_point_count > 239) {
+                    direction_up = false;
+                    car_speed_current_point_count = 239;
+                }
+            } else {
+                car_speed_current_point_count--;
+                if(car_speed_current_point_count < 0) {
+                    direction_up = true;
+                    car_speed_current_point_count = 0;
+                }
+            }
+
+            pointer_car_speed.x = orbitData[car_speed_current_point_count][0];
+            pointer_car_speed.y = orbitData[car_speed_current_point_count][1];
+
+            point_index.text = car_speed_current_point_count;
+            cordinate_x.text = pointer_car_speed.x;
+            cordinate_y.text = pointer_car_speed.y;
         }
-    ]
+    }
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
-        orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
-        //orbitData = MainpanelJS.initializeMainPanelPointerOrbitDataDiscrete();
+        //orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
+        orbitData = MainpanelJS.initializeMainPanelPointerOrbitDataDiscrete();
         for(var i=0; i<240; i++) {
             console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1] + ", [2]=" + orbitData[i][2] + ", [3]=" + orbitData[i][3]);
         }
-        timer.running = true;
+//        timer.running = true;
     }
 }
