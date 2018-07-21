@@ -13,8 +13,8 @@ Item {
     property string dateString
 
     function currentDateTime(){
-            return Qt.formatDateTime(new Date(), "yyyy-MM-dd hh:mm:ss ddd");
-        }
+        return Qt.formatDateTime(new Date(), "yyyy-MM-dd hh:mm:ss ddd");
+    }
 
     FontLoader {
         id: msyh
@@ -86,14 +86,17 @@ Item {
         spacing: 550
         visible: homepanel_visible
 
-        Image {
-            id: speed_left
-            source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
-            sourceSize.width: 370
-            sourceSize.height: 370
-            asynchronous: true
-            cache: true
-
+        Item {
+            width: 370
+            height: 370
+            Image {
+                id: speed_left
+                source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
+                sourceSize.width: 370
+                sourceSize.height: 370
+                asynchronous: true
+                cache: true
+            }
             Rectangle {
                 x: 185
                 y: -5
@@ -112,14 +115,17 @@ Item {
             }
         }
 
-        Image {
-            id: speed_right
-            source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
-            sourceSize.width: 370
-            sourceSize.height: 370
-            asynchronous: true
-            cache: true
-
+        Item {
+            width: 370
+            height: 370
+            Image {
+                id: speed_right
+                source: "qrc:/theme2/symbol/Theme2/Symbol/speed.png"
+                sourceSize.width: 370
+                sourceSize.height: 370
+                asynchronous: true
+                cache: true
+            }
             Rectangle {
                 x: 185
                 y: -5

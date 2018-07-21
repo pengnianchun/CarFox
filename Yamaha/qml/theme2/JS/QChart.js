@@ -40,12 +40,12 @@ var Chart = function(canvas, context) {
             scaleShowLine: true,
             scaleLineColor: "rgba(0,0,0,.1)",
             scaleLineWidth: 1,
-            scaleShowLabels: true,
+            scaleShowLabels: false,
             scaleLabel: "<%=value%>",
-//            scaleFontFamily: "'Arial'",
-//            scaleFontSize: 12,
-//            scaleFontStyle: "normal",
-//            scaleFontColor: "#666",
+            scaleFontFamily: "'Arial'",
+            scaleFontSize: 12,
+            scaleFontStyle: "normal",
+            scaleFontColor: "#666",
             scaleShowLabelBackdrop: true,
             scaleBackdropColor: "rgba(255,255,255,0.75)",
             scaleBackdropPaddingY: 2,
@@ -83,10 +83,10 @@ var Chart = function(canvas, context) {
             scaleLineWidth: 1,
             scaleShowLabels: false,
             scaleLabel: "<%=value%>",
-//            scaleFontFamily: "'Arial'",
-//            scaleFontSize: 12,
-//            scaleFontStyle: "normal",
-//            scaleFontColor: "#666",
+            scaleFontFamily: "'Arial'",
+            scaleFontSize: 12,
+            scaleFontStyle: "normal",
+            scaleFontColor: "#666",
             scaleShowLabelBackdrop: true,
             scaleBackdropColor: "rgba(255,255,255,0.75)",
             scaleBackdropPaddingY: 2,
@@ -94,10 +94,10 @@ var Chart = function(canvas, context) {
             angleShowLineOut: true,
             angleLineColor: "rgba(0,0,0,.1)",
             angleLineWidth: 1,
-//            pointLabelFontFamily: "'Arial'",
-//            pointLabelFontStyle: "normal",
-//            pointLabelFontSize: 12,
-//            pointLabelFontColor: "#666",
+            pointLabelFontFamily: "'Arial'",
+            pointLabelFontStyle: "normal",
+            pointLabelFontSize: 12,
+            pointLabelFontColor: "#666",
             pointDot: true,
             pointDotRadius: 3,
             pointDotStrokeWidth: 1,
@@ -177,12 +177,12 @@ var Chart = function(canvas, context) {
             scaleStartValue: null,
             scaleLineColor: "rgba(0,0,0,.1)",
             scaleLineWidth: 1,
-            scaleShowLabels: true,
+            scaleShowLabels: false,
             scaleLabel: "<%=value%>",
-//            scaleFontFamily: "'Arial'",
-//            scaleFontSize: 12,
-//            scaleFontStyle: "normal",
-//            scaleFontColor: "#666",
+            scaleFontFamily: "'Arial'",
+            scaleFontSize: 12,
+            scaleFontStyle: "normal",
+            scaleFontColor: "#666",
             scaleShowGridLines: true,
             scaleGridLineColor: "rgba(0,0,0,.05)",
             scaleGridLineWidth: 1,
@@ -218,12 +218,12 @@ var Chart = function(canvas, context) {
             scaleStartValue: null,
             scaleLineColor: "rgba(0,0,0,.1)",
             scaleLineWidth: 1,
-            scaleShowLabels: true,
+            scaleShowLabels: false,
             scaleLabel: "<%=value%>",
-//            scaleFontFamily: "'Arial'",
-//            scaleFontSize: 12,
-//            scaleFontStyle: "normal",
-//            scaleFontColor: "#666",
+            scaleFontFamily: "'Arial'",
+            scaleFontSize: 12,
+            scaleFontStyle: "normal",
+            scaleFontColor: "#666",
             scaleShowGridLines: true,
             scaleGridLineColor: "rgba(0,0,0,.05)",
             scaleGridLineWidth: 1,
@@ -571,8 +571,8 @@ var Chart = function(canvas, context) {
 
             for (var k=0; k<data.labels.length; k++) {
 
-                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
-                ctx.fillStyle = config.pointLabelFontColor;
+//                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
+//                ctx.fillStyle = config.pointLabelFontColor;
 
                 var opposite = Math.sin(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
                 var adjacent = Math.cos(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
@@ -598,7 +598,7 @@ var Chart = function(canvas, context) {
             var labelLength = 0;
 
             for (var i=0; i<data.labels.length; i++) {
-                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
+//                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
                 var textMeasurement = ctx.measureText(data.labels[i]).width;
                 if(textMeasurement>labelLength) labelLength = textMeasurement;
             }

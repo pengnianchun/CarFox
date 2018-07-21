@@ -202,10 +202,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : true,
                 scaleLabel : "<%=value%>",
-//                scaleFontFamily : "'Arial'",
-//                scaleFontSize : 12,
-//                scaleFontStyle : "normal",
-//                scaleFontColor : "#666",
+                scaleFontFamily : "",
+                scaleFontSize : 12,
+                scaleFontStyle : "normal",
+                scaleFontColor : "#666",
                 scaleShowLabelBackdrop : true,
                 scaleBackdropColor : "rgba(255,255,255,0.75)",
                 scaleBackdropPaddingY : 2,
@@ -239,10 +239,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : false,
                 scaleLabel : "<%=value%>",
-//                scaleFontFamily : "'Arial'",
-//                scaleFontSize : 12,
-//                scaleFontStyle : "normal",
-//                scaleFontColor : "#666",
+                scaleFontFamily : "",
+                scaleFontSize : 12,
+                scaleFontStyle : "normal",
+                scaleFontColor : "#666",
                 scaleShowLabelBackdrop : true,
                 scaleBackdropColor : "rgba(255,255,255,0.75)",
                 scaleBackdropPaddingY : 2,
@@ -250,10 +250,10 @@ Canvas{
                 angleShowLineOut : true,
                 angleLineColor : "rgba(0,0,0,.1)",
                 angleLineWidth : 1,
-//                pointLabelFontFamily : "'Arial'",
-//                pointLabelFontStyle : "normal",
-//                pointLabelFontSize : 12,
-//                pointLabelFontColor : "#666",
+                pointLabelFontFamily : "'Arial'",
+                pointLabelFontStyle : "normal",
+                pointLabelFontSize : 12,
+                pointLabelFontColor : "#666",
                 pointDot : true,
                 pointDotRadius : 3,
                 pointDotStrokeWidth : 1,
@@ -322,10 +322,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : true,
                 scaleLabel : "<%=value%>",
-//                scaleFontFamily : "'Arial'",
-//                scaleFontSize : 12,
-//                scaleFontStyle : "normal",
-//                scaleFontColor : "#666",
+                scaleFontFamily : "",
+                scaleFontSize : 12,
+                scaleFontStyle : "normal",
+                scaleFontColor : "#666",
                 scaleShowGridLines : true,
                 scaleGridLineColor : "rgba(0,0,0,.05)",
                 scaleGridLineWidth : 1,
@@ -357,10 +357,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : true,
                 scaleLabel : "<%=value%>",
-//                scaleFontFamily : "'Arial'",
-//                scaleFontSize : 12,
-//                scaleFontStyle : "normal",
-//                scaleFontColor : "#666",
+                scaleFontFamily : "",
+                scaleFontSize : 12,
+                scaleFontStyle : "normal",
+                scaleFontColor : "#666",
                 scaleShowGridLines : true,
                 scaleGridLineColor : "rgba(0,0,0,.05)",
                 scaleGridLineWidth : 1,
@@ -446,7 +446,7 @@ Canvas{
 
                     if (config.scaleShowLabels){
                         ctx.textAlign = "center";
-//                        ctx.font = config.scaleFontStyle + " " + config.scaleFontSize + "px " + config.scaleFontFamily;
+//                        ctx.font = config.scaleFontStyle + " " + config.scaleFontSize + "px " + configscaleFontFamily;
                         var label =  calculatedScale.labels[i];
                         //If the backdrop object is within the font object
                         if (config.scaleShowLabelBackdrop){
@@ -660,7 +660,7 @@ Canvas{
 
                 }
                 for (var k=0; k<data.labels.length; k++){
-                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
+//                ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
                 ctx.fillStyle = config.pointLabelFontColor;
                     var opposite = Math.sin(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
                     var adjacent = Math.cos(rotationDegree*k) * (maxSize + config.pointLabelFontSize);
@@ -689,7 +689,7 @@ Canvas{
 
                 var labelLength = 0;
                 for (var i=0; i<data.labels.length; i++){
-                    ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
+//                    ctx.font = config.pointLabelFontStyle + " " + config.pointLabelFontSize+"px " + config.pointLabelFontFamily;
                     var textMeasurement = ctx.measureText(data.labels[i]).width;
                     if(textMeasurement>labelLength) labelLength = textMeasurement;
                 }
