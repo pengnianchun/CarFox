@@ -6,20 +6,66 @@ Item {
     height: 410
 
     ColumnLayout {
+        spacing: 15
         anchors.centerIn: parent
         RowLayout {
             Image {
-                source: ""
+                source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
             }
             Text {
                 text: "位置信息"
                 color: "white"
-                font.pixelSize: 40
+                font.pixelSize: 20
             }
             Text {
                 text: "北纬31°23′3.68″ 东经121°25′29.42″"
                 color: "white"
-                font.pixelSize: 40
+                font.pixelSize: 20
+            }
+        }
+        RowLayout {
+            Image {
+                source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
+            }
+            Text {
+                text: "位置信息"
+                color: "white"
+                font.pixelSize: 20
+            }
+            Text {
+                text: "北纬31°23′3.68″ 东经121°25′29.42″"
+                color: "white"
+                font.pixelSize: 20
+            }
+        }
+        RowLayout {
+            Image {
+                source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
+            }
+            Text {
+                text: "位置信息"
+                color: "white"
+                font.pixelSize: 20
+            }
+            Text {
+                text: "北纬31°23′3.68″ 东经121°25′29.42″"
+                color: "white"
+                font.pixelSize: 20
+            }
+        }
+        RowLayout {
+            anchors.horizontalCenter: parent.horizontalCenter
+            Rectangle {
+                anchors.centerIn: parent
+                width: 100
+                height: 20
+            }
+
+            Text {
+                anchors.centerIn: parent
+                text: "OK"
+                color: "white"
+                font.pixelSize: 20
             }
         }
     }

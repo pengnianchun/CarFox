@@ -16,21 +16,15 @@ MenuItem {
     enterMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel enterMenu")
-            homepanel_visible = false
-            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
-            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
+//            homepanel_visible = false
+//            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
+//            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
         }
-    }
-
-    onBKeyEnableChanged: {
-        console.debug("MenuPanle onBKeyEnableChanged " + bKeyEnable)
     }
 
     hideMenu: function() {
         //调用关闭三层菜单通用函数
         //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-        //homepanel_visible = true
-        //listMenu.currentIndex = 0
 
         if (bKeyEnable) {
             console.debug("MenuPanel hideMenu")
@@ -57,6 +51,10 @@ MenuItem {
                 mainMenuIndex = ++listMenu.currentIndex
             }
         }
+    }
+
+    onBKeyEnableChanged: {
+        console.debug("MenuPanle onBKeyEnableChanged " + bKeyEnable)
     }
 
     ListModel {
