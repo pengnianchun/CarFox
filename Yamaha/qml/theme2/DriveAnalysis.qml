@@ -74,7 +74,7 @@ Item {
             //显示百分数
             ctx.save();
             var size = 0.4*cR;
-            ctx.font = size + 'px Arial';
+//            ctx.font = size + 'px Arial';
             ctx.textAlign = 'center';
             ctx.fillStyle = "rgba(14, 80, 14, 0.8)";
             ctx.fillText(~~nowRange + '分', r, r + size / 2);

@@ -202,10 +202,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : true,
                 scaleLabel : "<%=value%>",
-                scaleFontFamily : "'Arial'",
-                scaleFontSize : 12,
-                scaleFontStyle : "normal",
-                scaleFontColor : "#666",
+//                scaleFontFamily : "'Arial'",
+//                scaleFontSize : 12,
+//                scaleFontStyle : "normal",
+//                scaleFontColor : "#666",
                 scaleShowLabelBackdrop : true,
                 scaleBackdropColor : "rgba(255,255,255,0.75)",
                 scaleBackdropPaddingY : 2,
@@ -239,10 +239,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : false,
                 scaleLabel : "<%=value%>",
-                scaleFontFamily : "'Arial'",
-                scaleFontSize : 12,
-                scaleFontStyle : "normal",
-                scaleFontColor : "#666",
+//                scaleFontFamily : "'Arial'",
+//                scaleFontSize : 12,
+//                scaleFontStyle : "normal",
+//                scaleFontColor : "#666",
                 scaleShowLabelBackdrop : true,
                 scaleBackdropColor : "rgba(255,255,255,0.75)",
                 scaleBackdropPaddingY : 2,
@@ -250,10 +250,10 @@ Canvas{
                 angleShowLineOut : true,
                 angleLineColor : "rgba(0,0,0,.1)",
                 angleLineWidth : 1,
-                pointLabelFontFamily : "'Arial'",
-                pointLabelFontStyle : "normal",
-                pointLabelFontSize : 12,
-                pointLabelFontColor : "#666",
+//                pointLabelFontFamily : "'Arial'",
+//                pointLabelFontStyle : "normal",
+//                pointLabelFontSize : 12,
+//                pointLabelFontColor : "#666",
                 pointDot : true,
                 pointDotRadius : 3,
                 pointDotStrokeWidth : 1,
@@ -322,10 +322,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : true,
                 scaleLabel : "<%=value%>",
-                scaleFontFamily : "'Arial'",
-                scaleFontSize : 12,
-                scaleFontStyle : "normal",
-                scaleFontColor : "#666",
+//                scaleFontFamily : "'Arial'",
+//                scaleFontSize : 12,
+//                scaleFontStyle : "normal",
+//                scaleFontColor : "#666",
                 scaleShowGridLines : true,
                 scaleGridLineColor : "rgba(0,0,0,.05)",
                 scaleGridLineWidth : 1,
@@ -357,10 +357,10 @@ Canvas{
                 scaleLineWidth : 1,
                 scaleShowLabels : true,
                 scaleLabel : "<%=value%>",
-                scaleFontFamily : "'Arial'",
-                scaleFontSize : 12,
-                scaleFontStyle : "normal",
-                scaleFontColor : "#666",
+//                scaleFontFamily : "'Arial'",
+//                scaleFontSize : 12,
+//                scaleFontStyle : "normal",
+//                scaleFontColor : "#666",
                 scaleShowGridLines : true,
                 scaleGridLineColor : "rgba(0,0,0,.05)",
                 scaleGridLineWidth : 1,
@@ -446,7 +446,7 @@ Canvas{
 
                     if (config.scaleShowLabels){
                         ctx.textAlign = "center";
-                        ctx.font = config.scaleFontStyle + " " + config.scaleFontSize + "px " + config.scaleFontFamily;
+//                        ctx.font = config.scaleFontStyle + " " + config.scaleFontSize + "px " + config.scaleFontFamily;
                         var label =  calculatedScale.labels[i];
                         //If the backdrop object is within the font object
                         if (config.scaleShowLabelBackdrop){
@@ -639,7 +639,7 @@ Canvas{
 
                     if (config.scaleShowLabels){
                         ctx.textAlign = 'center';
-                        ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
+//                        ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
                         ctx.textBaseline = "middle";
 
                         if (config.scaleShowLabelBackdrop){
@@ -979,7 +979,7 @@ Canvas{
                 var longestText = 1;
                 //if we are showing the labels
                 if (config.scaleShowLabels){
-                    ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
+//                    ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
                     for (var i=0; i<calculatedScale.labels.length; i++){
                         var measuredText = ctx.measureText(calculatedScale.labels[i]).width;
                         longestText = (measuredText > longestText)? measuredText : longestText;
@@ -997,7 +997,7 @@ Canvas{
                 maxSize = height;
 
                 //Need to check the X axis first - measure the length of each text metric, and figure out if we need to rotate by 45 degrees.
-                ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
+//                ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
                 widestXLabel = 1;
                 for (var i=0; i<data.labels.length; i++){
                     var textLength = ctx.measureText(data.labels[i]).width;
@@ -1185,7 +1185,7 @@ Canvas{
                 var longestText = 1;
                 //if we are showing the labels
                 if (config.scaleShowLabels){
-                    ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
+//                    ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
                     for (var i=0; i<calculatedScale.labels.length; i++){
                         var measuredText = ctx.measureText(calculatedScale.labels[i]).width;
                         longestText = (measuredText > longestText)? measuredText : longestText;
@@ -1205,7 +1205,7 @@ Canvas{
                 maxSize = height;
 
                 //Need to check the X axis first - measure the length of each text metric, and figure out if we need to rotate by 45 degrees.
-                ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
+//                ctx.font = config.scaleFontStyle + " " + config.scaleFontSize+"px " + config.scaleFontFamily;
                 widestXLabel = 1;
                 for (var i=0; i<data.labels.length; i++){
                     var textLength = ctx.measureText(data.labels[i]).width;
