@@ -242,6 +242,17 @@
         <file>Theme2/Modules/radar/radar_road.png</file>
         <file>Theme2/Modules/tirePressure/tire_car.png</file>
         <file>Theme2/Modules/reverseImage/reverseImage.png</file>
+        <file>Theme2/Modules/other/01.png</file>
+        <file>Theme2/Modules/other/02.png</file>
+        <file>Theme2/Modules/other/03.png</file>
+        <file>Theme2/Modules/other/04.png</file>
+        <file>Theme2/Modules/other/05.png</file>
+        <file>Theme2/Modules/other/06.png</file>
+        <file>Theme2/Modules/other/07.png</file>
+        <file>Theme2/Modules/other/08.png</file>
+        <file>Theme2/Modules/other/09.png</file>
+        <file>Theme2/Modules/other/10.png</file>
+        <file>Theme2/Modules/other/11.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

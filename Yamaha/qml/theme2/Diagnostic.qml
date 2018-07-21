@@ -134,7 +134,8 @@ Item {
             x: 12
             y: 27
             text: qsTr("正在扫描")
-            font.pixelSize: 12
+            color: "white"
+            font.pixelSize: 16
         }
     }
     //线
@@ -143,14 +144,69 @@ Item {
     }
 
     RowLayout {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 100
+        anchors.horizontalCenter: parent.horizontalCenter
+
         RowLayout {
             Image {
                 source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
             }
             Text {
-
+                text: qsTr("车身系统")
+                color: "white"
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("124 项")
+                color: "white"
+                font.pixelSize: 16
             }
         }
-
+        RowLayout {
+            Image {
+                source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
+            }
+            Text {
+                text: qsTr("底盘系统")
+                color: "white"
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("124 项")
+                color: "white"
+                font.pixelSize: 16
+            }
+        }
+        RowLayout {
+            Image {
+                source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
+            }
+            Text {
+                text: qsTr("动力系统")
+                color: "white"
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("124 项")
+                color: "white"
+                font.pixelSize: 16
+            }
+        }
+        RowLayout {
+            Image {
+                source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
+            }
+            Text {
+                text: qsTr("网络通讯系统")
+                color: "white"
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("124 项")
+                color: "white"
+                font.pixelSize: 16
+            }
+        }
     }
 }

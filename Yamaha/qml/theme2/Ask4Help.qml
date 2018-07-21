@@ -28,12 +28,12 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
             }
             Text {
-                text: "位置信息"
+                text: "异常信息"
                 color: "white"
                 font.pixelSize: 20
             }
             Text {
-                text: "北纬31°23′3.68″ 东经121°25′29.42″"
+                text: "汽车外观异常"
                 color: "white"
                 font.pixelSize: 20
             }
@@ -43,29 +43,32 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
             }
             Text {
-                text: "位置信息"
+                text: "车辆信息"
                 color: "white"
                 font.pixelSize: 20
             }
             Text {
-                text: "北纬31°23′3.68″ 东经121°25′29.42″"
+                text: "沪A 99999"
                 color: "white"
                 font.pixelSize: 20
             }
         }
+
         RowLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             Rectangle {
                 anchors.centerIn: parent
-                width: 100
-                height: 20
+                width: 180
+                height: 40
+                radius: 10
+                color: "lightblue"
             }
 
             Text {
                 anchors.centerIn: parent
-                text: "OK"
+                text: "一键求助"
                 color: "white"
-                font.pixelSize: 20
+                font.pixelSize: 30
             }
         }
     }
