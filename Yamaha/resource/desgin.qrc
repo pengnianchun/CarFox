@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/theme1/symbol">
+    <qresource prefix="/theme1/Home page switching">
         <file>Theme1/Symbol/batteryCharging.png</file>
         <file>Theme1/Symbol/batteryCut.png</file>
         <file>Theme1/Symbol/batteryFault.png</file>
@@ -35,6 +35,34 @@
         <file>Theme1/Symbol/TurnLeftWL.png</file>
         <file>Theme1/Symbol/TurnRightWL.png</file>
         <file>Theme1/Symbol/Battery overheating alarm.png</file>
+        <file>Theme1/Slice/Home page switching/Analysis of driving behavior-1.png</file>
+        <file>Theme1/Slice/Home page switching/Analysis of driving behavior.png</file>
+        <file>Theme1/Slice/Home page switching/Auxiliary driving-1.png</file>
+        <file>Theme1/Slice/Home page switching/Auxiliary driving.png</file>
+        <file>Theme1/Slice/Home page switching/dispatching system-1.png</file>
+        <file>Theme1/Slice/Home page switching/dispatching system.png</file>
+        <file>Theme1/Slice/Home page switching/Drive for help-1.png</file>
+        <file>Theme1/Slice/Home page switching/Drive for help.png</file>
+        <file>Theme1/Slice/Home page switching/Energy consumption analysis-1.png</file>
+        <file>Theme1/Slice/Home page switching/Energy consumption analysis.png</file>
+        <file>Theme1/Slice/Home page switching/fault-1.png</file>
+        <file>Theme1/Slice/Home page switching/fault.png</file>
+        <file>Theme1/Slice/Home page switching/Health monitoring-1.png</file>
+        <file>Theme1/Slice/Home page switching/Health monitoring.png</file>
+        <file>Theme1/Slice/Home page switching/information-1.png</file>
+        <file>Theme1/Slice/Home page switching/information.png</file>
+        <file>Theme1/Slice/Home page switching/mainpage-1.png</file>
+        <file>Theme1/Slice/Home page switching/mainpage.png</file>
+        <file>Theme1/Slice/Home page switching/multimedia-1.png</file>
+        <file>Theme1/Slice/Home page switching/multimedia.png</file>
+        <file>Theme1/Slice/Home page switching/Navigation-1.png</file>
+        <file>Theme1/Slice/Home page switching/Navigation.png</file>
+        <file>Theme1/Slice/Home page switching/Set up-1.png</file>
+        <file>Theme1/Slice/Home page switching/Set up.png</file>
+        <file>Theme1/Slice/Home page switching/Setup.png</file>
+        <file>Theme1/Slice/Home page switching/tirepressure-1.png</file>
+        <file>Theme1/Slice/Home page switching/Vehicle information-1.png</file>
+        <file>Theme1/Slice/Home page switching/Vehicle information.png</file>
     </qresource>
     <qresource prefix="/theme1/label">
         <file>Theme1/label/count down.png</file>
@@ -280,5 +308,8 @@
         <file>Theme1/sub_screen_slice/settings.png</file>
         <file>Theme1/sub_screen_slice/submenu.png</file>
         <file>Theme1/sub_screen_slice/tire_pressure.png</file>
+        <file>Theme1/sub_screen_slice/dispatche.png</file>
+        <file>Theme1/sub_screen_slice/error.png</file>
+        <file>Theme1/sub_screen_slice/info.png</file>
     </qresource>
 </RCC>
