@@ -1156,7 +1156,7 @@ CommonItem {
 
     Timer {
 //        property int car_speed_current_point_count: -1;
-        property int car_speed_current_point_count: 239;
+        property int car_speed_current_point_count: 40;
         property bool direction_up: true;
         id: timer_for_sun;
         interval: 10;
