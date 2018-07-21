@@ -14,6 +14,8 @@ CommonItem {
     property var orbitData: [];
     property int currentCarSpeed: 0
     property int currentTireRotation: 0
+    property int carSpeed: 0;
+    property int tireRotation: 0;
 
     FontLoader {
         id: adobeHeitiStd
@@ -235,7 +237,7 @@ CommonItem {
                 font.family: europeExt.name;
                 font.pixelSize: 24;
                 smooth:true;
-                opacity: 0.2;
+                opacity: 1;
             }
             Text {
                 id: rotation_speed_dial_scale_20;
@@ -388,63 +390,63 @@ CommonItem {
         }
 
         // ------------------------- soc panel -------------------------
-        Item {
-            id: soc_panel;
+//        Item {
+//            id: soc_panel;
 
-            // current time
-            Text {
-                id: soc_label;
-                x: 645;
-                y: 367+10;
-                visible: true;
-                text: "soc :";
-                color: "#068ca5";
-                font.family: europeExt.name;
-                font.pixelSize: 22;
-                font.bold: false;
-                smooth:true;
-            }
-            Text {
-                id: soc_value;
-                x: 645+65;
-                y: 367+10;
-                visible: true;
-                text: "50 %";
-                color: "#068ca5";
-                font.family: europeExt.name;
-                font.pixelSize: 24;
-                font.bold: false;
-                smooth:true;
-            }
+//            // current time
+////            Text {
+////                id: soc_label;
+////                x: 645;
+////                y: 367+10;
+////                visible: true;
+////                text: "soc :";
+////                color: "#068ca5";
+////                font.family: europeExt.name;
+////                font.pixelSize: 22;
+////                font.bold: false;
+////                smooth:true;
+////            }
+////            Text {
+////                id: soc_value;
+////                x: 645+65;
+////                y: 367+10;
+////                visible: true;
+////                text: "50 %";
+////                color: "#068ca5";
+////                font.family: europeExt.name;
+////                font.pixelSize: 24;
+////                font.bold: false;
+////                smooth:true;
+////            }
 
-            ProgressBar {
-                id: progressbar_soc;
-                x: 545;
-                y: 407+10;
-                width: 360;
-                height: 1;
-                value: 0.5;
-                style: ProgressBarStyle {
-                    background: Rectangle {
-                    color:"white";
-                    opacity: 0.6;
-                    }
-                    progress: Rectangle{
-                        color: "#068ca5";
-                    }
-                }
-            }
+////            ProgressBar {
+////                id: progressbar_soc;
+////                x: 545;
+////                y: 407+10;
+////                width: 360;
+////                height: 1;
+////                value: 0.5;
+////                style: ProgressBarStyle {
+////                    background: Rectangle {
+////                    color:"white";
+////                    opacity: 0.6;
+////                    }
+////                    progress: Rectangle{
+////                        color: "#068ca5";
+////                    }
+////                }
+////            }
 
-            Rectangle {
-                id: progressbar_soc_handle;
-                x: progressbar_soc.x + progressbar_soc.width*progressbar_soc.value;
-                y: 404;
-                width: 7;
-                height: 7;
-                color: "#068ca5";
-                radius: 180;
-            }
-        }
+////            Rectangle {
+////                id: progressbar_soc_handle;
+////                x: progressbar_soc.x + progressbar_soc.width*progressbar_soc.value;
+////                y: 404;
+////                width: 7;
+////                height: 7;
+////                color: "#068ca5";
+////                radius: 180;
+////            }
+//        }
 
         // ------------------------- bottom panel -------------------------
         Item {
@@ -500,6 +502,7 @@ CommonItem {
 
 
     // ------------------------- rotation speed dial -------------------------
+    property var symbols_scale_ratio: 0.8;
     Item {
         id: symbols;
         visible: true;
@@ -507,18 +510,21 @@ CommonItem {
             id: symbol_overheating;
             x: 994;
             y: 114;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Battery overheating alarm.png";
         }
         Image {
             id: symbol_batteryCharging;
             x: 1060;
             y: 125;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryCharging.png";
         }
         Image {
             id: symbol_batteryCut;
             x: 942;
             y: 97;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryCut.png";
         }
         Image {
@@ -531,202 +537,233 @@ CommonItem {
             id: symbol_batteryFireAlarm;
             x: 1205;
             y: 138;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryFireAlarm.png";
         }
         Image {
             id: symbol_brakeLight;
             x: 416;
             y: 70;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/BrakeLight.png";
         }
         Image {
             id: symbol_chargingCable;
             x: 1152;
             y: 137;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/chargingCable.png";
         }
         Image {
             id: symbol_defroster;
             x: 383;
             y: 117;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Defroster.png";
         }
         Image {
             id: symbol_driverSystemFault;
             x: 1104;
             y: 134;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/driverSystemFault.png";
         }
         Image {
             id: symbol_engineFailue;
             x: 445;
             y: 115;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/engineFailue.png";
         }
         Image {
             id: symbol_hatchDoor1Alarm;
             x: 241;
             y: 138;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/HatchDoor1Alarm.png";
         }
         Image {
             id: symbol_hatchDoor2Alarm;
             x: 203;
             y: 111;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/HatchDoor2Alarm.png";
         }
         Image {
             id: symbol_highPressureOverhaul;
             x: 280;
             y: 138;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/highPressureOverhaul.png";
         }
         Image {
             id: symbol_lamp_ABS;
             x: 994;
             y: 65;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_ABS.png";
         }
         Image {
             id: symbol_lamp_AC;
             x: 308;
             y: 85;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/lamp_AC.png";
         }
         Image {
             id: symbol_lamp_airFilter;
             x: 886;
             y: 68;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_airFilter.png";
         }
         Image {
             id: symbol_lamp_airPress;
             x: 1052;
             y: 85;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_airPress.png";
         }
         Image {
             id: symbol_lamp_frontFog;
             x: 623;
             y: 88;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_frontFog.png";
         }
         Image {
             id: symbol_lamp_headlight;
             x: 663;
             y: 88;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_headlight.png";
         }
         Image {
             id: symbol_lamp_highBeam;
             x: 703;
             y: 88;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_highBeam.png";
         }
         Image {
             id: symbol_lamp_insulationRed;
             x: 1110;
             y: 91;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_insulationRed.png";
         }
         Image {
             id: symbol_lamp_parkingBrake;
             x: 943;
             y: 48;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_parkingBrake.png";
         }
         Image {
             id: symbol_Lamp_positionLight;
             x: 743;
             y: 88;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_positionLight.png";
         }
         Image {
             id: lsymbol_amp_rearFog;
             x: 783;
             y: 88;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_rearFog.png";
         }
         Image {
             id: symbol_lamp_waterLow;
             x: 528;
             y: 61;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_waterLow.png";
         }
         Image {
             id: symbol_leftBrakeAlarm;
             x: 363;
             y: 85;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/leftBrakeAlarm.png";
         }
         Image {
             id: symbol_mainPowerIndication;
             x: 469;
             y: 64;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/mainPowerIndication.png";
         }
         Image {
             id: symbol_motor_notworking;
             x: 496;
             y: 109;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/motor_notworking.png";
         }
         Image {
             id: symbol_motorHeat;
             x: 254;
             y: 98;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/motorHeat.png";
         }
         Image {
             id: symbol_oil_pressure;
             x: 891;
             y: 116;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/oil pressure.png";
         }
         Image {
             id: symbol_ready;
             x: 258;
             y: 432;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/READY.png";
         }
         Image {
             id: symbol_rightBrakeAlarm;
             x: 331;
             y: 133;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/rightBrakeAlarm.png";
         }
         Image {
             id: symbol_stopWL;
             x: 1129;
             y: 432;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/StopWL.png";
         }
         Image {
             id: symbol_turnLeftWL;
             x: 577;
             y: 83;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/TurnLeftWL.png";
         }
         Image {
             id: symbol_turnRightWL;
             x: 823;
             y: 83;
+            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/TurnRightWL.png"
         }
     }
 
-    Text {
-        id: debug_id;
-        x: 564 - 50;
-        y: 136;
-        text: pathView.currentIndex;
-        visible: true;
-        color: "#068ca5";
-        font.family: europeExt.name;
-        font.pixelSize: 48;
-        font.bold: false;
-        smooth:true;
-    }
+//    Text {
+//        id: debug_id;
+//        x: 564 - 50;
+//        y: 136;
+//        text: pathView.currentIndex;
+//        visible: true;
+//        color: "#068ca5";
+//        font.family: europeExt.name;
+//        font.pixelSize: 48;
+//        font.bold: false;
+//        smooth:true;
+//    }
 
     // key events
     property bool bKeyEnable: true;
@@ -1073,10 +1110,12 @@ CommonItem {
         running: true;
         repeat: true
         onTriggered: {
+
             carSpeedRandom = getRandomInt(240);
             tireRotationRandom = getRandomInt(120);
 
             car_speed_dial_center_number.text = carSpeedRandom;
+            carSpeed = carSpeedRandom;
             // adjust number position
             if(carSpeedRandom >= 100) {
                 car_speed_dial_center_number.x = 196-50;
@@ -1097,6 +1136,7 @@ CommonItem {
                     rotation_speed_dial_center_number.x = 1098;
                 }
                 rotation_speed_dial_center_number.text = tireRotationRandom;
+                tireRotation = tireRotationRandom;
 
                 if(symbolCounter++ > 20) {
                     symbols.visible = !symbols.visible;
@@ -1193,5 +1233,125 @@ CommonItem {
             console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1] + ", [2]=" + orbitData[i][2] + ", [3]=" + orbitData[i][3]);
         }
 //        timer.running = true;
+    }
+
+    onCarSpeedChanged: {
+        if(carSpeed>=0 && carSpeed<40) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 0.2;
+            car_speed_dial_scale_80.opacity = 0.2;
+            car_speed_dial_scale_120.opacity = 0.2;
+            car_speed_dial_scale_160.opacity = 0.2;
+            car_speed_dial_scale_200.opacity = 0.2;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=40 && carSpeed<80) {
+            car_speed_dial_scale_0.opacity = 0.2;
+            car_speed_dial_scale_40.opacity = 1;
+            car_speed_dial_scale_80.opacity = 0.2;
+            car_speed_dial_scale_120.opacity = 0.2;
+            car_speed_dial_scale_160.opacity = 0.2;
+            car_speed_dial_scale_200.opacity = 0.2;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=80 && carSpeed<120) {
+            car_speed_dial_scale_0.opacity = 0.2;
+            car_speed_dial_scale_40.opacity = 0.2;
+            car_speed_dial_scale_80.opacity = 1;
+            car_speed_dial_scale_120.opacity = 0.2;
+            car_speed_dial_scale_160.opacity = 0.2;
+            car_speed_dial_scale_200.opacity = 0.2;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=120 && carSpeed<160) {
+            car_speed_dial_scale_0.opacity = 0.2;
+            car_speed_dial_scale_40.opacity = 0.2;
+            car_speed_dial_scale_80.opacity = 0.2;
+            car_speed_dial_scale_120.opacity = 1;
+            car_speed_dial_scale_160.opacity = 0.2;
+            car_speed_dial_scale_200.opacity = 0.2;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=160 && carSpeed<200) {
+            car_speed_dial_scale_0.opacity = 0.2;
+            car_speed_dial_scale_40.opacity = 0.2;
+            car_speed_dial_scale_80.opacity = 0.2;
+            car_speed_dial_scale_120.opacity = 0.2;
+            car_speed_dial_scale_160.opacity = 1;
+            car_speed_dial_scale_200.opacity = 0.2;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=200 && carSpeed<240) {
+            car_speed_dial_scale_0.opacity = 0.2;
+            car_speed_dial_scale_40.opacity = 0.2;
+            car_speed_dial_scale_80.opacity = 0.2;
+            car_speed_dial_scale_120.opacity = 0.2;
+            car_speed_dial_scale_160.opacity = 0.2;
+            car_speed_dial_scale_200.opacity = 1;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=240) {
+            car_speed_dial_scale_0.opacity = 0.2;
+            car_speed_dial_scale_40.opacity = 0.2;
+            car_speed_dial_scale_80.opacity = 0.2;
+            car_speed_dial_scale_120.opacity = 0.2;
+            car_speed_dial_scale_160.opacity = 0.2;
+            car_speed_dial_scale_200.opacity = 0.2;
+            car_speed_dial_scale_240.opacity = 1;
+        }
+    }
+
+    onTireRotationChanged: {
+        if(tireRotation>=0 && tireRotation<20) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 0.2;
+            rotation_speed_dial_scale_40.opacity = 0.2;
+            rotation_speed_dial_scale_60.opacity = 0.2;
+            rotation_speed_dial_scale_80.opacity = 0.2;
+            rotation_speed_dial_scale_100.opacity = 0.2;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=20 && tireRotation<40) {
+            rotation_speed_dial_scale_0.opacity = 0.2;
+            rotation_speed_dial_scale_20.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 0.2;
+            rotation_speed_dial_scale_60.opacity = 0.2;
+            rotation_speed_dial_scale_80.opacity = 0.2;
+            rotation_speed_dial_scale_100.opacity = 0.2;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=40 && tireRotation<60) {
+            rotation_speed_dial_scale_0.opacity = 0.2;
+            rotation_speed_dial_scale_20.opacity = 0.2;
+            rotation_speed_dial_scale_40.opacity = 1;
+            rotation_speed_dial_scale_60.opacity = 0.2;
+            rotation_speed_dial_scale_80.opacity = 0.2;
+            rotation_speed_dial_scale_100.opacity = 0.2;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=60 && tireRotation<80) {
+            rotation_speed_dial_scale_0.opacity = 0.2;
+            rotation_speed_dial_scale_20.opacity = 0.2;
+            rotation_speed_dial_scale_40.opacity = 0.2;
+            rotation_speed_dial_scale_60.opacity = 1;
+            rotation_speed_dial_scale_80.opacity = 0.2;
+            rotation_speed_dial_scale_100.opacity = 0.2;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=80 && tireRotation<100) {
+            rotation_speed_dial_scale_0.opacity = 0.2;
+            rotation_speed_dial_scale_20.opacity = 0.2;
+            rotation_speed_dial_scale_40.opacity = 0.2;
+            rotation_speed_dial_scale_60.opacity = 0.2;
+            rotation_speed_dial_scale_80.opacity = 1;
+            rotation_speed_dial_scale_100.opacity = 0.2;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=100 && tireRotation<120) {
+            rotation_speed_dial_scale_0.opacity = 0.2;
+            rotation_speed_dial_scale_20.opacity = 0.2;
+            rotation_speed_dial_scale_40.opacity = 0.2;
+            rotation_speed_dial_scale_60.opacity = 0.2;
+            rotation_speed_dial_scale_80.opacity = 0.2;
+            rotation_speed_dial_scale_100.opacity = 1;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=120) {
+            rotation_speed_dial_scale_0.opacity = 0.2;
+            rotation_speed_dial_scale_20.opacity = 0.2;
+            rotation_speed_dial_scale_40.opacity = 0.2;
+            rotation_speed_dial_scale_60.opacity = 0.2;
+            rotation_speed_dial_scale_80.opacity = 0.2;
+            rotation_speed_dial_scale_100.opacity = 0.2;
+            rotation_speed_dial_scale_120.opacity = 1;
+        }
     }
 }
