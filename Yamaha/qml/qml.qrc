@@ -44,6 +44,21 @@
         <file>theme2/Radio.qml</file>
         <file>theme2/Setting.qml</file>
         <file>theme2/Adas.qml</file>
+        <file>theme2/Radar.qml</file>
+        <file>theme2/TirePressure.qml</file>
+        <file>theme2/BackCamera.qml</file>
+        <file>theme2/DriveAnalysis.qml</file>
+        <file>theme2/Maintenance.qml</file>
+        <file>theme2/Consumption.qml</file>
+        <file>theme2/ConsumptionHistory.qml</file>
+        <file>theme2/Diagnostic.qml</file>
+        <file>theme2/Schedule.qml</file>
+        <file>theme2/Ask4Help.qml</file>
+        <file>theme2/CalendarWeather.qml</file>
+        <file>theme2/Chart.qml</file>
+        <file>theme2/JS/QChart.js</file>
+        <file>theme2/QChart.qml</file>
+        <file>theme2/QTimeCountDown.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>JS/mainpanel_pointer_orbitdata.js</file>

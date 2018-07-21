@@ -63,7 +63,7 @@ Item {
         anchors.topMargin: 100
         anchors.horizontalCenter: call_in.horizontalCenter
         textValue: "正在来电"
-        textColor: "blue"
+        textColor: textBlue
         pixelSize: 18
     }
 

@@ -162,7 +162,7 @@ Item {
         repeat: true
         running: false
         onTriggered: {
-            timeCountDown -= 0.1
+            timeCountDown -= 0.2
             if (timeCountDown < 1) {
                 running = false
             }

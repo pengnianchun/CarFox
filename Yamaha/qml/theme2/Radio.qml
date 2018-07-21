@@ -62,20 +62,20 @@ Item {
             Text {
                 text: "Mhz"
                 font.pixelSize: 18
-                color: "blue"
+                color: textBlue
             }
             Text {
                 text: "FM"
                 font.pixelSize: 18
-                color: "blue"
+                color: textBlue
             }
         }
 
         Image {
             id: image
-            x: 84
+            x: 8
             y: 190
-            width: 269
+            width: 421
             height: 44
             source: "qrc:/theme2/symbol/Theme2/Modules/radio/radio_line.png"
         }

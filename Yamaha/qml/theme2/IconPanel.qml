@@ -110,4 +110,16 @@ Item {
         spacing: 4
         orientation: ListView.Horizontal
     }
+
+    // Demo
+    Timer {
+        interval: 800
+        repeat: true
+        running: true
+        onTriggered: {
+            listLeft.visible = !listLeft.visible
+            //listMiddle.visible = !listMiddle.visible
+            listRight.visible = !listRight.visible
+        }
+    }
 }

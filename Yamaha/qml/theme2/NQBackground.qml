@@ -4,13 +4,17 @@ import QtQuick.Layouts 1.1
 import QtQml 2.0
 
 Item {
-    property int carSpeedRotation: -120
-    property int remainTime: 10
+    layer.enabled: true
+
+    property int carWaterTempWarning: 101
+    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
 
     property date currentDate: new Date()
     property string dateString
 
-    layer.enabled: true
+    function currentDateTime(){
+            return Qt.formatDateTime(new Date(), "yyyy-MM-dd hh:mm:ss ddd");
+        }
 
     FontLoader {
         id: msyh
@@ -90,7 +94,6 @@ Item {
             asynchronous: true
             cache: true
 
-
             Rectangle {
                 x: 185
                 y: -5
@@ -106,25 +109,7 @@ Item {
                         SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
                     }
                 }
-
             }
-//            Image {
-//                id: circle_lineLeft
-//                x: 185
-//                y: -5
-//                source: "qrc:/theme2/symbol/Theme2/Symbol/circle.png"
-//                asynchronous: true
-//                cache: true
-
-//                transform: Rotation {
-//                    id: minuteRotation
-//                    origin.x: 0; origin.y: 190;
-//                    angle: (carSpeedValue * 2.5) - 135
-//                    Behavior on angle {
-//                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
-//                    }
-//                }
-//            }
         }
 
         Image {
@@ -151,107 +136,8 @@ Item {
                     }
                 }
             }
-//            Image {
-//                id: circle_lineRight
-//                x: 185
-//                y: -5
-//                source: "qrc:/theme2/symbol/Theme2/Symbol/circle.png"
-//                asynchronous: true
-//                cache: true
-
-//                transform: Rotation {
-//                    origin.x: 0; origin.y: 190;
-//                    angle: carSpeedRotation * 6
-//                    Behavior on angle {
-//                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
-//                    }
-//                }
-//            }
         }
     }
-
-//    //#CANVAS START
-//    //信息
-//    property int rangeValue: carSpeedValue;
-//    property int nowRange: 0;
-
-//    //画布
-//    property int mW: 400;
-//    property int mH: 400;
-//    property int lineWidth: 2;
-
-//    //圆
-//    property double r: mH / 2; //圆心
-//    property double cR: r - 16 * lineWidth; //圆半径
-
-//    //Sin曲线
-//    property int sX: 0;
-//    property int sY: mH / 2;
-//    property int axisLength: mW;        //轴长
-//    property double waveWidth: 0.015;   //波浪宽度,数越小越宽
-//    property double waveHeight: 6;      //波浪高度,数越大越高
-//    property double speed: 0.09;        //波浪速度，数越大速度越快
-//    property double xOffset: 0;         //波浪x偏移量
-
-//    Canvas{
-//        id: canvas
-//        x: 60
-//        y: 70
-//        height: mH
-//        width: mW
-//        //anchors.centerIn: parent
-//        onPaint: {
-//            var ctx = getContext("2d");
-
-//            ctx.clearRect(0, 0, mW, mH);
-
-//            //显示外圈
-//            ctx.beginPath();
-//            ctx.stroke();
-//            ctx.beginPath();
-//            ctx.arc(r, r, cR, 0, 2*Math.PI);
-//            ctx.clip();
-
-//            //显示sin曲线
-//            ctx.save();
-//            var points=[];
-//            ctx.beginPath();
-//            for(var x = sX; x < sX + axisLength; x += 20 / axisLength){
-//                var y = -Math.sin((sX + x) * waveWidth + xOffset);
-//                var dY = mH * (1 - nowRange / 100 );
-//                points.push([x, dY + y * waveHeight]);
-//                ctx.lineTo(x, dY + y * waveHeight);
-//            }
-
-//            //显示波浪
-//            ctx.lineTo(axisLength, mH);
-//            ctx.lineTo(sX, mH);
-//            ctx.lineTo(points[0][0],points[0][1]);
-//            ctx.fillStyle = '#1c86d1';
-//            ctx.fill();
-//            ctx.restore();
-
-//            if(nowRange <= rangeValue){
-//                nowRange += 1;
-//            }
-
-//            if(nowRange > rangeValue){
-//                nowRange -= 1;
-//            }
-//            xOffset += speed;
-//        }
-
-//        Timer{
-//            id: timer
-//            running: true
-//            repeat: true
-//            interval: 10
-//            onTriggered:{
-//                parent.requestPaint();
-//            }
-//        }
-//    }
-//    //#CANVAS END
 
     // 发车倒计时
     Rectangle {
@@ -263,7 +149,7 @@ Item {
 
         ColumnLayout{
             anchors.fill: parent
-            visible: homepanel_visible
+            visible: homepanel_visible && carStartRemainTime > 0
 
             RowLayout {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -278,18 +164,31 @@ Item {
 
                 Text {
                     text: qsTr("发车倒计时")
-                    color: "#0088ff"
+                    color: textBlue
                     font.family: msyh.name
                     font.pixelSize: 30
                 }
             }
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("00:00")
-                color: "white"
-                font.family: msyh.name
-                font.pixelSize: 50
+            Text { /* 占位 */ }
+            QTimeCountDown {
+                id: countDown
+                anchors.left: parent.left
+                anchors.leftMargin: 200
+                anchors.top: parent.top
+                anchors.topMargin: 150
+                visible: homepanel_visible
+                countDownTime: carStartRemainTime
+                countDownTimer: carStartRemainTime >= 0
+                pixelSize: 36
             }
+        }
+        Text {
+            anchors.centerIn: parent
+            visible: homepanel_visible && countDown.countDownTime === 0 && carSpeedValue < 10
+            text: qsTr("谨慎驾驶 注意行人")
+            color: textBlue
+            font.family: msyh.name
+            font.pixelSize: 30
         }
     }
 
@@ -371,29 +270,43 @@ Item {
             anchors.bottomMargin: 25
             spacing: 3
             Repeater {
-                model: 10
+                model: carSoc/11
                 Image { source: "qrc:/theme2/symbol/Theme2/Symbol/soc_progress.png" }
             }
         }
     }
 
     // 水温告警
-    RowLayout {
+    Item {
         anchors.top: rectLeft.bottom
         anchors.topMargin: 10
-        anchors.horizontalCenter: rectLeft.horizontalCenter
-        visible: homepanel_visible
+        anchors.left: rectLeft.left
+        anchors.leftMargin: 10
+        visible: homepanel_visible && carWaterTemp > carWaterTempWarning
 
         Image {
+            id: warning
             source: "qrc:/theme2/symbol/Theme2/Symbol/StopWL.png"
             asynchronous: true
             cache: true
+            verticalAlignment: Image.AlignVCenter
         }
         Text {
-            text: qsTr("水温高于105度")
+            anchors.left: warning.right
+            anchors.leftMargin: 10
+            anchors.verticalCenter: warning.verticalCenter
+            text: qsTr("水温高于") + carWaterTemp + qsTr("度")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
+        }
+        Timer {
+            interval: 800
+            repeat: true
+            running: carWaterTemp > carWaterTempWarning
+            onTriggered: {
+                warning.visible = !warning.visible
+            }
         }
     }
 
@@ -463,19 +376,19 @@ Item {
             spacing: 20
             Image {
                 id: gearN
-                source: "qrc:/theme2/symbol/Theme2/Symbol/gear_N.png"
+                source: sourceImageUrl + "gear_N.png"
                 asynchronous: true
                 cache: true
             }
             Image {
                 id: gearD
-                source: "qrc:/theme2/symbol/Theme2/Symbol/gear_D.png"
+                source: sourceImageUrl + "gear_D.png"
                 asynchronous: true
                 cache: true
             }
             Image {
-                id: gearP
-                source: "qrc:/theme2/symbol/Theme2/Symbol/gear_R.png"
+                id: gearR
+                source: sourceImageUrl + "gear_R.png"
                 asynchronous: true
                 cache: true
             }
@@ -494,29 +407,64 @@ Item {
         cache: true
     }
 
-    RowLayout {
+    Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
-        spacing: 100
+        anchors.bottomMargin: 40
 
         Text {
+            anchors.right: textDateTime.left
+            anchors.rightMargin: 120
             text: qsTr("TRIP: ") + carTrip.toFixed(1) + qsTr(" km")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
         }
         Text {
-            text: qsTr(dateString)
+            id: textDateTime
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: ""
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
         }
         Text {
+            anchors.left: textDateTime.right
+            anchors.leftMargin: 120
             text: qsTr("ODO： ") + carOdo.toFixed(1) + qsTr(" km")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
+        }
+    }
+
+    Timer {
+        interval: 1000
+        repeat: true
+        running: true
+        onTriggered: {
+            textDateTime.text = currentDateTime()
+
+            // Demo Start
+            carStartRemainTime --
+            if (carStartRemainTime < -20) {
+                countDown.countDownTime = carStartRemainTime = 80
+            }
+
+            if (carStartRemainTime > 30) {
+                gearN.source = sourceImageUrl + "gear_N0.png"
+                gearD.source = sourceImageUrl + "gear_D.png"
+                gearR.source = sourceImageUrl + "gear_R.png"
+            } else if (carStartRemainTime > 10) {
+                gearN.source = sourceImageUrl + "gear_N.png"
+                gearD.source = sourceImageUrl + "gear_D.png"
+                gearR.source = sourceImageUrl + "gear_R0.png"
+            } else {
+                gearN.source = sourceImageUrl + "gear_N.png"
+                gearD.source = sourceImageUrl + "gear_D0.png"
+                gearR.source = sourceImageUrl + "gear_R.png"
+            }
+            // Demo End
         }
     }
 
