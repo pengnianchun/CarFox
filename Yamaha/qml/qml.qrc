@@ -58,6 +58,7 @@
         <file>theme2/Chart.qml</file>
         <file>theme2/JS/QChart.js</file>
         <file>theme2/QChart.qml</file>
+        <file>theme2/QTimeCountDown.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>JS/mainpanel_pointer_orbitdata.js</file>

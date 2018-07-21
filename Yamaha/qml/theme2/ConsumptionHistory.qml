@@ -7,11 +7,10 @@ Item {
     width: 800
     height: 410
 
-
     QChart {
         id: chart1
-        width: 600
-        height: 200
+        width: 700
+        height: 150
 
         anchors.top: parent.top
         anchors.topMargin: 20
@@ -43,11 +42,11 @@ Item {
 
     QChart {
         id: chart2
-        width: 600
-        height: 200
+        width: 400
+        height: 160
 
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 40
         anchors.left: parent.left
         anchors.leftMargin: 10
         chartAnimated: true;
@@ -68,5 +67,13 @@ Item {
                     }]
             };
         }
+    }
+
+    Text {
+        id: text1
+        x: 449
+        y: 210
+        text: qsTr("2018年呈现")
+        font.pixelSize: 12
     }
 }

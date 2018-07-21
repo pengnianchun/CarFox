@@ -73,9 +73,9 @@ Item {
 
         Image {
             id: image
-            x: 84
+            x: 8
             y: 190
-            width: 269
+            width: 421
             height: 44
             source: "qrc:/theme2/symbol/Theme2/Modules/radio/radio_line.png"
         }

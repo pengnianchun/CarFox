@@ -169,18 +169,22 @@ Item {
                     font.pixelSize: 30
                 }
             }
-            Text {
-                id: textRemainTime
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: ""
-                color: "white"
-                font.family: msyh.name
-                font.pixelSize: 50
+            Text { /* 占位 */ }
+            QTimeCountDown {
+                id: countDown
+                anchors.left: parent.left
+                anchors.leftMargin: 200
+                anchors.top: parent.top
+                anchors.topMargin: 150
+                visible: homepanel_visible
+                countDownTime: carStartRemainTime
+                countDownTimer: carStartRemainTime >= 0
+                pixelSize: 36
             }
         }
         Text {
             anchors.centerIn: parent
-            visible: carStartRemainTime < 10 && carSpeedValue < 5
+            visible: homepanel_visible && countDown.countDownTime === 0 && carSpeedValue < 10
             text: qsTr("谨慎驾驶 注意行人")
             color: textBlue
             font.family: msyh.name
@@ -440,10 +444,12 @@ Item {
         running: true
         onTriggered: {
             textDateTime.text = currentDateTime()
-            textRemainTime.text = Qt.formatDateTime(new Date(1, carStartRemainTime), "hh:mm:ss");
 
-            // Demo
+            // Demo Start
             carStartRemainTime --
+            if (carStartRemainTime < -20) {
+                countDown.countDownTime = carStartRemainTime = 80
+            }
 
             if (carStartRemainTime > 30) {
                 gearN.source = sourceImageUrl + "gear_N0.png"
@@ -458,6 +464,7 @@ Item {
                 gearD.source = sourceImageUrl + "gear_D0.png"
                 gearR.source = sourceImageUrl + "gear_R.png"
             }
+            // Demo End
         }
     }
 

@@ -9,7 +9,7 @@ Item {
         anchors.left: parent.left
         anchors.leftMargin: 50
         anchors.verticalCenter: parent.verticalCenter
-        source: ""
+        source: "qrc:/theme2/symbol/Theme2/Modules/reverseImage/reverseImage.png"
     }
 
     Image {

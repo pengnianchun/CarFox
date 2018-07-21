@@ -9,7 +9,7 @@ Item {
 
     //#CANVAS START
     //信息
-    property int rangeValue: 80;
+    property int rangeValue: 100;
     property int nowRange: 70;
 
     //画布
@@ -91,16 +91,21 @@ Item {
             }
             xOffset += speed;
         }
+
+        Timer{
+            id: timer
+            running: nowRange !== rangeValue
+            repeat: true
+            interval: 100
+            onTriggered:{
+                parent.requestPaint();
+            }
+        }
     }
     //#CANVAS END
 
-    Rectangle {
-        width: 400
-        height: 2
-        anchors.left: canvas.right
-        anchors.top: canvas.top
-        anchors.topMargin: 80
-        color: "white"
+    ColumnLayout {
+
     }
 
     QChart {
@@ -132,58 +137,14 @@ Item {
         }
     }
 
-    //    Chart{
-    //        //id: chart
-    //        width: 600
-    //        height: 200
-
-    //        anchors.top: parent.top
-    //        anchors.topMargin: 170
-    //        anchors.left: parent.left
-    //        anchors.leftMargin: 10
-
-    //        onPaint: {
-    ////            bar({
-    ////                labels : ["Jan","February","March","April","May","June","July"],
-    ////                datasets : [
-    ////                    {
-    ////                        fillColor : "rgba(220,220,220,0.5)",
-    ////                        strokeColor : "rgba(220,220,220,1)",
-    ////                        data : [test,59,90,81,56,55,40]
-    ////                    },
-    ////                    {
-    ////                        fillColor : "rgba(151,187,205,0.5)",
-    ////                        strokeColor : "rgba(151,187,205,1)",
-    ////                        data : [28,48,40,19,96,27,100]
-    ////                    }
-    ////                ]
-    ////                });
-    //            bar({
-    //                labels : ["一月","February","March","April","May","June","July"],
-    //                datasets : [
-    //                    {
-    //                        fillColor : "rgba(220,220,220,0.5)",
-    //                        strokeColor : "rgba(220,220,220,1)",
-    //                        data : [test,59,90,81,56,55,40]
-    //                    },
-    //                    {
-    //                        fillColor : "rgba(151,187,205,0.5)",
-    //                        strokeColor : "rgba(151,187,205,1)",
-    //                        data : [28,48,40,19,96,27,100]
-    //                    }
-    //                ]
-    //                });
-    //        }
-    //    }
-
     Text {
         id: suggest
         anchors.left: chart.right
         anchors.top: chart.top
 
         font.pixelSize: 14
-        color: textBlue
-        text: qsTr("驾驶行为建议")
+        color: "white"
+        text: qsTr("保养建议")
     }
 
     ColumnLayout {
@@ -195,7 +156,7 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
             }
             Text {
-                text: "轻打方向"
+                text: "加油"
                 font.pixelSize: 14
                 color: textBlue
             }
@@ -205,7 +166,7 @@ Item {
                 source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/bullet_blue.png"
             }
             Text {
-                text: "缓踩刹车"
+                text: "更换机油"
                 font.pixelSize: 14
                 color: textBlue
             }
