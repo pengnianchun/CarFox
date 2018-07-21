@@ -15,16 +15,20 @@ CommonItem {
     property bool homepanel_visible: true
     property int  mainMenuIndex: 0
 
-    property int carSpeedValue: CarMsg.carSpeed; // 车速
-    property int engineSpeedValue: CarMsg.rpm; // 转速
-    property int carVoyage: 99 // 续航里程
-    property int carSoc: CarMsg.soc; // SOC
+    property int  carSpeedValue: CarMsg.carSpeed; // 车速
+    property int  engineSpeedValue: CarMsg.rpm; // 转速
+    property int  carVoyage: 99 // 续航里程
+    property int  carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
     property real carBattery: 12; // 蓄电池电压
     property real carTrip: 0 // TRIP
     property real carOdo: 0 // ODO
+    property int  carWaterTemp: 0; // 水温
+    property int  carStartRemainTime: 60 // 发车倒计时
 
     property bool bKeyEnable: true
+
+    property string textBlue: "#0088ff"
 
     onKeyEnter: function() {
         console.debug("HomePanel onKeyEnter")
@@ -169,6 +173,12 @@ CommonItem {
                 carOdo = 0
             } else {
                 carOdo += getRandomInt(5)
+            }
+
+            if (carWaterTemp > 120) { // 水温
+                carWaterTemp = 0
+            } else {
+                carWaterTemp++
             }
         }
     }

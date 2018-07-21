@@ -44,14 +44,18 @@ MenuItem {
     previousMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel previousMenu")
-            mainMenuIndex = --listMenu.currentIndex
+            if (mainMenuIndex > 0) {
+                mainMenuIndex = --listMenu.currentIndex
+            }
         }
     }
 
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel nextMenu")
-            mainMenuIndex = ++listMenu.currentIndex
+            if (mainMenuIndex < listMenu.count - 1 + 25) { // +25 4 DEBUG
+                mainMenuIndex = ++listMenu.currentIndex
+            }
         }
     }
 

@@ -52,14 +52,14 @@ Item {
             x: 370
             y: 8
             text: "鹿回头"
-            color: "blue"
+            color: textBlue
         }
 
         Text {
             x: 370
             y: 30
             text: "曹寅"
-            color: "blue"
+            color: textBlue
         }
 
         Text {
@@ -79,7 +79,7 @@ Item {
             Rectangle {
                 width: 22
                 height: 3
-                color: "blue"
+                color: textBlue
             }
         }
 

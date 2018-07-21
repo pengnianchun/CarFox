@@ -62,12 +62,12 @@ Item {
             Text {
                 text: "Mhz"
                 font.pixelSize: 18
-                color: "blue"
+                color: textBlue
             }
             Text {
                 text: "FM"
                 font.pixelSize: 18
-                color: "blue"
+                color: textBlue
             }
         }
 

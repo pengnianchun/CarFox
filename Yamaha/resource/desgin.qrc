@@ -209,6 +209,10 @@
         <file>Theme2/Modules/adas/bus.png</file>
         <file>Theme2/Modules/adas/pepole.png</file>
         <file>Theme2/Modules/adas/road.png</file>
+        <file>Theme2/Modules/radar/radar_car.png</file>
+        <file>Theme2/Modules/radar/radar_d1.png</file>
+        <file>Theme2/Modules/radar/radar_road.png</file>
+        <file>Theme2/Modules/tirePressure/tire_car.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

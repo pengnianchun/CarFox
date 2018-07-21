@@ -55,6 +55,9 @@
         <file>theme2/Schedule.qml</file>
         <file>theme2/Ask4Help.qml</file>
         <file>theme2/CalendarWeather.qml</file>
+        <file>theme2/Chart.qml</file>
+        <file>theme2/JS/QChart.js</file>
+        <file>theme2/QChart.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>JS/mainpanel_pointer_orbitdata.js</file>
