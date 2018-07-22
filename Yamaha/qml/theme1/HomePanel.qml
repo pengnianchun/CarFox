@@ -335,21 +335,37 @@ CommonItem {
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/settings.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/info.png"];
 
+//            ListModel {
+//                id: menuModel;
+//                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage-1.png";}
+//                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information-1.png";}
+//                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation-1.png";}
+//                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia-1.png";}
+//                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving-1.png";}
+//                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior-1.png";}
+//                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis-1.png";}
+//                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system-1.png";}
+//                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help-1.png";}
+//                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure-1.png";}
+//                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault-1.png";}
+//                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up-1.png";}
+//                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information-1.png";}
+//            }
             ListModel {
                 id: menuModel;
-                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage-1.png";}
-                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information-1.png";}
-                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation-1.png";}
-                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia-1.png";}
-                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving-1.png";}
-                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior-1.png";}
-                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis-1.png";}
-                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system-1.png";}
-                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help-1.png";}
-                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure-1.png";}
-                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault-1.png";}
-                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up-1.png";}
-                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information-1.png";}
+                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage.png";}
+                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information.png";}
+                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation.png";}
+                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia.png";}
+                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving.png";}
+                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior.png";}
+                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis.png";}
+                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system.png";}
+                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help.png";}
+                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure.png";}
+                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault.png";}
+                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up.png";}
+                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information.png";}
             }
 
             Component {
