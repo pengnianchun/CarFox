@@ -383,8 +383,8 @@ CommonItem {
             id: subscreen;
             Image {
                 id: subscreen_image;
-                x: 564;
-                y: 136;
+                x: 570;
+                y: 160;
                 source: "qrc:/theme1/slice/Theme1/Slice/dashed_car.png";
                 scale: 0.9;
             }
@@ -813,6 +813,19 @@ CommonItem {
         }
     }
 
+//    Text {
+//        id: subScreenIndex;
+//        x: 500;
+//        y: 200;
+//        visible: true;
+//        text: pathView.currentIndex;
+//        color: "#068ca5";
+//        font.family: europeExt.name;
+//        font.pixelSize: 22;
+//        font.bold: false;
+//        smooth:true;
+//    }
+
     function set_subscreen(index) {
 
         pathView.currentIndex = index;
@@ -822,21 +835,64 @@ CommonItem {
         console.log("subscreen_image.source: " + subscreen_image.source);
         switch(index+1) {
         case 0:
-            subscreen_image.x = 564;
-            subscreen_image.y = 136;
+            subscreen_image.x = 570;
+            subscreen_image.y = 160;
             subscreen_image.scale = 0.9;
             break;
         case 1:
+            subscreen_image.x = 564-100;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         case 2:
+            subscreen_image.x = 564-100;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         case 3:
+            subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         case 4:
+            subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         case 5:
+            subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.9;
+            break;
         case 6:
+            subscreen_image.x = 564-120;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.9;
+            break;
         case 7:
+            subscreen_image.x = 564-40;
+            subscreen_image.y = 136-40;
+            subscreen_image.scale = 0.8;
+            break;
         case 8:
-        case 9:
+            subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
+        case 9:subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         case 10:
+            subscreen_image.x = 564-50;
+            subscreen_image.y = 136-40;
+            subscreen_image.scale = 0.8;
+            break;
         case 11:
+            subscreen_image.x = 564-80;
+            subscreen_image.y = 136-70;
+            subscreen_image.scale = 0.8;
+            break;
         case 12:
             subscreen_image.x = 564-80;
             subscreen_image.y = 136-70;
@@ -907,7 +963,7 @@ CommonItem {
                 rotation_speed_dial_center_number.text = tireRotationRandom;
                 tireRotation = tireRotationRandom;
 
-                if(symbolCounter++ > 20) {
+                if(symbolCounter++ > 2) {
                     symbols.visible = !symbols.visible;
                     symbolCounter = 0;
                 }
