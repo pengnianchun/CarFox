@@ -450,6 +450,16 @@ CommonItem {
 //        }
 
         // ------------------------- bottom panel -------------------------
+        Timer {
+            id: timer_for_clock;
+            interval: 60*1000;
+            running: true;
+            repeat: true
+            onTriggered: {
+                current_time.text = Qt.formatDateTime(new Date(), "hh : mm");
+            }
+        }
+
         Item {
             id: bottom_panel;
 
