@@ -11,7 +11,8 @@ CommonItem {
     z: 0
     width: 1440;
     height: 540;
-    property var orbitData: [];
+    property var carSpeedOrbitData: [];
+    property var rotationOrbitData: [];
     property int currentCarSpeed: 0
     property int currentTireRotation: 0
     property int carSpeed: 0;
@@ -844,40 +845,17 @@ CommonItem {
         }
     }
 
-    property bool turnForPathAnimGo: true;
-//    MouseArea{
-//        property int index: 1;
-//        id: mouseArea;
-//        anchors.fill: parent;
-////        onClicked: {
-////            timer.start();
-
-////            pathView.pathView_path.pathView_pathQuad.x = 350;
-////            pathView.pathView_path.pathView_pathQuad.y = 20;
-////            pathView.pathView_path.pathView_pathQuad.controlX = 100;
-////            pathView.pathView_path.pathView_pathQuad.controlY = -20;
-
-////            if(turnForPathAnimGo) {
-////                pathAnimGo.start();
-////            } else {
-////                pathAnimBack.start();
-////            }
-////        }
-////        onPressed: {
-////            if(pathAnimGo.running) {
-////                pathAnimGo.pause();
-////            }
-////        }
-////        onReleased: {
-////            if(pathAnimGo.paused) {
-////                pathAnimGo.resume();
-////            }
-////        }
-//    }
-
     Image {
         id: pointer_car_speed;
         x: 70;
+        y: 474;
+        visible: true;
+        source: "qrc:/theme1/slice/Theme1/Slice/sun.png";
+        scale: 0.8;
+    }
+    Image {
+        id: pointer_rotation;
+        x: 1440-70;
         y: 474;
         visible: true;
         rotation: -23;
@@ -885,218 +863,9 @@ CommonItem {
         scale: 0.8;
     }
 
-//    PathAnimation {
-//        id: pathAnimGo;
-//        target: pointer_car_speed;
-//        duration: 3000;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
-//        easing.type: Easing.Linear;
-////        orientation: PathAnimation.TopFirst;
-//        endRotation: 90;
-
-//        path: Path {
-//            startX: 70;
-//            startY: 474;
-////            PathCurve { x: 70;  y: 474; }  // position 0
-//            PathCurve { x: 49-20;  y: 401-20; }  // position 40
-//            PathCurve { x: 36-20;  y: 311-20; }  // position 80
-//            PathCurve { x: 40-20;  y: 223-20; }  // position 120
-//            PathCurve { x: 94-10;  y: 112-10; }  // position 160
-//            PathCurve { x: 246-0; y: 47-0; }   // position 200
-//            PathCurve { x: 381-0; y: 38-0; }   // position 240
-//        }
-
-//        onStarted: {
-//            console.log("PathAnimation pathAnimGo start");
-////            pointer.rotation = -23;
-////            pointer.x = 90;
-////            pointer.y = 494;
-//        }
-
-//        onStopped: {
-//            console.log("athAnimation pathAnimGo stoped");
-////            pathAnimBack.start();
-//            turnForPathAnimGo = false;
-//        }
-//    }
-
-//    PathAnimation {
-//        id: pathAnimBack;
-//        target: pointer_car_speed;
-//        duration: 3000;
-////        orientationEntryDuration: 200;
-//        orientationExitDuration: 100;
-//        easing.type: Easing.Linear;
-//        orientation: PathAnimation.BottomFirst;
-
-//        path: Path {
-//            startX: 381-0;
-//            startY: 38-0;
-////            PathCurve { x: 381-0; y: 38-0; }   // position 240
-//            PathCurve { x: 246-0; y: 47-0; }   // position 200
-//            PathCurve { x: 94-10;  y: 112-10; }  // position 160
-//            PathCurve { x: 40-20;  y: 223-20; }  // position 120
-//            PathCurve { x: 36-20;  y: 311-20; }  // position 80
-//            PathCurve { x: 49-20;  y: 401-20; }  // position 40
-//            PathCurve { x: 90-20;  y: 494-20; }  // position 0
-//        }
-
-//        onStarted: {
-//            console.log("PathAnimation pathAnimGo start");
-////            pointer.rotation = 180;
-////            pointer.x = 381;
-////            pointer.y = 38;
-//        }
-
-//        onStopped: {
-//            console.log("athAnimation pathAnimGo stoped");
-////            pathAnimGo.start();
-//            turnForPathAnimGo = true;
-//        }
-//    }
-
-//    PathAnimation {
-//        property int begin_x: 0;
-//        property int begin_y: 0;
-//        property int end_x: 0;
-//        property int end_y: 0;
-
-//        id: pathAnimGo_custom;
-//        target: pointer;
-//        duration: 100;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
-//        easing.type: Easing.OutQuad;
-////        orientation: PathAnimation.TopFirst;
-////        endRotation: 90;
-
-//        path: Path {
-//            startX: pathAnimGo_custom.begin_x;
-//            startY: pathAnimGo_custom.begin_y;
-//            PathCurve { x: pathAnimGo_custom.end_x;  y: pathAnimGo_custom.end_y; }
-//        }
-
-//        onStarted: {
-//            console.log("pathAnimGo_custom start");
-//        }
-
-//        onStopped: {
-//            console.log("pathAnimGo_custom stoped");
-//        }
-//    }
-
-//    PathAnimation {
-//        property int begin_x: 0;
-//        property int begin_y: 0;
-//        property int end_x: 0;
-//        property int end_y: 0;
-
-//        id: pathAnim_custom;
-//        target: pointer_car_speed;
-//        duration: 2000;
-//        orientationEntryDuration: 100;
-//        orientationExitDuration: 100;
-//        easing.type: Easing.OutQuad;
-////        orientation: PathAnimation.TopFirst;
-////        endRotation: 90;
-
-//        path: Path {
-//            id: pathAnim_custom_path;
-//            startX: pathAnim_custom.begin_x;
-//            startY: pathAnim_custom.begin_y;
-//            PathCurve { x: pathAnim_custom.end_x;  y: pathAnim_custom.end_y; }
-//        }
-
-//        onStarted: {
-//            console.log("pathAnim_custom start");
-//        }
-
-//        onStopped: {
-//            console.log("pathAnim_custom stoped");
-//        }
-//    }
-
-//    Timer {
-//        property bool direction_forward : true
-//        id: timer;
-//        interval: 100;
-//        running: false;
-//        repeat: true
-//        onTriggered: {
-//            if(direction_forward) {
-//                currentCarSpeed++;
-//                if(currentCarSpeed >= 239) {
-////                    running = false;
-//                    direction_forward = false;
-//                } else {
-////                    pointer.rotation = orbitData[currentCarSpeed][2];
-//                    pointer.scale = orbitData[currentCarSpeed][3];
-
-//                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
-//                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
-//                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
-//                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
-
-//                    pathAnimGo_custom.start();
-//                }
-//                if(currentCarSpeed%2 == 0) {
-//                    currentTireRotation++;
-//                }
-//            } else {
-//                currentCarSpeed--;
-//                if(currentCarSpeed <= 0) {
-////                    running = false;
-//                    direction_forward = true;
-//                } else {
-////                    pointer.rotation = orbitData[currentCarSpeed][2];
-//                    pointer.scale = orbitData[currentCarSpeed][3];
-
-//                    pathAnimGo_custom.begin_x = orbitData[currentCarSpeed][0];
-//                    pathAnimGo_custom.begin_y = orbitData[currentCarSpeed][1];
-//                    pathAnimGo_custom.end_x = orbitData[currentCarSpeed+1][0];
-//                    pathAnimGo_custom.end_y = orbitData[currentCarSpeed+1][1];
-
-//                    pathAnimGo_custom.start();
-//                }
-//                if(currentCarSpeed%2 == 0) {
-//                    currentTireRotation--;
-//                }
-//            }
-
-
-//            car_speed_dial_center_number.text = currentCarSpeed;
-//            rotation_speed_dial_center_number.text = currentTireRotation;
-
-//            // adjust number position
-//            if(currentTireRotation >= 100) {
-//                rotation_speed_dial_center_number.x = 1038-100;
-//            } else if(currentTireRotation >= 10) {
-//                rotation_speed_dial_center_number.x = 1038;
-//            } else {
-//                rotation_speed_dial_center_number.x = 1098;
-//            }
-//            if(currentCarSpeed >= 100) {
-//                car_speed_dial_center_number.x = 196-50;
-//            } else if(currentCarSpeed >= 10) {
-//                car_speed_dial_center_number.x = 196-10;
-//            } else {
-//                car_speed_dial_center_number.x = 256;
-//            }
-//        }
-//    }
-
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
-
-//    function startPathAnimCustom(start, stop) {
-//        pathAnim_custom.begin_x = orbitData[start][0];
-//        pathAnim_custom.begin_y = orbitData[start][1];
-//        pathAnim_custom.end_x = orbitData[stop][0];
-//        pathAnim_custom.end_y = orbitData[stop][1];
-//        pathAnim_custom.start();
-//    }
 
     Timer {
         property int symbolCounter: 0;
@@ -1144,95 +913,105 @@ CommonItem {
                 }
             }
 
-//            startPathAnimCustom(carSpeedRandomPre, carSpeedRandom);
-
             carSpeedRandomPre = carSpeedRandom;
         }
     }
 
-//    Text {
-//        id: point_index;
-//        x: 500;
-//        y: 150;
-//        text: "";
-//        visible: true;
-//        color: "white";
-//        font.pixelSize: 48;
+//    MouseArea{
+//        id: mouseArea;
+//        anchors.fill: parent;
+//        acceptedButtons: Qt.LeftButton | Qt.RightButton;
+//        onClicked: {
+//            if(mouse.button == Qt.RightButton) {
+//                timer_for_carSpeedPointer.direction_up = false;
+//                console.log("Qt.RightButton");
+//            } else if(mouse.button == Qt.LeftButton) {
+//                timer_for_carSpeedPointer.direction_up = true;
+//                console.log("Qt.LeftButton");
+//            }
+//            timer_for_carSpeedPointer.start();
+//        }
 //    }
-//    Text {
-//        id: cordinate_x;
-//        x: 500;
-//        y: 200;
-//        text: "";
-//        visible: true;
-//        color: "white";
-//        font.pixelSize: 48;
-//    }
-//    Text {
-//        id: cordinate_y;
-//        x: 500;
-//        y: 250;
-//        text: "";
-//        visible: true;
-//        color: "white";
-//        font.pixelSize: 48;
-//    }
-
-    MouseArea{
-        id: mouseArea;
-        anchors.fill: parent;
-        acceptedButtons: Qt.LeftButton | Qt.RightButton;
-        onClicked: {
-            if(mouse.button == Qt.RightButton) {
-                timer_for_sun.direction_up = false;
-                console.log("Qt.RightButton");
-            } else if(mouse.button == Qt.LeftButton) {
-                timer_for_sun.direction_up = true;
-                console.log("Qt.LeftButton");
-            }
-            timer_for_sun.start();
-        }
-    }
 
     Timer {
         property int car_speed_current_point_count: -1;
         property bool direction_up: true;
-        id: timer_for_sun;
+        id: timer_for_carSpeedPointer;
         interval: 10;
         running: true;
         repeat: true;
         onTriggered: {
-            if(direction_up) {
-                car_speed_current_point_count++;
-                if(car_speed_current_point_count > 239) {
-                    direction_up = false;
-                    car_speed_current_point_count = 239;
-                }
+            // car speed
+            var carSpeedDialCenterNumber = Number(car_speed_dial_center_number.text);
+            if(carSpeedDialCenterNumber > car_speed_current_point_count) {
+                direction_up = true;
             } else {
-                car_speed_current_point_count--;
-                if(car_speed_current_point_count < 0) {
-                    direction_up = true;
-                    car_speed_current_point_count = 0;
-                }
+                direction_up = false;
             }
 
-            pointer_car_speed.x = orbitData[car_speed_current_point_count][0];
-            pointer_car_speed.y = orbitData[car_speed_current_point_count][1];
+            if(direction_up) {
+                if(car_speed_current_point_count < carSpeedDialCenterNumber) {
+                    if(++car_speed_current_point_count > 239) {
+                        car_speed_current_point_count = 239;
+                    }
+                    pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
+                    pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                }
+            } else {
+                if(car_speed_current_point_count > carSpeedDialCenterNumber) {
+                    if(--car_speed_current_point_count < 0) {
+                        car_speed_current_point_count = 0;
+                    }
+                    pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
+                    pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                }
+            }
+        }
+    }
 
-//            point_index.text = car_speed_current_point_count;
-//            cordinate_x.text = pointer_car_speed.x;
-//            cordinate_y.text = pointer_car_speed.y;
+    Timer {
+        property int rotation_current_point_count: -1;
+        property bool direction_up: true;
+        id: timer_for_rotationPointer;
+        interval: 10;
+        running: true;
+        repeat: true;
+        onTriggered: {
+            // rotation
+            var rotationDialCenterNumber = Number(rotation_speed_dial_center_number.text);
+            if(rotationDialCenterNumber > rotation_current_point_count) {
+                direction_up = true;
+            } else {
+                direction_up = false;
+            }
+
+            if(direction_up) {
+                if(rotation_current_point_count < rotationDialCenterNumber) {
+                    if(++rotation_current_point_count > 239) {
+                        rotation_current_point_count = 239;
+                    }
+                    pointer_rotation.x = rotationOrbitData[rotation_current_point_count][0];
+                    pointer_rotation.y = rotationOrbitData[rotation_current_point_count][1];
+                }
+            } else {
+                if(rotation_current_point_count > rotationDialCenterNumber) {
+                    if(--rotation_current_point_count < 0) {
+                        rotation_current_point_count = 0;
+                    }
+                    pointer_rotation.x = rotationOrbitData[rotation_current_point_count][0];
+                    pointer_rotation.y = rotationOrbitData[rotation_current_point_count][1];
+                }
+            }
         }
     }
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
-        //orbitData = MainpanelJS.initializeMainPanelPointerOrbitData();
-        orbitData = MainpanelJS.initializeMainPanelPointerOrbitDataDiscrete();
-        for(var i=0; i<240; i++) {
-            console.log("i=" + i + ", [0]=" + orbitData[i][0] + ", [1]=" + orbitData[i][1] + ", [2]=" + orbitData[i][2] + ", [3]=" + orbitData[i][3]);
-        }
-//        timer.running = true;
+        carSpeedOrbitData = MainpanelJS.initializeMainPanel_CarSpeedPointer_OrbitDataDiscrete();
+        rotationOrbitData = MainpanelJS.initializeMainPanel_RotationPointer_OrbitDataDiscrete();
+//        for(var i=0; i<240; i++) {
+//            console.log("i=" + i + ", [0]=" + carSpeedOrbitData[i][0] + ", [1]=" + carSpeedOrbitData[i][1] + ", [2]=" + carSpeedOrbitData[i][2] + ", [3]=" + carSpeedOrbitData[i][3]);
+//        }
     }
 
     onCarSpeedChanged: {
