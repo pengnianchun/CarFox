@@ -222,7 +222,7 @@ Item {
         }
     }
 
-    Chart{
+    Chart {
         id: chart
         width: 600
         height: 200

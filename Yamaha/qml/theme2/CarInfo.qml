@@ -1,11 +1,36 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
-    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/other"
+    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/other/"
+
+    enterMenu: function() {
+        if (bKeyEnable) {
+            console.debug("CarInfo enterMenu")
+        }
+    }
+
+    hideMenu: function() {
+        if (bKeyEnable) {
+            console.debug("CarInfo hideMenu")
+        }
+    }
+
+    previousMenu: function() {
+        if (bKeyEnable) {
+            console.debug("CarInfo previousMenu")
+        }
+    }
+
+    nextMenu: function() {
+        if (bKeyEnable) {
+            console.debug("CarInfo nextMenu")
+        }
+    }
 
     ListModel {
         id: modelMenu
@@ -29,8 +54,6 @@ Item {
             asynchronous: true
             cache: true
             source: sourceImageUrl + model.src
-            sourceSize.width: 40
-            sourceSize.height: 36
         }
     }
 
