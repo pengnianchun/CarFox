@@ -582,7 +582,7 @@ CommonItem {
             id: symbol_chargingCable;
             x: 1152;
             y: 137;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/chargingCable.png";
         }
         Image {
@@ -596,14 +596,15 @@ CommonItem {
             id: symbol_driverSystemFault;
             x: 1104;
             y: 134;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/driverSystemFault.png";
         }
         Image {
             id: symbol_engineFailue;
             x: 445;
             y: 115;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/engineFailue.png";
         }
         Image {
@@ -715,7 +716,8 @@ CommonItem {
             id: symbol_leftBrakeAlarm;
             x: 363;
             y: 85;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/leftBrakeAlarm.png";
         }
         Image {
@@ -729,7 +731,7 @@ CommonItem {
             id: symbol_motor_notworking;
             x: 496;
             y: 109;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/motor_notworking.png";
         }
         Image {
@@ -743,7 +745,8 @@ CommonItem {
             id: symbol_oil_pressure;
             x: 891;
             y: 116;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/oil pressure.png";
         }
         Image {
@@ -757,7 +760,8 @@ CommonItem {
             id: symbol_rightBrakeAlarm;
             x: 331;
             y: 133;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/rightBrakeAlarm.png";
         }
         Image {
