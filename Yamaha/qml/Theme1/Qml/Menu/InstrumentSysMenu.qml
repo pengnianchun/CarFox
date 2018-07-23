@@ -4,7 +4,7 @@ import CustomEnum 1.0
 import "qrc:/Common/JS/InstrumentInfo.js" as InstrumentInfo
 import "../../JS/InstrumentController.js" as InstrumentController
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 
 MenuItem {
     id: menuPanelIndex

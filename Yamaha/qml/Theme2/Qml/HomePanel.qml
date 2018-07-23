@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
 import CustomEnum 1.0
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 import "qrc:/Common/JS/AlarmCode.js" as AlarmInfoCode
 import "../JS/HomePanelController.js" as HomePanel
 

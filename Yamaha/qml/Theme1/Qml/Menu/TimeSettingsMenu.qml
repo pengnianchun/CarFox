@@ -2,7 +2,7 @@ import QtQuick 2.6
 import CustomEnum 1.0
 import QtQuick.Layouts 1.1
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 
 MenuItem {
     id: setting_system

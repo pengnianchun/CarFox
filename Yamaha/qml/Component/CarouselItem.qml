@@ -6,7 +6,7 @@
  **************************************************/
 
 import QtQuick 2.6
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 
 CommonItem {
     visible: true

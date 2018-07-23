@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
 
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 
 Item {
     id: root

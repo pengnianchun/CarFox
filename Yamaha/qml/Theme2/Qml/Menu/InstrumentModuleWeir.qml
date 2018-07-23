@@ -1,7 +1,7 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 import "qrc:/Common/JS/InstrumentInfo.js" as InstrumentInfo
 import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 import "../../JS/InstrumentController.js" as InstrumentController

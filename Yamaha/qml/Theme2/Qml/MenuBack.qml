@@ -1,6 +1,6 @@
 import QtQuick 2.6
 import CustomEnum 1.0
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 
 RootMenu {
     rootMenu: true

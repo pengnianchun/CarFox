@@ -2,7 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "../JS/MenuMainController.js" as MenuMainController
-import "qrc:/Common/Component"
+import "qrc:/Component/Component"
 
 CommonItem {
     id: homeIndex
