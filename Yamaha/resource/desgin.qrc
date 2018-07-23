@@ -278,6 +278,9 @@
         <file>Theme2/Menu/select/radio.png</file>
         <file>Theme2/Menu/select/schedule.png</file>
         <file>Theme2/Menu/select/setting.png</file>
+        <file>Theme2/Modules/schedule/schedule_con.png</file>
+        <file>Theme2/Menu/tirePressure.png</file>
+        <file>Theme2/Menu/select/tirePressure.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

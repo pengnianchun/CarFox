@@ -1,9 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
+
+    property string textBlue: "#0088ff"
 
     //#CANVAS START
     //信息

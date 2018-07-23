@@ -1,12 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
-    height: 410
+    height: 370 // 410
 
     Image {
-        id: navi
         anchors.fill: parent
         source: "qrc:/theme2/symbol/Theme2/Modules/navigation/navigation.png"
     }

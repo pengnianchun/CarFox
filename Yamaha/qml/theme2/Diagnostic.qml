@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
@@ -104,6 +105,10 @@ Item {
 
     // 车
     Image {
+        anchors.top: parent.top
+        anchors.topMargin: 40
+        anchors.right: parent.right
+        anchors.rightMargin: 120
         source: "qrc:/theme2/symbol/Theme2/Modules/diagnosticInfo/diagnosticInfo_car.png"
     }
 

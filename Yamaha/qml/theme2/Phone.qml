@@ -1,11 +1,13 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/phone/"
+    property string textBlue: "#0088ff"
 
     Image {
         x: 114

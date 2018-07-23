@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     id: radar
     width: 800
     height: 410
