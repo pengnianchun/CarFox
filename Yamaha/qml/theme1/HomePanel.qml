@@ -84,7 +84,7 @@ CommonItem {
             Text {
                 id: car_speed_dial_strip_content;
                 x: 260 + 3;
-                y: 385;
+                y: 383;
                 visible: true;
                 text: "500.2";
                 color: "#047f93";
@@ -223,7 +223,7 @@ CommonItem {
             Text {
                 id: rotation_speed_dial_strip_content;
                 x: 1037 + 50 + 4;
-                y: 385;
+                y: 383;
                 visible: true;
                 text: "3000000";
                 color: "#047f93";
@@ -582,7 +582,7 @@ CommonItem {
             id: symbol_chargingCable;
             x: 1152;
             y: 137;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/chargingCable.png";
         }
         Image {
@@ -596,14 +596,15 @@ CommonItem {
             id: symbol_driverSystemFault;
             x: 1104;
             y: 134;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/driverSystemFault.png";
         }
         Image {
             id: symbol_engineFailue;
             x: 445;
             y: 115;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/engineFailue.png";
         }
         Image {
@@ -715,7 +716,8 @@ CommonItem {
             id: symbol_leftBrakeAlarm;
             x: 363;
             y: 85;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/leftBrakeAlarm.png";
         }
         Image {
@@ -729,7 +731,7 @@ CommonItem {
             id: symbol_motor_notworking;
             x: 496;
             y: 109;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/motor_notworking.png";
         }
         Image {
@@ -743,7 +745,8 @@ CommonItem {
             id: symbol_oil_pressure;
             x: 891;
             y: 116;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/oil pressure.png";
         }
         Image {
@@ -757,7 +760,8 @@ CommonItem {
             id: symbol_rightBrakeAlarm;
             x: 331;
             y: 133;
-            scale: symbols_scale_ratio;
+//            scale: symbols_scale_ratio;
+            scale: 1.2;
             source: "qrc:/theme1/Home page switching/Theme1/Symbol/rightBrakeAlarm.png";
         }
         Image {
@@ -953,21 +957,80 @@ CommonItem {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
+//    Timer {
+//        property int symbolCounter: 0;
+//        property int counter: 0;
+//        property int carSpeedRandom: 0;
+//        property int carSpeedRandomPre: 0;
+//        property int tireRotationRandom: 0;
+//        property int tireRotationRandomPre: 0;
+//        id: timer_for_random_demo;
+//        interval: 100;
+//        running: true;
+//        repeat: true
+//        onTriggered: {
+
+//            carSpeedRandom = getRandomInt(240);
+//            tireRotationRandom = getRandomInt(120);
+
+//            car_speed_dial_center_number.text = carSpeedRandom;
+//            carSpeed = carSpeedRandom;
+//            // adjust number position
+//            if(carSpeedRandom >= 100) {
+//                car_speed_dial_center_number.x = 196-50;
+//            } else if(carSpeedRandom >= 10) {
+//                car_speed_dial_center_number.x = 196-10;
+//            } else {
+//                car_speed_dial_center_number.x = 256;
+//            }
+
+//            if(counter++>4) {
+//                counter = 0;
+//                // adjust number position
+//                if(tireRotationRandom >= 100) {
+//                    rotation_speed_dial_center_number.x = 1038-50;
+//                } else if(tireRotationRandom >= 10) {
+//                    rotation_speed_dial_center_number.x = 1038+20;
+//                } else {
+//                    rotation_speed_dial_center_number.x = 1098;
+//                }
+//                rotation_speed_dial_center_number.text = tireRotationRandom;
+//                tireRotation = tireRotationRandom;
+
+//                if(symbolCounter++ > 2) {
+//                    symbols.visible = !symbols.visible;
+//                    symbolCounter = 0;
+//                }
+//            }
+
+//            carSpeedRandomPre = carSpeedRandom;
+//        }
+//    }
+
     Timer {
         property int symbolCounter: 0;
         property int counter: 0;
-        property int carSpeedRandom: 0;
-        property int carSpeedRandomPre: 0;
-        property int tireRotationRandom: 0;
-        property int tireRotationRandomPre: 0;
+        property int carSpeedRandom: -1;
+        property int tireRotationRandom: -1;
+        property bool directionCarSpeedUp: true;
+        property bool directionRotationUp: true;
         id: timer_for_random_demo;
         interval: 100;
         running: true;
         repeat: true
         onTriggered: {
 
-            carSpeedRandom = getRandomInt(240);
-            tireRotationRandom = getRandomInt(120);
+            if(directionCarSpeedUp) {
+                if(++carSpeedRandom > 240) {
+                    carSpeedRandom = 240;
+                    directionCarSpeedUp = false;
+                }
+            } else {
+                if(--carSpeedRandom < 0) {
+                    carSpeedRandom = 0;
+                    directionCarSpeedUp = true;
+                }
+            }
 
             car_speed_dial_center_number.text = carSpeedRandom;
             carSpeed = carSpeedRandom;
@@ -980,8 +1043,21 @@ CommonItem {
                 car_speed_dial_center_number.x = 256;
             }
 
-            if(counter++>4) {
+            /*if(counter++>4) */{
                 counter = 0;
+
+                if(directionRotationUp) {
+                    if(++tireRotationRandom > 120) {
+                        tireRotationRandom = 120;
+                        directionRotationUp = false;
+                    }
+                } else {
+                    if(--tireRotationRandom < 0) {
+                        tireRotationRandom = 0;
+                        directionRotationUp = true;
+                    }
+                }
+
                 // adjust number position
                 if(tireRotationRandom >= 100) {
                     rotation_speed_dial_center_number.x = 1038-50;
@@ -998,8 +1074,6 @@ CommonItem {
                     symbolCounter = 0;
                 }
             }
-
-            carSpeedRandomPre = carSpeedRandom;
         }
     }
 
@@ -1019,8 +1093,23 @@ CommonItem {
 //        }
 //    }
 
+//    PathAnimation{
+//        id: pathAnimation;
+//        target: pointer_car_speed;
+//        duration: 100;
+//        orientationEntryDuration: 1000;
+//        orientationExitDuration: 1000;
+//        easing.type: Easing.Linear;
+//        path: Path {
+//            id: pathAnimation_path;
+//            startX: 0;
+//            startY: 0;
+//            PathCurve { id:pathAnimation_endPoint; x: 0; y: 0; }
+//        }
+//    }
+
     Timer {
-        property int car_speed_current_point_count: -1;
+        property int car_speed_current_point_count: 0;
         property bool direction_up: true;
         id: timer_for_carSpeedPointer;
         interval: 10;
@@ -1042,6 +1131,16 @@ CommonItem {
                     }
                     pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
                     pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+
+//                    if(++car_speed_current_point_count > 239) {
+//                        car_speed_current_point_count = 239;
+//                    }
+//                    pathAnimation_path.startX = carSpeedOrbitData[car_speed_current_point_count][0];
+//                    pathAnimation_path.startY = carSpeedOrbitData[car_speed_current_point_count][1];
+//                    pathAnimation_endPoint.x = carSpeedOrbitData[car_speed_current_point_count+1][0];
+//                    pathAnimation_endPoint.y = carSpeedOrbitData[car_speed_current_point_count+1][1];
+//                    pathAnimation.start();
+
                 }
             } else {
                 if(car_speed_current_point_count > carSpeedDialCenterNumber) {
@@ -1050,6 +1149,15 @@ CommonItem {
                     }
                     pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
                     pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+
+//                    if(--car_speed_current_point_count < 1) {
+//                        car_speed_current_point_count = 1;
+//                    }
+//                    pathAnimation_path.startX = carSpeedOrbitData[car_speed_current_point_count][0];
+//                    pathAnimation_path.startY = carSpeedOrbitData[car_speed_current_point_count][1];
+//                    pathAnimation_endPoint.x = carSpeedOrbitData[car_speed_current_point_count-1][0];
+//                    pathAnimation_endPoint.y = carSpeedOrbitData[car_speed_current_point_count-1][1];
+//                    pathAnimation.start();
                 }
             }
         }
@@ -1064,7 +1172,7 @@ CommonItem {
         repeat: true;
         onTriggered: {
             // rotation
-            var rotationDialCenterNumber = Number(rotation_speed_dial_center_number.text);
+            var rotationDialCenterNumber = 2*Number(rotation_speed_dial_center_number.text);
             if(rotationDialCenterNumber > rotation_current_point_count) {
                 direction_up = true;
             } else {
@@ -1102,17 +1210,9 @@ CommonItem {
     }
 
     onCarSpeedChanged: {
-        if(carSpeed<=0) {
+        if(carSpeed>0 && carSpeed<40) {
             car_speed_dial_scale_0.opacity = 1;
             car_speed_dial_scale_40.opacity = 0.2;
-            car_speed_dial_scale_80.opacity = 0.2;
-            car_speed_dial_scale_120.opacity = 0.2;
-            car_speed_dial_scale_160.opacity = 0.2;
-            car_speed_dial_scale_200.opacity = 0.2;
-            car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>0 && carSpeed<40) {
-            car_speed_dial_scale_0.opacity = 1;
-            car_speed_dial_scale_40.opacity = 1;
             car_speed_dial_scale_80.opacity = 0.2;
             car_speed_dial_scale_120.opacity = 0.2;
             car_speed_dial_scale_160.opacity = 0.2;
@@ -1121,7 +1221,7 @@ CommonItem {
         } else if(carSpeed>=40 && carSpeed<80) {
             car_speed_dial_scale_0.opacity = 1;
             car_speed_dial_scale_40.opacity = 1;
-            car_speed_dial_scale_80.opacity = 1;
+            car_speed_dial_scale_80.opacity = 0.2;
             car_speed_dial_scale_120.opacity = 0.2;
             car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
@@ -1130,7 +1230,7 @@ CommonItem {
             car_speed_dial_scale_0.opacity = 1;
             car_speed_dial_scale_40.opacity = 1;
             car_speed_dial_scale_80.opacity = 1;
-            car_speed_dial_scale_120.opacity = 1;
+            car_speed_dial_scale_120.opacity = 0.2;
             car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
@@ -1139,7 +1239,7 @@ CommonItem {
             car_speed_dial_scale_40.opacity = 1;
             car_speed_dial_scale_80.opacity = 1;
             car_speed_dial_scale_120.opacity = 1;
-            car_speed_dial_scale_160.opacity = 1;
+            car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
         } else if(carSpeed>=160 && carSpeed<200) {
@@ -1148,9 +1248,17 @@ CommonItem {
             car_speed_dial_scale_80.opacity = 1;
             car_speed_dial_scale_120.opacity = 1;
             car_speed_dial_scale_160.opacity = 1;
-            car_speed_dial_scale_200.opacity = 1;
+            car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
         } else if(carSpeed>=200 && carSpeed<240) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 1;
+            car_speed_dial_scale_80.opacity = 1;
+            car_speed_dial_scale_120.opacity = 1;
+            car_speed_dial_scale_160.opacity = 1;
+            car_speed_dial_scale_200.opacity = 1;
+            car_speed_dial_scale_240.opacity = 0.2;
+        } else if(carSpeed>=240) {
             car_speed_dial_scale_0.opacity = 1;
             car_speed_dial_scale_40.opacity = 1;
             car_speed_dial_scale_80.opacity = 1;
@@ -1162,17 +1270,9 @@ CommonItem {
     }
 
     onTireRotationChanged: {
-        if(tireRotation<=0) {
+        if(tireRotation>0 && tireRotation<20) {
             rotation_speed_dial_scale_0.opacity = 1;
             rotation_speed_dial_scale_20.opacity = 0.2;
-            rotation_speed_dial_scale_40.opacity = 0.2;
-            rotation_speed_dial_scale_60.opacity = 0.2;
-            rotation_speed_dial_scale_80.opacity = 0.2;
-            rotation_speed_dial_scale_100.opacity = 0.2;
-            rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>0 && tireRotation<20) {
-            rotation_speed_dial_scale_0.opacity = 1;
-            rotation_speed_dial_scale_20.opacity = 1;
             rotation_speed_dial_scale_40.opacity = 0.2;
             rotation_speed_dial_scale_60.opacity = 0.2;
             rotation_speed_dial_scale_80.opacity = 0.2;
@@ -1181,7 +1281,7 @@ CommonItem {
         } else if(tireRotation>=20 && tireRotation<40) {
             rotation_speed_dial_scale_0.opacity = 1;
             rotation_speed_dial_scale_20.opacity = 1;
-            rotation_speed_dial_scale_40.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 0.2;
             rotation_speed_dial_scale_60.opacity = 0.2;
             rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
@@ -1190,7 +1290,7 @@ CommonItem {
             rotation_speed_dial_scale_0.opacity = 1;
             rotation_speed_dial_scale_20.opacity = 1;
             rotation_speed_dial_scale_40.opacity = 1;
-            rotation_speed_dial_scale_60.opacity = 1;
+            rotation_speed_dial_scale_60.opacity = 0.2;
             rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
@@ -1199,7 +1299,7 @@ CommonItem {
             rotation_speed_dial_scale_20.opacity = 1;
             rotation_speed_dial_scale_40.opacity = 1;
             rotation_speed_dial_scale_60.opacity = 1;
-            rotation_speed_dial_scale_80.opacity = 1;
+            rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
         } else if(tireRotation>=80 && tireRotation<100) {
@@ -1208,9 +1308,17 @@ CommonItem {
             rotation_speed_dial_scale_40.opacity = 1;
             rotation_speed_dial_scale_60.opacity = 1;
             rotation_speed_dial_scale_80.opacity = 1;
-            rotation_speed_dial_scale_100.opacity = 1;
+            rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
         } else if(tireRotation>=100 && tireRotation<120) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 1;
+            rotation_speed_dial_scale_60.opacity = 1;
+            rotation_speed_dial_scale_80.opacity = 1;
+            rotation_speed_dial_scale_100.opacity = 1;
+            rotation_speed_dial_scale_120.opacity = 0.2;
+        } else if(tireRotation>=120) {
             rotation_speed_dial_scale_0.opacity = 1;
             rotation_speed_dial_scale_20.opacity = 1;
             rotation_speed_dial_scale_40.opacity = 1;
