@@ -301,8 +301,8 @@
         <file>Font/msyhl.ttc</file>
         <file>Font/msyhbd.ttc</file>
         <file>Font/msyh.ttc</file>
-        <file>Theme1/font/AdobeHeitiStd.ttc</file>
         <file>Theme1/font/EuropeExt.ttf</file>
+        <file>Theme1/font/微软雅黑.ttf</file>
     </qresource>
     <qresource prefix="/theme1/sub_screen_slice">
         <file>Theme1/sub_screen_slice/ADAS.png</file>
