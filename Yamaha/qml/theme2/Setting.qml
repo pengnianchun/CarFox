@@ -9,9 +9,9 @@ MenuItem {
 
     ListModel {
         id: appModel
-        ListElement { name: "Music"; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting.png" }
-        ListElement { name: "Movies"; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting.png" }
-        ListElement { name: "Camera"; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting.png" }
+        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_lang.png" }
+        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_light.png" }
+        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_vol.png" }
     }
 
     Component {
@@ -26,11 +26,11 @@ MenuItem {
                 source: icon
                 smooth: true
             }
-            Text {
-                anchors { top: myIcon.bottom; horizontalCenter: parent.horizontalCenter }
-                text: name
-                smooth: true
-            }
+//            Text {
+//                anchors { top: myIcon.bottom; horizontalCenter: parent.horizontalCenter }
+//                text: name
+//                smooth: true
+//            }
 
             MouseArea {
                 anchors.fill: parent
@@ -41,7 +41,11 @@ MenuItem {
 
     Component {
         id: appHighlight
-        Rectangle { width: 80; height: 80; color: "lightsteelblue" }
+        Image {
+            y: -5
+            source: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_select.png"
+        }
+//        Rectangle { width: 80; height: 80; color: "lightsteelblue" }
     }
 
     PathView {

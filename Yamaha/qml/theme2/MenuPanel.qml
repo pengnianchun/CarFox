@@ -40,6 +40,11 @@ MenuItem {
             console.debug("MenuPanel previousMenu")
             if (mainMenuIndex > 0) {
                 mainMenuIndex = --listMenu.currentIndex
+            } else {
+                // Demo ThemeSetting
+                UiController.setLayerProperty("HomePanel", "homepanel_visible", false);
+                UiController.showLayer("ThemeSetting")
+                bKeyEnable = false
             }
         }
     }
@@ -95,6 +100,9 @@ MenuItem {
         anchors.centerIn: parent
         color: "lightblue"
         radius: 10
+        Behavior on width {
+            NumberAnimation { duration: 800 }
+        }
     }
 
     ListView {
@@ -108,6 +116,9 @@ MenuItem {
         spacing: 35
         orientation: ListView.Horizontal
         highlight: Rectangle { color: "lightsteelblue"; radius: 3; }
+        Behavior on width {
+            NumberAnimation { duration: 800 }
+        }
     }
 
     Component.onCompleted: {

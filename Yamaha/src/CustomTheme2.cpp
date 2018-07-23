@@ -45,4 +45,6 @@ void CustomTheme2::create()
     addLayer("qrc:/Theme/theme2/CalendarWeather.qml", "CalendarWeather", carfox::Layer::ManualShow);
     // 公交信息查询
     addLayer("qrc:/Theme/theme2/CarInfo.qml", "CarInfo", carfox::Layer::ManualShow);
+    // ThemeSetting
+    addLayer("qrc:/Theme/Theme1/Qml/Menu/ThemeSetting.qml", "ThemeSetting", carfox::Layer::ManualShow);
 }

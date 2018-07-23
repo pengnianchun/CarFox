@@ -58,7 +58,7 @@ MenuItem {
     Text {
         x: 121
         y: 312
-        text: "1008 Mph PM 2.5"
+        text: "1008 Mph"
         font.pixelSize: 16
         color: "white"
     }

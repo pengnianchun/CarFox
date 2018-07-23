@@ -54,6 +54,7 @@ int main(int argc, char *argv[]) {
 #endif
 
     qputenv("FB_MULTI_BUFFER", "3");
+    qputenv("QT_LOGGING_CONF", "/home/root/fy/qtlogging.ini");
 
     std::shared_ptr<QGuiApplication> app = std::make_shared<QGuiApplication>(argc, argv);
     std::unique_ptr<CustomUiController> uiController(new CustomUiController(1440, 540, false));
