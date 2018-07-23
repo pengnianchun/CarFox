@@ -1,32 +1,5 @@
 <RCC>
     <qresource prefix="/Common">
-        <file>Component/CarouselItem.qml</file>
-        <file>Component/CarouselText.qml</file>
-        <file>Component/CommonItem.qml</file>
-        <file>Component/Complex.qml</file>
-        <file>Component/DigitValue.qml</file>
-        <file>Component/DormancyPanel.qml</file>
-        <file>Component/Fps.qml</file>
-        <file>Component/ListViewRadioWeir.qml</file>
-        <file>Component/ListViewRadioStatusWeir.qml</file>
-        <file>Component/ListViewSelectWeir.qml</file>
-        <file>Component/ListViewWeir.qml</file>
-        <file>Component/MenuItem.qml</file>
-        <file>Component/MpaListView.qml</file>
-        <file>Component/RootMenu.qml</file>
-        <file>Component/TextFieldWeir.qml</file>
-        <file>Component/TextIconWeir.qml</file>
-        <file>Component/TextItem.qml</file>
-        <file>Component/TextRadioWeir.qml</file>
-        <file>Component/TextRadioStatusWeir.qml</file>
-        <file>Component/TextValueWeir.qml</file>
-        <file>Component/ThemeList.qml</file>
-        <file>Component/TimeHMSWeir.qml</file>
-        <file>Component/TimeInfoWeir.qml</file>
-        <file>Component/TurnPageWeir.qml</file>
-        <file>Component/WarningItem.qml</file>
-        <file>Component/ProgressViewWeir.qml</file>
-        <file>Component/CanvasViewWeir.qml</file>
         <file>CommonImage/Indicator/airBagErr.png</file>
         <file>CommonImage/Indicator/backCang.png</file>
         <file>CommonImage/Indicator/backFogLight.png</file>
