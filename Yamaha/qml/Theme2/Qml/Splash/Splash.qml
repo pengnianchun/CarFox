@@ -14,24 +14,24 @@ Item {
 
     onVisibleChanged: {
         if (visible) {
-            gmlGifImage.playing = true
+//            gmlGifImage.playing = true
             boot_animation.running = true;
         } else {
-            gmlGifImage.playing = false
+//            gmlGifImage.playing = false
             boot_animation.running = false;
         }
     }
 
-    QmlGifImage {
-        id: gmlGifImage
-        gifSource: animationUrl
-        playing: false
-        anchors.fill: parent
-        onFinished: {
-            gmlGifImage.visible = false;
-            UiController.hideLayer("Splash");
-        }
-    }
+//    QmlGifImage {
+//        id: gmlGifImage
+//        gifSource: animationUrl
+//        playing: false
+//        anchors.fill: parent
+//        onFinished: {
+//            gmlGifImage.visible = false;
+//            UiController.hideLayer("Splash");
+//        }
+//    }
 
     Image {
         x: 435
@@ -43,12 +43,12 @@ Item {
         SequentialAnimation {
             id: boot_animation
 
-            PauseAnimation { duration: durationTime }
+//            PauseAnimation { duration: durationTime }
 
             ScriptAction {
                 script: {
                     // 等待开机Gif完成后关闭Splash层
-                    // UiController.hideLayer("Splash");
+                    UiController.hideLayer("Splash");
                     UiController.showLayer("HomePanel");
                     UiController.showLayer("MenuPanel");
                     UiController.setLayerProperty("MenuPanel", "animationAction", 3);
