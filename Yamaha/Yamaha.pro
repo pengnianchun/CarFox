@@ -3,6 +3,7 @@ TEMPLATE = app
 QT += quick
 QT += qml
 QT += serialport
+QT += opengl
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
