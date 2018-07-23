@@ -47,7 +47,7 @@ MenuItem {
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel nextMenu")
-            if (mainMenuIndex < listMenu.count - 1 + 25) { // +25 4 DEBUG
+            if (mainMenuIndex < listMenu.count - 1) {
                 mainMenuIndex = ++listMenu.currentIndex
             }
         }
@@ -67,6 +67,16 @@ MenuItem {
         ListElement { src: "setting.png"; }
         ListElement { src: "adas.png"; }
         ListElement { src: "more.png"; }
+        ListElement { src: "more.png"; }
+        ListElement { src: "more.png"; }
+        ListElement { src: "driveAnalysis.png"; }
+        ListElement { src: "maintenanceForcast.png"; }
+        ListElement { src: "consumptionAnalysis.png"; }
+        ListElement { src: "diagnosticInfo.png"; }
+        ListElement { src: "schedule.png"; }
+        ListElement { src: "help.png"; }
+        ListElement { src: "calendar.png"; }
+        ListElement { src: "infoSearch.png"; }
     }
 
     Component {
