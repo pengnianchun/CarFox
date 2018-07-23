@@ -242,17 +242,42 @@
         <file>Theme2/Modules/radar/radar_road.png</file>
         <file>Theme2/Modules/tirePressure/tire_car.png</file>
         <file>Theme2/Modules/reverseImage/reverseImage.png</file>
-        <file>Theme2/Modules/other/01.png</file>
-        <file>Theme2/Modules/other/02.png</file>
-        <file>Theme2/Modules/other/03.png</file>
-        <file>Theme2/Modules/other/04.png</file>
-        <file>Theme2/Modules/other/05.png</file>
-        <file>Theme2/Modules/other/06.png</file>
-        <file>Theme2/Modules/other/07.png</file>
-        <file>Theme2/Modules/other/08.png</file>
-        <file>Theme2/Modules/other/09.png</file>
-        <file>Theme2/Modules/other/10.png</file>
-        <file>Theme2/Modules/other/11.png</file>
+        <file>Theme2/Modules/diagnosticInfo/diagnosticInfo_car.png</file>
+        <file>Theme2/Modules/infoSearch/01.png</file>
+        <file>Theme2/Modules/infoSearch/02.png</file>
+        <file>Theme2/Modules/infoSearch/03.png</file>
+        <file>Theme2/Modules/infoSearch/04.png</file>
+        <file>Theme2/Modules/infoSearch/05.png</file>
+        <file>Theme2/Modules/infoSearch/06.png</file>
+        <file>Theme2/Modules/infoSearch/07.png</file>
+        <file>Theme2/Modules/infoSearch/08.png</file>
+        <file>Theme2/Modules/infoSearch/09.png</file>
+        <file>Theme2/Modules/infoSearch/10.png</file>
+        <file>Theme2/Modules/infoSearch/11.png</file>
+        <file>Theme2/Menu/calendar.png</file>
+        <file>Theme2/Menu/consumptionAnalysis.png</file>
+        <file>Theme2/Menu/diagnosticInfo.png</file>
+        <file>Theme2/Menu/driveAnalysis.png</file>
+        <file>Theme2/Menu/help.png</file>
+        <file>Theme2/Menu/infoSearch.png</file>
+        <file>Theme2/Menu/maintenanceForcast.png</file>
+        <file>Theme2/Menu/more_before.png</file>
+        <file>Theme2/Menu/schedule.png</file>
+        <file>Theme2/Menu/select/adas.png</file>
+        <file>Theme2/Menu/select/calendar.png</file>
+        <file>Theme2/Menu/select/consumptionAnalysis.png</file>
+        <file>Theme2/Menu/select/diagnosticInfo.png</file>
+        <file>Theme2/Menu/select/driveAnalysis.png</file>
+        <file>Theme2/Menu/select/help.png</file>
+        <file>Theme2/Menu/select/home.png</file>
+        <file>Theme2/Menu/select/infoSearch.png</file>
+        <file>Theme2/Menu/select/maintenanceForcast.png</file>
+        <file>Theme2/Menu/select/music.png</file>
+        <file>Theme2/Menu/select/navigation.png</file>
+        <file>Theme2/Menu/select/phone.png</file>
+        <file>Theme2/Menu/select/radio.png</file>
+        <file>Theme2/Menu/select/schedule.png</file>
+        <file>Theme2/Menu/select/setting.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

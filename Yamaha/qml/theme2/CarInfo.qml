@@ -6,7 +6,7 @@ MenuItem {
     width: 800
     height: 410
 
-    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/other/"
+    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/"
 
     enterMenu: function() {
         if (bKeyEnable) {

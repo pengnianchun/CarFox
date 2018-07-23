@@ -104,7 +104,7 @@ Item {
 
     // 车
     Image {
-
+        source: "qrc:/theme2/symbol/Theme2/Modules/diagnosticInfo/diagnosticInfo_car.png"
     }
 
     Image {
