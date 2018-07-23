@@ -83,8 +83,8 @@ CommonItem {
             // trip title content
             Text {
                 id: car_speed_dial_strip_content;
-                x: 260 + 2;
-                y: 383;
+                x: 260 + 3;
+                y: 385;
                 visible: true;
                 text: "500.2";
                 color: "#047f93";
@@ -222,8 +222,8 @@ CommonItem {
             // trip title content
             Text {
                 id: rotation_speed_dial_strip_content;
-                x: 1037 + 50 + 2;
-                y: 383;
+                x: 1037 + 50 + 4;
+                y: 385;
                 visible: true;
                 text: "3000000";
                 color: "#047f93";
@@ -323,7 +323,7 @@ CommonItem {
             id: main_menu_panel;
             x: 580;
             y: 40;
-            property int menuIndex: -1;
+            property int menuIndex: 1;
             property var menu_icons: [
                 "qrc:/theme1/slice/Theme1/Slice/dashed_car.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/car_info.png",
@@ -357,19 +357,19 @@ CommonItem {
 //            }
             ListModel {
                 id: menuModel;
-                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage.png";}
-                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information.png";}
-                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation.png";}
-                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia.png";}
-                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving.png";}
-                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior.png";}
-                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis.png";}
-                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system.png";}
-                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help.png";}
-                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure.png";}
-                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault.png";}
-                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up.png";}
-                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information.png";}
+                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage-1.png";}
+                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information-1.png";}
+                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation-1.png";}
+                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia-1.png";}
+                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving-1.png";}
+                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior-1.png";}
+                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis-1.png";}
+                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system-1.png";}
+                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help-1.png";}
+                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure-1.png";}
+                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault-1.png";}
+                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up-1.png";}
+                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information-1.png";}
             }
 
             Component {
@@ -1098,10 +1098,11 @@ CommonItem {
 //        for(var i=0; i<240; i++) {
 //            console.log("i=" + i + ", [0]=" + carSpeedOrbitData[i][0] + ", [1]=" + carSpeedOrbitData[i][1] + ", [2]=" + carSpeedOrbitData[i][2] + ", [3]=" + carSpeedOrbitData[i][3]);
 //        }
+        set_subscreen(index);
     }
 
     onCarSpeedChanged: {
-        if(carSpeed>=0 && carSpeed<40) {
+        if(carSpeed<=0) {
             car_speed_dial_scale_0.opacity = 1;
             car_speed_dial_scale_40.opacity = 0.2;
             car_speed_dial_scale_80.opacity = 0.2;
@@ -1109,59 +1110,59 @@ CommonItem {
             car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>=40 && carSpeed<80) {
-            car_speed_dial_scale_0.opacity = 0.2;
+        } else if(carSpeed>0 && carSpeed<40) {
+            car_speed_dial_scale_0.opacity = 1;
             car_speed_dial_scale_40.opacity = 1;
             car_speed_dial_scale_80.opacity = 0.2;
             car_speed_dial_scale_120.opacity = 0.2;
             car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>=80 && carSpeed<120) {
-            car_speed_dial_scale_0.opacity = 0.2;
-            car_speed_dial_scale_40.opacity = 0.2;
+        } else if(carSpeed>=40 && carSpeed<80) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 1;
             car_speed_dial_scale_80.opacity = 1;
             car_speed_dial_scale_120.opacity = 0.2;
             car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>=120 && carSpeed<160) {
-            car_speed_dial_scale_0.opacity = 0.2;
-            car_speed_dial_scale_40.opacity = 0.2;
-            car_speed_dial_scale_80.opacity = 0.2;
+        } else if(carSpeed>=80 && carSpeed<120) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 1;
+            car_speed_dial_scale_80.opacity = 1;
             car_speed_dial_scale_120.opacity = 1;
             car_speed_dial_scale_160.opacity = 0.2;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>=160 && carSpeed<200) {
-            car_speed_dial_scale_0.opacity = 0.2;
-            car_speed_dial_scale_40.opacity = 0.2;
-            car_speed_dial_scale_80.opacity = 0.2;
-            car_speed_dial_scale_120.opacity = 0.2;
+        } else if(carSpeed>=120 && carSpeed<160) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 1;
+            car_speed_dial_scale_80.opacity = 1;
+            car_speed_dial_scale_120.opacity = 1;
             car_speed_dial_scale_160.opacity = 1;
             car_speed_dial_scale_200.opacity = 0.2;
             car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>=200 && carSpeed<240) {
-            car_speed_dial_scale_0.opacity = 0.2;
-            car_speed_dial_scale_40.opacity = 0.2;
-            car_speed_dial_scale_80.opacity = 0.2;
-            car_speed_dial_scale_120.opacity = 0.2;
-            car_speed_dial_scale_160.opacity = 0.2;
+        } else if(carSpeed>=160 && carSpeed<200) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 1;
+            car_speed_dial_scale_80.opacity = 1;
+            car_speed_dial_scale_120.opacity = 1;
+            car_speed_dial_scale_160.opacity = 1;
             car_speed_dial_scale_200.opacity = 1;
             car_speed_dial_scale_240.opacity = 0.2;
-        } else if(carSpeed>=240) {
-            car_speed_dial_scale_0.opacity = 0.2;
-            car_speed_dial_scale_40.opacity = 0.2;
-            car_speed_dial_scale_80.opacity = 0.2;
-            car_speed_dial_scale_120.opacity = 0.2;
-            car_speed_dial_scale_160.opacity = 0.2;
-            car_speed_dial_scale_200.opacity = 0.2;
+        } else if(carSpeed>=200 && carSpeed<240) {
+            car_speed_dial_scale_0.opacity = 1;
+            car_speed_dial_scale_40.opacity = 1;
+            car_speed_dial_scale_80.opacity = 1;
+            car_speed_dial_scale_120.opacity = 1;
+            car_speed_dial_scale_160.opacity = 1;
+            car_speed_dial_scale_200.opacity = 1;
             car_speed_dial_scale_240.opacity = 1;
         }
     }
 
     onTireRotationChanged: {
-        if(tireRotation>=0 && tireRotation<20) {
+        if(tireRotation<=0) {
             rotation_speed_dial_scale_0.opacity = 1;
             rotation_speed_dial_scale_20.opacity = 0.2;
             rotation_speed_dial_scale_40.opacity = 0.2;
@@ -1169,53 +1170,53 @@ CommonItem {
             rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>=20 && tireRotation<40) {
-            rotation_speed_dial_scale_0.opacity = 0.2;
+        } else if(tireRotation>0 && tireRotation<20) {
+            rotation_speed_dial_scale_0.opacity = 1;
             rotation_speed_dial_scale_20.opacity = 1;
             rotation_speed_dial_scale_40.opacity = 0.2;
             rotation_speed_dial_scale_60.opacity = 0.2;
             rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>=40 && tireRotation<60) {
-            rotation_speed_dial_scale_0.opacity = 0.2;
-            rotation_speed_dial_scale_20.opacity = 0.2;
+        } else if(tireRotation>=20 && tireRotation<40) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 1;
             rotation_speed_dial_scale_40.opacity = 1;
             rotation_speed_dial_scale_60.opacity = 0.2;
             rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>=60 && tireRotation<80) {
-            rotation_speed_dial_scale_0.opacity = 0.2;
-            rotation_speed_dial_scale_20.opacity = 0.2;
-            rotation_speed_dial_scale_40.opacity = 0.2;
+        } else if(tireRotation>=40 && tireRotation<60) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 1;
             rotation_speed_dial_scale_60.opacity = 1;
             rotation_speed_dial_scale_80.opacity = 0.2;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>=80 && tireRotation<100) {
-            rotation_speed_dial_scale_0.opacity = 0.2;
-            rotation_speed_dial_scale_20.opacity = 0.2;
-            rotation_speed_dial_scale_40.opacity = 0.2;
-            rotation_speed_dial_scale_60.opacity = 0.2;
+        } else if(tireRotation>=60 && tireRotation<80) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 1;
+            rotation_speed_dial_scale_60.opacity = 1;
             rotation_speed_dial_scale_80.opacity = 1;
             rotation_speed_dial_scale_100.opacity = 0.2;
             rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>=100 && tireRotation<120) {
-            rotation_speed_dial_scale_0.opacity = 0.2;
-            rotation_speed_dial_scale_20.opacity = 0.2;
-            rotation_speed_dial_scale_40.opacity = 0.2;
-            rotation_speed_dial_scale_60.opacity = 0.2;
-            rotation_speed_dial_scale_80.opacity = 0.2;
+        } else if(tireRotation>=80 && tireRotation<100) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 1;
+            rotation_speed_dial_scale_60.opacity = 1;
+            rotation_speed_dial_scale_80.opacity = 1;
             rotation_speed_dial_scale_100.opacity = 1;
             rotation_speed_dial_scale_120.opacity = 0.2;
-        } else if(tireRotation>=120) {
-            rotation_speed_dial_scale_0.opacity = 0.2;
-            rotation_speed_dial_scale_20.opacity = 0.2;
-            rotation_speed_dial_scale_40.opacity = 0.2;
-            rotation_speed_dial_scale_60.opacity = 0.2;
-            rotation_speed_dial_scale_80.opacity = 0.2;
-            rotation_speed_dial_scale_100.opacity = 0.2;
+        } else if(tireRotation>=100 && tireRotation<120) {
+            rotation_speed_dial_scale_0.opacity = 1;
+            rotation_speed_dial_scale_20.opacity = 1;
+            rotation_speed_dial_scale_40.opacity = 1;
+            rotation_speed_dial_scale_60.opacity = 1;
+            rotation_speed_dial_scale_80.opacity = 1;
+            rotation_speed_dial_scale_100.opacity = 1;
             rotation_speed_dial_scale_120.opacity = 1;
         }
     }
