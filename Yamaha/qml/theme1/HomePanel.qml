@@ -787,19 +787,6 @@ CommonItem {
         }
     }
 
-//    Text {
-//        id: debug_id;
-//        x: 564 - 50;
-//        y: 136;
-//        text: pathView.currentIndex;
-//        visible: true;
-//        color: "#068ca5";
-//        font.family: europeExt.name;
-//        font.pixelSize: 48;
-//        font.bold: false;
-//        smooth:true;
-//    }
-
     // key events
     property bool bKeyEnable: true;
     property int index: main_menu_panel.menuIndex;
@@ -822,9 +809,6 @@ CommonItem {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyUp")
         }
-//        if(--index < 0) {
-////            index = menuModel.count-1;
-//        }
         index--;
         if(index < -1) {
             index = main_menu_panel.menu_icons.length-2;
@@ -835,9 +819,6 @@ CommonItem {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyDown")
         }
-//        if(++index >= menuModel.count) {
-////            index = 0;
-//        }
         index++;
         if(index >= main_menu_panel.menu_icons.length-1) {
             index = -1;
@@ -1086,53 +1067,114 @@ CommonItem {
         }
     }
 
-//    MouseArea{
-//        id: mouseArea;
-//        anchors.fill: parent;
-//        acceptedButtons: Qt.LeftButton | Qt.RightButton;
-//        onClicked: {
-//            if(mouse.button == Qt.RightButton) {
-//                timer_for_carSpeedPointer.direction_up = false;
-//                console.log("Qt.RightButton");
-//            } else if(mouse.button == Qt.LeftButton) {
-//                timer_for_carSpeedPointer.direction_up = true;
-//                console.log("Qt.LeftButton");
-//            }
-//            timer_for_carSpeedPointer.start();
-//        }
-//    }
+    // -------------- for debug ---------------
+    MouseArea{
+        id: mouseArea;
+        anchors.fill: parent;
+        acceptedButtons: Qt.LeftButton | Qt.RightButton;
+        onClicked: {
+            if(mouse.button == Qt.RightButton) {
+                timer_for_carSpeedPointer.direction_up = false;
+                console.log("Qt.RightButton");
+            } else if(mouse.button == Qt.LeftButton) {
+                timer_for_carSpeedPointer.direction_up = true;
+                console.log("Qt.LeftButton");
+            }
+            subscreen_image.visible = false;
+            carSpeedPointer_X.visible = true;
+            carSpeedPointer_Y.visible = true;
+            timer_for_carSpeedPointer.repeat = false;
+            timer_for_carSpeedPointer.stepDebug = true;
+            timer_for_carSpeedPointer.start();
+        }
+    }
+
+    Text {
+        id: carSpeedPointer_X;
+        x: 564 - 80;
+        y: 186;
+        text: "X: " + pointer_car_speed.x;
+        visible: false;
+        color: "#068ca5";
+        font.family: europeExt.name;
+        font.pixelSize: 48;
+        font.bold: false;
+        smooth:true;
+    }
+    Text {
+        id: carSpeedPointer_Y;
+        x: 564 - 80;
+        y: 286;
+        text: "Y: " + pointer_car_speed.y;
+        visible: false;
+        color: "#068ca5";
+        font.family: europeExt.name;
+        font.pixelSize: 48;
+        font.bold: false;
+        smooth:true;
+    }
+
+    //    Text {
+    //        id: debug_id;
+    //        x: 564 - 50;
+    //        y: 136;
+    //        text: pathView.currentIndex;
+    //        visible: true;
+    //        color: "#068ca5";
+    //        font.family: europeExt.name;
+    //        font.pixelSize: 48;
+    //        font.bold: false;
+    //        smooth:true;
+    //    }
+    // -------------------------------------------
 
     Timer {
         property int car_speed_current_point_count: 0;
         property bool direction_up: true;
+        property bool stepDebug: false;
         id: timer_for_carSpeedPointer;
         interval: 10;
         running: true;
         repeat: true;
         onTriggered: {
-            // car speed
-            var carSpeedDialCenterNumber = Number(car_speed_dial_center_number.text);
-            if(carSpeedDialCenterNumber > car_speed_current_point_count) {
-                direction_up = true;
-            } else {
-                direction_up = false;
-            }
-
-            if(direction_up) {
-                if(car_speed_current_point_count < carSpeedDialCenterNumber) {
+            if(stepDebug) {
+                if(direction_up) {
                     if(++car_speed_current_point_count > 239) {
                         car_speed_current_point_count = 239;
                     }
-                    pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
-                    pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
-                }
-            } else {
-                if(car_speed_current_point_count > carSpeedDialCenterNumber) {
+                } else {
                     if(--car_speed_current_point_count < 0) {
                         car_speed_current_point_count = 0;
                     }
-                    pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
-                    pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                }
+                pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
+                pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+            } else {
+                // car speed
+                var carSpeedDialCenterNumber = Number(car_speed_dial_center_number.text);
+                if(carSpeedDialCenterNumber > car_speed_current_point_count) {
+                    direction_up = true;
+                } else {
+                    direction_up = false;
+                }
+
+
+                if(direction_up) {
+                    if(car_speed_current_point_count < carSpeedDialCenterNumber) {
+                        if(++car_speed_current_point_count > 239) {
+                            car_speed_current_point_count = 239;
+                        }
+                        pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
+                        pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                    }
+                } else {
+                    if(car_speed_current_point_count > carSpeedDialCenterNumber) {
+                        if(--car_speed_current_point_count < 0) {
+                            car_speed_current_point_count = 0;
+                        }
+                        pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
+                        pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                    }
                 }
             }
         }

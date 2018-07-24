@@ -255,7 +255,7 @@ function initializeMainPanel_RotationPointer_OrbitDataDiscrete() {
     var screenWidth = 1385;
 
     array.push([screenWidth-75,      464      ]); ////////////////////////// 0
-    array.push([screenWidth-2.825,  461.925  ]); // 1
+    array.push([screenWidth-2.825,  461.925  ]);  // 1
     array.push([screenWidth-70.65,   459.85   ]); // 2
     array.push([screenWidth-68.475,  457.775  ]); // 3
     array.push([screenWidth-66.3,    455.7    ]); // 4
