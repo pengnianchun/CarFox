@@ -803,6 +803,7 @@ CommonItem {
     // key events
     property bool bKeyEnable: true;
     property int index: main_menu_panel.menuIndex;
+    property bool hideSubscreen: false;
     onKeyEnter: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyEnter")
@@ -812,6 +813,9 @@ CommonItem {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyBack")
             UiController.showLayer("ThemeSetting")
+            main_menu_panel.visible = false;
+            subscreen_image.visible = false;
+            hideSubscreen = true;
         }
     }
     onKeyUp: function() {
@@ -862,6 +866,10 @@ CommonItem {
 //    }
 
     function set_subscreen(index) {
+        if(hideSubscreen) {
+            subscreen_image.visible = false;
+            return;
+        }
 
         pathView.currentIndex = index;
         console.log("pathView.currentIndex: " + pathView.currentIndex);
