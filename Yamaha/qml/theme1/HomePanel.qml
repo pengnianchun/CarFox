@@ -1093,21 +1093,6 @@ CommonItem {
 //        }
 //    }
 
-//    PathAnimation{
-//        id: pathAnimation;
-//        target: pointer_car_speed;
-//        duration: 100;
-//        orientationEntryDuration: 1000;
-//        orientationExitDuration: 1000;
-//        easing.type: Easing.Linear;
-//        path: Path {
-//            id: pathAnimation_path;
-//            startX: 0;
-//            startY: 0;
-//            PathCurve { id:pathAnimation_endPoint; x: 0; y: 0; }
-//        }
-//    }
-
     Timer {
         property int car_speed_current_point_count: 0;
         property bool direction_up: true;
@@ -1131,16 +1116,6 @@ CommonItem {
                     }
                     pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
                     pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
-
-//                    if(++car_speed_current_point_count > 239) {
-//                        car_speed_current_point_count = 239;
-//                    }
-//                    pathAnimation_path.startX = carSpeedOrbitData[car_speed_current_point_count][0];
-//                    pathAnimation_path.startY = carSpeedOrbitData[car_speed_current_point_count][1];
-//                    pathAnimation_endPoint.x = carSpeedOrbitData[car_speed_current_point_count+1][0];
-//                    pathAnimation_endPoint.y = carSpeedOrbitData[car_speed_current_point_count+1][1];
-//                    pathAnimation.start();
-
                 }
             } else {
                 if(car_speed_current_point_count > carSpeedDialCenterNumber) {
@@ -1149,15 +1124,6 @@ CommonItem {
                     }
                     pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
                     pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
-
-//                    if(--car_speed_current_point_count < 1) {
-//                        car_speed_current_point_count = 1;
-//                    }
-//                    pathAnimation_path.startX = carSpeedOrbitData[car_speed_current_point_count][0];
-//                    pathAnimation_path.startY = carSpeedOrbitData[car_speed_current_point_count][1];
-//                    pathAnimation_endPoint.x = carSpeedOrbitData[car_speed_current_point_count-1][0];
-//                    pathAnimation_endPoint.y = carSpeedOrbitData[car_speed_current_point_count-1][1];
-//                    pathAnimation.start();
                 }
             }
         }
