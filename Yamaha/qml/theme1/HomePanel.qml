@@ -1081,6 +1081,7 @@ CommonItem {
                 console.log("Qt.LeftButton");
             }
             subscreen_image.visible = false;
+            carSpeedPointer_Index.visible = true;
             carSpeedPointer_X.visible = true;
             carSpeedPointer_Y.visible = true;
             timer_for_carSpeedPointer.repeat = false;
@@ -1090,26 +1091,38 @@ CommonItem {
     }
 
     Text {
-        id: carSpeedPointer_X;
+        id: carSpeedPointer_Index;
         x: 564 - 80;
         y: 186;
+        text: "Index: " + timer_for_carSpeedPointer.car_speed_current_point_count;
+        visible: false;
+        color: "#068ca5";
+        font.family: europeExt.name;
+        font.pixelSize: 24;
+        font.bold: false;
+        smooth:true;
+    }
+    Text {
+        id: carSpeedPointer_X;
+        x: 564 - 80;
+        y: 246;
         text: "X: " + pointer_car_speed.x;
         visible: false;
         color: "#068ca5";
         font.family: europeExt.name;
-        font.pixelSize: 48;
+        font.pixelSize: 24;
         font.bold: false;
         smooth:true;
     }
     Text {
         id: carSpeedPointer_Y;
         x: 564 - 80;
-        y: 286;
+        y: 306;
         text: "Y: " + pointer_car_speed.y;
         visible: false;
         color: "#068ca5";
         font.family: europeExt.name;
-        font.pixelSize: 48;
+        font.pixelSize: 24;
         font.bold: false;
         smooth:true;
     }
