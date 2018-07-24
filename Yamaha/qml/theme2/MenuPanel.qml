@@ -18,7 +18,6 @@ MenuItem {
             console.debug("MenuPanel enterMenu")
 //            homepanel_visible = false
 //            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
-//            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true);
         }
     }
 
@@ -31,7 +30,6 @@ MenuItem {
             homepanel_visible = true
             mainMenuIndex = listMenu.currentIndex = 0
             UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
-            UiController.setLayerProperty("MenuPanel", "bKeyEnable", false);
         }
     }
 

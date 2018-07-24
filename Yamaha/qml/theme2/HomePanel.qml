@@ -44,8 +44,10 @@ CommonItem {
     }
 
     onKeyBack: function() {
-        console.debug("HomePanel onKeyBack")
-        UiController.showLayer("ThemeSetting")
+        if (mainMenuIndex === 0) {
+            console.debug("HomePanel hide menuPanel")
+            menuPanel.visible = false
+        }
     }
 
     onKeyUp: function() {
