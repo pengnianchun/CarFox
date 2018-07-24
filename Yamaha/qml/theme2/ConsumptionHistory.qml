@@ -1,8 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import "JS/QChart.js" as Charts
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 

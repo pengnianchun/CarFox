@@ -1,11 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
-    property real  timeCountDown: 8.0
+    property real  timeCountDown: 10.0
 
     Rectangle {
         width: 600
@@ -55,9 +56,12 @@ Item {
         id: people
         x: 100
         y: 100
+        visible: false
 
         Image {
             id: warningPeople
+            x: 90
+            y: 75
             source: "qrc:/theme2/symbol/Theme2/Modules/adas/warining.png"
         }
         Image {
@@ -65,6 +69,14 @@ Item {
             anchors.bottomMargin: 5
             anchors.horizontalCenter: warningPeople.horizontalCenter
             source: "qrc:/theme2/symbol/Theme2/Modules/adas/pepole.png"
+        }
+        Timer {
+            interval: 800
+            repeat: true
+            running: parent.visible
+            onTriggered: {
+                warningPeople.visible = !warningPeople.visible
+            }
         }
     }
 
@@ -75,83 +87,45 @@ Item {
 
         Image {
             id: warningBus
-            x: 164
-            y: 42
-            width: 156
-            height: 167
+            x: 238
+            y: -16
+            width: 79
+            height: 99
             source: "qrc:/theme2/symbol/Theme2/Modules/adas/warining.png"
         }
         Image {
-            id: image
+            id: warningImage2
             x: 190
-            y: 143
-            width: 115
-            height: 75
-            anchors.horizontalCenterOffset: 0
+            y: 87
+            width: 55
+            height: 55
+            anchors.horizontalCenterOffset: 1
             anchors.bottom: warningBus.bottom
-            anchors.bottomMargin: 7
+            anchors.bottomMargin: 0
             anchors.horizontalCenter: warningBus.horizontalCenter
             source: "qrc:/theme2/symbol/Theme2/Modules/adas/bus.png"
-            sourceSize.width: 40
-            sourceSize.height: 40
+        }
+        Timer {
+            interval: 800
+            repeat: true
+            running: parent.visible
+            onTriggered: {
+                warningBus.visible = !warningBus.visible
+            }
         }
     }
 
-    PathAnimation {
-        id: pathAnim_people
-        target: people
-        duration: 3000
-
-        path: Path {
-            PathCurve { x: 100;  y: 100; }
-            PathCurve { x: 200;  y: 100; }
-            PathCurve { x: 350;  y: 150; }
-        }
-
-        onStarted: {
-            console.log("pathAnim_people started");
-        }
-
-        onStopped: {
-            console.log("pathAnim_people stopped");
-        }
+    Image {
+        x: 688
+        y: 185
+        source: "qrc:/theme2/symbol/Theme2/Modules/adas/speedLimit.png"
     }
-
-    states: [
-        State {
-            name: "Run"
-
-            PropertyChanges {
-                target: warningBus
-                x: 209
-                y: -22
-                width: 70
-                height: 89
-            }
-
-            PropertyChanges {
-                target: image
-                y: 17
-                width: 45
-                height: 34
-            }
-        }
-    ]
-    transitions: [
-        Transition {
-            NumberAnimation { properties: "x,y,width,height"; easing.type: Easing.InOutQuad; duration: 5000 }
-        }
-    ]
 
     onVisibleChanged: {
         if (visible) {
             demo_adas.start()
-            pathAnim_people.start()
-            state = "Run"
         } else {
             demo_adas.stop()
-            pathAnim_people.stop()
-            state =  ""
         }
     }
 
@@ -163,6 +137,9 @@ Item {
         running: false
         onTriggered: {
             timeCountDown -= 0.2
+            if (timeCountDown < 8) {
+                people.visible = true
+            }
             if (timeCountDown < 1) {
                 running = false
             }

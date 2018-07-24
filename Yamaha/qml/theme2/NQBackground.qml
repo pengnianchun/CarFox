@@ -458,11 +458,11 @@ Item {
                 countDown.countDownTime = carStartRemainTime = 80
             }
 
-            if (carStartRemainTime > 30) {
+            if (carGearValue === 1) {
                 gearN.source = sourceImageUrl + "gear_N0.png"
                 gearD.source = sourceImageUrl + "gear_D.png"
                 gearR.source = sourceImageUrl + "gear_R.png"
-            } else if (carStartRemainTime > 10) {
+            } else if (carGearValue === 3) {
                 gearN.source = sourceImageUrl + "gear_N.png"
                 gearD.source = sourceImageUrl + "gear_D.png"
                 gearR.source = sourceImageUrl + "gear_R0.png"

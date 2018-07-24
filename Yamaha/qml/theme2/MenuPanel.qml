@@ -40,6 +40,11 @@ MenuItem {
             console.debug("MenuPanel previousMenu")
             if (mainMenuIndex > 0) {
                 mainMenuIndex = --listMenu.currentIndex
+            } else {
+                // Demo ThemeSetting
+                UiController.setLayerProperty("HomePanel", "homepanel_visible", false);
+                UiController.showLayer("ThemeSetting")
+                bKeyEnable = false
             }
         }
     }
@@ -66,9 +71,7 @@ MenuItem {
         ListElement { src: "radio.png"; }
         ListElement { src: "setting.png"; }
         ListElement { src: "adas.png"; }
-        ListElement { src: "more.png"; }
-        ListElement { src: "more.png"; }
-        ListElement { src: "more.png"; }
+        ListElement { src: "tirePressure.png"; }
         ListElement { src: "driveAnalysis.png"; }
         ListElement { src: "maintenanceForcast.png"; }
         ListElement { src: "consumptionAnalysis.png"; }
@@ -80,36 +83,42 @@ MenuItem {
     }
 
     Component {
-        id: nameDelegate
+        id: delegateMenu
 
         Image {
             asynchronous: true
             cache: true
-            source: sourceImageUrl + model.src
+            source: model.selected ? sourceImageUrl + "select" + model.src : sourceImageUrl + model.src
             sourceSize.width: 40
             sourceSize.height: 36
         }
     }
 
     Rectangle {
-        width: 650
+        width: homepanel_visible ? 500 : 800
         height: 45
         anchors.centerIn: parent
         color: "lightblue"
         radius: 10
+        Behavior on width {
+            NumberAnimation { duration: 800 }
+        }
     }
 
     ListView {
         id: listMenu
-        width: 600
+        width: homepanel_visible ? 450 : 750
         height: 35
         anchors.centerIn: parent
         clip: true
         model: modelMenu
-        delegate: nameDelegate
+        delegate: delegateMenu
         spacing: 35
         orientation: ListView.Horizontal
         highlight: Rectangle { color: "lightsteelblue"; radius: 3; }
+        Behavior on width {
+            NumberAnimation { duration: 800 }
+        }
     }
 
     Component.onCompleted: {

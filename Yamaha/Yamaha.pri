@@ -12,7 +12,9 @@ HEADERS += \
     ./src/CustomTheme2.hpp \ 
     ./src/CustomTheme3.hpp \ 
     ./src/CustomTheme4.hpp \ 
-    ./src/QmlGifImage.hpp
+    ./src/QmlGifImage.hpp \
+    ./src/CustomTheme11.hpp \
+    ./src/CustomTheme12.hpp \
 
 SOURCES += \ 
     ./src/Main.cpp \
@@ -27,10 +29,13 @@ SOURCES += \
     ./src/CustomTheme2.cpp \ 
     ./src/CustomTheme3.cpp \ 
     ./src/CustomTheme4.cpp \ 
-    ./src/QmlGifImage.cpp
+    ./src/QmlGifImage.cpp \
+    ./src/CustomTheme11.cpp \
+    ./src/CustomTheme12.cpp \
 
 HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
 
 RESOURCES += \ 
     $$PWD/qml/qml.qrc \
-    $$PWD/resource/desgin.qrc
+    $$PWD/resource/desgin.qrc \
+    $$PWD/qml/QmlResource.qrc \

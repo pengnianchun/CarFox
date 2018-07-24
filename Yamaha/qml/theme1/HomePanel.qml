@@ -811,6 +811,7 @@ CommonItem {
     onKeyBack: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyBack")
+            UiController.showLayer("ThemeSetting")
         }
     }
     onKeyUp: function() {

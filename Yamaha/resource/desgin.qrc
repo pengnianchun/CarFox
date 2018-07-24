@@ -278,6 +278,13 @@
         <file>Theme2/Menu/select/radio.png</file>
         <file>Theme2/Menu/select/schedule.png</file>
         <file>Theme2/Menu/select/setting.png</file>
+        <file>Theme2/Modules/schedule/schedule_con.png</file>
+        <file>Theme2/Menu/tirePressure.png</file>
+        <file>Theme2/Menu/select/tirePressure.png</file>
+        <file>Theme2/Modules/setting/setting_lang.png</file>
+        <file>Theme2/Modules/setting/setting_light.png</file>
+        <file>Theme2/Modules/setting/setting_vol.png</file>
+        <file>Theme2/Modules/setting/setting_select.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>
@@ -324,7 +331,6 @@
     </qresource>
     <qresource prefix="/Fonts">
         <file>Font/msyhl.ttc</file>
-        <file>Font/msyhbd.ttc</file>
         <file>Font/msyh.ttc</file>
         <file>Theme1/font/EuropeExt.ttf</file>
         <file>Theme1/font/微软雅黑.ttf</file>

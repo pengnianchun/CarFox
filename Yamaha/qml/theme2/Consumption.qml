@@ -1,11 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
-import "JS/QChart.js" as Charts
+import "qrc:/Component/Component"
 
-
-Item {
+MenuItem {
     width: 800
     height: 410
+
+    property string textBlue: "#0088ff"
 
     //#CANVAS START
     //信息
@@ -76,7 +77,7 @@ Item {
             //显示百分数
             ctx.save();
             var size = 0.4*cR;
-//            ctx.font = size + 'px Arial';
+            //            ctx.font = size + 'px Arial';
             ctx.textAlign = 'center';
             ctx.fillStyle = "rgba(14, 80, 14, 0.8)";
             ctx.fillText(~~nowRange + '分', r, r + size / 2);
@@ -92,49 +93,26 @@ Item {
             xOffset += speed;
         }
 
-//        Timer{
-//            id: timer
-//            running: nowRange !== rangeValue
-//            repeat: true
-//            interval: 100
-//            onTriggered:{
-//                parent.requestPaint();
-//            }
-//        }
+        Timer{
+            id: timer
+            running: nowRange !== rangeValue
+            repeat: true
+            interval: 100
+            onTriggered:{
+                parent.requestPaint();
+            }
+        }
     }
     //#CANVAS END
 
-    ColumnLayout {
-
-    }
-
-    QChart {
+    Loader {
         id: chart
         width: 600
         height: 200
 
-        anchors.top: parent.top
-        anchors.topMargin: 170
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        chartAnimated: true;
-        chartAnimationEasing: Easing.OutBounce;
-        chartAnimationDuration: 2000;
-        chartType: Charts.ChartType.BAR;
-        Component.onCompleted: {
-            chartData = {
-                labels: ["January","February","March","April","May","June","July"],
-                datasets: [{
-                        fillColor: "rgba(220,220,220,0.5)",
-                        strokeColor: "rgba(220,220,220,1)",
-                        data: [65,59,90,81,56,55,40]
-                    }, {
-                        fillColor: "rgba(151,187,205,0.5)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        data: [28,48,40,19,96,27,100]
-                    }]
-            };
-        }
+        sourceComponent: chartdata
+        asynchronous: true
+        visible: status === Loader.Ready
     }
 
     Text {
@@ -171,6 +149,49 @@ Item {
                 color: textBlue
             }
         }
+    }
+
+    Component {
+        id: chartdata
+        Chart {
+            id: chart
+            width: 600
+            height: 200
+
+            anchors.top: parent.top
+            anchors.topMargin: 170
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+
+
+            onPaint: {
+                line({
+                         labels : ["January","February","March","April","May","June","July"],
+                         datasets : [
+                             {
+                                 fillColor : "rgba(220,220,220,0.5)",
+                                 strokeColor : "rgba(220,220,220,1)",
+                                 pointColor : "rgba(220,220,220,1)",
+                                 pointStrokeColor : "#fff",
+                                 data : [65,59,90,81,56,55,40]
+                             },
+                             {
+                                 fillColor : "rgba(151,187,205,0.5)",
+                                 strokeColor : "rgba(151,187,205,1)",
+                                 pointColor : "rgba(151,187,205,1)",
+                                 pointStrokeColor : "#fff",
+                                 data : [28,48,40,19,96,27,100]
+                             }
+                         ]
+                     });
+            }
+            Component.onCompleted: {
+                chart.data = "
+
+"
+            }
+        }
+
     }
 
     Component.onCompleted: {

@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
@@ -61,12 +62,12 @@ Item {
                 width: 180
                 height: 40
                 radius: 10
-                color: "lightblue"
+                color: "#006cca"
             }
 
             Text {
                 anchors.centerIn: parent
-                text: "一键求助"
+                text: "一键发送"
                 color: "white"
                 font.pixelSize: 30
             }

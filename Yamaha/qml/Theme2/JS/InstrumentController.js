@@ -1,0 +1,155 @@
+/*
+ * 初始化仪表信息模块
+ */
+function initializeInstrumentModel(listmodelArray,data) {
+    listmodelArray[0].setProperty(0,"name",data.InstrumentFrame.input_ctrl_01);
+    listmodelArray[0].setProperty(1,"name",data.InstrumentFrame.input_ctrl_02);
+    listmodelArray[0].setProperty(2,"name",data.InstrumentFrame.input_ctrl_03);
+    listmodelArray[0].setProperty(3,"name",data.InstrumentFrame.input_ctrl_04);
+    listmodelArray[0].setProperty(4,"name",data.InstrumentFrame.input_ctrl_05);
+    listmodelArray[0].setProperty(5,"name",data.InstrumentFrame.input_ctrl_06);
+    listmodelArray[0].setProperty(6,"name",data.InstrumentFrame.input_ctrl_07);
+    listmodelArray[0].setProperty(7,"name",data.InstrumentFrame.input_ctrl_08);
+    listmodelArray[0].setProperty(8,"name",data.InstrumentFrame.input_ctrl_09);
+    listmodelArray[0].setProperty(9,"name",data.InstrumentFrame.input_ctrl_10);
+    listmodelArray[1].setProperty(0,"name",data.InstrumentFrame.input_ctrl_11);
+    listmodelArray[1].setProperty(1,"name",data.InstrumentFrame.input_ctrl_12);
+    listmodelArray[1].setProperty(2,"name",data.InstrumentFrame.input_ctrl_13);
+    listmodelArray[1].setProperty(3,"name",data.InstrumentFrame.input_ctrl_14);
+    listmodelArray[1].setProperty(4,"name",data.InstrumentFrame.input_ctrl_15);
+    listmodelArray[1].setProperty(5,"name",data.InstrumentFrame.input_ctrl_16);
+    listmodelArray[1].setProperty(6,"name",data.InstrumentFrame.input_ctrl_17);
+    listmodelArray[1].setProperty(7,"name",data.InstrumentFrame.input_ctrl_18);
+    listmodelArray[1].setProperty(8,"name",data.InstrumentFrame.input_ctrl_19);
+    listmodelArray[1].setProperty(9,"name",data.InstrumentFrame.input_ctrl_20);
+    listmodelArray[2].setProperty(0,"name",data.InstrumentFrame.input_ctrl_21);
+    listmodelArray[2].setProperty(1,"name",data.InstrumentFrame.input_ctrl_22);
+    listmodelArray[2].setProperty(2,"name",data.InstrumentFrame.input_ctrl_23);
+    listmodelArray[2].setProperty(3,"name",data.InstrumentFrame.input_ctrl_24);
+    listmodelArray[2].setProperty(4,"name",data.InstrumentFrame.input_ctrl_25);
+    listmodelArray[2].setProperty(5,"name",data.InstrumentFrame.input_ctrl_26);
+    listmodelArray[2].setProperty(6,"name",data.InstrumentFrame.input_ctrl_27);
+    listmodelArray[2].setProperty(7,"name",data.InstrumentFrame.input_ctrl_28);
+    listmodelArray[2].setProperty(8,"name",data.InstrumentFrame.input_ctrl_29);
+    listmodelArray[2].setProperty(9,"name",data.InstrumentFrame.input_ctrl_30);
+    listmodelArray[3].setProperty(0,"name",data.InstrumentFrame.input_ctrl_31);
+    listmodelArray[3].setProperty(1,"name",data.InstrumentFrame.input_ctrl_32);
+    listmodelArray[3].setProperty(2,"name",data.InstrumentFrame.input_ctrl_33);
+    listmodelArray[3].setProperty(3,"name",data.InstrumentFrame.input_ctrl_34);
+    listmodelArray[3].setProperty(4,"name",data.InstrumentFrame.input_ctrl_35);
+    /*
+    listmodelArray[3].setProperty(5,"name",data.InstrumentFrame.input_ctrl_36);
+    listmodelArray[3].setProperty(6,"name",data.InstrumentFrame.input_ctrl_37);
+    listmodelArray[3].setProperty(7,"name",data.InstrumentFrame.input_ctrl_38);
+    listmodelArray[3].setProperty(8,"name",data.InstrumentFrame.input_ctrl_39);
+    listmodelArray[3].setProperty(9,"name",data.InstrumentFrame.input_ctrl_40);
+    */
+}
+/*
+ * 初始化仪表信息前模块
+ */
+function initializeBeforeModule(listmodelArray,data) {
+    listmodelArray[0].setProperty(0,"name",data.FroModOutCurFrame.output_current_01);
+    listmodelArray[0].setProperty(1,"name",data.FroModOutCurFrame.output_current_02);
+    listmodelArray[0].setProperty(2,"name",data.FroModOutCurFrame.output_current_03);
+    listmodelArray[0].setProperty(3,"name",data.FroModOutCurFrame.output_current_04);
+    listmodelArray[0].setProperty(4,"name",data.FroModOutCurFrame.output_current_05);
+    listmodelArray[0].setProperty(5,"name",data.FroModOutCurFrame.output_current_06);
+    listmodelArray[0].setProperty(6,"name",data.FroModOutCurFrame.output_current_07);
+    listmodelArray[0].setProperty(7,"name",data.FroModOutCurFrame.output_current_08);
+    listmodelArray[1].setProperty(0,"name",data.FroModOutCurFrame.output_current_09);
+    listmodelArray[1].setProperty(1,"name",data.FroModOutCurFrame.output_current_10);
+    listmodelArray[1].setProperty(2,"name",data.FroModOutCurFrame.output_current_11);
+    listmodelArray[1].setProperty(3,"name",data.FroModOutCurFrame.output_current_12);
+    listmodelArray[1].setProperty(4,"name",data.FroModOutCurFrame.output_current_13);
+    listmodelArray[1].setProperty(5,"name",data.FroModOutCurFrame.output_current_14);
+    listmodelArray[1].setProperty(6,"name",data.FroModOutCurFrame.output_current_15);
+    listmodelArray[2].setProperty(0,"name",data.FroModInCtrFrame.switch_01);
+    listmodelArray[2].setProperty(1,"name",data.FroModInCtrFrame.switch_02);
+    listmodelArray[2].setProperty(2,"name",data.FroModInCtrFrame.switch_03);
+    listmodelArray[2].setProperty(3,"name",data.FroModInCtrFrame.switch_04);
+    listmodelArray[2].setProperty(4,"name",data.FroModInCtrFrame.switch_05);
+    listmodelArray[2].setProperty(5,"name",data.FroModInCtrFrame.switch_06);
+    listmodelArray[2].setProperty(6,"name",data.FroModInCtrFrame.switch_07);
+    listmodelArray[2].setProperty(7,"name",data.FroModInCtrFrame.switch_08);
+    listmodelArray[3].setProperty(0,"name",data.FroModInCtrFrame.switch_09);
+    listmodelArray[3].setProperty(1,"name",data.FroModInCtrFrame.switch_10);
+    listmodelArray[3].setProperty(2,"name",data.FroModInCtrFrame.switch_11);
+    listmodelArray[3].setProperty(3,"name",data.FroModInCtrFrame.switch_12);
+    listmodelArray[3].setProperty(4,"name",data.FroModInCtrFrame.switch_13);
+    listmodelArray[3].setProperty(5,"name",data.FroModInCtrFrame.switch_14);
+    listmodelArray[3].setProperty(6,"name",data.FroModInCtrFrame.switch_15);
+    listmodelArray[3].setProperty(7,"name",data.FroModInCtrFrame.switch_16);
+}
+/*
+ * 初始化仪表信息中模块
+ */
+function initializeCenterModule(listmodelArray,data) {
+    listmodelArray[0].setProperty(0,"name",data.MidModOutCurFrame.output_current_01);
+    listmodelArray[0].setProperty(1,"name",data.MidModOutCurFrame.output_current_02);
+    listmodelArray[0].setProperty(2,"name",data.MidModOutCurFrame.output_current_03);
+    listmodelArray[0].setProperty(3,"name",data.MidModOutCurFrame.output_current_04);
+    listmodelArray[0].setProperty(4,"name",data.MidModOutCurFrame.output_current_05);
+    listmodelArray[0].setProperty(5,"name",data.MidModOutCurFrame.output_current_06);
+    listmodelArray[0].setProperty(6,"name",data.MidModOutCurFrame.output_current_07);
+    listmodelArray[0].setProperty(7,"name",data.MidModOutCurFrame.output_current_08);
+    listmodelArray[1].setProperty(0,"name",data.MidModOutCurFrame.output_current_09);
+    listmodelArray[1].setProperty(1,"name",data.MidModOutCurFrame.output_current_10);
+    listmodelArray[1].setProperty(2,"name",data.MidModOutCurFrame.output_current_11);
+    listmodelArray[1].setProperty(3,"name",data.MidModOutCurFrame.output_current_12);
+    listmodelArray[1].setProperty(4,"name",data.MidModOutCurFrame.output_current_13);
+    listmodelArray[1].setProperty(5,"name",data.MidModOutCurFrame.output_current_14);
+    listmodelArray[1].setProperty(6,"name",data.MidModOutCurFrame.output_current_15);
+    listmodelArray[2].setProperty(0,"name",data.MidModInCtrFrame.switch_01);
+    listmodelArray[2].setProperty(1,"name",data.MidModInCtrFrame.switch_02);
+    listmodelArray[2].setProperty(2,"name",data.MidModInCtrFrame.switch_03);
+    listmodelArray[2].setProperty(3,"name",data.MidModInCtrFrame.switch_04);
+    listmodelArray[2].setProperty(4,"name",data.MidModInCtrFrame.switch_05);
+    listmodelArray[2].setProperty(5,"name",data.MidModInCtrFrame.switch_06);
+    listmodelArray[2].setProperty(6,"name",data.MidModInCtrFrame.switch_07);
+    listmodelArray[2].setProperty(7,"name",data.MidModInCtrFrame.switch_08);
+    listmodelArray[3].setProperty(0,"name",data.MidModInCtrFrame.switch_09);
+    listmodelArray[3].setProperty(1,"name",data.MidModInCtrFrame.switch_10);
+    listmodelArray[3].setProperty(2,"name",data.MidModInCtrFrame.switch_11);
+    listmodelArray[3].setProperty(3,"name",data.MidModInCtrFrame.switch_12);
+    listmodelArray[3].setProperty(4,"name",data.MidModInCtrFrame.switch_13);
+    listmodelArray[3].setProperty(5,"name",data.MidModInCtrFrame.switch_14);
+    listmodelArray[3].setProperty(6,"name",data.MidModInCtrFrame.switch_15);
+    listmodelArray[3].setProperty(7,"name",data.MidModInCtrFrame.switch_16);
+}
+/*
+ * 初始化仪表信息后模块
+ */
+function initializeAfterModule(listmodelArray,data) {
+    listmodelArray[0].setProperty(0,"name",data.BaModOutCurFrame.output_current_01);
+    listmodelArray[0].setProperty(1,"name",data.BaModOutCurFrame.output_current_02);
+    listmodelArray[0].setProperty(2,"name",data.BaModOutCurFrame.output_current_03);
+    listmodelArray[0].setProperty(3,"name",data.BaModOutCurFrame.output_current_04);
+    listmodelArray[0].setProperty(4,"name",data.BaModOutCurFrame.output_current_05);
+    listmodelArray[0].setProperty(5,"name",data.BaModOutCurFrame.output_current_06);
+    listmodelArray[0].setProperty(6,"name",data.BaModOutCurFrame.output_current_07);
+    listmodelArray[0].setProperty(7,"name",data.BaModOutCurFrame.output_current_08);
+    listmodelArray[1].setProperty(0,"name",data.BaModOutCurFrame.output_current_09);
+    listmodelArray[1].setProperty(1,"name",data.BaModOutCurFrame.output_current_10);
+    listmodelArray[1].setProperty(2,"name",data.BaModOutCurFrame.output_current_11);
+    listmodelArray[1].setProperty(3,"name",data.BaModOutCurFrame.output_current_12);
+    listmodelArray[1].setProperty(4,"name",data.BaModOutCurFrame.output_current_13);
+    listmodelArray[1].setProperty(5,"name",data.BaModOutCurFrame.output_current_14);
+    listmodelArray[1].setProperty(6,"name",data.BaModOutCurFrame.output_current_15);
+    listmodelArray[2].setProperty(0,"name",data.BaModInCtrFrame.switch_01);
+    listmodelArray[2].setProperty(1,"name",data.BaModInCtrFrame.switch_02);
+    listmodelArray[2].setProperty(2,"name",data.BaModInCtrFrame.switch_03);
+    listmodelArray[2].setProperty(3,"name",data.BaModInCtrFrame.switch_04);
+    listmodelArray[2].setProperty(4,"name",data.BaModInCtrFrame.switch_05);
+    listmodelArray[2].setProperty(5,"name",data.BaModInCtrFrame.switch_06);
+    listmodelArray[2].setProperty(6,"name",data.BaModInCtrFrame.switch_07);
+    listmodelArray[2].setProperty(7,"name",data.BaModInCtrFrame.switch_08);
+    listmodelArray[3].setProperty(0,"name",data.BaModInCtrFrame.switch_09);
+    listmodelArray[3].setProperty(1,"name",data.BaModInCtrFrame.switch_10);
+    listmodelArray[3].setProperty(2,"name",data.BaModInCtrFrame.switch_11);
+    listmodelArray[3].setProperty(3,"name",data.BaModInCtrFrame.switch_12);
+    listmodelArray[3].setProperty(4,"name",data.BaModInCtrFrame.switch_13);
+    listmodelArray[3].setProperty(5,"name",data.BaModInCtrFrame.switch_14);
+    listmodelArray[3].setProperty(6,"name",data.BaModInCtrFrame.switch_15);
+    listmodelArray[3].setProperty(7,"name",data.BaModInCtrFrame.switch_16);
+}

@@ -1,8 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import "qrc:/Component/Component"
 
-Item {
+MenuItem {
     width: 800
     height: 410
 
@@ -57,7 +58,7 @@ Item {
     Text {
         x: 121
         y: 312
-        text: "1008 Mph PM 2.5"
+        text: "1008 Mph"
         font.pixelSize: 16
         color: "white"
     }
