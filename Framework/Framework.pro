@@ -18,11 +18,8 @@ OBJECTS_DIR = build
 
 include(Framework.pri)
 
-headers.files += \
-    ./*.hpp
-
+headers.files += ./*.hpp
 headers.path =  $$[QT_INSTALL_HEADERS]/CarFox
-
 INSTALLS += headers
 
 target.path = $$[QT_INSTALL_LIBS]

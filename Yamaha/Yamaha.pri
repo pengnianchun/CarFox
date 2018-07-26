@@ -38,4 +38,3 @@ HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
 RESOURCES += \ 
     $$PWD/qml/qml.qrc \
     $$PWD/resource/desgin.qrc \
-    $$PWD/qml/QmlResource.qrc \
