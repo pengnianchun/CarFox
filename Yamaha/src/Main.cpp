@@ -12,6 +12,15 @@
 #include <QDebug>
 #include <QtGlobal>
 
+void infoVer(FILE *fp) {
+    if (NULL != fp) {
+        fprintf(fp, "APP: %s\n", qApp->applicationName().toStdString().c_str());
+        fprintf(fp, "VER: %s\n", GIT_VERSION);
+        fprintf(fp, "PRO: %s\n", PROTO_VERSION);
+        fprintf(fp, "REL: %s %s\n", __DATE__, __TIME__);
+    }
+}
+
 #if defined(Q_PROCESSOR_ARM)
 #include <unistd.h>
 #include <syslog.h>
@@ -52,6 +61,8 @@ int main(int argc, char *argv[]) {
 #if defined(Q_PROCESSOR_ARM)
     initEnv();
 #endif
+
+    infoVer(stderr);
 
     qputenv("FB_MULTI_BUFFER", "3");
     qputenv("QT_LOGGING_CONF", "/home/root/fy/qtlogging.ini");

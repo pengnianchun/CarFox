@@ -5,7 +5,6 @@ QT += quick
 QT += serialport
 
 CONFIG += c++11
-
 CONFIG += qtquickcompiler
 
 QMAKE_DISTCLEAN += .qtquickcompiler/*
@@ -16,21 +15,24 @@ MOC_DIR = build
 RCC_DIR = build
 OBJECTS_DIR = build
 
+QMAKE_CFLAGS += -Wno-unused-parameter
+QMAKE_CXXFLAGS += -Wno-unused-parameter
+
 include(Framework.pri)
 
-headers.files += ./*.hpp
-headers.path =  $$[QT_INSTALL_HEADERS]/CarFox
+headers.files = *.hpp
+headers.path = $$[QT_INSTALL_HEADERS]/CarFox
 INSTALLS += headers
 
 target.path = $$[QT_INSTALL_LIBS]
 INSTALLS += target
 
 unix:!macx{
+    CONFIG += lib
+
     INCLUDEPATH += $$PWD/../external/nanomsg/linux/include
     INCLUDEPATH += $$PWD/../external/protofile/protobuf/linux/include
     DESTDIR = $$PWD/../Framework/lib/
-
-    CONFIG += lib
 
     cross_compile {
         TARGET = CarFoxArm
@@ -49,14 +51,13 @@ unix:!macx{
 }
 
 win32 {
+    TARGET = CarFoxWindows
     CONFIG += staticlib
     INCLUDEPATH += $$PWD/../external/nanomsg/windows/include
-    LIBS += $$PWD/../external/nanomsg/windows/libnanomsg.dll
     INCLUDEPATH += $$PWD/../external/protofile/protobuf/windows/include
+    LIBS += $$PWD/../external/nanomsg/windows/libnanomsg.dll
     LIBS += $$PWD/../external/nanomsg/windows/libnanomsg.dll.a
     LIBS += $$PWD/../external/protofile/protobuf/windows/libprotobuf.a
-
-    TARGET = CarFoxWindows
 
     dst_dir = $$PWD\..\Framework\lib\
     dst_dir ~= s,/,\\,g

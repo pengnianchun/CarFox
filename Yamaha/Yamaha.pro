@@ -8,8 +8,9 @@ QT += opengl
 CONFIG += c++11
 CONFIG += qtquickcompiler
 CONFIG += resources_big
+CONFIG += debug
 
-TARGET   = Yamaha
+TARGET  = Yamaha
 
 DESTDIR = bin
 UI_DIR  = build
@@ -20,14 +21,15 @@ OBJECTS_DIR = build
 QMAKE_DISTCLEAN += .qtquickcompiler/*
 QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
 
-# Close Debug Info When Release
-CONFIG(debug, debug|release) {
-    CONFIG += qml_debug
-    CONFIG += debug_and_release
+DEFINES += GIT_VERSION=\\\"$$system(git describe --always --tag)\\\"
+DEFINES += PROTO_VERSION=\\\"$$system(git submodule | grep proto | awk \'{print $3}\' | awk -F \"[()]\" \'{print $2}\')\\\"
+
+QMAKE_CFLAGS += -Wno-unused-parameter
+QMAKE_CXXFLAGS += -Wno-unused-parameter
+
+CONFIG(release) {
+    CONFIG  += qml_debug
     DEFINES += CARFOX_DEBUG_FPS
-    QMAKE_CXXFLAGS += -Wno-unused-parameter
-} else {
-    DEFINES += QT_NO_DEBUG_OUTPUT
 }
 
 include($$PWD/../external/protofile/proto.pri)
@@ -42,7 +44,6 @@ unix:!macx{
     LIBS += -L$$PWD/../Framework/lib/
 
     QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
-    QMAKE_CXXFLAGS += -DGIT_VERSION="$(shell git describe --always --long --dirty || date +%y%m%d%H%M%S)"
 
     cross_compile {
         LIBS += -lCarFoxArm
@@ -63,10 +64,11 @@ unix:!macx{
     LIBS += -lnanomsg -lprotobuf
     QMAKE_POST_LINK += $(STRIP) $(TARGET)
 }
+
 win32 {
     INCLUDEPATH += $$PWD/../external/nanomsg/windows/include
-    LIBS += $$PWD/../external/nanomsg/windows/libnanomsg.dll
     INCLUDEPATH += $$PWD/../external/protofile/protobuf/windows/include
+    LIBS += $$PWD/../external/nanomsg/windows/libnanomsg.dll
     LIBS += $$PWD/../external/protofile/protobuf/windows/libprotobuf.a
     LIBS += $$PWD/../Framework/lib/libCarFoxWindows.a
 
@@ -80,5 +82,3 @@ fonts.path = /usr/lib
 INSTALLS += fonts
 
 include($$PWD/Yamaha.pri)
-
-RESOURCES +=

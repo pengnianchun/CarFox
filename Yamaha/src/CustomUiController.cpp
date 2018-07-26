@@ -5,8 +5,8 @@
 
 #include "CustomTheme1.hpp"
 #include "CustomTheme2.hpp"
-#include "CustomTheme11.hpp"
-#include "CustomTheme12.hpp"
+#include "CustomTheme3.hpp"
+#include "CustomTheme4.hpp"
 #include "CustomUiController.hpp"
 #include "CustomUiController.hpp"
 #include "QmlGifImage.hpp"
@@ -38,13 +38,13 @@ void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> c
 
     //2. 添加主题
     // Note: 需要添加
-    auto customTheme1 = std::make_shared<CustomTheme11>(cp, "CustomTheme1");
+    auto customTheme1 = std::make_shared<CustomTheme1>(cp, "CustomTheme1");
     addTheme(customTheme1, 16, 3);
-    auto customTheme2 = std::make_shared<CustomTheme12>(cp, "CustomTheme2");
+    auto customTheme2 = std::make_shared<CustomTheme2>(cp, "CustomTheme2");
     addTheme(customTheme2, 16, 3);
-    auto customTheme3 = std::make_shared<CustomTheme1>(cp, "CustomTheme3");
+    auto customTheme3 = std::make_shared<CustomTheme3>(cp, "CustomTheme3");
     addTheme(customTheme3, 16, 3);
-    auto customTheme4 = std::make_shared<CustomTheme2>(cp, "CustomTheme4");
+    auto customTheme4 = std::make_shared<CustomTheme4>(cp, "CustomTheme4");
     addTheme(customTheme4, 16, 3);
 
     // only for Common
@@ -135,6 +135,9 @@ void CustomUiController::handleInitialized()
 
     auto themeMode = mCarMsg->property("themeMode").toInt();
     qDebug() << "themeMode : " << themeMode;
+#ifdef CARFOX_DEBUG_FPS
+    themeMode = CustomEnum::Theme2Mode;
+#endif // CARFOX_DEBUG_FPS
     switch (themeMode) {
     case CustomEnum::Theme1Mode:
         loadWith("CustomTheme1");

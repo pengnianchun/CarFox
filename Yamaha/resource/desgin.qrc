@@ -330,8 +330,6 @@
         <file>Theme1/Slice/Monitoring state.png</file>
     </qresource>
     <qresource prefix="/Fonts">
-        <file>Font/msyhl.ttc</file>
-        <file>Font/msyh.ttc</file>
         <file>Theme1/font/EuropeExt.ttf</file>
     </qresource>
     <qresource prefix="/theme1/sub_screen_slice">

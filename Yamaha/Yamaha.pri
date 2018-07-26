@@ -1,4 +1,6 @@
-HEADERS += \ 
+HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
+
+HEADERS += \
     ./src/CustomCarMsg.hpp \
     ./src/CustomCarMsgWorker.hpp \
     ./src/CustomCarMsgWorkerData.hpp \
@@ -13,8 +15,6 @@ HEADERS += \
     ./src/CustomTheme3.hpp \ 
     ./src/CustomTheme4.hpp \ 
     ./src/QmlGifImage.hpp \
-    ./src/CustomTheme11.hpp \
-    ./src/CustomTheme12.hpp \
 
 SOURCES += \ 
     ./src/Main.cpp \
@@ -30,10 +30,6 @@ SOURCES += \
     ./src/CustomTheme3.cpp \ 
     ./src/CustomTheme4.cpp \ 
     ./src/QmlGifImage.cpp \
-    ./src/CustomTheme11.cpp \
-    ./src/CustomTheme12.cpp \
-
-HEADERS += $$files($$PWD/protofile/protocode/protoheader.h)
 
 RESOURCES += \ 
     $$PWD/qml/qml.qrc \
