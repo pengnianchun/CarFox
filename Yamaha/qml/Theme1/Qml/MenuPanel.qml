@@ -17,7 +17,7 @@ MenuItem {
     property int menuCurrentIndex: 0
     property bool bKeyEnable: false
     property string titleBgUrl: "qrc:/Theme/Theme1/Image/MenuPanel/title_bg.png"
-    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
+    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
 
     enterMenu: function(){
         if(bKeyEnable){

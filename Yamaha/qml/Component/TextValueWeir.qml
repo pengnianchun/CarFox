@@ -16,7 +16,7 @@ Item {
     property real unitWidth: 30
     property bool leftAlignStatus: false
     property real leftMarginValue: 0
-    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
+    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
     //Rectangle{anchors.fill: parent;color: "#000000"}
     Text {
         id: text_title

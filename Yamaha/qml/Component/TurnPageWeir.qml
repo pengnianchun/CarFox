@@ -13,7 +13,7 @@ Item {
     property string currentPageColor: "#00deff";
     property string totalPageColor: "#ffffff";
     property bool fontBold: false
-    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
+    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
     RowLayout {
         spacing: 5
         Text {

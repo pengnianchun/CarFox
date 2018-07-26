@@ -10,7 +10,7 @@ Item {
     property var listModel;
     property string fontFamily: localFont.name
     property var listViewSelectId: listview_select
-    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
+    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
     ListView {
         id: listview_select
         width: listViewWidth;

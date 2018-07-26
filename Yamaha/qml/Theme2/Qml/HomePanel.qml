@@ -221,7 +221,7 @@ CommonItem {
                     anchors.right: parent.right
                     anchors.rightMargin: 350
                     anchors.verticalCenter: parent.verticalCenter
-                    textIconValue: qsTr(" %1 KPa").arg(CarMsg.engineOilPressure)//CarStatus.engine_oil_pressure.toFixed(0)
+                    textIconValue: qsTr(" %1 KPa").arg(10)//CarStatus.engine_oil_pressure.toFixed(0)
                     iconSource: oilPressureImage
                 }
                 TextFieldWeir {
@@ -462,7 +462,7 @@ CommonItem {
                     anchors.verticalCenter: parent.verticalCenter
                     imageTopMargin: 0
                     spaceWidth: -30
-                    textIconValue: qsTr("%1 %").arg(CarMsg.oilLevel)//(CarStatus.oil_level.toFixed(0))
+                    textIconValue: qsTr("%1 %").arg(CarMsg.oilLevel - 50)//(CarStatus.oil_level.toFixed(0))
                     iconSource: oilImage
                 }
                 TextFieldWeir {

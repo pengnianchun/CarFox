@@ -20,7 +20,7 @@ Item {
     property bool checkRadioStatus: false
     property int radioType: 1;//2
     property real unitWidth: 30
-    FontLoader { id: localFont; source: "qrc:/Common/Fonts/WenQuanYiMicroHei.ttf" }
+    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
     //Rectangle{anchors.fill: parent;color: "#000000"}
     Image {
         id: radio

@@ -75,7 +75,7 @@ MenuItem {
             //显示百分数
             ctx.save();
             var size = 0.4*cR;
-//            ctx.font = size + 'px Arial';
+            ctx.font = size + 'px Arial';
             ctx.textAlign = 'center';
             ctx.fillStyle = "rgba(14, 80, 14, 0.8)";
             ctx.fillText(~~nowRange + '分', r, r + size / 2);
@@ -91,15 +91,15 @@ MenuItem {
             xOffset += speed;
         }
 
-//        Timer{
-//            id: timer
-//            running: false
-//            repeat: true
-//            interval: 100
-//            onTriggered:{
-//                parent.requestPaint();
-//            }
-//        }
+        Timer{
+            id: timer
+            running: false
+            repeat: true
+            interval: 100
+            onTriggered:{
+                parent.requestPaint();
+            }
+        }
     }
     //#CANVAS END
 
@@ -126,6 +126,8 @@ MenuItem {
     Image {
         x: 344
         y: 139
+        width: 20
+        height: 20
         source: "qrc:/theme2/symbol/Theme2/Modules/diagnosticInfo/scanning.png"
     }
 
@@ -140,7 +142,7 @@ MenuItem {
             y: 27
             text: qsTr("正在扫描")
             color: "white"
-            font.pixelSize: 16
+            font.pixelSize: 12
         }
     }
     //线

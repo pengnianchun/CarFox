@@ -9,28 +9,25 @@ MenuItem {
 
     ListModel {
         id: appModel
-        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_lang.png" }
-        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_light.png" }
-        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_vol.png" }
+        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_lang.png"; }
+        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_light.png"; }
+        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_vol.png"; }
     }
 
     Component {
         id: appDelegate
         Item {
-            width: 100; height: 100
+            width: 300
+            height: 200
             scale: PathView.iconScale
 
             Image {
                 id: myIcon
-                y: 20; anchors.horizontalCenter: parent.horizontalCenter
+                y: 125
+                anchors.horizontalCenter: parent.horizontalCenter
                 source: icon
                 smooth: true
             }
-//            Text {
-//                anchors { top: myIcon.bottom; horizontalCenter: parent.horizontalCenter }
-//                text: name
-//                smooth: true
-//            }
 
             MouseArea {
                 anchors.fill: parent
@@ -41,17 +38,22 @@ MenuItem {
 
     Component {
         id: appHighlight
+        Rectangle {
+
+        }
+    }
         Image {
-            y: -5
+            anchors.top: parent.top
+            anchors.topMargin: 175
+            anchors.horizontalCenter: parent.horizontalCenter
             source: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_select.png"
         }
-//        Rectangle { width: 80; height: 80; color: "lightsteelblue" }
-    }
+
 
     PathView {
         id: view
         x: 200
-        y: 50
+        y: 0
         highlight: appHighlight
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
@@ -74,10 +76,9 @@ MenuItem {
 
     onVisibleChanged: {
         if(visible){
-            UiController.setLayerProperty("MenuPanel", "bKeyEnable", false, false);
+            //
         } else {
-            UiController.setLayerProperty("MenuPanel", "bKeyEnable", true, false);
+            //
         }
     }
-
 }

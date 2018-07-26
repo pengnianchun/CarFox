@@ -105,14 +105,79 @@ MenuItem {
     }
     //#CANVAS END
 
-    Loader {
+    Text {
+        x: 238
+        y: 37
+        font.pixelSize: 14
+        color: "#0088ff"
+        text: "电驱系统"
+    }
+    Rectangle {
+        x: 323
+        y: 39
+        width: 300
+        height: 18
+        color: "#666666"
+        Rectangle {
+            width: 250
+            height: 18
+            color: "#006cca"
+        }
+    }
+
+    Text {
+        x: 238
+        y: 89
+        width: 56
+        height: 22
+        font.pixelSize: 14
+        color: "white"
+        text: "储能系统"
+    }
+    Rectangle {
+        x: 323
+        y: 91
+        width: 300
+        height: 18
+        color: "#666666"
+        Rectangle {
+            width: 250
+            height: 18
+            color: "#006cca"
+        }
+    }
+
+    Chart {
         id: chart
         width: 600
         height: 200
 
-        sourceComponent: chartdata
-        asynchronous: true
-        visible: status === Loader.Ready
+        anchors.top: parent.top
+        anchors.topMargin: 170
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+
+        onPaint: {
+            line({
+                     labels : ["January","February","March","April","May","June","July"],
+                     datasets : [
+                         {
+                             fillColor : "rgba(00,136,255,0.5)",
+                             strokeColor : "rgba(220,220,220,1)",
+                             pointColor : "rgba(00,136,255,1)",
+                             pointStrokeColor : "#fff",
+                             data : [65,59,90,81,56,55,40]
+                         },
+                         {
+                             fillColor : "rgba(151,187,205,0.5)",
+                             strokeColor : "rgba(151,187,205,1)",
+                             pointColor : "white",
+                             pointStrokeColor : "#fff",
+                             data : [28,48,40,19,96,27,100]
+                         }
+                     ]
+                 });
+        }
     }
 
     Text {
@@ -149,49 +214,6 @@ MenuItem {
                 color: textBlue
             }
         }
-    }
-
-    Component {
-        id: chartdata
-        Chart {
-            id: chart
-            width: 600
-            height: 200
-
-            anchors.top: parent.top
-            anchors.topMargin: 170
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-
-
-            onPaint: {
-                line({
-                         labels : ["January","February","March","April","May","June","July"],
-                         datasets : [
-                             {
-                                 fillColor : "rgba(220,220,220,0.5)",
-                                 strokeColor : "rgba(220,220,220,1)",
-                                 pointColor : "rgba(220,220,220,1)",
-                                 pointStrokeColor : "#fff",
-                                 data : [65,59,90,81,56,55,40]
-                             },
-                             {
-                                 fillColor : "rgba(151,187,205,0.5)",
-                                 strokeColor : "rgba(151,187,205,1)",
-                                 pointColor : "rgba(151,187,205,1)",
-                                 pointStrokeColor : "#fff",
-                                 data : [28,48,40,19,96,27,100]
-                             }
-                         ]
-                     });
-            }
-            Component.onCompleted: {
-                chart.data = "
-
-"
-            }
-        }
-
     }
 
     Component.onCompleted: {

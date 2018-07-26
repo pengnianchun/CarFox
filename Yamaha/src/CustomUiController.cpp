@@ -48,9 +48,9 @@ void CustomUiController::createThemes(std::shared_ptr<carfox::ContextProperty> c
     addTheme(customTheme4, 16, 3);
 
     // only for Common
-//#ifdef CARFOX_DEBUG_FPS
+#ifdef CARFOX_DEBUG_FPS
     addGlobalLayer(cp, "qrc:/Component/Component/Fps.qml", "FpsLayer")->setShowPolicy(carfox::Layer::ShowOnLoaded); //加载的时候显示
-//#endif
+#endif
     addGlobalLayer(cp, "qrc:/Component/Component/DormancyPanel.qml", "DormancyPanel")->setShowPolicy(carfox::Layer::ManualShow);
     qDebug() << "Create themes done";
 
@@ -216,12 +216,12 @@ void CustomUiController::loadFonts()
 //    loadFont("/usr/lib/fonts/FangYan.ttf");
 //    loadFont("/usr/lib/fonts/NotoSansHans-DemiLight.ttf");
 //    loadFont("/usr/lib/fonts/ConceptFont.ttf");
-//    loadFont("/usr/lib/fonts/WenQuanYiMicroHei.ttf");
+//    loadFont("/usr/lib/fonts/msyh.ttf");
 //#else
 //    loadFont(QDir::currentPath() + "/fonts/FangYan.ttf");
 //    loadFont(QDir::currentPath() + "/fonts/NotoSansHans-DemiLight.ttf");
 //    loadFont(QDir::currentPath() + "/fonts/ConceptFont.ttf");
-//    loadFont(QDir::currentPath() + "/fonts/WenQuanYiMicroHei.ttf");
+//    loadFont(QDir::currentPath() + "/fonts/msyh.ttf");
 //#endif
 
 //#if defined(Q_PROCESSOR_ARM)
