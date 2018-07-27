@@ -7,6 +7,7 @@ QT += serialport
 
 CONFIG += c++11
 CONFIG += qtquickcompiler
+CONFIG += debug
 
 QMAKE_DISTCLEAN += .qtquickcompiler/*
 QMAKE_DISTCLEAN += *_qtquickcompiler.qrc
@@ -18,6 +19,7 @@ OBJECTS_DIR = build
 
 QMAKE_CFLAGS += -Wno-unused-parameter
 QMAKE_CXXFLAGS += -Wno-unused-parameter
+QMAKE_CXXFLAGS += -g -rdynamic -fasynchronous-unwind-tables
 
 include(Framework.pri)
 
