@@ -1,23 +1,13 @@
 #pragma once
 
-#include <QMap>
 #include <QLocalSocket>
 #include <QGuiApplication>
 #include <QSystemSemaphore>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <unistd.h>
-
-#ifdef __cplusplus
-}
-#endif
-
 #include "ThemeManager.hpp"
 #include "MultiLanguage.hpp"
 #include "Global.hpp"
+
 CARFOX_BEGIN_NAMESPACE
 
 typedef QMap<int, QString> StackView;
@@ -95,7 +85,6 @@ protected:
      std::shared_ptr<ContextProperty> createContextProperty(std::shared_ptr<CarMsg> carMsg, std::shared_ptr<CarMsg> fakeCarMsg,
             std::shared_ptr<MultiLanguage> multiLanguage, std::shared_ptr<MultiLanguage> fakeMultiLanguage);
 
-
      virtual std::shared_ptr<CarMsg> createCarMsg() = 0;
      virtual std::shared_ptr<CarMsg> createFakeCarMsg() = 0;
 
@@ -114,12 +103,14 @@ protected:
     ThemeManager *themeManager(); // app层的UiController继承者可以拿到这个对象
 
     void loadWith(const QString &themeId);
+
 private:
     void updateRootMenuStatus(const QString &layerId, bool status);
 
 protected:
     bool mFirstInstance;
     bool mVisible = false;
+
 private:
     ThemeManager *mThemeManager = ThemeManager::instance();
     std::shared_ptr<StackView> mStackView = std::make_shared<StackView>();
@@ -128,8 +119,6 @@ private:
     // 菜单
     bool mIsMenuShown = false;
     QString mRootMenuId = "";
-
-
 };
 
 CARFOX_END_NAMESPACE

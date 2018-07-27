@@ -1,9 +1,9 @@
 #pragma once
 
-#include <QObject>
 #include <QQmlIncubator>
 
 #include "Global.hpp"
+
 CARFOX_BEGIN_NAMESPACE
 
 /*

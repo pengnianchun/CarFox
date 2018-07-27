@@ -4,6 +4,7 @@
 #include <QQmlEngine>
 
 #include "Global.hpp"
+
 CARFOX_BEGIN_NAMESPACE
 
 /*

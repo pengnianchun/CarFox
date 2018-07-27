@@ -5,7 +5,7 @@
 CARFOX_BEGIN_NAMESPACE
 
 template <class T>
-        struct CarMsgData
+    struct CarMsgData
 {
     CarMsgData(T dataValue)
         :data(dataValue)
@@ -27,6 +27,5 @@ template <class T>
     T invalid; //无效指
     T data;
 };
-
 
 CARFOX_END_NAMESPACE

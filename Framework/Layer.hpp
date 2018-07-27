@@ -8,6 +8,7 @@
 #include "ContextProperty.hpp"
 #include "IncubationController.hpp"
 #include "Global.hpp"
+
 CARFOX_BEGIN_NAMESPACE
 
 class Theme;
@@ -44,7 +45,6 @@ public:
     void setContextProperties(ContextPropertyHash contextPropertyHash);
     void setContextProperty(const QString &contextName, QObject *object);
 
-
 public:
     inline const QString &qmlUrl() const
     {
@@ -78,7 +78,7 @@ public slots:
     void loadAsync(Theme *theme); //暂时不使用智能指针
 
 signals:
-    void loaded(); //加载完毕信号
+    void loaded(); // 加载完毕信号
     void asyncLoaded(Theme *theme);
 
 private slots:

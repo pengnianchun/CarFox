@@ -1,4 +1,3 @@
-
 #include "MsgHandler.hpp"
 
 CARFOX_BEGIN_NAMESPACE
@@ -12,7 +11,7 @@ void MsgHandler::registerMsgCallback(const google::protobuf::Descriptor *desc, c
 {
     if (desc) {
         mCallbackMaps[QString::fromStdString(desc->full_name())] = callback;
-        qDebug() << "Register proto type: " << QString::fromStdString(desc->full_name());
+        qCInfo(Framework) << "Register proto type: " << QString::fromStdString(desc->full_name());
     }
 }
 
@@ -43,14 +42,14 @@ void MsgHandler::parseMessage(QByteArray &recvmsg)
     // get callback for parsing proto
     callback = mCallbackMaps[protoTypeName];
     if (!callback) {
-        qDebug() << "get callback for proto type:" << protoTypeName << "failed!!";
+        qCDebug(Framework) << "get callback for proto type:" << protoTypeName << "failed!!";
         return;
     }
 
     // create protobuf::Message for proto
     message.reset(createMessage(protoTypeName));
     if (!message) {
-        qDebug() << "get message for" << protoTypeName << "error";
+        qCDebug(Framework) << "get message for" << protoTypeName << "error";
         return;
     }
 
@@ -60,7 +59,7 @@ void MsgHandler::parseMessage(QByteArray &recvmsg)
     if (bResult) {
         callback(message);
     } else {
-        qDebug() << "parse" << protoTypeName << "to protobuf::Message format fail";
+        qCDebug(Framework) << "parse" << protoTypeName << "to protobuf::Message format fail";
     }
 }
 
@@ -100,8 +99,9 @@ google::protobuf::Message *MsgHandler::createMessage(QString &typeName)
         const google::protobuf::Message* prototype =
                 google::protobuf::MessageFactory::generated_factory()->GetPrototype(descriptor);
 
-        if (prototype)
+        if (prototype) {
             message = prototype->New();
+        }
     }
 
     return message;

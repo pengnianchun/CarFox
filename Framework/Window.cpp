@@ -1,4 +1,3 @@
-
 #include "Window.hpp"
 
 CARFOX_BEGIN_NAMESPACE

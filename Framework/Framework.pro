@@ -1,5 +1,6 @@
 TEMPLATE = lib
 
+QT += core
 QT += qml
 QT += quick
 QT += serialport

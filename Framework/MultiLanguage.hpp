@@ -1,7 +1,5 @@
 #pragma once
 
-#include <QObject>
-
 #include "Global.hpp"
 
 CARFOX_BEGIN_NAMESPACE

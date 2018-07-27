@@ -5,7 +5,6 @@
 
 #include "Global.hpp"
 #include "MultiLanguage.hpp"
-
 #include "CarMsg.hpp"
 
 CARFOX_BEGIN_NAMESPACE
@@ -24,7 +23,6 @@ public:
     void addContextProperty(const QString &contextName, QObject *obj);
 
     const ContextPropertyHash &contextProperties();
-
 
     const QString &multiLanguageName() const;
     std::shared_ptr<MultiLanguage> fakeMultiLanguage();
@@ -48,7 +46,6 @@ private:
     QString mMultilanguageName;
     std::shared_ptr<MultiLanguage> mFakeMultiLanguages;
     std::shared_ptr<MultiLanguage> mTrueMultilanguages;
-
 };
 
 CARFOX_END_NAMESPACE

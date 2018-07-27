@@ -2,6 +2,7 @@
 
 #include "Theme.hpp"
 #include "Global.hpp"
+
 CARFOX_BEGIN_NAMESPACE
 
 class ThemeManager : public QObject
@@ -55,9 +56,7 @@ private slots:
 
     void unloadTheme();
 
-
 private:
-
     bool mReady = false;
     bool mIsSwitchingTheme = false;
     QString mCurrentThemeId;

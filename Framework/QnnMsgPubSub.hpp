@@ -1,8 +1,5 @@
 #pragma once
 
-#include <QObject>
-#include <QDebug>
-
 #include "QnnMsgSocket.hpp"
 #include "Global.hpp"
 
@@ -123,6 +120,5 @@ private:
     Socket *sock;
     bool m_sockVaild;
 };
-
 
 CARFOX_END_NAMESPACE

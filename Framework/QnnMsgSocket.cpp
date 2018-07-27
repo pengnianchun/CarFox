@@ -29,7 +29,6 @@
 #include <QSocketNotifier>
 #include <QMutex>
 #include <QThread>
-#include <QDebug>
 
 #include "QnnMsgSocket.hpp"
 
@@ -73,7 +72,7 @@ Socket::Socket(Type type, QObject *parent) :
         connect(nnsocket, SIGNAL(activated(int)), SLOT(nnsocket_activated()));
         nnsocket->setEnabled(true);
     } else {
-        qDebug() << "get system socket fd from nnsock error.";
+        qCDebug(Framework) << "get system socket fd from nnsock error.";
     }
 }
 

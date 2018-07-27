@@ -147,10 +147,10 @@ CommonItem {
         }
     }
 
-    NQBackground {
-        id: background
-        anchors.fill: parent
-    }
+//    NQBackground {
+//        id: background
+//        anchors.fill: parent
+//    }
 
     IconPanel {
         id: iconPanel
@@ -290,11 +290,11 @@ CommonItem {
         repeat: true
         running: false
         onTriggered: {
-            if (carSpeedValue > 99) { // 车速
-                carSpeedValue = 0
-            } else {
-                carSpeedValue += 1
-            }
+//            if (carSpeedValue > 99) { // 车速
+//                carSpeedValue = 0
+//            } else {
+//                carSpeedValue += 1
+//            }
 
             if (engineSpeedValue > 20) { // 转速
                 engineSpeedValue = 0
@@ -354,6 +354,7 @@ CommonItem {
         if(visible){
             CarMsg.sendEnableKeys(true);
             demo_run.running = true
+        UiController.showLayer("NQBackground")
         } else {
             CarMsg.sendEnableKeys(false);
             demo_run.running = false
@@ -378,6 +379,6 @@ CommonItem {
 //    Component { id : calendarWeather; CalendarWeather {} }
 
     Component.onCompleted: {
-
+        UiController.showLayer("NQBackground")
     }
 }

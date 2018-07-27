@@ -1,17 +1,8 @@
 #pragma once
 
-#include <QObject>
-
-#include <QThread>
-#include <iostream>
 #include <assert.h>
 #include <unistd.h>
 #include <typeinfo>
-#include <QDebug>
-#include <map>
-//#include <shadow.h>
-#include <functional>
-#include <memory>
 
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
@@ -23,22 +14,20 @@ using namespace placeholders;
 
 CARFOX_BEGIN_NAMESPACE
 
-
-
 template<typename To, typename From>
 inline To implicit_cast(From const &f)
 {
-  return f;
+    return f;
 }
 
 template<typename To, typename From>
 inline std::shared_ptr<To> down_pointer_cast(const std::shared_ptr<From>& f)
 {
-  if (false)
-  {
-    implicit_cast<From*, To*>(0);
-  }
-  return ::std::static_pointer_cast<To>(f);
+    if (false)
+    {
+        implicit_cast<From*, To*>(0);
+    }
+    return ::std::static_pointer_cast<To>(f);
 }
 
 
@@ -92,7 +81,6 @@ private:
     google::protobuf::Message *createMessage(QString& typeName);
 
     QMap<QString, MessageCallback> mCallbackMaps;
-
 };
 
 CARFOX_END_NAMESPACE

@@ -1,14 +1,20 @@
 #pragma once
 
-#include <QDebug>
-
-#include <memory>
-#include <cstdlib>
-#include <functional>
-#include <QFile>
-#include <QDateTime>
-#include <iostream>
 #include <stdio.h>
+#include <unistd.h>
+#include <iostream>
+#include <cstdlib>
+#include <map>
+#include <functional>
+#include <memory>
+#include <QObject>
+#include <QFile>
+#include <QString>
+#include <QDateTime>
+#include <QMap>
+#include <QThread>
+#include <QLoggingCategory>
+#include <QDebug>
 
 #define HOST_IP_ADDRESS   "192.168.3.5"
 #define LOACTION_ADDRESS  "127.0.0.1"
@@ -18,6 +24,9 @@
 #define CARFOX_END_NAMESPACE }
 
 #define FUNC __PRETTY_FUNCTION__
+
+Q_DECLARE_LOGGING_CATEGORY(Framework)
+Q_DECLARE_LOGGING_CATEGORY(Yamaha)
 
 /*
  * Q_PROPERTY的替代宏定义，方便代码书写

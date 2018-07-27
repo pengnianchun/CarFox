@@ -1,5 +1,6 @@
 TEMPLATE = app
 
+QT += core
 QT += quick
 QT += qml
 QT += serialport
@@ -9,6 +10,7 @@ CONFIG += c++11
 CONFIG += qtquickcompiler
 CONFIG += resources_big
 CONFIG += debug
+CONFIG += qml_debug
 
 TARGET  = Yamaha
 
@@ -27,8 +29,7 @@ DEFINES += PROTO_VERSION=\\\"$$system(git submodule | grep proto | awk \'{print 
 QMAKE_CFLAGS += -Wno-unused-parameter
 QMAKE_CXXFLAGS += -Wno-unused-parameter
 
-CONFIG(release) {
-    CONFIG  += qml_debug
+CONFIG(debug, debug|release) {
     DEFINES += CARFOX_DEBUG_FPS
 }
 
@@ -43,7 +44,7 @@ unix:!macx{
 
     LIBS += -L$$PWD/../Framework/lib/
 
-    QMAKE_CXXFLAGS = -g -rdynamic -fasynchronous-unwind-tables
+    QMAKE_CXXFLAGS += -g -rdynamic -fasynchronous-unwind-tables
 
     cross_compile {
         LIBS += -lCarFoxArm

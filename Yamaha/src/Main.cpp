@@ -1,16 +1,18 @@
 #include <QGuiApplication>
-#include <Global.hpp>
-//#include <CarFox/Splash.hpp>
-#include <UndeadMain.hpp>
-#include <ThemeManager.hpp>
-#include "CustomUiController.hpp"
-
 #include <QCoreApplication>
 #include <QStringList>
 #include <QFontDatabase>
 #include <QFont>
-#include <QDebug>
 #include <QtGlobal>
+#include <QDebug>
+
+#include "Global.hpp"
+#include "UndeadMain.hpp"
+#include "ThemeManager.hpp"
+#include "CustomUiController.hpp"
+
+Q_LOGGING_CATEGORY(Framework, "Framework")
+Q_LOGGING_CATEGORY(Yamaha, "Yamaha")
 
 void infoVer(FILE *fp) {
     if (NULL != fp) {
@@ -22,12 +24,12 @@ void infoVer(FILE *fp) {
 }
 
 #if defined(Q_PROCESSOR_ARM)
+#include <stdio.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <syslog.h>
 #include <execinfo.h>
 #include <sys/ioctl.h>
-#include <stdio.h>
-#include <fcntl.h>
 
 #define MXCFB_SET_GBL_ALPHA     _IOW('F', 0x21, struct mxcfb_gbl_alpha)
 struct mxcfb_gbl_alpha {
@@ -51,21 +53,25 @@ void initfb() {
 
 void initEnv() {
     initfb();
-    setenv("QT_NO_FT_CACHE","1",1);
-    setenv("QT_QPA_EGLFS_FB","/dev/fb1",1);
-    setenv("QML_USE_GLYPHCACHE_WORKAROUND","1",1);
+
+    qputenv("QT_NO_FT_CACHE", "1");
+    qputenv("QT_QPA_EGLFS_FB", "/dev/fb1");
+    qputenv("QML_USE_GLYPHCACHE_WORKAROUND", "1");
+
+    qputenv("FB_MULTI_BUFFER", "3");
+    qputenv("QT_LOGGING_CONF", "/home/root/fy/qtlogging.ini");
 }
 #endif
 
 int main(int argc, char *argv[]) {
-#if defined(Q_PROCESSOR_ARM)
-    initEnv();
-#endif
+
+    qSetMessagePattern("%{time [yyyyMMdd hh:mm:ss.zzz]} %{function}@%{line} %{type}: %{message}");
 
     infoVer(stderr);
 
-    qputenv("FB_MULTI_BUFFER", "3");
-    qputenv("QT_LOGGING_CONF", "/home/root/fy/qtlogging.ini");
+#if defined(Q_PROCESSOR_ARM)
+    initEnv();
+#endif
 
     std::shared_ptr<QGuiApplication> app = std::make_shared<QGuiApplication>(argc, argv);
     std::unique_ptr<CustomUiController> uiController(new CustomUiController(1440, 540, false));

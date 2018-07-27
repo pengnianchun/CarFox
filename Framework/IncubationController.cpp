@@ -44,11 +44,12 @@ int IncubationController::calcCpuUsage()
         return 100;
     }
     int percent = (usg.user - mPrevUsage.user) + (usg.system - mPrevUsage.system) + (usg.idle - mPrevUsage.idle);
-    if (percent != 0)
+    if (percent != 0) {
         percent = ((usg.user - mPrevUsage.user) + (usg.system - mPrevUsage.system)) * 100/percent;
-    else
+    } else {
         percent = 100;
-    //printf("Percent:%d\n", percent);
+    }
+    qCDebug(Framework, "Percent: %d\n", percent);
     memcpy(&mPrevUsage, &usg, sizeof(CPU_USAGE));
     return percent;
 }
@@ -62,7 +63,8 @@ void IncubationController::timerEvent(QTimerEvent *event)
     int percent = calcCpuUsage();
     if (percent <= 50)
 #endif
-        incubateFor(mIncubateForTime); //接下来的mIncubateForTime时间内进行加载，除非没有qml需要加载
+
+    incubateFor(mIncubateForTime); //接下来的mIncubateForTime时间内进行加载，除非没有qml需要加载
 }
 
 /*

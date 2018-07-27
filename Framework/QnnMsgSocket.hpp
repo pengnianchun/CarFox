@@ -1,8 +1,5 @@
 #pragma once
 
-#include <QObject>
-#include <QMap>
-
 #include "nn.h"
 #include "pair.h"
 #include "pubsub.h"

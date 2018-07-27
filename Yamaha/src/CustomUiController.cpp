@@ -215,27 +215,7 @@ void CustomUiController::registerQmlTypes()
 
 void CustomUiController::loadFonts()
 {
-//#ifdef Q_PROCESSOR_ARM
-//    loadFont("/usr/lib/fonts/FangYan.ttf");
-//    loadFont("/usr/lib/fonts/NotoSansHans-DemiLight.ttf");
-//    loadFont("/usr/lib/fonts/ConceptFont.ttf");
-//    loadFont("/usr/lib/fonts/msyh.ttf");
-//#else
-//    loadFont(QDir::currentPath() + "/fonts/FangYan.ttf");
-//    loadFont(QDir::currentPath() + "/fonts/NotoSansHans-DemiLight.ttf");
-//    loadFont(QDir::currentPath() + "/fonts/ConceptFont.ttf");
-//    loadFont(QDir::currentPath() + "/fonts/msyh.ttf");
-//#endif
-
-//#if defined(Q_PROCESSOR_ARM)
-//    loadFont("/home/root/EuropeExt.ttf");
-//    loadFont("/home/root/AdobeHeitiStd.ttc");
-//#elif
-//    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/EuropeExt.ttf");
-//    loadFont("/home/samba/CarFox/CarFox/Yamaha/resource/Theme1/font/AdobeHeitiStd.ttc");
-//#endif
-
-    qDebug() << "CustomUiController::loadFonts()";
+    qDebug(Framework) << "CustomUiController::loadFonts()";
 }
 
 std::shared_ptr<carfox::CarMsg> CustomUiController::createCarMsg()
@@ -276,7 +256,6 @@ void CustomUiController::handleHasWarningInfoChanged(bool hasWarningInfo)
         popFromStackView(2);
     }
 }
-
 
 void CustomUiController::setReleaseVersion(const QString &releaseVersion)
 {

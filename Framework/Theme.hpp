@@ -21,7 +21,7 @@ public:
         LoadStarted,                // 开始加载
         InstantShowLayersLoaded,    // 立即显示的layer的加载完毕， 代表的同步加载
         ShowOnLoadedLayersLoaded,   // 需要显示时加载的layer的加载完毕，代表的异步加载
-        AllLayersLoaded              // 所有layer加载完毕
+        AllLayersLoaded             // 所有layer加载完毕
     };
 
     // themeId 代表 theme的名称
@@ -74,7 +74,7 @@ private:
 private slots:
     void loadInstantShowLayers();
     void loadShowOnLoadedLayers();
-    void loadManualShowLayers(); //当showOnLoadedLayersLoaded发射时调用
+    void loadManualShowLayers(); // 当showOnLoadedLayersLoaded发射时调用
     void onAllLayersLoaded();
 
     void setInstantShowLayersLoaded();
@@ -83,14 +83,13 @@ private slots:
 
 private:
     QHash<QString, std::shared_ptr<Layer>> mLayers;
-    QVector<std::shared_ptr<Layer>> mOrderLayers; //Make qml layers loaded in added order
+    QVector<std::shared_ptr<Layer>> mOrderLayers; // Make qml layers loaded in added order
     LoadProgressStatus mLoadProgressStatus = Theme::NoLayerLoaded;
     std::shared_ptr<ContextProperty> mContextProperties;
     std::shared_ptr<IncubationController> mIncubationController = std::make_shared<IncubationController>();
     bool mHasCreated = false;
 
     QString mRootMenuId;
-
 };
 
 CARFOX_END_NAMESPACE

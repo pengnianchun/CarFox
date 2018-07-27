@@ -4,6 +4,8 @@ import QtQuick.Layouts 1.1
 import QtQml 2.0
 
 Item {
+    width: 1440
+    height: 540
     layer.enabled: true
 
     property int carWaterTempWarning: 101
@@ -11,6 +13,24 @@ Item {
 
     property date currentDate: new Date()
     property string dateString
+
+
+    property bool homepanel_visible: true
+    property int  mainMenuIndex: 0
+
+    property int  carSpeedValue: CarMsg.carSpeed; // 车速
+    property int  engineSpeedValue: CarMsg.rpm; // 转速
+    property int  carVoyage: 99 // 续航里程
+    property int  carSoc: CarMsg.soc; // SOC
+    property real carBreakPressure: 1.0; // 制动气压
+    property real carBattery: 12; // 蓄电池电压
+    property real carTrip: 0 // TRIP
+    property real carOdo: 0 // ODO
+    property int  carWaterTemp: 0; // 水温
+    property int  carStartRemainTime: 10 // 发车倒计时
+    property int  carGearValue: 1 // 档位
+    property bool carGearRadar: false
+    property string textBlue: "#0088ff"
 
     function currentDateTime(){
         return Qt.formatDateTime(new Date(), "yyyy-MM-dd hh:mm:ss ddd");

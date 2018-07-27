@@ -72,5 +72,4 @@ void ContextProperty::setTrueCarMsg(std::shared_ptr<CarMsg> trueCarMsgObj)
     mTrueCarMsg = trueCarMsgObj;
 }
 
-
 CARFOX_END_NAMESPACE

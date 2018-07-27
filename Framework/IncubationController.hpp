@@ -2,9 +2,9 @@
 
 #include <QElapsedTimer>
 #include <QQmlIncubationController>
-#include <QFile>
 
 #include "Global.hpp"
+
 CARFOX_BEGIN_NAMESPACE
 
 /*
@@ -34,7 +34,7 @@ public:
     void stop();
 
 protected:
-    virtual void timerEvent(QTimerEvent *event) Q_DECL_OVERRIDE; //声明这是一个对虚函数进行定义的方法, 定时器执行函数
+    virtual void timerEvent(QTimerEvent *event) Q_DECL_OVERRIDE; // 声明这是一个对虚函数进行定义的方法, 定时器执行函数
 
 private:
     qint32 getCpuInfo(CPU_USAGE &usg);
@@ -43,10 +43,9 @@ private:
 private:
     qint32 mTimerId = -1;
     qint32 mStartTime = 50;       // 50ms定时器。
-    qint32 mIncubateForTime = 10; //孵化时间10ms。
+    qint32 mIncubateForTime = 10; // 孵化时间10ms。
 
-    CPU_USAGE mPrevUsage; //存储上一次的cpu信息
-
+    CPU_USAGE mPrevUsage; // 存储上一次的cpu信息
 };
 
 CARFOX_END_NAMESPACE

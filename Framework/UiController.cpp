@@ -23,7 +23,7 @@ void UiController::connectQuitToApp(QGuiApplication *app)
  */
 void UiController::showLayer(const QString &layerId)
 {
-    qDebug() << "===============UiController::showLayer : visible:" << mVisible;
+    qCDebug(Framework) << "===============UiController::showLayer : visible:" << mVisible;
     if(!mVisible) {
         return;
     }
@@ -36,7 +36,7 @@ void UiController::showLayer(const QString &layerId)
  */
 void UiController::setLayerProperty(const QString &layerId, const QString &propertyName, QVariant value, bool setForVisibleLayerOnly)
 {
-    qDebug() << "setLayerProperty" << layerId << "," << propertyName << "=" << value;
+    qCDebug(Framework) << "setLayerProperty" << layerId << "," << propertyName << "=" << value;
     if (setForVisibleLayerOnly) {
         if (!isLayerShown(layerId)) {
             return;
@@ -69,7 +69,7 @@ void UiController::setLayerChildObjectProperty(const QString &layerId, const QSt
  */
 void UiController::hideLayer(const QString &layerId)
 {
-    qDebug() << FUNC << layerId;
+    qCDebug(Framework) << FUNC << layerId;
     mThemeManager->hideLayer(layerId);
     updateRootMenuStatus(layerId, false);
 }
@@ -101,7 +101,7 @@ bool UiController::isMenuShown()
  */
 void UiController::start()
 {
-    qDebug() << "UiController::start, mFirstInstance:" << mFirstInstance;
+    qCDebug(Framework) << "UiController::start, mFirstInstance:" << mFirstInstance;
     loadFonts();
     registerQmlTypes();
     //调用子类的实现。
@@ -121,7 +121,7 @@ void UiController::hideRootMenu()
     if (rootMenuId == "") {
         return;
     }
-    qDebug() << "UiController::hideRootMenu " << rootMenuId;
+    qCDebug(Framework) << "UiController::hideRootMenu " << rootMenuId;
     hideLayer(rootMenuId);
 }
 
@@ -321,14 +321,14 @@ std::shared_ptr<ContextProperty> UiController::createContextProperty(std::shared
 void UiController::registerQmlTypes()
 {
 //    int ret;
-//     qmlRegisterType<RingCut>("RingCut", 1, 0, "RingCut");
-//     qmlRegisterType<RingTex>("RingTex", 1, 0, "RingTex");
- /*
-     // QML书写的QML类
-     ret = qmlRegisterType(QUrl(QString("qrc:/Qml/CommonItem.qml")), "CommonItem", 1, 0, "CommonItem");
-     if (ret == -1)
-         qWarning() << "Fatal Error: Failed to register CommonItem";
- */
+//    qmlRegisterType<RingCut>("RingCut", 1, 0, "RingCut");
+//    qmlRegisterType<RingTex>("RingTex", 1, 0, "RingTex");
+
+//    // QML书写的QML类
+//    ret = qmlRegisterType(QUrl(QString("qrc:/Qml/CommonItem.qml")), "CommonItem", 1, 0, "CommonItem");
+//    if (ret == -1) {
+//        qWarning() << "Fatal Error: Failed to register CommonItem";
+//    }
 }
 
 void UiController::loadFonts()
@@ -340,17 +340,17 @@ void UiController::loadFont(const QString &fontPath)
 {
     QFile fontFile(fontPath);
     if (!fontFile.open(QIODevice::ReadOnly)) {
-        qWarning() << "font file" << fontPath << "load fail";
+        qCWarning(Framework) << "font file" << fontPath << "load fail";
         return;
     }
 
+#define DEBUG_FAMILIES
     // You can see the family names here
-    #define DEBUG_FAMILIES
 #ifdef DEBUG_FAMILIES
     int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
     QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
     std::for_each(loadedFontFamilies.begin(), loadedFontFamilies.end(),
-                  [=] (QString fontFamily) { qDebug() << fontPath << " : " << fontFamily; });
+                  [=] (QString fontFamily) { qCDebug(Framework) << fontPath << " : " << fontFamily; });
 #else
     QFontDatabase::addApplicationFontFromData(fontFile.readAll());
 #endif
@@ -398,7 +398,7 @@ void UiController::loadWith(const QString &themeId)
     //UndeadMain::waitStartShow();
 
     // 显示本主题
-//    ThemeManager::instance()->handleSplashScreenFinished();
+    //ThemeManager::instance()->handleSplashScreenFinished();
 }
 
 void UiController::switchThemeTo(const QString &themeId)
@@ -426,7 +426,7 @@ void UiController::updateRootMenuStatus(const QString &layerId, bool status)
 
     // 菜单是否允许显示
     if (mIsMenuShown != status) {
-        qDebug() << "Menu shown changed:" << mIsMenuShown << "-->" << status;
+        qCDebug(Framework) << "Menu shown changed:" << mIsMenuShown << "-->" << status;
         mIsMenuShown = status;
         emit isMenuShownChanged();
     }
