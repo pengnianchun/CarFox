@@ -14,15 +14,6 @@
 Q_LOGGING_CATEGORY(Framework, "Framework")
 Q_LOGGING_CATEGORY(Yamaha, "Yamaha")
 
-void infoVer(FILE *fp) {
-    if (NULL != fp) {
-        fprintf(fp, "APP: %s\n", qApp->applicationName().toStdString().c_str());
-        fprintf(fp, "VER: %s\n", GIT_VERSION);
-        fprintf(fp, "PRO: %s\n", PROTO_VERSION);
-        fprintf(fp, "REL: %s %s\n", __DATE__, __TIME__);
-    }
-}
-
 #if defined(Q_PROCESSOR_ARM)
 #include <stdio.h>
 #include <fcntl.h>
@@ -32,6 +23,7 @@ void infoVer(FILE *fp) {
 #include <sys/ioctl.h>
 
 #define MXCFB_SET_GBL_ALPHA     _IOW('F', 0x21, struct mxcfb_gbl_alpha)
+
 struct mxcfb_gbl_alpha {
     int enable;
     int alpha;
@@ -59,7 +51,6 @@ void initEnv() {
     qputenv("QML_USE_GLYPHCACHE_WORKAROUND", "1");
 
     qputenv("FB_MULTI_BUFFER", "3");
-    qputenv("QT_LOGGING_CONF", "/home/root/fy/qtlogging.ini");
 }
 #endif
 
@@ -67,13 +58,17 @@ int main(int argc, char *argv[]) {
 
     qSetMessagePattern("%{time [yyyyMMdd hh:mm:ss.zzz]} %{function}@%{line} %{type}: %{message}");
 
-    infoVer(stderr);
+    qCWarning(Yamaha, "APP: %s", qApp->applicationName().toStdString().c_str());
+    qCWarning(Yamaha, "VER: %s", GIT_VERSION);
+    qCWarning(Yamaha, "PRO: %s", PROTO_VERSION);
+    qCWarning(Yamaha, "REL: %s %s", __DATE__, __TIME__);
 
 #if defined(Q_PROCESSOR_ARM)
     initEnv();
 #endif
 
     std::shared_ptr<QGuiApplication> app = std::make_shared<QGuiApplication>(argc, argv);
+
     std::unique_ptr<CustomUiController> uiController(new CustomUiController(1440, 540, false));
     uiController->setReleaseVersion("v1.0.0");
     uiController->start();

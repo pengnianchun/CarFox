@@ -11,7 +11,7 @@ void MsgHandler::registerMsgCallback(const google::protobuf::Descriptor *desc, c
 {
     if (desc) {
         mCallbackMaps[QString::fromStdString(desc->full_name())] = callback;
-        qCInfo(Framework) << "Register proto type: " << QString::fromStdString(desc->full_name());
+        qCInfo(Framework) << "Proto:" << QString::fromStdString(desc->full_name());
     }
 }
 
@@ -42,14 +42,14 @@ void MsgHandler::parseMessage(QByteArray &recvmsg)
     // get callback for parsing proto
     callback = mCallbackMaps[protoTypeName];
     if (!callback) {
-        qCDebug(Framework) << "get callback for proto type:" << protoTypeName << "failed!!";
+        qCInfo(Framework) << "get callback for proto type:" << protoTypeName << "failed!!";
         return;
     }
 
     // create protobuf::Message for proto
     message.reset(createMessage(protoTypeName));
     if (!message) {
-        qCDebug(Framework) << "get message for" << protoTypeName << "error";
+        qCInfo(Framework) << "get message for:" << protoTypeName << "error";
         return;
     }
 
@@ -59,7 +59,7 @@ void MsgHandler::parseMessage(QByteArray &recvmsg)
     if (bResult) {
         callback(message);
     } else {
-        qCDebug(Framework) << "parse" << protoTypeName << "to protobuf::Message format fail";
+        qCInfo(Framework) << "parse" << protoTypeName << "to protobuf::failed";
     }
 }
 
@@ -74,7 +74,7 @@ QByteArray MsgHandler::packMessage(const google::protobuf::Message &msg)
 
     protoTypeName = msg.GetDescriptor()->full_name().c_str();
     protoTypeNameLength = strlen(protoTypeName) + 1 /* '\0' */;
-//    qDebug() << " --- protoTypeName = " << protoTypeName << ", protoTypeNameLength = " << (int)protoTypeNameLength;
+    qCDebug(Framework) << " --- protoTypeName = " << protoTypeName << ", protoTypeNameLength = " << (int)protoTypeNameLength;
 
     memcpy(sendBuffer, &protoTypeNameLength, sizeof(protoTypeNameLength));
     memcpy(sendBuffer + sizeof(protoTypeNameLength), protoTypeName, protoTypeNameLength + 1);

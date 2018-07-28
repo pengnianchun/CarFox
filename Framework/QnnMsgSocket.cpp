@@ -110,7 +110,6 @@ bool Socket::connectToAddress(const QString &url)
         nn_close(sock);
         return false;
     }
-//    QThread::sleep(1);
 
     return true;
 }

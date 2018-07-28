@@ -9,12 +9,14 @@ CARFOX_BEGIN_NAMESPACE
 UiController::UiController(int screenWidth, int screenHeight, bool firstInstance)
     : mFirstInstance(firstInstance)
 {
+    qCDebug(Framework);
     Window::instance()->resize(screenWidth, screenHeight);
     Window::instance()->setVisible(false);
 }
 
 void UiController::connectQuitToApp(QGuiApplication *app)
 {
+    qCDebug(Framework);
     app->connect(Window::instance()->engine(), &QQmlEngine::quit, &QGuiApplication::quit);
 }
 
@@ -23,7 +25,7 @@ void UiController::connectQuitToApp(QGuiApplication *app)
  */
 void UiController::showLayer(const QString &layerId)
 {
-    qCDebug(Framework) << "===============UiController::showLayer : visible:" << mVisible;
+    qCDebug(Framework) << "Visible:" << mVisible;
     if(!mVisible) {
         return;
     }
@@ -36,15 +38,17 @@ void UiController::showLayer(const QString &layerId)
  */
 void UiController::setLayerProperty(const QString &layerId, const QString &propertyName, QVariant value, bool setForVisibleLayerOnly)
 {
-    qCDebug(Framework) << "setLayerProperty" << layerId << "," << propertyName << "=" << value;
+    qCDebug(Framework) << "layerId" << layerId << "," << propertyName << "=" << value;
     if (setForVisibleLayerOnly) {
         if (!isLayerShown(layerId)) {
+            qCInfo(Framework) << "layer not show" << layerId;
             return;
         }
     }
 
     auto layer = mThemeManager->qmlLayer(layerId);
     if (!layer) {
+        qCInfo(Framework) << "layer not exist" << layerId;
         return;
     }
 
@@ -57,8 +61,12 @@ void UiController::setLayerProperty(const QString &layerId, const QString &prope
  */
 void UiController::setLayerChildObjectProperty(const QString &layerId, const QString &objectName, const QString &propertyName, QVariant value)
 {
+    qCDebug(Framework);
     auto layer = mThemeManager->qmlLayer(layerId);
-    if (!layer) return;
+    if (!layer) {
+        qCInfo(Framework) << "layer not exist" << layerId;
+        return;
+    }
     auto layerItem = layer->qmlLayerItem();
     auto object = layerItem->findChild<QObject *>(objectName);
     object->setProperty(propertyName.toLatin1().data(), value);
@@ -69,7 +77,7 @@ void UiController::setLayerChildObjectProperty(const QString &layerId, const QSt
  */
 void UiController::hideLayer(const QString &layerId)
 {
-    qCDebug(Framework) << FUNC << layerId;
+    qCDebug(Framework) << "layerId" << layerId;
     mThemeManager->hideLayer(layerId);
     updateRootMenuStatus(layerId, false);
 }
@@ -81,6 +89,7 @@ void UiController::hideLayer(const QString &layerId)
  */
 bool UiController::isLayerShown(const QString &layerId)
 {
+    qCDebug(Framework);
     auto layer = mThemeManager->qmlLayer(layerId);
     if (layer) {
         auto layerItem = layer->qmlLayerItem();
@@ -93,6 +102,7 @@ bool UiController::isLayerShown(const QString &layerId)
 
 bool UiController::isMenuShown()
 {
+    qCDebug(Framework) << "mIsMenuShown:" << mIsMenuShown;
     return mIsMenuShown;
 }
 
@@ -101,7 +111,7 @@ bool UiController::isMenuShown()
  */
 void UiController::start()
 {
-    qCDebug(Framework) << "UiController::start, mFirstInstance:" << mFirstInstance;
+    qCDebug(Framework) << "mFirstInstance:" << mFirstInstance;
     loadFonts();
     registerQmlTypes();
     //调用子类的实现。
@@ -117,11 +127,13 @@ void UiController::start()
  */
 void UiController::hideRootMenu()
 {
+    qCDebug(Framework);
     QString rootMenuId = mThemeManager->currentTheme()->getRootMenuId(); // 通过主题获得菜单id
     if (rootMenuId == "") {
+        qCInfo(Framework) << "rootMenuId not exist" << rootMenuId;
         return;
     }
-    qCDebug(Framework) << "UiController::hideRootMenu " << rootMenuId;
+    qCDebug(Framework) << "hideRootMenu:" << rootMenuId;
     hideLayer(rootMenuId);
 }
 
@@ -130,8 +142,12 @@ void UiController::hideRootMenu()
  */
 void UiController::showRootMenu()
 {
+    qCDebug(Framework);
     QString rootMenuId = mThemeManager->currentTheme()->getRootMenuId();
-    if (rootMenuId == "") return;
+    if (rootMenuId == "") {
+        qCInfo(Framework) << "rootMenuId not exist" << rootMenuId;
+        return;
+    }
     showLayer(rootMenuId);
 }
 
@@ -140,6 +156,7 @@ void UiController::showRootMenu()
  */
 void UiController::loadLayer(const QString &layerId)
 {
+    qCDebug(Framework);
     auto layer = mThemeManager->qmlLayer(layerId);
     if (layer && !layer->isLoaded()) {
         layer->loadSync();
@@ -151,6 +168,7 @@ void UiController::loadLayer(const QString &layerId)
  */
 void UiController::unloadLayer(const QString &layerId)
 {
+    qCDebug(Framework);
     mThemeManager->unloadLayer(layerId);
 }
 
@@ -344,16 +362,16 @@ void UiController::loadFont(const QString &fontPath)
         return;
     }
 
-#define DEBUG_FAMILIES
+#define DEBUG_FontFAMILIES
     // You can see the family names here
-#ifdef DEBUG_FAMILIES
+#ifdef DEBUG_FontFAMILIES
     int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
     QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
     std::for_each(loadedFontFamilies.begin(), loadedFontFamilies.end(),
-                  [=] (QString fontFamily) { qCDebug(Framework) << fontPath << " : " << fontFamily; });
-#else
+                  [=] (QString fontFamily) { qCInfo(Framework) << fontPath << " : " << fontFamily; });
+#else // DEBUG_FontFAMILIES
     QFontDatabase::addApplicationFontFromData(fontFile.readAll());
-#endif
+#endif // DEBUG_FontFAMILIES
 
     fontFile.close();
 }
@@ -426,7 +444,7 @@ void UiController::updateRootMenuStatus(const QString &layerId, bool status)
 
     // 菜单是否允许显示
     if (mIsMenuShown != status) {
-        qCDebug(Framework) << "Menu shown changed:" << mIsMenuShown << "-->" << status;
+        qCDebug(Framework) << "mIsMenuShown:" << mIsMenuShown << "-->" << status;
         mIsMenuShown = status;
         emit isMenuShownChanged();
     }

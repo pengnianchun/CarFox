@@ -164,7 +164,7 @@ void ThemeManager::loadThemesBackground()
  */
 void ThemeManager::handleSplashScreenFinished()
 {
-    qDebug() << "now splash screen finished.";
+    qCDebug(Framework);
     Window::instance()->setVisible(true);
     showMainScreen();
 }
@@ -267,7 +267,6 @@ void ThemeManager::loadGlobal()
     if (isGlobalLayersLoaded()) {
         emit currentTheme()->isLoadedChanged();
     }
-
 }
 
 /*
@@ -277,7 +276,7 @@ void ThemeManager::loadGlobal()
 void ThemeManager::showMainScreen()
 {
     // 如果没有准备好，那就等准备好了在调用
-    qCDebug(Framework) << "ThemeManager::showMainScreen, mReady:" << mReady;
+    qCDebug(Framework) << "mReady:" << mReady;
     if (!mReady) {
         connect(this, &ThemeManager::ready, this, &ThemeManager::showMainScreen,
                 static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::DirectConnection));
@@ -288,11 +287,12 @@ void ThemeManager::showMainScreen()
     }
 
     if (!mThemes.contains(mCurrentThemeId)) {
+        qCInfo(Framework) << "mCurrentThemeId not exist!";
         return;
     }
 
     auto current = mThemes[mCurrentThemeId];
-    qCWarning(Framework) << "Now, Let's show screen!, igOn status:" << current->contextProperty()->trueCarMsg()->property("carMode").toInt();
+    qCInfo(Framework) << "igOn status:" << current->contextProperty()->trueCarMsg()->property("carMode").toInt();
 
     //当前状态为IGNON的时候，直接显示主界面中所有的InstantShow类型的layer，否则显示休眠界面
     int carmode = current->contextProperty()->trueCarMsg()->property("carMode").toInt();
@@ -304,7 +304,7 @@ void ThemeManager::showMainScreen()
     if (carmode == 1) {
         current->show();
     }
-    else if (carmode == 2) {
+    else/* if (carmode == 2)*/ {
         emit showDormancy(); //  发射休眠界面的信号
     }
 }

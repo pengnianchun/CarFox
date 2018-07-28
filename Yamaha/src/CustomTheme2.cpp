@@ -11,7 +11,8 @@ void CustomTheme2::create()
     qDebug() << "CustomTheme2::create";
     // 主界面
     addLayer("qrc:/Theme/Theme2/HomePanel.qml", "HomePanel", carfox::Layer::InstantShow);
-    addLayer("qrc:/Theme/Theme2/NQBackground.qml", "NQBackground", carfox::Layer::ManualShow);
+    // NQBackground
+    //addLayer("qrc:/Theme/Theme2/NQBackground.qml", "NQBackground", carfox::Layer::ManualShow);
     // 导航
     addLayer("qrc:/Theme/Theme2/Navigation.qml", "Navigation", carfox::Layer::ManualShow);
     // 电话

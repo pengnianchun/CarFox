@@ -147,10 +147,10 @@ CommonItem {
         }
     }
 
-//    NQBackground {
-//        id: background
-//        anchors.fill: parent
-//    }
+    NQBackground {
+        id: background
+        anchors.fill: parent
+    }
 
     IconPanel {
         id: iconPanel
@@ -354,7 +354,7 @@ CommonItem {
         if(visible){
             CarMsg.sendEnableKeys(true);
             demo_run.running = true
-        UiController.showLayer("NQBackground")
+            //UiController.showLayer("NQBackground")
         } else {
             CarMsg.sendEnableKeys(false);
             demo_run.running = false

@@ -38,14 +38,15 @@ void Layer::loadSync()
         if (mLayerItem->property("me").isValid()) {
             mLayerItem->setProperty("me", objectName());
         }
-        //qDebug() << mQmlUrl << " is loaded syncly....";
+        qCDebug(Framework) << mQmlUrl << " is loaded syncly....";
         // AsyncLoad中的Layer被强制SyncLoad，必须通知AsyncLoader，否则其余的Layer无法被load
-        if (mParentTheme)
+        if (mParentTheme) {
             emit asyncLoaded(mParentTheme);
+        }
     } else {
         mQmlLoadStatus = Layer::Unloaded;
         if (mComponent->isError()) {
-            qCritical() << mQmlUrl + " qml error: " << mComponent->errorString();
+            qCCritical(Framework) << mQmlUrl + " qml error: " << mComponent->errorString();
         }
     }
 }
@@ -65,7 +66,7 @@ void Layer::unload()
         mIncubator->forceCompletion();
         ThemeManager::instance()->currentTheme()->incubationController()->stop();
     }
-    qCDebug(Framework) << mQmlUrl << " is unloaded";
+    qCInfo(Framework) << mQmlUrl << " is unloaded";
     mLayerItem.reset();
     mQmlLoadStatus = Layer::Unloaded;
 }
@@ -95,14 +96,14 @@ void Layer::show()
     if (!isLoaded()) {
         loadSync();
     }
-    qCDebug(Framework) << "show layer" << objectName();
+    qCInfo(Framework) << "Show layer:" << objectName();
     // 可见的Layer接收carMsg信号
     mContext->setContextProperty(mContextProperties->carMsgName(), mContextProperties->trueCarMsg().get());
     mContext->setContextProperty(mContextProperties->multiLanguageName(), mContextProperties->trueMultiLanguage().get());
 
     mLayerItem->setParentItem(Window::instance()->contentItem()); //设置父级
     mLayerItem->setVisible(true);
-    qCDebug(Framework) << "Layer::show : " << mContextProperties->carMsgName();
+    qCInfo(Framework) << "Layer::show :" << mContextProperties->carMsgName();
 }
 
 /*
@@ -110,7 +111,7 @@ void Layer::show()
  */
 void Layer::hide()
 {
-    qCDebug(Framework) << "Hide layer" << objectName();
+    qCInfo(Framework) << "Hide layer:" << objectName();
     if (showPolicy() == Layer::ManualShow) {
         disconnect(this, &Layer::loaded, this, &Layer::show);
     }
@@ -185,11 +186,11 @@ void Layer::handleQmlLoadStatusChanged(QQmlIncubator::Status status)
     #ifndef Q_PROCESSOR_ARM
             if (!mLayerItem) {
                 if (!QString(typeid(mLayerItem).name()).contains("QQuickItem")) {
-                    qCDebug(Framework) << "Error:" << mQmlUrl << "must have an 'Item' as root!";
+                    qCWarning(Framework) << "Error:" << mQmlUrl << "must have an 'Item' as root!";
                 } else if (!(mIncubator->object())) {
-                    qCDebug(Framework) << mQmlUrl << "is loaded, but the item is null.";
+                    qCWarning(Framework) << mQmlUrl << "is loaded, but the item is null.";
                 } else {
-                    qCDebug(Framework) << mQmlUrl << "cannot convert to QQuickItem.";
+                    qCWarning(Framework) << mQmlUrl << "cannot convert to QQuickItem.";
                 }
             }
     #endif
@@ -202,7 +203,7 @@ void Layer::handleQmlLoadStatusChanged(QQmlIncubator::Status status)
             //ThemeManager::instance()->currentTheme()->loaderController()->stop();
             mParentTheme->incubationController()->stop();
             mQmlLoadStatus = Layer::Loaded;
-            //qDebug() << mQmlUrl << " is loaded";
+            qInfo() << mQmlUrl << " is loaded";
             emit asyncLoaded(mParentTheme);
         }
 }
@@ -222,7 +223,7 @@ void Layer::loadAsyncInternal()
         return;
     }
 
-    //qDebug() << "loadLayerAsync()" << objectName() << mParentTheme;
+    qCDebug(Framework) << "loadLayerAsync()" << objectName() << mParentTheme;
     if (!mParentTheme) return;
 
     mParentTheme->incubationController()->start();
@@ -231,7 +232,7 @@ void Layer::loadAsyncInternal()
 
     mComponent->create(*mIncubator.get(), mContext.get(), mContext.get());
     if (mComponent->isError()) {
-        qCritical() << mQmlUrl + " qml error: " << mComponent->errorString();
+        qCWarning(Framework) << mQmlUrl + " qml error: " << mComponent->errorString();
     }
 
     // 当前QML异步加载完毕后，发个消息，以便加载下一个

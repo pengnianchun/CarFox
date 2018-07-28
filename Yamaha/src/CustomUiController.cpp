@@ -179,27 +179,23 @@ void CustomUiController::handleStartShow(int data)
 }
 
 /*
- * 休眠, qWarning的内容供测试软件用
+ * 休眠
  */
 void CustomUiController::handleSystemShutdown()
 {
-    qWarning() << "begin system shutdown";
-
-    qWarning() << "end system shutdown";
+    qCInfo(Yamaha);
 }
 
-// 唤醒, qWarning的内容供测试软件用，勿删
+// 唤醒
 void CustomUiController::handleSystemWakeup()
 {
-    qWarning() << "begin system wakeup";
-
-    qWarning() << "end system wakeup";
+    qCInfo(Yamaha);
 }
 
 // 休眠
 void CustomUiController::showDormancy()
 {
-    qDebug() << "CustomUiController::showDormancy";
+    qCDebug(Yamaha);
     hideCurrentTheme();
     themeManager()->qmlLayer("DormancyPanel")->loadSync();
     showLayer("DormancyPanel");

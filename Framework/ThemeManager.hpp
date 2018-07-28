@@ -64,7 +64,7 @@ private:
     Theme *mLoadingTheme;
 
     QHash<QString, std::shared_ptr<Theme>> mThemes;
-    QHash<QString, std::shared_ptr<Layer>> mGlobalLayers; //全局的layer,不隶属于某一个theme
+    QHash<QString, std::shared_ptr<Layer>> mGlobalLayers; // 全局的layer,不隶属于某一个theme
 };
 
 CARFOX_END_NAMESPACE

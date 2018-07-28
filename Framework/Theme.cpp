@@ -54,7 +54,7 @@ bool Theme::isLoading()
  */
 void Theme::loadAsync()
 {
-    qDebug() << "loading theme full asynchronous: " << objectName() << ", cnt: " << mLayers.count();
+    qCDebug(Framework) << "loadAsync:" << objectName() << " count:" << mLayers.count();
     mLoadProgressStatus = Theme::LoadStarted;
     connect(this, &Theme::showOnLoadedLayersLoaded, this, &Theme::loadManualShowLayers, static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::DirectConnection));
     loadAllLayers();
@@ -65,7 +65,7 @@ void Theme::loadAsync()
  */
 void Theme::loadSync()
 {
-    qCDebug(Framework) << "loading theme full synchronous: " << objectName() << ", cnt: " << mLayers.count();
+    qCDebug(Framework) << "loadSync:" << objectName() << " count:" << mLayers.count();
     if (!this->isLoaded()) { // 如果没有完全加载完毕
         for (auto &layer : mLayers.values()) {
             layer->loadSync();
@@ -82,7 +82,7 @@ void Theme::loadSync()
 
 void Theme::load()
 {
-    qCDebug(Framework) << "loading theme part asynchronous: " << objectName() << ", cnt: " << mLayers.count();
+    qCDebug(Framework) << "load:" << objectName() << " count;" << mLayers.count();
     mLoadProgressStatus = Theme::LoadStarted;
     // 首先将InstantShow类型的qml同步加载
     loadInstantShowLayers();
@@ -122,7 +122,7 @@ void Theme::showLayer(const QString &layerId)
         mLayers[layerId]->show();
     }
     else {
-        qCCritical(Framework) << "WARNING:" << objectName() << "::showLayer()," << layerId << " not exists..";
+        qCWarning(Framework) << objectName() << "layerId:" << layerId << " not exists";
     }
 }
 
@@ -135,7 +135,7 @@ void Theme::hideLayer(const QString &layerId)
         mLayers[layerId]->hide();
     }
     else {
-        qCCritical(Framework) << "WARNING:" << objectName() << "::hideLayer()," << layerId << " not exists..";
+        qCWarning(Framework) << objectName() << "layerId:" << layerId << " not exists";
     }
 }
 
@@ -168,7 +168,7 @@ std::shared_ptr<Layer> Theme::layer(const QString &layerId)
         return mLayers[layerId];
     }
     else {
-        qCCritical(Framework) << "WARNING:" << layerId << " not exists..";
+        qCWarning(Framework) << objectName() << "layerId:" << layerId << " not exists";
         return nullptr;
     }
 }
@@ -184,7 +184,7 @@ std::shared_ptr<IncubationController> Theme::incubationController()
 void Theme::show()
 {
     for (auto &layer : mLayers.values()) {
-        qCDebug(Framework) << "Theme::show, layer:" << layer->objectName() << ",showPolicy:" << layer->showPolicy();
+        qCDebug(Framework) << "layer:" << layer->objectName() << ",showPolicy:" << layer->showPolicy();
         if (layer->showPolicy() == Layer::InstantShow) {
             layer->show();
         }
@@ -234,7 +234,7 @@ void Theme::addLayer(const std::shared_ptr<Layer> layer)
     }
     else {
         // FIXME: 临时解决方案
-        qCCritical(Framework) << "Fatal Error: Layer" << layerId << "already exist...";
+        qCWarning(Framework) << "layerId:" << layerId << " already exists";
         while (1);
     }
 }
@@ -315,7 +315,7 @@ void Theme::loadManualShowLayers()
 
 void Theme::onAllLayersLoaded()
 {
-    qCDebug(Framework) << "Theme: " << objectName() << "Loaded ok.";
+    qCDebug(Framework) << "Theme: " << objectName() << "Loaded.";
     mLoadProgressStatus = Theme::AllLayersLoaded;
     emit allLayersLoaded();
     emit isLoadedChanged();
@@ -335,7 +335,7 @@ void Theme::setInstantShowLayersLoaded()
 
 void Theme::setShowOnLoadedLayersLoaded()
 {
-    qCDebug(Framework) << "setShowOnLoadedLayersLoaded";
+    qCDebug(Framework);
     if (sender()) {
         disconnect(static_cast<Layer *>(sender()), &Layer::loaded, this, &Theme::setShowOnLoadedLayersLoaded);
     }

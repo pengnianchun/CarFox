@@ -6,7 +6,7 @@ import "qrc:/Component/Component"
 
 MenuItem {
     id: menuItem
-
+z:1
     property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Menu/"
 

@@ -94,7 +94,7 @@ protected:
     virtual void registerQmlTypes();
     virtual void loadFonts();
 
-    void loadFont(const QString &fontPath);
+    virtual void loadFont(const QString &fontPath);
 
     void addTheme(std::shared_ptr<Theme> theme);
     void addTheme(std::shared_ptr<Theme> theme, qint32 startTime,qint32 incubateForTime);

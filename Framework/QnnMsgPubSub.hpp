@@ -32,7 +32,7 @@ public:
     inline bool write(const QByteArray &message)
     {
         if (!m_sockVaild) {
-            qDebug() << "socket for write invalid now.";
+            qCDebug(Framework) << "socket for write invalid now.";
             return false;
         }
         return sock->write(message);
@@ -65,14 +65,14 @@ public:
     {
         m_sockVaild = sock->connectToAddress(addr);
 
-        qDebug() << "m_sockValid:" << m_sockVaild;
+        qCDebug(Framework) << "m_sockValid:" << m_sockVaild;
         return m_sockVaild;
     }
 
     inline QByteArray read()
     {
         if (!m_sockVaild) {
-            qDebug() << "socket for read invalid now.";
+            qCDebug(Framework) << "socket for read invalid now.";
             return "";
         }
 
@@ -82,7 +82,7 @@ public:
     inline int setsockopt(int level, int option, const void *optval, size_t optlen)
     {
         if (!m_sockVaild) {
-            qDebug() << "socket for setsockopt invalid now.";
+            qCDebug(Framework) << "socket for setsockopt invalid now.";
             return -1;
         }
 
