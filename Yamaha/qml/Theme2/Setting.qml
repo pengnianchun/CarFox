@@ -7,78 +7,82 @@ MenuItem {
     width: 800
     height: 410
 
+    property bool bKeyEnable: true
+    property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/setting/"
+
     ListModel {
         id: appModel
-        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_lang.png"; }
-        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_light.png"; }
-        ListElement { name: ""; icon: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_vol.png"; }
+        Component.onCompleted: {
+            append({"icon": sourceImageUrl + "setting_light.png"});
+            append({"icon": sourceImageUrl + "setting_vol.png"});
+            append({"icon": sourceImageUrl + "setting_lang.png"});
+        }
     }
 
     Component {
         id: appDelegate
         Item {
-            width: 300
-            height: 200
-            scale: PathView.iconScale
+            width: 320
+            height: 48
 
             Image {
                 id: myIcon
-                y: 125
                 anchors.horizontalCenter: parent.horizontalCenter
                 source: icon
                 smooth: true
             }
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: view.currentIndex = index
-            }
         }
     }
 
-    Component {
-        id: appHighlight
-        Rectangle {
-
-        }
-    }
-        Image {
-            anchors.top: parent.top
-            anchors.topMargin: 175
-            anchors.horizontalCenter: parent.horizontalCenter
-            source: "qrc:/theme2/symbol/Theme2/Modules/setting/setting_select.png"
-        }
-
-
-    PathView {
-        id: view
-        x: 200
-        y: 0
-        highlight: appHighlight
-        preferredHighlightBegin: 0.5
-        preferredHighlightEnd: 0.5
-        focus: true
+    ListView {
+        id: setting
+        x: 225
+        y: 40
+        width: 350
+        height: 200
+        clip: true
         model: appModel
         delegate: appDelegate
-        path: Path {
-            startX: 10
-            startY: 50
-            PathAttribute { name: "iconScale"; value: 0.5 }
-            PathQuad { x: 200; y: 150; controlX: 50; controlY: 200 }
-            PathAttribute { name: "iconScale"; value: 1.0 }
-            PathQuad { x: 390; y: 50; controlX: 350; controlY: 200 }
-            PathAttribute { name: "iconScale"; value: 0.5 }
-        }
+        highlight: Image { source: sourceImageUrl + "setting_select.png"; }
 
-        Keys.onRightPressed: if (!moving) { incrementCurrentIndex(); console.log(moving) }
-        Keys.onLeftPressed: if (!moving) decrementCurrentIndex()
+    }
+
+    enterMenu: function() {
+        if (bKeyEnable) {
+            console.debug("Setting enterMenu")
+        }
+    }
+
+    hideMenu: function() {
+        if (bKeyEnable) {
+            console.debug("Setting hideMenu")
+        }
+        UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
+    }
+
+    previousMenu: function() {
+        if (bKeyEnable) {
+            console.debug("Setting previousMenu")
+            setting.currentIndex--
+        }
+    }
+
+    nextMenu: function() {
+        if (bKeyEnable) {
+            console.debug("Setting nextMenu")
+            setting.currentIndex++
+        }
     }
 
     onVisibleChanged: {
-        if(visible){
+        if (visible) {
             //
         } else {
             //
         }
+    }
+
+    Component.onCompleted: {
+
     }
 }

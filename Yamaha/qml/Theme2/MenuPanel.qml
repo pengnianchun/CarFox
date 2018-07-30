@@ -49,7 +49,7 @@ MenuItem {
                 if (mainMenuIndex < listMenu.count - 1) {
                     mainMenuIndex = ++listMenu.currentIndex
                 }
-                if (mainMenuIndex === 1) {
+                if (mainMenuIndex === 1 || mainMenuIndex === 5) {
                     bKeyEnable = false
                 }
             }
