@@ -8,24 +8,18 @@ Item {
     height: 540
     layer.enabled: true
 
-    property int carWaterTempWarning: 101
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
-
-
-    property bool homepanel_visible: true
-    property int  mainMenuIndex: 0
 
     property int  carSpeedValue: CarMsg.carSpeed; // 车速
     property int  engineSpeedValue: CarMsg.rpm; // 转速
-    property int  carVoyage: 99 // 续航里程
+    property int  carVoyage: CarMsg.soc * 3 // 续航里程
     property int  carSoc: CarMsg.soc; // SOC
-    property real carBreakPressure: 1.0; // 制动气压
-    property real carBattery: CarMsg.battery; // 蓄电池电压
+    property real carTotalVoltage: CarMsg.totalVoltage; // 总电压
+    property real carTotalCurrent: CarMsg.totalCurrent; // 总电流
     property real carTrip: CarMsg.trip // TRIP
     property real carOdo: CarMsg.odo // ODO
-    property int  carWaterTemp: 0; // 水温
+    property int  carWaterTemp: CarMsg.engineWaterTemp; // 水温
     property int  carGearValue: CarMsg.gear // 档位
-    property bool carGearRadar: false
 
     property int  carStartRemainTime: 60 // 发车倒计时
     property string textBlue: "#0088ff"
@@ -318,7 +312,7 @@ Item {
         anchors.topMargin: 10
         anchors.left: rectLeft.left
         anchors.leftMargin: 10
-        visible: homepanel_visible && carWaterTemp > carWaterTempWarning
+        visible: homepanel_visible && carWaterTemp > 103
 
         Image {
             id: warning
@@ -339,7 +333,7 @@ Item {
         Timer {
             interval: 800
             repeat: true
-            running: carWaterTemp > carWaterTempWarning
+            running: carWaterTemp > 103
             onTriggered: {
                 warning.visible = !warning.visible
             }
@@ -370,7 +364,7 @@ Item {
         anchors.left: engineSpeed.right
         anchors.leftMargin: -20
         anchors.bottom: engineSpeed.bottom
-        text: qsTr("x1000\r\nr/min")
+        text: qsTr("x100\r\nr/min")
         color: "#666666"
         font.family: msyh.name
         font.pixelSize: 16
@@ -391,13 +385,13 @@ Item {
             spacing: 5
             anchors.horizontalCenter: parent.horizontalCenter
             Text {
-                text: qsTr("制动气压： ") + carBreakPressure.toFixed(1) + qsTr(" Mpa")
+                text: qsTr("总电压： ") + carTotalVoltage.toFixed(1) + qsTr(" V")
                 color: "#666666"
                 font.family: msyh.name
                 font.pixelSize: 16
             }
             Text {
-                text: qsTr("蓄电池电压： ") + carBattery.toFixed(1) + qsTr(" V")
+                text: qsTr("总电流： ") + carTotalCurrent.toFixed(1) + qsTr(" A")
                 color: "#666666"
                 font.family: msyh.name
                 font.pixelSize: 16
@@ -484,7 +478,7 @@ Item {
         }
     }
 
-
     Component.onCompleted: {
+
     }
 }

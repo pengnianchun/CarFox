@@ -11,20 +11,6 @@ MenuItem {
     menuLayerId: "BatteryStatus"
     parentMenuId: "MenuMainDetail"
 
-    enterMenu: function() {
-        // default
-    }
-    hideMenu: function() {
-        //调用关闭三层菜单通用函数
-        //MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
-    }
-    previousMenu: function() {
-        // default
-    }
-    nextMenu: function() {
-        // default
-    }
-
     property var voltageInfo: CarMsg.voltageInfo
     property var tempInfo: CarMsg.tempInfo
 
@@ -34,6 +20,7 @@ MenuItem {
             battery_model.append({"number":i,"voltage":voltageInfo[i].toFixed(2)});
         }
     }
+
     onTempInfoChanged: {
         temperature_model.clear();
         for(var i in tempInfo){
@@ -147,6 +134,22 @@ MenuItem {
         ListElement { name: ""; value: ""; unit: "" }
         ListElement { name: ""; value: ""; unit: "" }
         ListElement { name: ""; value: ""; unit: "" }
+    }
+
+    Text {
+        id: title
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: qsTr("电池组信息")
+        color: "white"
+        font.pixelSize: 28
+    }
+
+    Image {
+        anchors.top: title.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"
     }
 
     //电池组信息
@@ -447,5 +450,25 @@ MenuItem {
             fontSize: 12
             fontColor: "#00a7f5"
         }
+    }
+
+    enterMenu: function() {
+        // default
+    }
+
+    hideMenu: function() {
+        // default
+    }
+
+    previousMenu: function() {
+        // default
+    }
+
+    nextMenu: function() {
+        // default
+    }
+
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
     }
 }

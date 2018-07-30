@@ -24,6 +24,7 @@ Item {
             unitValue: unit
             checkRadioStatus: checkstatus
             fontSize: fontSizeList
+            textWidth: textWidthList
             unitWidth: unitWidthList
         }
     }

@@ -2,7 +2,6 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
-//import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
     width: 800
@@ -10,24 +9,6 @@ MenuItem {
 
     menuLayerId: "TcuSystem"
     parentMenuId: "MenuMainDetail"
-
-    enterMenu: function() {
-        // default
-    }
-    hideMenu: function() {
-        //调用关闭三层菜单通用函数
-        //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-    }
-    previousMenu: function() {
-        // default
-    }
-    nextMenu: function() {
-        // default
-    }
-
-    Component.onCompleted: {
-        //CarMsg.sendMenuInfo(?, ?);
-    }
 
     //TCU系统信息
     property string actualClutchPosition: CarMsg.actualClutchPosition //离合实际位置
@@ -66,13 +47,49 @@ MenuItem {
         ListElement { name: "OC"; value: "0"; unit: "" }
     }
 
-    ListViewWeir {
-        anchors.centerIn: parent
+    Text {
+        id: title
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: qsTr("TCU系统信息")
+        color: "white"
+        font.pixelSize: 28
+    }
 
+    Image {
+        anchors.top: title.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"
+    }
+
+    ListViewWeir {
+        x: 200
+        y: 80
+        width: 400
+        height: 300
         listModel: listmodelone
-        width: parent.width
-        height: parent.height
-        textWidthList: 500
         fontSizeList: 15
+        unitWidthList: 45
+    }
+
+    enterMenu: function() {
+        // default
+    }
+
+    hideMenu: function() {
+        // default
+    }
+
+    previousMenu: function() {
+        // default
+    }
+
+    nextMenu: function() {
+        // default
+    }
+
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
     }
 }

@@ -11,24 +11,6 @@ MenuItem {
     menuLayerId: "AuxiliarySystem"
     parentMenuId: "MenuMainDetail"
 
-    enterMenu: function() {
-        //default
-    }
-    hideMenu: function() {
-        //调用关闭三层菜单通用函数
-        //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-    }
-    previousMenu: function() {
-        // default
-    }
-    nextMenu: function() {
-        // default
-    }
-
-    Component.onCompleted: {
-        //CarMsg.sendMenuInfo(?, ?);
-    }
-
     //辅助系统信息
     property string oilPumpDcacWoutputCurrent: CarMsg.oilPumpDcacWoutputCurrent.toFixed(0) //油泵DC/AC W相输出电流
     property string oilPumpDcacVoutputCurrent: CarMsg.oilPumpDcacVoutputCurrent.toFixed(0) //油泵DC/AC V相输出电流
@@ -56,13 +38,49 @@ MenuItem {
         ListElement { name: "散热器温度"; value: "0"; unit: "℃" }
     }
 
-    ListViewWeir {
-        anchors.centerIn: parent
+    Text {
+        id: title
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: qsTr("辅助系统信息")
+        color: "white"
+        font.pixelSize: 28
+    }
 
+    Image {
+        anchors.top: title.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"
+    }
+
+    ListViewWeir {
+        x: 200
+        y: 80
+        width: 400
+        height: 300
         listModel: listmodelone
-        width: parent.width
-        height: parent.height
-        textWidthList: 500
         fontSizeList: 15
+        unitWidthList: 45
+    }
+
+    enterMenu: function() {
+        //default
+    }
+
+    hideMenu: function() {
+        //default
+    }
+
+    previousMenu: function() {
+        // default
+    }
+
+    nextMenu: function() {
+        // default
+    }
+
+    Component.onCompleted: {
+        //CarMsg.sendMenuInfo(?, ?);
     }
 }

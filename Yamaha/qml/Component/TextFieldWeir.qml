@@ -11,7 +11,7 @@ Item {
     property real fontSize: 18;
     property string fontColor: "#ffffff";
     property bool fontBold: false
-    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
+    FontLoader { id: localFont; name: "Microsoft" }
     Text {
         id: textfield
         opacity: textOpacity

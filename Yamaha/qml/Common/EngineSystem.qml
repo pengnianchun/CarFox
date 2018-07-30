@@ -2,7 +2,6 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
-//import "../JS/MenuMainDetailController.js" as MenuMainDetailController
 
 MenuItem {
     width: 800
@@ -10,20 +9,6 @@ MenuItem {
 
     menuLayerId: "EngineSystem"
     parentMenuId: "MenuMainDetail"
-
-    enterMenu: function() {
-        // default
-    }
-    hideMenu: function() {
-        //调用关闭三层菜单通用函数
-        //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-    }
-    previousMenu: function() {
-        // default
-    }
-    nextMenu: function() {
-        // default
-    }
 
     //发动机系统信息
     property string engineFuelConsumption: CarMsg.engineFuelConsumption.toFixed(2) //发动机油耗
@@ -57,17 +42,46 @@ MenuItem {
         ListElement { name: "发动机进气温度"; value: "0"; unit: "℃" }
     }
 
-    RowLayout {
-        anchors.centerIn: parent
-        spacing: 50
+    Text {
+        id: title
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: qsTr("发动机系统信息")
+        color: "white"
+        font.pixelSize: 28
+    }
 
-        ListViewWeir {
-            listModel: listmodelone
-            width: parent.width
-            height: parent.height
-            fontSizeList: 15
-            unitWidthList: 60
-        }
+    Image {
+        anchors.top: title.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"
+    }
+
+    ListViewWeir {
+        x: 200
+        y: 80
+        width: 400
+        height: 300
+        listModel: listmodelone
+        fontSizeList: 15
+        unitWidthList: 60
+    }
+
+    enterMenu: function() {
+        // default
+    }
+
+    hideMenu: function() {
+        // default
+    }
+
+    previousMenu: function() {
+        // default
+    }
+
+    nextMenu: function() {
+        // default
     }
 
     Component.onCompleted: {

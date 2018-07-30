@@ -6,7 +6,7 @@ MenuItem {
     width: 800
     height: 410
 
-    property real  timeCountDown: 10.0
+    property real  timeCountDown: 6.0
 
     Rectangle {
         width: 600
@@ -56,7 +56,7 @@ MenuItem {
         id: people
         x: 100
         y: 100
-        visible: false
+        visible: true
 
         Image {
             id: warningPeople
@@ -122,27 +122,6 @@ MenuItem {
     }
 
     onVisibleChanged: {
-        if (visible) {
-            demo_adas.start()
-        } else {
-            demo_adas.stop()
-        }
-    }
 
-    // Demo
-    Timer {
-        id: demo_adas
-        interval: 100
-        repeat: true
-        running: false
-        onTriggered: {
-            timeCountDown -= 0.2
-            if (timeCountDown < 8) {
-                people.visible = true
-            }
-            if (timeCountDown < 1) {
-                running = false
-            }
-        }
     }
 }

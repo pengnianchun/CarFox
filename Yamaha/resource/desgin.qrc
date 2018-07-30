@@ -285,7 +285,9 @@
         <file>Theme2/Modules/setting/setting_light.png</file>
         <file>Theme2/Modules/setting/setting_vol.png</file>
         <file>Theme2/Modules/setting/setting_select.png</file>
-        <file>Theme2/Symbol/background.jpg</file>
+        <file>Theme2/Symbol/Lamp_insulationRed_white.png</file>
+        <file>Theme2/Symbol/BackhDoorAlarm.png</file>
+        <file>Theme2/Symbol/StopWL_yellow.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>
@@ -330,9 +332,6 @@
         <file>Theme1/Slice/sun.png</file>
         <file>Theme1/Slice/Monitoring state.png</file>
     </qresource>
-    <qresource prefix="/Fonts">
-        <file>Theme1/font/EuropeExt.ttf</file>
-    </qresource>
     <qresource prefix="/theme1/sub_screen_slice">
         <file>Theme1/sub_screen_slice/ADAS.png</file>
         <file>Theme1/sub_screen_slice/analys.png</file>
@@ -352,5 +351,11 @@
         <file>Theme1/sub_screen_slice/dispatche.png</file>
         <file>Theme1/sub_screen_slice/error.png</file>
         <file>Theme1/sub_screen_slice/info.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>Common/ring_0.png</file>
+        <file>Common/ring_1.png</file>
+        <file>Common/ring_2.png</file>
+        <file>Common/ring_3.png</file>
     </qresource>
 </RCC>

@@ -59,4 +59,8 @@ void CustomTheme2::create()
     addLayer("qrc:/Common/BatteryStatus.qml", "BatteryStatus", carfox::Layer::ManualShow);
     // 空调系统信息
     addLayer("qrc:/Common/AirConditioning.qml", "AirConditioning", carfox::Layer::ManualShow);
+    // InstrumentSystem
+    addLayer("qrc:/Common/InstrumentSystem.qml", "InstrumentSystem", carfox::Layer::ManualShow);
+    // InstrumentModule
+    addLayer("qrc:/Common/InstrumentModule.qml", "InstrumentModule", carfox::Layer::ManualShow);
 }

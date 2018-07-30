@@ -14,13 +14,13 @@ Item {
     property string titleColor: "#ffffff"
     property string fontColor: "#ffffff"
     property string unitColor: "#ffffff"
-    property string sourceImageUrl: "qrc:/Common/CommonImage/Other/"
+    property string sourceImageUrl: "qrc:/Common/"
     property string radioRelease: sourceImageUrl + "ring_0.png";
     property string radioPress: sourceImageUrl + "ring_1.png";
     property bool checkRadioStatus: false
     property int radioType: 1;//2
     property real unitWidth: 30
-    FontLoader { id: localFont; source: "qrc:/Fonts/Font/msyh.ttc" }
+    FontLoader { id: localFont; name: "Microsoft" }
     //Rectangle{anchors.fill: parent;color: "#000000"}
     Image {
         id: radio

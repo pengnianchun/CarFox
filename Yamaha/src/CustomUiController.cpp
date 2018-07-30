@@ -134,11 +134,8 @@ void CustomUiController::handleInitialized()
     switchLanguage();
 
     auto themeMode = mCarMsg->property("themeMode").toInt();
-    qDebug() << "themeMode : " << themeMode;
-#ifdef CARFOX_DEBUG_FPS
-    themeMode = CustomEnum::Theme2Mode;
-#endif // CARFOX_DEBUG_FPS
-    switch (themeMode) {
+    qCDebug(Yamaha) << "themeMode : " << themeMode;
+    switch (themeMode + 1) {
     case CustomEnum::Theme1Mode:
         loadWith("CustomTheme1");
         break;

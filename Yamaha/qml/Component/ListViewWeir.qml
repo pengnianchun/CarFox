@@ -7,6 +7,7 @@ Item {
     property var listModel;
     property int listRadioType: 1;//2
     property real fontSizeList: 18
+    property string fontColorList: "#0088ff"
     property real unitWidthList: 30
     property real textWidthList: 300
     property string titleColorList: "#ffffff"
@@ -24,6 +25,7 @@ Item {
             unitValue: unit
             textWidth: textWidthList
             fontSize: fontSizeList
+            fontColor: fontColorList
             unitWidth: unitWidthList
             titleColor: titleColorList
         }

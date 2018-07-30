@@ -31,7 +31,7 @@ Item {
         id: countdown
         interval: 1000
         repeat: true
-        running: countDownTimer
+        running: countDownTimer && (countDownTime >= 0)
         triggeredOnStart: true
         onTriggered: {
             var min = Math.floor(countDownTime / 60)

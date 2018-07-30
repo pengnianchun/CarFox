@@ -12,45 +12,53 @@ CommonItem {
     visible: false
     layer.enabled: true
 
+    property bool bKeyEnable: true
     property bool homepanel_visible: true
     property int  mainMenuIndex: 0
 
-    property int  carGearValue: CarMsg.gear // 档位
-    property bool carGearRadar: false
-
-    property bool bKeyEnable: true
+    property int carGearValue: CarMsg.gear // 档位
+    property int carGearRadar: 0 // 0-None,1-雷达,2-倒车影像
 
     property string textBlue: "#0088ff"
     property string currentLayer: ""
 
     onKeyEnter: function() {
         console.debug("HomePanel onKeyEnter")
-        if (mainMenuIndex === 0) {
-            console.debug("HomePanel show menuPanel")
-            if (carGearValue != 3) {
-                menuPanel.visible = true
-            }
-        }
     }
 
     onKeyBack: function() {
         if (mainMenuIndex === 0) {
             console.debug("HomePanel hide menuPanel")
-            menuPanel.visible = false
+            if (carGearRadar !== 0) {
+                carGearRadar = 0
+                homepanel_visible = true
+            }
         }
     }
 
     onKeyUp: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyUp")
-            carGearRadar = !carGearRadar
+            if (carGearValue === 7) {
+                if (carGearRadar === 1) {
+                    carGearRadar = 2
+                } else {
+                    carGearRadar = 1
+                }
+            }
         }
     }
 
     onKeyDown: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyDown")
-            carGearRadar = !carGearRadar
+            if (carGearValue === 7) {
+                if (carGearRadar === 1) {
+                    carGearRadar = 2
+                } else {
+                    carGearRadar = 1
+                }
+            }
         }
     }
 
@@ -63,7 +71,7 @@ CommonItem {
         }
 
         if (mainMenuIndex === 1) {
-            currentLayer = "Navigation";
+            currentLayer = "CarInfo";
         }
         else if (mainMenuIndex === 2) {
             currentLayer = "Phone";
@@ -105,7 +113,7 @@ CommonItem {
             currentLayer = "CalendarWeather";
         }
         else if (mainMenuIndex === 15) {
-            currentLayer = "CarInfo";
+            currentLayer = "Navigation";
         }
         else {
             currentLayer = ""
@@ -120,15 +128,15 @@ CommonItem {
 
     onCarGearValueChanged: {
         console.debug("onCarGearValueChanged " + carGearValue)
-        if (carGearValue === 3) { // 倒车
-            carGearRadar = false // 默认倒车影像
+        if (carGearValue === 7) { // 倒车
+            carGearRadar = 2 // 默认倒车影像
             if (mainMenuIndex !== 0) {
                 mainMenuIndex = 0 // 隐藏模块
-                menuPanel.visible = false
             }
             homepanel_visible = false // 隐藏主界面
         }
         else {
+            carGearRadar = 0
             if (mainMenuIndex !== 0) {
                 homepanel_visible = false
             } else {
@@ -154,18 +162,17 @@ CommonItem {
         anchors.centerIn: parent
 
         // 雷达
-        Radar { visible: carGearValue === 3 && carGearRadar; }
+        Radar { visible: carGearValue === 7 && carGearRadar === 1; }
         // 倒车影像
-        BackCamera { visible: carGearValue === 3 && !carGearRadar; }
+        BackCamera { visible: carGearValue === 7 && carGearRadar === 2; }
     }
 
     MenuPanel {
         id: menuPanel
-        z: 10
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 80
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: false
+        visible: true
     }
 
     onVisibleChanged: {

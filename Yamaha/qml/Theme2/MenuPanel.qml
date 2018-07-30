@@ -6,8 +6,8 @@ import "qrc:/Component/Component"
 
 MenuItem {
     id: menuItem
-z:1
-    property bool bKeyEnable: true
+
+    //property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Menu/"
 
     menuLayerId: "MenuPanel"
@@ -16,15 +16,10 @@ z:1
     enterMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel enterMenu")
-//            homepanel_visible = false
-//            UiController.setLayerProperty("HomePanel", "bKeyEnable", false);
         }
     }
 
     hideMenu: function() {
-        //调用关闭三层菜单通用函数
-        //MenuMainDetailController.returnMenuPanel(menuLayerId,parentMenuId);
-
         if (bKeyEnable) {
             console.debug("MenuPanel hideMenu")
             homepanel_visible = true
@@ -36,13 +31,10 @@ z:1
     previousMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel previousMenu")
-            if (mainMenuIndex > 0) {
-                mainMenuIndex = --listMenu.currentIndex
-            } else {
-                // Demo ThemeSetting
-                UiController.setLayerProperty("HomePanel", "homepanel_visible", false);
-                UiController.showLayer("ThemeSetting")
-                bKeyEnable = false
+            if (carGearValue !== 7) {
+                if (mainMenuIndex > 0) {
+                    mainMenuIndex = --listMenu.currentIndex
+                }
             }
         }
     }
@@ -50,24 +42,21 @@ z:1
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel nextMenu")
-            if (mainMenuIndex < listMenu.count - 1) {
-                mainMenuIndex = ++listMenu.currentIndex
-            }
-
-            if (mainMenuIndex === listMenu.count - 1) {
-                bKeyEnable = false
+            if (carGearValue !== 7) {
+                if (mainMenuIndex < listMenu.count - 1) {
+                    mainMenuIndex = ++listMenu.currentIndex
+                }
+                if (mainMenuIndex === 1) {
+                    bKeyEnable = false
+                }
             }
         }
-    }
-
-    onBKeyEnableChanged: {
-        console.debug("MenuPanle onBKeyEnableChanged " + bKeyEnable)
     }
 
     ListModel {
         id: modelMenu
         ListElement { src: "home.png"; }
-        ListElement { src: "navigation.png"; }
+        ListElement { src: "infoSearch.png"; }
         ListElement { src: "phone.png"; }
         ListElement { src: "music.png"; }
         ListElement { src: "radio.png"; }
@@ -81,7 +70,7 @@ z:1
         ListElement { src: "schedule.png"; }
         ListElement { src: "help.png"; }
         ListElement { src: "calendar.png"; }
-        ListElement { src: "infoSearch.png"; }
+        ListElement { src: "navigation.png"; }
     }
 
     Component {
@@ -100,7 +89,7 @@ z:1
         width: homepanel_visible ? 500 : 800
         height: 45
         anchors.centerIn: parent
-        color: "lightblue"
+        color: "#004b8d"
         radius: 10
         Behavior on width {
             NumberAnimation { duration: 800 }

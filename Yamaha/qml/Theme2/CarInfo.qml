@@ -1,8 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import "qrc:/Component/Component"
-import "qrc:/Common"
-
 
 MenuItem {
     width: 800
@@ -13,6 +11,48 @@ MenuItem {
     property int currentIndex: 0
     property string currentLayer: ""
 
+    function showCurrent() {
+        if (currentLayer !== "") {
+            UiController.hideLayer(currentLayer);
+        }
+
+        if (currentIndex === 0) {
+            currentLayer = "ControlSystem";
+        }
+        else if (currentIndex === 1) {
+            currentLayer = "EngineSystem";
+        }
+        else if (currentIndex === 2) {
+            currentLayer = "AuxiliarySystem";
+        }
+        else if (currentIndex === 3) {
+            currentLayer = "TcuSystem";
+        }
+        else if (currentIndex === 4) {
+            currentLayer = "BatterySystem";
+        }
+        else if (currentIndex === 5) {
+            currentLayer = "BatteryStatus";
+        }
+        else if (currentIndex === 6) {
+            currentLayer = "AirConditioning";
+        }
+        else if (currentIndex === 7) {
+            currentLayer = "InstrumentSystem";
+        }
+        else if (currentIndex === 8) {
+            currentLayer = "InstrumentModule";
+        }
+        else {
+            currentLayer = ""
+        }
+
+        if (visible && currentLayer !== "") {
+            UiController.showLayer(currentLayer);
+            UiController.setLayerProperty(currentLayer, "x", 320);
+            UiController.setLayerProperty(currentLayer, "y", 65);
+        }
+    }
 
     enterMenu: function() {
         if (bKeyEnable) {
@@ -24,87 +64,45 @@ MenuItem {
         if (bKeyEnable) {
             console.debug("CarInfo hideMenu")
         }
+        UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
     }
 
     previousMenu: function() {
         if (bKeyEnable) {
             console.debug("CarInfo previousMenu")
-            currentIndex--
+            if (currentIndex > 0) {
+                currentIndex--
+            }
         }
     }
 
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("CarInfo nextMenu")
-            currentIndex++
+            if (currentIndex < 8) {
+                currentIndex++
+            }
         }
     }
 
     onCurrentIndexChanged: {
         console.debug("onCurrentIndexChanged:" + currentIndex)
-
-        if (currentLayer !== "") {
-            UiController.hideLayer(currentLayer);
-        }
-
-        if (currentIndex === 0) {
-            currentLayer = "EngineSystem";
-        }
-        else if (currentIndex === 1) {
-            currentLayer = "AuxiliarySystem";
-        }
-        else if (currentIndex === 2) {
-            currentLayer = "TcuSystem";
-        }
-        else if (currentIndex === 3) {
-            currentLayer = "BatterySystem";
-        }
-        else if (currentIndex === 4) {
-            currentLayer = "BatteryStatus";
-        }
-        else if (currentIndex === 5) {
-            currentLayer = "AirConditioning";
-        }
-        else if (currentIndex === 6) {
-            currentLayer = "TirePressure";
-        }
-        else if (currentIndex === 8) {
-            currentLayer = "DriveAnalysis";
-        }
-        else if (currentIndex === 9) {
-            currentLayer = "Consumption";
-        }
-        else if (currentIndex === 10) {
-            currentLayer = "ConsumptionHistory";
-        }
-
-        else {
-            currentLayer = ""
-        }
-
-        if (currentLayer !== "") {
-            UiController.showLayer(currentLayer);
-            UiController.setLayerProperty(currentLayer, "x", 320);
-            UiController.setLayerProperty(currentLayer, "y", 65);
-        }
+        showCurrent()
     }
 
-
-
-
-
-
-
     onVisibleChanged: {
-//        if(visible) {
-//            UiController.setLayerProperty(currentLayer, "x", 320);
-//            UiController.setLayerProperty(currentLayer, "y", 65);
-//            UiController.showLayer("EngineSystem");
-//        }
+        if (visible) {
+            showCurrent()
+        } else {
+            if (currentLayer !== "") {
+                UiController.hideLayer(currentLayer);
+                currentIndex = 0
+                currentLayer = ""
+            }
+        }
     }
 
     Component.onCompleted: {
 
     }
-
 }

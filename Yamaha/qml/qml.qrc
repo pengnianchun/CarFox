@@ -72,5 +72,7 @@
         <file>Common/InstrumentModule.qml</file>
         <file>Common/InstrumentSystem.qml</file>
         <file>Common/ControlSystem.qml</file>
+        <file>JS/InstrumentInfo.js</file>
+        <file>JS/InstrumentController.js</file>
     </qresource>
 </RCC>

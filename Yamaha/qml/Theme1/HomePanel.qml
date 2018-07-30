@@ -18,18 +18,9 @@ CommonItem {
     property int carSpeed: 0;
     property int tireRotation: 0;
 
-//    FontLoader {
-//        id: adobeHeitiStd
-//        source: "qrc:/Fonts/Theme1/font/AdobeHeitiStd.ttc"
-//    }
-//    FontLoader {
-//        id: adobeHeitiStd
-//        source: "qrc:/Fonts/Theme1/font/微软雅黑.ttf"
-//    }
-
     FontLoader {
         id: europeExt
-        source: "qrc:/Fonts/Theme1/font/EuropeExt.ttf"
+        name: "Microsoft"
     }
 
     Image {

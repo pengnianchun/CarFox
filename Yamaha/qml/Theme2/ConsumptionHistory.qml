@@ -54,7 +54,7 @@ MenuItem {
 
     Text {
         id: text1
-        x: 603
+        x: 615
         y: 21
         text: qsTr("2018年呈现")
         color: "white"

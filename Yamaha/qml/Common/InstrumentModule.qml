@@ -2,9 +2,8 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
-import "qrc:/Common/JS/InstrumentInfo.js" as InstrumentInfo
-//import "../../JS/MenuMainDetailController.js" as MenuMainDetailController
-//import "../../JS/InstrumentController.js" as InstrumentController
+import "qrc:/JS/InstrumentInfo.js" as InstrumentInfo
+import "qrc:/JS/InstrumentController.js" as InstrumentController
 
 MenuItem {
     width: 800
@@ -13,29 +12,7 @@ MenuItem {
     menuLayerId: "InstrumentModule"
     parentMenuId: "MenuMainDetail"
 
-    enterMenu: function() {
-        // default
-    }
-    hideMenu: function() {
-        //调用关闭三层菜单通用函数
-        MenuMainDetailController.returnMenuPanel(menuLayerId, parentMenuId);
-    }
-    previousMenu: function() {
-        // default
-    }
-    nextMenu: function() {
-        // default
-    }
-
-    onVisibleChanged: {
-        if(visible){
-            update_model_timer.running = true;
-        }else{
-            update_model_timer.running = false;
-        }
-    }
-
-    property int instrumentCurrentIndex: 0
+    property int instrumentCurrentIndex: 1
     property var listModelIdArray: [listmodel_one, listmodel_two, listmodel_three, listmodel_four]
 
     onInstrumentCurrentIndexChanged: {
@@ -481,10 +458,11 @@ MenuItem {
 
     RowLayout {
         anchors.top: parent.top
+        anchors.topMargin: 25
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 5
         Rectangle {
-            width: 530
+            width: 450
             height: 270
             color: "transparent"
             border.color: "#ffffff"
@@ -514,6 +492,7 @@ MenuItem {
                 height: parent.height
                 widthListView: parent.width/4-100
                 fontSizeList: 15
+                textWidthList: 200
                 listRadioType: 2
             }
             ListViewRadioWeir {
@@ -526,12 +505,13 @@ MenuItem {
                 height: parent.height
                 widthListView: parent.width/4-100
                 fontSizeList: 15
+                textWidthList: 200
                 unitWidthList: 40
                 listRadioType: 2
             }
         }
         Rectangle {
-            width: 395
+            width: 350
             height: 270
             color: "transparent"
             border.color: "#ffffff"
@@ -582,7 +562,7 @@ MenuItem {
 
     ColumnLayout {
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
+        anchors.bottomMargin: 45
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 5
         RowLayout {
@@ -639,5 +619,33 @@ MenuItem {
                 unitWidth: 60
             }
         }
+    }
+
+    enterMenu: function() {
+        // default
+    }
+
+    hideMenu: function() {
+        // default
+    }
+
+    previousMenu: function() {
+        // default
+    }
+
+    nextMenu: function() {
+        // default
+    }
+
+    onVisibleChanged: {
+        if(visible){
+            update_model_timer.running = true;
+        } else {
+            update_model_timer.running = false;
+        }
+    }
+
+    Component.onCompleted: {
+
     }
 }
