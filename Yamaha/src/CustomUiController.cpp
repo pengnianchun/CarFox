@@ -209,7 +209,7 @@ void CustomUiController::registerQmlTypes()
 void CustomUiController::loadFonts()
 {
     qDebug(Framework);
-    loadFont("/usr/lib/fonts/msyh.ttf");
+    loadFont("/usr/lib/fonts/FzLt.TTF");
 }
 
 std::shared_ptr<carfox::CarMsg> CustomUiController::createCarMsg()

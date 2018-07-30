@@ -35,6 +35,9 @@ MenuItem {
                 if (mainMenuIndex > 0) {
                     mainMenuIndex = --listMenu.currentIndex
                 }
+//                if (mainMenuIndex === 1) {
+//                    bKeyEnable = false
+//                }
             }
         }
     }

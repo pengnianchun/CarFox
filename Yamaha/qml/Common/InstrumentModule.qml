@@ -12,7 +12,7 @@ MenuItem {
     menuLayerId: "InstrumentModule"
     parentMenuId: "MenuMainDetail"
 
-    property int instrumentCurrentIndex: 1
+    property int instrumentCurrentIndex: 0
     property var listModelIdArray: [listmodel_one, listmodel_two, listmodel_three, listmodel_four]
 
     onInstrumentCurrentIndexChanged: {
@@ -479,7 +479,7 @@ MenuItem {
                     textHeight: parent.height
                     textValue: "输出"
                     fontBold: true
-                    fontSize: 15
+                    fontSize: 12
                 }
             }
             ListViewRadioWeir {
@@ -491,21 +491,21 @@ MenuItem {
                 width: parent.width/4-70
                 height: parent.height
                 widthListView: parent.width/4-100
-                fontSizeList: 15
-                textWidthList: 200
+                fontSizeList: 12
+                textWidthList: 250
                 listRadioType: 2
             }
             ListViewRadioWeir {
                 anchors.top: parent.top
                 anchors.topMargin: 20
                 anchors.left: parent.left
-                anchors.leftMargin: 260
+                anchors.leftMargin: 220
                 listModel: listmodel_two
                 width: parent.width/4-70
                 height: parent.height
                 widthListView: parent.width/4-100
-                fontSizeList: 15
-                textWidthList: 200
+                fontSizeList: 12
+                textWidthList: 250
                 unitWidthList: 40
                 listRadioType: 2
             }
@@ -528,7 +528,7 @@ MenuItem {
                     textHeight: parent.height
                     textValue: "输入"
                     fontBold: true
-                    fontSize: 15
+                    fontSize: 12
                 }
             }
             ListViewRadioWeir {
@@ -540,7 +540,7 @@ MenuItem {
                 width: parent.width/4-130
                 height: parent.height
                 widthListView: parent.width/4-150
-                fontSizeList: 15
+                fontSizeList: 12
                 unitWidthList: 40
                 listRadioType: 1
             }
@@ -553,7 +553,7 @@ MenuItem {
                 width: parent.width/4-70
                 height: parent.height
                 widthListView: parent.width/4-100
-                fontSizeList: 15
+                fontSizeList: 12
                 unitWidthList: 40
                 listRadioType: 1
             }
@@ -576,7 +576,7 @@ MenuItem {
                 textValue: "1.0"//0.1倍
                 unitValue: "Ω"
                 checkRadioStatus: false
-                fontSize: 15
+                fontSize: 12
                 unitWidth: 60
             }
             TextRadioWeir {
@@ -588,7 +588,7 @@ MenuItem {
                 textValue: "1.0"//0.1倍
                 unitValue: "Ω"
                 checkRadioStatus: false
-                fontSize: 15
+                fontSize: 12
                 unitWidth: 60
             }
         }
@@ -603,7 +603,7 @@ MenuItem {
                 textValue: "1.0"
                 unitValue: "HZ"
                 checkRadioStatus: false
-                fontSize: 15
+                fontSize: 12
                 unitWidth: 60
             }
             TextRadioWeir {
@@ -615,7 +615,7 @@ MenuItem {
                 textValue: "120"
                 unitValue: "KM/H"
                 checkRadioStatus: false
-                fontSize: 15
+                fontSize: 12
                 unitWidth: 60
             }
         }
@@ -631,14 +631,17 @@ MenuItem {
 
     previousMenu: function() {
         // default
+
     }
 
     nextMenu: function() {
         // default
+        instrumentCurrentIndex ++
     }
 
     onVisibleChanged: {
         if(visible){
+            instrumentCurrentIndex = 1
             update_model_timer.running = true;
         } else {
             update_model_timer.running = false;

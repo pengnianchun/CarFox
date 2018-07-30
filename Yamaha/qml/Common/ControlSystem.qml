@@ -132,7 +132,7 @@ MenuItem {
         width: 400
         height: 300
         listModel: listmodelone
-        fontSizeList: 15
+        fontSizeList: 12
         unitWidthList: 45
     }
 
@@ -142,7 +142,7 @@ MenuItem {
         width: 400
         height: 300
         listModel: listmodeltwo
-        fontSizeList: 15
+        fontSizeList: 12
         unitWidthList: 45
     }
 

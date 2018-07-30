@@ -362,7 +362,7 @@ void UiController::loadFont(const QString &fontPath)
         return;
     }
 
-#ifdef DEBUG_FontFAMILIES // You can see the family names here
+#ifndef DEBUG_FontFAMILIES // You can see the family names here
     int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
     QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
     std::for_each(loadedFontFamilies.begin(), loadedFontFamilies.end(),

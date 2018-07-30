@@ -85,20 +85,18 @@ MenuItem {
         width: 200
         height: 300
         listModel: listmodel_one
-
         widthListView: 180
-        fontSizeList: 15
+        fontSizeList: 12
     }
 
     ListViewRadioWeir {
-
         x: 214
         y: 60
         width: 200
         height: 300
         listModel: listmodel_two
         widthListView: 180
-        fontSizeList: 15
+        fontSizeList: 12
         unitWidthList: 40
     }
 
@@ -109,7 +107,7 @@ MenuItem {
         height: 300
         listModel: listmodel_three
         widthListView: 180
-        fontSizeList: 15
+        fontSizeList: 12
         unitWidthList: 40
     }
 
@@ -120,7 +118,7 @@ MenuItem {
         height: 300
         listModel: listmodel_four
         widthListView: 180
-        fontSizeList: 15
+        fontSizeList: 12
         unitWidthList: 40
     }
 

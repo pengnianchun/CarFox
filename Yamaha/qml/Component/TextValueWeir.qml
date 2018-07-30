@@ -16,7 +16,7 @@ Item {
     property real unitWidth: 30
     property bool leftAlignStatus: false
     property real leftMarginValue: 0
-    FontLoader { id: localFont; name: "Microsoft" }
+    FontLoader { id: localFont; name: "Droid Sans Fallback" }
     //Rectangle{anchors.fill: parent;color: "#000000"}
     Text {
         id: text_title
