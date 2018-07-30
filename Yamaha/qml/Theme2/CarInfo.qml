@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import "qrc:/Component/Component"
+import "qrc:/Common"
+
 
 MenuItem {
     width: 800
@@ -8,6 +10,9 @@ MenuItem {
 
     property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/"
+    property int currentIndex: 0
+    property string currentLayer: ""
+
 
     enterMenu: function() {
         if (bKeyEnable) {
@@ -24,51 +29,82 @@ MenuItem {
     previousMenu: function() {
         if (bKeyEnable) {
             console.debug("CarInfo previousMenu")
+            currentIndex--
         }
     }
 
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("CarInfo nextMenu")
+            currentIndex++
         }
     }
 
-    ListModel {
-        id: modelMenu
-        ListElement { src: "01.png"; }
-        ListElement { src: "02.png"; }
-        ListElement { src: "03.png"; }
-        ListElement { src: "04.png"; }
-        ListElement { src: "05.png"; }
-        ListElement { src: "06.png"; }
-        ListElement { src: "07.png"; }
-        ListElement { src: "08.png"; }
-        ListElement { src: "09.png"; }
-        ListElement { src: "10.png"; }
-        ListElement { src: "11.png"; }
-    }
+    onCurrentIndexChanged: {
+        console.debug("onCurrentIndexChanged:" + currentIndex)
 
-    Component {
-        id: nameDelegate
+        if (currentLayer !== "") {
+            UiController.hideLayer(currentLayer);
+        }
 
-        Image {
-            asynchronous: true
-            cache: true
-            source: sourceImageUrl + model.src
+        if (currentIndex === 0) {
+            currentLayer = "EngineSystem";
+        }
+        else if (currentIndex === 1) {
+            currentLayer = "AuxiliarySystem";
+        }
+        else if (currentIndex === 2) {
+            currentLayer = "TcuSystem";
+        }
+        else if (currentIndex === 3) {
+            currentLayer = "BatterySystem";
+        }
+        else if (currentIndex === 4) {
+            currentLayer = "BatteryStatus";
+        }
+        else if (currentIndex === 5) {
+            currentLayer = "AirConditioning";
+        }
+        else if (currentIndex === 6) {
+            currentLayer = "TirePressure";
+        }
+        else if (currentIndex === 8) {
+            currentLayer = "DriveAnalysis";
+        }
+        else if (currentIndex === 9) {
+            currentLayer = "Consumption";
+        }
+        else if (currentIndex === 10) {
+            currentLayer = "ConsumptionHistory";
+        }
+
+        else {
+            currentLayer = ""
+        }
+
+        if (currentLayer !== "") {
+            UiController.showLayer(currentLayer);
+            UiController.setLayerProperty(currentLayer, "x", 320);
+            UiController.setLayerProperty(currentLayer, "y", 65);
         }
     }
 
-    ListView {
-        id: listMenu
-        width: 600
-        height: 35
-        anchors.centerIn: parent
-        clip: true
-        model: modelMenu
-        delegate: nameDelegate
-        spacing: 35
-        orientation: ListView.Horizontal
-        highlight: Rectangle { color: "lightsteelblue"; radius: 3; }
+
+
+
+
+
+
+    onVisibleChanged: {
+//        if(visible) {
+//            UiController.setLayerProperty(currentLayer, "x", 320);
+//            UiController.setLayerProperty(currentLayer, "y", 65);
+//            UiController.showLayer("EngineSystem");
+//        }
+    }
+
+    Component.onCompleted: {
+
     }
 
 }

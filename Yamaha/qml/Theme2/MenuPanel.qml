@@ -53,6 +53,10 @@ z:1
             if (mainMenuIndex < listMenu.count - 1) {
                 mainMenuIndex = ++listMenu.currentIndex
             }
+
+            if (mainMenuIndex === listMenu.count - 1) {
+                bKeyEnable = false
+            }
         }
     }
 

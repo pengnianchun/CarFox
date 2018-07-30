@@ -96,14 +96,13 @@ void Layer::show()
     if (!isLoaded()) {
         loadSync();
     }
-    qCInfo(Framework) << "Show layer:" << objectName();
+    qCInfo(Framework) << "Show layer:" << objectName() << mContextProperties->carMsgName();;
     // 可见的Layer接收carMsg信号
     mContext->setContextProperty(mContextProperties->carMsgName(), mContextProperties->trueCarMsg().get());
     mContext->setContextProperty(mContextProperties->multiLanguageName(), mContextProperties->trueMultiLanguage().get());
 
     mLayerItem->setParentItem(Window::instance()->contentItem()); //设置父级
     mLayerItem->setVisible(true);
-    qCInfo(Framework) << "Layer::show :" << mContextProperties->carMsgName();
 }
 
 /*

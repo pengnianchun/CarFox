@@ -167,7 +167,7 @@ void CustomUiController::handleStartShow(int data)
 {
     qDebug() << "========= CustomUiController::handleStartShow data: " << data;
     // FIXME: 这里的3 代表 igOff， 但这样不好, 临时使用了3, 后面要用Enum
-    if (data != 3) {
+    if (!mVisible && data != 3) {
 //        auto worker = qobject_cast<CustomCarMsgWorker *>(sender());
 //        disconnect(worker, &CustomCarMsgWorker::carModeChanged, this, &CustomUiController::handleStartShow);
         disconnect(mCarMsg.get(), &CustomCarMsg::carModeChanged, this, &CustomUiController::handleStartShow);
@@ -211,7 +211,8 @@ void CustomUiController::registerQmlTypes()
 
 void CustomUiController::loadFonts()
 {
-    qDebug(Framework) << "CustomUiController::loadFonts()";
+    qDebug(Framework);
+    loadFont("/usr/lib/fonts/msyh.ttf");
 }
 
 std::shared_ptr<carfox::CarMsg> CustomUiController::createCarMsg()

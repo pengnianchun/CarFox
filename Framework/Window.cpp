@@ -6,7 +6,7 @@ Window::Window()
 {
     qCDebug(Framework);
     setDefaultAlphaBuffer(true);
-    setClearBeforeRendering(false); // true
+    setClearBeforeRendering(true);
 #ifdef Q_PROCESSOR_ARM
     setWindowState(Qt::WindowFullScreen);
 #endif

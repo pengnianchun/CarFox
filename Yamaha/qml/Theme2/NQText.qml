@@ -8,12 +8,12 @@ Item {
 
     FontLoader {
         id: msyh
-        name: "Courier"
+        name: "Microsoft "
     }
 
     FontLoader {
         id: msyhl
-        name: "Courier"
+        name: "Microsoft "
     }
 
     Text {

@@ -63,5 +63,14 @@
     </qresource>
     <qresource prefix="/">
         <file>JS/mainpanel_pointer_orbitdata.js</file>
+        <file>Common/EngineSystem.qml</file>
+        <file>Common/AuxiliarySystem.qml</file>
+        <file>Common/TcuSystem.qml</file>
+        <file>Common/BatterySystem.qml</file>
+        <file>Common/BatteryStatus.qml</file>
+        <file>Common/AirConditioning.qml</file>
+        <file>Common/InstrumentModule.qml</file>
+        <file>Common/InstrumentSystem.qml</file>
+        <file>Common/ControlSystem.qml</file>
     </qresource>
 </RCC>

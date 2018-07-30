@@ -358,13 +358,11 @@ void UiController::loadFont(const QString &fontPath)
 {
     QFile fontFile(fontPath);
     if (!fontFile.open(QIODevice::ReadOnly)) {
-        qCWarning(Framework) << "font file" << fontPath << "load fail";
+        qCWarning(Framework) << fontPath << "load failed";
         return;
     }
 
-#define DEBUG_FontFAMILIES
-    // You can see the family names here
-#ifdef DEBUG_FontFAMILIES
+#ifdef DEBUG_FontFAMILIES // You can see the family names here
     int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
     QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
     std::for_each(loadedFontFamilies.begin(), loadedFontFamilies.end(),

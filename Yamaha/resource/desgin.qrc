@@ -285,6 +285,7 @@
         <file>Theme2/Modules/setting/setting_light.png</file>
         <file>Theme2/Modules/setting/setting_vol.png</file>
         <file>Theme2/Modules/setting/setting_select.png</file>
+        <file>Theme2/Symbol/background.jpg</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

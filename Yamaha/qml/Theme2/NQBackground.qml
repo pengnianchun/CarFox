@@ -11,9 +11,6 @@ Item {
     property int carWaterTempWarning: 101
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
 
-    property date currentDate: new Date()
-    property string dateString
-
 
     property bool homepanel_visible: true
     property int  mainMenuIndex: 0
@@ -23,13 +20,14 @@ Item {
     property int  carVoyage: 99 // 续航里程
     property int  carSoc: CarMsg.soc; // SOC
     property real carBreakPressure: 1.0; // 制动气压
-    property real carBattery: 12; // 蓄电池电压
-    property real carTrip: 0 // TRIP
-    property real carOdo: 0 // ODO
+    property real carBattery: CarMsg.battery; // 蓄电池电压
+    property real carTrip: CarMsg.trip // TRIP
+    property real carOdo: CarMsg.odo // ODO
     property int  carWaterTemp: 0; // 水温
-    property int  carStartRemainTime: 10 // 发车倒计时
-    property int  carGearValue: 1 // 档位
+    property int  carGearValue: CarMsg.gear // 档位
     property bool carGearRadar: false
+
+    property int  carStartRemainTime: 60 // 发车倒计时
     property string textBlue: "#0088ff"
 
     function currentDateTime(){
@@ -38,12 +36,23 @@ Item {
 
     FontLoader {
         id: msyh
-        name: "Courier"
+        name: "Microsoft"
     }
 
-    FontLoader {
-        id: msyhl
-        name: "Courier"
+    onCarGearValueChanged: {
+        if (carGearValue === 0) {
+            gearN.source = sourceImageUrl + "gear_N0.png"
+            gearD.source = sourceImageUrl + "gear_D.png"
+            gearR.source = sourceImageUrl + "gear_R.png"
+        } else if (carGearValue === 7) {
+            gearN.source = sourceImageUrl + "gear_N.png"
+            gearD.source = sourceImageUrl + "gear_D.png"
+            gearR.source = sourceImageUrl + "gear_R0.png"
+        } else {
+            gearN.source = sourceImageUrl + "gear_N.png"
+            gearD.source = sourceImageUrl + "gear_D0.png"
+            gearR.source = sourceImageUrl + "gear_R.png"
+        }
     }
 
     Rectangle {
@@ -266,13 +275,13 @@ Item {
             Text {
                 text: qsTr("续航里程：") + carVoyage + qsTr(" km")
                 color: "#666666"
-                font.family: msyhl.name
+                font.family: msyh.name
                 font.pixelSize: 16
             }
             Text {
                 text: qsTr("SOC：") + carSoc + qsTr(" %")
                 color: "#666666"
-                font.family: msyhl.name
+                font.family: msyh.name
                 font.pixelSize: 16
             }
         }
@@ -384,13 +393,13 @@ Item {
             Text {
                 text: qsTr("制动气压： ") + carBreakPressure.toFixed(1) + qsTr(" Mpa")
                 color: "#666666"
-                font.family: msyhl.name
+                font.family: msyh.name
                 font.pixelSize: 16
             }
             Text {
                 text: qsTr("蓄电池电压： ") + carBattery.toFixed(1) + qsTr(" V")
                 color: "#666666"
-                font.family: msyhl.name
+                font.family: msyh.name
                 font.pixelSize: 16
             }
         }
@@ -403,7 +412,7 @@ Item {
             spacing: 20
             Image {
                 id: gearN
-                source: sourceImageUrl + "gear_N.png"
+                source: sourceImageUrl + "gear_N0.png"
                 asynchronous: true
                 cache: true
             }
@@ -469,33 +478,13 @@ Item {
         interval: 1000
         repeat: true
         running: true
+        triggeredOnStart: true
         onTriggered: {
             textDateTime.text = currentDateTime()
-
-            // Demo Start
-            carStartRemainTime --
-            if (carStartRemainTime < -20) {
-                countDown.countDownTime = carStartRemainTime = 80
-            }
-
-            if (carGearValue === 1) {
-                gearN.source = sourceImageUrl + "gear_N0.png"
-                gearD.source = sourceImageUrl + "gear_D.png"
-                gearR.source = sourceImageUrl + "gear_R.png"
-            } else if (carGearValue === 3) {
-                gearN.source = sourceImageUrl + "gear_N.png"
-                gearD.source = sourceImageUrl + "gear_D.png"
-                gearR.source = sourceImageUrl + "gear_R0.png"
-            } else {
-                gearN.source = sourceImageUrl + "gear_N.png"
-                gearD.source = sourceImageUrl + "gear_D0.png"
-                gearR.source = sourceImageUrl + "gear_R.png"
-            }
-            // Demo End
         }
     }
 
+
     Component.onCompleted: {
-        dateString = currentDate.toLocaleDateString();
     }
 }

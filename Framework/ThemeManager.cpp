@@ -304,7 +304,7 @@ void ThemeManager::showMainScreen()
     if (carmode == 1) {
         current->show();
     }
-    else/* if (carmode == 2)*/ {
+    else if (carmode == 2) {
         emit showDormancy(); //  发射休眠界面的信号
     }
 }
