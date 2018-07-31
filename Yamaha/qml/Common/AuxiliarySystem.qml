@@ -38,6 +38,12 @@ MenuItem {
         ListElement { name: "散热器温度"; value: "0"; unit: "℃" }
     }
 
+    Image {
+        x: 275
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more_before.png"
+    }
+
     Text {
         id: title
         anchors.top: parent.top
@@ -46,6 +52,12 @@ MenuItem {
         text: qsTr("辅助系统信息")
         color: "white"
         font.pixelSize: 28
+    }
+
+    Image {
+        x: 525
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more.png"
     }
 
     Image {

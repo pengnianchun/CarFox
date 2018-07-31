@@ -63,6 +63,12 @@ MenuItem {
         ListElement { name: ""; value: ""; unit: ""; checkstatus: false }
     }
 
+    Image {
+        x: 275
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more_before.png"
+    }
+
     Text {
         id: title
         anchors.top: parent.top
@@ -74,15 +80,21 @@ MenuItem {
     }
 
     Image {
+        x: 525
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more.png"
+    }
+
+    Image {
         anchors.top: title.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"
     }
 
     ListViewRadioWeir {
-        x: 8
+        x: 20
         y: 60
-        width: 200
+        width: 190
         height: 300
         listModel: listmodel_one
         widthListView: 180
@@ -90,9 +102,9 @@ MenuItem {
     }
 
     ListViewRadioWeir {
-        x: 214
+        x: 216
         y: 60
-        width: 200
+        width: 190
         height: 300
         listModel: listmodel_two
         widthListView: 180
@@ -101,9 +113,9 @@ MenuItem {
     }
 
     ListViewRadioWeir {
-        x: 420
+        x: 412
         y: 60
-        width: 200
+        width: 190
         height: 300
         listModel: listmodel_three
         widthListView: 180
@@ -112,9 +124,9 @@ MenuItem {
     }
 
     ListViewRadioWeir {
-        x: 626
+        x: 608
         y: 60
-        width: 200
+        width: 190
         height: 300
         listModel: listmodel_four
         widthListView: 180

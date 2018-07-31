@@ -121,6 +121,12 @@ MenuItem {
     }
 
     Image {
+        x: 525
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more.png"
+    }
+
+    Image {
         anchors.top: title.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"

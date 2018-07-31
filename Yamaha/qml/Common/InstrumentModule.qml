@@ -621,6 +621,18 @@ MenuItem {
         }
     }
 
+    Image {
+        x: 8
+        y: 2
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more_before.png"
+    }
+
+    Image {
+        x: 775
+        y: 2
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more.png"
+    }
+
     enterMenu: function() {
         // default
     }

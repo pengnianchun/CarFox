@@ -61,6 +61,11 @@ MenuItem {
         ListElement { name: "空调制冷请求"; value: "00000000"; unit: "" }
     }
 
+    Image {
+        x: 275
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more_before.png"
+    }
 
     Text {
         id: title
@@ -70,6 +75,12 @@ MenuItem {
         text: qsTr("空调系统信息")
         color: "white"
         font.pixelSize: 28
+    }
+
+    Image {
+        x: 525
+        y: 25
+        source: "qrc:/theme2/symbol/Theme2/Modules/driveAnalysis/more.png"
     }
 
     Image {

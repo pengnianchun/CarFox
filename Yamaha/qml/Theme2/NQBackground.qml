@@ -450,9 +450,19 @@ Item {
         anchors.topMargin: 10
         anchors.horizontalCenter: rectRight.horizontalCenter
         source: "qrc:/theme2/symbol/Theme2/Symbol/climbingmode.png"
-        visible: homepanel_visible
+        visible: homepanel_visible && CarMsg.climbingMode
         asynchronous: true
         cache: true
+    }
+
+    Text {
+        anchors.top: modePP.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: modePP.horizontalCenter
+        text: qsTr("故障等级: 0x") + CarMsg.faultLevel.toString(16)
+        color: "white"
+        font.pixelSize: 16
+        visible: CarMsg.faultLevel !== 0
     }
 
     Item {
