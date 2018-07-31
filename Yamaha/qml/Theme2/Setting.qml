@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
@@ -9,6 +10,7 @@ MenuItem {
 
     property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/setting/"
+    property int backlightValue: 50
 
     ListModel {
         id: appModel
@@ -36,8 +38,8 @@ MenuItem {
 
     ListView {
         id: setting
-        x: 225
-        y: 40
+        x: 250
+        y: 45
         width: 350
         height: 200
         clip: true
@@ -46,9 +48,36 @@ MenuItem {
         highlight: Image { source: sourceImageUrl + "setting_select.png"; }
     }
 
+    Rectangle {
+        id: light
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 240
+        width: 300
+        height: 80
+        color: "transparent"
+        border.color: "#ffffff"
+        border.width: 2
+        radius: 10
+        visible: !bKeyEnable && setting.currentIndex === 0
+        TextFieldWeir {
+            id: percentage
+            anchors.centerIn: parent
+            textValue: backlightValue.toString() + " %"
+            width: 100
+            height: 40
+            textWidth: 100
+            textHeight: 40
+            fontSize: 24
+            fontBold: true
+            fontColor: "#ffffff"
+        }
+    }
+
     enterMenu: function() {
         if (bKeyEnable) {
             console.debug("Setting enterMenu")
+            bKeyEnable = false
         }
     }
 
@@ -67,6 +96,11 @@ MenuItem {
             } else {
                 UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
             }
+        } else {
+            if (setting.currentIndex === 0 && backlightValue > 0) {
+                backlightValue -= 10;
+                CarMsg.sendBrightnessControl(backlightValue);
+            }
         }
     }
 
@@ -78,12 +112,18 @@ MenuItem {
             } else {
                 UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
             }
+        } else {
+            if (setting.currentIndex === 0 && backlightValue < 100) {
+                backlightValue += 10;
+                CarMsg.sendBrightnessControl(backlightValue);
+            }
         }
     }
 
     onVisibleChanged: {
         if (visible) {
             setting.currentIndex = 0
+            bKeyEnable = true
         }
     }
 
