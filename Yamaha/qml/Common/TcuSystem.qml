@@ -101,7 +101,13 @@ MenuItem {
         // default
     }
 
+    onVisibleChanged: {
+        if (visible) {
+            CarMsg.sendMenuInfo(24, 0);
+        }
+    }
+
     Component.onCompleted: {
-        //CarMsg.sendMenuInfo(?, ?);
+
     }
 }
