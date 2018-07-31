@@ -70,50 +70,8 @@ CommonItem {
             UiController.hideLayer(currentLayer);
         }
 
-        if (mainMenuIndex === 1) {
-            currentLayer = "CarInfo";
-        }
-        else if (mainMenuIndex === 2) {
-            currentLayer = "Phone";
-        }
-        else if (mainMenuIndex === 3) {
-            currentLayer = "Music";
-        }
-        else if (mainMenuIndex === 4) {
-            currentLayer = "Radio";
-        }
-        else if (mainMenuIndex === 5) {
-            currentLayer = "Setting";
-        }
-        else if (mainMenuIndex === 6) {
-            currentLayer = "Adas";
-        }
-        else if (mainMenuIndex === 7) {
-            currentLayer = "TirePressure";
-        }
-        else if (mainMenuIndex === 8) {
-            currentLayer = "DriveAnalysis";
-        }
-        else if (mainMenuIndex === 9) {
-            currentLayer = "Consumption";
-        }
-        else if (mainMenuIndex === 10) {
-            currentLayer = "ConsumptionHistory";
-        }
-        else if (mainMenuIndex === 11) {
-            currentLayer = "Diagnostic";
-        }
-        else if (mainMenuIndex === 12) {
-            currentLayer = "Schedule";
-        }
-        else if (mainMenuIndex === 13) {
-            currentLayer = "Ask4Help";
-        }
-        else if (mainMenuIndex === 14) {
-            currentLayer = "CalendarWeather";
-        }
-        else if (mainMenuIndex === 15) {
-            currentLayer = "Navigation";
+        if (mainMenuIndex > 0 && mainMenuIndex < modelMenu.count) {
+            currentLayer = modelMenu.get(mainMenuIndex).layer
         }
         else {
             currentLayer = ""
@@ -165,6 +123,26 @@ CommonItem {
         Radar { visible: carGearValue === 7 && carGearRadar === 1; }
         // 倒车影像
         BackCamera { visible: carGearValue === 7 && carGearRadar === 2; }
+    }
+
+    ListModel {
+        id: modelMenu
+        ListElement { src: "home.png"; layer: ""; }
+        ListElement { src: "infoSearch.png"; layer: "CarInfo"; }
+        ListElement { src: "phone.png"; layer: "Phone"; }
+        ListElement { src: "music.png"; layer: "Music"; }
+        ListElement { src: "radio.png"; layer: "Radio"; }
+        ListElement { src: "setting.png"; layer: "Setting"; }
+        ListElement { src: "adas.png"; layer: "Adas"; }
+        ListElement { src: "tirePressure.png"; layer: "TirePressure"; }
+        ListElement { src: "driveAnalysis.png"; layer: "DriveAnalysis"; }
+        ListElement { src: "maintenanceForcast.png"; layer: "Consumption"; }
+        ListElement { src: "consumptionAnalysis.png"; layer: "ConsumptionHistory"; }
+        ListElement { src: "diagnosticInfo.png"; layer: "Diagnostic"; }
+        ListElement { src: "schedule.png"; layer: "Schedule"; }
+        ListElement { src: "help.png"; layer: "Ask4Help"; }
+        ListElement { src: "calendar.png"; layer: "CalendarWeather"; }
+        ListElement { src: "navigation.png"; layer: "Navigation"; }
     }
 
     MenuPanel {

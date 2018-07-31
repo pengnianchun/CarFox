@@ -72,6 +72,8 @@ MenuItem {
             console.debug("CarInfo previousMenu")
             if (currentIndex > 0) {
                 currentIndex--
+            } else {
+                UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
             }
         }
     }
@@ -81,6 +83,8 @@ MenuItem {
             console.debug("CarInfo nextMenu")
             if (currentIndex < 8) {
                 currentIndex++
+            } else {
+                UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
             }
         }
     }

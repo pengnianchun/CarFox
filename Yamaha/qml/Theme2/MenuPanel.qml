@@ -7,7 +7,6 @@ import "qrc:/Component/Component"
 MenuItem {
     id: menuItem
 
-    //property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Menu/"
 
     menuLayerId: "MenuPanel"
@@ -35,7 +34,7 @@ MenuItem {
                 if (mainMenuIndex > 0) {
                     mainMenuIndex = --listMenu.currentIndex
                 }
-//                if (mainMenuIndex === 1) {
+//                if (mainMenuIndex === 1 || mainMenuIndex === 5) {
 //                    bKeyEnable = false
 //                }
             }
@@ -54,26 +53,6 @@ MenuItem {
                 }
             }
         }
-    }
-
-    ListModel {
-        id: modelMenu
-        ListElement { src: "home.png"; }
-        ListElement { src: "infoSearch.png"; }
-        ListElement { src: "phone.png"; }
-        ListElement { src: "music.png"; }
-        ListElement { src: "radio.png"; }
-        ListElement { src: "setting.png"; }
-        ListElement { src: "adas.png"; }
-        ListElement { src: "tirePressure.png"; }
-        ListElement { src: "driveAnalysis.png"; }
-        ListElement { src: "maintenanceForcast.png"; }
-        ListElement { src: "consumptionAnalysis.png"; }
-        ListElement { src: "diagnosticInfo.png"; }
-        ListElement { src: "schedule.png"; }
-        ListElement { src: "help.png"; }
-        ListElement { src: "calendar.png"; }
-        ListElement { src: "navigation.png"; }
     }
 
     Component {

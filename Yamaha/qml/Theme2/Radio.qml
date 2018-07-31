@@ -14,7 +14,7 @@ MenuItem {
         width: 760
         height: 50
         radius: 10
-        color: "#383838"
+        color: "#181818"
 
         NQText {
             anchors.verticalCenter: parent.verticalCenter
@@ -36,7 +36,7 @@ MenuItem {
         width: 437
         height: 277
         radius: 10
-        color: "#383838"
+        color: "#181818"
 
         Text {
             anchors.top: parent.top

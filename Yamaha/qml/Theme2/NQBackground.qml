@@ -16,6 +16,7 @@ Item {
     property int  engineSpeedValue: CarMsg.rpm; // 转速
     property int  carVoyage: CarMsg.soc * 3 // 续航里程
     property int  carSoc: CarMsg.soc; // SOC
+    property real carBattery: CarMsg.battery; // 蓄电池电压
     property real carTotalVoltage: CarMsg.totalVoltage; // 总电压
     property real carTotalCurrent: CarMsg.totalCurrent; // 总电流
     property real carTrip: CarMsg.trip // TRIP
@@ -168,7 +169,7 @@ Item {
                     origin.x: 0; origin.y: 190;
                     angle: (engineSpeedValue * 13.5) - 135
                     Behavior on angle {
-                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
+                        SpringAnimation { spring: 0.15; damping: 0.9; modulus: 360 }
                     }
                 }
             }
@@ -271,6 +272,8 @@ Item {
         color: "#111111"
 
         ColumnLayout {
+            anchors.top: parent.top
+            anchors.topMargin: 5
             spacing: 5
             anchors.horizontalCenter: parent.horizontalCenter
             Text {
@@ -389,16 +392,24 @@ Item {
         color: "#111111"
 
         ColumnLayout {
-            spacing: 5
+            anchors.top: parent.top
+            anchors.topMargin: 5
+            spacing: -2
             anchors.horizontalCenter: parent.horizontalCenter
             Text {
-                text: qsTr("总电压： ") + carTotalVoltage.toFixed(1) + qsTr(" V")
+                text: qsTr("蓄电池")  + qsTr("：") + carBattery.toFixed(1) + qsTr(" V")
                 color: "#666666"
                 font.family: msyh.name
                 font.pixelSize: 16
             }
             Text {
-                text: qsTr("总电流： ") + carTotalCurrent.toFixed(1) + qsTr(" A")
+                text: qsTr("总电压") + qsTr("：") + carTotalVoltage.toFixed(1) + qsTr(" V")
+                color: "#666666"
+                font.family: msyh.name
+                font.pixelSize: 16
+            }
+            Text {
+                text: qsTr("总电流")  + qsTr("：") + carTotalCurrent.toFixed(1) + qsTr(" A")
                 color: "#666666"
                 font.family: msyh.name
                 font.pixelSize: 16
@@ -408,7 +419,7 @@ Item {
         // 档位
         RowLayout {
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
+            anchors.bottomMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
             spacing: 20
             Image {
@@ -451,8 +462,24 @@ Item {
 
         Text {
             anchors.right: textDateTime.left
-            anchors.rightMargin: 120
-            text: qsTr("TRIP: ") + carTrip.toFixed(1) + qsTr(" km")
+            anchors.rightMargin: 400
+            text: qsTr("气压1: ") + CarMsg.apVol1.toFixed(2) + qsTr(" Mpa")
+            color: "white"
+            font.family: msyh.name
+            font.pixelSize: 20
+        }
+//        Text {
+//            anchors.right: textDateTime.left
+//            anchors.rightMargin: 250
+//            text: qsTr("电机控制器: ") + CarMsg.moterControlTemp.toFixed(0) + qsTr(" ℃")
+//            color: "white"
+//            font.family: msyh.name
+//            font.pixelSize: 20
+//        }
+        Text {
+            anchors.right: textDateTime.left
+            anchors.rightMargin: 100
+            text: qsTr("总里程: ") + carOdo.toFixed(1) + qsTr(" km")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
@@ -467,8 +494,24 @@ Item {
         }
         Text {
             anchors.left: textDateTime.right
-            anchors.leftMargin: 120
-            text: qsTr("ODO： ") + carOdo.toFixed(1) + qsTr(" km")
+            anchors.leftMargin: 100
+            text: qsTr("小计里程： ") + carTrip.toFixed(1) + qsTr(" km")
+            color: "white"
+            font.family: msyh.name
+            font.pixelSize: 20
+        }
+//        Text {
+//            anchors.left: textDateTime.right
+//            anchors.leftMargin: 250
+//            text: qsTr("电机温度： ") + CarMsg.moterTemp.toFixed(0) + qsTr(" ℃")
+//            color: "white"
+//            font.family: msyh.name
+//            font.pixelSize: 20
+//        }
+        Text {
+            anchors.left: textDateTime.right
+            anchors.leftMargin: 400
+            text: qsTr("气压2： ") + CarMsg.apVol2.toFixed(2) + qsTr(" Mpa")
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
@@ -482,6 +525,18 @@ Item {
         triggeredOnStart: true
         onTriggered: {
             textDateTime.text = currentDateTime()
+
+            if (carSpeedValue < 99) {
+                carSpeedValue += Math.floor(Math.random() * Math.floor(5));
+            } else {
+                carSpeedValue = 0
+            }
+
+            if (engineSpeedValue < 19) {
+                engineSpeedValue += 1;
+            } else {
+                engineSpeedValue = 0
+            }
         }
     }
 

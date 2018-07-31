@@ -9,7 +9,7 @@ MenuItem {
     //#CANVAS START
     //信息
     property int rangeValue: 100;
-    property int nowRange: 70;
+    property int nowRange: 88;
 
     //画布
     property int mW: 180;
@@ -75,7 +75,7 @@ MenuItem {
             //显示百分数
             ctx.save();
             var size = 0.4*cR;
-            ctx.font = size + 'px Arial';
+            ctx.font = size + 'px Microsoft ';
             ctx.textAlign = 'center';
             ctx.fillStyle = "rgba(14, 80, 14, 0.8)";
             ctx.fillText(~~nowRange + '分', r, r + size / 2);

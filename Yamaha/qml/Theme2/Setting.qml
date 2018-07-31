@@ -44,7 +44,6 @@ MenuItem {
         model: appModel
         delegate: appDelegate
         highlight: Image { source: sourceImageUrl + "setting_select.png"; }
-
     }
 
     enterMenu: function() {
@@ -63,22 +62,28 @@ MenuItem {
     previousMenu: function() {
         if (bKeyEnable) {
             console.debug("Setting previousMenu")
-            setting.currentIndex--
+            if (setting.currentIndex > 0) {
+                setting.currentIndex--
+            } else {
+                UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
+            }
         }
     }
 
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("Setting nextMenu")
-            setting.currentIndex++
+            if (setting.currentIndex < 2) {
+                setting.currentIndex++
+            } else {
+                UiController.setLayerProperty("HomePanel", "bKeyEnable", true);
+            }
         }
     }
 
     onVisibleChanged: {
         if (visible) {
-            //
-        } else {
-            //
+            setting.currentIndex = 0
         }
     }
 

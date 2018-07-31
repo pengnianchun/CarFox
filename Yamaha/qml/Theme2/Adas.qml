@@ -19,7 +19,7 @@ MenuItem {
         NQText {
             id: countDown
             anchors.centerIn: parent
-            textValue: timeCountDown.toFixed(1)
+            textValue: timeCountDown.toFixed(1) + qsTr("s")
             textColor: "red"
             pixelSize: 32
         }
