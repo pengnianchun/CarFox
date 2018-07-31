@@ -5,6 +5,7 @@ import CustomEnum 1.0
 import "qrc:/Component/Component"
 
 MenuItem {
+    id: settingMenu
     width: 800
     height: 410
 
@@ -12,11 +13,11 @@ MenuItem {
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/setting/"
 
     property int backlightValue: 50
-    //property var dateYMDHMId: [hour,miniute,year,month,day,submit]
-    //property var dateYMDHMStatus: [true,false,false,false,false,false]
-    //property var initializeDateTime: ["2018","08","08","00","00","00","Mon"]
-    //property bool checkDateTimeSetting: CarMsg.checkDateTimeSetting
-    //property var utcMcuDateTime: CarMsg.dateTime>0 ? Qt.formatDateTime(new Date(CarMsg.dateTime*1000), "yyyy-MM-dd-hh-mm-ss-ddd").split("-") : initializeDateTime;
+    property int dateYMDHMIndex: 0
+    property var dateYMDHMMin: [2000,1,1,0,0]
+    property var dateYMDHMMax: [2100,12,31,23,59]
+    property var dateYMDHMId: [year,month,day,hour,miniute,submit]
+    property var utcMcuDateTime: Qt.formatDateTime(new Date(), "yyyy-MM-dd-hh-mm-ss").split("-");
 
     ListModel {
         id: appModel
@@ -66,6 +67,7 @@ MenuItem {
         border.width: 2
         radius: 10
         visible: !bKeyEnable && setting.currentIndex === 0
+
         TextFieldWeir {
             id: percentage
             anchors.centerIn: parent
@@ -80,10 +82,132 @@ MenuItem {
         }
     }
 
+    Rectangle {
+        id: timeSetting
+        anchors.top: setting.top
+        anchors.topMargin: 200
+        width: 800
+        height: 80
+        color: "transparent"
+        visible: !bKeyEnable && setting.currentIndex === 1
+
+        RowLayout {
+            x: 100
+            y: 0
+            spacing: 10
+            TextFieldWeir {
+                id: year
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: utcMcuDateTime[0]
+                fontSize: 28
+                fontColor: dateYMDHMIndex === 0 ? "#00deff" : "#ffffff"
+            }
+            TextFieldWeir {
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: "-"
+                fontSize: 28
+            }
+            TextFieldWeir {
+                id: month
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: utcMcuDateTime[1]
+                fontSize: 28
+                fontColor: dateYMDHMIndex === 1 ? "#00deff" : "#ffffff"
+            }
+            TextFieldWeir {
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: "-"
+                fontSize: 28
+            }
+            TextFieldWeir {
+                id: day
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: utcMcuDateTime[2]
+                fontSize: 28
+                fontColor: dateYMDHMIndex === 2 ? "#00deff" : "#ffffff"
+            }
+        }
+
+        RowLayout {
+            x: 500
+            y: 0
+            spacing: 10
+            TextFieldWeir {
+                id: hour
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: utcMcuDateTime[3]
+                fontSize: 28
+                fontColor: dateYMDHMIndex === 3 ? "#00deff" : "#ffffff"
+            }
+            TextFieldWeir {
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: ":"
+                fontSize: 28
+            }
+            TextFieldWeir {
+                id: miniute
+                width: 50
+                height: 50
+                textWidth: 50
+                textHeight: 50
+                textValue: utcMcuDateTime[4]
+                fontSize: 28
+                fontColor: dateYMDHMIndex === 4 ? "#00deff" : "#ffffff"
+            }
+        }
+
+        TextFieldWeir {
+            id: submit
+            y: 40
+            width: 100
+            height: 30
+            anchors.horizontalCenterOffset: 0
+            anchors.bottomMargin: 22
+            textWidth: 100
+            textHeight: 30
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            textValue: "确认"
+            fontSize: 28
+            fontColor: dateYMDHMIndex === 5 ? "#00deff" : "#ffffff"
+        }
+    }
+
     enterMenu: function() {
         if (bKeyEnable) {
             console.debug("Setting enterMenu")
             bKeyEnable = false
+        } else {
+            if (setting.currentIndex === 1) {
+                if (dateYMDHMIndex === 5) {
+                    var date = new Date(year.textValue + '-' + month.textValue + '-' + day.textValue +
+                                        ' ' + hour.textValue +':' + miniute.textValue +':00');
+                    console.info("Setting enterMenu Date: " + date)
+                } else {
+                    dateYMDHMIndex++
+                }
+            }
         }
     }
 
@@ -106,6 +230,17 @@ MenuItem {
             if (setting.currentIndex === 0 && backlightValue > 0) {
                 backlightValue -= 10;
                 CarMsg.sendBrightnessControl(backlightValue);
+            } else if (setting.currentIndex === 1) {
+                //
+                var cur = parseInt(dateYMDHMId[dateYMDHMIndex].textValue)
+                cur = cur - 1
+                if (cur < dateYMDHMMin[dateYMDHMIndex]) {
+                    cur = dateYMDHMMax[dateYMDHMIndex]
+                }
+                if (cur < 10) {
+                    cur = "0" + cur
+                }
+                dateYMDHMId[dateYMDHMIndex].textValue = cur.toString()
             }
         }
     }
@@ -122,6 +257,17 @@ MenuItem {
             if (setting.currentIndex === 0 && backlightValue < 100) {
                 backlightValue += 10;
                 CarMsg.sendBrightnessControl(backlightValue);
+            } else if (setting.currentIndex === 1) {
+                //
+                var cur = parseInt(dateYMDHMId[dateYMDHMIndex].textValue)
+                cur = cur + 1
+                if (cur > dateYMDHMMax[dateYMDHMIndex]) {
+                    cur = dateYMDHMMin[dateYMDHMIndex]
+                }
+                if (cur < 10) {
+                    cur = "0" + cur
+                }
+                dateYMDHMId[dateYMDHMIndex].textValue = cur.toString()
             }
         }
     }
