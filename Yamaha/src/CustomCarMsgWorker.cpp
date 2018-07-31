@@ -1240,27 +1240,16 @@ void CustomCarMsgWorker::handleProtoBatterySingleVoltageMenuInfo(const carfox::M
     shared_ptr<fyBatteryGroupVoltageInfo::BatterySingleVoltage> p = carfox::down_pointer_cast<fyBatteryGroupVoltageInfo::BatterySingleVoltage>(msg);
     mBatVoltageData.clear();
     for(uint i=0; i<p->addr_number(); i++) {
-        mBatVoltageData.insert(QString::number(i+1), p->voltage(i));
+        mBatVoltageData.insert(QString::number(p->voltageindex(i)), p->voltage(i));
     }
-    /*
-    for(int i=0; i<60; i++) {
-        mBatVoltageData.insert(QString::number(i+1), 0.66 + i);
-    }
-    */
     emit this->batVoltageChanged(mBatVoltageData);
-    //qDebug() << "mBatVoltageData:::::::::::::::::::::::::::::::" << mBatVoltageData;
 }
 //单体温度
 void CustomCarMsgWorker::handleProtoBatterySingleTemperatureMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupTemperatureInfo::BatterySingleTemperature> p = carfox::down_pointer_cast<fyBatteryGroupTemperatureInfo::BatterySingleTemperature>(msg);
     mBatTempData.clear();
-    /*
-    for(int i=0; i<20; i++) {
-        mBatTempData.insert(QString::number(i+1), 0.11 + i);
-    }
-    */
     for(uint i=0; i<p->addr_number(); i++) {
-        mBatTempData.insert(QString::number(i+1), p->temperature(i));
+        mBatTempData.insert(QString::number(p->temperatureindex(i)), p->temperature(i));
     }
     emit this->batTempChanged(mBatTempData);
 }

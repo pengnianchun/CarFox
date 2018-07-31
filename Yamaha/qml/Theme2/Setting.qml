@@ -10,7 +10,13 @@ MenuItem {
 
     property bool bKeyEnable: true
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Modules/setting/"
+
     property int backlightValue: 50
+    //property var dateYMDHMId: [hour,miniute,year,month,day,submit]
+    //property var dateYMDHMStatus: [true,false,false,false,false,false]
+    //property var initializeDateTime: ["2018","08","08","00","00","00","Mon"]
+    //property bool checkDateTimeSetting: CarMsg.checkDateTimeSetting
+    //property var utcMcuDateTime: CarMsg.dateTime>0 ? Qt.formatDateTime(new Date(CarMsg.dateTime*1000), "yyyy-MM-dd-hh-mm-ss-ddd").split("-") : initializeDateTime;
 
     ListModel {
         id: appModel
