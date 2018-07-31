@@ -74,5 +74,6 @@
         <file>Common/ControlSystem.qml</file>
         <file>JS/InstrumentInfo.js</file>
         <file>JS/InstrumentController.js</file>
+        <file>JS/AlarmCode.js</file>
     </qresource>
 </RCC>

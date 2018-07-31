@@ -288,6 +288,7 @@
         <file>Theme2/Symbol/Lamp_insulationRed_white.png</file>
         <file>Theme2/Symbol/BackhDoorAlarm.png</file>
         <file>Theme2/Symbol/StopWL_yellow.png</file>
+        <file>Theme2/Symbol_gray/BackhDoorAlarm.png</file>
     </qresource>
     <qresource prefix="/theme1/slice">
         <file>Theme1/Slice/background.png</file>

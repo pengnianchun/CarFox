@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QtQml 2.0
+import "qrc:/JS/AlarmCode.js" as AlarmInfoCode
 
 Item {
     width: 1440
@@ -10,6 +11,7 @@ Item {
 
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
 
+    property int alarmCode: CarMsg.warningId //警告提示
     property int  carSpeedValue: CarMsg.carSpeed; // 车速
     property int  engineSpeedValue: CarMsg.rpm; // 转速
     property int  carVoyage: CarMsg.soc * 3 // 续航里程
@@ -47,6 +49,11 @@ Item {
             gearD.source = sourceImageUrl + "gear_D0.png"
             gearR.source = sourceImageUrl + "gear_R.png"
         }
+    }
+
+    //警告提示
+    onAlarmCodeChanged: {
+        alarm_info.text = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
     }
 
     Rectangle {
@@ -132,7 +139,7 @@ Item {
                     origin.x: 0; origin.y: 190;
                     angle: (carSpeedValue * 2.5) - 135
                     Behavior on angle {
-                        SpringAnimation { spring: 2; damping: 0.2; modulus: 360 }
+                        SpringAnimation { spring: 0.5; damping: 0.8; modulus: 360 }
                     }
                 }
             }
@@ -306,26 +313,26 @@ Item {
         }
     }
 
-    // 水温告警
+    // 告警
     Item {
         anchors.top: rectLeft.bottom
         anchors.topMargin: 10
         anchors.left: rectLeft.left
         anchors.leftMargin: 10
-        visible: homepanel_visible && carWaterTemp > 103
-
+        visible: homepanel_visible && alarmCode != 0
         Image {
             id: warning
+            anchors.left: parent.left
+            anchors.leftMargin: 60
             source: "qrc:/theme2/symbol/Theme2/Symbol/StopWL.png"
             asynchronous: true
             cache: true
             verticalAlignment: Image.AlignVCenter
         }
         Text {
-            anchors.left: warning.right
-            anchors.leftMargin: 10
-            anchors.verticalCenter: warning.verticalCenter
-            text: qsTr("水温高于") + carWaterTemp + qsTr("度")
+            id: alarm_info
+            anchors.top: warning.bottom
+            anchors.horizontalCenter: warning.horizontalCenter
             color: "white"
             font.family: msyh.name
             font.pixelSize: 20
