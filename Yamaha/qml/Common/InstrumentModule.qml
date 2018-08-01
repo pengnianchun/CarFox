@@ -488,11 +488,12 @@ MenuItem {
                 anchors.left: parent.left
                 anchors.leftMargin: 5
                 listModel: listmodel_one
-                width: parent.width/4-70
+                width: parent.width/3
                 height: parent.height
-                widthListView: parent.width/4-100
+                widthListView: parent.width/3
                 fontSizeList: 12
-                textWidthList: 250
+                textWidthList: 280
+                unitWidthList: 15
                 listRadioType: 2
             }
             ListViewRadioWeir {
@@ -501,12 +502,12 @@ MenuItem {
                 anchors.left: parent.left
                 anchors.leftMargin: 220
                 listModel: listmodel_two
-                width: parent.width/4-70
+                width: parent.width/3
                 height: parent.height
-                widthListView: parent.width/4-100
+                widthListView: parent.width/3
                 fontSizeList: 12
-                textWidthList: 250
-                unitWidthList: 40
+                textWidthList: 280
+                unitWidthList: 15
                 listRadioType: 2
             }
         }
@@ -537,11 +538,11 @@ MenuItem {
                 anchors.left: parent.left
                 anchors.leftMargin: 5
                 listModel: listmodel_three
-                width: parent.width/4-130
+                width: parent.width/4-40
                 height: parent.height
-                widthListView: parent.width/4-150
+                widthListView: parent.width/4-60
                 fontSizeList: 12
-                unitWidthList: 40
+                unitWidthList: 15
                 listRadioType: 1
             }
             ListViewRadioWeir {
@@ -550,11 +551,11 @@ MenuItem {
                 anchors.left: parent.left
                 anchors.leftMargin: 210
                 listModel: listmodel_four
-                width: parent.width/4-70
+                width: parent.width/4-40
                 height: parent.height
-                widthListView: parent.width/4-100
+                widthListView: parent.width/4-60
                 fontSizeList: 12
-                unitWidthList: 40
+                unitWidthList: 15
                 listRadioType: 1
             }
         }
