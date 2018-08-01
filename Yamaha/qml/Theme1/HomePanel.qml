@@ -17,7 +17,7 @@ CommonItem {
     property int tireRotation: 0
 
     FontLoader {
-        id: europeExt
+        id: adobeHeitiStd
         name: "Microsoft"
     }
 
@@ -40,7 +40,7 @@ CommonItem {
                 visible: true;
                 text: "84";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 120;
                 smooth:true;
             }
@@ -53,7 +53,7 @@ CommonItem {
                 text: "km/h";
                 color: "white";
                 opacity: 0.6;
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 20;
                 smooth:true;
             }
@@ -65,7 +65,7 @@ CommonItem {
                 visible: true;
                 text: "trip:              km";
                 color: "#103d44";
-//                font.family: adobeHeitiStd.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
             }
@@ -77,7 +77,7 @@ CommonItem {
                 visible: true;
                 text: "500.2";
                 color: "#047f93";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
             }
@@ -89,7 +89,7 @@ CommonItem {
                 visible: true;
                 text: "0";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 1;
@@ -101,7 +101,7 @@ CommonItem {
                 visible: true;
                 text: "40";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -113,7 +113,7 @@ CommonItem {
                 visible: true;
                 text: "80";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -125,7 +125,7 @@ CommonItem {
                 visible: true;
                 text: "120";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -137,7 +137,7 @@ CommonItem {
                 visible: true;
                 text: "160";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -149,7 +149,7 @@ CommonItem {
                 visible: true;
                 text: "200";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -161,7 +161,7 @@ CommonItem {
                 visible: true;
                 text: "240";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -179,7 +179,7 @@ CommonItem {
                 visible: true;
                 text: "42";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 120;
                 smooth:true;
             }
@@ -192,7 +192,7 @@ CommonItem {
                 text: "x 100/min";
                 color: "white";
                 opacity: 0.6;
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 20;
                 smooth:true;
             }
@@ -216,7 +216,7 @@ CommonItem {
                 visible: true;
                 text: "3000000";
                 color: "#047f93";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
             }
@@ -228,7 +228,7 @@ CommonItem {
                 visible: true;
                 text: "0";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 1;
@@ -240,7 +240,7 @@ CommonItem {
                 visible: true;
                 text: "20";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -252,7 +252,7 @@ CommonItem {
                 visible: true;
                 text: "40";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -264,7 +264,7 @@ CommonItem {
                 visible: true;
                 text: "60";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -276,7 +276,7 @@ CommonItem {
                 visible: true;
                 text: "80";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -288,7 +288,7 @@ CommonItem {
                 visible: true;
                 text: "100";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -300,7 +300,7 @@ CommonItem {
                 visible: true;
                 text: "120";
                 color: "white";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
                 opacity: 0.2;
@@ -411,7 +411,7 @@ CommonItem {
 ////                visible: true;
 ////                text: "soc :";
 ////                color: "#068ca5";
-////                font.family: europeExt.name;
+////                font.family: adobeHeitiStd.name;
 ////                font.pixelSize: 22;
 ////                font.bold: false;
 ////                smooth:true;
@@ -423,7 +423,7 @@ CommonItem {
 ////                visible: true;
 ////                text: "50 %";
 ////                color: "#068ca5";
-////                font.family: europeExt.name;
+////                font.family: adobeHeitiStd.name;
 ////                font.pixelSize: 24;
 ////                font.bold: false;
 ////                smooth:true;
@@ -480,7 +480,7 @@ CommonItem {
                 visible: true;
                 text: Qt.formatDateTime(new Date(), "hh : mm");
                 color: "#068ca5";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
             }
@@ -492,7 +492,7 @@ CommonItem {
                 visible: true;
                 text: "D";
                 color: "#0e8da1";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 51;
                 font.bold: true;
                 smooth:true;
@@ -513,7 +513,7 @@ CommonItem {
                 visible: true;
                 text: "36°C-38°C";
                 color: "#068ca5";
-                font.family: europeExt.name;
+                font.family: adobeHeitiStd.name;
                 font.pixelSize: 24;
                 smooth:true;
             }
@@ -829,7 +829,7 @@ CommonItem {
 //        visible: true;
 //        text: pathView.currentIndex;
 //        color: "#068ca5";
-//        font.family: europeExt.name;
+//        font.family: adobeHeitiStd.name;
 //        font.pixelSize: 22;
 //        font.bold: false;
 //        smooth:true;
@@ -1086,7 +1086,7 @@ CommonItem {
         text: "Index: " + timer_for_carSpeedPointer.car_speed_current_point_count;
         visible: false;
         color: "#068ca5";
-        font.family: europeExt.name;
+        font.family: adobeHeitiStd.name;
         font.pixelSize: 24;
         font.bold: false;
         smooth:true;
@@ -1098,7 +1098,7 @@ CommonItem {
         text: "X: " + pointer_car_speed.x;
         visible: false;
         color: "#068ca5";
-        font.family: europeExt.name;
+        font.family: adobeHeitiStd.name;
         font.pixelSize: 24;
         font.bold: false;
         smooth:true;
@@ -1110,7 +1110,7 @@ CommonItem {
         text: "Y: " + pointer_car_speed.y;
         visible: false;
         color: "#068ca5";
-        font.family: europeExt.name;
+        font.family: adobeHeitiStd.name;
         font.pixelSize: 24;
         font.bold: false;
         smooth:true;
@@ -1123,7 +1123,7 @@ CommonItem {
     //        text: pathView.currentIndex;
     //        visible: true;
     //        color: "#068ca5";
-    //        font.family: europeExt.name;
+    //        font.family: adobeHeitiStd.name;
     //        font.pixelSize: 48;
     //        font.bold: false;
     //        smooth:true;

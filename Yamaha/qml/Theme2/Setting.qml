@@ -204,7 +204,7 @@ MenuItem {
                     var date = new Date(year.textValue + '-' + month.textValue + '-' + day.textValue +
                                         ' ' + hour.textValue +':' + miniute.textValue +':00');
                     console.info("Setting enterMenu Date: " + date)
-                    var timestamp = date.getTime()
+                    var timestamp = date.getTime()/1000
                     CarMsg.sendDateTime(timestamp);
                 } else {
                     dateYMDHMIndex++

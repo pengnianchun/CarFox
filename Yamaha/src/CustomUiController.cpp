@@ -136,7 +136,7 @@ void CustomUiController::handleInitialized()
 
     auto themeMode = mCarMsg->property("themeMode").toInt();
     qCDebug(Yamaha) << "themeMode : " << themeMode;
-    switch (themeMode) {
+    switch (themeMode + 1) {
     case CustomEnum::Theme1Mode:
         loadWith("CustomTheme1");
         break;
