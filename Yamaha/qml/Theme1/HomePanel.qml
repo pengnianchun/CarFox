@@ -780,9 +780,13 @@ CommonItem {
     property bool bKeyEnable: true;
     property int index: main_menu_panel.menuIndex;
     property bool hideSubscreen: false;
+    property bool bChangeTheme: false;
     onKeyEnter: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyEnter")
+        }
+        if (bChangeTheme) {
+            UiController.switchThemeTo("CustomTheme2")
         }
     }
     onKeyBack: function() {
@@ -793,6 +797,7 @@ CommonItem {
             subscreen_image.visible = false;
             hideSubscreen = true;
         }
+        bChangeTheme = !bChangeTheme
     }
     onKeyUp: function() {
         if (bKeyEnable) {
@@ -814,6 +819,7 @@ CommonItem {
         }
         set_subscreen(index);
     }
+
     onVisibleChanged: {
         if(visible){
             CarMsg.sendEnableKeys(true);

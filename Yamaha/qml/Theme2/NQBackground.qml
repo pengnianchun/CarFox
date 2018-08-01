@@ -540,17 +540,17 @@ Item {
         onTriggered: {
             textDateTime.text = currentDateTime()
 
-            if (carSpeedValue < 99) {
-                carSpeedValue += Math.floor(Math.random() * Math.floor(5));
-            } else {
-                carSpeedValue = 0
-            }
+//            if (carSpeedValue < 99) {
+//                carSpeedValue += Math.floor(Math.random() * Math.floor(5));
+//            } else {
+//                carSpeedValue = 0
+//            }
 
-            if (engineSpeedValue < 19) {
-                engineSpeedValue += 1;
-            } else {
-                engineSpeedValue = 0
-            }
+//            if (engineSpeedValue < 19) {
+//                engineSpeedValue += 1;
+//            } else {
+//                engineSpeedValue = 0
+//            }
         }
     }
 

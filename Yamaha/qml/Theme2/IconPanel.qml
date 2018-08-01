@@ -6,7 +6,7 @@ Item {
     width: 1440
     height: 60
 
-    property bool enableTest: true
+    property bool enableTest: false
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
     property string sourceImageUrlGrey: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
 

@@ -21,9 +21,13 @@ CommonItem {
 
     property string textBlue: "#0088ff"
     property string currentLayer: ""
+    property bool bChangeTheme: false
 
     onKeyEnter: function() {
         console.debug("HomePanel onKeyEnter")
+        if (bChangeTheme) {
+            UiController.switchThemeTo("CustomTheme1")
+        }
     }
 
     onKeyBack: function() {
@@ -34,6 +38,7 @@ CommonItem {
                 homepanel_visible = true
             }
         }
+        bChangeTheme = !bChangeTheme
     }
 
     onKeyUp: function() {
