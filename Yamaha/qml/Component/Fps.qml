@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.0
+import NQFile 1.0
 
 Item {
     id: root
@@ -29,6 +30,50 @@ Item {
         color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1);
         font.pixelSize: 24
         font.family: "WenQuanYi Micro Hei"
+    }
+
+    NQFile {
+        id: cpuTemp
+        filename: "/sys/devices/virtual/thermal/thermal_zone0/temp"
+    }
+
+    NQFile {
+        id: cpu0Freq
+        filename: "/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq"
+    }
+
+    NQFile {
+        id: cpu1Freq
+        filename: "/sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_cur_freq"
+    }
+
+    NQFile {
+        id: loadavg
+        filename: "/proc/loadavg"
+    }
+
+    Text {
+        id: tempTxt
+        visible: true
+        z: 10
+        text: ""
+        font.pixelSize: 20
+        color: "red"
+    }
+
+    Timer {
+        interval: 1000
+        repeat: true
+        running: tempTxt.visible
+        onTriggered: {
+            cpuTemp.clearContent()
+            cpu0Freq.clearContent()
+            cpu1Freq.clearContent()
+            tempTxt.text =  "CPU0: " + cpu0Freq.getContent()
+                            + "CPU1: " + cpu1Freq.getContent()
+                            + "TEMP: " + cpuTemp.getContent() / 1000 + "\n"
+                            + "LOAD: " + loadavg.getContent()
+        }
     }
 
     Timer {

@@ -10,6 +10,7 @@
 #include "CustomUiController.hpp"
 #include "CustomUiController.hpp"
 #include "QmlGifImage.hpp"
+#include "NQFile.hpp"
 
 // 打开这个宏会直接显示主界面,而不是需要等待mcu发送第一帧信号
 //#define CUSTOM_PROFILE
@@ -135,7 +136,7 @@ void CustomUiController::handleInitialized()
 
     auto themeMode = mCarMsg->property("themeMode").toInt();
     qCDebug(Yamaha) << "themeMode : " << themeMode;
-    switch (themeMode + 1) {
+    switch (themeMode) {
     case CustomEnum::Theme1Mode:
         loadWith("CustomTheme1");
         break;
@@ -204,6 +205,7 @@ void CustomUiController::registerQmlTypes()
     qmlRegisterType<CustomEnum>("CustomEnum", 1, 0, "CustomEnum");
     qmlRegisterType<CustomRing>("CustomRing", 1, 0, "CustomRing");
     qmlRegisterType<QmlGifImage>("CustomEnum", 1, 0, "QmlGifImage");
+    qmlRegisterType<NQFile>("NQFile", 1, 0, "NQFile");
 }
 
 void CustomUiController::loadFonts()

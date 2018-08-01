@@ -15,6 +15,7 @@ HEADERS += \
     ./src/CustomTheme3.hpp \ 
     ./src/CustomTheme4.hpp \ 
     ./src/QmlGifImage.hpp \
+    ./src/NQFile.hpp \
 
 SOURCES += \ 
     ./src/Main.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
     ./src/CustomTheme3.cpp \ 
     ./src/CustomTheme4.cpp \ 
     ./src/QmlGifImage.cpp \
+    ./src/NQFile.cpp \
 
 RESOURCES += \ 
     $$PWD/qml/qml.qrc \

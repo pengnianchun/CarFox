@@ -16,21 +16,17 @@ MenuItem {
     property var tempInfo: CarMsg.tempInfo
 
     onVoltageInfoChanged: {
-        console.info("onVoltageInfoChanged")
         battery_model.clear();
         battery_model.append({"name":"电池序号","value":"电池电压","unit":"单位"});
         for(var i in voltageInfo){
-            console.info("name" + voltageIndex[i] + voltageInfo[i].toFixed(2))
             battery_model.append({"name":voltageIndex[i].toString(),"value":voltageInfo[i].toFixed(2),"unit":"V"});
         }
     }
 
     onTempInfoChanged: {
-        console.info("onTempInfoChanged")
         temperature_model.clear();
         temperature_model.append({"name":"电池序号","value":"电池温度","unit":"单位"});
         for(var i in tempInfo){
-            console.info("name" + tempIndex[i] + tempInfo[i].toFixed(0))
             temperature_model.append({"name":tempIndex[i].toString(),"value":tempInfo[i].toFixed(0),"unit":"℃"});
         }
     }
