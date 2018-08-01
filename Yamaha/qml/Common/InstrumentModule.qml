@@ -549,7 +549,7 @@ MenuItem {
                 anchors.top: parent.top
                 anchors.topMargin: 20
                 anchors.left: parent.left
-                anchors.leftMargin: 210
+                anchors.leftMargin: 200
                 listModel: listmodel_four
                 width: parent.width/4-40
                 height: parent.height
