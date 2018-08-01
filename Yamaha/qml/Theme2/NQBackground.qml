@@ -54,7 +54,11 @@ Item {
 
     //警告提示
     onAlarmCodeChanged: {
-        alarm_info.text = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
+        if (alarmCode > 0 && alarmCode < 28) {
+            alarm_info.text = AlarmInfoCode.getAlarmCodeInfo()[alarmCode];
+        } else {
+            alarm_info.text = ""
+        }
     }
 
     Rectangle {
