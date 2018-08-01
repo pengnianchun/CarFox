@@ -64,10 +64,6 @@
         <file>Theme1/Slice/Home page switching/Vehicle information-1.png</file>
         <file>Theme1/Slice/Home page switching/Vehicle information.png</file>
     </qresource>
-    <qresource prefix="/theme1/label">
-        <file>Theme1/label/count down.png</file>
-        <file>Theme1/label/home_label.png</file>
-    </qresource>
     <qresource prefix="/theme2/symbol">
         <file>Theme2/Symbol/backFlogLamp.png</file>
         <file>Theme2/Symbol/batteryCharging.png</file>

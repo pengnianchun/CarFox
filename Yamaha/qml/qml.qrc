@@ -29,7 +29,6 @@
         <file>Component/WarningItem.qml</file>
     </qresource>
     <qresource prefix="/Theme">
-        <file>Theme1/Splash/Splash.qml</file>
         <file>Theme1/HomePanel.qml</file>
         <file>Theme2/HomePanel.qml</file>
         <file>Theme2/NQBackground.qml</file>

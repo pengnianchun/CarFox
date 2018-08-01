@@ -358,12 +358,14 @@ signals:
     //void addrNumberVoltageValueChanged(float value);
     //void boxNumberVoltageChanged(int value);
     //void voltageInfoChanged(QVariantMap value);
+    void batVoltageIndexChanged(QVariantMap value);
     void batVoltageChanged(QVariantMap value);
     //电池组温度信息
     //void addrNumberTempChanged(int value);
     //void addrNumberTempValueChanged(float value);
     //void boxNumberTempChanged(int value);
     //void tempInfoChanged(QVariantMap value);
+    void batTempIndexChanged(QVariantMap value);
     void batTempChanged(QVariantMap value);
     //空调模块信息
     void acFaultCodeChanged(uint value);
@@ -651,6 +653,8 @@ private:
     CarMsgWorkerStateData mStateData;
     std::shared_ptr<KeyManager> mKeyManager;
     std::shared_ptr<ThemeConfig> mThemeConfig;
+    QVariantMap mBatVoltageIndex;
     QVariantMap mBatVoltageData;
+    QVariantMap mBatTempIndex;
     QVariantMap mBatTempData;
 };

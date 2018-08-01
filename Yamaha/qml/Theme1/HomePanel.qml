@@ -2,21 +2,19 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
-import "qrc:/JS/mainpanel_pointer_orbitdata.js" as MainpanelJS
 import "qrc:/Component/Component"
-
+import "qrc:/JS/mainpanel_pointer_orbitdata.js" as MainpanelJS
 
 CommonItem {
-    id: root_item;
-    z: 0
-    width: 1440;
-    height: 540;
-    property var carSpeedOrbitData: [];
-    property var rotationOrbitData: [];
+    id: root_item
+    width: 1440
+    height: 540
+    property var carSpeedOrbitData: []
+    property var rotationOrbitData: []
     property int currentCarSpeed: 0
     property int currentTireRotation: 0
-    property int carSpeed: 0;
-    property int tireRotation: 0;
+    property int carSpeed: 0
+    property int tireRotation: 0
 
     FontLoader {
         id: europeExt

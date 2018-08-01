@@ -1238,19 +1238,29 @@ void CustomCarMsgWorker::handleProtoBatteryManageSystemMenuInfo(const carfox::Me
 //单体电压
 void CustomCarMsgWorker::handleProtoBatterySingleVoltageMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupVoltageInfo::BatterySingleVoltage> p = carfox::down_pointer_cast<fyBatteryGroupVoltageInfo::BatterySingleVoltage>(msg);
+    mBatVoltageIndex.clear();
     mBatVoltageData.clear();
     for(uint i=0; i<p->addr_number(); i++) {
-        mBatVoltageData.insert(QString::number(p->voltageindex(i)), p->voltage(i));
+        mBatVoltageIndex.insert(QString::number(i), p->voltageindex(i));
     }
+    for(uint i=0; i<p->addr_number(); i++) {
+        mBatVoltageData.insert(QString::number(i), p->voltage(i));
+    }
+    emit this->batVoltageIndexChanged(mBatVoltageIndex);
     emit this->batVoltageChanged(mBatVoltageData);
 }
 //单体温度
 void CustomCarMsgWorker::handleProtoBatterySingleTemperatureMenuInfo(const carfox::MessagePtr &msg) {
     shared_ptr<fyBatteryGroupTemperatureInfo::BatterySingleTemperature> p = carfox::down_pointer_cast<fyBatteryGroupTemperatureInfo::BatterySingleTemperature>(msg);
+    mBatTempIndex.clear();
     mBatTempData.clear();
     for(uint i=0; i<p->addr_number(); i++) {
-        mBatTempData.insert(QString::number(p->temperatureindex(i)), p->temperature(i));
+        mBatTempIndex.insert(QString::number(i), p->temperatureindex(i));
     }
+    for(uint i=0; i<p->addr_number(); i++) {
+        mBatTempData.insert(QString::number(i), p->temperature(i));
+    }
+    emit this->batTempIndexChanged(mBatTempIndex);
     emit this->batTempChanged(mBatTempData);
 }
 //空调信息

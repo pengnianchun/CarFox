@@ -325,11 +325,13 @@ class CustomCarMsg : public carfox::CarMsg
     //MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberVoltage, 0)
     //MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberVoltageValue, 0)
     //MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberVoltage, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, voltageIndex, QVariantMap())
     MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, voltageInfo, QVariantMap())
     //电池组温度信息
     //MEMBER_PROPERTY_WITH_NOTIFY(uint, addrNumberTemp, 0)
     //MEMBER_PROPERTY_WITH_NOTIFY(float, addrNumberTempValue, 0)
     //MEMBER_PROPERTY_WITH_NOTIFY(uint, boxNumberTemp, 0)
+    MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, tempIndex, QVariantMap())
     MEMBER_PROPERTY_WITH_NOTIFY(QVariantMap, tempInfo, QVariantMap())
     //空调系统信息
     MEMBER_PROPERTY_WITH_NOTIFY(uint, acFaultCode, 0)
@@ -876,11 +878,13 @@ private slots:
     //void updateAddrNumberVoltage(uint value);
     //void updateAddrNumberVoltageValue(float value);
     //void updateBoxNumberVoltage(uint value);
+    void updateVoltageIndex(QVariantMap value);
     void updateVoltageInfo(QVariantMap value);
     //电池组温度信息
     //void updateAddrNumberTemp(uint value);
     //void updateAddrNumberTempValue(float value);
     //void updateBoxNumberTemp(uint value);
+    void updateTempIndex(QVariantMap value);
     void updateTempInfo(QVariantMap value);
     //空调系统信息
     void updateAcFaultCode(uint value);
