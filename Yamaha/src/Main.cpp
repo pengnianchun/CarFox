@@ -10,6 +10,7 @@
 #include "UndeadMain.hpp"
 #include "ThemeManager.hpp"
 #include "CustomUiController.hpp"
+#include "NCLog.hpp"
 
 Q_LOGGING_CATEGORY(Framework, "Framework")
 Q_LOGGING_CATEGORY(Yamaha, "Yamaha")
@@ -55,6 +56,10 @@ void initEnv() {
 #endif
 
 int main(int argc, char *argv[]) {
+
+    //Log
+    //NCLog::init("/tmp/log", nullptr);
+    //NCLog::deinit();
 
     qSetMessagePattern("%{time [yyyyMMdd hh:mm:ss.zzz]} %{function}@%{line} %{type}: %{message}");
 
