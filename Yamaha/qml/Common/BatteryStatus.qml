@@ -15,6 +15,7 @@ MenuItem {
 
     onVoltageInfoChanged: {
         battery_model.clear();
+        battery_model.append({"name":"电池组序号","value":"电池电压","unit":"单位"});
         for(var i in voltageInfo){
             battery_model.append({"name":i,"value":voltageInfo[i].toFixed(2),"unit":"V"});
         }
@@ -22,6 +23,7 @@ MenuItem {
 
     onTempInfoChanged: {
         temperature_model.clear();
+        temperature_model.append({"name":"电池组序号","value":"电池温度","unit":"单位"});
         for(var i in tempInfo){
             temperature_model.append({"name":i,"value":tempInfo[i].toFixed(0),"unit":"℃"});
         }
@@ -59,9 +61,8 @@ MenuItem {
     }
 
     //电池组信息
-
     Column {
-        x: 50
+        x: 140
         y: 80
         width: 300
         height: 300
@@ -75,7 +76,7 @@ MenuItem {
                 textTitle: name
                 textValue: value
                 unitValue: unit
-                titleColor: "#00a7f5"
+                fontColor: "#00a7f5"
                 textWidth: 150
                 fontSize: 12
                 unitWidth: 45
@@ -85,7 +86,7 @@ MenuItem {
     }
 
     Column {
-        x: 400
+        x: 500
         y: 80
         width: 300
         height: 300
@@ -99,7 +100,7 @@ MenuItem {
                 textTitle: name
                 textValue: value
                 unitValue: unit
-                titleColor: "#00a7f5"
+                fontColor: "#00a7f5"
                 textWidth: 150
                 fontSize: 12
                 unitWidth: 45
