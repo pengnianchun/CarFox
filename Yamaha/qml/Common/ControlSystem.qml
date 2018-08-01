@@ -11,21 +11,21 @@ MenuItem {
     menuLayerId: "ControlSystem"
 
     // 9.控制系统信息帧
-    property real motorInVoltage: CarMsg.motorInVoltage.toFixed(2) //电机输入电压, 0 V
-    property real motorInCurrent: CarMsg.motorInCurrent.toFixed(2) //电机输入电流, 0 A
-    property int motorTemp: CarMsg.motorTemp.toFixed(0) //电机温度, 0 ℃
-    property int motorControllerTemp: CarMsg.motorControllerTemp //电机控制器温度, 0 ℃
-    property int carVcuMode: CarMsg.carVcuMode //整车模式, 0
-    property double version: CarMsg.version.toFixed(2) //程序版本, 0.00
-    property int carLife: CarMsg.carLife //整车控制器Life, 0
-    property real accelPedalPercent: CarMsg.accelPedalPercent.toFixed(2) //加速踏板百分比,0.0 %
-    property real brakePedalPercent: CarMsg.brakePedalPercent.toFixed(2) //制动踏板百分比,0.0 %
-    property int din1: CarMsg.din1.toString(2) //数字量输入1, 00000000（2进制显示）
-    property int din2: CarMsg.din2.toString(2) //数字量输入2, 00000000（2进制显示）
-    property int din3: CarMsg.din3.toString(2) //数字量输入3, 00000000（2进制显示）
-    property int dout1: CarMsg.dout1.toString(2) //数字量输出1, 00000000（2进制显示）
-    property int dout2: CarMsg.dout2.toString(2) //数字量输出2, 00000000（2进制显示）
-    property int dout3: CarMsg.dout3.toString(2) //数字量输出3, 00000000（2进制显示）
+    property string motorInVoltage: CarMsg.motorInVoltage.toFixed(1) //电机输入电压, 0 V
+    property string motorInCurrent: CarMsg.motorInCurrent.toFixed(1) //电机输入电流, 0 A
+    property string motorTemp: CarMsg.motorTemp.toFixed(0) //电机温度, 0 ℃
+    property string motorControllerTemp: CarMsg.motorControllerTemp //电机控制器温度, 0 ℃
+    property string carVcuMode: CarMsg.carVcuMode //整车模式, 0
+    property string version: CarMsg.version.toFixed(2) //程序版本, 0.00
+    property string carLife: CarMsg.carLife //整车控制器Life, 0
+    property string accelPedalPercent: CarMsg.accelPedalPercent.toFixed(2) //加速踏板百分比,0.0 %
+    property string brakePedalPercent: CarMsg.brakePedalPercent.toFixed(2) //制动踏板百分比,0.0 %
+    property string din1: CarMsg.din1.toString(2) //数字量输入1, 00000000（2进制显示）
+    property string din2: CarMsg.din2.toString(2) //数字量输入2, 00000000（2进制显示）
+    property string din3: CarMsg.din3.toString(2) //数字量输入3, 00000000（2进制显示）
+    property string dout1: CarMsg.dout1.toString(2) //数字量输出1, 00000000（2进制显示）
+    property string dout2: CarMsg.dout2.toString(2) //数字量输出2, 00000000（2进制显示）
+    property string dout3: CarMsg.dout3.toString(2) //数字量输出3, 00000000（2进制显示）
 
     onMotorInVoltageChanged: {
         listmodelone.setProperty(0, "value", motorInVoltage);
