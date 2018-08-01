@@ -11,17 +11,17 @@ MenuItem {
     parentMenuId: "MenuMainDetail"
 
     //电池管理系统
-    property double batMaxChargeCurrent: CarMsg.batMaxChargeCurrent.toFixed(1) //最大允许充电电流
-    property double batMaxDischargeCurrent: CarMsg.batMaxDischargeCurrent.toFixed(1) //最大允许放电电流
-    property double batAverageVoltage: CarMsg.batAverageVoltage.toFixed(2) //单体平均电压
-    property int batStatus1: CarMsg.batStatus1.toString(2) //电池状态1
-    property int batStatus2: CarMsg.batStatus2.toString(2) //电池状态2
-    property int batStatus3: CarMsg.batStatus3.toString(2) //电池状态3
-    property double irmOhmPositive: CarMsg.irmOhmPositive //总正绝缘阻值
-    property double irmOhmNegative: CarMsg.irmOhmNegative //总负绝缘阻值
-    property double batMaxVoltage: CarMsg.batMaxVoltage.toFixed(2) //单体最高电压
-    property double batMinVoltage: CarMsg.batMinVoltage.toFixed(2) //单体最低电压
-    property double batteryHighestTemp: CarMsg.batteryHighestTemp.toFixed(0) //单体最高温度
+    property string batMaxChargeCurrent: CarMsg.batMaxChargeCurrent.toFixed(1) //最大允许充电电流
+    property string batMaxDischargeCurrent: CarMsg.batMaxDischargeCurrent.toFixed(1) //最大允许放电电流
+    property string batAverageVoltage: CarMsg.batAverageVoltage.toFixed(2) //单体平均电压
+    property string batStatus1: CarMsg.batStatus1.toString(2) //电池状态1
+    property string batStatus2: CarMsg.batStatus2.toString(2) //电池状态2
+    property string batStatus3: CarMsg.batStatus3.toString(2) //电池状态3
+    property string irmOhmPositive: CarMsg.irmOhmPositive //总正绝缘阻值
+    property string irmOhmNegative: CarMsg.irmOhmNegative //总负绝缘阻值
+    property string batMaxVoltage: CarMsg.batMaxVoltage.toFixed(2) //单体最高电压
+    property string batMinVoltage: CarMsg.batMinVoltage.toFixed(2) //单体最低电压
+    property string batteryHighestTemp: CarMsg.batteryHighestTemp.toFixed(0) //单体最高温度
 
     onBatMaxChargeCurrentChanged: { //最大允许充电电流
         listmodelone.setProperty(0, "value", batMaxChargeCurrent);
