@@ -179,11 +179,11 @@ MenuItem {
 
         TextFieldWeir {
             id: submit
-            y: 40
+            y: 60
             width: 100
             height: 30
             anchors.horizontalCenterOffset: 0
-            anchors.bottomMargin: 22
+            anchors.bottomMargin: -11
             textWidth: 100
             textHeight: 30
             anchors.horizontalCenter: parent.horizontalCenter
