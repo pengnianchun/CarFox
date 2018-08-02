@@ -10,6 +10,21 @@ Item {
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
     property string sourceImageUrlGrey: "qrc:/theme2/symbol/Theme2/Symbol_gray/"
 
+    property bool lampTurnLeft: CarMsg.lampTurnLeft
+    property bool lampTurnRight: CarMsg.lampTurnRight
+
+    onLampTurnLeftChanged: {
+        if (!lampTurnLeft) {
+            turnLeftWL.visible = lampTurnLeft
+        }
+    }
+
+    onLampTurnRightChanged: {
+        if (!lampTurnRight) {
+            turnRightWL.visible = lampTurnRight
+        }
+    }
+
     Image { //系统故障
         x: 95
         y: 20
@@ -319,13 +334,13 @@ Item {
         }
     }
 
-    Timer {
-        id: demo
-        interval: 800
-        repeat: true
-        running: parent.visible
-        onTriggered: {
-            enableTest = !enableTest
-        }
-    }
+//    Timer {
+//        id: demo
+//        interval: 800
+//        repeat: true
+//        running: parent.visible
+//        onTriggered: {
+//            enableTest = !enableTest
+//        }
+//    }
 }

@@ -1172,8 +1172,8 @@ CommonItem {
                         if(++car_speed_current_point_count > 239) {
                             car_speed_current_point_count = 239;
                         }
-                        pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
-                        pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                        pointer_car_speed.x = car_speed_current_point_count +20;
+                        pointer_car_speed.y = 600/car_speed_current_point_count;
                     }
                 } else {
                     if(car_speed_current_point_count > carSpeedDialCenterNumber) {
