@@ -7,8 +7,10 @@ import "qrc:/JS/mainpanel_pointer_orbitdata.js" as MainpanelJS
 
 CommonItem {
     id: root_item
+
     width: 1440
     height: 540
+
     property var carSpeedOrbitData: []
     property var rotationOrbitData: []
     property int currentCarSpeed: 0
@@ -16,294 +18,301 @@ CommonItem {
     property int carSpeed: 0
     property int tireRotation: 0
 
+    property var carGaugesPos: [110, 460, -10, 400, -30, -15, 300, 20]
+
+    property int alarmCode: CarMsg.warningId //警告提示
+    property int  carSpeedValue: CarMsg.carSpeed; // 车速
+    property int  engineSpeedValue: CarMsg.rpm; // 转速
+    property int  carVoyage: CarMsg.soc * 3 // 续航里程
+    property int  carSoc: CarMsg.soc; // SOC
+    property real carBattery: CarMsg.battery; // 蓄电池电压
+    property real carTotalVoltage: CarMsg.totalVoltage; // 总电压
+    property real carTotalCurrent: CarMsg.totalCurrent; // 总电流
+    property real carTrip: CarMsg.trip // TRIP
+    property real carOdo: CarMsg.odo // ODO
+    property int  carWaterTemp: CarMsg.engineWaterTemp; // 水温
+    property int  carGearValue: CarMsg.gear // 档位
+
+    function getCarGaugesPosX(pos, step) {
+        var t = 1.0/250 * step
+        var t1 = 1 - t
+        var x = pos[0]*Math.pow(t1,3) + 3*pos[2]*t*Math.pow(t1,2) + 3*pos[4]*Math.pow(t,2)*t1 + pos[6]*Math.pow(t,3);
+        return x
+    }
+
+    function getCarGaugesPosY(pos, step) {
+        var t= 1.0/250 * step
+        var t1 = 1 - t
+        var y = pos[1]*Math.pow(t1,3) + 3*pos[3]*t*Math.pow(t1,2) + 3*pos[5]*Math.pow(t,2)*t1 + pos[7]*Math.pow(t,3);
+        return y
+    }
+
     FontLoader {
         id: adobeHeitiStd
         name: "Microsoft"
     }
 
     Image {
-        id: background;
-        x: 0;
-        y: 0;
-        visible: true;
-        source: "qrc:/theme1/slice/Theme1/Slice/background_v3.png";
+        id: background
+        x: 0
+        y: 0
+        visible: true
+        source: "qrc:/theme1/slice/Theme1/Slice/background_v3.png"
 
         // ------------------------- car speed dial -------------------------
         Item {
-            id: car_speed_dial;
+            id: car_speed_dial
 
             // dial center number
             Text {
-                id: car_speed_dial_center_number;
-                x: 256;
-                y: 203;
-                visible: true;
-                text: "84";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 120;
-                smooth:true;
+                id: car_speed_dial_center_number
+                x: 256
+                y: 203
+                visible: true
+                text: carSpeedValue
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 120
             }
             // Measurement unit
             Text {
-                id: car_speed_dial_measurement_unit;
-                x: 279;
-                y: 353;
-                visible: true;
-                text: "km/h";
-                color: "white";
-                opacity: 0.6;
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 20;
-                smooth:true;
+                id: car_speed_dial_measurement_unit
+                x: 279
+                y: 353
+                visible: true
+                text: qsTr("km/h")
+                color: "white"
+                opacity: 0.6
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 20
             }
             // trip title
             Text {
-                id: car_speed_dial_strip;
-                x: 210;
-                y: 380;
-                visible: true;
-                text: "trip:              km";
-                color: "#103d44";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
+                id: car_speed_dial_strip
+                x: 210
+                y: 380
+                visible: true
+                text: qsTr("trip:              km")
+                color: "#103d44"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
             }
             // trip title content
             Text {
-                id: car_speed_dial_strip_content;
-                x: 260 + 3;
-                y: 383;
-                visible: true;
-                text: "500.2";
-                color: "#047f93";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
+                id: car_speed_dial_strip_content
+                x: 263
+                y: 383
+                visible: true
+                text: carTrip
+                color: "#047f93"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
             }
             // dial scale
             Text {
-                id: car_speed_dial_scale_0;
-                x: 134;
-                y: 448;
-                visible: true;
-                text: "0";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 1;
+                id: car_speed_dial_scale_0
+                x: 134
+                y: 448
+                visible: true
+                text: qsTr("0")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 1
             }
             Text {
-                id: car_speed_dial_scale_40;
-                x: 92;
-                y: 377;
-                visible: true;
-                text: "40";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: car_speed_dial_scale_40
+                x: 92
+                y: 377
+                visible: true
+                text: qsTr("40")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: car_speed_dial_scale_80;
-                x: 81;
-                y: 304;
-                visible: true;
-                text: "80";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: car_speed_dial_scale_80
+                x: 81
+                y: 304
+                visible: true
+                text: qsTr("80")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: car_speed_dial_scale_120;
-                x: 77;
-                y: 213;
-                visible: true;
-                text: "120";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: car_speed_dial_scale_120
+                x: 77
+                y: 213
+                visible: true
+                text: qsTr("120")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: car_speed_dial_scale_160;
-                x: 122;
-                y: 127;
-                visible: true;
-                text: "160";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: car_speed_dial_scale_160
+                x: 122
+                y: 127
+                visible: true
+                text: qsTr("160")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: car_speed_dial_scale_200;
-                x: 221;
-                y: 67;
-                visible: true;
-                text: "200";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: car_speed_dial_scale_200
+                x: 221
+                y: 67
+                visible: true
+                text: qsTr("200")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: car_speed_dial_scale_240;
-                x: 339;
-                y: 48;
-                visible: true;
-                text: "240";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: car_speed_dial_scale_240
+                x: 339
+                y: 48
+                visible: true
+                text: qsTr("240")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
         }
         // ------------------------- rotation speed dial -------------------------
         Item {
-            id: rotation_speed_dial;
+            id: rotation_speed_dial
 
             // dial center number
             Text {
                 id: rotation_speed_dial_center_number;
-                x: 1038;
-                y: 203;
-                visible: true;
-                text: "42";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 120;
-                smooth:true;
+                x: 1038
+                y: 203
+                visible: true
+                text: engineSpeedValue
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 120
             }
             // Measurement unit
             Text {
-                id: rotation_speed_dial_measurement_unit;
-                x: 1102;
-                y: 353;
-                visible: true;
-                text: "x 100/min";
-                color: "white";
-                opacity: 0.6;
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 20;
-                smooth:true;
+                id: rotation_speed_dial_measurement_unit
+                x: 1102
+                y: 353
+                visible: true
+                text: qsTr("x 100/min")
+                color: "white"
+                opacity: 0.6
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 20
             }
             // trip title
             Text {
-                id: rotation_speed_dial_strip;
-                x: 1032;
-                y: 380;
-                visible: true;
-                text: "odo:                      km";
-                color: "#103d44";
-//                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
+                id: rotation_speed_dial_strip
+                x: 1032
+                y: 380
+                visible: true
+                text: qsTr("odo:                      km")
+                color: "#103d44"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
             }
             // trip title content
             Text {
-                id: rotation_speed_dial_strip_content;
-                x: 1037 + 50 + 4;
-                y: 383;
-                visible: true;
-                text: "3000000";
-                color: "#047f93";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
+                id: rotation_speed_dial_strip_content
+                x: 1091
+                y: 383
+                visible: true
+                text: carTrip
+                color: "#047f93"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
             }
             // dial scale
             Text {
-                id: rotation_speed_dial_scale_0;
-                x: 1288-5;
-                y: 454-5;
-                visible: true;
-                text: "0";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 1;
+                id: rotation_speed_dial_scale_0
+                x: 1283
+                y: 450
+                visible: true
+                text: qsTr("0")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 1
             }
             Text {
-                id: rotation_speed_dial_scale_20;
-                x: 1312-5;
-                y: 377-5;
-                visible: true;
-                text: "20";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: rotation_speed_dial_scale_20
+                x: 1307
+                y: 372
+                visible: true
+                text: qsTr("20")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: rotation_speed_dial_scale_40;
-                x: 1326-5;
-                y: 304-5;
-                visible: true;
-                text: "40";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: rotation_speed_dial_scale_40
+                x: 1321
+                y: 300
+                visible: true
+                text: qsTr("40")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: rotation_speed_dial_scale_60;
-                x: 1323-5;
-                y: 213-5;
-                visible: true;
-                text: "60";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: rotation_speed_dial_scale_60
+                x: 1318
+                y: 208
+                visible: true
+                text: qsTr("60")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: rotation_speed_dial_scale_80;
-                x: 1280-5;
-                y: 127-5;
-                visible: true;
-                text: "80";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: rotation_speed_dial_scale_80
+                x: 1275
+                y: 122
+                visible: true
+                text: qsTr("80")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: rotation_speed_dial_scale_100;
-                x: 1170-5;
-                y: 67-5;
-                visible: true;
-                text: "100";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: rotation_speed_dial_scale_100
+                x: 1165
+                y: 62
+                visible: true
+                text: qsTr("100")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
             Text {
-                id: rotation_speed_dial_scale_120;
-                x: 1051-5;
-                y: 48-5;
-                visible: true;
-                text: "120";
-                color: "white";
-                font.family: adobeHeitiStd.name;
-                font.pixelSize: 24;
-                smooth:true;
-                opacity: 0.2;
+                id: rotation_speed_dial_scale_120
+                x: 1046
+                y: 43
+                visible: true
+                text: qsTr("120")
+                color: "white"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                opacity: 0.2
             }
         }
 
@@ -927,6 +936,11 @@ CommonItem {
         visible: true;
         source: "qrc:/theme1/slice/Theme1/Slice/sun.png";
         scale: 0.8;
+
+//        Behavior on x {
+
+//        }
+
     }
     Image {
         id: pointer_rotation;
@@ -942,56 +956,6 @@ CommonItem {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
-//    Timer {
-//        property int symbolCounter: 0;
-//        property int counter: 0;
-//        property int carSpeedRandom: 0;
-//        property int carSpeedRandomPre: 0;
-//        property int tireRotationRandom: 0;
-//        property int tireRotationRandomPre: 0;
-//        id: timer_for_random_demo;
-//        interval: 100;
-//        running: true;
-//        repeat: true
-//        onTriggered: {
-
-//            carSpeedRandom = getRandomInt(240);
-//            tireRotationRandom = getRandomInt(120);
-
-//            car_speed_dial_center_number.text = carSpeedRandom;
-//            carSpeed = carSpeedRandom;
-//            // adjust number position
-//            if(carSpeedRandom >= 100) {
-//                car_speed_dial_center_number.x = 196-50;
-//            } else if(carSpeedRandom >= 10) {
-//                car_speed_dial_center_number.x = 196-10;
-//            } else {
-//                car_speed_dial_center_number.x = 256;
-//            }
-
-//            if(counter++>4) {
-//                counter = 0;
-//                // adjust number position
-//                if(tireRotationRandom >= 100) {
-//                    rotation_speed_dial_center_number.x = 1038-50;
-//                } else if(tireRotationRandom >= 10) {
-//                    rotation_speed_dial_center_number.x = 1038+20;
-//                } else {
-//                    rotation_speed_dial_center_number.x = 1098;
-//                }
-//                rotation_speed_dial_center_number.text = tireRotationRandom;
-//                tireRotation = tireRotationRandom;
-
-//                if(symbolCounter++ > 2) {
-//                    symbols.visible = !symbols.visible;
-//                    symbolCounter = 0;
-//                }
-//            }
-
-//            carSpeedRandomPre = carSpeedRandom;
-//        }
-//    }
-
     Timer {
         property int symbolCounter: 0;
         property int counter: 0;
@@ -1001,7 +965,7 @@ CommonItem {
         property bool directionRotationUp: true;
         id: timer_for_random_demo;
         interval: 100;
-        running: true;
+        running: false;
         repeat: true
         onTriggered: {
 
@@ -1155,8 +1119,8 @@ CommonItem {
                         car_speed_current_point_count = 0;
                     }
                 }
-                pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
-                pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                pointer_car_speed.x = getCarGaugesPosX(carGaugesPos, car_speed_current_point_count);
+                pointer_car_speed.y = getCarGaugesPosY(carGaugesPos, car_speed_current_point_count);
             } else {
                 // car speed
                 var carSpeedDialCenterNumber = Number(car_speed_dial_center_number.text);
@@ -1172,16 +1136,16 @@ CommonItem {
                         if(++car_speed_current_point_count > 239) {
                             car_speed_current_point_count = 239;
                         }
-                        pointer_car_speed.x = car_speed_current_point_count +20;
-                        pointer_car_speed.y = 600/car_speed_current_point_count;
+                        pointer_car_speed.x = getCarGaugesPosX(carGaugesPos, car_speed_current_point_count);
+                        pointer_car_speed.y = getCarGaugesPosY(carGaugesPos, car_speed_current_point_count);
                     }
                 } else {
                     if(car_speed_current_point_count > carSpeedDialCenterNumber) {
                         if(--car_speed_current_point_count < 0) {
                             car_speed_current_point_count = 0;
                         }
-                        pointer_car_speed.x = carSpeedOrbitData[car_speed_current_point_count][0];
-                        pointer_car_speed.y = carSpeedOrbitData[car_speed_current_point_count][1];
+                        pointer_car_speed.x = getCarGaugesPosX(carGaugesPos, car_speed_current_point_count);
+                        pointer_car_speed.y = getCarGaugesPosY(carGaugesPos, car_speed_current_point_count);
                     }
                 }
             }
