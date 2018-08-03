@@ -61,7 +61,6 @@
         <file>Theme2/BlockLoader.qml</file>
     </qresource>
     <qresource prefix="/">
-        <file>JS/mainpanel_pointer_orbitdata.js</file>
         <file>Common/EngineSystem.qml</file>
         <file>Common/AuxiliarySystem.qml</file>
         <file>Common/TcuSystem.qml</file>

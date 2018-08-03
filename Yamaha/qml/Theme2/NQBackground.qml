@@ -11,7 +11,7 @@ Item {
 
     property string sourceImageUrl: "qrc:/theme2/symbol/Theme2/Symbol/"
 
-    property int alarmCode: CarMsg.warningId //警告提示
+    property int  alarmCode: CarMsg.warningId //警告提示
     property int  carSpeedValue: CarMsg.carSpeed; // 车速
     property int  engineSpeedValue: CarMsg.rpm; // 转速
     property int  carVoyage: CarMsg.soc * 3 // 续航里程
