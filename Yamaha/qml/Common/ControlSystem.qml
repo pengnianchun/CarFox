@@ -64,7 +64,11 @@ MenuItem {
     }
 
     onBrakePedalPercentChanged: {
-        listmodeltwo.setProperty(1, "value", brakePedalPercent);
+        if (brakePedalPercent > 100) {
+            listmodeltwo.setProperty(1, "value", "100.00");
+        } else {
+            listmodeltwo.setProperty(1, "value", brakePedalPercent);
+        }
     }
 
     onDin1Changed: {
