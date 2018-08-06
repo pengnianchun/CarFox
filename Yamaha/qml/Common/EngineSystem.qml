@@ -31,7 +31,11 @@ MenuItem {
         }
     }
     onEngineActualThrottleChanged: { //发动机实际油门
-        listmodelone.setProperty(3, "value", engineActualThrottle);
+        if (engineActualThrottle > 100) {
+            listmodelone.setProperty(3, "value", "100.00");
+        } else {
+            listmodelone.setProperty(3, "value", engineActualThrottle);
+        }
     }
     onEngineInletTemperatureChanged: { //发动机进气温度
         listmodelone.setProperty(4, "value", engineInletTemperature);
