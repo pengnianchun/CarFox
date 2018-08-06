@@ -19,7 +19,16 @@ MenuItem {
     property string oc: CarMsg.oc.toString(16) //OC值
 
     onActualClutchPositionChanged: { //离合实际位置
-        listmodelone.setProperty(0, "value", actualClutchPosition);
+        if ("0" === actualClutchPosition) {
+            listmodelone.setProperty(0, "value", "分离");
+        } else if ("1" === actualClutchPosition) {
+            listmodelone.setProperty(0, "value", "结合");
+        } else if ("2" === actualClutchPosition) {
+            listmodelone.setProperty(0, "value", "半联动");
+        } else {
+            // default
+            listmodelone.setProperty(0, "value", "未知");
+        }
     }
     onTcuFaultCodeChanged: { //TCU故障信息
         listmodelone.setProperty(1, "value", tcuFaultCode);
