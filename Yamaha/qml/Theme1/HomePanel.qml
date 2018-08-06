@@ -24,8 +24,8 @@ CommonItem {
     property int  carGearValue: CarMsg.gear // 档位
 
     // Bezier Canvas
-    property var carGaugesPos: [110, 460, -10, 400, -30, -15, 300, 20]
-    property var carEnginePos: [1280, 460, 1380, 368, 1500, 3, 1000, 10]
+    property var carGaugesPos: [100, 460, -10, 400, -50, -25, 400, 10] // [{x0,y0, x1,y1, x2,y2, x3,y3}]
+    property var carEnginePos: [1280, 460, 1380, 368, 1500, 3, 1000, 10] // [{x0,y0, x1,y1, x2,y2, x3,y3}]
 
     function getCarGaugesPosX(pos, step) {
         var t = 1.0/250 * step
@@ -91,7 +91,7 @@ CommonItem {
             car_speed_dial_scale_160.opacity = 1
             car_speed_dial_scale_200.opacity = 1
             car_speed_dial_scale_240.opacity = 0.2
-        } else if( carSpeed >= 240) {
+        } else if( carSpeedValue >= 240) {
             car_speed_dial_scale_0.opacity   = 1
             car_speed_dial_scale_40.opacity  = 1
             car_speed_dial_scale_80.opacity  = 1
@@ -211,7 +211,7 @@ CommonItem {
                 x: 210
                 y: 380
                 visible: true
-                text: qsTr("trip:              km")
+                text: qsTr("trip:               km")
                 color: "#103d44"
                 font.family: adobeHeitiStd.name
                 font.pixelSize: 24
@@ -221,11 +221,14 @@ CommonItem {
                 id: car_speed_dial_strip_content
                 x: 263
                 y: 380
+                width: 110
+                height: 24
                 visible: true
                 text: carTrip
                 color: "#047f93"
                 font.family: adobeHeitiStd.name
                 font.pixelSize: 24
+                horizontalAlignment: Text.AlignRight
             }
             // dial scale
             Text {
@@ -349,11 +352,14 @@ CommonItem {
                 id: engine_speed_dial_strip_content
                 x: 1091
                 y: 380
+                width: 160
+                height: 24
                 visible: true
-                text: carTrip
+                text: carOdo
                 color: "#047f93"
                 font.family: adobeHeitiStd.name
                 font.pixelSize: 24
+                horizontalAlignment: Text.AlignRight
             }
             // dial scale
             Text {
@@ -438,10 +444,10 @@ CommonItem {
 
         // ------------------------- main menu panel -------------------------
         Item {
-            id: main_menu_panel;
-            x: 580;
-            y: 40;
-            property int menuIndex: 1;
+            id: main_menu_panel
+            x: 580
+            y: 40
+            property int menuIndex: -1
             property var menu_icons: [
                 "qrc:/theme1/slice/Theme1/Slice/dashed_car.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/car_info.png",
@@ -457,24 +463,8 @@ CommonItem {
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/settings.png",
                 "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/info.png"];
 
-            //            ListModel {
-            //                id: menuModel;
-            //                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage-1.png";}
-            //                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information-1.png";}
-            //                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation-1.png";}
-            //                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia-1.png";}
-            //                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving-1.png";}
-            //                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior-1.png";}
-            //                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis-1.png";}
-            //                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system-1.png";}
-            //                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help-1.png";}
-            //                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure-1.png";}
-            //                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault-1.png";}
-            //                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up-1.png";}
-            //                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information-1.png";}
-            //            }
             ListModel {
-                id: menuModel;
+                id: menuModel
                 ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage-1.png";}
                 ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information-1.png";}
                 ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation-1.png";}
@@ -491,7 +481,7 @@ CommonItem {
             }
 
             Component {
-                id: displayDelegate;
+                id: displayDelegate
                 Item {
                     width: 40; height: 40;
                     Image { source: icon; }
@@ -499,90 +489,88 @@ CommonItem {
             }
 
             PathView {
-                id: pathView;
-                anchors.fill: parent;
-                model: menuModel;
-                delegate: displayDelegate;
+                id: pathView
+                anchors.fill: parent
+                model: menuModel
+                delegate: displayDelegate
                 path: Path {
-                    id: pathView_path;
-                    startX: 0; startY: 0;
+                    id: pathView_path
+                    startX: 0; startY: 0
                     PathQuad { id: pathView_pathQuad; x: 350; y: 20; controlX: 150; controlY: -20; }
                 }
-                pathItemCount: 3;
-                currentIndex: main_menu_panel.menuIndex;
+                pathItemCount: 3
+                currentIndex: main_menu_panel.menuIndex
             }
         }
 
         // ------------------------- car picture -------------------------
         Item {
-            id: subscreen;
+            id: subscreen
             Image {
-                id: subscreen_image;
-                x: 570;
-                y: 160;
-                source: "qrc:/theme1/slice/Theme1/Slice/dashed_car.png";
-                scale: 0.9;
+                id: subscreen_image
+                x: 570
+                y: 160
+                source: "qrc:/theme1/slice/Theme1/Slice/dashed_car.png"
+                scale: 0.9
             }
         }
 
         // ------------------------- soc panel -------------------------
-        //        Item {
-        //            id: soc_panel;
+        Item {
+            id: soc_panel
 
-        //            // current time
-        ////            Text {
-        ////                id: soc_label;
-        ////                x: 645;
-        ////                y: 367+10;
-        ////                visible: true;
-        ////                text: "soc :";
-        ////                color: "#068ca5";
-        ////                font.family: adobeHeitiStd.name;
-        ////                font.pixelSize: 22;
-        ////                font.bold: false;
-        ////                smooth:true;
-        ////            }
-        ////            Text {
-        ////                id: soc_value;
-        ////                x: 645+65;
-        ////                y: 367+10;
-        ////                visible: true;
-        ////                text: "50 %";
-        ////                color: "#068ca5";
-        ////                font.family: adobeHeitiStd.name;
-        ////                font.pixelSize: 24;
-        ////                font.bold: false;
-        ////                smooth:true;
-        ////            }
+            // current time
+            Text {
+                id: soc_label
+                x: 645
+                y: 367+10
+                visible: true
+                text: "soc :"
+                color: "#068ca5"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 22
+                font.bold: false
+            }
+            Text {
+                id: soc_value
+                x: 645+65
+                y: 367+10
+                visible: true
+                text: carSoc + " %"
+                color: "#068ca5"
+                font.family: adobeHeitiStd.name
+                font.pixelSize: 24
+                font.bold: false
+            }
 
-        ////            ProgressBar {
-        ////                id: progressbar_soc;
-        ////                x: 545;
-        ////                y: 407+10;
-        ////                width: 360;
-        ////                height: 1;
-        ////                value: 0.5;
-        ////                style: ProgressBarStyle {
-        ////                    background: Rectangle {
-        ////                    color:"white";
-        ////                    opacity: 0.6;
-        ////                    }
-        ////                    progress: Rectangle{
-        ////                        color: "#068ca5";
-        ////                    }
-        ////                }
-        ////            }
+            ProgressBar {
+                id: progressbar_soc
+                x: 545
+                y: 407+10
+                width: 360
+                height: 1
+                value: carSoc / 100
+                style: ProgressBarStyle {
+                    background: Rectangle {
+                        color:"white"
+                        opacity: 0.6
+                    }
+                    progress: Rectangle{
+                        color: "#068ca5"
+                    }
+                }
+            }
 
-        ////            Rectangle {
-        ////                id: progressbar_soc_handle;
-        ////                x: progressbar_soc.x + progressbar_soc.width*progressbar_soc.value;
-        ////                y: 404;
-        ////                width: 7;
-        ////                height: 7;
-        ////                color: "#068ca5";
-        ////                radius: 180;
-        ////            }
-        //        }
+            Rectangle {
+                id: progressbar_soc_handle
+                x: progressbar_soc.x + progressbar_soc.width*progressbar_soc.value
+                y: 414
+                width: 7
+                height: 7
+                color: "#068ca5"
+                radius: 180
+            }
+        }
 
         // ------------------------- bottom panel -------------------------
         Timer {
@@ -1006,9 +994,8 @@ CommonItem {
             subscreen_image.scale = 0.8
             break;
         case 11:
-            subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
+
+            subscreen_image.visible = false
             break;
         case 12:
             subscreen_image.x = 564-80
@@ -1127,7 +1114,7 @@ CommonItem {
         property bool directionRotationUp: true
         id: timer_for_random_demo
         interval: 100
-        running: true
+        running: false
         repeat: true
         onTriggered: {
             if(directionCarSpeedUp) {
@@ -1185,4 +1172,5 @@ CommonItem {
             }
         }
     }
+    // Demo
 }

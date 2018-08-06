@@ -56,7 +56,11 @@ MenuItem {
     }
 
     onAccelPedalPercentChanged: {
-        listmodeltwo.setProperty(0, "value", accelPedalPercent);
+        if (accelPedalPercent > 100) {
+            listmodeltwo.setProperty(0, "value", "100");
+        } else {
+            listmodeltwo.setProperty(0, "value", accelPedalPercent);
+        }
     }
 
     onBrakePedalPercentChanged: {
