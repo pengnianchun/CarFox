@@ -314,7 +314,7 @@ Item {
             anchors.bottomMargin: 25
             spacing: 3
             Repeater {
-                model: carSoc/11
+                model: carSoc/9
                 Image { source: "qrc:/theme2/symbol/Theme2/Symbol/soc_progress.png" }
             }
         }
