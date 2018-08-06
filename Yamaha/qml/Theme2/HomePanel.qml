@@ -16,6 +16,7 @@ CommonItem {
     property bool homepanel_visible: true
     property int  mainMenuIndex: 0
 
+    property int carGearR: 0xB
     property int carGearValue: CarMsg.gear // 档位
     property int carGearRadar: 0 // 0-None,1-雷达,2-倒车影像
 
@@ -44,7 +45,7 @@ CommonItem {
     onKeyUp: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyUp")
-            if (carGearValue === 7) {
+            if (carGearValue === carGearR) {
                 if (carGearRadar === 1) {
                     carGearRadar = 2
                 } else {
@@ -57,7 +58,7 @@ CommonItem {
     onKeyDown: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyDown")
-            if (carGearValue === 7) {
+            if (carGearValue === carGearR) {
                 if (carGearRadar === 1) {
                     carGearRadar = 2
                 } else {
@@ -91,7 +92,7 @@ CommonItem {
 
     onCarGearValueChanged: {
         console.debug("onCarGearValueChanged " + carGearValue)
-        if (carGearValue === 7) { // 倒车
+        if (carGearValue === carGearR) { // 倒车
             carGearRadar = 2 // 默认倒车影像
             if (mainMenuIndex !== 0) {
                 mainMenuIndex = 0 // 隐藏模块
@@ -125,9 +126,9 @@ CommonItem {
         anchors.centerIn: parent
 
         // 雷达
-        Radar { visible: carGearValue === 7 && carGearRadar === 1; }
+        Radar { visible: carGearValue === carGearR && carGearRadar === 1; }
         // 倒车影像
-        BackCamera { visible: carGearValue === 7 && carGearRadar === 2; }
+        BackCamera { visible: carGearValue === carGearR && carGearRadar === 2; }
     }
 
     ListModel {

@@ -37,18 +37,31 @@ Item {
     }
 
     onCarGearValueChanged: {
-        if (carGearValue === 0) {
+        if (carGearValue === 0xA) {
             gearN.source = sourceImageUrl + "gear_N0.png"
             gearD.source = sourceImageUrl + "gear_D.png"
             gearR.source = sourceImageUrl + "gear_R.png"
-        } else if (carGearValue === 7) {
+            gearDValue.text = ""
+        } else if (carGearValue === 0xB) {
             gearN.source = sourceImageUrl + "gear_N.png"
             gearD.source = sourceImageUrl + "gear_D.png"
             gearR.source = sourceImageUrl + "gear_R0.png"
-        } else {
+            gearDValue.text = ""
+        } else if (carGearValue === 0x9) {
             gearN.source = sourceImageUrl + "gear_N.png"
             gearD.source = sourceImageUrl + "gear_D0.png"
             gearR.source = sourceImageUrl + "gear_R.png"
+            gearDValue.text = ""
+        } else if (carGearValue >= 0x1 && carGearValue <= 0x7) {
+            gearN.source = sourceImageUrl + "gear_N.png"
+            gearD.source = sourceImageUrl + "gear_D0.png"
+            gearR.source = sourceImageUrl + "gear_R.png"
+            gearDValue.text = carGearValue
+        } else {
+            gearN.source = sourceImageUrl + "gear_N.png"
+            gearD.source = sourceImageUrl + "gear_D.png"
+            gearR.source = sourceImageUrl + "gear_R.png"
+            gearDValue.text = ""
         }
     }
 
@@ -425,7 +438,7 @@ Item {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: 20
+            spacing: 40
             Image {
                 id: gearN
                 source: sourceImageUrl + "gear_N0.png"
@@ -437,6 +450,14 @@ Item {
                 source: sourceImageUrl + "gear_D.png"
                 asynchronous: true
                 cache: true
+                Text {
+                    id: gearDValue
+                    anchors.left: gearD.right
+                    anchors.bottom: gearD.bottom
+                    anchors.bottomMargin: -8
+                    color: "#0aff00"
+                    font.pixelSize: 35
+                }
             }
             Image {
                 id: gearR

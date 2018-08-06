@@ -30,7 +30,7 @@ MenuItem {
     previousMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel previousMenu")
-            if (carGearValue !== 7) {
+            if (carGearValue !== carGearR) {
                 if (mainMenuIndex > 0) {
                     mainMenuIndex = --listMenu.currentIndex
                 }
@@ -44,7 +44,7 @@ MenuItem {
     nextMenu: function() {
         if (bKeyEnable) {
             console.debug("MenuPanel nextMenu")
-            if (carGearValue !== 7) {
+            if (carGearValue !== carGearR) {
                 if (mainMenuIndex < listMenu.count - 1) {
                     mainMenuIndex = ++listMenu.currentIndex
                 }
