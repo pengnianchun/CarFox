@@ -24,7 +24,11 @@ MenuItem {
         listmodelone.setProperty(1, "value", engineLoad);
     }
     onEngineTargetThrottleChanged: { //发动机目标油门
-        listmodelone.setProperty(2, "value", engineTargetThrottle);
+        if (engineTargetThrottle > 100) {
+            listmodelone.setProperty(2, "value", "100.00");
+        } else {
+            listmodelone.setProperty(2, "value", engineTargetThrottle);
+        }
     }
     onEngineActualThrottleChanged: { //发动机实际油门
         listmodelone.setProperty(3, "value", engineActualThrottle);
