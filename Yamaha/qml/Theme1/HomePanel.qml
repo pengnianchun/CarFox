@@ -177,7 +177,7 @@ CommonItem {
         x: 0
         y: 0
         visible: true
-        source: "qrc:/theme1/slice/Theme1/Slice/background_v3.png"
+        source: "qrc:/theme1/Theme1/Slice/background_v3.png"
 
         // ------------------------- car speed dial -------------------------
         Item {
@@ -448,44 +448,44 @@ CommonItem {
             id: main_menu_panel
             x: 580
             y: 40
-            property int menuIndex: -1
+            property int menuIndex: 0
             property var menu_icons: [
-                "qrc:/theme1/slice/Theme1/Slice/dashed_car.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/car_info.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/navigation.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/multimedia.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/ADAS.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/analys.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/comsume.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/dispatche.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/help.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/tire_pressure.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/error.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/settings.png",
-                "qrc:/theme1/sub_screen_slice/Theme1/sub_screen_slice/info.png"];
+                "qrc:/theme1/Theme1/Slice/dashed_car.png",
+                "qrc:/theme1/Theme1/sub_screen_slice/car_info.png",
+                "qrc:/theme1/Theme1/Modules/navigation.png",
+                "qrc:/theme1/Theme1/Modules/multimedia.png",
+                "qrc:/theme1/Theme1/Modules/adas.png",
+                "qrc:/theme1/Theme1/Modules/driveAnalysis.png",
+                "qrc:/theme1/Theme1/Modules/consumption.png",
+                "qrc:/theme1/Theme1/Modules/schedule.png",
+                "qrc:/theme1/Theme1/Modules/help.png",
+                "qrc:/theme1/Theme1/Modules/tirepressure.png",
+                "qrc:/theme1/Theme1/Modules/engineError.png",
+                "qrc:/theme1/Theme1/Modules/setting.png",
+                "qrc:/theme1/Theme1/Modules/info.png"];
 
             ListModel {
                 id: menuModel
-                ListElement { name: "mainpage"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/mainpage-1.png";}
-                ListElement { name: "Vehicle information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Vehicle information-1.png";}
-                ListElement { name: "Navigation-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Navigation-1.png";}
-                ListElement { name: "multimedia-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/multimedia-1.png";}
-                ListElement { name: "Auxiliary driving-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Auxiliary driving-1.png";}
-                ListElement { name: "Analysis of driving behavior-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Analysis of driving behavior-1.png";}
-                ListElement { name: "Energy consumption analysis-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Energy consumption analysis-1.png";}
-                ListElement { name: "dispatching system-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/dispatching system-1.png";}
-                ListElement { name: "Drive for help-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Drive for help-1.png";}
-                ListElement { name: "tirepressure-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/tirepressure-1.png";}
-                ListElement { name: "fault-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/fault-1.png";}
-                ListElement { name: "Set up-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/Set up-1.png";}
-                ListElement { name: "information-1"; icon: "qrc:/theme1/Home page switching/Theme1/Slice/Home page switching/information-1.png";}
+                ListElement { name: "mainpage"; icon: "mainpage-1.png"; }
+                ListElement { name: "Vehicle information-1"; icon: "Vehicle information-1.png"; }
+                ListElement { name: "Navigation-1"; icon: "Navigation-1.png"; }
+                ListElement { name: "multimedia-1"; icon: "multimedia-1.png"; }
+                ListElement { name: "Auxiliary driving-1"; icon: "Auxiliary driving-1.png"; }
+                ListElement { name: "Analysis of driving behavior-1"; icon: "Analysis of driving behavior-1.png"; }
+                ListElement { name: "Energy consumption analysis-1"; icon: "Energy consumption analysis-1.png"; }
+                ListElement { name: "dispatching system-1"; icon: "dispatching system-1.png"; }
+                ListElement { name: "Drive for help-1"; icon: "Drive for help-1.png"; }
+                ListElement { name: "tirepressure-1"; icon: "tirepressure-1.png"; }
+                ListElement { name: "fault-1"; icon: "fault-1.png"; }
+                ListElement { name: "Set up-1"; icon: "Set up-1.png"; }
+                ListElement { name: "information-1"; icon: "information-1.png"; }
             }
 
             Component {
                 id: displayDelegate
                 Item {
                     width: 40; height: 40;
-                    Image { source: icon; }
+                    Image { source: "qrc:/theme1/Theme1/Slice/Home page switching/" + icon; }
                 }
             }
 
@@ -507,11 +507,16 @@ CommonItem {
         // ------------------------- car picture -------------------------
         Item {
             id: subscreen
+            x: 420
+            y: 80
+            width: 600
+            height: 380
+
             Image {
                 id: subscreen_image
-                x: 570
-                y: 160
-                source: "qrc:/theme1/slice/Theme1/Slice/dashed_car.png"
+                anchors.centerIn: parent
+
+                source: "qrc:/theme1/Theme1/Slice/dashed_car.png"
                 scale: 0.9
             }
         }
@@ -519,6 +524,7 @@ CommonItem {
         // ------------------------- soc panel -------------------------
         Item {
             id: soc_panel
+            visible: main_menu_panel.menuIndex === 0
 
             // current time
             Text {
@@ -641,249 +647,248 @@ CommonItem {
             x: 994
             y: 114
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Battery overheating alarm.png"
+            source: "qrc:/theme1/Theme1/Symbol/Battery overheating alarm.png"
         }
         Image {
             id: symbol_batteryCharging
             x: 1060
             y: 125
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryCharging.png"
+            source: "qrc:/theme1/Theme1/Symbol/batteryCharging.png"
         }
         Image {
             id: symbol_batteryCut
             x: 942
             y: 97
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryCut.png"
+            source: "qrc:/theme1/Theme1/Symbol/batteryCut.png"
         }
         Image {
             id: symbol_batteryFault
             x: 1170
             y: 98
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryFault.png"
+            source: "qrc:/theme1/Theme1/Symbol/batteryFault.png"
         }
         Image {
             id: symbol_batteryFireAlarm
             x: 1205
             y: 138
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/batteryFireAlarm.png"
+            source: "qrc:/theme1/Theme1/Symbol/batteryFireAlarm.png"
         }
         Image {
             id: symbol_brakeLight
             x: 416
             y: 70
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/BrakeLight.png"
+            source: "qrc:/theme1/Theme1/Symbol/BrakeLight.png"
         }
         Image {
             id: symbol_chargingCable
             x: 1152
             y: 137
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/chargingCable.png"
+            source: "qrc:/theme1/Theme1/Symbol/chargingCable.png"
         }
         Image {
             id: symbol_defroster
             x: 383
             y: 117
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Defroster.png"
+            source: "qrc:/theme1/Theme1/Symbol/Defroster.png"
         }
         Image {
             id: symbol_driverSystemFault
             x: 1104
             y: 134
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/driverSystemFault.png"
+            source: "qrc:/theme1/Theme1/Symbol/driverSystemFault.png"
         }
         Image {
             id: symbol_engineFailue
             x: 445
             y: 115
             scale: 1.2
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/engineFailue.png"
+            source: "qrc:/theme1/Theme1/Symbol/engineFailue.png"
         }
         Image {
             id: symbol_hatchDoor1Alarm
             x: 241
             y: 138
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/HatchDoor1Alarm.png"
+            source: "qrc:/theme1/Theme1/Symbol/HatchDoor1Alarm.png"
         }
         Image {
             id: symbol_hatchDoor2Alarm
             x: 203
             y: 111
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/HatchDoor2Alarm.png"
+            source: "qrc:/theme1/Theme1/Symbol/HatchDoor2Alarm.png"
         }
         Image {
             id: symbol_highPressureOverhaul
             x: 280
             y: 138
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/highPressureOverhaul.png"
+            source: "qrc:/theme1/Theme1/Symbol/highPressureOverhaul.png"
         }
         Image {
             id: symbol_lamp_ABS
             x: 994
             y: 65
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_ABS.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_ABS.png"
         }
         Image {
             id: symbol_lamp_AC
             x: 308
             y: 85
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/lamp_AC.png"
+            source: "qrc:/theme1/Theme1/Symbol/lamp_AC.png"
         }
         Image {
             id: symbol_lamp_airFilter
             x: 886
             y: 68
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_airFilter.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_airFilter.png"
         }
         Image {
             id: symbol_lamp_airPress
             x: 1052
             y: 85
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_airPress.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_airPress.png"
         }
         Image {
             id: symbol_lamp_frontFog
             x: 623
             y: 88
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_frontFog.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_frontFog.png"
         }
         Image {
             id: symbol_lamp_headlight
             x: 663
             y: 88
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_headlight.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_headlight.png"
         }
         Image {
             id: symbol_lamp_highBeam
             x: 703
             y: 88
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_highBeam.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_highBeam.png"
         }
         Image {
             id: symbol_lamp_insulationRed
             x: 1110
             y: 91
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_insulationRed.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_insulationRed.png"
         }
         Image {
             id: symbol_lamp_parkingBrake
             x: 943
             y: 48
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_parkingBrake.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_parkingBrake.png"
         }
         Image {
             id: symbol_Lamp_positionLight
             x: 743
             y: 88
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_positionLight.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_positionLight.png"
         }
         Image {
             id: lsymbol_amp_rearFog
             x: 783
             y: 88
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_rearFog.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_rearFog.png"
         }
         Image {
             id: symbol_lamp_waterLow
             x: 528
             y: 61
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/Lamp_waterLow.png"
+            source: "qrc:/theme1/Theme1/Symbol/Lamp_waterLow.png"
         }
         Image {
             id: symbol_leftBrakeAlarm
             x: 363
             y: 85
             scale: 1.2
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/leftBrakeAlarm.png"
+            source: "qrc:/theme1/Theme1/Symbol/leftBrakeAlarm.png"
         }
         Image {
             id: symbol_mainPowerIndication
             x: 469
             y: 64
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/mainPowerIndication.png"
+            source: "qrc:/theme1/Theme1/Symbol/mainPowerIndication.png"
         }
         Image {
             id: symbol_motor_notworking
             x: 496
             y: 109
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/motor_notworking.png"
+            source: "qrc:/theme1/Theme1/Symbol/motor_notworking.png"
         }
         Image {
             id: symbol_motorHeat
             x: 254
             y: 98
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/motorHeat.png"
+            source: "qrc:/theme1/Theme1/Symbol/motorHeat.png"
         }
         Image {
             id: symbol_oil_pressure
             x: 891
             y: 116
             scale: 1.2
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/oil pressure.png"
+            source: "qrc:/theme1/Theme1/Symbol/oil pressure.png"
         }
         Image {
             id: symbol_ready
             x: 258
             y: 432
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/READY.png"
+            source: "qrc:/theme1/Theme1/Symbol/READY.png"
         }
         Image {
             id: symbol_rightBrakeAlarm
             x: 331
             y: 133
             scale: 1.2
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/rightBrakeAlarm.png"
+            source: "qrc:/theme1/Theme1/Symbol/rightBrakeAlarm.png"
         }
         Image {
             id: symbol_stopWL
             x: 1129
             y: 432
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/StopWL.png"
+            source: "qrc:/theme1/Theme1/Symbol/StopWL.png"
         }
         Image {
             id: symbol_turnLeftWL
             x: 577
             y: 83
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/TurnLeftWL.png"
+            source: "qrc:/theme1/Theme1/Symbol/TurnLeftWL.png"
         }
         Image {
             id: symbol_turnRightWL
             x: 823
             y: 83
             scale: symbols_scale_ratio
-            source: "qrc:/theme1/Home page switching/Theme1/Symbol/TurnRightWL.png"
+            source: "qrc:/theme1/Theme1/Symbol/TurnRightWL.png"
         }
     }
 
     // key events
     property bool bKeyEnable: true
-    property int index: main_menu_panel.menuIndex
-    property bool hideSubscreen: false
     property bool bChangeTheme: false
+
     onKeyEnter: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyEnter")
@@ -895,29 +900,27 @@ CommonItem {
     onKeyBack: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyBack")
-            //main_menu_panel.visible = false;
-            //subscreen_image.visible = false;
-            hideSubscreen = true;
         }
         bChangeTheme = !bChangeTheme
+        UiController.hideLayer("CarInfo");
     }
     onKeyUp: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyUp")
+            if(--main_menu_panel.menuIndex < 0) {
+                main_menu_panel.menuIndex = main_menu_panel.menu_icons.length - 1
+            }
+            set_subscreen(main_menu_panel.menuIndex)
         }
-        if(index-- < -1) {
-            index = main_menu_panel.menu_icons.length - 2
-        }
-        set_subscreen(index)
     }
     onKeyDown: function() {
         if (bKeyEnable) {
             console.debug("HomePanel onKeyDown")
+            if(++main_menu_panel.menuIndex > main_menu_panel.menu_icons.length - 1) {
+                main_menu_panel.menuIndex = 0
+            }
+            set_subscreen(main_menu_panel.menuIndex)
         }
-        if(index++ >= main_menu_panel.menu_icons.length-1) {
-            index = -1
-        }
-        set_subscreen(index)
     }
 
     onVisibleChanged: {
@@ -929,80 +932,17 @@ CommonItem {
     }
 
     function set_subscreen(index) {
-        if(hideSubscreen) {
-            subscreen_image.visible = false
-            return
-        }
-
-        pathView.currentIndex = index
+        pathView.currentIndex = index - 1
         console.log("pathView.currentIndex: " + pathView.currentIndex)
 
-        subscreen_image.source = main_menu_panel.menu_icons[index+1]
-        console.log("subscreen_image.source: " + subscreen_image.source)
-        switch(index+1) {
-        case 0:
-            subscreen_image.x = 570
-            subscreen_image.y = 160
-            subscreen_image.scale = 0.9
-            break;
-        case 1:
-            subscreen_image.x = 564-100
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
-        case 2:
-            subscreen_image.x = 564-100
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
-        case 3:
-            subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
-        case 4:
-            subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
-        case 5:
-            subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.9
-            break;
-        case 6:
-            subscreen_image.x = 564-120
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.9
-            break;
-        case 7:
-            subscreen_image.x = 564-40
-            subscreen_image.y = 136-40
-            subscreen_image.scale = 0.8
-            break;
-        case 8:
-            subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
-        case 9:subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
-        case 10:
-            subscreen_image.x = 564-50
-            subscreen_image.y = 136-40
-            subscreen_image.scale = 0.8
-            break;
-        case 11:
-
-            subscreen_image.visible = false
-            break;
-        case 12:
-            subscreen_image.x = 564-80
-            subscreen_image.y = 136-70
-            subscreen_image.scale = 0.8
-            break;
+        if (index === main_menu_panel.menu_icons.length - 1) {
+            subscreen_image.source = ""
+            bKeyEnable = false
+            UiController.showLayer("CarInfo");
+        } else {
+            UiController.hideLayer("CarInfo");
+            subscreen_image.source = main_menu_panel.menu_icons[index]
+            console.log("subscreen_image.source: " + subscreen_image.source)
         }
     }
 
@@ -1011,7 +951,7 @@ CommonItem {
         x: 70
         y: 474
         visible: true
-        source: "qrc:/theme1/slice/Theme1/Slice/sun.png"
+        source: "qrc:/theme1/Theme1/Slice/sun.png"
         scale: 0.8
 
         Behavior on x { NumberAnimation {} }
@@ -1023,7 +963,7 @@ CommonItem {
         y: 474
         visible: true
         rotation: -23
-        source: "qrc:/theme1/slice/Theme1/Slice/sun.png"
+        source: "qrc:/theme1/Theme1/Slice/sun.png"
         scale: 0.8
 
         Behavior on x { NumberAnimation {} }
@@ -1104,7 +1044,7 @@ CommonItem {
 
     Component.onCompleted: {
         console.log("----------------------- Component.onCompleted --------------------------------");
-        set_subscreen(index);
+        set_subscreen(0);
     }
 
     // Demo

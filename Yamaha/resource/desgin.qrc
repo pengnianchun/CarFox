@@ -1,5 +1,11 @@
 <RCC>
-    <qresource prefix="/theme1/Home page switching">
+    <qresource prefix="/">
+        <file>Common/ring_0.png</file>
+        <file>Common/ring_1.png</file>
+        <file>Common/ring_2.png</file>
+        <file>Common/ring_3.png</file>
+    </qresource>
+    <qresource prefix="/theme1">
         <file>Theme1/Symbol/batteryCharging.png</file>
         <file>Theme1/Symbol/batteryCut.png</file>
         <file>Theme1/Symbol/batteryFault.png</file>
@@ -63,6 +69,87 @@
         <file>Theme1/Slice/Home page switching/tirepressure-1.png</file>
         <file>Theme1/Slice/Home page switching/Vehicle information-1.png</file>
         <file>Theme1/Slice/Home page switching/Vehicle information.png</file>
+        <file>Theme1/Slice/background.png</file>
+        <file>Theme1/Slice/Countdown.png</file>
+        <file>Theme1/Slice/dashed_car.png</file>
+        <file>Theme1/Slice/Pointer_background.png</file>
+        <file>Theme1/Slice/Pointer_Projection.png</file>
+        <file>Theme1/Slice/Pointer.png</file>
+        <file>Theme1/Slice/Symbol_label.jpg</file>
+        <file>Theme1/Slice/mainpage.png</file>
+        <file>Theme1/Slice/multimedia.png</file>
+        <file>Theme1/Slice/tirepressure.png</file>
+        <file>Theme1/Slice/background_v2.png</file>
+        <file>Theme1/Slice/background_v3.png</file>
+        <file>Theme1/Slice/Analysis of driving behavior-1.png</file>
+        <file>Theme1/Slice/Analysis of driving behavior.png</file>
+        <file>Theme1/Slice/Auxiliary driving-1.png</file>
+        <file>Theme1/Slice/Auxiliary driving.png</file>
+        <file>Theme1/Slice/dispatching system-1.png</file>
+        <file>Theme1/Slice/dispatching system.png</file>
+        <file>Theme1/Slice/Drive for help-1.png</file>
+        <file>Theme1/Slice/Drive for help.png</file>
+        <file>Theme1/Slice/Energy consumption analysis-1.png</file>
+        <file>Theme1/Slice/Energy consumption analysis.png</file>
+        <file>Theme1/Slice/fault-1.png</file>
+        <file>Theme1/Slice/fault.png</file>
+        <file>Theme1/Slice/information-1.png</file>
+        <file>Theme1/Slice/information.png</file>
+        <file>Theme1/Slice/mainpage-1.png</file>
+        <file>Theme1/Slice/multimedia-1.png</file>
+        <file>Theme1/Slice/Navigation-1.png</file>
+        <file>Theme1/Slice/Navigation.png</file>
+        <file>Theme1/Slice/Pointer (2).png</file>
+        <file>Theme1/Slice/Pointer_negative_25.png</file>
+        <file>Theme1/Slice/Set up-1.png</file>
+        <file>Theme1/Slice/Set up.png</file>
+        <file>Theme1/Slice/speed.png</file>
+        <file>Theme1/Slice/symmetry_pointer.png</file>
+        <file>Theme1/Slice/tirepressure-1.png</file>
+        <file>Theme1/Slice/Vehicle information-1.png</file>
+        <file>Theme1/Slice/Vehicle information.png</file>
+        <file>Theme1/Slice/sun.png</file>
+        <file>Theme1/Slice/Monitoring state.png</file>
+        <file>Theme1/sub_screen_slice/ADAS.png</file>
+        <file>Theme1/sub_screen_slice/analys.png</file>
+        <file>Theme1/sub_screen_slice/bluetruth.png</file>
+        <file>Theme1/sub_screen_slice/car_info.png</file>
+        <file>Theme1/sub_screen_slice/comsume.png</file>
+        <file>Theme1/sub_screen_slice/date.png</file>
+        <file>Theme1/sub_screen_slice/FM.png</file>
+        <file>Theme1/sub_screen_slice/health.png</file>
+        <file>Theme1/sub_screen_slice/help.png</file>
+        <file>Theme1/sub_screen_slice/multimedia.png</file>
+        <file>Theme1/sub_screen_slice/navigation.png</file>
+        <file>Theme1/sub_screen_slice/radar.png</file>
+        <file>Theme1/sub_screen_slice/settings.png</file>
+        <file>Theme1/sub_screen_slice/submenu.png</file>
+        <file>Theme1/sub_screen_slice/tire_pressure.png</file>
+        <file>Theme1/sub_screen_slice/dispatche.png</file>
+        <file>Theme1/sub_screen_slice/error.png</file>
+        <file>Theme1/sub_screen_slice/info.png</file>
+        <file>Theme1/Modules/adas.png</file>
+        <file>Theme1/Modules/backcamera.png</file>
+        <file>Theme1/Modules/brightness.png</file>
+        <file>Theme1/Modules/btphone.png</file>
+        <file>Theme1/Modules/calendar.png</file>
+        <file>Theme1/Modules/consumption.png</file>
+        <file>Theme1/Modules/countdown.png</file>
+        <file>Theme1/Modules/driveAnalysis.png</file>
+        <file>Theme1/Modules/engineError.png</file>
+        <file>Theme1/Modules/fm.png</file>
+        <file>Theme1/Modules/healthMon.png</file>
+        <file>Theme1/Modules/help.png</file>
+        <file>Theme1/Modules/info.png</file>
+        <file>Theme1/Modules/language.png</file>
+        <file>Theme1/Modules/multimedia.png</file>
+        <file>Theme1/Modules/navigation.png</file>
+        <file>Theme1/Modules/radar.png</file>
+        <file>Theme1/Modules/schedule.png</file>
+        <file>Theme1/Modules/setting.png</file>
+        <file>Theme1/Modules/tirepressure.png</file>
+        <file>Theme1/Modules/volume.png</file>
+        <file>Theme1/Modules/music.png</file>
     </qresource>
     <qresource prefix="/theme2/symbol">
         <file>Theme2/Symbol/backFlogLamp.png</file>
@@ -285,74 +372,5 @@
         <file>Theme2/Symbol/BackhDoorAlarm.png</file>
         <file>Theme2/Symbol/StopWL_yellow.png</file>
         <file>Theme2/Symbol_gray/BackhDoorAlarm.png</file>
-    </qresource>
-    <qresource prefix="/theme1/slice">
-        <file>Theme1/Slice/background.png</file>
-        <file>Theme1/Slice/Countdown.png</file>
-        <file>Theme1/Slice/dashed_car.png</file>
-        <file>Theme1/Slice/Pointer_background.png</file>
-        <file>Theme1/Slice/Pointer_Projection.png</file>
-        <file>Theme1/Slice/Pointer.png</file>
-        <file>Theme1/Slice/Symbol_label.jpg</file>
-        <file>Theme1/Slice/mainpage.png</file>
-        <file>Theme1/Slice/multimedia.png</file>
-        <file>Theme1/Slice/tirepressure.png</file>
-        <file>Theme1/Slice/background_v2.png</file>
-        <file>Theme1/Slice/background_v3.png</file>
-        <file>Theme1/Slice/Analysis of driving behavior-1.png</file>
-        <file>Theme1/Slice/Analysis of driving behavior.png</file>
-        <file>Theme1/Slice/Auxiliary driving-1.png</file>
-        <file>Theme1/Slice/Auxiliary driving.png</file>
-        <file>Theme1/Slice/dispatching system-1.png</file>
-        <file>Theme1/Slice/dispatching system.png</file>
-        <file>Theme1/Slice/Drive for help-1.png</file>
-        <file>Theme1/Slice/Drive for help.png</file>
-        <file>Theme1/Slice/Energy consumption analysis-1.png</file>
-        <file>Theme1/Slice/Energy consumption analysis.png</file>
-        <file>Theme1/Slice/fault-1.png</file>
-        <file>Theme1/Slice/fault.png</file>
-        <file>Theme1/Slice/information-1.png</file>
-        <file>Theme1/Slice/information.png</file>
-        <file>Theme1/Slice/mainpage-1.png</file>
-        <file>Theme1/Slice/multimedia-1.png</file>
-        <file>Theme1/Slice/Navigation-1.png</file>
-        <file>Theme1/Slice/Navigation.png</file>
-        <file>Theme1/Slice/Pointer (2).png</file>
-        <file>Theme1/Slice/Pointer_negative_25.png</file>
-        <file>Theme1/Slice/Set up-1.png</file>
-        <file>Theme1/Slice/Set up.png</file>
-        <file>Theme1/Slice/speed.png</file>
-        <file>Theme1/Slice/symmetry_pointer.png</file>
-        <file>Theme1/Slice/tirepressure-1.png</file>
-        <file>Theme1/Slice/Vehicle information-1.png</file>
-        <file>Theme1/Slice/Vehicle information.png</file>
-        <file>Theme1/Slice/sun.png</file>
-        <file>Theme1/Slice/Monitoring state.png</file>
-    </qresource>
-    <qresource prefix="/theme1/sub_screen_slice">
-        <file>Theme1/sub_screen_slice/ADAS.png</file>
-        <file>Theme1/sub_screen_slice/analys.png</file>
-        <file>Theme1/sub_screen_slice/bluetruth.png</file>
-        <file>Theme1/sub_screen_slice/car_info.png</file>
-        <file>Theme1/sub_screen_slice/comsume.png</file>
-        <file>Theme1/sub_screen_slice/date.png</file>
-        <file>Theme1/sub_screen_slice/FM.png</file>
-        <file>Theme1/sub_screen_slice/health.png</file>
-        <file>Theme1/sub_screen_slice/help.png</file>
-        <file>Theme1/sub_screen_slice/multimedia.png</file>
-        <file>Theme1/sub_screen_slice/navigation.png</file>
-        <file>Theme1/sub_screen_slice/radar.png</file>
-        <file>Theme1/sub_screen_slice/settings.png</file>
-        <file>Theme1/sub_screen_slice/submenu.png</file>
-        <file>Theme1/sub_screen_slice/tire_pressure.png</file>
-        <file>Theme1/sub_screen_slice/dispatche.png</file>
-        <file>Theme1/sub_screen_slice/error.png</file>
-        <file>Theme1/sub_screen_slice/info.png</file>
-    </qresource>
-    <qresource prefix="/">
-        <file>Common/ring_0.png</file>
-        <file>Common/ring_1.png</file>
-        <file>Common/ring_2.png</file>
-        <file>Common/ring_3.png</file>
     </qresource>
 </RCC>
