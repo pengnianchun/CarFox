@@ -24,18 +24,19 @@ CommonItem {
     property int  carGearValue: CarMsg.gear // 档位
 
     // Bezier Canvas
+    property int carBezierSample: 240
     property var carGaugesPos: [100, 460, -10, 400, -50, -25, 400, 10] // [{x0,y0, x1,y1, x2,y2, x3,y3}]
     property var carEnginePos: [1280, 460, 1380, 368, 1500, 3, 1000, 10] // [{x0,y0, x1,y1, x2,y2, x3,y3}]
 
     function getCarGaugesPosX(pos, step) {
-        var t = 1.0/250 * step
+        var t = 1.0/carBezierSample * step
         var t1 = 1 - t
         var x = pos[0]*Math.pow(t1,3) + 3*pos[2]*t*Math.pow(t1,2) + 3*pos[4]*Math.pow(t,2)*t1 + pos[6]*Math.pow(t,3);
         return x
     }
 
     function getCarGaugesPosY(pos, step) {
-        var t= 1.0/250 * step
+        var t= 1.0/carBezierSample * step
         var t1 = 1 - t
         var y = pos[1]*Math.pow(t1,3) + 3*pos[3]*t*Math.pow(t1,2) + 3*pos[5]*Math.pow(t,2)*t1 + pos[7]*Math.pow(t,3);
         return y
@@ -1012,6 +1013,9 @@ CommonItem {
         visible: true
         source: "qrc:/theme1/slice/Theme1/Slice/sun.png"
         scale: 0.8
+
+        Behavior on x { NumberAnimation {} }
+        Behavior on y { NumberAnimation {} }
     }
     Image {
         id: pointer_engine
@@ -1021,6 +1025,9 @@ CommonItem {
         rotation: -23
         source: "qrc:/theme1/slice/Theme1/Slice/sun.png"
         scale: 0.8
+
+        Behavior on x { NumberAnimation {} }
+        Behavior on y { NumberAnimation {} }
     }
 
     Timer {
@@ -1114,7 +1121,7 @@ CommonItem {
         property bool directionRotationUp: true
         id: timer_for_random_demo
         interval: 100
-        running: false
+        running: true
         repeat: true
         onTriggered: {
             if(directionCarSpeedUp) {
