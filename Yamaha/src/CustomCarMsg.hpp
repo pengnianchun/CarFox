@@ -852,9 +852,9 @@ private slots:
     void updateBatMaxChargeCurrent(float value);
     void updateBatMaxDischargeCurrent(float value);
     void updateBatAverageVoltage(float value);
-    void updateBatStatus1(int value);
-    void updateBatStatus2(int value);
-    void updateBatStatus3(int value);
+    void updateBatStatus1(uint value);
+    void updateBatStatus2(uint value);
+    void updateBatStatus3(uint value);
     void updateIrmOhmPositive(float value);
     void updateIrmOhmNegative(float value);
     void updateBatMaxVoltage(float value);

@@ -1438,13 +1438,13 @@ void CustomCarMsg::updateBatMaxDischargeCurrent(float value) {
 void CustomCarMsg::updateBatAverageVoltage(float value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batAverageVoltage, value);
 }
-void CustomCarMsg::updateBatStatus1(int value) {
+void CustomCarMsg::updateBatStatus1(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batStatus1, value);
 }
-void CustomCarMsg::updateBatStatus2(int value) {
+void CustomCarMsg::updateBatStatus2(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batStatus2, value);
 }
-void CustomCarMsg::updateBatStatus3(int value) {
+void CustomCarMsg::updateBatStatus3(uint value) {
     MEMBER_PROPERTY_VALUE_CHANGED(batStatus3, value);
 }
 void CustomCarMsg::updateIrmOhmPositive(float value) {
