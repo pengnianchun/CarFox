@@ -2,6 +2,7 @@ import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import CustomEnum 1.0
 import "qrc:/Component/Component"
+import "qrc:/Theme/Theme2"
 
 MenuItem {
     width: 800
@@ -62,8 +63,23 @@ MenuItem {
         source: "qrc:/theme2/symbol/Theme2/Modules/infoSearch/bg_title.png"
     }
 
+    FishSpinner {
+        width: 100
+        height: 100
+        anchors.centerIn: batIndex
+        visible: battery_model.count < 5
+    }
+
+    FishSpinner {
+        width: 100
+        height: 100
+        anchors.centerIn: batTemp
+        visible: temperature_model.count < 5
+    }
+
     //电池组信息
     Column {
+        id: batIndex
         x: 140
         y: 80
         width: 300
@@ -88,6 +104,7 @@ MenuItem {
     }
 
     Column {
+        id: batTemp
         x: 500
         y: 80
         width: 300
