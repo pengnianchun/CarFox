@@ -157,7 +157,7 @@ Item {
                     origin.x: 0; origin.y: 190;
                     angle: (carSpeedValue * 2.5) - 135
                     Behavior on angle {
-                        SpringAnimation { spring: 0.7; damping: 1.0; modulus: 360 }
+                        SpringAnimation { spring: 2; damping: 0.2 }
                     }
                 }
             }
@@ -186,7 +186,7 @@ Item {
                     origin.x: 0; origin.y: 190;
                     angle: (engineSpeedValue * 13.5) - 135
                     Behavior on angle {
-                        SpringAnimation { spring: 0.70; damping: 1.0; modulus: 360 }
+                        SpringAnimation { spring: 0.8; damping: 0.2 }
                     }
                 }
             }
