@@ -18,6 +18,7 @@ MenuItem {
     property var dateYMDHMMax: [2100,12,31,23,59]
     property var dateYMDHMId: [year,month,day,hour,miniute,submit]
     property var utcMcuDateTime: Qt.formatDateTime(new Date(), "yyyy-MM-dd-hh-mm-ss").split("-");
+    property int themeIndex: 1
 
     ListModel {
         id: appModel
@@ -194,6 +195,45 @@ MenuItem {
         }
     }
 
+    Rectangle {
+        id: themeSetting
+        anchors.top: setting.top
+        anchors.topMargin: 200
+        width: 800
+        height: 80
+        color: "transparent"
+        visible: !bKeyEnable && setting.currentIndex === 2
+
+        RowLayout {
+            anchors.centerIn: parent
+            spacing: 100
+            TextFieldWeir {
+                id: theme1
+                width: 100
+                height: 30
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: -11
+                textWidth: 100
+                textHeight: 30
+                textValue: "主题一"
+                fontSize: 28
+                fontColor: themeIndex === 0 ? "#00deff" : "#ffffff"
+            }
+            TextFieldWeir {
+                id: theme2
+                width: 100
+                height: 30
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: -11
+                textWidth: 100
+                textHeight: 30
+                textValue: "主题二"
+                fontSize: 28
+                fontColor: themeIndex === 1 ? "#00deff" : "#ffffff"
+            }
+        }
+    }
+
     enterMenu: function() {
         if (bKeyEnable) {
             console.debug("Setting enterMenu")
@@ -209,6 +249,12 @@ MenuItem {
                 } else {
                     dateYMDHMIndex++
                 }
+            } else if (setting.currentIndex === 2) {
+                if (themeIndex === 0) {
+                    UiController.switchThemeTo("CustomTheme1")
+                }
+            } else {
+                // default
             }
         }
     }
@@ -233,16 +279,24 @@ MenuItem {
                 backlightValue -= 10;
                 CarMsg.sendBrightnessControl(backlightValue);
             } else if (setting.currentIndex === 1) {
-                //
-                var cur = parseInt(dateYMDHMId[dateYMDHMIndex].textValue)
-                cur = cur - 1
-                if (cur < dateYMDHMMin[dateYMDHMIndex]) {
-                    cur = dateYMDHMMax[dateYMDHMIndex]
+                if (dateYMDHMIndex < 5) {
+                    var cur = parseInt(dateYMDHMId[dateYMDHMIndex].textValue)
+                    cur = cur - 1
+                    if (cur < dateYMDHMMin[dateYMDHMIndex]) {
+                        cur = dateYMDHMMax[dateYMDHMIndex]
+                    }
+                    if (cur < 10) {
+                        cur = "0" + cur
+                    }
+                    dateYMDHMId[dateYMDHMIndex].textValue = cur.toString()
                 }
-                if (cur < 10) {
-                    cur = "0" + cur
+            } else if (setting.currentIndex === 2) {
+                themeIndex--
+                if (themeIndex < 0) {
+                    themeIndex = 1
                 }
-                dateYMDHMId[dateYMDHMIndex].textValue = cur.toString()
+            } else {
+                // default
             }
         }
     }
@@ -260,16 +314,24 @@ MenuItem {
                 backlightValue += 10;
                 CarMsg.sendBrightnessControl(backlightValue);
             } else if (setting.currentIndex === 1) {
-                //
-                var cur = parseInt(dateYMDHMId[dateYMDHMIndex].textValue)
-                cur = cur + 1
-                if (cur > dateYMDHMMax[dateYMDHMIndex]) {
-                    cur = dateYMDHMMin[dateYMDHMIndex]
+                if (dateYMDHMIndex < 5) {
+                    var cur = parseInt(dateYMDHMId[dateYMDHMIndex].textValue)
+                    cur = cur + 1
+                    if (cur > dateYMDHMMax[dateYMDHMIndex]) {
+                        cur = dateYMDHMMin[dateYMDHMIndex]
+                    }
+                    if (cur < 10) {
+                        cur = "0" + cur
+                    }
+                    dateYMDHMId[dateYMDHMIndex].textValue = cur.toString()
                 }
-                if (cur < 10) {
-                    cur = "0" + cur
+            } else if (setting.currentIndex === 2) {
+                themeIndex++
+                if (themeIndex > 1) {
+                    themeIndex = 0
                 }
-                dateYMDHMId[dateYMDHMIndex].textValue = cur.toString()
+            } else {
+                // default
             }
         }
     }
