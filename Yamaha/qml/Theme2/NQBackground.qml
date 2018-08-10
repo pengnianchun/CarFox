@@ -184,7 +184,7 @@ Item {
 
                 transform: Rotation {
                     origin.x: 0; origin.y: 190;
-                    angle: (engineSpeedValue * 13.5) - 135
+                    angle: (engineSpeedValue * 3) - 135
                     Behavior on angle {
                         SpringAnimation { spring: 0.8; damping: 0.2 }
                     }
