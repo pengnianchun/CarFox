@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package fyWarningInfo; //警告信息
+
+message WarningFrame    //警告提示
+{
+        required int32 warning_id = 1;  //报警ID号
+}
+

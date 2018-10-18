@@ -1,0 +1,15 @@
+*~
+*.user
+bin
+build
+Makefile
+*_plugin_import.cpp
+*_qml_plugin_import.cpp
+.qtquickcompiler/
+*_qtquickcompiler.qrc
+.qmake.stash
+Framework/lib/
+*.Debug
+*.Release
+Thumbs.db
+Thumbs.db:encryptable

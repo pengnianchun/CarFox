@@ -1,0 +1,5 @@
+cppcheck:
+    script: "cppcheck -q ."
+
+build:
+  script: "./demo/build.sh"

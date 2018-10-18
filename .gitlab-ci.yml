@@ -1,0 +1,9 @@
+before_script:
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
+
+cppcheck:
+    script: "cppcheck -q ."
+
+build:
+    script: "./.CI.sh"

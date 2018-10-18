@@ -1,0 +1,65 @@
+syntax = "proto2";
+
+package fyTirePressInfo; //胎压监测系统
+
+message TirePressInfoFrame    //胎压监测系统信息
+{   
+	//做了改动和协议表格中的内容顺序一致
+	required float front_left_tire_press = 1; //左前轮胎胎压 0.0 Mpa
+	required float fron_right_tire_press = 2;//右前轮胎胎压 0.0 Mpa
+	required float back_left_tire_press1 = 3; //左后轮胎胎压1 0.0 Mpa
+	optional float back_left_tire_press2 = 4; //左后轮胎胎压2 0.0 Mpa
+	required float back_right_tire_press1 = 5;//右后轮胎胎压1 0.0 Mpa
+	optional float back_right_tire_press2 = 6;//右后轮胎胎压2 0.0 Mpa
+
+	required int32 front_left_tire_temp = 7;//左前轮胎温度  0 ℃
+	required int32 front_right_tire_temp = 8;//右前轮胎温度  0 ℃
+	required int32 back_left_tire_temp1 = 9;//左后轮胎温度1 0 ℃
+	optional int32 back_left_tire_temp2 = 10;//左后轮胎温度2 0 ℃
+	required int32 back_right_tire_temp1 = 11;//右后轮胎温度1 0 ℃
+	optional int32 back_right_tire_temp2 = 12;//右后轮胎温度2 0 ℃	
+
+	optional int32 front_left_tire_voltage = 13;//左前轮胎电池电压
+	optional int32 front_right_tire_voltage = 14;//右前轮胎电池电压
+	optional int32 back_left_tire_voltage1 = 15;//左后轮胎电池电压
+	optional int32 back_left_tire_voltage2 = 16;//左后轮胎电池电压
+	optional int32 back_right_tire_voltage1 = 17;//右后轮胎电池电压
+	optional int32 back_right_tire_voltage2 = 18;//右后轮胎电池电压
+
+	optional int32 front_left_tire_air_out = 19;//左前轮胎漏气
+	optional int32 front_right_tire_air_out = 20;//右前轮胎漏气
+	optional int32 back_left_tire_air_out1 = 21;//左后轮胎漏气
+	optional int32 back_left_tire_air_out2 = 22;//左后轮胎漏气
+	optional int32 back_right_tire_air_out1 = 23;//右后轮胎漏气
+	optional int32 back_right_tire_air_out2 = 24;//右后轮胎漏气
+
+	optional int32 front_left_tire_sensor_bad = 25;//左前轮胎传感器故障
+	optional int32 front_right_tire_sensor_bad = 26;//右前轮胎传感器故障
+	optional int32 back_left_tire_sensor_bad1 = 27;//左后轮胎传感器故障
+	optional int32 back_left_tire_sensor_bad2 = 28;//左后轮胎传感器故障
+	optional int32 back_right_tire_sensor_bad1 = 29;//右后轮胎传感器故障
+	optional int32 back_right_tire_sensor_bad2 = 30;//右后轮胎传感器故障
+
+}
+
+message TirePressIndexNum //胎压学习状态返回mcu -> imx 
+{
+	required int32 tirep_index = 1; //轮胎顺序编号 0 - 5 
+	required int32 tirep_status = 2;// 轮胎结果为三态 0学习失败1学习成功2取消学习
+}
+
+message TirePressContrl //胎压学习控制imx -> mcu
+{
+	required int32 tirep_contrl_index = 1; //需要学习的轮胎编号	
+	required int32 tirep_student_status = 2;//是否学习 1 学习 0 取消学习
+}
+
+message TirePressStatus //设置轮胎
+{
+	required int32 tirep_set_index = 1;
+	//这个字段我使用了一个字节低压设置是00 01 02 03 04 05 对应６个轮胎低压设置
+	//高压字段使用80 81 82 83 84 85 对应６个轮胎的高压设置
+	required int32 tirep_set_value = 2;//对应的胎压值最大是255 Bar  
+}
+
+

@@ -1,0 +1,49 @@
+syntax = "proto2";
+
+package fyInstrumentInfo; //仪表信息
+
+message InstrumentFrame               //仪表开关量信息 
+{
+	required bool  input_ctrl_01 = 1;         //第1路开关量
+        required bool  input_ctrl_02 = 2;         //第2路开关量
+        required bool  input_ctrl_03 = 3;         //第3路开关量
+        required bool  input_ctrl_04 = 4;         //第4路开关量
+        required bool  input_ctrl_05 = 5;         //第5路开关量
+
+        required bool  input_ctrl_06 = 6;         //第6路开关量
+        required bool  input_ctrl_07 = 7;         //第7路开关量
+        required bool  input_ctrl_08 = 8;         //第8路开关量
+        required bool  input_ctrl_09 = 9;         //第9路开关量
+        required bool  input_ctrl_10 = 10;        //第10路开关量
+
+        required bool  input_ctrl_11 = 11;        //第11路开关量
+        required bool  input_ctrl_12 = 12;        //第12路开关量
+        required bool  input_ctrl_13 = 13;        //第13路开关量
+        required bool  input_ctrl_14 = 14;        //第14路开关量
+        required bool  input_ctrl_15 = 15;        //第15路开关量
+
+        required bool  input_ctrl_16 = 16;        //第16路开关量
+        required bool  input_ctrl_17 = 17;        //第17路开关量
+        required bool  input_ctrl_18 = 18;        //第18路开关量
+        required bool  input_ctrl_19 = 19;        //第19路开关量
+        required bool  input_ctrl_20 = 20;        //第20路开关量
+
+        required bool  input_ctrl_21 = 21;        //第21路开关量
+        required bool  input_ctrl_22 = 22;        //第22路开关量
+        required bool  input_ctrl_23 = 23;        //第23路开关量
+        required bool  input_ctrl_24 = 24;        //第24路开关量
+        required bool  input_ctrl_25 = 25;        //第25路开关量
+
+        required bool  input_ctrl_26 = 26;        //第26路开关量
+        required bool  input_ctrl_27 = 27;        //第27路开关量
+        required bool  input_ctrl_28 = 28;        //第28路开关量
+        required bool  input_ctrl_29 = 29;        //第29路开关量
+        required bool  input_ctrl_30 = 30;        //第30路开关量
+
+        required bool  input_ctrl_31 = 31;        //第31路开关量
+        required bool  input_ctrl_32 = 32;        //第32路开关量
+        required bool  input_ctrl_33 = 33;        //第33路开关量
+        required bool  input_ctrl_34 = 34;        //第34路开关量
+        required bool  input_ctrl_35 = 35;        //第35路开关量
+}
+
